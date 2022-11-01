@@ -2,8 +2,9 @@
 [[use-case-arch]]
 == Ingest architectures and use cases
 
-NOTE: The numbers shown in this table correspond to the numbered architectures in the source documents for easier tracking, and will be removed before we go live. 
-This table might not even appear in the finished documentation, but it's helpful for grouping and quantifying work now. 
+IMPORTANT: The numbers shown in this table correspond to the numbered architectures in the source documents for easier tracking, and will be removed before we go live. 
+This table probably won't appear in the finished documentation, certainly not in its current form.
+But for now, it's helpful for grouping and quantifying work, and for showing the current set of architectures at a glance. 
 
 Reference: https://www.elastic.co/guide/en/cloud/current/ec-cloud-ingest-data.html#ec-data-ingest-pipeline[Data ingestion pipeline]
 

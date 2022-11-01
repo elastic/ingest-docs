@@ -1,0 +1,87 @@
+[discrete]
+[[use-case-arch]]
+== Ingest architectures and use cases
+
+NOTE: The numbers shown in this table correspond to the numbered architectures in the source documents for easier tracking, and will be removed before we go live. 
+This table might not even appear in the finished documentation, but it's helpful for grouping and quantifying work now. 
+
+Reference: https://www.elastic.co/guide/en/cloud/current/ec-cloud-ingest-data.html#ec-data-ingest-pipeline[Data ingestion pipeline]
+
+[cols="50, 50"]
+|===
+| *Ingest architecture* | *Use cases and "how to's"*
+
+| {agent} to {es} 
+a| 
+* 1) Elastic integration is available
+** 1a) Software components with agent installed
+** 1b) Software components with APIs for data collection
+* 2) Software components with customizable Elastic integration available
+** 2a) Data from syslog server: TCP/UDP (custom)
+** 2b) Data from scraping an external API: Httpjson (custom)
+** 2c) Data pushed from external API to HTTP endpoint: Httpinput (custom)
+** 2d) Data read from disk: Custom logs [category]
+* 3) Elastic integration is available and you want to modify schema
+** 3a) Runtime fields use cases
+** 3b) Ingest pipelines use cases
+** 3c) Agent processors use cases
+* 4) Agent needs enrichment (outside the stack or at collection)
+* 5) Buffer at the edge (with Filebeat disk queue or Metricbeat memory queue). Endpoint is buffered on disk up to 500MB). 
+
+| Application with ECS Logging -> {agent} to {es}
+a|
+* 6a) https://www.elastic.co/guide/en/ecs-logging/overview/current/intro.html[Application logging with ECS conformance]
+
+| Filebeat modules -> {es}
+a|
+* 6b) ToDo: Update doc (which doc???) to point to integrations instead of modules. [KBM: If we're pointing to integrations instead of modules, I'm not sure why this one is here and not listed in the integration section.]
+
+| Serverless Forwarder -> {es}
+a|
+* 7) Details TBD
+
+| {ls} -> {es}
+a|
+* 8) Data from source that {agent} can't read (such as databases, AWS Kinesis): Check out {logstash-ref}/input-plugins.html. 
+
+| (reference data: {ls} -> {es}) + {agent} -> {es}
+a|
+* 9) Scrape enrichment data from source and send it to the {es} cluster where data from {es} is ingested
+
+| {agent} -> {ls} -> {es}
+a|
+* 10) {ls} for enrichment between {agent} and {es}
+* 11) {ls} to collect enrichment data based on fields in {agent} data
+* 12) {ls} persistent queue for buffering (to accomodate network issues and downstream unavailability)
+
+| {agent} -> {ls} -> [Destination1, additional destinations]
+a|
+* 13) Agent collected data needs to be routed to different ES clusters or non-ES destinations depending on the content
+
+| (Data path: {agent} -> {ls} -> {es}) + (Control path: {agent} -> {fleet-server} -> {es})
+a|
+* 14) Agents have network restrictions for connecting outside of agent network: https://www.elastic.co/guide/en/fleet/current/fleet-agent-proxy-support.html[Proxy server with Fleet]
+
+| (Data path: {agent} -> Proxy -> {es}) + (Control path: {agent} -> Proxy + {fleet-server} -> {es})
+a|
+* 15) Agents have network restrictions for connecting outside of agent network: https://www.elastic.co/guide/en/fleet/current/fleet-agent-proxy-support.html[Proxy server with Fleet]  TODO: Differentiant with #14. 
+
+| {agent} -> {ls} -> Kafka -> Kafka ES Sink/ {ls} -> {es}
+a|
+* 16) Kafka as middleware message queue
+** 16a) Kafka ES sink connector to write from kafka to {es}
+** 16b) {ls} to read from Kafka and route to {es}
+
+| Kafka -> {es} Sink Connector/{ls} -> {es}
+{agent} -> {ls} -> Kafka -> Kafka ES Sink connector -> {es}
+a|
+* 17) 
+* 18) 
+
+| Other 
+a|
+* 19) ToDo: When no inputs are available, explore custom beat/logstash input plug-ins
+* 20) Agent, Elastic stack both is deployed in air gapped environment with no access to outside network
+
+
+|===

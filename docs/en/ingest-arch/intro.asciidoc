@@ -1,5 +1,4 @@
 [[intro-ingest-archictectures]]
 == Overview
 
-More to come.  
-Check back soon!
+include::arch-list.asciidoc[]

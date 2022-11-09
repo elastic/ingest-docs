@@ -1,4 +1,6 @@
-[[intro-ingest-archictectures]]
+[[intro-ingest-architectures]]
 == Overview
 
 include::arch-list.asciidoc[]
+include::1a-agent.asciidoc[]
+

@@ -1,0 +1,11 @@
+== 6b. Filebeat modules > ES
+
+* 6. Software components for which no dedicated integration exists (Filebeat modules > ES)
+** 6b. Ingesting logs from public cloud 
+*** Point to GCP, Azure data collection guides
+*** TODO: update documentation to point to integrations instead of modules
+*** Update these guides to include the ingest architecture diagrams
+
+
+
+

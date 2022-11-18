@@ -1,0 +1,11 @@
+
+== 8. {ls} > {es}
+
+* 8. Data from source that Elastic Agent can’t read (such as databases, AWS Kinesis): 
+** Check out https://www.elastic.co/guide/en/logstash/master/input-plugins.html[{ls} input plugins].
+** The resultant architecture is logstash hosted on a VM and reading data off the input source and sending it to ES, where the data transformation still happens within ingest pipeline
+
+
+
+
+

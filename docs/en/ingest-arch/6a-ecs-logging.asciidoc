@@ -1,0 +1,6 @@
+== 6a. Application+ECS logging > {Agent} > {ES} 
+
+* 6. For software components for which no dedicated integration exists
+** 6a. Ingesting application logs 
+*** Application logging with ECS conformance
+*** TODO: Needs to be updated for elastic agent 

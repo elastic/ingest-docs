@@ -1,0 +1,5 @@
+
+== 7. Serverless Forwarder to {es}
+
+* 7. Ingesting AWS 
+** TODO: update AWS to include serverless forwarder as a preferred mechanism over functionbeat and potentially write down the trade offs between other choices 

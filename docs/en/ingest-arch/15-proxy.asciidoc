@@ -1,0 +1,8 @@
+== 15. {agent} to proxy to {es}
+
+(Data path: Agent -> Proxy -> ES)
+
+(Control path: Agent -> Proxy + Fleet Server -> ES)
+
+* 15. Agents have network restrictions for connecting to Elastic stack deployed outside of the agent network
+** Using proxy server between Agents and Elasticsearch for data path and Agents and Fleet server for control path as documented here 

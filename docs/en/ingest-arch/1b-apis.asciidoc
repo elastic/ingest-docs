@@ -1,0 +1,31 @@
+[[agent-apis]]
+== 1b. {agent} to {es}: APIs for collection
+
+* 1. An integration exists in the integrations UI
+** 1b. For software components that expose APIs for data collection and integration exists in integrations UI e.g. cloudflare integration
+*** Create a collector VM/container and run elastic agent with selected integration to scrape the external API or external API pushes data to the elastic agent running the integration and show the associated architecture 
+
+
+[discrete]
+=== Description
+
+[discrete]
+=== Diagram
+
+[discrete]
+=== Components
+
+[discrete]
+=== Use cases
+
+[discrete]
+=== Considerations
+
+Outline pros/cons/tradeoffs 
+
+Note that "Considerations" might make sense as a subcategory for individual use cases.
+
+
+
+
+

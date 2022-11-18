@@ -76,15 +76,19 @@ a|
 * 16b) Kafka as middleware message queue: {ls} to read from Kafka and route to {es}
 
 | Kafka -> {es} Sink Connector/{ls} -> {es}
-{agent} -> {ls} -> Kafka -> Kafka ES Sink connector -> {es}
 a|
-* 17) 
-* 18) 
+* 17a) Kafka -> ES Sink Connector -> ES
+* 17b) Kafka -> {ls} -> ES
+* 18) {agent} -> {ls} -> Kafka -> ES Sink Connector -> ES
 
-| Other 
+| Custom Beat to LS input 
 a|
-* 19) ToDo: When no inputs are available, explore custom beat/logstash input plug-ins
-* 20) Agent, Elastic stack both is deployed in air gapped environment with no access to outside network
+* 19) When no inputs are available, explore custom beat/logstash input plug-ins (Details TBD)
+
+| {agent}/{stack}: air gapped environment
+a|
+* 20) Agent, Elastic stack both deployed in air gapped environment with no access to outside network
+
 
 
 |===

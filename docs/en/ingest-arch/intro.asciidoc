@@ -2,5 +2,4 @@
 == Overview
 
 include::arch-list.asciidoc[]
-include::1a-agent.asciidoc[]
 

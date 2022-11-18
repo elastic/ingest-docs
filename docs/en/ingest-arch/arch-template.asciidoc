@@ -1,0 +1,30 @@
+[[agent-to-es]]
+== {agent} to {es}
+
+[discrete]
+[[agent-to-es-desc]]
+=== Description
+
+[discrete]
+[[agent-to-es-diagram]]
+=== Diagram
+
+[discrete]
+[[agent-to-es-componets]]
+=== Components
+
+[discrete]
+[[agent-to-es-usecases]]
+=== Use cases
+
+[discrete]
+[[agent-to-es-Considerations]]
+=== Considerations
+
+Outline pros/cons/tradeoffs 
+
+Note that "Considerations" might make sense as a subcategory for individual use cases.
+
+
+
+

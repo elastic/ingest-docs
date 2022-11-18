@@ -1,0 +1,14 @@
+[[lspq]]
+== 12. {agent} to {ls} to {es}: {ls} Persistent Queue (PQ) for buffering
+
+Logstash persistent queue for buffering to accomodate network issues and downstream unavailability
+
+* 12. Buffering data before ingestion to accommodate network issues and downstream unavailability
+** Show the architecture of Agent -> Logstash w/ Persistent Queue -> ES
+
+
+[discrete]
+[[lspq-desc]]
+=== Description
+
+

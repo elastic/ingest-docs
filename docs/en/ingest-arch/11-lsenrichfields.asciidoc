@@ -1,0 +1,9 @@
+[[enrich-fields]]
+== 11. {agent} to {ls} to {es}: Enrichment based on fields in {agent} data
+
+Logstash to collect enrichment data based on fields in Elastic Agent data
+
+
+* 11. When the enrichment is done with an HTTP API whose return depends on values from the document. For example API that takes geo points with the collected data and returns available real estate in the region then insert logstash for such enrichment between agents and ES
+** Show the ingest architecture of agent -> logstash -> ES and show that logstash reaching out to an external source to collect enrichment data based on fields in agent data, doing the enrichment and then sending it to ES
+

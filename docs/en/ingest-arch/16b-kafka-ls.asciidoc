@@ -1,0 +1,10 @@
+== 16b. Kafka to {ls} to {es}
+
+* 16. If you are standardizing on Kafka as middleware message queue 
+** 16b.  Using Logstash to read from kafka, and route it to appropriate ES or other destination. 
+*** The raw to ECS transformation and any other enrichment is done as recommended in the earlier section. 
+*** Agent doesn’t support kafka output today hence the first logstash tier
+*** The second Logstash tier is useful for use cases mentioned earlier for data routing to different ES and other destinations and enrichment from outside data sources
+*** Documentation:
+**** https://www.elastic.co/guide/en/logstash/current/plugins-outputs-kafka.html[Logstash Kafka output plugin documentation]
+**** Kafka input plugin | Logstash Reference [8.5] | Elastic[Logstash Kafka input plugin documentation]

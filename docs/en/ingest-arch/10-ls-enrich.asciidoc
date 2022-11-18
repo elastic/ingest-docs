@@ -1,0 +1,6 @@
+[[ls-enrich]]
+== 10. {agent} to {ls} (for enrichment) to {es}
+
+* 10a. When enrichment data is not practical to ingest into Elasticsearch for cases such as the enrichment data source changes too often e.g. stock ticker data or enrichment data is proprietary and can not be stored elsewhere, then insert Logstash for this enrichment between agents and ES  
+** Show the ingest architecture of agent -> logstash -> ES and show that logstash reaching out to an external source to collect enrichment data, doing the enrichment and then sending it to ES
+*** Agent->logstash output docs

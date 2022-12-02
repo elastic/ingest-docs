@@ -8,16 +8,27 @@ include::{docs-root}/shared/attributes.asciidoc[]
 include::intro.asciidoc[]
 
 include::1a-agent.asciidoc[]
+
 include::1b-apis.asciidoc[]
+
 include::15-proxy.asciidoc[]
+
 include::10-ls-enrich.asciidoc[]
+
 include::11-lsenrichfields.asciidoc[]
+
 include::12-lspq.asciidoc[]
+
 include::14-ea-ls-es.asciidoc[]
+
 include::13-multitenant.asciidoc[]
+
 include::16a-kafka-essink.asciidoc[]
+
 include::16b-kafka-ls.asciidoc[]
+
 include::6b-filebeat-es.asciidoc[]
+
 include::8-ls-input.asciidoc[]
 
 == Priorities for content dev

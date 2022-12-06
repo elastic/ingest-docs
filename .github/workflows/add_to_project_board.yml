@@ -5,7 +5,7 @@ on:
       - opened
 
 env:
-  INGEST_DOCS_PROJECT_ID: ''
+  INGEST_DOCS_PROJECT_ID: 'PVT_kwDOAGc3Zs4AGP96'
 
 jobs:
   add-to-project:

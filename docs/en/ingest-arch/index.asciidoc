@@ -7,6 +7,8 @@ include::{docs-root}/shared/attributes.asciidoc[]
 
 include::intro.asciidoc[]
 
+include::arch-list.asciidoc[]
+
 include::1a-agent.asciidoc[]
 
 include::1b-apis.asciidoc[]

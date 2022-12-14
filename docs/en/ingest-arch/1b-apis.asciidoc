@@ -1,3 +1,4 @@
+[discrete]
 [[agent-apis]]
 == 1b. {agent} to {es}: APIs for collection
 

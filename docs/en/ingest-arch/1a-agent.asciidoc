@@ -1,38 +1,29 @@
-[[agent-to-es]]
-== 1a. {agent} to {es}
+[discrete]
+[[agent-installed]]
+== 1a. {agent} to {es}: agent installed
 
-* 1) An integration exists in the integrations UI
-** 1a) For software components on which you can install the agent
-*** A simple sequence diagram showing steps in integrations UI (browse an integration, configure, install the agent and launch discover/dashboard for data exploration) for data ingestion
-*** Point to getting started guides for observability, SIEM, endpoint security
-*** Show the simpler architecture/sequence diagram - something on the lines of Agent -> ES 
-**** Special use case of ingesting data from kubernetes
-***** Needs to be updated to be elastic agent based
-****** May be link to this doc if we are short on time
+Ingest model::
+{agent} to {es} (agent installed)
+
+Use when::
+An integration exists in the {kib} integrations UI for software components on which you can install {agent}
+
+Examples::
+<list some popular integrations>
 
 [discrete]
-[[agent-to-es-desc]]
-=== Description
+[[agent-proc]]
+=== Process overview
+
+* In {kib}, browse to find the integration for your data source (Management> Integrations).
+* Install the integration and set up {agent}. 
+* Launch discover/dashboard to explore.
 
 [discrete]
-[[agent-to-es-diagram]]
-=== Diagram
 
-[discrete]
-[[agent-to-es-components]]
-=== Components
+=== Special use case: ingesting data from {k8s}
 
-[discrete]
-[[agent-to-es-usecases]]
-=== Use cases
-
-[discrete]
-[[agent-to-es-Considerations]]
-=== Considerations
-
-Outline pros/cons/tradeoffs 
-
-Note that "Considerations" might make sense as a subcategory for individual use cases.
+ToDo: Find out what this means and figure out how to tackle it. 
 
 
 

@@ -7,9 +7,6 @@ on:
 env:
   INGEST_PROJECT_ID: 'PVT_kwDOAGc3Zs4AEzn4'
   
-  # GitHub labels for each team/area
-  DOCS_LABEL: 'Team:Docs'
-  
   # ID values for the Area property + its options
   AREA_FIELD_ID: 'PVTSSF_lADOAGc3Zs4AEzn4zgEgZSo'
   INGEST_DOCS_OPTION_ID: 'def2f8e6'

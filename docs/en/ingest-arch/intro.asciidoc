@@ -1,5 +1,49 @@
 [[intro-ingest-architectures]]
 == Overview
 
-include::arch-list.asciidoc[]
+You can ingest data into {es} using {agent}, {beats}, {ls}, Elastic language clients, Workplace Search content connectors, or the Enterprise Search web crawler. 
+
+Which option is best? Generally speaking, your best choice is the _simplest option that meets your needs_ and satisfies your use case.  
+
+We can help you determine exactly what that option is. 
+
+TIP: {agent} writing directly to {es} on {ecloud} provides the easiest and fastest time to value for most users. {ess-leadin-short}
+
+[discrete]
+[[agent]]
+=== {agent} and agent integrations
+Start by checking out {agent} and agent https://www.elastic.co/integrations/[{agent} integrations]. 
+
+Integrations offer advantages beyond easier data collection--advantages such as dashboards, central agent management, and easy enablement of https://www.elastic.co/products/[Elastic solutions] for Security, Observability, and Enterprise Search.
+
+Integrations are available for many popular services and platforms, as well as generic input types such as custom log files and APIs. 
+And the list continue to grow.
+
+TIP: If you don't find an integration for your data source, try {beats-ref}/beats-reference.html[Beats] or Beats modules. 
+If you don't find a Beat or a Beats module for your data source, check out {logstash-ref}/input-plugins.html[Logstash inputs]. 
+
+If your data requires additional processing, we can help with that, too. 
+
+[discrete]
+[[processing]]
+=== Additional processing
+
+Do you need to:
+
+* *Sanitize* or *enrich raw data* at the source? 
++ 
+{agent} integrations offer agent processors to handle this work. 
+({beats} offer {beats-ref}/filtering-and-enhancing-data.html[{beats} processors.])
+
+* Convert data to *{ecs-ref}[Elastic Common Schema (ECS)]*, *normalize* field data, or *enrich incoming data*? 
++
+Try an ingest pipeline for {ref}/ingest.html#pipelines-for-fleet-elastic-agent[{agent}] or {ref}/ingest.html#pipelines-for-beats[{beats}].
+
+* *Define or alter schema at query time*? 
++
+Try {ref}/runtime.html[runtime fields].
+
+* *Enrich data*?  Or do *something else*? 
++
+Check out {ref}/filter-plugins.html[{ls} filter plugins].
 

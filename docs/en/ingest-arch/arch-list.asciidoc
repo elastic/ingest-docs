@@ -1,4 +1,3 @@
-[discrete]
 [[use-case-arch]]
 == Ingest architectures and use cases
 

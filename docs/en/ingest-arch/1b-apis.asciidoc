@@ -2,31 +2,23 @@
 [[agent-apis]]
 == 1b. {agent} to {es}: APIs for collection
 
-* 1. An integration exists in the integrations UI
-** 1b. For software components that expose APIs for data collection and integration exists in integrations UI e.g. cloudflare integration
-*** Create a collector VM/container and run elastic agent with selected integration to scrape the external API or external API pushes data to the elastic agent running the integration and show the associated architecture 
+Ingest model::
+{agent} to {es} using APIs for collection
 
+Use when::
+An {agent} integration exists for software components that expose APIs for data collection 
 
-[discrete]
-=== Description
-
-[discrete]
-=== Diagram
+Examples::
+Cloudflare
 
 [discrete]
-=== Components
+[[api-proc]]
+=== Process overview
 
-[discrete]
-=== Use cases
-
-[discrete]
-=== Considerations
-
-Outline pros/cons/tradeoffs 
-
-Note that "Considerations" might make sense as a subcategory for individual use cases.
+* Find the integration for your data source. In {kib},  go to *Management> Integrations*.
+* Enable the integration and set up {agent}. 
+* Create a collector VM/container and run {agent} and the integration to scrape the external API.
+Or, set up the external API to push data to the {agent} running the integration.
 
 
-
-
-
+For more details and next steps, check out the {integrations-docs}[{agent} integration] docs for your data source.

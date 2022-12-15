@@ -22,7 +22,7 @@ image::images/agent-architecture.png[Image showing {agent} collecting data and s
 
 [discrete]
 [[agent-resources]]
-=== Resources for more information
+=== Resources
 
 More info on {agent} and agent integrations:
 

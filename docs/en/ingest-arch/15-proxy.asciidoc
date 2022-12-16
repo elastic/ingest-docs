@@ -1,8 +1,17 @@
 == 15. {agent} to proxy to {es}
 
-(Data path: Agent -> Proxy -> ES)
+Ingest model::
+Data path: {agent} to proxy to {es}
+Control path: {agent} to proxy to Fleet Server to {es}
 
-(Control path: Agent -> Proxy + Fleet Server -> ES)
+Use when::
+Network restrictions prevent connection between {agent} network and network where {stack} is deployed
 
-* 15. Agents have network restrictions for connecting to Elastic stack deployed outside of the agent network
-** Using proxy server between Agents and Elasticsearch for data path and Agents and Fleet server for control path as documented here 
+image::images/agent-proxy-server.png[Image showing connections between {agent}, and {es} using a proxy]
+
+[discrete]
+[[agent-proxy-resources]]
+=== Resources
+
+Check out {fleet-guide}//fleet-agent-proxy-support.html[Using a proxy server with {agent} and {fleet}] in the {fleet-guide}[Fleet and {agent} Guide].
+

@@ -1,6 +1,31 @@
 [[ls-enrich]]
 == 10. {agent} to {ls} (for enrichment) to {es}
 
-* 10a. When enrichment data is not practical to ingest into Elasticsearch for cases such as the enrichment data source changes too often e.g. stock ticker data or enrichment data is proprietary and can not be stored elsewhere, then insert Logstash for this enrichment between agents and ES  
-** Show the ingest architecture of agent -> logstash -> ES and show that logstash reaching out to an external source to collect enrichment data, doing the enrichment and then sending it to ES
-*** Agent->logstash output docs
+Ingest model::
+{agent} to {es} using {ls} to enrich the data
+
+Use when::
+Data enrichment in {es} is not practical for business or technical reasons
+
+Examples::
+* Data sources that change frequently, such as stock ticker data
+* Enrichment data is proprietary and cannot be stored elsewhere. 
+(In this case, you can insert Logstash between agents and {es}.)
+
+**ToDo** 
+Add image: Agent to Logstash to ES showing Logstash reaching out to an external source to collect enrichment data, doing the enrichment and then sending it to ES
+
+[discrete]
+[[ls-enrich-resources]]
+=== Resources
+
+More info on {agent} and agent integrations:
+
+* {fleet-guide}[Fleet and Elastic Agent Guide]
+* {integrations-docs}[{agent} integrations]
+
+For more info on {ls} for transformation, check out these sections in the {logstash-ref}[Logstash Reference]:
+
+* {logstash-ref}/transformation.html[Transforming Data] 
+* {logstash-ref}/filter-plugins.html[Logstash filter plugins]
+

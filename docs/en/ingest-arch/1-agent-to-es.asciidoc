@@ -7,7 +7,7 @@ For many users and use cases, the simplest approach is ingesting data with {agen
 
 Integrations offer advantages beyond easier data collection--advantages such as dashboards, central agent management, and easy enablement of https://www.elastic.co/products/[Elastic solutions], such as Security and Observability.
 
-You can host {es} on prem or send your data to {es} on {ecloud}. 
+You can host {es} on your own hardware or send your data to {es} on {ecloud}. 
 For most users, {agent} writing directly to {es} on {ecloud} provides the easiest and fastest time to value. {ess-leadin-short}
 
 image::images/agent-architecture.png[Image showing {agent} collecting data and sending to {es}]

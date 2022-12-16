@@ -1,14 +1,24 @@
 [[lspq]]
 == 12. {agent} to {ls} to {es}: {ls} Persistent Queue (PQ) for buffering
 
-Logstash persistent queue for buffering to accomodate network issues and downstream unavailability
+Ingest model::
+{agent} to {ls} persistent queue to {es}
 
-* 12. Buffering data before ingestion to accommodate network issues and downstream unavailability
-** Show the architecture of Agent -> Logstash w/ Persistent Queue -> ES
+Use when::
+Your data flow may encounter network issues, bursts of events, and/or downstream unavailability and you need the ability to buffer the data before ingestion. 
 
+**ToDo** 
+Add image: Agent to Logstash with PQ to ES
 
 [discrete]
-[[lspq-desc]]
-=== Description
+[[lspq-resources]]
+=== Resources
 
+More info on {agent} and agent integrations:
 
+* {fleet-guide}[Fleet and Elastic Agent Guide]
+* {integrations-docs}[{agent} integrations]
+
+For more info on using {ls} for buffering and data resiliency, check out this section in the {logstash-ref}[Logstash Reference]:
+       
+* {logstash-ref}/persistent-queues.html[{ls} Persistent Queues (PQ)]

@@ -1,0 +1,24 @@
+[discrete]
+[[agent-apis]]
+== 1b. {agent} to {es}: APIs for collection
+
+Ingest model::
+{agent} to {es} using APIs for collection
+
+Use when::
+An {agent} integration exists for software components that expose APIs for data collection 
+
+Examples::
+Cloudflare
+
+[discrete]
+[[api-proc]]
+=== Process overview
+
+* Find the integration for your data source. In {kib},  go to *Management> Integrations*.
+* Enable the integration and set up {agent}. 
+* Create a collector VM/container and run {agent} and the integration to scrape the external API.
+Or, set up the external API to push data to the {agent} running the integration.
+
+
+For more details and next steps, check out the {integrations-docs}[{agent} integration] docs for your data source.

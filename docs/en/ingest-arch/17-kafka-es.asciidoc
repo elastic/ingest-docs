@@ -1,0 +1,9 @@
+== 17. Kafka to {es}
+
+In many customer environments, data is collected from existing collectors e.g. splunk forwarders. In these cases data exists in kafka without being shipped by elastic agents. In such cases, the ingest architecture exists from kafka onwards.
+
+* 17a. Kafka -> ES Sink Connector/Logstash -> ES
+** For companies with wide internal adoption of Kafka, Kafka Connect is likely to be the most well known method of consuming from Kafka and pushing to another component like Elasticsearch.
+
+* 17b. Kafka -> Logstash -> ES destination
+** For use cases mentioned earlier for data routing to different ES and other destinations and enrichment from outside data sources, Logstash can be used after Kafka

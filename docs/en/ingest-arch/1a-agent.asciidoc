@@ -1,0 +1,31 @@
+[discrete]
+[[agent-installed]]
+== 1a. {agent} to {es}: agent installed
+
+Ingest model::
+{agent} to {es} (agent installed)
+
+Use when::
+An {agent} integration exists in the {kib} integrations UI for software components on which you can install {agent}
+
+Examples::
+<list some popular integrations>
+
+[discrete]
+[[agent-proc]]
+=== Process overview
+
+* Find the integration for your data source. In {kib},  go to *Management> Integrations*.
+* Enable the integration and set up {agent}. 
+* Launch discover/dashboard to explore.
+
+For more details and next steps, check out the {integrations-docs}[{agent} integration] docs for your data source.
+
+[discrete]
+=== Special use case: ingesting data from {k8s}
+
+ToDo: Find out what this means and figure out how to tackle it. 
+
+
+
+

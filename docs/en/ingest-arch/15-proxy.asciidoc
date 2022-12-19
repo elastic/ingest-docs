@@ -1,0 +1,17 @@
+== 15. {agent} to proxy to {es}
+
+Ingest model::
+Data path: {agent} to proxy to {es}
+Control path: {agent} to proxy to Fleet Server to {es}
+
+Use when::
+Network restrictions prevent connection between {agent} network and network where {stack} is deployed
+
+image::images/agent-proxy-server.png[Image showing connections between {agent}, and {es} using a proxy]
+
+[discrete]
+[[agent-proxy-resources]]
+=== Resources
+
+Check out {fleet-guide}//fleet-agent-proxy-support.html[Using a proxy server with {agent} and {fleet}] in the {fleet-guide}[Fleet and {agent} Guide].
+

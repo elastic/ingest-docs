@@ -1,0 +1,14 @@
+== 14. {agent} to {ls} to {es}: {ls} Persistent Queue (PQ) for buffering
+
+(Data path: Agent -> LS -> ES)
+
+(Control path: Agent -> Fleet Server -> ES)
+
+* 14. Agents have network restrictions for connecting to Elastic stack deployed outside of the agent network
+** Using Logstash between Agents and Elasticsearch for data path. For control path, proxy server between agents and fleet-server as documented here
+
+
+[discrete]
+=== Description
+
+

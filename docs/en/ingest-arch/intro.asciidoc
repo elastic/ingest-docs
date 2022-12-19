@@ -1,0 +1,5 @@
+[[intro-ingest-architectures]]
+== Overview
+
+include::arch-list.asciidoc[]
+

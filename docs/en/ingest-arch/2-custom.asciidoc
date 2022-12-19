@@ -1,0 +1,17 @@
+== 2. Custom integrations
+
+* 2) For software components with no dedicated integrations, Elastic offers some customizable integrations (such as logs and APIs)
+** 2a) Data from syslog server: TCP/UDP (custom)
+*** Choose custom logs->TCP/UDP option integration and show associated arch to ingest logs
+** 2b) Data from scraping an external API: Httpjson (custom)
+*** Choose custom logs ->httpjson option and show associated arch
+** 2c) Data pushed from external API to HTTP endpoint: Httpinput (custom)
+*** Choose custom logs ->httpinput option and show associated arch
+** 2d) Data read from disk: Custom logs [category]
+*** Choose custom logs -> and show associated arch
+
+
+
+
+
+

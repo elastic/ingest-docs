@@ -1,0 +1,6 @@
+== 16a. {agent} to {es}Sink to {es}
+
+* 16. If you are standardizing on Kafka as middleware message queue 
+** 16a.  Kafka ES sink connector to write from kafka to ES 
+*** The raw to ECS transformation and any other enrichment is done as recommended in the earlier section. 
+

@@ -1,7 +1,7 @@
 == 15. {agent} to proxy to {es}
 
 Ingest model::
-Data path: {agent} to proxy to {es}
+Data path: {agent} to proxy to {es} +
 Control path: {agent} to proxy to Fleet Server to {es}
 
 Use when::
@@ -13,5 +13,11 @@ image::images/agent-proxy-server.png[Image showing connections between {agent}, 
 [[agent-proxy-resources]]
 === Resources
 
-Check out {fleet-guide}//fleet-agent-proxy-support.html[Using a proxy server with {agent} and {fleet}] in the {fleet-guide}[Fleet and {agent} Guide].
+Info on {agent} and agent integrations:
 
+* {fleet-guide}[Fleet and Elastic Agent Guide]
+* {integrations-docs}[{agent} integrations]
+
+Info on using a proxy server:
+
+* {fleet-guide}//fleet-agent-proxy-support.html[Using a proxy server with {agent} and {fleet}].

@@ -4,3 +4,19 @@
 ** 16a.  Kafka ES sink connector to write from kafka to ES 
 *** The raw to ECS transformation and any other enrichment is done as recommended in the earlier section. 
 
+**ToDo** +
+Add image
+
+[discrete]
+[[agent-essink-resources]]
+=== Resources
+
+Info on {agent} and agent integrations:
+
+* {fleet-guide}[Fleet and Elastic Agent Guide]
+* {integrations-docs}[{agent} integrations]
+
+Info on {es}:
+
+* {ref}[{es} Guide]
+* ES sink [ToDo: Add link]

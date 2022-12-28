@@ -24,7 +24,7 @@ image::images/agent-architecture.png[Image showing {agent} collecting data and s
 [[agent-resources]]
 === Resources
 
-More info on {agent} and agent integrations:
+Info on {agent} and agent integrations:
 
 * {fleet-guide}[Fleet and Elastic Agent Guide]
 * {integrations-docs}[{agent} integrations]

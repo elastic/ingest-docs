@@ -1,6 +1,5 @@
-[discrete]
 [[agent-apis]]
-== 1b. {agent} to {es}: APIs for collection
+=== 1b. {agent} to {es}: APIs for collection
 
 Ingest model::
 {agent} to {es} using APIs for collection
@@ -13,7 +12,7 @@ Cloudflare
 
 [discrete]
 [[api-proc]]
-=== Process overview
+==== Process overview
 
 * Find the integration for your data source. In {kib},  go to *Management> Integrations*.
 * Enable the integration and set up {agent}. 
@@ -21,4 +20,4 @@ Cloudflare
 Or, set up the external API to push data to the {agent} running the integration.
 
 
-For more details and next steps, check out the {integrations-docs}[{agent} integration] docs for your data source.
+For details and next steps, check out the {integrations-docs}[{agent} integration] docs for your data source.

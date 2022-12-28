@@ -1,14 +1,30 @@
-== 14. {agent} to {ls} to {es}: {ls} Persistent Queue (PQ) for buffering
+[[ls-networkbridge]]
+== 14. {agent} to {ls} to {es}: {ls} to bridge networks
 
-(Data path: Agent -> LS -> ES)
+Ingest model::
+Data path: {agent} to {ls} as bridge to {es} on {stack} network +
+Control path: {agent} to {fleet-server} to {es}
 
-(Control path: Agent -> Fleet Server -> ES)
+Use when::
+Agents have network restrictions for connecting to {es} on {stack} deployed outside of the agent network
 
-* 14. Agents have network restrictions for connecting to Elastic stack deployed outside of the agent network
-** Using Logstash between Agents and Elasticsearch for data path. For control path, proxy server between agents and fleet-server as documented here
+Examples::
+TBD
 
+**ToDo** +
+Add image
 
 [discrete]
-=== Description
+[[ls-networkbridge-resources]]
+=== Resources
 
+Info on {agent} and agent integrations:
+
+* {fleet-guide}[Fleet and Elastic Agent Guide]
+* {integrations-docs}[{agent} integrations]
+
+Info on {ls} and {ls} outputs:
+
+* {logstash-ref}[{ls} Reference] 
+* {logstash-ref}/output-plugins.html[Logstash output plugins]
 

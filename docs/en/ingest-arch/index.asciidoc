@@ -23,7 +23,7 @@ include::13-multitenant.asciidoc[]
 
 include::16a-kafka-essink.asciidoc[]
 
-include::16b-kafka-ls.asciidoc[]
+include::16b-agent-kafka-ls.asciidoc[]
 
 include::6b-filebeat-es.asciidoc[]
 
@@ -33,29 +33,29 @@ include::8-ls-input.asciidoc[]
 
 Listed in order of priority. 
 
-* EA > ES (1a, 1b).  Possibly expand to include logs (2).
-* EA > Proxy > ES (15)
-* EA > LS > ES (10, 11, 12) ToDo: Add variation with proxy!
-* EA > LS > ES (14)
-* EA > LS > ES/additional destinations (13)
-* EA > LS > Kafka > Kafka ES Sink > ES (16a)
-* EA > LS > Kafka > LS > ES (16b)
-* Beats (Filebeat specifically?) -> ES (6b)
-* Logstash input -> ES (8)
+* 1a, 1b.  EA > ES. +   
+  Possibly expand to include 2-logs (2a, 2b, 2c, 2d).
+* 15. EA > Proxy > ES 
+* 10, 11, 12. EA > LS > ES 
+* 14. EA > LS > ES 
+* 13. EA > LS > ES/additional destinations 
+* 16a. EA > LS > Kafka > Kafka ES Sink > ES 
+* 16b. EA > LS > Kafka > LS > ES 
+* 6b. Filebeat module -> ES 
+* 8. Logstash input -> ES 
 
 [discrete]
 == To be prioritized
 
-* 2 EA > ES: Customlogs and APIs (2a,2b,2c,2d). (May move to priority list with 1a, 1b) 
-* 3 EA > ES: Modify schema (3a-runtime fields, 3b-ingest pipelines, 3c-agent processors)
-* 4 EA > ES: Agent needs enrichment (outside the stack or at collection)
-* 5 EA > ES: Buffer at edge (FB disk queue or MB memory queue)
-* 6a Application with ECS Logging → Elastic Agent to Elasticsearch
-* 7 Serverless Forwarder
-* 9 (reference data: Logstash → Elasticsearch) + Elastic Agent → Elasticsearch
-* 17 Kafka > ES (17a, 17b) 
-* 18 Agent> Kafka > ES
-* 19 Custom Beat to LS input
-* 20 Elastic Agent/Elastic Stack: air gapped environment
+* 2. EA > ES: Customlogs and APIs (2a,2b,2c,2d). (May move to priority list with 1a, 1b) 
+* 3. EA > ES: Modify schema (3a-runtime fields, 3b-ingest pipelines, 3c-agent processors)
+* 4. EA > ES: Agent needs enrichment (outside the stack or at collection)
+* 5. EA > ES: Buffer at edge (FB disk queue or MB memory queue)
+* 6a. Application with ECS Logging → Elastic Agent to Elasticsearch
+* 7. Serverless Forwarder
+* 9. (reference data: Logstash → Elasticsearch) + Elastic Agent → Elasticsearch
+* 17. Kafka > ES (17a, 17b) 
+* 18. Agent> Kafka > ES
+* 19. Custom Beat to LS input
+* 20. Elastic Agent/Elastic Stack: air gapped environment
 
-Note to self: Communicate/structure in terms of origin/destination, and then fill in the gaps. 

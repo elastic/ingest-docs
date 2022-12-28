@@ -1,11 +1,35 @@
+[[ls-for-input]]
+== 8. {ls} to {es}
 
-== 8. {ls} > {es}
+Ingest model::
+{ls} hosted on a virtual machine (VM) to collect data from sources not currently supported by {agent} and sending the data to {es}.
+Note that the data transformation still happens within the {es} ingest pipeline.
 
-* 8. Data from source that Elastic Agent can’t read (such as databases, AWS Kinesis): 
-** Check out https://www.elastic.co/guide/en/logstash/master/input-plugins.html[{ls} input plugins].
-** The resultant architecture is logstash hosted on a VM and reading data off the input source and sending it to ES, where the data transformation still happens within ingest pipeline
+Use when::
+{agent} doesn't currently support your data source 
 
+Examples::
+AWS Kinesis, databases
 
+**ToDo** +
+Add image
 
+[discrete]
+[[ls-for-input-resources]]
+=== Resources
 
+Before you implement this approach, check to see if an {agent} integration exists and, if so, use it instead:
+
+* {integrations-docs}[{agent} integrations]
+
+Info on {ls} and {ls} input and output plugins:
+
+* {logstash-ref}[{ls}] 
+* {logstash-ref}/input-plugins.html[Logstash input plugins]
+* {logstash-ref}/plugins-outputs-elasticsearch.html[{es} output plugin]
+
+Info on {es} and ingest pipelines:
+
+* {ref}[{es} Guide]
+* {ref}/ingest.html[{es} Ingest Pipelines]
 

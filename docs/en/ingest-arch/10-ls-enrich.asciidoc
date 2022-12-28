@@ -12,19 +12,19 @@ Examples::
 * Enrichment data is proprietary and cannot be stored elsewhere. 
 (In this case, you can insert Logstash between agents and {es}.)
 
-**ToDo** 
+**ToDo** +
 Add image: Agent to Logstash to ES showing Logstash reaching out to an external source to collect enrichment data, doing the enrichment and then sending it to ES
 
 [discrete]
 [[ls-enrich-resources]]
 === Resources
 
-More info on {agent} and agent integrations:
+Info on {agent} and agent integrations:
 
 * {fleet-guide}[Fleet and Elastic Agent Guide]
 * {integrations-docs}[{agent} integrations]
 
-For more info on {ls} for transformation, check out these sections in the {logstash-ref}[Logstash Reference]:
+For info on {ls} for transformation, check out these sections in the {logstash-ref}[Logstash Reference]:
 
 * {logstash-ref}/transformation.html[Transforming Data] 
 * {logstash-ref}/filter-plugins.html[Logstash filter plugins]

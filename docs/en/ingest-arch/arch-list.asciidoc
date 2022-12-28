@@ -2,11 +2,19 @@
 [[use-case-arch]]
 == Ingest architectures and use cases
 
-IMPORTANT: The numbers shown in this table correspond to the numbered architectures in the source documents for easier tracking, and will be removed before we go live. 
-This table probably won't appear in the finished documentation, certainly not in its current form.
+IMPORTANT: The numbers shown in this table correspond to the numbered architectures in the source documents for easier tracking, and will likely be removed before we go live. 
+This table may not appear in the finished documentation, certainly not in its current raw form.
 But for now, it's helpful for grouping and quantifying work, and for showing the current set of architectures at a glance. 
 
-Reference: https://www.elastic.co/guide/en/cloud/current/ec-cloud-ingest-data.html#ec-data-ingest-pipeline[Data ingestion pipeline]
+**Decision tree**
+
+https://www.elastic.co/guide/en/cloud/current/ec-cloud-ingest-data.html#ec-data-ingest-pipeline[Data ingestion pipeline with decision tree]
+
+/////
+ToDo: Set up target as a tagged region and it re-use here.
+With this approach, we can display the decision tree diagram here w/o requiring user to click a link.
+Eventually, we may move original here, but for now it needs to stay in cloud info.  It's getting lots of hits and performing well. 
+/////
 
 [cols="50, 50"]
 |===

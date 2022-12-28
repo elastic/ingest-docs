@@ -30,6 +30,6 @@ Info on {agent} and agent integrations:
 
 Info on {ls} and {ls} outputs:
 
-* {logstash-ref}[{ls}] 
+* {logstash-ref}[{ls} Reference] 
 * {logstash-ref}/output-plugins.html[Logstash output plugins]
 

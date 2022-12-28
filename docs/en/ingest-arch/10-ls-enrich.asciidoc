@@ -28,4 +28,5 @@ For info on {ls} for transformation, check out these sections in the {logstash-r
 
 * {logstash-ref}/transformation.html[Transforming Data] 
 * {logstash-ref}/filter-plugins.html[Logstash filter plugins]
+* {logstash-ref}/plugins-outputs-elasticsearch.html[{ls} Elasticsearch output]
 

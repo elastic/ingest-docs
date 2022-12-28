@@ -21,9 +21,7 @@ include::14-ea-ls-es.asciidoc[]
 
 include::13-multitenant.asciidoc[]
 
-include::16a-kafka-essink.asciidoc[]
-
-include::16b-agent-kafka-ls.asciidoc[]
+include::16-agent-kafka.asciidoc[]
 
 include::6b-filebeat-es.asciidoc[]
 
@@ -58,4 +56,4 @@ Listed in order of priority.
 * 18. Agent> Kafka > ES
 * 19. Custom Beat to LS input
 * 20. Elastic Agent/Elastic Stack: air gapped environment
-
+  

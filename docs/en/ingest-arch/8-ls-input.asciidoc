@@ -24,7 +24,7 @@ Before you implement this approach, check to see if an {agent} integration exist
 
 Info on {ls} and {ls} input and output plugins:
 
-* {logstash-ref}[{ls}] 
+* {logstash-ref}[{ls} Reference] 
 * {logstash-ref}/input-plugins.html[Logstash input plugins]
 * {logstash-ref}/plugins-outputs-elasticsearch.html[{es} output plugin]
 

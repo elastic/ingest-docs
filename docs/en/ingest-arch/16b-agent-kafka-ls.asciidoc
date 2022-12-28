@@ -28,11 +28,11 @@ Info on {agent} and agent integrations:
 Info on {ls} and {ls} Kafka plugins:
 
 * {logstash-ref}[{ls} Reference] 
-* {logstash-ref}/plugins-inputs-kafka.html[{ls} kafka input]
+* {logstash-ref}/plugins-inputs-elastic_agent.html[{ls} {agent} input]
+* {logstash-ref}/plugins-inputs-kafka.html[{ls} Kafka input]
 * {logstash-ref}/plugins-outputs-kafka.html[{ls} Kafka output]
+* {logstash-ref}/plugins-outputs-elasticsearch.html[{ls} Elasticsearch output]
 
 Info on {es}:
 
 * {ref}[{es} Guide]
-
-

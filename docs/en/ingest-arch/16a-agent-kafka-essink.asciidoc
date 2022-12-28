@@ -30,6 +30,7 @@ Info on {ls} and {ls} plugins:
 
 * {logstash-ref}[{ls} Reference] 
 * {logstash-ref}/plugins-inputs-elastic_agent.html[{ls} {agent} input]
+* {logstash-ref}/plugins-outputs-kafka.html[{ls} Kafka output]
 
 Info on {es}:
 

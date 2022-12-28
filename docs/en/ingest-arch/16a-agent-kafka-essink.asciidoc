@@ -1,0 +1,37 @@
+[[agent-kafka-essink]]
+=== 16a. {agent} to {ls} to Kafka to Kafka ES Sink to {es}: Kafka as middleware message queue
+
+Ingest model::
+{agent} to {ls} to Kafka to Kafka ES Sink to {es}: Kafka as middleware message queue. +
+Kafka ES Sink connector reads from Kafka and writes to {es}.
+
+Use when::
+You are standardizing on Kafka as middleware message queue between {agent} and {es}
+
+Notes:: 
+The transformation from raw data to Elastic Common Schema (ECS) and any other enrichment can be handled by {ls} as described in <<ls-enrich>>. 
+
+**ToDo** +
+Add image
+
+//image::images/tbd.png[Image showing {agent} collecting data and sending...]
+
+
+[discrete]
+[[agent-kafka-essink-resources]]
+==== Resources
+
+Info on {agent} and agent integrations:
+
+* {fleet-guide}[Fleet and Elastic Agent Guide]
+* {integrations-docs}[{agent} integrations]
+
+Info on {ls} and {ls} plugins:
+
+* {logstash-ref}[{ls} Reference] 
+* {logstash-ref}/plugins-inputs-elastic_agent.html[{ls} {agent} input]
+
+Info on {es}:
+
+* {ref}[{es} Guide]
+* ES sink [ToDo: Add link]

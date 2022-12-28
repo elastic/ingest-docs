@@ -1,5 +1,5 @@
-[[agent-kafka]]
-== 16b. {agent} to {es}: Kafka as middleware message queue
+[[agent-kafka-ls]]
+=== 16b. {agent} to {ls} to Kafka to {ls} to {es}: Kafka as middleware message queue
 
 Ingest model::
 {agent} to {ls} to Kafka to {ls} to {es}: Kafka as middleware message queue. +
@@ -14,19 +14,22 @@ The transformation from raw data to Elastic Common Schema (ECS) and any other en
 **ToDo** +
 Add image
 
+//image::images/tbd.png[Image showing {agent} collecting data...]
+
 [discrete]
 [[agent-kafka-resources]]
-=== Resources
+==== Resources
 
 Info on {agent} and agent integrations:
 
 * {fleet-guide}[Fleet and Elastic Agent Guide]
 * {integrations-docs}[{agent} integrations]
 
-Info on {ls} and {ls} Kafka output:
+Info on {ls} and {ls} Kafka plugins:
 
-* {logstash-ref}[{ls}] 
-* {logstash-ref}/plugins-outputs-kafka.html[Logstash Kafka output plugin]
+* {logstash-ref}[{ls} Reference] 
+* {logstash-ref}/plugins-inputs-kafka.html[{ls} kafka input]
+* {logstash-ref}/plugins-outputs-kafka.html[{ls} Kafka output]
 
 Info on {es}:
 

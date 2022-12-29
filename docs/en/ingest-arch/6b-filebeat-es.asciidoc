@@ -30,3 +30,6 @@ Info on public cloud data sources:
 * GCP data collection guide [ToDo: Add link]
 * Azure data collection guide [ToDo: Add link]
 
+Info on {es}:
+
+* {ref}[{es} Guide]

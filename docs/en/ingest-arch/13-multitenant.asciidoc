@@ -31,5 +31,10 @@ Info on {agent} and agent integrations:
 Info on {ls} and {ls} outputs:
 
 * {logstash-ref}[{ls} Reference] 
-* {logstash-ref}/output-plugins.html[Logstash output plugins]
+* {logstash-ref}/plugins-outputs-elasticsearch.html[{ls} {es} output plugin]
+* {logstash-ref}/output-plugins.html[{ls} output plugins]
+
+Info on {es}:
+
+* {ref}[{es} Guide]
 

@@ -9,6 +9,8 @@ include::intro.asciidoc[]
 
 include::1-agent-to-es.asciidoc[]
 
+include::2-custom.asciidoc[]
+
 include::15-proxy.asciidoc[]
 
 include::10-ls-enrich.asciidoc[]

@@ -18,7 +18,7 @@ Examples::
 * Enable the integration and set up {agent}. 
 * Launch discover/dashboard to explore.
 
-For details and next steps, check out the {integrations-docs}[{agent} integration] docs for your data source.
+For details and next steps, check out the {integrations-docs}[{agent} integrations] docs for your data source.
 
 [discrete]
 ==== Special use case: ingesting data from {k8s}

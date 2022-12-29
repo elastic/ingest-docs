@@ -1,3 +1,4 @@
+[[agent-proxy]]
 == 15. {agent} to proxy to {es}
 
 Ingest model::
@@ -8,6 +9,16 @@ Use when::
 Network restrictions prevent connection between {agent} network and network where {stack} is deployed
 
 image::images/agent-proxy-server.png[Image showing connections between {agent}, and {es} using a proxy]
+
+[discrete]
+[[agent-proxy-proc]]
+=== Process overview
+
+* Find the integration for your data source. In {kib},  go to *Management> Integrations*.
+* Enable the integration and set up {agent}. 
+* Launch discover/dashboard to explore.
+
+For details and next steps, check out the {integrations-docs}[{agent} integrations] docs for your data source.
 
 [discrete]
 [[agent-proxy-resources]]
@@ -21,3 +32,7 @@ Info on {agent} and agent integrations:
 Info on using a proxy server:
 
 * {fleet-guide}//fleet-agent-proxy-support.html[Using a proxy server with {agent} and {fleet}].
+
+Info on {es}:
+
+* {ref}[{es} Guide]

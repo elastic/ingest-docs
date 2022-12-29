@@ -16,6 +16,16 @@ For example, an API that takes geo points with the collected data and returns av
 Add image: Agent to Logstash to ES showing Logstash reaching out to an external source to collect enrichment data based on fields in agent data, doing the enrichment and then sending it to ES
 
 [discrete]
+[[enrich-fields-proc]]
+==== Process overview
+
+* Find the integration for your data source. In {kib},  go to *Management> Integrations*.
+* Enable the integration and set up {agent}. 
+* Launch discover/dashboard to explore.
+
+For details and next steps, check out the {integrations-docs}[{agent} integrations] docs for your data source.
+
+[discrete]
 [[enrich-fields-resources]]
 === Resources
 
@@ -24,8 +34,16 @@ Info on {agent} and agent integrations:
 * {fleet-guide}[Fleet and Elastic Agent Guide]
 * {integrations-docs}[{agent} integrations]
 
-For info on {ls} for transformation, check out these sections in the {logstash-ref}[Logstash Reference]:
+For info on {ls} plugins:
+
+* {logstash-ref}/plugins-inputs-elastic_agent.html[{agent} input]
+* {logstash-ref}/filter-plugins.html[Logstash filter plugins]
+* {logstash-ref}/plugins-outputs-elasticsearch.html[{es} output plugin]
+
+For info on {ls} for transformation, check out this section in the {logstash-ref}[Logstash Reference]:
 
 * {logstash-ref}/transformation.html[Transforming Data] 
-* {logstash-ref}/filter-plugins.html[Logstash filter plugins]
 
+Info on {es}:
+
+* {ref}[{es} Guide]

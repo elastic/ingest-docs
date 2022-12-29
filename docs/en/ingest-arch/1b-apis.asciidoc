@@ -20,4 +20,4 @@ Cloudflare
 Or, set up the external API to push data to the {agent} running the integration.
 
 
-For details and next steps, check out the {integrations-docs}[{agent} integration] docs for your data source.
+For details and next steps, check out the {integrations-docs}[{agent} integrations] docs for your data source.

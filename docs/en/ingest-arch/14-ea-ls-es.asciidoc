@@ -23,8 +23,12 @@ Info on {agent} and agent integrations:
 * {fleet-guide}[Fleet and Elastic Agent Guide]
 * {integrations-docs}[{agent} integrations]
 
-Info on {ls} and {ls} outputs:
+Info on {ls} and {ls} plugins:
 
 * {logstash-ref}[{ls} Reference] 
-* {logstash-ref}/output-plugins.html[Logstash output plugins]
+* {logstash-ref}/plugins-outputs-elasticsearch.html[{es} output plugin]
 
+
+Info on {es}:
+
+* {ref}[{es} Guide]

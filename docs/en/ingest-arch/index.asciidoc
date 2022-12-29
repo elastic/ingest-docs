@@ -9,6 +9,8 @@ include::intro.asciidoc[]
 
 include::1-agent-to-es.asciidoc[]
 
+include::2-custom.asciidoc[]
+
 include::15-proxy.asciidoc[]
 
 include::10-ls-enrich.asciidoc[]
@@ -31,8 +33,9 @@ include::8-ls-input.asciidoc[]
 
 Listed in order of priority. 
 
-* 1a, 1b.  EA > ES. +   
-  Possibly expand to include 2-logs (2a, 2b, 2c, 2d).
+* 1a, 1b.  EA > ES.    
+* 2. EA > ES: Customlogs and APIs +
+  Topic page has been added.
 * 15. EA > Proxy > ES 
 * 10, 11, 12. EA > LS > ES 
 * 14. EA > LS > ES 
@@ -45,7 +48,7 @@ Listed in order of priority.
 [discrete]
 == To be prioritized
 
-* 2. EA > ES: Customlogs and APIs (2a,2b,2c,2d). (May move to priority list with 1a, 1b) 
+* 2. EA > ES: Customlogs and APIs (2a,2b,2c,2d). (May move to priority list with 1a, 1b).  (Parent page added.)
 * 3. EA > ES: Modify schema (3a-runtime fields, 3b-ingest pipelines, 3c-agent processors)
 * 4. EA > ES: Agent needs enrichment (outside the stack or at collection)
 * 5. EA > ES: Buffer at edge (FB disk queue or MB memory queue)

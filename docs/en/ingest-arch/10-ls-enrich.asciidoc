@@ -16,6 +16,16 @@ Examples::
 Add image: Agent to Logstash to ES showing Logstash reaching out to an external source to collect enrichment data, doing the enrichment and then sending it to ES
 
 [discrete]
+[[ls-enrich-proc]]
+==== Process overview
+
+* Find the integration for your data source. In {kib},  go to *Management> Integrations*.
+* Enable the integration and set up {agent}. 
+* Launch discover/dashboard to explore.
+
+For details and next steps, check out the {integrations-docs}[{agent} integrations] docs for your data source.
+
+[discrete]
 [[ls-enrich-resources]]
 === Resources
 
@@ -26,7 +36,11 @@ Info on {agent} and agent integrations:
 
 For info on {ls} for transformation, check out these sections in the {logstash-ref}[Logstash Reference]:
 
-* {logstash-ref}/transformation.html[Transforming Data] 
+* {logstash-ref}/plugins-inputs-elastic_agent.html[{ls} {agent} input]
+* {logstash-ref}/transformation.html[Transforming Data with {ls}] 
 * {logstash-ref}/filter-plugins.html[Logstash filter plugins]
-* {logstash-ref}/plugins-outputs-elasticsearch.html[{ls} Elasticsearch output]
+* {logstash-ref}/plugins-outputs-elasticsearch.html[{ls} {es} output]
 
+Info on {es}:
+
+* {ref}[{es} Guide]

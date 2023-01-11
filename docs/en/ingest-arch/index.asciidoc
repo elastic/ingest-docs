@@ -29,13 +29,17 @@ include::6b-filebeat-es.asciidoc[]
 
 include::8-ls-input.asciidoc[]
 
+
+=== Next set of architectures
+
+// include::3-schemamod.asciidoc[]
+
 == Priorities for content dev
 
 Listed in order of priority. 
 
 * 1a, 1b.  EA > ES.    
-* 2. EA > ES: Customlogs and APIs +
-  Topic page has been added.
+* 2. EA > ES: Customlogs and APIs
 * 15. EA > Proxy > ES 
 * 10, 11, 12. EA > LS > ES 
 * 14. EA > LS > ES 
@@ -48,7 +52,6 @@ Listed in order of priority.
 [discrete]
 == To be prioritized
 
-* 2. EA > ES: Customlogs and APIs (2a,2b,2c,2d). (May move to priority list with 1a, 1b).  (Parent page added.)
 * 3. EA > ES: Modify schema (3a-runtime fields, 3b-ingest pipelines, 3c-agent processors)
 * 4. EA > ES: Agent needs enrichment (outside the stack or at collection)
 * 5. EA > ES: Buffer at edge (FB disk queue or MB memory queue)

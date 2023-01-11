@@ -1,0 +1,8 @@
+[[ingest-pipelines]]
+=== 3b. {agent} to {es}: Ingest pipelines 
+
+* 3b.  When there are specific transformation needs such as extracting text from file attachments, approximate circle definitions using polygons, or performing inference using pre-trained models, data can be transformed at ingestion time with Ingest Pipelines.
+** If you are using an existing integration then you can modify the pipeline associated with that integration. starting 8.4, you can specify additional pipeline that won’t get overwritten after integration upgrade.
+** One caveat of this approach is if there is a mapping conflict e.g. changing datatype of an existing field, you may need to reindex data
+** TODO: compare runtime fields and ingest processors functionality to help decide when to move from runtime fields to ingest pipelines
+** Show the associated architecture with visuals that data transformation/enrichment is taking place in ingest nodes within elasticsearch

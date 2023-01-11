@@ -1,0 +1,7 @@
+[[agent-processors]]
+=== 3c. {agent} to {es}: Agent processors
+
+
+* 3c.  Third way to modify the schema on collected data, by adding, removing fields is via processors in Agent. We recommend this option only if you need to filter out fields from documents at the edge <- point to docs if they exist, if not show screenshot of the integrations UI -> system integration, with the list of processors we support->
+** Show the associated architecture with visuals that some transformation/enrichment is taking place on agent processors on edge.  
+

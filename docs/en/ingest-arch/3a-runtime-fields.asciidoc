@@ -1,0 +1,7 @@
+[[runtime-fields]]
+=== 3a. {agent} to {es}: Runtime fields 
+
+* 3a. For all of the above use cases, the Runtime Fields feature is available to add new fields derived from collected data, after ingestion, through the Kibana based runtime field UX. Once you validate that you can use these newly created fields in Discover queries or dashboards or within any kibana analytics assets, for better query performance on these fields, you can index them following these docs. 
+* Created a docs issue for “How to” on runtime fields for schema evolution
+* Show the associated architecture with visuals on where the data transformation/enrichment is taking place 
+

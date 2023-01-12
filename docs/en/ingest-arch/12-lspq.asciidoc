@@ -1,5 +1,5 @@
 [[lspq]]
-== 12. {agent} to {ls} to {es}: {ls} Persistent Queue (PQ) for buffering
+=== 12. {agent} to {ls} to {es}: {ls} Persistent Queue (PQ) for buffering
 
 Ingest model::
 {agent} to {ls} persistent queue to {es}
@@ -12,7 +12,7 @@ Add image: Agent to Logstash with PQ to ES
 
 [discrete]
 [[lspq-resources]]
-=== Resources
+==== Resources
 
 Info on {agent} and agent integrations:
 

@@ -1,0 +1,17 @@
+[[agent-ls]]
+== {agent} to {ls} to {es}
+
+Ingest model::
+{agent} to {es} using {ls} for advanced use cases such as enrichment, buffering, network bridging, multiple endpoints
+
+
+include::10-ls-enrich.asciidoc[]
+
+include::11-lsenrichfields.asciidoc[]
+
+include::12-lspq.asciidoc[]
+
+include::14-ea-ls-es.asciidoc[]
+
+include::13-multitenant.asciidoc[]
+

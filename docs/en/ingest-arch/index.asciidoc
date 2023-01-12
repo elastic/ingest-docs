@@ -9,19 +9,7 @@ include::intro.asciidoc[]
 
 include::1-agent-to-es.asciidoc[]
 
-include::2-custom.asciidoc[]
-
-include::15-proxy.asciidoc[]
-
-include::10-ls-enrich.asciidoc[]
-
-include::11-lsenrichfields.asciidoc[]
-
-include::12-lspq.asciidoc[]
-
-include::14-ea-ls-es.asciidoc[]
-
-include::13-multitenant.asciidoc[]
+include::1x-agent-ls.asciidoc[]
 
 include::16-agent-kafka.asciidoc[]
 
@@ -30,10 +18,10 @@ include::6b-filebeat-es.asciidoc[]
 include::8-ls-input.asciidoc[]
 
 
-=== Next set of architectures
-
+// === Next set of architectures
 // include::3-schemamod.asciidoc[]
 
+/////
 == Priorities for content dev
 
 Listed in order of priority. 
@@ -62,4 +50,4 @@ Listed in order of priority.
 * 18. Agent> Kafka > ES
 * 19. Custom Beat to LS input
 * 20. Elastic Agent/Elastic Stack: air gapped environment
-  
+/////

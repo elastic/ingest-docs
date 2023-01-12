@@ -1,5 +1,5 @@
 [[fb]]
-== 6b. {filebeat} module to {es}
+== {filebeat} module to {es}
 
 Ingest model::
 {filebeat} module to {es}

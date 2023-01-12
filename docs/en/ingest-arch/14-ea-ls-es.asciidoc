@@ -1,5 +1,5 @@
 [[ls-networkbridge]]
-== 14. {agent} to {ls} to {es}: {ls} to bridge networks
+=== 14. {agent} to {ls} to {es}: {ls} to bridge networks
 
 Ingest model::
 Data path: {agent} to {ls} as bridge to {es} on {stack} network +
@@ -16,7 +16,7 @@ Add image
 
 [discrete]
 [[ls-networkbridge-resources]]
-=== Resources
+==== Resources
 
 Info on {agent} and agent integrations:
 

@@ -1,5 +1,5 @@
 [[ls-enrich]]
-== 10. {agent} to {ls} (for enrichment) to {es}
+=== 10. {agent} to {ls} (for enrichment) to {es}
 
 Ingest model::
 {agent} to {es} using {ls} to enrich the data
@@ -27,7 +27,7 @@ For details and next steps, check out the {integrations-docs}[{agent} integratio
 
 [discrete]
 [[ls-enrich-resources]]
-=== Resources
+==== Resources
 
 Info on {agent} and agent integrations:
 

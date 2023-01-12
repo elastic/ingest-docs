@@ -1,5 +1,5 @@
 [[ls-for-input]]
-== 8. {ls} to {es}
+== {ls} to {es}
 
 Ingest model::
 {ls} hosted on a virtual machine (VM) to collect data from sources not currently supported by {agent} and sending the data to {es}.

@@ -2,48 +2,7 @@
 == {agent} to {ls} to {es}
 
 Ingest model::
-{agent} to {es} using {ls} to enrich the data
-
-Use when::
-Data enrichment in {es} is not practical for business or technical reasons
-
-Examples::
-* Data sources that change frequently, such as stock ticker data
-* Enrichment data is proprietary and cannot be stored elsewhere. 
-(In this case, you can insert Logstash between agents and {es}.)
-
-**ToDo** +
-Add image: Agent to Logstash to ES showing Logstash reaching out to an external source to collect enrichment data, doing the enrichment and then sending it to ES
-
-[discrete]
-[[agent-ls-proc]]
-=== Process overview
-
-* Find the integration for your data source. In {kib},  go to *Management> Integrations*.
-* Enable the integration and set up {agent}. 
-* Launch discover/dashboard to explore.
-
-For details and next steps, check out the {integrations-docs}[{agent} integrations] docs for your data source.
-
-[discrete]
-[[agent-ls-resources]]
-=== Resources
-
-Info on {agent} and agent integrations:
-
-* {fleet-guide}[Fleet and Elastic Agent Guide]
-* {integrations-docs}[{agent} integrations]
-
-For info on {ls} for transformation, check out these sections in the {logstash-ref}[Logstash Reference]:
-
-* {logstash-ref}/plugins-inputs-elastic_agent.html[{ls} {agent} input]
-* {logstash-ref}/transformation.html[Transforming Data with {ls}] 
-* {logstash-ref}/filter-plugins.html[Logstash filter plugins]
-* {logstash-ref}/plugins-outputs-elasticsearch.html[{ls} {es} output]
-
-Info on {es}:
-
-* {ref}[{es} Guide]
+{agent} to {es} using {ls} for advanced use cases such as enrichment, buffering, network bridging, multiple endpoints
 
 
 include::10-ls-enrich.asciidoc[]

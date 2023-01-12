@@ -21,7 +21,7 @@ include::8-ls-input.asciidoc[]
 // === Next set of architectures
 // include::3-schemamod.asciidoc[]
 
-
+/////
 == Priorities for content dev
 
 Listed in order of priority. 
@@ -50,4 +50,4 @@ Listed in order of priority.
 * 18. Agent> Kafka > ES
 * 19. Custom Beat to LS input
 * 20. Elastic Agent/Elastic Stack: air gapped environment
-  
+/////

@@ -1,5 +1,5 @@
 [[ls-multi]]
-== 13. {agent} to {ls} for routing to multiple {es} clusters and/or additional destinations
+=== 13. {agent} to {ls} for routing to multiple {es} clusters and/or additional destinations
 
 Ingest model::
 {agent} to {ls} to {es} clusters and/or additional destinations
@@ -21,7 +21,7 @@ Note that the System and Windows integrations must be installed on all {es} clus
 
 [discrete]
 [[multi-resources]]
-=== Resources
+==== Resources
 
 Info on {agent} and agent integrations:
 

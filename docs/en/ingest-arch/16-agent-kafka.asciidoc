@@ -1,5 +1,5 @@
 [[agent-kafka-es]]
-== 16. {agent} to {es} with Kafka as middleware message queue
+== {agent} to {es} with Kafka as middleware message queue
 
 Ingest models::
 <<agent-kafka-essink,{agent} to {ls} to Kafka to Kafka ES Sink to {es}: Kafka as middleware message queue>>. +

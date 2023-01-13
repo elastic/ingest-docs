@@ -18,7 +18,8 @@ image::images/agent-architecture.png[Image showing {agent} collecting data and s
 
 * <<agent-installed>>
 * <<agent-apis>>
-
+* <<agent-proxy>>
+* <<agent-custom>>
 
 [discrete]
 [[agent-resources]]

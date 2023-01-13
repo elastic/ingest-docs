@@ -5,6 +5,17 @@ Ingest model::
 {agent} to {es} using {ls} for advanced use cases such as enrichment, buffering, network bridging, multiple endpoints
 
 
+[discrete]
+[[agent-ls-flavors]]
+=== {agent} to {ls} to {es} architectures
+
+* <<ls-enrich>>
+* <<enrich-fields>>
+* <<lspq>>
+* <<ls-networkbridge>>
+* <<ls-multi>>
+
+
 include::10-ls-enrich.asciidoc[]
 
 include::11-lsenrichfields.asciidoc[]

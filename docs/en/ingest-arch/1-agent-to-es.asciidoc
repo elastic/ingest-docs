@@ -18,7 +18,6 @@ image::images/agent-architecture.png[Image showing {agent} collecting data and s
 
 * <<agent-installed>>
 * <<agent-apis>>
-* <<agent-proxy>>
 * <<agent-custom>>
 
 [discrete]
@@ -43,7 +42,5 @@ This basic architecture is a common approach for ingesting data for these Elasti
 include::1a-agent.asciidoc[]
 
 include::1b-apis.asciidoc[]
-
-include::15-proxy.asciidoc[]
 
 include::2-custom.asciidoc[]

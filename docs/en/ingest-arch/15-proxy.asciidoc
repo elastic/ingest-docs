@@ -1,5 +1,5 @@
 [[agent-proxy]]
-=== 15. {agent} to proxy to {es}
+== {agent} to proxy to {es}
 
 Ingest model::
 Data path: {agent} to proxy to {es} +
@@ -12,7 +12,7 @@ image::images/agent-proxy-server.png[Image showing connections between {agent}, 
 
 [discrete]
 [[agent-proxy-proc]]
-==== Process overview
+=== Process overview
 
 * Find the integration for your data source. In {kib},  go to *Management> Integrations*.
 * Enable the integration and set up {agent}. 
@@ -22,7 +22,7 @@ For details and next steps, check out the {integrations-docs}[{agent} integratio
 
 [discrete]
 [[agent-proxy-resources]]
-==== Resources
+=== Resources
 
 Info on {agent} and agent integrations:
 

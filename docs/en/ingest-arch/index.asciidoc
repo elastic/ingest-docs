@@ -5,8 +5,6 @@ include::{docs-root}/shared/attributes.asciidoc[]
 = {es} Ingest Architectures
 
 
-include::intro.asciidoc[]
-
 include::1-agent-to-es.asciidoc[]
 
 include::15-proxy.asciidoc[]
@@ -15,13 +13,12 @@ include::1x-agent-ls.asciidoc[]
 
 include::16-agent-kafka.asciidoc[]
 
-include::6b-filebeat-es.asciidoc[]
-
 include::8-ls-input.asciidoc[]
 
 
 // === Next set of architectures
 // include::3-schemamod.asciidoc[]
+// include::6b-filebeat-es.asciidoc[]
 
 /////
 == Priorities for content dev

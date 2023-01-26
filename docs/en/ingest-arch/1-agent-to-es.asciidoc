@@ -18,7 +18,6 @@ image::images/agent-architecture.png[Image showing {agent} collecting data and s
 
 * <<agent-installed>>
 * <<agent-apis>>
-* <<agent-custom>>
 
 [discrete]
 [[agent-resources]]
@@ -33,14 +32,13 @@ Info on {es}:
 
 * {ref}[{es} Guide]
 
-This basic architecture is a common approach for ingesting data for these Elastic solutions: 
+This basic architecture is a common approach for ingesting data for the https://www.elastic.co/observability[Elastic Observability] and https://www.elastic.co/security[Elastic Security] solutions: 
 
-* {observability-guide}[Elastic Observability Guide]
-* {security-guide}[Elastic Security Solution Guide]
+* {observability-guide}/observability-tutorials.html[Elastic Observability tutorials]  
+* {security-guide}/ingest-data.html[Ingest data to Elastic Security] 
 
 
 include::1a-agent.asciidoc[]
 
 include::1b-apis.asciidoc[]
 
-include::2-custom.asciidoc[]

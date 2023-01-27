@@ -10,15 +10,6 @@ Network restrictions prevent connection between {agent} network and network wher
 
 image::images/agent-proxy-server.png[Image showing connections between {agent}, and {es} using a proxy]
 
-[discrete]
-[[agent-proxy-proc]]
-=== Process overview
-
-* Find the integration for your data source. In {kib},  go to *Management> Integrations*.
-* Enable the integration and set up {agent}. 
-* Launch discover/dashboard to explore.
-
-For details and next steps, check out the {integrations-docs}[{agent} integrations] docs for your data source.
 
 [discrete]
 [[agent-proxy-resources]]

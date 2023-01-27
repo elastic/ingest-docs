@@ -11,11 +11,7 @@ You are standardizing on Kafka as middleware message queue between {agent} and {
 Notes:: 
 The transformation from raw data to Elastic Common Schema (ECS) and any other enrichment can be handled by {ls} as described in <<ls-enrich>>. 
 
-**ToDo** +
-Add image
-
-//image::images/tbd.png[Image showing {agent} collecting data and sending...]
-
+image::images/ls-kafka-essink.png[Image showing {agent} collecting data and using Kafka as a message queue enroute to {es}]
 
 [discrete]
 [[agent-kafka-essink-resources]]

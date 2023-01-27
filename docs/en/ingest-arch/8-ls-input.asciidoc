@@ -11,8 +11,7 @@ Use when::
 Examples::
 AWS Kinesis, databases
 
-**ToDo** +
-Add image
+image::images/ls-to-es.png[Image showing {ls} collecting data and sending to {es}]
 
 [discrete]
 [[ls-for-input-resources]]

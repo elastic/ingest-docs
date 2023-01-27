@@ -1,10 +1,10 @@
 [[agent-ls]]
 == {agent} to {ls} to {es}
 
+image::images/ea-ls-es.png[Image showing {agent} to {ls} to {es}]
+
 Ingest models::
 {agent} to {es} using {ls} for advanced use cases such as enrichment, buffering, network bridging, multiple endpoints
-
-image::images/ea-lspq-es.png[Image showing {agent} to {ls} to {es}]
 
 [discrete]
 [[agent-ls-flavors]]

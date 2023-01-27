@@ -1,6 +1,8 @@
 [[agent-installed]]
 === 1a. {agent} to {es}: Agent installed
 
+image::images/ea-agent-installed.png[Image showing {agent} collecting data and sending to {es}]
+
 Ingest model::
 {agent} to {es} (agent installed)
 

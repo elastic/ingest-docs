@@ -1,6 +1,8 @@
 [[ls-for-input]]
 == {ls} to {es}
 
+image::images/ls-to-es.png[Image showing {ls} collecting data and sending to {es}]
+
 Ingest model::
 {ls} hosted on a virtual machine (VM) to collect data from sources not currently supported by {agent} and sending the data to {es}.
 Note that the data transformation still happens within the {es} ingest pipeline.
@@ -11,7 +13,6 @@ Use when::
 Examples::
 AWS Kinesis, databases
 
-image::images/ls-to-es.png[Image showing {ls} collecting data and sending to {es}]
 
 [discrete]
 [[ls-for-input-resources]]

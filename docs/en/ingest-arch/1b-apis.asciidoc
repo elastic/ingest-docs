@@ -1,6 +1,8 @@
 [[agent-apis]]
 === 1b. {agent} to {es}: APIs for collection
 
+image::images/ea-apis.png[Image showing {agent} collecting data using APIs and sending to {es}]
+
 Ingest model::
 {agent} to {es} using APIs for collection
 

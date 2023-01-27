@@ -10,7 +10,7 @@ For many users and use cases, the simplest approach is ingesting data with {agen
 
 Integrations offer advantages beyond easier data collection--advantages such as dashboards, central agent management, and easy enablement of https://www.elastic.co/products/[Elastic solutions], such as Security and Observability.
 
-image::images/agent-architecture.png[Image showing {agent} collecting data and sending to {es}]
+image::images/ea-es.png[Image showing {agent} collecting data and sending to {es}]
 
 [discrete]
 [[agent-flavors]]

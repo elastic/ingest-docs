@@ -1,7 +1,7 @@
 [[agent-proxy]]
 == {agent} to proxy to {es}
 
-image::images/agent-proxy-server.png[Image showing connections between {agent}, and {es} using a proxy]
+image::images/ea-proxy-es.png[Image showing connections between {agent} and {es} using a proxy]
 
 Ingest model::
 Data path: {agent} to proxy to {es} +

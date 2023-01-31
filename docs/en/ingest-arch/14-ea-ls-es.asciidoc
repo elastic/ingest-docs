@@ -11,8 +11,7 @@ Agents have network restrictions for connecting to {es} on {stack} deployed outs
 Examples::
 TBD
 
-**ToDo** +
-Add image
+image::images/ea-ls-bridge.png[Image showing {agent}s collecting data and sending to {ls} for proxying before sending on to {es}]
 
 [discrete]
 [[ls-networkbridge-resources]]

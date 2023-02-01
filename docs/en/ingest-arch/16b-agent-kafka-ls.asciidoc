@@ -1,5 +1,7 @@
 [[agent-kafka-ls]]
-=== 16b. {agent} to {ls} to Kafka to {ls} to {es}: Kafka as middleware message queue
+=== {agent} to {ls} to Kafka to {ls} to {es}: Kafka as middleware message queue
+
+image::images/ls-kafka-ls.png[Image showing connections between {agent} and {es} using a Kafka messaging queue]
 
 Ingest model::
 {agent} to {ls} to Kafka to {ls} to {es}: Kafka as middleware message queue. +
@@ -7,8 +9,6 @@ Ingest model::
 
 Use when::
 You are standardizing on Kafka as middleware message queue between {agent} and {es}
-
-image::images/ls-kafka-ls.png[Image showing connections between {agent} and {es} using a Kafka messaging queue]
 
 Notes:: 
 The transformation from raw data to Elastic Common Schema (ECS) and any other enrichment can be handled by {ls} as described in <<ls-enrich>>. 

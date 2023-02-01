@@ -1,18 +1,22 @@
 [[ls-enrich]]
-=== 10. {agent} to {ls} (for enrichment) to {es}
+=== {agent} to {ls} (for enrichment) to {es}
 
-Ingest model::
-{agent} to {es} using {ls} to enrich the data
+image::images/ea-ls-enrich.png[Image showing {agent} collecting data, sending to {ls} for enrichment before sending to {es}]
+
+Ingest models::
+* {agent} to {es} using {ls} to enrich the data
+* {agent} to {ls} for enrichment based on fields in the {ea} data to {es}
 
 Use when::
-Data enrichment in {es} is not practical for business or technical reasons
+* Data enrichment in {es} is not practical for business or technical reasons
+* Your use case requires data enrichment based on fields in the {agent} data.
+{ls} can collect enrichment data based on those fields, and then send the data to {es}.
 
 Examples::
 * Data sources that change frequently, such as stock ticker data
 * Enrichment data is proprietary and cannot be stored elsewhere. 
-(In this case, you can insert Logstash between agents and {es}.)
-
-image::images/ea-ls-enrich.png[Image showing {agent} collecting data, sending to {ls} for enrichment before sending to {es}]
+* Enrichment is done with an HTTP API whose return depends on values from the document. +
+Example: An API that takes geo points with the collected data and returns available real estate in the region, and then passes to {ls} enrichment for enrichment between agents and {es}.
 
 [discrete]
 [[ls-enrich-proc]]

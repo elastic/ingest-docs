@@ -1,8 +1,11 @@
 [[enrich-fields]]
-=== 11. {agent} to {ls} (for enrichment) to {es}: Enrichment based on fields in {agent} data
+=== {agent} to {ls} (for enrichment) to {es}: Enrichment based on fields in {agent} data
+
+===  Combined with #10 and no longer linked
+Saving the file for now so we don't lose any content
 
 Ingest model::
-{agent} to {ls} for enrichment based on fields to {es}
+{agent} to {ls} for enrichment based on fields in the {ea} data to {es}
 
 Use when::
 Your use case requires data enrichment based on fields in the {agent} data.

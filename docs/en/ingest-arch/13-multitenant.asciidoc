@@ -1,5 +1,7 @@
 [[ls-multi]]
-=== 13. {agent} to {ls} for routing to multiple {es} clusters and/or additional destinations
+=== {agent} to {ls} for routing to multiple {es} clusters and/or additional destinations
+
+image::images/ea-ls-multi.png[Image showing {agent} collecting and routing data to multiple destinations]
 
 Ingest model::
 {agent} to {ls} to {es} clusters and/or additional destinations

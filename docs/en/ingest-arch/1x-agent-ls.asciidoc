@@ -11,15 +11,12 @@ Ingest models::
 === {agent} to {ls} to {es} architectures
 
 * <<ls-enrich>>
-* <<enrich-fields>>
 * <<lspq>>
 * <<ls-networkbridge>>
 * <<ls-multi>>
 
 
 include::10-ls-enrich.asciidoc[]
-
-include::11-lsenrichfields.asciidoc[]
 
 include::12-lspq.asciidoc[]
 

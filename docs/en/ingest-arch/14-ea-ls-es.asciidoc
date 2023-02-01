@@ -1,5 +1,7 @@
 [[ls-networkbridge]]
-=== 14. {agent} to {ls} to {es}: {ls} to bridge networks
+=== {agent} to {ls} to {es}: {ls} to bridge networks
+
+image::images/ea-ls-bridge.png[Image showing {agent}s collecting data and sending to {ls} for proxying before sending on to {es}]
 
 Ingest model::
 Data path: {agent} to {ls} as bridge to {es} on {stack} network +
@@ -11,7 +13,6 @@ Agents have network restrictions for connecting to {es} on {stack} deployed outs
 Examples::
 TBD
 
-image::images/ea-ls-bridge.png[Image showing {agent}s collecting data and sending to {ls} for proxying before sending on to {es}]
 
 [discrete]
 [[ls-networkbridge-resources]]

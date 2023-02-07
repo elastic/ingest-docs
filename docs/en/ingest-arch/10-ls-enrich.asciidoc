@@ -5,7 +5,7 @@ image::images/ea-ls-enrich.png[Image showing {agent} collecting data, sending to
 
 Ingest models::
 * {agent} to {es} using {ls} to enrich the data
-* {agent} to {ls} for enrichment based on fields in the {ea} data to {es}
+* {agent} to {ls} for enrichment based on fields in the {agent} data to {es}
 
 Use when::
 * Data enrichment in {es} is not practical for business or technical reasons

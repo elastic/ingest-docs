@@ -1,14 +1,19 @@
 [[agent-proxy]]
 == {agent} to proxy to {es}
 
-image::images/ea-proxy-es.png[Image showing connections between {agent} and {es} using a proxy]
+image::images/ea-proxy-fs-es.png[Image showing connections between {agent} and {es} using a proxy when Fleet Server is managed by Elastic]
+
+image::images/ea-fs-proxy-es.png[Image showing connections between {agent} and {es} using a proxy]
 
 Ingest model::
 Data path: {agent} to proxy to {es} +
-Control path: {agent} to proxy to Fleet Server to {es}
+Control path: 
+* {agent} to proxy to {fleet-server} to {es} (for {fleet-server} on {ecloud}) or +
+* {agent} to {fleet-server} to proxy to {es} (for self-managed {fleet-server}) 
 
 Use when::
-Network restrictions prevent connection between {agent} network and network where {stack} is deployed
+* Network restrictions prevent connection between {agent} network and network where {fleet-server} and {stack} are deployed, as when {fleet-server} is deployed on {ecloud}
+* Network restrictions preventconnection between {agent} and {fleet-server} network and the network where {stack} is deployed, as when {stack} is deployed on {ecloud}
 
 
 [discrete]
@@ -22,7 +27,7 @@ Info on {agent} and agent integrations:
 
 Info on using a proxy server:
 
-* {fleet-guide}//fleet-agent-proxy-support.html[Using a proxy server with {agent} and {fleet}].
+* {fleet-guide}//fleet-agent-proxy-support.html[Using a proxy server with {agent} and {fleet}]
 
 Info on {es}:
 

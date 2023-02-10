@@ -4,7 +4,8 @@
 image::images/ea-apis.png[Image showing {agent} collecting data using APIs and sending to {es}]
 
 Ingest model::
-{agent} to {es} using APIs for collection
+Control path: {agent} to {fleet} to {es} +
+Data path: {agent} running on a user-managed host to collect data about the external infrastructure through APIs, and then forwarding to {es}
 
 Use when::
 An {agent} integration exists for software components that expose APIs for data collection 

@@ -8,10 +8,10 @@ Ingest model::
 Note that the data transformation still happens within the {es} ingest pipeline.
 
 Use when::
-{agent} doesn't currently support your data source 
+{agent} doesn't currently support your data source. 
 
 Examples::
-AWS Kinesis, databases
+AWS Kinesis, databases, Kafka
 
 
 [discrete]
@@ -24,6 +24,7 @@ Before you implement this approach, check to see if an {agent} integration exist
 
 Info on {ls} and {ls} input and output plugins:
 
+* https://www.elastic.co/support/matrix#logstash_plugins[{ls} plugin support matrix]
 * {logstash-ref}[{ls} Reference] 
 * {logstash-ref}/input-plugins.html[Logstash input plugins]
 * {logstash-ref}/plugins-outputs-elasticsearch.html[{es} output plugin]

@@ -4,7 +4,8 @@
 image::images/ea-agent-installed.png[Image showing {agent} collecting data and sending to {es}]
 
 Ingest model::
-{agent} to {es} (agent installed)
+Control path: {agent} to {fleet} to {es} +
+Data path: {agent} to {es} (agent installed)
 
 Use when::
 An {agent} integration exists in the {kib} integrations UI for software components on which you can install {agent}

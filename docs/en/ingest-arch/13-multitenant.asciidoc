@@ -16,10 +16,7 @@ These logs need to be sent to different {es} clusters and to S3 for backup and a
 In such use cases, agents send the data to {ls} as a routing mechanism to different destinations. 
 Note that the System and Windows integrations must be installed on all {es} clusters to which the data is routed.
 
-**ToDo:** 
-
-* Add image showing Agent to LS to [Destination1, Destination2, ..] 
-* Add config example/logic in Logstash for routing data to different destinations
+// ToDo: Add config example/logic in Logstash for routing data to different destinations
 
 [discrete]
 [[multi-resources]]

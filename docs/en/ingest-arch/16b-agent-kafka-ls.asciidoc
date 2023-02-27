@@ -4,7 +4,9 @@
 image::images/ls-kafka-ls.png[Image showing connections between {agent} and {es} using a Kafka messaging queue]
 
 Ingest model::
-{agent} to {ls} to Kafka to {ls} to {es}: Kafka as middleware message queue. +
+Control path: {agent} to {fleet} to {es} +
+Data path: {agent} to {ls} to Kafka to {ls} to {es}: Kafka as middleware message queue. 
++ 
 {ls} reads data from Kafka and routes it to {es} clusters (and/or other destinations)
 
 Use when::

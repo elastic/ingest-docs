@@ -24,11 +24,6 @@ Examples::
 
 For details and next steps, check out the {integrations-docs}[{agent} integrations] docs for your data source.
 
-[discrete]
-==== Special use case: ingesting data from {k8s}
-
-ToDo: Find out what this means and figure out how to tackle it. 
-
 
 
 

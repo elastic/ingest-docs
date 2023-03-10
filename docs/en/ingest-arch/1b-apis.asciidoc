@@ -11,7 +11,7 @@ Use when::
 An {agent} integration exists for software components that expose APIs for data collection 
 
 Examples::
-Cloudflare
+Cloudflare or any other data sources that exposes API for data retrieval
 
 [discrete]
 [[api-proc]]

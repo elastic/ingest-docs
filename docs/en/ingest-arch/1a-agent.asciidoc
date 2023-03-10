@@ -11,7 +11,7 @@ Use when::
 An {agent} integration exists in the {kib} integrations UI for software components on which you can install {agent}
 
 Examples::
-<list some popular integrations>
+* System integration that collects metrics, logs from operating systems, Kubernetest integration that collectes metrics and logs from kubernetest master and worker nodes as well as that of workloads running on worker node pods
 
 [discrete]
 [[agent-proc]]

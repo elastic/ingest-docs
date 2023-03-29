@@ -5,14 +5,14 @@ image::images/ea-agent-installed.png[Image showing {agent} collecting data and s
 
 Ingest model::
 Control path: {agent} to {fleet} to {es} +
-Data path: {agent} to {es} (agent installed)
+Data path: {agent} to {es} 
 
 Use when::
-An {agent} integration exists in the {kib} integrations UI for software components on which you can install {agent}
+An {agent} integration exists in the {kib} integrations UI for the software you want to monitor, observe, and protect. 
 
 Examples::
-* System integration that collects metrics, logs from operating systems
-* Kubernetes integration that collectes metrics and logs from kubernetest master and worker nodes as well as that of workloads running on worker node pods
+* System integration that collects metrics and logs from operating systems
+* Kubernetes integration that collects metrics and logs from Kubernetes master and worker nodes, and from workloads running on worker node pods
 
 [discrete]
 [[agent-proc]]
@@ -23,7 +23,5 @@ Examples::
 * Launch discover/dashboard to explore.
 
 For details and next steps, check out the {integrations-docs}[{agent} integrations] docs for your data source.
-
-
 
 

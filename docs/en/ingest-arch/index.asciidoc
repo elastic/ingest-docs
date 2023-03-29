@@ -4,7 +4,6 @@ include::{docs-root}/shared/attributes.asciidoc[]
 [[ingest-architectures]]
 = {es} Ingest Architectures
 
-include::arch-list.asciidoc[]
 
 include::1-agent-to-es.asciidoc[]
 

@@ -26,7 +26,7 @@ Info on {ls} and {ls} input and output plugins:
 
 * https://www.elastic.co/support/matrix#logstash_plugins[{ls} plugin support matrix]
 * {logstash-ref}[{ls} Reference] 
-* {logstash-ref}/input-plugins.html[{ls} input plugins]
+* {logstash-ref}/input-plugins.html[Logstash input plugins]
 * {logstash-ref}/plugins-outputs-elasticsearch.html[{es} output plugin]
 
 Info on {es} and ingest pipelines:

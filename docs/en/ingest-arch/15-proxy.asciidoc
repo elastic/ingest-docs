@@ -8,12 +8,12 @@ image::images/ea-fs-proxy-es.png[Image showing connections between {agent} and {
 Ingest model::
  +
 Control path for {fleet-server} on {ecloud}: {agent} to proxy to {fleet-server} to {es} +
-Control path for self-managed {fleet-server} : {agent} to {fleet-server} to proxy to {es} +
+Control path for self-managed {fleet-server}: {agent} to {fleet-server} to proxy to {es} +
 Data path: {agent} to proxy to {es}
 
 Use when::
 * Network restrictions prevent connection between {agent} network and network where {fleet-server} and {stack} are deployed, as when {fleet-server} is deployed on {ecloud}
-* Network restrictions preventconnection between {agent} and {fleet-server} network and the network where {stack} is deployed, as when {stack} is deployed on {ecloud}
+* Network restrictions prevent connection between {agent} and {fleet-server} network and the network where {stack} is deployed, as when {stack} is deployed on {ecloud}
 
 
 [discrete]

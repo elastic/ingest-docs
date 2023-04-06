@@ -13,7 +13,7 @@ Use when::
 {ls} can collect enrichment data based on those fields, and then send the data to {es}.
 
 Examples::
-* Data sources that change frequently, such as stock ticker data
+* Data that changes frequently and is updated using an external source, such as stock ticker data
 * Enrichment data is proprietary and cannot be stored elsewhere. 
 * Enrichment is done with an HTTP API whose return depends on values from the document. +
 Example: An API that takes geo points with the collected data and returns available real estate in the region, and then passes to {ls} enrichment for enrichment between agents and {es}.

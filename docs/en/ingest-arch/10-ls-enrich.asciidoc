@@ -37,10 +37,10 @@ Info on {agent} and agent integrations:
 * {fleet-guide}[Fleet and Elastic Agent Guide]
 * {integrations-docs}[{agent} integrations]
 
-For info on {ls} for transformation, check out these sections in the {logstash-ref}[Logstash Reference]:
+For info on {ls} for enriching data, check out these sections in the {logstash-ref}[Logstash Reference]:
 
 * {logstash-ref}/plugins-inputs-elastic_agent.html[{ls} {agent} input]
-* {logstash-ref}/transformation.html[Transforming Data with {ls}] 
+* {logstash-ref}/lookup-enrichment.html[{ls} plugins for enriching data] 
 * {logstash-ref}/filter-plugins.html[Logstash filter plugins]
 * {logstash-ref}/plugins-outputs-elasticsearch.html[{ls} {es} output]
 

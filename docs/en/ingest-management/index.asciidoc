@@ -1,6 +1,9 @@
 :doctype: book
 :beats-repo-dir: {beats-root}
+:fleet-repo-dir: {observability-docs-root}/docs/en/ingest-management
 :im-forum: https://discuss.elastic.co/tags/c/elastic-stack/81/stack-ingest-management
+:tab-widgets: {fleet-repo-dir}/tab-widgets
+:code-path: {tab-widgets}/code
 
 = Ingest Management Guide
 
@@ -17,5 +20,8 @@ include::getting-started.asciidoc[leveloffset=+1]
 include::elastic-agent/elastic-agent.asciidoc[leveloffset=+1]
 
 include::troubleshooting.asciidoc[leveloffset=+1]
+
+include::faq.asciidoc[leveloffset=+1]
+
 
 

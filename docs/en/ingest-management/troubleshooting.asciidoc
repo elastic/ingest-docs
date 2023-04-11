@@ -1,49 +1,26 @@
 [[ingest-management-troubleshooting]]
 [role="xpack"]
-= Troubleshooting
+= Troubleshoot common problems
 
-experimental[]
+beta[]
 
-include::ingest-management-overview.asciidoc[tag=experimental-warning]
-
-We have collected the most common known problems and frequently asked questions
-here. If your question isn't answered here, please review open issues in the
-following GitHub repositories:
+We have collected the most common known problems here. If your problem isn't
+described here, please review open issues in the following GitHub repositories:
 
 * https://github.com/elastic/kibana/issues[{kib}]
 * https://github.com/elastic/beats/issues[{beats}]
 * https://github.com/elastic/package-registry/issues[{package-registry}]
+* https://github.com/elastic/endpoint/issues[Elastic {endpoint-sec}]
 
-Contact us in the {im-forum}[discuss forum]. Your feedback is very valuable to us.
-
-
-**Common problems:**
-
-* <<ingest-manager-not-in-kibana>>
-* <<ingest-management-setup-fails>>
-* <<ingest-manager-app-crashes>>
-* <<agent-enrollment-timeout>>
-* <<es-apikey-failed>>
-
-**Frequently asked questions:**
-
-* <<enrolled-agent-not-showing-up>>
-* <<where-are-the-agent-logs>>
-* <<what-is-my-agent-config>>
-* <<where-is-the-data-agent-is-sending>>
-* <<i-deleted-my-agent>>
-* <<i-rebooted-my-host>>
-* <<what-is-the-endpoint-package>>
+Have a question? Read our <<ingest-management-faq,FAQ>>, or contact us in the
+{im-forum}[discuss forum]. Your feedback is very valuable to us.
 
 [discrete]
 [[ingest-manager-not-in-kibana]]
-== The {ingest-manager} app is not listed in the {kib} side navigation
+== {ingest-manager} is not listed in the {kib} side navigation
 
-In 7.8, the {ingest-manager} app is experimental. You must enable the app to
-see it in {kib}.
-
-//TODO: Add platform tabs when the tabbed panel widget is stable (possibly after
-// 7.8)
+The {ingest-manager} app is enabled by default. If you are unable to 
+see the app in {kib}, make sure it's enabled.
 
 **To enable {ingest-manager} on {ecloud}:**
 
@@ -102,16 +79,15 @@ Then restart {kib}.
 
 [discrete]
 [[ingest-management-setup-fails]]
-== The `/api/ingest_management/setup` endpoint returns an error because it can't reach the package registry
+== The `/api/ingest_management/setup` endpoint can't reach the package registry
 
 In order to install {integrations}, the {ingest-manager} app needs to connect to
 an external service called the {package-registry}. For this to work, the {kib}
-server must be able to connect to `https://epr-experimental.elastic.co` on port
-443.
+server must be able to connect to `https://epr-7-9.elastic.co` on port 443.
 
 [discrete]
 [[ingest-manager-app-crashes]]
-== The {ingest-manager} app in {kib} crashes
+== {ingest-manager} in {kib} crashes
 
 To find more about the error, open your browser's development console, navigate
 to the **Network** tab, and refresh the page. One of the requests to the
@@ -124,7 +100,7 @@ us in the {im-forum}[discuss forum].
 == {agent} enrollment fails on the host with `Client.Timeout exceeded` message
 
 {agent} must be able to connect to the {kib} instance to enroll in {fleet}.
-If the Agent is unable to connect, you will see the following failure:
+If the agent is unable to connect, you will see the following failure:
 
 [source,output]
 -----
@@ -150,7 +126,7 @@ token when you run the `elastic-agent enroll` command.
 
 [discrete]
 [[es-apikey-failed]]
-== {fleet} fails with HTTP 500 error while trying to decrypt API keys
+== {es} authentication service fails with `Authentication using apikey failed` message
 
 {fleet} requires an encryption key in order to save API keys and encrypt them in
 {kib}. To provide an API key, set the `xpack.encryptedSavedObjects.encryptionKey`
@@ -162,122 +138,43 @@ xpack.encryptedSavedObjects.encryptionKey: "something_at_least_32_characters"
 ----
 
 [discrete]
-[[enrolled-agent-not-showing-up]]
-== Why doesn't my enrolled Agent show up in the {ingest-manager} app?
+[[process-not-root]]
+== {agent} fails with `Agent process is not root/admin or validation failed` message
 
-If {agent} was successfully enrolled, but doesn't show up in the {fleet} list,
-it might not be started. You need to start the Agent.
+Make sure the user running {agent} has root privileges. If you're running
+{agent} in the foreground (and not as a service) on Linux or macOS, run the
+agent under the root user, for example, `sudo` or `su`. Some integrations
+require root privileges to collect sensitive data.
 
-// TODO: This should be single sourced. Update it when we add the tabbed widget
-// (probably after 7.8).
+If you're using the {elastic-endpoint} integration, also make sure you're
+running {agent} under the SYSTEM account.
 
-On linux and macOS hosts, run:
+TIP: If you install {agent} as a service as described in
+<<elastic-agent-installation>>, {agent} runs under the SYSTEM account by
+default.
 
-[source,shell]
-----
-./elastic-agent run
-----
+To run {agent} under the SYSTEM account, you can:
 
-On Windows hosts, run:
-
-[source,shell]
-----
-elastic-agent.exe run
-----
-
-[discrete]
-[[where-are-the-agent-logs]]
-== Where does {agent} store logs after startup?
-
-When started successfully, {metricbeat} logs are stored in
-`data/logs/metricbeat` under the folder where {agent} was started. If that log
-path does not exist, the Agent was unable to start {metricbeat}, which is a
-higher level problem to triage.
-
-[discrete]
-[[what-is-my-agent-config]]
-== What configuration is the {agent} running?
-
-To find the configuration file, inspect the `elastic-agent.yml` file in the
-folder where you ran {agent}. If you're running the Agent in {fleet} mode, this
-file contains the following citation:
-
-[source,yaml]
-----
-Management: mode: "fleet"
-----
-
-The `action_store.yml` contains the entire, unencrypted configuration:
-
-* To see the {es} location, look at `outputs:hosts`.
-* To see the {agent} version, look at the download folder and zip filenames.
-
-This file also shows the version of all packages used by the current
-configuration.
-
-[discrete]
-[[where-is-the-data-agent-is-sending]]
-== Why can't I see the data {agent} is sending?
-
-If {elastic-agent} is set up and running, but you don't see data in {kib}:
-
-
-
-. Go to **Management > Dev Tools** in {kib}, and in the Console, search your
-index for data. For example:
+. Download https://docs.microsoft.com/en-us/sysinternals/downloads/psexec[PsExec]
+and extract the contents to a folder, for example, `d:\tools`.
+. Open a command prompt as an Administrator (right-click the Command Prompt
+icon and select *Run As Administrator*).
+. From the command prompt, run {agent} under the SYSTEM account:
 +
-[source,console]
+[source,sh]
 ----
-GET metrics-*/_search
+d:\tools\psexec.exe -sid "C:\Program Files\Elastic-Agent\elastic-agent.exe" run
 ----
-+
-Or if you prefer, go to the **Discover** app.
-
-. Look at the data that {elastic-agent} has sent and see if the `name.host`
-field contains your host machine name.
-
-If you don't see data for your host, it's possible that the data is blocked
-in the network, or that a firewall or security problem is preventing the {agent}
-from sending the data.
-
-Although it's redundant to install stand-alone {metricbeat}, you might want to
-try installing it to see if it's able to send data successfully to {es}. For
-more information, see
-{metricbeat-ref}/metricbeat-getting-started.html[Get started with {metricbeat}].
-
-If {metricbeat} is able to send data to {es}, there is possibly a bug or
-problem with {agent}, and you should report it.
 
 [discrete]
-[[i-deleted-my-agent]]
-== How do I restore an {agent} that I deleted from {fleet}?
+[[agent-hangs-while-unenrolling]]
+== {agent} hangs while unenrolling
 
-It's ok, we've got your back! The data is still in {es}. To add {agent}
-to {fleet} again, <<stop-elastic-agent>>, re-enroll it on the host, then
-run {agent}.
+When you unenroll an agent, {fleet} waits for acknowledgement from the agent
+before it completes the unenrollment process. If {fleet} doesn't receive
+acknowledgement, the status hangs at `unenrolling.`
 
-[discrete]
-[[i-rebooted-my-host]]
-== How do I restart {agent} after rebooting my host?
+If this happens, select **Force unenroll** from the *Actions* menu in {fleet}.
 
-On Windows, if you used Powershell to install {agent} as a service, the Agent
-should still be running after rebooting the host.
-
-On macOS and Linux, you need to restart {agent} from the command line after
-rebooting the host.
-
-Support for installing {agent} as a service on all supported systems will be
-available in a future release. To achieve this in the meantime, you can add the
-start command to a user's startup profile.
-
-[discrete]
-[[what-is-the-endpoint-package]]
-== What is the Endpoint integration shown in {ingest-manager}?
-
-In 7.8, the Endpoint integration is non-functional. It cannot be used yet. It
-exists as an artifact of the current feature development. Please watch for
-announcements during upcoming release cycles. As a teaser, Endpoint is the
-integration that will allow the Elastic Security app to have a dedicated
-executable running like {beats} to protect the host and respond to detected
-security concerns. Endpoint will be managed by {agent} in the same way that
-{beats} are managed.
+This will invalidate all API keys related to the agent and change the status to
+`inactive` so that the agent no longer appears in {fleet}. 

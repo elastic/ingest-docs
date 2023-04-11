@@ -2,9 +2,7 @@
 [role="xpack"]
 = Configuration example
 
-experimental[]
-
-include::elastic-agent.asciidoc[tag=experimental-warning]
+beta[]
 
 The following example shows a full list of configuration options:
 

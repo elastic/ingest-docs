@@ -8,9 +8,9 @@ include::arch-list.asciidoc[]
 
 include::1-agent-to-es.asciidoc[]
 
-include::15-proxy.asciidoc[]
-
 include::1x-agent-ls.asciidoc[]
+
+include::15-proxy.asciidoc[]
 
 include::16-agent-kafka.asciidoc[]
 

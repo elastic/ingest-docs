@@ -35,14 +35,6 @@ a|
 ** Software components with <<agent-installed,{agent} installed>>
 ** Software components using <<agent-apis,APIs for data collection>>
 
-| <<agent-proxy>>
-
-image:images/ea-proxy-es.png[Image showing connections between {agent} and {es} using a proxy]
-
-a|
-* Agents have <<agent-proxy,network restrictions>> that prevent connecting outside of the {agent} network
-* Note that <<ls-networkbridge,{ls} as proxy>> is one option
-
 
 | <<agent-ls>>
 
@@ -54,6 +46,15 @@ a|
 ** <<lspq,*persistent queue (PQ) buffering*>> to accommodate network issues and downstream unavailability
 ** <<ls-networkbridge,*proxying*>> in cases where {agent}s have network restrictions for connecting outside of the {agent} network 
 ** data needs to be <<ls-multi,*routed to multiple*>> {es} clusters and other destinations depending on the content
+
+
+| <<agent-proxy>>
+
+image:images/ea-proxy-es.png[Image showing connections between {agent} and {es} using a proxy]
+
+a|
+* Agents have <<agent-proxy,network restrictions>> that prevent connecting outside of the {agent} network
+* Note that <<ls-networkbridge,{ls} as proxy>> is one option
 
 
 | <<agent-kafka-es>>

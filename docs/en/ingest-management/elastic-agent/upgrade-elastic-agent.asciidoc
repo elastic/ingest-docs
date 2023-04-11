@@ -32,7 +32,7 @@ the {kib} version is lower than the agent version.
 **Upgrade agents**.
 +
 [role="screenshot"]
-image:images/fleet-agents.png[Upgrade menu for bulk upgrade in {fleet}]
+image::images/fleet-agents.png[Upgrade menu for bulk upgrade in {fleet}]
 
 [discrete]
 [[upgrade-standalone]]

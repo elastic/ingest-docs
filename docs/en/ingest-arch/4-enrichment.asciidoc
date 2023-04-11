@@ -1,6 +1,0 @@
-== 4. {es} data needs enrichment (outside the stack or at collection)
-
-* 4. There are use cases where data collected by the Agent needs to be enriched with data residing outside the Stack. E.g. The collected data contains an IP address and you want to enrich it with the host URL so you need to reach out to the DNS server and do a look up the host and use that to enrich the agent collected data.
-** If the data that you want to enrich the documents with is available at collection stage only (e.g. host metadata), use https://www.elastic.co/guide/en/fleet/8.3/providers.html[Agent Providers].
-
-

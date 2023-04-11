@@ -1,7 +1,0 @@
-== 5. Buffer at the edge (with Filebeat disk queue or Metricbeat memory queue)
-
-* 5. If there's a need to buffer data at the edge, use Filebeat and its feature of disk queue or Metricbeat memory queue. Make a note that these features aren’t available on elastic agent yet and potentially point to github issue. 
-** Endpoint is buffered on disk up to 500MB. More info: https://docs.google.com/document/d/1NiWD9Ixu5UZR8J1R4CwclmkfI7VPjQF-O22b1E-tpww/edit#heading=h.x27gepsg1rhs[8.3 - Elastic Security for Endpoint and Cloud - FAQs]
-
-
-

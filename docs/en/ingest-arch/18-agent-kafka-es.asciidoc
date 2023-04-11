@@ -1,4 +1,0 @@
-== 18. {agent} to Kafka to {es}
-
-*18. {Agent} -> {ls} -> Kafka -> Kafka ES sink connector -> ES destination
-** Agent doesn’t support kafka output today hence the first logstash tier

@@ -1,7 +1,0 @@
-
-== 9. (Reference data: LS -> ES) + Agent -> ES
-
-* 9. (reference data: LS -> ES) + Agent -> ES
-** Otherwise, if the data can be harvested and written to Elasticsearch, run a separate Elastic Agent or Logstash instance to scrape the enrichment data source and send it to the same Elasticsearch cluster in which Agent collected data is ingested. And then you can use {Ingest pipeline ->enrich processor} or {runtime fields -> lookup field} to enrich data. 
-*** Show the ingest architecture where agent still write to ES directly but another agent/logstash instance is created to scrape enrichment data source and send it to same ES cluster and how the enrich processor and runtime lookup fields operate
-

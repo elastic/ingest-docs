@@ -1,3 +1,0 @@
-== 19. Custom {beats} to {ls}
-
-TODO: When no inputs are available, explore custom beat/logstash input plug-ins 

@@ -39,6 +39,8 @@ include::getting-started.asciidoc[leveloffset=+1]
 
 include::getting-started-traces.asciidoc[leveloffset=+1]
 
+include::integrations.asciidoc[leveloffset=+1]
+
 include::elastic-agent/elastic-agent.asciidoc[leveloffset=+1]
 
 include::agent-policies.asciidoc[leveloffset=+1]
@@ -61,7 +63,7 @@ include::troubleshooting.asciidoc[leveloffset=+1]
 
 include::faq.asciidoc[leveloffset=+1]
 
-include::release-notes/release-notes-7.14.asciidoc[leveloffset=+1]
+include::release-notes/release-notes-7.15.asciidoc[leveloffset=+1]
 
 include::fleet/fleet-api-docs.asciidoc[leveloffset=+1]
 

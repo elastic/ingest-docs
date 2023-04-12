@@ -9,7 +9,6 @@ include::{docs-root}/shared/attributes.asciidoc[]
 :code-path: {tab-widgets}/code
 
 :fleet-server-issue: https://github.com/elastic/fleet-server/issues/
-:elastic-endpoint-integration: Endpoint Security
 :policy: policy
 
 :y: image:images/green-check.svg[yes]
@@ -35,23 +34,17 @@ include::quick-starts.asciidoc[leveloffset=+1]
 
 include::migrate-beats-to-agent.asciidoc[leveloffset=+1]
 
-include::integrations/integrations.asciidoc[leveloffset=+1]
+include::migrate-auditbeat-to-agent.asciidoc[leveloffset=+2]
 
-include::integrations/add-integration-to-policy.asciidoc[leveloffset=+2]
+include::fleet/fleet-server.asciidoc[leveloffset=+1]
 
-include::integrations/view-integration-policies.asciidoc[leveloffset=+2]
+include::fleet/add-fleet-server.asciidoc[leveloffset=+2]
 
-include::integrations/edit-or-delete-integration-policy.asciidoc[leveloffset=+2]
+include::fleet/fleet-server-deployment-models.asciidoc[leveloffset=+2]
 
-include::integrations/install-integration-assets.asciidoc[leveloffset=+2]
+include::fleet/fleet-server-scaling.asciidoc[leveloffset=+2]
 
-include::integrations/view-integration-assets.asciidoc[leveloffset=+2]
-
-include::integrations/upgrade-integration.asciidoc[leveloffset=+2]
-
-include::integrations/uninstall-integration.asciidoc[leveloffset=+2]
-
-include::fleet/air-gapped.asciidoc[leveloffset=+2]
+include::fleet/fleet-server-monitoring.asciidoc[leveloffset=+2]
 
 include::elastic-agent/install-elastic-agent.asciidoc[leveloffset=+1]
 
@@ -89,16 +82,6 @@ include::fleet/fleet.asciidoc[leveloffset=+1]
 
 include::fleet/fleet-settings.asciidoc[leveloffset=+2]
 
-include::fleet/fleet-server.asciidoc[leveloffset=+2]
-
-include::fleet/add-fleet-server.asciidoc[leveloffset=+3]
-
-include::fleet/fleet-server-deployment-models.asciidoc[leveloffset=+3]
-
-include::fleet/fleet-server-scaling.asciidoc[leveloffset=+3]
-
-include::fleet/fleet-server-monitoring.asciidoc[leveloffset=+3]
-
 include::fleet/fleet-manage-agents.asciidoc[leveloffset=+2]
 
 include::fleet/unenroll-elastic-agent.asciidoc[leveloffset=+3]
@@ -106,6 +89,8 @@ include::fleet/unenroll-elastic-agent.asciidoc[leveloffset=+3]
 include::fleet/set-elastic-agent-enrollment-timeout.asciidoc[leveloffset=+3]
 
 include::fleet/upgrade-elastic-agent.asciidoc[leveloffset=+3]
+
+include::fleet/filter-agent-list-by-tags.asciidoc[leveloffset=+3]
 
 include::fleet/view-elastic-agent-status.asciidoc[leveloffset=+3]
 
@@ -120,6 +105,24 @@ include::security/enrollment-tokens.asciidoc[leveloffset=+2]
 include::data-streams.asciidoc[leveloffset=+2]
 
 include::fleet/fleet-api-docs.asciidoc[leveloffset=+2]
+
+include::integrations/integrations.asciidoc[leveloffset=+1]
+
+include::integrations/add-integration-to-policy.asciidoc[leveloffset=+2]
+
+include::integrations/view-integration-policies.asciidoc[leveloffset=+2]
+
+include::integrations/edit-or-delete-integration-policy.asciidoc[leveloffset=+2]
+
+include::integrations/install-integration-assets.asciidoc[leveloffset=+2]
+
+include::integrations/view-integration-assets.asciidoc[leveloffset=+2]
+
+include::integrations/upgrade-integration.asciidoc[leveloffset=+2]
+
+include::integrations/uninstall-integration.asciidoc[leveloffset=+2]
+
+include::fleet/air-gapped.asciidoc[leveloffset=+2]
 
 include::elastic-agent/configuration/elastic-agent-configuration.asciidoc[leveloffset=+1]
 
@@ -151,6 +154,6 @@ include::troubleshooting/troubleshooting.asciidoc[leveloffset=+2]
 
 include::troubleshooting/faq.asciidoc[leveloffset=+2]
 
-include::release-notes/release-notes-8.2.asciidoc[leveloffset=+1]
+include::release-notes/release-notes-8.3.asciidoc[leveloffset=+1]
 
 include::elastic-agent/install-fleet-managed-agent.asciidoc[leveloffset=+2]

@@ -25,6 +25,22 @@ Running {agent} standalone? Also refer to <<debug-standalone-agents>>.
 //it down into sections like Agent, Fleet Server, etc.
 
 [discrete]
+[[agent-upgrade-fails-with-failed-binary-verification]]
+== {agent} upgrade fails with `failed verification of agent binary` error
+
+There is a known issue in {agent} version 8.1.1 and 8.1.2 that causes agent
+binary verification to fail with the following message:
+
+[source,text]
+----
+[elastic_agent][error] failed to dispatch actions, error: failed verification of agent binary: 2 errors occurred:
+fetching asc file from '/opt/Elastic/Agent/data/elastic-agent-7f30bb/downloads/elastic-agent-<version>-linux-x86_64.tar.gz.asc': open /opt/Elastic/Agent/data/elastic-agent-7f30bb/downloads/elastic-agent-<version>-linux-x86_64.tar.gz.asc: no such file or directory
+open /opt/Elastic/Agent/data/elastic-agent-7f30bb/downloads/elastic-agent-<version>-linux-x86_64.tar.gz.sha512: no such file or directory
+----
+
+For more information about resolving this problem, see <<known-issues-8.1.1>>.
+
+[discrete]
 [[agents-in-cloud-stuck-at-updating]]
 == {agent}s hosted on {ecloud} are stuck in `Updating` or `Offline`
 
@@ -43,12 +59,15 @@ This should take you to a URL like this:
 +
 Copy the policy ID at the end of the URL.
 
-.. To delete the {fleet-server} integration policy, go to
-*Management > Dev Tools > Console* and run the following query:
+.. In a terminal window, run the following `cURL` request, providing your {kib} superuser credentials to delete the {fleet-server} integration policy:
 +
-[source,console]
+[source,shell]
 ----
-DELETE .kibana/_doc/ingest-package-policies:<integration_policy_id> <1>
+curl -u <username>:<password> --request POST \
+  --url <kibana_url>/api/fleet/package_policies/delete \
+  --header 'content-type: application/json' \
+  --header 'kbn-xsrf: xyz' \
+  --data '{"packagePolicyIds": ["<integration_policy_id>"], "force": true}' <1>
 ----
 <1> `<integration_policy_id>` is the ID you copied in the previous step.
 
@@ -110,7 +129,7 @@ If you are unable to see {fleet-server} in {kib}, make sure it's set up.
 To set up {fleet-server} on {ecloud}:
 
 . Go to your deployment on {ecloud}.
-. Follow the {ecloud} prompts to set up *APM & Fleet*. Once complete, the {fleet-server} {agent}
+. Follow the {ecloud} prompts to set up *{integrations-server}*. Once complete, the {fleet-server} {agent}
 will show up in {fleet}.
 
 To enable {fleet} and set up {fleet-server} on a self-managed cluster:

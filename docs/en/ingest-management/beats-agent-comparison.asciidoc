@@ -164,9 +164,9 @@ configuration experience.
 |Autodiscover is facilitated through <<dynamic-input-configuration,dynamic inputs>>. {agent} does not support hints-based autodiscovery.
 
 |{filebeat-ref}/configuring-internal-queue.html[Internal queues]
-|{fleet}-managed {agent} does not support configuration of the internal memory
-queues by an end user. You can configure the output queue settings in standalone
-{agents}.
+|{agent} does not expose the internal memory queues to the end user. You can
+configure output queue parameters to tune your environment, and the Agent takes
+care of configuring the internal queues to accomplish your tuning intent.
 
 |{filebeat-ref}/load-balancing.html[Load balance output hosts]
 |Within the {fleet} UI, you can add YAML settings to configure multiple hosts
@@ -242,10 +242,10 @@ The following table shows a comparison of capabilities supported by {beats} and 
 |{fleet} can automatically give {agent}s minimal output permissions based on the inputs running. With standalone {agent} and {beats}, users often give overly broad permissions because it's more convenient.
 
 |Data streams support
+|{n}
 |{y}
 |{y}
-|{y}
-|Both {beats} (default as of version 8.0) and {agent}s use <<data-streams,data streams>> with easier index life cycle management and the https://www.elastic.co/blog/an-introduction-to-the-elastic-data-stream-naming-scheme[data stream naming scheme].
+|{agent}s use <<data-streams,data streams>> with easier index life cycle management and the https://www.elastic.co/blog/an-introduction-to-the-elastic-data-stream-naming-scheme[data stream naming scheme]. {beats} uses a single index with potentially thousands of fields.
 
 |Variables and input conditions
 |{n}
@@ -287,7 +287,7 @@ The following table shows a comparison of capabilities supported by {beats} and 
 |{y}
 |{n}
 |{n}
-|{agent} stores credentials in the agent policy. We are considering adding https://github.com/elastic/integrations/issues/244[keystore support]. {beats} allows users to access credentials in a local {filebeat-ref}/keystore.html[keystore].
+|{agent} stores credentials in the agent policy. We are considering adding https://github.com/elastic/integrations/issues/244[keystore support]. {beats} allows users to access credentials in a local https://www.elastic.co/guide/en/beats/filebeat/current/keystore.html[keystore].
 
 |Progressive or canary deployments
 |{y}

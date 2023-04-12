@@ -28,13 +28,10 @@ image::images/integrations-server-hosted-container.png[Hosted {integrations-serv
 To deploy a self-managed {fleet-server}, install an {agent} and enroll it in an
 agent policy containing the {fleet-server} integration.
 
-NOTE: You can install only a single {agent} per host, which means you cannot run
-{fleet-server} and another {agent} on the same host unless you deploy a
-containerized {fleet-server}.
-
 . Log in to {kib} and go to *Management > {fleet} > Settings*. For more
 information about these settings, see
 {fleet-guide}/fleet-settings.html[{fleet} settings].
+
 // lint ignore fleet-server
 . Under *Fleet Server hosts*, click *Edit hosts* and specify one or more host
 URLs your {agent}s will use to connect to {fleet-server}. For example,
@@ -81,8 +78,7 @@ sudo ./elastic-agent install \
   --fleet-server-es=http://localhost:9200 \
   --fleet-server-service-token=AAEbAWVsYXN0aWMvZmxlaXQtc2VydmVzL3Rva2VuLTE2MeIzNTY1NTQ3Mji6dERXeE9XbW5RRTZqNlJMWEdIRzAtZw \
   --fleet-server-policy=27467ed1-1bfd-11ec-9b88-a7c3d83e2897 \
-  --fleet-server-es-ca-trusted-fingerprint=3b24d33844d65532f0584d198b45006747521493522c1912608522bf175bc826 \
-  --fleet-server-insecure-http
+  --fleet-server-es-ca-trusted-fingerprint=3b24d33844d65532f0584d198b45006747521493522c1912608522bf175bc826
 ----
 +
 The following command installs a {fleet-server} and uses certificates you
@@ -107,5 +103,8 @@ For more {fleet-server} commands, see
 +
 If installation is successful, you'll see the {fleet-server} {agent} on the
 *Agents* tab in *{fleet}*.
++
+[role="screenshot"]
+image::images/agents-tab-fleet-server.png[Agent tab showing a healthy agent enrolled in the Default {fleet-server} policy]
 
 // end::self-managed[]

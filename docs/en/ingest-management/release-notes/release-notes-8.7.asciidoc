@@ -14,12 +14,45 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.7.1>>
 * <<release-notes-8.7.0>>
 
 Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.7.1 relnotes
+
+[[release-notes-8.7.1]]
+== {fleet} and {agent} 8.7.1
+
+Review important information about the {fleet} and {agent} 8.7.0 release.
+
+[discrete]
+[[enhancements-8.7.1]]
+=== Enhancements
+
+{fleet}::
+* The agent policy "Host name format" selector is now enabled by default {kibana-pull}154563[#154563]
+
+[discrete]
+[[bug-fixes-8.7.1]]
+=== Bug fixes
+
+{fleet}::
+* The Advanced options toggle in the policy editor now always displays by default {kibana-pull}154612[#154612]
+* Fixes an issue where the warning icon was unable to display in 8.7 {kibana-pull}154119[#154119]
+* Adds updates to output logic {kibana-pull}153226[#153226]
+
+{fleet-server}::
+* 
+
+{agent}::
+* 
+
+// end 8.7.1 relnotes
+
 
 // begin 8.7.0 relnotes
 

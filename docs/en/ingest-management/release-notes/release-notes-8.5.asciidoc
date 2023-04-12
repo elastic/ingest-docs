@@ -14,8 +14,6 @@
 
 This section summarizes the changes in each release.
 
-* <<release-notes-8.5.3>>
-* <<release-notes-8.5.2>>
 * <<release-notes-8.5.1>>
 * <<release-notes-8.5.0>>
 
@@ -24,164 +22,12 @@ Also see:
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
 
-// begin 8.5.3 relnotes
-
-[[release-notes-8.5.3]]
-== {fleet} and {agent} 8.5.3
-
-Review important information about the {fleet} and {agent} 8.5.3 release.
-
-[discrete]
-[[known-issues-8.5.3]]
-=== Known issues
-
-[[known-issue-issue-2103-8.5.3]]
-.Installation of {agent} on MacOS Ventura may fail if Full Disk Access has not been granted to the installer
-[%collapsible]
-====
-*Details* +
-This issue occurs on MacOS Ventura when Full Disk Access is not granted to the application that runs the installation command.
-This could be either a Terminal or any custom package that a user has built to distribute {agent}.
-
-*Impact* +
-{agent} will fail to install and produce "Error: failed to fix permissions: chown elastic-agent.app: operation not permitted" message.
-Ensure that the application used to install {agent} (for example, the Terminal or custom package) has Full Disk Access before running `sudo ./elastic-agent install`.
-====
-
-[discrete]
-[[bug-fixes-8.5.3]]
-=== Bug fixes
-
-{fleet}::
-* No bug fixes in this release
-
-{fleet-server}::
-* Fix unenroll offline agents logic {fleet-server-issue}2091[#2091] {fleet-server-pull}2092[#2092]
-
-{agent}::
-* No bug fixes in this release
-
-// end 8.5.3 relnotes
-
-// begin 8.5.2 relnotes
-
-[[release-notes-8.5.2]]
-== {fleet} and {agent} 8.5.2
-
-Review important information about the {fleet} and {agent} 8.5.2 release.
-
-[discrete]
-[[known-issues-8.5.2]]
-=== Known issues
-
-[[known-issue-issue-2103-8.5.2]]
-.Installation of {agent} on MacOS Ventura may fail if Full Disk Access has not been granted to the installer
-[%collapsible]
-====
-*Details* +
-This issue occurs on MacOS Ventura when Full Disk Access is not granted to the application that runs the installation command.
-This could be either a Terminal or any custom package that a user has built to distribute {agent}.
-
-*Impact* +
-{agent} will fail to install and produce "Error: failed to fix permissions: chown elastic-agent.app: operation not permitted" message.
-Ensure that the application used to install {agent} (for example, the Terminal or custom package) has Full Disk Access before running `sudo ./elastic-agent install`.
-====
-
-[discrete]
-[[bug-fixes-8.5.2]]
-=== Bug fixes
-
-{fleet}::
-* Fix known issue with adding {fleet-server} integration on Windows by always using posix paths for zip files {kib-issue}/144880[#144880] {kibana-pull}/144899[#144899]
-
-{fleet-server}::
-* Add `active: true` filter to enrollment key queries to allow {fleet-server} to handle cases where there are more than 10 inactive keys associated with a policy {fleet-server-issue}2029[#2029] {fleet-server-pull}2044[#2044]
-
-{agent}::
-* No bug fixes in this release
-
-// end 8.5.2 relnotes
-
 // begin 8.5.1 relnotes
 
 [[release-notes-8.5.1]]
 == {fleet} and {agent} 8.5.1
 
 Review important information about the {fleet} and {agent} 8.5.1 release.
-
-[discrete]
-[[known-issues-8.5.1]]
-=== Known issues
-
-[[known-issue-issue-2103]]
-.Installation of {agent} on MacOS Ventura may fail if Full Disk Access has not been granted to the installer
-[%collapsible]
-====
-*Details* +
-This issue occurs on MacOS Ventura when Full Disk Access is not granted to the application that runs the installation command.
-This could be either a Terminal or any custom package that a user has built to distribute {agent}.
-
-*Impact* +
-{agent} will fail to install and produce "Error: failed to fix permissions: chown elastic-agent.app: operation not permitted" message.
-Ensure that the application used to install {agent} (for example, the Terminal or custom package) has Full Disk Access before running `sudo ./elastic-agent install`.
-====
-
-[[known-issue-144880]]
-.Unable to add {fleet-server} integration on Windows
-[%collapsible]
-====
-
-*Details*
-
-We discovered a high severity issue in version 8.5.1 that only affects Windows
-users in self-managed environments. When you attempt to add a {fleet-server},
-{kib} is unable to add the {fleet-server} integration, and the {fleet-server}
-polices are created without the necessary integration. For more information,
-see {kib-issue}/144880[issue #144880].
-
-*Impact* +
-
-This issue will be resolved in version 8.5.2. We advise Windows users not to
-upgrade to version 8.5.1.
-====
-
-[[known-issue-2383]]
-.Offline {agent}s fail to unenroll after timeout has expired
-[%collapsible]
-====
-
-*Details*
-
-A {fleet-server-issue}/2091[known issue] in {fleet-server} 8.5.1 prevents
-offline agents from being automatically unenrolled after the unenrollment
-timeout expires.
-
-*Impact* +
-
-Offline agents will be displayed in the {fleet} Agents list until you explicitly
-force <<unenroll-elastic-agent,unenroll>> them. You can do this through the
-{fleet} UI or by using the API.
-
-To use the API:
-
-. Find agent's ID. Go to *{fleet} > Agents* and click the agent to see its
-details. Copy the Agent ID.
-
-. In a terminal window, run:
-+
-[source,shell]
-----
-curl -u <username>:<password> --request POST \
-  --url <kibana_url>/api/fleet/agents/<agentID>/unenroll \
-  --header 'content-type: application/json' \
-  --header 'kbn-xsrf: xx' \
-  --data-raw '{"force":true,"revoke":true}' \
-  --compressed
-----
-+
-Where `<agentID>` is the ID you copied in the previous step.
-
-====
 
 [discrete]
 [[enhancements-8.5.1]]
@@ -235,23 +81,6 @@ https://tip.golang.org/doc/go1.18#sha1[release notes].
 *Impact* +
 Do not sign certificates with SHA-1. If you are using old certificates signed
 with SHA-1, update them now.
-====
-
-[discrete]
-[[known-issues-8.5.0]]
-=== Known issues
-
-[[known-issue-issue-2103-8.5.0]]
-.Installation of {agent} on MacOS Ventura may fail if Full Disk Access has not been granted to the installer
-[%collapsible]
-====
-*Details* +
-This issue occurs on MacOS Ventura when Full Disk Access is not granted to the application that runs the installation command.
-This could be either a Terminal or any custom package that a user has built to distribute {agent}.
-
-*Impact* +
-{agent} will fail to install and produce "Error: failed to fix permissions: chown elastic-agent.app: operation not permitted" message.
-Ensure that the application used to install {agent} (for example, the Terminal or custom package) has Full Disk Access before running `sudo ./elastic-agent install`.
 ====
 
 [discrete]

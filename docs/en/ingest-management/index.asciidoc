@@ -65,6 +65,12 @@ include::elastic-agent/elastic-agent-container.asciidoc[leveloffset=+3]
 
 include::elastic-agent/running-on-kubernetes-managed-by-fleet.asciidoc[leveloffset=+3]
 
+include::elastic-agent/running-on-gke-standard-managed-by-fleet.asciidoc[leveloffset=+3]
+
+include::elastic-agent/running-on-eks-managed-by-fleet.asciidoc[leveloffset=+3]
+
+include::elastic-agent/running-on-aks-managed-by-fleet.asciidoc[leveloffset=+3]
+
 include::elastic-agent/running-on-kubernetes-standalone.asciidoc[leveloffset=+3]
 
 include::elastic-agent/configuration/env/container-envs.asciidoc[leveloffset=+3]
@@ -145,13 +151,21 @@ include::elastic-agent/configuration/providers/elastic-agent-providers.asciidoc[
 
 include::elastic-agent/configuration/outputs/output-configuration.asciidoc[leveloffset=+2]
 
+include::elastic-agent/configuration/authentication/ssl-settings.asciidoc[leveloffset=+2]
+
 include::elastic-agent/configuration/elastic-agent-standalone-logging.asciidoc[leveloffset=+2]
 
-include::elastic-agent/configuration/elastic-agent-kubernetes-autodiscovery.asciidoc[leveloffset=+2]
+include::elastic-agent/configuration/autodiscovery/elastic-agent-kubernetes-autodiscovery.asciidoc[leveloffset=+2]
+
+include::elastic-agent/configuration/autodiscovery/kubernetes-conditions-autodiscover.asciidoc[leveloffset=+3]
+
+include::elastic-agent/configuration/autodiscovery/kubernetes-hints-autodiscover.asciidoc[leveloffset=+3]
 
 include::elastic-agent/configuration/elastic-agent-monitoring.asciidoc[leveloffset=+2]
 
 include::elastic-agent/configuration/yaml/elastic-agent-reference-yaml.asciidoc[leveloffset=+2]
+
+include::processors/processors.asciidoc[leveloffset=+1]
 
 include::commands.asciidoc[leveloffset=+1]
 
@@ -161,7 +175,7 @@ include::troubleshooting/troubleshooting.asciidoc[leveloffset=+2]
 
 include::troubleshooting/faq.asciidoc[leveloffset=+2]
 
-include::release-notes/release-notes-8.5.asciidoc[leveloffset=+1]
+include::release-notes/release-notes-8.6.asciidoc[leveloffset=+1]
 
 include::elastic-agent/install-fleet-managed-agent.asciidoc[leveloffset=+2]
 

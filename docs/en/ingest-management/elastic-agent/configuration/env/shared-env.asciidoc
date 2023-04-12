@@ -25,7 +25,6 @@ OPTIONAL INFO AND EXAMPLE
 | (int) Set to `1` to enable {fleet} setup.
 Enabling {fleet} is required before {fleet-server} will start.
 When this action is not performed, a user must manually log in to Kibana and visit the Fleet page to enable setup.
-Overrides `FLEET_SETUP` when set.
 
 *Default:* none
 
@@ -52,10 +51,8 @@ Overrides `FLEET_HOST` when set.
 [id="env-{type}-kibana-fleet-username"]
 `KIBANA_FLEET_USERNAME`
 
-| (string) The basic authentication username used to connect to {kib} and enable {fleet}.
-Overrides `KIBANA_USERNAME` when set.
-
-deprecated:[8.0.0,Behaviour will change in upcoming release.]
+| (string) The basic authentication username used to connect to {kib} and retrieve a `service_token` to enable {fleet}.
+Overrides `ELASTICSEARCH_USERNAME` when set.
 
 *Default:* `elastic`
 
@@ -68,10 +65,8 @@ deprecated:[8.0.0,Behaviour will change in upcoming release.]
 [id="env-{type}-kibana-fleet-password"]
 `KIBANA_FLEET_PASSWORD`
 
-| (string) The basic authentication password used to connect to {kib} and enable {fleet}.
-Overrides `KIBANA_PASSWORD` when set.
-
-deprecated:[8.0.0,Behaviour will change in upcoming release.]
+| (string) The basic authentication password used to connect to {kib} and retrieve a `service_token` to enable {fleet}.
+Overrides `ELASTICSEARCH_PASSWORD` when set.
 
 *Default:* `changeme`
 
@@ -112,23 +107,6 @@ When set to `1`, this automatically forces {fleet} enrollment as well.
 
 // =============================================================================
 
-// tag::fleet-setup[]
-
-[id="env-{type}-fleet-setup"]
-`FLEET_SETUP`
-
-| (int) Set to `1` to enable {fleet} setup.
-Enabling {fleet} is required before {fleet-server} will start.
-When this action is not performed, a user must manually log in to Kibana and visit the Fleet page to enable setup.
-
-*Default:* none
-
-deprecated:[8.0.0,use `KIBANA_FLEET_SETUP` instead.]
-
-// end::fleet-setup[]
-
-// =============================================================================
-
 // tag::fleet-server-elasticsearch-host[]
 |
 [id="env-{type}-fleet-server-elasticsearch-host"]
@@ -141,41 +119,6 @@ Overrides `ELASTICSEARCH_HOST` when set.
 *Default:* `http://elasticsearch:9200`
 
 // end::fleet-server-elasticsearch-host[]
-
-// =============================================================================
-
-// tag::fleet-server-elasticsearch-username[]
-|
-[id="env-{type}-fleet-server-elasticsearch-username"]
-`FLEET_SERVER_ELASTICSEARCH_USERNAME`
-
-| (string) The basic authentication username used to connect to {es}.
-Overrides `ELASTICSEARCH_USERNAME` when set.
-This user needs the privileges required to publish events to {es}.
-
-deprecated:[8.0.0,Use `FLEET_SERVER_SERVICE_TOKEN` instead.]
-
-// To do: link to required privileges
-
-*Default:* `elastic`
-
-// end::fleet-server-elasticsearch-username[]
-
-// =============================================================================
-
-// tag::fleet-server-elasticsearch-password[]
-|
-[id="env-{type}-fleet-server-elasticsearch-password"]
-`FLEET_SERVER_ELASTICSEARCH_PASSWORD`
-
-| (string) The basic authentication password used to connect to {es}.
-Overrides `ELASTICSEARCH_PASSWORD` when set.
-
-deprecated:[8.0.0,Use `FLEET_SERVER_SERVICE_TOKEN` instead.]
-
-*Default:* `changeme`
-
-// end::fleet-server-elasticsearch-password[]
 
 // =============================================================================
 
@@ -435,10 +378,7 @@ Setting this to `true` is not recommended.
 [id="env-{type}-elasticsearch-username"]
 `ELASTICSEARCH_USERNAME`
 
-| (string) The basic authentication username used to connect to {es}.
-This user needs the privileges required to publish events to {es}.
-
-deprecated:[8.0.0,"Behaviour will change, use `FLEET_SERVER_SERVICE_TOKEN` instead."]
+| (string) The basic authentication username used to connect to {kib} and retrieve a `service_token` for {fleet}.
 
 // To do: link to required privileges
 
@@ -469,9 +409,7 @@ This user needs the privileges required to publish events to {es}.
 [id="env-{type}-elasticsearch-password"]
 `ELASTICSEARCH_PASSWORD`
 
-| (string) The basic authentication password used to connect to {es}.
-
-deprecated:[8.0.0,"Behaviour will change, use `FLEET_SERVER_SERVICE_TOKEN` instead."]
+| (string) The basic authentication password used to connect to {kib} and retrieve a `service_token` for {fleet}.
 
 *Default:* `changeme`
 
@@ -526,12 +464,11 @@ contains your CA's certificate.
 
 // tag::kibana-username[]
 |
-[id="env-{type}-kibana-username"]
+[id="env={type}-kibana-username"]
 `KIBANA_USERNAME`
 
-| (string) The basic authentication username used to connect to {kib}.
-
-deprecated:[8.0.0,Behaviour will change in upcoming release.]
+| (string) The basic authentication username used to connect to {kib} to retrieve a
+`service_token`.
 
 *Default:* `elastic`
 
@@ -541,12 +478,11 @@ deprecated:[8.0.0,Behaviour will change in upcoming release.]
 
 // tag::kibana-password[]
 |
-[id="env-{type}-kibana-password"]
+[id="env={type}-kibana-password"]
 `KIBANA_PASSWORD`
 
-| (string) The basic authentication password used to connect to {kib}.
-
-deprecated:[8.0.0,Behaviour will change in upcoming release.]
+| (string) The basic authentication password used to connect to {kib} to retrieve a
+`service_token`.
 
 *Default:* `changeme`
 

@@ -1,17 +1,13 @@
 // tag::cloud[]
 * Access to a deployment of our {ess-product}[hosted {ess}]
 on {ecloud}. The {ess} is available on AWS, GCP, and Azure. {ess-trial}[Try it out for free].
-This deployment must include an APM & Fleet node. 
+This deployment must include an {integrations-server}, which is included by default
+in every {ess} deployment.
 
 * User with the superuser role. See {ref}/built-in-roles.html[Built-in roles].
 // end::cloud[]
 
 // tag::self-managed[]
-
-//REVIEWERS: Removed details here because I feel that we should direct users
-//to the actual security docs instead of showing settings. The problem with
-//showing settings here is that we might inadvertently encourage users to set up
-//an environment that's less secure.
 
 * Access to an {es} cluster and {kib} (version {minor-version}) with a basic
 license. {stack-gs}/get-started-elastic-stack.html[Learn how to install the
@@ -52,7 +48,6 @@ kibana.yml example:
 [source,yaml]
 ----
 elasticsearch.username: "kibana_system" <1>
-xpack.security.enabled: true
 xpack.encryptedSavedObjects.encryptionKey: "something_at_least_32_characters"
 ----
 <1> The password should be stored in the {kib} keystore as described in the

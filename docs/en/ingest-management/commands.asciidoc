@@ -42,6 +42,9 @@ Note that *credentials are not redacted* in the archive; they may appear in plai
 
 This command is intended for debugging purposes only. The output format and structure of the archive produced by `collect` may change between releases.
 
+If `pprof` is specified, it gathers specific `pprof` data from the {agent} or one of the specified underlying {beats}, and displays to `stdout`.
+By default it gathers a 30s profile of the {agent}.
+
 [discrete]
 === Synopsis
 
@@ -50,8 +53,19 @@ This command is intended for debugging purposes only. The output format and stru
 elastic-agent diagnostics [--help] [--output <string>] [global-flags]
 elastic-agent diagnostics collect [--output <string>]
                                   [--file <string>]
+                                  [--pprof]
+                                  [--pprof-duration <string>]
+                                  [--timeout <string>]
                                   [--help]
                                   [global-flags]
+elastic-agent diagnostics pprof [--file <string>]
+                                [--pprof-type <string]
+                                [--pprof-duration <string>]
+                                [--timeout <string>]
+                                [--pprof-application <string>]
+                                [--pprof-route-key <string>]
+                                [--help]
+                                [global-flags]
 ----
 
 [discrete]
@@ -62,8 +76,31 @@ Output format. If using `collect`, specify `json` or `yaml` (the default).
 Otherwise specify `json`, `yaml`, or `human` (the default).
 
 `--file`::
-Output archive name for the `collect` option.
-Defaults to `elastic-agent-diagnostics-<timestamp>.zip` where the timestamp is the current time in UTC.
+When running `collect`, specifies the output archive name. Defaults to `elastic-agent-diagnostics-<timestamp>.zip`, where the timestamp is the current time in UTC.
++
+When running `pprof`, specifies the output file name. Defaults to `stdout`.
+
+`--pprof`::
+Gather `pprof` data when running `collect` (default `false`).
+
+`--pprof-duration <string>`::
+The length for the `trace` and `profile` data that's collected when gathering `pprof` data.
+Must be a string that can be parsed as a `time.Duration` value (default: `30s`).
+
+`--timeout <string>`::
+The timeout value for the `diagnostics collect` or `diagnostics pprof` command.
+Should be longer then `pprof-duration` as the command needs to gather and process the data.
+Must be a string that can be parsed as a `time.Duration` value (default: `30s + pprof-duration`).
+
+`--pprof-type <string>`::
+The pprof data to gather, one of: `allocs`, `block`, `cmdline`, `goroutine`, `heap`, `mutex`, `profile`, `threadcreate`, or `trace` (default: `profile`).
+
+`--pprof-application <string>`::
+The application name to gather `pprof` data from (default `elastic-agent`).
+
+`--pprof-route-key <string>`::
+The route key (output destination) associated with the application to gather `pprof` data from (default `default`).
+Note that this setting is ignored in the case where `pprof-application=elastic-agent`.
 
 `--help`::
 Show help for the `diagnostics` command.
@@ -144,24 +181,25 @@ elastic-agent enroll --fleet-server-es <string>
                      [--fleet-server-cert <string>] <1>
                      [--fleet-server-cert-key <string>]
                      [--fleet-server-es-ca <string>]
+                     [--fleet-server-es-ca-trusted-fingerprint <string>] <2>
                      [--fleet-server-host <string>]
                      [--fleet-server-insecure-http]
                      [--fleet-server-policy <string>]
                      [--fleet-server-port <uint16>]
                      [--force]
                      [--help]
-                     [--url <string>] <2>
-                     [--fleet-server-es-insecure ] <3>
+                     [--url <string>] <3>
+                     [--fleet-server-es-insecure]
                      [global-flags]
 ----
 <1> If no `fleet-server-cert*` flags are specified, {agent} auto-generates a
 self-signed certificate with the hostname of the machine. Remote {agent}s
 enrolling into a {fleet-server} with self-signed certificates must specify
 the `--insecure` flag.
-<2> Required when enrolling in a {fleet-server} with custom certificates. The
+<2> Required when using self-signed certificates with {es}.
+<3> Required when enrolling in a {fleet-server} with custom certificates. The
 URL must match the DNS name used to generate the certificate specified by
 `--fleet-server-cert`.
-<3> Required when using self-signed certificate on {es} side.
 
 For more information about custom certificates, refer to <<secure-connections>>.
 
@@ -200,6 +238,11 @@ specified {es} URL.
 `--fleet-server-es-ca <string>`::
 Path to certificate authority to use to communicate with {es}.
 
+`--fleet-server-es-ca-trusted-fingerprint <string>`::
+The SHA2-56 fingerprint (hash) of the certificate authority used to self-sign {es} certificates.
+This fingerprint will be used to verify self-signed certificates presented by {fleet-server} and any inputs started by {agent} for communication.
+This flag is required when using self-signed certificates with {es}.
+
 `--fleet-server-es-insecure`::
 Allows fleet server to connect to {es} in the following situations:
 +
@@ -207,7 +250,6 @@ Allows fleet server to connect to {es} in the following situations:
 * When connecting to an HTTP server.
 * When connecting to an HTTPs server and the certificate chain cannot be
 verified. The content is encrypted, but the certificate is not verified.
-* When using self-signed certificates.
 --
 +
 When this flag is used the certificate verification is disabled.
@@ -265,7 +307,7 @@ Enroll the {agent} in {fleet}:
 
 [source,shell]
 ----
-elastic-agent enroll \
+elastic-agent enroll -f \
   --url=https://cedd4e0e21e240b4s2bbbebdf1d6d52f.fleet.eu-west-1.aws.cld.elstc.co:443 \
   --enrollment-token=NEFmVllaa0JLRXhKebVKVTR5TTI6N2JaVlJpSGpScmV0ZUVnZVlRUExFQQ==
 ----
@@ -274,7 +316,7 @@ Enroll the {agent} in {fleet} and set up {fleet-server}:
 
 [source,shell]
 ----
-elastic-agent enroll --fleet-server-es=http://elasticsearch:9200 \
+elastic-agent enroll -f --fleet-server-es=http://elasticsearch:9200 \
   --fleet-server-service-token=AbEAAdesYXN1abMvZmxlZXQtc2VldmVyL3Rva2VuLTE2MTkxMzg3MzIzMTg7dzEta0JDTmZUcGlDTjlwRmNVTjNVQQ \
   --fleet-server-policy=a35fd520-26f5-11ec-8bd9-3374690g57b6
 ----
@@ -289,7 +331,7 @@ assumes you've generated the certificates with the following names:
 
 [source,shell]
 ----
-elastic-agent enroll \
+elastic-agent enroll -f \
   --url=https://fleet-server:8220 \
   --fleet-server-es=https://elasticsearch:9200 \
   --fleet-server-service-token=AAEBAWVsYXm0aWMvZmxlZXQtc2XydmVyL3Rva2VuLTE2MjM4OTAztDU1OTQ6dllfVW1mYnFTVjJwTC2ZQ0EtVnVZQQ \
@@ -305,7 +347,7 @@ example:
 
 [source,shell]
 ----
-elastic-agent enroll --url=https://fleet-server:8220 \
+elastic-agent enroll -f --url=https://fleet-server:8220 \
   --enrollment-token=NEFmVllaa0JLRXhKebVKVTR5TTI6N2JaVlJpSGpScmV0ZUVnZVlRUExFQQ== \
   --certificate-authorities=/path/to/ca.crt
 ----
@@ -458,24 +500,25 @@ elastic-agent install --fleet-server-es <string>
                       [--fleet-server-cert <string>] <1>
                       [--fleet-server-cert-key <string>]
                       [--fleet-server-es-ca <string>]
+                      [--fleet-server-es-ca-trusted-fingerprint <string>] <2>
                       [--fleet-server-host <string>]
                       [--fleet-server-insecure-http]
                       [--fleet-server-policy <string>]
                       [--fleet-server-port <uint16>]
                       [--force]
                       [--help]
-                      [--url <string>] <2>
-                      [--fleet-server-es-insecure ] <3>
+                      [--url <string>] <3>
+                      [--fleet-server-es-insecure]
                       [global-flags]
 ----
 <1> If no `fleet-server-cert*` flags are specified, {agent} auto-generates a
 self-signed certificate with the hostname of the machine. Remote {agent}s
 enrolling into a {fleet-server} with self-signed certificates must specify
 the `--insecure` flag.
-<2> Required when enrolling in a {fleet-server} with custom certificates. The
+<2> Required when using self-signed certificate on {es} side.
+<3> Required when enrolling in a {fleet-server} with custom certificates. The
 URL must match the DNS name used to generate the certificate specified by
 `--fleet-server-cert`.
-<3> Required when using self-signed certificate on {es} side.
 
 For more information about custom certificates, refer to <<secure-connections>>.
 
@@ -494,7 +537,7 @@ Install the {agent} as a service, enroll it in {fleet}, and start the
 
 [source,shell]
 ----
-elastic-agent install \
+elastic-agent install -f \
   --url=https://cedd4e0e21e240b4s2bbbebdf1d6d52f.fleet.eu-west-1.aws.cld.elstc.co:443 \
   --enrollment-token=NEFmVllaa0JLRXhKebVKVTR5TTI6N2JaVlJpSGpScmV0ZUVnZVlRUExFQQ==
 ----
@@ -504,7 +547,7 @@ a `fleet-server` process alongside the `elastic-agent` service:
 
 [source,shell]
 ----
-elastic-agent install --fleet-server-es=http://elasticsearch:9200 \
+elastic-agent install -f --fleet-server-es=http://elasticsearch:9200 \
   --fleet-server-service-token=AbEAAdesYXN1abMvZmxlZXQtc2VldmVyL3Rva2VuLTE2MTkxMzg3MzIzMTg7dzEta0JDTmZUcGlDTjlwRmNVTjNVQQ \
   --fleet-server-policy=a35fd620-26f6-11ec-8bd9-3374690f57b6
 ----
@@ -519,7 +562,7 @@ assumes you've generated the certificates with the following names:
 
 [source,shell]
 ----
-elastic-agent install \
+elastic-agent install -f \
   --url=https://fleet-server:8220 \
   --fleet-server-es=https://elasticsearch:9200 \
   --fleet-server-service-token=AAEBAWVsYXm0aWMvZmxlZXQtc2XydmVyL3Rva2VuLTE2MjM4OTAztDU1OTQ6dllfVW1mYnFTVjJwTC2ZQ0EtVnVZQQ \
@@ -535,7 +578,7 @@ the previous example:
 
 [source,shell]
 ----
-elastic-agent install --url=https://fleet-server:8220 \
+elastic-agent install -f --url=https://fleet-server:8220 \
   --enrollment-token=NEFmVllaa0JLRXhKebVKVTR5TTI6N2JaVlJpSGpScmV0ZUVnZVlRUExFQQ== \
   --certificate-authorities=/path/to/ca.crt
 ----

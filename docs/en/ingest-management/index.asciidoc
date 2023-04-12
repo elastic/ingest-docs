@@ -36,6 +36,8 @@ include::beats-agent-comparison.asciidoc[leveloffset=+1]
 
 include::quick-starts.asciidoc[leveloffset=+1]
 
+include::migrate-beats-to-agent.asciidoc[leveloffset=+1]
+
 include::integrations/integrations.asciidoc[leveloffset=+1]
 
 include::integrations/add-integration-to-policy.asciidoc[leveloffset=+2]
@@ -144,6 +146,6 @@ include::troubleshooting/troubleshooting.asciidoc[leveloffset=+2]
 
 include::troubleshooting/faq.asciidoc[leveloffset=+2]
 
-include::release-notes/release-notes-7.17.asciidoc[leveloffset=+1]
+include::release-notes/release-notes-8.0.asciidoc[leveloffset=+1]
 
 include::elastic-agent/install-fleet-managed-agent.asciidoc[leveloffset=+2]

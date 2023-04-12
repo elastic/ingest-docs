@@ -57,8 +57,10 @@ Tools Console, run:
 +
 [source,console]
 ----
-POST .fleet-policies/_delete_by_query?q=policy-elastic-agent-on-cloud
+POST .fleet-policies/_delete_by_query?q=policy-elastic-agent-on-cloud <1>
 ----
+<1> The user who runs this command must be authorized to delete restricted
+system indices.
 
 . Recreate the {fleet-server} integration policy:
 +
@@ -72,7 +74,7 @@ curl -u <username>:<password> --request POST \
   --url <kibana_url>/api/fleet/package_policies \
   --header 'content-type: application/json' \
   --header 'kbn-xsrf: xyz' \
-  --data '{"name": "Fleet Server","description": "","namespace": "default","policy_id": "policy-elastic-agent-on-cloud","enabled": true,"output_id": "","inputs": [{"type": "fleet-server","policy_template": "fleet_server","enabled": true,"streams": [],"vars": {"host": {"value": ["0.0.0.0"],"type": "text"},"port": {"value": [8220],"type": "integer"},"max_connections": {"type": "integer"},"custom": {"value": "server.runtime:\n  gc_percent: 20","type": "yaml"}}}],"package": {"name": "fleet_server","title": "Fleet Server","version": "1.0.1"},"force": true}'
+  --data '{"name": "Fleet Server","description": "","namespace": "default","policy_id": "policy-elastic-agent-on-cloud","enabled": true,"output_id": "","inputs": [{"type": "fleet-server","policy_template": "fleet_server","enabled": true,"streams": [],"vars": {"host": {"value": ["0.0.0.0"],"type": "text"},"port": {"value": [8220],"type": "integer"},"max_connections": {"type": "integer"},"custom": {"value": "server.runtime:\n  gc_percent: 20","type": "yaml"}}}],"package": {"name": "fleet_server","title": "Fleet Server","version": "1.1.0"},"force": true}'
 ----
 
 . Force unenroll the agent stuck in `Updating`:
@@ -155,22 +157,6 @@ an external service called the {package-registry}.
 For this to work, the {kib} server must connect to `https://epr.elastic.co` on port `443`.
 
 [discrete]
-[[fleet-errors-tls]]
-== {kib} cannot connect to {package-registry} in air-gapped environments
-
-In air-gapped environments, you may encounter the following error if you're using a custom Certificate Authority (CA) that is not available to {kib}:
-
-[source,json]
-----
-{"type":"log","@timestamp":"2022-03-02T09:58:36-05:00","tags":["error","plugins","fleet"],"pid":58716,"message":"Error connecting to package registry: request to https://customer.server.name:8443/categories?experimental=true&include_policy_templates=true&kibana.version=7.17.0 failed, reason: self signed certificate in certificate chain"}
-----
-
-To fix this problem, add your CA certificate file path to the {kib} startup
-file by defining the `NODE_EXTRA_CA_CERTS` environment variable. More information
-about this in <<air-gapped-tls>> section.
-
-
-[discrete]
 [[fleet-app-crashes]]
 == {fleet} in {kib} crashes
 
@@ -203,7 +189,7 @@ To fix this problem, pass the `--insecure` flag along with the `enroll` or
 
 [source,sh]
 ----
-sudo ./elastic-agent install --url=https://<fleet-server-ip>:8220 --enrollment-token=<token> --insecure
+sudo ./elastic-agent install -f --url=https://<fleet-server-ip>:8220 --enrollment-token=<token> --insecure
 ----
 
 Traffic between {agent}s and {fleet-server} over HTTPS will be encrypted; you're
@@ -349,6 +335,19 @@ Note that the diagnostics bundle is intended for debugging purposes only, its st
 IMPORTANT: The configuration files in the archive may have credentials in *plain text*.
 These will need to be manually redacted before the archive is shared.
 
+The diagnostics command is also able to collect `pprof` data in the archive if the `--pprof` flag is passed:
+
+[source,shell]
+----
+elastic-agent diagnostics collect --pprof
+----
+
+By default this command takes a little more than 30s to run because it collects 30s trace and profile information from the {agent} and all underlying {beats}.
+To change the duration of the trace and profile data, set the `--pprof-duration` flag.
+
+To set the timeout value for the collection command, use the `--timeout` flag. The timeout defaults to 30s + `pprof-duration`.
+Use this flag to increase the timeout if the diagnostics command times out before creating the archive.
+
 [discrete]
 [[not-installing-no-logs-in-terminal]]
 == Some problems occur so early that insufficient logging is available
@@ -365,7 +364,7 @@ The stand-alone install command installs the {agent}, and all of the service con
 
 [source,shell]
 ----
-elastic-agent enroll --fleet-server-es=https://<es-url>:443 --fleet-server-service-token=<token> --fleet-server-policy=<policy-id>
+elastic-agent enroll -f --fleet-server-es=https://<es-url>:443 --fleet-server-service-token=<token> --fleet-server-policy=<policy-id>
 ----
 Note: Port `443` is commonly used in {ecloud}. However, with self-managed deployments, your {es} may run on port `9200` or something entirely different.
 
@@ -393,15 +392,6 @@ netstat -nat | grep :8220
 +
 Any response data indicates that the port is in use. This could be correct or not
 if you had intended to uninstall the {fleet-server}. In which case, re-check and continue.
-
-[discrete]
-[[fleet-server-input-missing]]
-== {fleet-server} fails with `assigned policy does not have fleet-server input` log error
-
-//These includes are designed to break in 7.15 so we remember to remove this info when it's stale
-include::{fleet-repo-dir}/release-notes/release-notes-7.14.asciidoc[tag=fleet-server-input-missing-detail]
-
-include::{fleet-repo-dir}/release-notes/release-notes-7.14.asciidoc[tag=fleet-server-input-missing-fix]
 
 [discrete]
 [[fleet-agent-stuck-on-updating]]
@@ -566,7 +556,7 @@ command:
 
 [source,sh]
 ----
-sudo ./elastic-agent install --url=https://<fleet-server-ip>:8220 --enrollment-token=<token> --insecure
+sudo ./elastic-agent install -f --url=https://<fleet-server-ip>:8220 --enrollment-token=<token> --insecure
 ----
 
 For more information, refer to <<agent-enrollment-certs>>.

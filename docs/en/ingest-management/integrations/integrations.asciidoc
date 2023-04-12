@@ -1,6 +1,10 @@
 [[integrations]]
 = Manage {agent} integrations
 
+++++
+<titleabbrev>Manage integrations</titleabbrev>
+++++
+
 ****
 Integrations are available for a wide array of popular services and platforms. To
 see the full list of available integrations, go to *Management > Integrations*
@@ -35,14 +39,14 @@ too.
 |<<edit-or-delete-integration-policy>>
 |Change settings or delete the integration policy.
 
+|<<install-uninstall-integration-assets>>
+|Install, uninstall, and reinstall integration assets in {kib}.
+
 |<<view-integration-assets>>
 |View the {kib} assets installed for a specific integration.
 
 |<<upgrade-integration>>
 |Upgrade an integration to the latest version.
-
-|<<uninstall-integration>>
-|Remove an integration and its assets from {kib}.
 
 |===
 

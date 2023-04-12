@@ -1,8 +1,6 @@
 [[secure-logstash-connections]]
 = Configure SSL/TLS for the {ls} output
 
-beta[]
-
 To send data from {agent} to {ls} securely, you need to configure Transport
 Layer Security (TLS). Using TLS ensures that your {agent}s send encrypted data
 to trusted {ls} servers, and that your {ls} servers receive data from trusted
@@ -277,6 +275,3 @@ values are 0, check the {agent} logs for problems.
  
 When data is streaming to {es}, go to *{observability}* and click
 *Metrics* to view metrics about your system.
-
-//TODO: WE should add some troubleshooting advice like what to do if the
-//connection is refused. But maybe after beta drops.

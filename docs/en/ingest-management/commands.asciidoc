@@ -1,25 +1,82 @@
 :global-flags-link: For more flags, see <<elastic-agent-global-flags>>.
 
 [[elastic-agent-cmd-options]]
-[role="xpack"]
-= Command reference
+= {agent} command reference
 
 {agent} provides commands for running {agent}, managing {fleet-server}, and
-doing common tasks:
+doing common tasks.
 
+NOTE: You might need to log in as a root user (or Administrator on Windows) to
+run these commands. After the {agent} service is installed and running, make
+sure you run these commands without prepending them with `./` to avoid
+invoking the wrong binary. 
+
+* <<elastic-agent-diagnostics-command,diagnostics>>
 * <<elastic-agent-enroll-command,enroll>>
 * <<elastic-agent-help-command,help>>
 * <<elastic-agent-inspect-command,inspect>>
 * <<elastic-agent-install-command,install>>
 * <<elastic-agent-restart-command,restart>>
 * <<elastic-agent-run-command,run>>
+* <<elastic-agent-status-command,status>>
 * <<elastic-agent-uninstall-command,uninstall>>
 * <<elastic-agent-upgrade-command,upgrade>>
 * <<elastic-agent-version-command,version>>
 //* <<elastic-agent-watch-command,watch>>
 
-NOTE: You might need to log in as a root user (or Administrator on Windows) to
-run these commands.
+++++
+<hr>
+++++
+
+[discrete]
+[[elastic-agent-diagnostics-command]]
+== elastic-agent diagnostics
+
+Gather diagnostics information from the {agent} and applications it's running.
+
+If no options are specified, this command displays version numbers and application metadata.
+
+If `collect` is specified, it produces an archive containing application metadata, configuration information, the policy, and any local logs.
+
+Note that *credentials are not redacted* in the archive; they may appear in plain text in the configuration or policy files inside the archive.
+
+This command is intended for debugging purposes only. The output format and structure of the archive produced by `collect` may change between releases.
+
+[discrete]
+=== Synopsis
+
+[source,shell]
+----
+elastic-agent diagnostics [--help] [--output <string>] [global-flags]
+elastic-agent diagnostics collect [--output <string>]
+                                  [--file <string>]
+                                  [--help]
+                                  [global-flags]
+----
+
+[discrete]
+=== Options
+
+`--output <string>`::
+Output format. If using `collect`, specify `json` or `yaml` (the default).
+Otherwise specify `json`, `yaml`, or `human` (the default).
+
+`--file`::
+Output archive name for the `collect` option.
+Defaults to `elastic-agent-diagnostics-<timestamp>.zip` where the timestamp is the current time in UTC.
+
+`--help`::
+Show help for the `diagnostics` command.
+
+{global-flags-link}
+
+[discrete]
+=== Example
+
+[source,shell]
+----
+elastic-agent diagnostics
+----
 
 ++++
 <hr>
@@ -40,7 +97,7 @@ the {agent} from a DEB or RPM package and plan to use systemd commands to
 start and manage the service. This command is also useful for testing
 {agent} prior to installing it.
 
-If you've already installed {agent}, use this command to modify the settings that {agent} runs with. 
+If you've already installed {agent}, use this command to modify the settings that {agent} runs with.
 
 TIP: To enroll an {agent} _and_ install it as a service, use the
 <<elastic-agent-install-command,`install` command>> instead. Installing as a service is the most common scenario.
@@ -52,9 +109,9 @@ overwrites the `elastic-agent.yml` file in the agent directory.
 This command includes optional flags to set up <<fleet-server,{fleet-server}>>.
 
 IMPORTANT: This command enrolls the {agent} in {fleet}; it does not start the
-agent. To start the agent, either <<start-elastic-agent,start the service>>, if
-one exists, or use the <<elastic-agent-run-command,`run` command>> to start the
-agent from a terminal.
+agent. To start the agent, either <<start-elastic-agent-service,start the
+service>>, if one exists, or use the <<elastic-agent-run-command,`run` command>>
+to start the agent from a terminal.
 
 
 [discrete]
@@ -68,6 +125,7 @@ elastic-agent enroll --url <string>
                      --enrollment-token <string>
                      [--ca-sha256 <string>]
                      [--certificate-authorities <string>]
+                     [--delay-enroll]
                      [--force]
                      [--help]
                      [--insecure ]
@@ -82,6 +140,7 @@ elastic-agent enroll --fleet-server-es <string>
                      --fleet-server-service-token <string>
                      [--ca-sha256 <string>]
                      [--certificate-authorities <string>]
+                     [--delay-enroll]
                      [--fleet-server-cert <string>] <1>
                      [--fleet-server-cert-key <string>]
                      [--fleet-server-es-ca <string>]
@@ -92,6 +151,7 @@ elastic-agent enroll --fleet-server-es <string>
                      [--force]
                      [--help]
                      [--url <string>] <2>
+                     [--fleet-server-es-insecure ] <3>
                      [global-flags]
 ----
 <1> If no `fleet-server-cert*` flags are specified, {agent} auto-generates a
@@ -101,6 +161,7 @@ the `--insecure` flag.
 <2> Required when enrolling in a {fleet-server} with custom certificates. The
 URL must match the DNS name used to generate the certificate specified by
 `--fleet-server-cert`.
+<3> Required when using self-signed certificate on {es} side.
 
 For more information about custom certificates, refer to <<secure-connections>>.
 
@@ -117,6 +178,11 @@ verification.
 `--certificate-authorities <string>`::
 Comma-separated list of root certificates used for server verification.
 
+`--delay-enroll`::
+Delays enrollment to occur on first start of the {agent} service. This setting
+is useful when you don't want the {agent} to enroll until the next reboot or manual start of the service, for
+example, when you're preparing an image that includes {agent}.
+
 `--enrollment-token <string>`::
 Enrollment token to use to enroll {agent} into {fleet}. You can use
 the same enrollment token for multiple agents.
@@ -129,10 +195,22 @@ Private key to use for exposed {fleet-server} HTTPS endpoint.
 
 `--fleet-server-es <string>`::
 Start a {fleet-server} process when {agent} is started, and connect to the
-specified {es} URL. 
+specified {es} URL.
 
 `--fleet-server-es-ca <string>`::
 Path to certificate authority to use to communicate with {es}.
+
+`--fleet-server-es-insecure`::
+Allows fleet server to connect to {es} in the following situations:
++
+--
+* When connecting to an HTTP server.
+* When connecting to an HTTPs server and the certificate chain cannot be
+verified. The content is encrypted, but the certificate is not verified.
+* When using self-signed certificates.
+--
++
+When this flag is used the certificate verification is disabled.
 
 `--fleet-server-host <string>`::
 {fleet-server} HTTP binding host (overrides the policy).
@@ -151,7 +229,7 @@ instead of the Default Fleet Server policy.
 {fleet-server} HTTP binding port (overrides the policy).
 
 `--fleet-server-service-token <string>`::
-Service token to use for communication with {es}. 
+Service token to use for communication with {es}.
 
 `--force`::
 Force overwrite of current configuration without prompting for confirmation.
@@ -344,6 +422,9 @@ You must run this command as the root user (or Administrator on Windows)
 to write files to the correct locations. This command overwrites the
 `elastic-agent.yml` file in the agent directory.
 
+The syntax for running this command varies by platform. For platform-specific
+examples, refer to <<elastic-agent-installation>>.
+
 [discrete]
 === Synopsis
 
@@ -356,6 +437,7 @@ elastic-agent install --url <string>
                       --enrollment-token <string>
                       [--ca-sha256 <string>]
                       [--certificate-authorities <string>]
+                      [--delay-enroll]
                       [--force]
                       [--help]
                       [--insecure ]
@@ -372,6 +454,7 @@ elastic-agent install --fleet-server-es <string>
                       --fleet-server-service-token <string>
                       [--ca-sha256 <string>]
                       [--certificate-authorities <string>]
+                      [--delay-enroll]
                       [--fleet-server-cert <string>] <1>
                       [--fleet-server-cert-key <string>]
                       [--fleet-server-es-ca <string>]
@@ -382,6 +465,7 @@ elastic-agent install --fleet-server-es <string>
                       [--force]
                       [--help]
                       [--url <string>] <2>
+                      [--fleet-server-es-insecure ] <3>
                       [global-flags]
 ----
 <1> If no `fleet-server-cert*` flags are specified, {agent} auto-generates a
@@ -391,6 +475,7 @@ the `--insecure` flag.
 <2> Required when enrolling in a {fleet-server} with custom certificates. The
 URL must match the DNS name used to generate the certificate specified by
 `--fleet-server-cert`.
+<3> Required when using self-signed certificate on {es} side.
 
 For more information about custom certificates, refer to <<secure-connections>>.
 
@@ -553,13 +638,69 @@ elastic-agent run -c myagentconfig.yml
 ++++
 
 [discrete]
+[[elastic-agent-status-command]]
+== elastic-agent status
+
+Returns the current status of the running Elastic Agent daemon and of each process
+in the Elastic Agent.
+
+[discrete]
+=== Synopsis
+
+[source,shell]
+----
+elastic-agent status [--output <string>]
+                     [--help]
+                     [global-flags]
+----
+
+[discrete]
+=== Options
+
+`--output <string>`::
+Output the status information in either `human` (the default), `json`, or
+`yaml`. When the output is `json` or `yaml`, the command returns status codes:
++
+--
+|===
+|Code |Status
+
+|0    |`STARTING`    
+|1    |`CONFIGURING`
+|2    |`HEALTHY`
+|3    |`DEGRADED`
+|4    |`FAILED`
+|5    |`STOPPING`
+|6    |`UPGRADING`
+|7    |`ROLLBACK`
+|===
+--
+
+`--help`::
+Show help for the `status` command.
+
+{global-flags-link}
+
+[discrete]
+=== Examples
+
+[source,shell]
+----
+elastic-agent status
+----
+
+++++
+<hr>
+++++
+
+[discrete]
 [[elastic-agent-uninstall-command]]
 == elastic-agent uninstall
 
 Permanently uninstall {agent} from the system.
 
 You must run this command as the root user (or Administrator on Windows)
-to remove files. 
+to remove files.
 
 [discrete]
 === Synopsis

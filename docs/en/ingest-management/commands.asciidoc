@@ -62,7 +62,9 @@ This command is intended for debugging purposes only. The output format and stru
 
 [source,shell]
 ----
-elastic-agent diagnostics [--file <string>]
+elastic-agent diagnostics [--output <string>]
+                          [--file <string>]
+                          [--timeout <string>]
                           [--help]
                           [global-flags]
 ----
@@ -70,8 +72,19 @@ elastic-agent diagnostics [--file <string>]
 [discrete]
 === Options
 
+`--output <string>`::
+Output format. If using `collect`, specify `json` or `yaml` (the default).
+Otherwise specify `json`, `yaml`, or `human` (the default).
+
 `--file`::
-Specifies the output archive name. Defaults to `elastic-agent-diagnostics-<timestamp>.zip`, where the timestamp is the current time in UTC.
+When running `collect`, specifies the output archive name. Defaults to `elastic-agent-diagnostics-<timestamp>.zip`, where the timestamp is the current time in UTC.
++
+When running `pprof`, specifies the output file name. Defaults to `stdout`.
+
+`--timeout <string>`::
+The timeout value for the `diagnostics collect` or `diagnostics pprof` command.
+Should be longer then `pprof-duration` as the command needs to gather and process the data.
+Must be a string that can be parsed as a `time.Duration` value (default: `30s + pprof-duration`).
 
 `--help`::
 Show help for the `diagnostics` command.
@@ -428,7 +441,7 @@ Show help for the `inspect` command.
 ----
 elastic-agent inspect
 elastic-agent inspect components --show-config
-elastic-agent inspect components log-default
+elastic-agent inspect components filebeat
 ----
 
 ++++

@@ -3,7 +3,7 @@ include::{docs-root}/shared/attributes.asciidoc[]
 
 :doctype: book
 :beats-repo-dir: {beats-root}
-:fleet-repo-dir: {observability-docs-root}/docs/en/ingest-management
+:fleet-repo-dir: {ingest-docs-root}/docs/en/ingest-management
 :apm-repo-dir: {apm-server-root}/docs
 :forum: https://discuss.elastic.co/
 :tab-widgets: {fleet-repo-dir}/tab-widgets

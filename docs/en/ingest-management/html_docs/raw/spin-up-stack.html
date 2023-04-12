@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Spin up the Elastic Stack | Observability Guide | Elastic</title>
+<meta class="elastic" name="content" content="Spin up the Elastic Stack | Observability Guide">
+
+<link rel="home" href="index.html" title="Observability Guide"/>
+<link rel="up" href="add-observability-data.html" title="Send data to Elasticsearch"/>
+<link rel="prev" href="add-observability-data.html" title="Send data to Elasticsearch"/>
+<link rel="next" href="deploy-agent-to-send-data.html" title="Deploy Elastic Agent to send data"/>
+<meta class="elastic" name="product_version" content=""/>
+<meta class="elastic" name="product_name" content=""/>
+<meta class="elastic" name="website_area" content="documentation"/>
+<meta name="DC.type" content="Learn/Docs/"/>
+<meta name="DC.subject" content=""/>
+<meta name="DC.identifier" content=""/>
+</head>
+<body>
+<div id="content">
+<div class="breadcrumbs">
+<span class="breadcrumb-link"><a href="/guide/">Elastic Docs</a></span>
+<span class="chevron-right">›</span><span class="breadcrumb-link"><a href="index.html">Observability Guide</a></span>
+<span class="chevron-right">›</span><span class="breadcrumb-link"><a href="add-observability-data.html">Send data to Elasticsearch</a></span>
+</div>
+<div class="navheader">
+<span class="prev">
+<a href="add-observability-data.html">« Send data to Elasticsearch</a>
+</span>
+<span class="next">
+<a href="deploy-agent-to-send-data.html">Deploy Elastic Agent to send data »</a>
+</span>
+</div>
+<div class="section">
+<div class="titlepage"><div><div>
+<h2 class="title"><a id="spin-up-stack"></a>Spin up the Elastic Stack<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/observability-docs/edit/master/docs/en/observability/spin-up-stack.asciidoc">edit</a></h2>
+</div></div></div>
+<p>To use Elastic Observability, you need Elasticsearch for storing and searching your
+data, and Kibana for visualizing and managing it.</p>
+<p>You can use our
+<a href="https://www.elastic.co/cloud/elasticsearch-service" class="ulink" target="_top">hosted Elasticsearch Service</a>
+on Elastic Cloud (recommended), or self-manage the Elastic Stack on your own hardware.</p>
+<div class="tabs" data-tab-group="host">
+  <div role="tablist" aria-label="Spin up">
+    <button role="tab"
+            aria-selected="true"
+            aria-controls="cloud-tab-spinup"
+            id="cloud-spinup">
+      Elasticsearch Service
+    </button>
+    <button role="tab"
+            aria-selected="false"
+            aria-controls="self-managed-tab-spinup"
+            id="self-managed-spinup"
+            tabindex="-1">
+      Self-managed
+    </button>
+  </div>
+  <div tabindex="0"
+       role="tabpanel"
+       id="cloud-tab-spinup"
+       aria-labelledby="cloud-spinup">
+<p>To get started quickly, spin up a deployment of our <a href="https://www.elastic.co/cloud/elasticsearch-service" class="ulink" target="_top">hosted Elasticsearch Service</a>. The Elasticsearch Service is available on AWS, GCP, and Azure. <a href="https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&amp;elektra=docs" class="ulink" target="_top">Try it out for free</a>.</p>
+  </div>
+  <div tabindex="0"
+       role="tabpanel"
+       id="self-managed-tab-spinup"
+       aria-labelledby="self-managed-spinup"
+       hidden="">
+<p>To install and run Elasticsearch and Kibana, see <a href="https://www.elastic.co/guide/en/elastic-stack/master/installing-elastic-stack.html" class="ulink" target="_top">Installing the Elastic Stack</a>.</p>
+  </div>
+</div>
+<p>Now that you have provisioned your first deployment of your Elasticsearch cluster,
+you’re ready to ingest your logs, metrics, uptime data, and APM data.</p>
+</div>
+<div class="navfooter">
+<span class="prev">
+<a href="add-observability-data.html">« Send data to Elasticsearch</a>
+</span>
+<span class="next">
+<a href="deploy-agent-to-send-data.html">Deploy Elastic Agent to send data »</a>
+</span>
+</div>
+</div>
+</body>
+</html>

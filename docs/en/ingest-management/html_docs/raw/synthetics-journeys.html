@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Learn configuration options for Elastic Serverless Forwarder and how to transform your AWS data as it is collected from Amazon Web Services (AWS).">
+<meta name="keywords" content="serverless">
+<title>Scripting browser monitors | Observability Guide | Elastic</title>
+<meta class="elastic" name="content" content="Scripting browser monitors | Observability Guide">
+
+<link rel="home" href="index.html" title="Observability Guide"/>
+<link rel="up" href="monitor-uptime-synthetics.html" title="Synthetic monitoring"/>
+<link rel="prev" href="synthetics-get-started.html" title="Get started"/>
+<link rel="next" href="synthetics-lightweight.html" title="Configure lightweight monitors"/>
+<meta class="elastic" name="product_version" content=""/>
+<meta class="elastic" name="product_name" content=""/>
+<meta class="elastic" name="website_area" content="documentation"/>
+<meta name="DC.type" content="Learn/Docs/"/>
+<meta name="DC.subject" content=""/>
+<meta name="DC.identifier" content=""/>
+</head>
+<body>
+<div id="content">
+<div class="breadcrumbs">
+<span class="breadcrumb-link"><a href="/guide/">Elastic Docs</a></span>
+<span class="chevron-right">›</span><span class="breadcrumb-link"><a href="index.html">Observability Guide</a></span>
+<span class="chevron-right">›</span><span class="breadcrumb-link"><a href="monitor-uptime-synthetics.html">Synthetic monitoring</a></span>
+</div>
+<div class="navheader">
+<span class="prev">
+<a href="synthetics-get-started.html">« Get started</a>
+</span>
+<span class="next">
+<a href="synthetics-lightweight.html">Configure lightweight monitors »</a>
+</span>
+</div>
+<div class="section">
+<div class="titlepage"><div><div>
+<h2 class="title"><a id="synthetics-journeys"></a>Scripting browser monitors<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/observability-docs/edit/master/docs/en/observability/synthetics-journeys.asciidoc">edit</a></h2>
+</div></div></div>
+<div class="warning admon">
+<div class="icon"></div>
+<div class="admon_content">
+<p>This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.</p>
+</div>
+</div>
+<p>Browser monitors are a type of synthetic monitor.
+Synthetic monitoring extends traditional end-to-end testing techniques because it allows your tests to run continuously on the cloud.
+With synthetic monitoring, you can assert that your application continues to work after a deployment by reusing
+the same journeys that you used to validate the software on your machine.</p>
+<p>You can use synthetic monitors to detect bugs caused by invalid states you couldn&#8217;t predict and didn&#8217;t write tests for.
+Synthetic monitors can also help you catch bugs in features that don&#8217;t get much traffic by allowing you to periodically simulate users' actions.</p>
+<p>Start by learning the basics of synthetic monitoring, including how to:</p>
+<div class="ulist itemizedlist">
+<ul class="itemizedlist">
+<li class="listitem">
+<a class="xref" href="synthetics-journeys.html#synthetics-create-test" title="Write a synthetic test">Write a synthetic test</a>
+</li>
+<li class="listitem">
+<a class="xref" href="synthetics-journeys.html#synthetics-test-locally" title="Test locally">Test locally</a>
+</li>
+<li class="listitem">
+<a class="xref" href="synthetics-journeys.html#synthetics-monitor-use" title="Configure individual browser monitors">Configure individual monitors</a>
+</li>
+<li class="listitem">
+<a class="xref" href="synthetics-journeys.html#synthetics-params-secrets" title="Work with params and secrets">Work with params and secrets</a>
+</li>
+<li class="listitem">
+<a class="xref" href="synthetics-journeys.html#synthetics-recorder" title="Use the Synthetics Recorder">Use the Synthetics Recorder</a>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/synthetic-monitor-lifecycle.png" alt="Diagram of the lifecycle of a synthetic monitor: write a test" width="test it locally" height="create a monitor">
+</div>
+</div>
+<div class="section">
+<div class="titlepage"><div><div>
+<h3 class="title"><a id="synthetics-create-test"></a>Write a synthetic test<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/observability-docs/edit/master/docs/en/observability/synthetics-create-test.asciidoc">edit</a></h3>
+</div></div></div>
+<div class="warning admon">
+<div class="icon"></div>
+<div class="admon_content">
+<p>This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.</p>
+</div>
+</div>
+<p>After <a class="xref" href="synthetics-get-started.html#synthetics-get-started-project" title="Create monitors with Project monitors">setting up a project</a>, you can start writing synthetic tests that check critical actions and requests that an end-user might make
+on your site.</p>
+<h4><a id="synthetics-syntax"></a>Syntax overview<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/observability-docs/edit/master/docs/en/observability/synthetics-create-test.asciidoc">edit</a></h4>
+<p>To write synthetic tests for your application, you&#8217;ll need to know basic JavaScript and
+<a href="https://playwright.dev/" class="ulink" target="_top">Playwright</a> syntax.</p>
+<div class="tip admon">
+<div class="icon"></div>
+<div class="admon_content">
+<p><a href="https://playwright.dev/" class="ulink" target="_top">Playwright</a> is a browser testing library developed by Microsoft.
+It&#8217;s fast, reliable, and features a modern API that automatically waits for page elements to be ready.</p>
+</div>
+</div>
+<p>The synthetics agent exposes an API for creating and running tests, including:</p>
+<div class="informaltable">
+<table border="0" cellpadding="4px">
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+<tbody valign="top">
+<tr>
+<td valign="top">
+<p>
+<code class="literal">journey</code>
+</p>
+</td>
+<td valign="top">
+<p>
+Tests one discrete unit of functionality.
+Takes two parameters: a <code class="literal">name</code> (string) and a <code class="literal">callback</code> (function).
+Learn more in <a class="xref" href="synthetics-journeys.html#synthetics-create-journey" title="Create a journey">Create a journey</a>.
+</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>
+<code class="literal">step</code>
+</p>
+</td>
+<td valign="top">
+<p>
+Actions within a journey that should be completed in a specific order.
+Takes two parameters: a <code class="literal">name</code> (string) and a <code class="literal">callback</code> (function).
+Learn more in <a class="xref" href="synthetics-journeys.html#synthetics-create-step" title="Add steps">Add steps</a>.
+</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>
+<code class="literal">beforeAll</code>
+</p>
+</td>
+<td valign="top">
+<p>
+Runs a provided function once, before any <code class="literal">journey</code> runs.
+If the provided function is a promise, the runner will wait for the
+promise to resolve before invoking the <code class="literal">journey</code>.
+Takes one parameter: a <code class="literal">callback</code> (function).
+Learn more in <a class="xref" href="synthetics-journeys.html#before-after" title="Set up and remove a global state">Set up and remove a global state</a>.
+</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>
+<code class="literal">before</code>
+</p>
+</td>
+<td valign="top">
+<p>
+Runs a provided function before a single <code class="literal">journey</code> runs.
+Takes one parameter: a <code class="literal">callback</code> (function).
+Learn more in <a class="xref" href="synthetics-journeys.html#before-after" title="Set up and remove a global state">Set up and remove a global state</a>.
+</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>
+<code class="literal">afterAll</code>
+</p>
+</td>
+<td valign="top">
+<p>
+Runs a provided function once, after all the <code class="literal">journey</code> runs have completed.
+Takes one parameter: a <code class="literal">callback</code> (function).
+Learn more in <a class="xref" href="synthetics-journeys.html#before-after" title="Set up and remove a global state">Set up and remove a global state</a>.
+</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>
+<code class="literal">after</code>
+</p>
+</td>
+<td valign="top">
+<p>
+Runs a provided function after a single <code class="literal">journey</code> has completed.
+Takes one parameter: a <code class="literal">callback</code> (function).
+Learn more in <a class="xref" href="synthetics-journeys.html#before-after" title="Set up and remove a global state">Set up and remove a global state</a>.
+</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>
+<code class="literal">monitor</code>
+</p>
+</td>
+<td valign="top">
+<p>
+The <code class="literal">monitor.use</code> method allows you to determine a monitor&#8217;s configuration on a journey-by-journey basis.
+If you want two journeys to create monitors with different intervals, for example, you should call
+<code class="literal">monitor.use</code> in each of them and set the <code class="literal">schedule</code> property to different values in each.
+Note that this is only relevant when using the <code class="literal">push</code> command to create monitors in Kibana.
+Learn more in <a class="xref" href="synthetics-journeys.html#synthetics-monitor-use" title="Configure individual browser monitors">Configure individual monitors</a>.
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4><a id="synthetics-create-journey"></a>Create a journey<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/observability-docs/edit/master/docs/en/observability/synthetics-create-test.asciidoc">edit</a></h4>
+<p>Create a new file using the <code class="literal">.journey.ts</code> or <code class="literal">.journey.js</code> file extension or edit one of the example journey files.</p>
+<p>A <em>journey</em> tests one discrete unit of functionality.
+For example, logging into a website, adding something to a cart, or joining a mailing list.</p>
+<p>The journey function takes two parameters: a <code class="literal">name</code> and a <code class="literal">callback</code>.
+The <code class="literal">name</code> helps you identify an individual journey.
+The <code class="literal">callback</code> argument is a function that encapsulates what the journey does.
+The callback provides access to fresh Playwright <code class="literal">page</code>, <code class="literal">params</code>, <code class="literal">browser</code>, and <code class="literal">context</code> instances.</p>
+<div class="pre_wrapper lang-js">
+<pre class="programlisting prettyprint lang-js">journey('Journey name', ({ page, browser, context, params, request }) =&gt; {
+  // Add steps here
+});</pre>
+</div>
+<div class="informaltable">
+<table border="0" cellpadding="4px">
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+<tbody valign="top">
+<tr>
+<td valign="top">
+<p>
+<code class="literal">name</code>
+</p>
+</td>
+<td valign="top">
+<p>
+A user-defined string to describe the journey.
+</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>
+<code class="literal">page</code>
+</p>
+</td>
+<td valign="top">
+<p>
+A <a href="https://playwright.dev/docs/api/class-page" class="ulink" target="_top">page</a> object from Playwright
+that lets you control the browser&#8217;s current page.
+</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>
+<code class="literal">browser</code>
+</p>
+</td>
+<td valign="top">
+<p>
+A <a href="https://playwright.dev/docs/api/class-playwright" class="ulink" target="_top">browser</a> object created by Playwright.
+</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>
+<code class="literal">context</code>
+</p>
+</td>
+<td valign="top">
+<p>
+A <a href="https://playwright.dev/docs/api/class-browsercontext" class="ulink" target="_top">browser context</a>
+that doesn&#8217;t share cookies or cache with other browser contexts.
+</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>
+<code class="literal">params</code>
+</p>
+</td>
+<td valign="top">
+<p>
+User-defined variables that allow you to invoke the Synthetics suite with custom parameters.
+For example, if you want to use a different homepage depending on the <code class="literal">env</code>
+(<code class="literal">localhost</code> for <code class="literal">dev</code> and a URL for <code class="literal">prod</code>). See <a class="xref" href="synthetics-journeys.html#synthetics-params-secrets" title="Work with params and secrets">Work with params and secrets</a>
+for more information.
+</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>
+<code class="literal">request</code>
+</p>
+</td>
+<td valign="top">
+<p>
+A request object that can be used to make API requests independently of the browser
+interactions. For example, to get authentication credentials or tokens in service of a
+browser-based test. See <a class="xref" href="synthetics-journeys.html#synthetics-request-param" title="Make API requests">Make API requests</a> for more information.
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4><a id="synthetics-create-step"></a>Add steps<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/observability-docs/edit/master/docs/en/observability/synthetics-create-test.asciidoc">edit</a></h4>
+<p>A journey consists of one or more <em>steps</em>. Steps are actions that should be completed in a specific order.
+Steps are displayed individually in the Synthetics app along with screenshots for convenient debugging and error tracking.</p>
+<p>A basic two-step journey would look like this:</p>
+<div class="pre_wrapper lang-js">
+<pre class="programlisting prettyprint lang-js">journey('Journey name', ({ page, browser, client, params, request }) =&gt; {
+    step('Step 1 name', () =&gt; {
+      // Do something here
+    });
+    step('Step 2 name', () =&gt; {
+      // Do something else here
+    });
+});</pre>
+</div>
+<p>Steps can be as simple or complex as you need them to be.
+For example, a basic first step might load a web page:</p>
+<div class="pre_wrapper lang-js">
+<pre class="programlisting prettyprint lang-js">step('Load the demo page', () =&gt; {
+  await page.goto('https://elastic.github.io/synthetics-demo/'); <a id="CO29-1"></a><i class="conum" data-value="1"></i>
+});</pre>
+</div>
+<div class="calloutlist">
+<table border="0" summary="Callout list">
+<tr>
+<td align="left" valign="top" width="5%">
+<p><a href="#CO29-1"><i class="conum" data-value="1"></i></a></p>
+</td>
+<td align="left" valign="top">
+<p>See the <a href="https://playwright.dev/docs/api/class-page#page-goto" class="ulink" target="_top"><code class="literal">page.goto</code> reference</a> for more information.</p>
+</td>
+</tr>
+</table>
+</div>
+<p>A more complex step might wait for a page element to be selected
+and then make sure that it matches an expected value.</p>
+<p>For example, on a page using the following HTML:</p>
+<div class="pre_wrapper lang-html">
+<pre class="programlisting prettyprint lang-html">&lt;header class="header"&gt;
+  &lt;h1&gt;todos&lt;/h1&gt;
+  &lt;input class="new-todo"
+    autofocus autocomplete="off"
+    placeholder="What needs to be done?"&gt;
+&lt;/header&gt;</pre>
+</div>
+<p>You can verify that the <code class="literal">input</code> element with class <code class="literal">new-todo</code> has the expected <code class="literal">placeholder</code> value
+(the hint text for <code class="literal">input</code> elements) with the following test:</p>
+<div class="pre_wrapper lang-js">
+<pre class="programlisting prettyprint lang-js">step('Assert placeholder text', async () =&gt; {
+  const placeholderValue = await page.getAttribute(
+      'input.new-todo',
+      'placeholder'
+  ); <a id="CO30-1"></a><i class="conum" data-value="1"></i>
+  expect(placeholderValue).toBe('What needs to be done?'); <a id="CO30-2"></a><i class="conum" data-value="2"></i>
+});</pre>
+</div>
+<div class="calloutlist">
+<table border="0" summary="Callout list">
+<tr>
+<td align="left" valign="top" width="5%">
+<p><a href="#CO30-1"><i class="conum" data-value="1"></i></a></p>
+</td>
+<td align="left" valign="top">
+<p>Find the <code class="literal">input</code> element with class <code class="literal">new-todo</code> and get the value of the <code class="literal">placeholder</code> attribute.
+See the <a href="https://playwright.dev/docs/api/class-page#page-get-attribute" class="ulink" target="_top"><code class="literal">page.getAttribute</code> reference</a> for more information.</p>
+</td>
+</tr>
+<tr>
+<td align="left" valign="top" width="5%">
+<p><a href="#CO30-2"><i class="conum" data-value="2"></i></a></p>
+</td>
+<td align="left" valign="top">
+<p>Use the assertion library provided by the Synthetics agent to look for the
+expected value. See <a href="https://jestjs.io/docs/expect" class="ulink" target="_top">Jest expect docs</a> for more information.</p>
+</td>
+</tr>
+</table>
+</div>
+<div class="note admon">
+<div class="icon"></div>
+<div class="admon_content">
+<a id="synthetics-create-test-script-recorder"></a>
+<p>If you want to generate code by interacting with a web page directly, you can use the <span class="strong strong"><strong>Synthetics Recorder</strong></span>.</p>
+<p>The recorder launches a <a href="https://www.chromium.org/Home/" class="ulink" target="_top">Chromium browser</a> that will listen to each interaction you have with the web page and record them internally using Playwright.
+When you&#8217;re done interacting with the browser, the recorder converts the recorded actions into JavaScript code that you can use with Elastic Synthetics or Heartbeat.</p>
+<p>For more details on getting started with the Synthetics Recorder, refer to <a class="xref" href="synthetics-journeys.html#synthetics-recorder" title="Use the Synthetics Recorder">Use the Synthetics Recorder</a>.</p>
+</div>
+</div>
+<h4><a id="synthetics-request-param"></a>Make API requests<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/observability-docs/edit/master/docs/en/observability/synthetics-create-test.asciidoc">edit</a></h4>
+<p>You can use the <code class="literal">request</code> parameter to make API requests independently of browser interactions.
+For example, you could retrieve a token from an HTTP endpoint and use it in a subsequent webpage request.</p>
+<div class="pre_wrapper lang-js">
+<pre class="programlisting prettyprint lang-js">step('make an API request', async () =&gt; {
+  const response = await request.get(params.url);
+  // Do something with the response
+})</pre>
+</div>
+<p>The Elastic Synthetics <code class="literal">request</code> parameter is similar to <a href="https://playwright.dev/docs/api/class-apirequestcontext" class="ulink" target="_top">other request objects that are exposed by Playwright</a>
+with a few key differences:</p>
+<div class="ulist itemizedlist">
+<ul class="itemizedlist">
+<li class="listitem">
+The Elastic Synthetics <code class="literal">request</code> parameter comes built into the library so it doesn&#8217;t
+have to be imported separately, which reduces the amount of code needed and allows you to
+make API requests in <a class="xref" href="synthetics-get-started.html#synthetics-get-started-ui-browser" title="Add a browser monitor">inline journeys</a>.
+</li>
+<li class="listitem">
+The top level <code class="literal">request</code> object exposed by Elastic Synthetics has its own isolated cookie storage
+unlike Playwright&#8217;s <code class="literal">context.request</code> and <code class="literal">page.request</code>, which share cookie storage
+with the corresponding <a href="https://playwright.dev/docs/api/class-browsercontext" class="ulink" target="_top"><code class="literal">BrowserContext</code></a>.
+</li>
+<li class="listitem">
+If you want to control the creation of the <code class="literal">request</code> object, you can do so by passing options
+via <a class="xref" href="synthetics-command-reference.html#elastic-synthetics-command" title="@elastic/synthetics"><code class="literal">--playwright-options</code></a> or in the
+<a class="xref" href="synthetics-configuration.html" title="Configure Synthetics projects"><code class="literal">synthetics.config.ts</code> file</a>.
+</li>
+</ul>
+</div>
+<p>For a full example that shows how to use the <code class="literal">request</code> object, refer to the <a href="https://github.com/elastic/synthetics-demo/blob/main/advanced-examples/journeys/api-requests.journey.ts" class="ulink" target="_top">Elastic Synthetics demo repository</a>.</p>
+<div class="note admon">
+<div class="icon"></div>
+<div class="admon_content">
+<p>The <code class="literal">request</code> parameter is not intended to be used for writing pure API tests. Instead, it is a way to support
+writing plain HTTP requests in service of a browser-based test.</p>
+</div>
+</div>
+<h4><a id="before-after"></a>Set up and remove a global state<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/observability-docs/edit/master/docs/en/observability/synthetics-create-test.asciidoc">edit</a></h4>
+<p>If there are any actions that should be done before or after journeys, you can use <code class="literal">before</code>, <code class="literal">beforeAll</code>, <code class="literal">after</code>, or <code class="literal">afterAll</code>.</p>
+<p>To set up global state or a server that will be used for a <span class="strong strong"><strong>single</strong></span> <code class="literal">journey</code>, for example,
+use a <code class="literal">before</code> hook. To perform this setup once before <span class="strong strong"><strong>all</strong></span> journeys, use a <code class="literal">beforeAll</code> hook.</p>
+<div class="pre_wrapper lang-js">
+<pre class="programlisting prettyprint lang-js">before(({ params }) =&gt; {
+  // Actions to take
+});
+
+beforeAll(({ params }) =&gt; {
+  // Actions to take
+});</pre>
+</div>
+<p>You can clean up global state or close a server used for a <span class="strong strong"><strong>single</strong></span> <code class="literal">journey</code> using an <code class="literal">after</code> hook.
+To perform this cleanup once after all journeys, use an <code class="literal">afterAll</code> hook.</p>
+<div class="pre_wrapper lang-js">
+<pre class="programlisting prettyprint lang-js">after(({ params }) =&gt; {
+  // Actions to take
+});
+
+afterAll(({ params }) =&gt; {
+  // Actions to take
+});</pre>
+</div>
+<h4><a id="synthetics-import-packages"></a>Import NPM packages<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/observability-docs/edit/master/docs/en/observability/synthetics-create-test.asciidoc">edit</a></h4>
+<p>You can import and use other NPM packages inside journey code.
+Refer to the example below using the external NPM package <code class="literal">is-positive</code>:</p>
+<div class="pre_wrapper lang-js">
+<pre class="programlisting prettyprint lang-js">import { journey, step, monitor, expect } from '@elastic/synthetics';
+import isPositive from 'is-positive';
+
+journey('bundle test', ({ page, params }) =&gt; {
+  step('check if positive', () =&gt; {
+    expect(isPositive(4)).toBe(true);
+  });
+});</pre>
+</div>
+<p>When you <a class="xref" href="synthetics-get-started.html#synthetics-get-started-project" title="Create monitors with Project monitors">create a monitor</a> from a journey that uses
+external NPM packages, those packages will be bundled along with the
+journey code when the <code class="literal">push</code> command is invoked.</p>
+<p>However there are some limitations when using external packages:</p>
+<div class="ulist itemizedlist">
+<ul class="itemizedlist">
+<li class="listitem">
+Bundled journeys after compression should not be more than 800 Kilobytes.
+</li>
+<li class="listitem">
+Native node modules will not work as expected due to platform inconsistency.
+</li>
+</ul>
+</div>
+<h4><a id="synthetics-sample-test"></a>Sample synthetic test<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/observability-docs/edit/master/docs/en/observability/synthetics-create-test.asciidoc">edit</a></h4>
+<p>A complete example of a basic synthetic test might look like this:</p>
+<div class="pre_wrapper lang-js">
+<pre class="programlisting prettyprint lang-js">import { journey, step, expect } from '@elastic/synthetics';
+
+journey('Ensure placeholder is correct', ({ page }) =&gt; {
+  step('Load the demo page', async () =&gt; {
+    await page.goto('https://elastic.github.io/synthetics-demo/');
+  });
+  step('Assert placeholder text', async () =&gt; {
+    const placeholderValue = await page.getAttribute(
+      'input.new-todo',
+      'placeholder'
+    );
+    expect(placeholderValue).toBe('What needs to be done?');
+  });
+});</pre>
+</div>
+<p>You can find more complex examples in the <a href="https://github.com/elastic/synthetics-demo/blob/main/advanced-examples/journeys/api-requests.journey.ts" class="ulink" target="_top">Elastic Synthetics demo repository</a>.</p>
+<h4><a id="synthetics-test-locally"></a>Test locally<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/observability-docs/edit/master/docs/en/observability/synthetics-create-test.asciidoc">edit</a></h4>
+<p>As you write journeys, you can run them locally to verify they work as expected. Then, you can create monitors to run your journeys at a regular interval.</p>
+<p>To test all the journeys in a project, navigate into the directory containing the synthetics project and run the journeys in there.
+By default, the <code class="literal">@elastic/synthetics</code> runner will only run files matching the filename <code class="literal">*.journey.(ts|js)*</code>.</p>
+<div class="pre_wrapper lang-sh">
+<pre class="programlisting prettyprint lang-sh"># Run tests on the current directory. The dot `.` indicates
+# that it should run all tests in the current directory.
+npx @elastic/synthetics .</pre>
+</div>
+<h5><a id="synthetics-test-inline"></a>Test an inline monitor<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/observability-docs/edit/master/docs/en/observability/synthetics-create-test.asciidoc">edit</a></h5>
+<p>To test an inline monitor&#8217;s journey locally, pipe the inline journey into the <code class="literal">npx @elastic/synthetics</code> command.</p>
+<p>Assume, for example, that your inline monitor includes the following code:</p>
+<div class="pre_wrapper lang-js">
+<pre class="programlisting prettyprint lang-js">step('load homepage', async () =&gt; {
+    await page.goto('https://www.elastic.co');
+});
+step('hover over products menu', async () =&gt; {
+    await page.hover('css=[data-nav-item=products]');
+});</pre>
+</div>
+<p>To run that journey locally, you can save that code to a file and pipe the file&#8217;s contents into <code class="literal">@elastic-synthetics</code>:</p>
+<div class="pre_wrapper lang-sh">
+<pre class="programlisting prettyprint lang-sh">cat path/to/sample.js | npx @elastic/synthetics --inline</pre>
+</div>
+<p>And you&#8217;ll get a response like the following:</p>
+<div class="pre_wrapper lang-sh">
+<pre class="programlisting prettyprint lang-sh">Journey: inline
+   ✓  Step: 'load homepage' succeeded (1831 ms)
+   ✓  Step: 'hover over products menu' succeeded (97 ms)
+
+ 2 passed (2511 ms)</pre>
+</div>
+</div>
+
+<div class="section">
+<div class="titlepage"><div><div>
+<h3 class="title"><a id="synthetics-monitor-use"></a>Configure individual browser monitors<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/observability-docs/edit/master/docs/en/observability/synthetics-monitor-use.asciidoc">edit</a></h3>
+</div></div></div>
+
+<div class="warning admon">
+<div class="icon"></div>
+<div class="admon_content">
+<p>This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.</p>
+</div>
+</div>
+<div class="note admon">
+<div class="icon"></div>
+<div class="admon_content">
+<p>This is only relevant for project monitors.
+For more information on configuring browser monitors added in the Synthetics app,
+refer to <a class="xref" href="synthetics-get-started.html#synthetics-get-started-ui" title="Create monitors in the Synthetics app">Use the Synthetics app</a>.</p>
+</div>
+</div>
+<p>After <a class="xref" href="synthetics-journeys.html#synthetics-create-test" title="Write a synthetic test">writing synthetic journeys</a>, you can use <code class="literal">monitor.use</code>
+to configure the browser monitors that will run your tests.</p>
+<p>You&#8217;ll need to set a few configuration options:</p>
+<div class="ulist itemizedlist">
+<ul class="itemizedlist">
+<li class="listitem">
+<span class="strong strong"><strong>Give your monitor a name.</strong></span> Provide a human readable name and a unique ID for the monitor. This will appear in Kibana where you can view and manage monitors after they&#8217;re created.
+</li>
+<li class="listitem">
+<span class="strong strong"><strong>Set the schedule.</strong></span> Specify the interval at which your tests will run.
+</li>
+<li class="listitem">
+<span class="strong strong"><strong>Specify where the monitors should run.</strong></span> You can run monitors on Elastic&#8217;s global managed testing infrastructure
+or <a class="xref" href="synthetics-private-location.html" title="Monitor resources on private networks">create a Private Location</a> to run monitors from your own premises.
+</li>
+<li class="listitem">
+<span class="strong strong"><strong>Set other options as needed.</strong></span> There are several other options you can set to customize your implementation including params, tags, screenshot options, throttling options, and more.
+</li>
+</ul>
+</div>
+<p>Configure each monitor directly in your <code class="literal">journey</code> code using <code class="literal">monitor.use</code>.
+The <code class="literal">monitor</code> API allows you to set unique options for each journey&#8217;s monitor directly through code.
+For example:</p>
+<div class="pre_wrapper lang-js">
+<pre class="programlisting prettyprint lang-js">import { journey, step, monitor, expect } from '@elastic/synthetics';
+
+journey('Ensure placeholder is correct', ({ page, params }) =&gt; {
+  monitor.use({
+    id: 'example-monitor',
+    schedule: 10,
+    throttling: {
+      download: 10,
+      upload: 5,
+      latency: 100,
+    },
+  });
+  step('Load the demo page', async () =&gt; {
+    await page.goto('https://elastic.github.io/synthetics-demo/');
+  });
+  step('Assert placeholder text', async () =&gt; {
+    const placeholderValue = await page.getAttribute(
+      'input.new-todo',
+      'placeholder'
+    );
+    expect(placeholderValue).toBe('What needs to be done?');
+  });
+});</pre>
+</div>
+<p>For each journey, you can specify its <code class="literal">schedule</code> and the <code class="literal">locations</code> in which it runs.
+When those options are not set, Synthetics will use the default values in the global configuration file.
+For more details, refer to <a class="xref" href="synthetics-configuration.html" title="Configure Synthetics projects">Configure projects</a>.</p>
+</div>
+
+<div class="section">
+<div class="titlepage"><div><div>
+<h3 class="title"><a id="synthetics-params-secrets"></a>Work with params and secrets<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/observability-docs/edit/master/docs/en/observability/synthetics-params-secrets.asciidoc">edit</a></h3>
+</div></div></div>
+<div class="warning admon">
+<div class="icon"></div>
+<div class="admon_content">
+<p>This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.</p>
+</div>
+</div>
+<p>You may need to use dynamically defined values in your synthetic scripts, which may sometimes be sensitive.
+For instance, you may want to test a production website with a particular demo account whose password is only known to the team managing the synthetic monitors.
+Solving these problems is where <code class="literal">params</code> come in. <code class="literal">params</code> are variables that you can use within a synthetic project.
+They can be defined either in the project config file or the synthetics agent command line.</p>
+<div class="note admon">
+<div class="icon"></div>
+<div class="admon_content">
+<p>Because synthetics is a full JavaScript environment, it is also possible to use regular environment variables via
+the standard node <code class="literal">process.env</code> global object.</p>
+</div>
+</div>
+<h4><a id="synthetics-basic-params"></a>Parameter Basics<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/observability-docs/edit/master/docs/en/observability/synthetics-params-secrets.asciidoc">edit</a></h4>
+<p>When creating a project, parameters can be referenced via the <code class="literal">params</code> property available within the
+argument to a <code class="literal">journey</code>, <code class="literal">before</code>, <code class="literal">beforeAll</code>, <code class="literal">after</code>, or <code class="literal">afterAll</code> callback function.</p>
+<div class="pre_wrapper lang-js">
+<pre class="programlisting prettyprint lang-js">beforeAll(({params}) =&gt; {
+  console.log(`Visiting ${params.url}`)
+})
+
+journey("My Journey", ({ page, params }) =&gt; {
+    step('launch app', async () =&gt; {
+      await page.goto(params.url);<a id="CO31-1"></a><i class="conum" data-value="1"></i>
+    });
+});</pre>
+</div>
+<div class="calloutlist">
+<table border="0" summary="Callout list">
+<tr>
+<td align="left" valign="top" width="5%">
+<p><a href="#CO31-1"><i class="conum" data-value="1"></i></a></p>
+</td>
+<td align="left" valign="top">
+<p>Note that in a typescript program you would want to instead use <code class="literal">params.url as string</code>.</p>
+</td>
+</tr>
+</table>
+</div>
+<p>If you try to run the example above you&#8217;ll notice an error because we haven&#8217;t specified a value for the <code class="literal">url</code> parameter.
+Parameter values can be declared by any of the following methods:</p>
+<div class="ulist itemizedlist">
+<ul class="itemizedlist">
+<li class="listitem">
+In the <em>Global parameters</em> tab of the <a class="xref" href="synthetics-settings.html#synthetics-settings-global-parameters" title="Global parameters">Synthetics Settings page in Kibana</a>.
+</li>
+<li class="listitem">
+Declaring a default value for the parameter in a <a class="xref" href="synthetics-journeys.html#synthetics-dynamic-configs" title="Use a config file to set params">configuration file</a>.
+</li>
+<li class="listitem">
+Passing the <code class="literal">--params</code> <a class="xref" href="synthetics-journeys.html#synthetics-cli-params" title="Use CLI arguments to set params">CLI argument</a>.
+</li>
+</ul>
+</div>
+<p>The values in the configuration file are read in the following order:</p>
+<div class="olist orderedlist">
+<ol class="orderedlist">
+<li class="listitem">
+<span class="strong strong"><strong>Global parameters</strong></span>: The <em>Global parameters</em> set in Kibana are read first.
+</li>
+<li class="listitem">
+<span class="strong strong"><strong>Configuration file</strong></span>: Then the <em>Global parameters</em> are merged with any parameters defined in a configuration file.
+If a parameter is defined in both Kibana <span class="strong strong"><strong>and</strong></span> a configuration file,
+the value in the configuration file will be used.
+</li>
+<li class="listitem">
+<span class="strong strong"><strong>CLI</strong></span>: Then the parameters defined in the configuration are merged with any parameters passed to the CLI <code class="literal">--params</code> argument.
+If a parameter is defined in a configuration file <span class="strong strong"><strong>and</strong></span> using the CLI argument,
+the value defined using the CLI will be used.
+When running a script using the CLI, Kibana-defined <em>Global parameters</em> have no impact
+on the test because it won&#8217;t have access to Kibana.
+</li>
+</ol>
+</div>
+<h4><a id="synthetics-dynamic-configs"></a>Use a config file to set params<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/observability-docs/edit/master/docs/en/observability/synthetics-params-secrets.asciidoc">edit</a></h4>
+<p>Use a <code class="literal">synthetics.config.js</code> or <code class="literal">synthetics.config.ts</code> file to define variables your tests always need to be defined.
+This file should be placed in the root of your synthetics project.</p>
+<div class="pre_wrapper lang-js">
+<pre class="programlisting prettyprint lang-js">export default (env) =&gt; {
+  let url = "http://localhost:8080";
+  if (env === "production") {
+    url = "https://elastic.github.io/synthetics-demo/"
+  }
+  return {
+    params: {
+      url,
+    },
+  };
+};</pre>
+</div>
+<p>The example above uses the <code class="literal">env</code> variable, which corresponds to the value of the <code class="literal">NODE_ENV</code> environment variable.</p>
+<h4><a id="synthetics-cli-params"></a>Use CLI arguments to set params<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/observability-docs/edit/master/docs/en/observability/synthetics-params-secrets.asciidoc">edit</a></h4>
+<p>To set parameters when running <code class="literal">elastic-synthetics</code> on the command line, use the <code class="literal">--params</code> or <code class="literal">-p</code> flag to the <code class="literal">elastic-synthetics</code> program. The provided map is merged over any existing variables defined in the <code class="literal">synthetics.config.{js,ts}</code> file.</p>
+<p>For example, to override the <code class="literal">url</code> parameter, you would run:</p>
+<div class="pre_wrapper lang-sh">
+<pre class="programlisting prettyprint lang-sh">elastic-synthetics . --params '{"url": "http://localhost:8080"}'</pre>
+</div>
+<h4><a id="synthetics-secrets-sensitive"></a>Working with secrets and sensitive values<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/observability-docs/edit/master/docs/en/observability/synthetics-params-secrets.asciidoc">edit</a></h4>
+<p>Your synthetics scripts may require the use of passwords or other sensitive secrets that are not known until runtime.</p>
+<div class="warning admon">
+<div class="icon"></div>
+<div class="admon_content">
+<p>Because synthetics scripts have no limitations, a malicious script author could write a
+synthetics journey that exfiltrates <code class="literal">params</code> and other data at runtime.
+Do <span class="strong strong"><strong>not</strong></span> to use truly sensitive passwords (for example, an admin password or a real credit card)
+in <span class="strong strong"><strong>any</strong></span> synthetics tools.
+Instead, set up limited demo accounts, or fake credit cards with limited functionality.</p>
+</div>
+</div>
+<p>Use environment variables to handle any values needing encryption at rest.
+The example below uses the syntax <code class="literal">${URL}</code> to reference a variable named <code class="literal">URL</code> defined in the environment:</p>
+<div class="pre_wrapper lang-yaml">
+<pre class="programlisting prettyprint lang-yaml">- name: Todos
+  id: todos
+  type: browser
+  schedule: "@every 3m"
+  tags: todos-app
+  params:
+    url: ${URL}
+  source:
+    inline:
+      script: |-
+      step("load homepage", async () =&gt; {
+        await page.goto(params.url);
+      });
+      step("hover over products menu", async () =&gt; {
+        await page.hover('css=[data-nav-item=products]');
+      });</pre>
+</div>
+</div>
+
+<div class="section">
+<div class="titlepage"><div><div>
+<h3 class="title"><a id="synthetics-recorder"></a>Use the Synthetics Recorder<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/observability-docs/edit/master/docs/en/observability/synthetics-recorder.asciidoc">edit</a></h3>
+</div></div></div>
+<div class="warning admon">
+<div class="icon"></div>
+<div class="admon_content">
+<p>This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.</p>
+</div>
+</div>
+<p>You can use the Synthetics Recorder to <a class="xref" href="synthetics-journeys.html#synthetics-create-test" title="Write a synthetic test">write a synthetic test</a> by interacting with a web page and exporting journey code that reflects all the actions you took.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/synthetics-create-test-script-recorder.png" alt="Elastic Synthetics Recorder after recording a journey and clicking Export">
+</div>
+</div>
+<h5><a id="synthetics-recorder-set-up"></a>Set up<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/observability-docs/edit/master/docs/en/observability/synthetics-recorder.asciidoc">edit</a></h5>
+<p>Download and install the Elastic Synthetics Recorder from the <a href="https://github.com/elastic/synthetics-recorder/releases" class="ulink" target="_top">GitHub repository&#8217;s release page</a>.</p>
+<h4><a id="synthetics-recorder-record-a-journey"></a>Record a journey<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/observability-docs/edit/master/docs/en/observability/synthetics-recorder.asciidoc">edit</a></h4>
+<p>To record a journey:</p>
+<div class="olist orderedlist">
+<ol class="orderedlist">
+<li class="listitem">
+Enter a starting URL in the search box. This URL will be the starting point of the journey script the recorder will create.
+</li>
+<li class="listitem">
+Click <span class="strong strong"><strong>Start</strong></span> or press Enter on your keyboard. This will launch a Chromium window open to the page you specified and start recording.
+</li>
+<li class="listitem">
+Start interacting with the browser. This can include clicking on text, navigation, focusing on inputs like buttons and text fields, and more.
+</li>
+<li class="listitem">
+(Optional) You can click <span class="strong strong"><strong>Pause</strong></span> to temporarily stop recording actions while you continue to interact with the browser. Click again to start recording actions again. Note: It&#8217;s especially important to <a class="xref" href="synthetics-journeys.html#synthetics-recorder-test-the-journey" title="Test the journey">test the journey</a> if you paused recording at any point.
+</li>
+<li class="listitem">
+When you&#8217;re done interacting with the browser window, click <span class="strong strong"><strong>Stop</strong></span> or close the browser to stop recording.
+</li>
+</ol>
+</div>
+<h4><a id="synthetics-recorder-edit-a-journey"></a>Edit a journey<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/observability-docs/edit/master/docs/en/observability/synthetics-recorder.asciidoc">edit</a></h4>
+<p>Once you&#8217;ve started recording, you can use the Synthetics Recorder UI to edit steps and individual actions before generating the journey code.
+You can also edit the journey after you&#8217;ve stopped recording.</p>
+<h5><a id="synthetics-recorder-name-steps"></a>Name steps<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/observability-docs/edit/master/docs/en/observability/synthetics-recorder.asciidoc">edit</a></h5>
+<p>Naming steps can help make the resulting journey code easier to understand.
+If you provide a step name, the name will be used in both the UI and the resulting code.
+If you don&#8217;t name steps, the UI will show "Step 1", "Step 2", and so on, and the resulting code will use the first action in the step as the step text.</p>
+<p>To edit a step name:</p>
+<div class="olist orderedlist">
+<ol class="orderedlist">
+<li class="listitem">
+Hover over the current step name and click the pencil icon that appears.
+</li>
+<li class="listitem">
+Edit the text in the text box.
+</li>
+<li class="listitem">
+Click Return or Enter on your keyboard to save the updated name.
+</li>
+</ol>
+</div>
+<h5><a id="synthetics-recorder-split-into-multiple-steps"></a>Split into multiple steps<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/observability-docs/edit/master/docs/en/observability/synthetics-recorder.asciidoc">edit</a></h5>
+<p>Steps represent groups of actions that should be completed in a specific order.
+Breaking a journey into steps can make it easier to read the resulting code.
+It can also make it easier to interpret results in the Synthetics app since each step is
+displayed individually in the Synthetics app along with screenshots for convenient debugging and error tracking.</p>
+<p>By default, the Synthetics Recorder will group all actions in a single step,
+but you can break actions into any number of steps.</p>
+<p>To add a step:</p>
+<div class="olist orderedlist">
+<ol class="orderedlist">
+<li class="listitem">
+Click the plus icon between two actions to create a new step.
+</li>
+<li class="listitem">
+(Optional) Consider naming the step.
+</li>
+</ol>
+</div>
+<p>Use the trash can icon to delete the step divider, adding the actions from the deleted step into the previous step.</p>
+<h5><a id="synthetics-recorder-edit-or-delete-recorded-actions"></a>Edit or delete recorded actions<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/observability-docs/edit/master/docs/en/observability/synthetics-recorder.asciidoc">edit</a></h5>
+<p>You can fine-tune a journey by editing actions that were generated by the recorder.
+You can&#8217;t change the type of command (for example, "click" or "navigate"), but you can change the value that is passed to the command.</p>
+<p>To edit an action:</p>
+<div class="olist orderedlist">
+<ol class="orderedlist">
+<li class="listitem">
+Hover over an action and click the pencil icon that appears.
+</li>
+<li class="listitem">
+Edit the value as needed.
+</li>
+<li class="listitem">
+Click <span class="strong strong"><strong>Save</strong></span>.
+</li>
+</ol>
+</div>
+<p>To delete an action:</p>
+<div class="olist orderedlist">
+<ol class="orderedlist">
+<li class="listitem">
+Hover over the action you want to delete and click the three dots for more options.
+</li>
+<li class="listitem">
+Click <span class="strong strong"><strong>Delete action</strong></span>.
+</li>
+</ol>
+</div>
+<div class="important admon">
+<div class="icon"></div>
+<div class="admon_content">
+<p>If you changed or deleted any actions to ensure the journey still works, it&#8217;s especially important to <a class="xref" href="synthetics-journeys.html#synthetics-recorder-test-the-journey" title="Test the journey">test the journey</a>.</p>
+</div>
+</div>
+<h5><a id="synthetics-recorder-add-assertions"></a>Add assertions<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/observability-docs/edit/master/docs/en/observability/synthetics-recorder.asciidoc">edit</a></h5>
+<p>Assertions can play an important role in effective synthetic journeys by making determinations about the state of the page you are testing.
+This can include checking if an element is visible or checking the contents of a text field.
+You can&#8217;t generate an assertion just from interacting with the browser window.
+Instead, you can add assertions between generated actions.</p>
+<p>To add an assertion:</p>
+<div class="olist orderedlist">
+<ol class="orderedlist">
+<li class="listitem">
+Find the generated action that should be done right before you want to assert a condition.
+</li>
+<li class="listitem">
+Hover over that action and click the three dots for more options.
+</li>
+<li class="listitem">
+Click <span class="strong strong"><strong>Add assertion</strong></span>. This will add a new "assert" action in the UI.
+</li>
+<li class="listitem">
+Provide the type of assertion, selector, and value.
+</li>
+<li class="listitem">
+Click <span class="strong strong"><strong>Save</strong></span>.
+</li>
+</ol>
+</div>
+<div class="important admon">
+<div class="icon"></div>
+<div class="admon_content">
+<p>If you added any assertions after you&#8217;ve finished recording to ensure the journey still works, it&#8217;s especially important to <a class="xref" href="synthetics-journeys.html#synthetics-recorder-test-the-journey" title="Test the journey">test the journey</a>.</p>
+</div>
+</div>
+<h4><a id="synthetics-recorder-test-the-journey"></a>Test the journey<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/observability-docs/edit/master/docs/en/observability/synthetics-recorder.asciidoc">edit</a></h4>
+<p>At any point during or after the recording process concludes, you can test your script.</p>
+<p>When you click the <span class="strong strong"><strong>Test</strong></span> button, Elastic Synthetics will run the journey.
+As the test runs, the recorder will display results on a per-step basis.
+If there are any errors that prevent the journey from running, the recorder will display the relevant error message to help you debug.</p>
+<div class="important admon">
+<div class="icon"></div>
+<div class="admon_content">
+<p>If you paused recording, updated actions, or added assertions manually in the recorder it is especially important that you test the journey to  verify that the actions work in sequence.</p>
+</div>
+</div>
+<h4><a id="synthetics-recorder-export"></a>Export<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/observability-docs/edit/master/docs/en/observability/synthetics-recorder.asciidoc">edit</a></h4>
+<p>When you are satisfied with journey you&#8217;ve created, you can export it from the recorder.</p>
+<p>Click <span class="strong strong"><strong>Export</strong></span> to view the final journey code.
+From there you can use the code by:</p>
+<div class="ulist itemizedlist">
+<ul class="itemizedlist">
+<li class="listitem">
+Copy and pasting code containing all steps into a new or existing <a class="xref" href="synthetics-get-started.html#synthetics-get-started-project" title="Create monitors with Project monitors">synthetics project</a> or an <a class="xref" href="synthetics-get-started.html#synthetics-get-started-ui" title="Create monitors in the Synthetics app">inline monitor</a>.
+</li>
+<li class="listitem">
+Click <span class="strong strong"><strong>Export</strong></span> to save a JavaScript file containing all steps.
+</li>
+</ul>
+</div>
+<p>You can also check <span class="strong strong"><strong>Export as project</strong></span> and either copy and paste or <span class="strong strong"><strong>Export</strong></span>
+to get the full journey code including <code class="literal">journey</code> and imports for all dependencies.</p>
+</div>
+
+</div>
+<div class="navfooter">
+<span class="prev">
+<a href="synthetics-get-started.html">« Get started</a>
+</span>
+<span class="next">
+<a href="synthetics-lightweight.html">Configure lightweight monitors »</a>
+</span>
+</div>
+</div>
+</body>
+</html>

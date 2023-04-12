@@ -38,6 +38,8 @@ include::processor-decode_cef.asciidoc[leveloffset=+1]
 
 include::processor-decode_csv_fields.asciidoc[leveloffset=+1]
 
+include::processor-decode_duration.asciidoc[leveloffset=+1]
+
 include::processor-decode_json_fields.asciidoc[leveloffset=+1]
 
 include::processor-decode_xml.asciidoc[leveloffset=+1]
@@ -61,6 +63,8 @@ include::processor-extract_array.asciidoc[leveloffset=+1]
 include::processor-fingerprint.asciidoc[leveloffset=+1]
 
 include::processor-include_fields.asciidoc[leveloffset=+1]
+
+include::processor-move_fields.asciidoc[leveloffset=+1]
 
 include::processor-parse_aws_vpc_flow_log.asciidoc[leveloffset=+1]
 

@@ -8,6 +8,14 @@ steps to make sure:
 content.
 * {agent}s are able to download binaries during upgrades.
 
+When upgrading all the components in an air-gapped environment, it is recommended that you upgrade in the following order:
+
+. Upgrade the {package-registry}.
+. Upgrade the {stack} including {kib}.
+. Upgrade the {artifact-registry} and ensure the latest {agent} binaries are available.
+. Upgrade the on-premise {fleet-server}.
+. In {fleet}, issue an upgrade for all the {agent}s.
+
 [discrete]
 [[air-gapped-proxy-server]]
 == Use a proxy server to access the {package-registry}
@@ -29,6 +37,13 @@ For more information, refer to <<fleet-agent-proxy-support>>.
 [discrete]
 [[air-gapped-diy-epr]]
 == Host your own {package-registry}
+
+NOTE: The {package-registry} packages include signatures used in
+<<package-signatures,package verification>>. By default, {fleet} uses the Elastic
+public GPG key to verify package signatures. If you ever need to change this GPG
+key, use the `xpack.fleet.packageVerification.gpgKeyPath` setting in
+`kibana.yml`. For more information, refer to
+{kibana-ref}/fleet-settings-kb.html[{fleet} settings].
 
 If routing traffic through a proxy server is not an option, you can host your
 own {package-registry}.
@@ -98,7 +113,7 @@ requests to the root path:
 ["source", "sh", subs="attributes"]
 ----
 docker run -it -p 8080:8080 \
-    --health-cmd "curl -f -L http://127.0.0.1:8080/" \
+    --health-cmd "curl -f -L http://127.0.0.1:8080/health" \
     docker.elastic.co/package-registry/distribution:{version}
 ----
 

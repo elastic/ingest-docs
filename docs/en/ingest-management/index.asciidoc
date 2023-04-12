@@ -79,6 +79,8 @@ include::elastic-agent/uninstall-elastic-agent.asciidoc[leveloffset=+2]
 
 include::elastic-agent/start-stop-elastic-agent.asciidoc[leveloffset=+2]
 
+include::elastic-agent/elastic-agent-encryption.asciidoc[leveloffset=+2]
+
 include::security/generate-certificates.asciidoc[leveloffset=+1]
 
 include::security/certificates.asciidoc[leveloffset=+2]
@@ -99,9 +101,7 @@ include::fleet/upgrade-elastic-agent.asciidoc[leveloffset=+3]
 
 include::fleet/filter-agent-list-by-tags.asciidoc[leveloffset=+3]
 
-include::fleet/view-elastic-agent-status.asciidoc[leveloffset=+3]
-
-include::fleet/elastic-agent-logging.asciidoc[leveloffset=+3]
+include::fleet/monitor-elastic-agent.asciidoc[leveloffset=+3]
 
 include::agent-policies.asciidoc[leveloffset=+2]
 
@@ -147,6 +147,8 @@ include::elastic-agent/configuration/outputs/output-configuration.asciidoc[level
 
 include::elastic-agent/configuration/elastic-agent-standalone-logging.asciidoc[leveloffset=+2]
 
+include::elastic-agent/configuration/elastic-agent-kubernetes-autodiscovery.asciidoc[leveloffset=+2]
+
 include::elastic-agent/configuration/elastic-agent-monitoring.asciidoc[leveloffset=+2]
 
 include::elastic-agent/configuration/yaml/elastic-agent-reference-yaml.asciidoc[leveloffset=+2]
@@ -159,7 +161,7 @@ include::troubleshooting/troubleshooting.asciidoc[leveloffset=+2]
 
 include::troubleshooting/faq.asciidoc[leveloffset=+2]
 
-include::release-notes/release-notes-8.4.asciidoc[leveloffset=+1]
+include::release-notes/release-notes-8.5.asciidoc[leveloffset=+1]
 
 include::elastic-agent/install-fleet-managed-agent.asciidoc[leveloffset=+2]
 

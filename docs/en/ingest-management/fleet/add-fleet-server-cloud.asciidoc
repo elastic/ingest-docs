@@ -14,7 +14,7 @@ deployment.
 
 [discrete]
 [[fleet-server-compatibility]]
-== Compatibility and prerequisites
+= Compatibility and prerequisites
 
 {fleet-server} is compatible with the following Elastic products:
 
@@ -35,9 +35,13 @@ cover `*.cname`, not `*.*.cname`). This enables us to provide the URL for
 For more information about hosting {fleet-server} on {ece}, refer to
 {ece-ref}/ece-manage-integrations-server.html[Manage your {integrations-server}].
 
+NOTE: The TLS certificates used to secure connections between {agent} and
+{fleet-server} are managed by {ecloud}. You do not need to create a private key
+or generate certificates.
+
 [discrete]
 [[add-fleet-server-cloud-set-up]]
-== Setup
+= Setup
 
 To confirm that an {integrations-server} is available in your deployment:
 
@@ -58,7 +62,7 @@ image::images/integrations-server-hosted-container.png[Hosted {integrations-serv
 
 [discrete]
 [[add-fleet-server-cloud-next]]
-== Next steps
+= Next steps
 
 Now you're ready to add {agent}s to your host systems. To learn how, see
 <<install-fleet-managed-elastic-agent>>.

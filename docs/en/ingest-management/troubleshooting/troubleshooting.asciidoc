@@ -155,6 +155,22 @@ an external service called the {package-registry}.
 For this to work, the {kib} server must connect to `https://epr.elastic.co` on port `443`.
 
 [discrete]
+[[fleet-errors-tls]]
+== {kib} cannot connect to {package-registry} in air-gapped environments
+
+In air-gapped environments, you may encounter the following error if you're using a custom Certificate Authority (CA) that is not available to {kib}:
+
+[source,json]
+----
+{"type":"log","@timestamp":"2022-03-02T09:58:36-05:00","tags":["error","plugins","fleet"],"pid":58716,"message":"Error connecting to package registry: request to https://customer.server.name:8443/categories?experimental=true&include_policy_templates=true&kibana.version=7.17.0 failed, reason: self signed certificate in certificate chain"}
+----
+
+To fix this problem, add your CA certificate file path to the {kib} startup
+file by defining the `NODE_EXTRA_CA_CERTS` environment variable. More information
+about this in <<air-gapped-tls>> section.
+
+
+[discrete]
 [[fleet-app-crashes]]
 == {fleet} in {kib} crashes
 
@@ -187,7 +203,7 @@ To fix this problem, pass the `--insecure` flag along with the `enroll` or
 
 [source,sh]
 ----
-sudo ./elastic-agent install -f --url=https://<fleet-server-ip>:8220 --enrollment-token=<token> --insecure
+sudo ./elastic-agent install --url=https://<fleet-server-ip>:8220 --enrollment-token=<token> --insecure
 ----
 
 Traffic between {agent}s and {fleet-server} over HTTPS will be encrypted; you're
@@ -330,7 +346,7 @@ This archive collects the following information:
 
 Note that the diagnostics bundle is intended for debugging purposes only, its structure may change between releases.
 
-IMPORTANT: The configration files in the archive may have credentials in *plain text*.
+IMPORTANT: The configuration files in the archive may have credentials in *plain text*.
 These will need to be manually redacted before the archive is shared.
 
 [discrete]
@@ -349,7 +365,7 @@ The stand-alone install command installs the {agent}, and all of the service con
 
 [source,shell]
 ----
-elastic-agent enroll -f --fleet-server-es=https://<es-url>:443 --fleet-server-service-token=<token> --fleet-server-policy=<policy-id>
+elastic-agent enroll --fleet-server-es=https://<es-url>:443 --fleet-server-service-token=<token> --fleet-server-policy=<policy-id>
 ----
 Note: Port `443` is commonly used in {ecloud}. However, with self-managed deployments, your {es} may run on port `9200` or something entirely different.
 
@@ -386,6 +402,21 @@ if you had intended to uninstall the {fleet-server}. In which case, re-check and
 include::{fleet-repo-dir}/release-notes/release-notes-7.14.asciidoc[tag=fleet-server-input-missing-detail]
 
 include::{fleet-repo-dir}/release-notes/release-notes-7.14.asciidoc[tag=fleet-server-input-missing-fix]
+
+[discrete]
+[[fleet-agent-stuck-on-updating]]
+==  {agent} is stuck in status `Updating`
+
+In some rare situations during the upgrade process, an {agent} may hang with the status `Updating`. To fix this problem, authenticate as a superuser and force unenroll to remove the stale {agent}:
+
+[source,shell]
+----
+curl 'https://<kibana_url>/api/fleet/agents/<agentID>/unenroll' \
+  -H 'kbn-xsrf: xx' \
+  -H 'Content-type: application/json' \
+  --data-raw '{"force":true,"revoke":true}' \
+  --compressed
+----
 
 [discrete]
 [[secondary-agent-not-connecting]]
@@ -535,7 +566,7 @@ command:
 
 [source,sh]
 ----
-sudo ./elastic-agent install -f --url=https://<fleet-server-ip>:8220 --enrollment-token=<token> --insecure
+sudo ./elastic-agent install --url=https://<fleet-server-ip>:8220 --enrollment-token=<token> --insecure
 ----
 
 For more information, refer to <<agent-enrollment-certs>>.
@@ -595,3 +626,24 @@ to `false`, and then save the integration.
 == Hosted {agent} is offline
 
 To scale the {fleet-server} deployment, {ecloud} starts new containers or shuts down old ones when hosted {agent}s are required or no longer needed. The old {agent}s will show in the Agents list for 24 hours then automatically disappear.
+
+[discrete]
+[[hosted-agent-8-x-upgrade-fail]]
+== APM & Fleet fails to upgrade to 8.x on {ecloud}
+
+In some scenarios, upgrading APM & Fleet to 8.x may fail if the Elastic Cloud agent policy was modified manually. The {fleet} app in {kib} may show a message like:
+
+[source,sh]
+----
+Unable to create package policy. Package 'apm' already exists on this agent policy
+----
+
+To work around this problem, you can reset the {ecloud} agent policy with an API call. Note that this will remove any custom integration policies that you've added to the policy, such as Synthetics monitors.
+
+[source,sh]
+----
+curl -u elastic:<password> --request POST \
+  --url <kibana_url>/internal/fleet/reset_preconfigured_agent_policies/policy-elastic-agent-on-cloud \
+  --header 'Content-Type: application/json' \
+  --header 'kbn-xsrf: xyz' \
+----

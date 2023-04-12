@@ -1,4 +1,4 @@
-// Use these for links to issue and pulls.
+// Use these for links to issue and pulls. 
 :kib-issue: https://github.com/elastic/kibana/issues/
 :kib-pull: https://github.com/elastic/kibana/pull/
 :agent-issue: https://github.com/elastic/beats/issues/
@@ -12,9 +12,6 @@
 
 This section summarizes the changes in each release.
 
-* <<release-notes-7.16.3>>
-* <<release-notes-7.16.2>>
-* <<release-notes-7.16.1>>
 * <<release-notes-7.16.0>>
 
 Also see:
@@ -22,83 +19,13 @@ Also see:
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
 
-[[release-notes-7.16.3]]
-== {fleet} and {agent} 7.16.3
-
-Review important information about the {fleet} and {agent} 7.16.3 releases.
-
-
-[discrete]
-[[deprecations-7.16.3]]
-=== Deprecations
-
-The following functionality is deprecated in 7.16.3, and will be removed in
-8.0.0. Deprecated functionality does not have an immediate impact on your
-application, but we strongly recommend you make the necessary updates after you
-upgrade to 7.16.3.
-
-[discrete]
-==== Deprecated environment variables
-
-Some environment variables used by {fleet-server} are deprecated and will be
-removed in a future release {agent-pull}29434[#29434].
-
-|===
-|Deprecated | Use this instead
-
-|`FLEET_SETUP` |`KIBANA_FLEET_SETUP`
-|`FLEET_SERVER_ELASTICSEARCH_USERNAME` |`FLEET_SERVER_SERVICE_TOKEN`
-|`FLEET_SERVER_ELASTICSEARCH_PASSWORD` |`FLEET_SERVER_SERVICE_TOKEN`
-|`ELASTICSEARCH_USERNAME` |`FLEET_SERVER_SERVICE_TOKEN` 
-|`ELASTICSEARCH_PASSWORD` |`FLEET_SERVER_SERVICE_TOKEN`
-|`KIBANA_FLEET_USERNAME` |
-|`KIBANA_FLEET_PASSWORD` |
-|`KIBANA_USERNAME` |
-|`KIBANA_PASSWORD` |
-|===
-
-// end 7.16.3 relnotes
-
-// begin 7.16.2 relnotes
-
-[[release-notes-7.16.2]]
-== {fleet} and {agent} 7.16.2
-
-Review important information about the {fleet} and {agent} 7.16.2 releases.
-
-[discrete]
-[[bug-fixes-7.16.2]]
-=== Bug fixes
-
-{fleet}::
-* Omit `elasticsearch` field for policy update API (partial backport of
-{kib-pull}121412[#121412])
-
-// end 7.16.2 relnotes
-
-// begin 7.16.1 relnotes
-
-[[release-notes-7.16.1]]
-== {fleet} and {agent} 7.16.1
-
-Review important information about the {fleet} and {agent} 7.16.1 releases.
-
-[discrete]
-[[bug-fixes-7.16.1]]
-=== Bug fixes
-
-{fleet}::
-* Fix bug with duplicate {fleet-server} inputs in Cloud deployments
-{kib-pull}119925[#119925]
-
-// end 7.16.1 relnotes
-
 // begin 7.16.0 relnotes
 
 [[release-notes-7.16.0]]
 == {fleet} and {agent} 7.16.0
 
 Review important information about the {fleet} and {agent} 7.16.0 releases.
+
 
 [discrete]
 [[enhancements-7.16.0]]
@@ -129,31 +56,6 @@ Fleet::
 * Improves default settings for {fleet} component templates {kib-pull}114101[#114101]
 * Report `installing` status while package install is in progress {kib-pull}111875[#111875]
 
-[discrete]
-[[known-issues-7.16.0]]
-=== Known issues
-
-[[known-issue-121059]]
-.Naming conflict during agent policy creation may result in policy with no system integration
-[%collapsible]
-====
-
-*Details*
-
-There is a bug in the logic used to create unique integration policy names. If you edit a system integration in an existing agent policy, and then try to create a new agent policy with *Collect logs and metrics* selected, you'll see the error message, "There is already a package with the same name". {kib-pull}121059[#121059]
-
-*Impact*
-
-The new agent policy will be created, but it will not include the system integration, and it will be unable to collect logs and metrics. 
-
-*Workaround*
-
-You can either:
-
-* Manually add the system integration after creating the agent policy
-* Rename the other system integration policies and use unique names
-
-====
 
 [[known-issue-unique-names]]
 .Integration policy names must be globally unique
@@ -229,7 +131,7 @@ upgrade integrations.
 //[%collapsible]
 //====
 
-//*Details*
+//*Details* 
 
 //<Describe known issue.>
 

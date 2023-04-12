@@ -90,7 +90,7 @@ requests to the root path:
 ["source", "sh", subs="attributes"]
 ----
 docker run -it -p 8080:8080 \
-    --health-cmd "curl -f -L http://127.0.0.1:8080/" \
+    --health-cmd "curl -f -L http://127.0.0.1:8080/health" \
     docker.elastic.co/package-registry/distribution:{version}
 ----
 
@@ -123,6 +123,17 @@ docker run -it -p 443:443 \
   -e EPR_TLS_KEY=/etc/ssl/package-registry.key \
   -e EPR_TLS_CERT=/etc/ssl/package-registry.crt \
   docker.elastic.co/package-registry/distribution:{version}
+----
+
+[discrete]
+==== Using custom CA certificates
+
+If you are using self-signed certificates or certificates issued by a custom Certificate Authority (CA), you need to set the file path to your CA in the `NODE_EXTRA_CA_CERTS` environment
+variable in the {kib} startup files.
+
+[source,text]
+----
+NODE_EXTRA_CA_CERTS="/etc/kibana/certs/ca-cert.pem"
 ----
 
 [discrete]

@@ -4,13 +4,10 @@
 = {ls} output
 
 ++++
-<titleabbrev>Logstash</titleabbrev>
+<titleabbrev>{ls}</titleabbrev>
 ++++
 
 include::{fleet-repo-dir}/standalone-note.asciidoc[]
-
-IMPORTANT: The {ls} output is currently only supported for {agent}s in
-standalone mode. {fleet}-managed agents are not supported.
 
 The {ls} output uses an internal protocol to send events directly to {ls} over
 TCP. {ls} provides additional parsing, transformation, and routing of data
@@ -159,7 +156,7 @@ server.
 Settings for authenticating with {ls}.
 
 To use SSL, you must also configure the
-{logstash-ref}/plugins-inputs-beats.html[{agent} input plugin for Logstash] to
+{logstash-ref}/plugins-inputs-beats.html[{agent} input plugin for {ls}] to
 use SSL/TLS.
 
 include::../authentication/ssl-shared-settings.asciidoc[tag=ssl-all-settings]
@@ -333,7 +330,7 @@ connection to achieve equal connection distribution across instances.
 
 *Default:* `0` (turns off the feature)
 
-NOTE: The `ttl` option is not yet supported on an async {ls} client (one with
+NOTE: The `ttl` option is not yet supported on an asynchronous {ls} client (one with
 the `pipelining` option set).
 
 // end::ttl-setting[]

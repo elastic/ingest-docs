@@ -4,7 +4,7 @@
 = Configure the {es} output
 
 ++++
-<titleabbrev>Elasticsearch</titleabbrev>
+<titleabbrev>{es}</titleabbrev>
 ++++
 
 include::{fleet-repo-dir}/standalone-note.asciidoc[]
@@ -256,6 +256,7 @@ include::../authentication/ssl-shared-settings.asciidoc[tag=ssl-all-settings]
 
 The following encryption types are supported:
 
+// lint ignore
 * aes128-cts-hmac-sha1-96
 * aes128-cts-hmac-sha256-128
 * aes256-cts-hmac-sha1-96
@@ -287,6 +288,7 @@ include::../authentication/kerberos-shared-settings.asciidoc[tag=kerberos-all-se
 
 [[output-elasticsearch-data-parsing-settings]]
 === Data parsing, filtering, and manipulation settings
+
 Settings used to parse, filter, and transform data.
 
 [cols="2*<a"]
@@ -451,7 +453,7 @@ a comma.
 [id="{type}-parameters-setting"]
 `parameters`
 
-| Dictionary of HTTP parameters to pass within the url with index operations.
+| Dictionary of HTTP parameters to pass within the URL with index operations.
 // end::parameters-setting[]
 
 // =============================================================================

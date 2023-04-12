@@ -25,7 +25,7 @@ include::{docs-root}/shared/attributes.asciidoc[]
 :apm-go-ref-v:         https://www.elastic.co/guide/en/apm/agent/go/{apm-go-branch}
 :apm-dotnet-ref-v:     https://www.elastic.co/guide/en/apm/agent/dotnet/{apm-dotnet-branch}
 
-= Fleet and Elastic Agent Guide
+= {fleet} and {agent} Guide
 
 include::overview.asciidoc[leveloffset=+1]
 
@@ -57,8 +57,6 @@ include::elastic-agent/install-elastic-agent.asciidoc[leveloffset=+1]
 
 include::elastic-agent/install-fleet-managed-elastic-agent.asciidoc[leveloffset=+2]
 
-include::security/certificates.asciidoc[leveloffset=+3]
-
 include::elastic-agent/install-standalone-elastic-agent.asciidoc[leveloffset=+2]
 
 include::elastic-agent/upgrade-standalone-elastic-agent.asciidoc[leveloffset=+3]
@@ -80,6 +78,12 @@ include::fleet-agent-proxy-support.asciidoc[leveloffset=+2]
 include::elastic-agent/uninstall-elastic-agent.asciidoc[leveloffset=+2]
 
 include::elastic-agent/start-stop-elastic-agent.asciidoc[leveloffset=+2]
+
+include::security/generate-certificates.asciidoc[leveloffset=+1]
+
+include::security/certificates.asciidoc[leveloffset=+2]
+
+include::security/logstash-certificates.asciidoc[leveloffset=+2]
 
 include::fleet/fleet.asciidoc[leveloffset=+1]
 
@@ -147,6 +151,6 @@ include::troubleshooting/troubleshooting.asciidoc[leveloffset=+2]
 
 include::troubleshooting/faq.asciidoc[leveloffset=+2]
 
-include::release-notes/release-notes-8.1.asciidoc[leveloffset=+1]
+include::release-notes/release-notes-8.2.asciidoc[leveloffset=+1]
 
 include::elastic-agent/install-fleet-managed-agent.asciidoc[leveloffset=+2]

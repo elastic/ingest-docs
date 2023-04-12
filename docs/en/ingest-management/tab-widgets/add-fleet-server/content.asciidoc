@@ -1,29 +1,25 @@
 // tag::ess[]
 
-{ecloud} runs a hosted version of {fleet-server}. No extra setup is required
-unless you want to scale your deployment.
+{ecloud} runs a hosted version of {integrations-server} that includes
+{fleet-server}. No extra setup is required unless you want to scale your
+deployment.
 
-To confirm that {fleet-server} is available in your deployment:
+To confirm that an {integrations-server} is available in your deployment:
 
-. Log in to {kib} and go to *Management > {fleet}*.
-. Click the *Agents* tab.
-. Under *Agent policy*, look for *Elastic Cloud agent policy* --
-{fleet-server} is the agent enrolled in the Elastic Cloud agent policy.
-This policy is managed by {ecloud}. You cannot modify it.
-Confirm that the agent status is *Healthy*.
+. In {kib}, open the main menu, and go to *Management > {fleet}*.
+. On the *Agents* tab, look for the *{ecloud} agent policy*. This policy is
+managed by {ecloud}, and contains a {fleet-server} integration and an Elastic
+APM integration. You cannot modify the policy. Confirm that the agent status is
+*Healthy*.
 
 [TIP]
 ====
-Don't see the {fleet-server} agent? Make sure your deployment includes an
-APM & {fleet} node. This node is required to use {fleet-server}.
+Don't see the agent? Make sure your deployment includes an
+{integrations-server} instance. This instance is required to use {fleet}.
 
 [role="screenshot"]
-image::images/fleet-server-hosted-container.png[{fleet-server} hosted agent]
+image::images/integrations-server-hosted-container.png[Hosted {integrations-server}]
 ====
-
-NOTE: When using our hosted {ess}, it's recommended that you use our hosted
-version of {fleet-server}. However, you can choose to deploy and self-manage
-{fleet-server}s.
 
 // end::ess[]
 
@@ -63,13 +59,13 @@ image::images/add-fleet-server.png[In-product instructions for adding a {fleet-s
 * Make sure you download an x64 architecture installation package.
 
 * For the agent policy, choose one with a {fleet-server} integration, or click
-*Create policy* to create one now. Alternatively you can 
+*Create policy* to create one now. Alternatively you can
 {fleet-guide}/create-a-policy-no-ui.html[create a {fleet-server} policy without using the UI],
 then select the policy here.
 
 * If you choose *Production* deployment mode, learn how to generate certs in
-{fleet-guide}/secure-connections.html[Encrypt traffic in clusters with a
-self-managed {fleet-server}].
+{fleet-guide}/secure-connections.html[Configure SSL/TLS for self-managed
+{fleet-server}s].
 
 * It's recommended you generate a unique service token for each
 {fleet-server}. For other ways to generate service tokens, see
@@ -111,8 +107,5 @@ For more {fleet-server} commands, see
 +
 If installation is successful, you'll see the {fleet-server} {agent} on the
 *Agents* tab in *{fleet}*.
-+
-[role="screenshot"]
-image::images/agents-tab-fleet-server.png[Agent tab showing a healthy agent enrolled in the Default Fleet Server policy]
 
 // end::self-managed[]

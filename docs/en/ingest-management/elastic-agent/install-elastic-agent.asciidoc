@@ -3,9 +3,12 @@
 
 ****
 // tag::agent-install-intro[]
-{agent} is a single, unified agent that you deploy to hosts or containers to
-collect data and send it to the {stack}. Behind the scenes, {agent} runs the
-{beats} shippers or Elastic Endpoint required for your configuration.
+{agent} is a single, unified way to add monitoring for logs, metrics, and other
+types of data to a host. It can also protect hosts from security threats, query
+data from operating systems, and more. A single agent makes it easy and fast to
+deploy monitoring across your infrastructure. Each agent has a single policy (a
+collection of input settings) that you can update to add integrations for new
+data sources, security protections, and more.
 // end::agent-install-intro[]
 ****
 
@@ -56,12 +59,14 @@ Refer to:
 [discrete]
 == Minimum Requirements
 
+// lint ignore 2vcpu 1gb
 Minimum requirements have been determined by running the {agent} (`v8.0.0`) on a GCP `e2-micro` instance (2vCPU/1GB).
 The {agent} used the default policy, running the system integration and self-monitoring.
 
+// lint ignore mem
 |===
 | **CPU** | Under 2% total, including all monitoring processes
-| **Disk** | 640MB
+| **Disk** | 640 MB
 | **RSS Mem Size** | 300 MB
 |===
 Adding integrations will increase the memory used by the agent and its processes.

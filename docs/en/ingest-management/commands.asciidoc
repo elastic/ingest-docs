@@ -9,7 +9,7 @@ doing common tasks.
 NOTE: You might need to log in as a root user (or Administrator on Windows) to
 run these commands. After the {agent} service is installed and running, make
 sure you run these commands without prepending them with `./` to avoid
-invoking the wrong binary. 
+invoking the wrong binary.
 
 * <<elastic-agent-diagnostics-command,diagnostics>>
 * <<elastic-agent-enroll-command,enroll>>
@@ -36,14 +36,14 @@ Gather diagnostics information from the {agent} and applications it's running.
 
 If no options are specified, this command displays version numbers and application metadata.
 
-If `collect` is specified, it produces an archive containing application metadata, configuration information, the policy, and any local logs.
+If `collect` is specified, it produces an archive containing application metadata, configuration information, the policy, local logs, and metrics data (if the buffer is enabled).
 
 Note that *credentials are not redacted* in the archive; they may appear in plain text in the configuration or policy files inside the archive.
 
 This command is intended for debugging purposes only. The output format and structure of the archive produced by `collect` may change between releases.
 
 If `pprof` is specified, it gathers specific `pprof` data from the {agent} or one of the specified underlying {beats}, and displays to `stdout`.
-By default it gathers a 30s profile of the {agent}.
+By default it gathers a 30 second profile of the {agent}.
 
 [discrete]
 === Synopsis
@@ -93,7 +93,7 @@ Should be longer then `pprof-duration` as the command needs to gather and proces
 Must be a string that can be parsed as a `time.Duration` value (default: `30s + pprof-duration`).
 
 `--pprof-type <string>`::
-The pprof data to gather, one of: `allocs`, `block`, `cmdline`, `goroutine`, `heap`, `mutex`, `profile`, `threadcreate`, or `trace` (default: `profile`).
+The `pprof` data to gather, one of: `allocs`, `block`, `cmdline`, `goroutine`, `heap`, `mutex`, `profile`, `threadcreate`, or `trace` (default: `profile`).
 
 `--pprof-application <string>`::
 The application name to gather `pprof` data from (default `elastic-agent`).
@@ -239,7 +239,7 @@ specified {es} URL.
 Path to certificate authority to use to communicate with {es}.
 
 `--fleet-server-es-ca-trusted-fingerprint <string>`::
-The SHA2-56 fingerprint (hash) of the certificate authority used to self-sign {es} certificates.
+The SHA-256 fingerprint (hash) of the certificate authority used to self-sign {es} certificates.
 This fingerprint will be used to verify self-signed certificates presented by {fleet-server} and any inputs started by {agent} for communication.
 This flag is required when using self-signed certificates with {es}.
 
@@ -293,7 +293,7 @@ verified. The content is encrypted, but the certificate is not verified.
 We strongly recommend that you use a secure connection.
 
 `--url <string>`::
-Fleet Server URL to use to enroll the {agent} into {fleet}.
+{fleet-server} URL to use to enroll the {agent} into {fleet}.
 
 // end::enroll-install-options[]
 
@@ -455,9 +455,9 @@ service manager. The agent will start automatically after installation is
 complete. On Linux (tar package), this command requires a system and service
 manager like systemd.
 
-IMPORTANT: If you installed {agent} from a DEB or RPM package, use the
-<<elastic-agent-enroll-command,`enroll` command>> instead of `install`. The DEB
-and RPM packages include a service unit for Linux systems with systemd.
+IMPORTANT: If you installed {agent} from a DEB or RPM package, the `install`
+command will skip the installation itself and function as an alias of the
+<<elastic-agent-enroll-command,`enroll` command>> instead.
 
 You must run this command as the root user (or Administrator on Windows)
 to write files to the correct locations. This command overwrites the
@@ -683,8 +683,8 @@ elastic-agent run -c myagentconfig.yml
 [[elastic-agent-status-command]]
 == elastic-agent status
 
-Returns the current status of the running Elastic Agent daemon and of each process
-in the Elastic Agent.
+Returns the current status of the running {agent} daemon and of each process
+in the {agent}.
 
 [discrete]
 === Synopsis
@@ -707,7 +707,7 @@ Output the status information in either `human` (the default), `json`, or
 |===
 |Code |Status
 
-|0    |`STARTING`    
+|0    |`STARTING`
 |1    |`CONFIGURING`
 |2    |`HEALTHY`
 |3    |`DEGRADED`

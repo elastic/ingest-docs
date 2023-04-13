@@ -149,13 +149,13 @@ To enroll the {agent} in {fleet} and set up {fleet-server}:
 ----
 elastic-agent enroll --fleet-server-es <string>
                      --fleet-server-service-token <string>
-                     [--fleet-server-service-token-file <string>]
+                     [--fleet-server-service-token-path <string>]
                      [--ca-sha256 <string>]
                      [--certificate-authorities <string>]
                      [--delay-enroll]
                      [--fleet-server-cert <string>] <1>
                      [--fleet-server-cert-key <string>]
-                     [--fleet-server-cert-key-passphrase-file <string>]
+                     [--fleet-server-cert-key-passphrase <string>]
                      [--fleet-server-es-ca <string>]
                      [--fleet-server-es-ca-trusted-fingerprint <string>] <2>
                      [--fleet-server-es-insecure]
@@ -209,7 +209,7 @@ Certificate to use for exposed {fleet-server} HTTPS endpoint.
 `--fleet-server-cert-key <string>`::
 Private key to use for exposed {fleet-server} HTTPS endpoint.
 
-`--fleet-server-cert-key-passphrase-file <string>`::
+`--fleet-server-cert-key-passphrase <string>`::
 Path to passphrase file for decrypting {fleet-server}'s private key if an encrypted private key is used.
 
 `--fleet-server-es <string>`::
@@ -252,9 +252,9 @@ Used when starting a self-managed {fleet-server} to allow a specific policy to b
 
 `--fleet-server-service-token <string>`::
 Service token to use for communication with {es}.
-Mutually exclusive with `--fleet-server-service-token-file`.
+Mutually exclusive with `--fleet-server-service-token-path`.
 
-`--fleet-server-service-token-file <string>`::
+`--fleet-server-service-token-path <string>`::
 Service token file to use for communication with {es}.
 Mutually exclusive with `--fleet-server-service-token`.
 
@@ -495,13 +495,13 @@ a `fleet-server` process alongside the `elastic-agent` service:
 
 elastic-agent install --fleet-server-es <string>
                       --fleet-server-service-token <string>
-                      [--fleet-server-service-token-file <string>]
+                      [--fleet-server-service-token-path <string>]
                       [--ca-sha256 <string>]
                       [--certificate-authorities <string>]
                       [--delay-enroll]
                       [--fleet-server-cert <string>] <1>
                       [--fleet-server-cert-key <string>]
-                      [--fleet-server-cert-key-passphrase-file <string>]
+                      [--fleet-server-cert-key-passphrase <string>]
                       [--fleet-server-es-ca <string>]
                       [--fleet-server-es-ca-trusted-fingerprint <string>] <2>
                       [--fleet-server-host <string>]

@@ -241,7 +241,7 @@ Private key to use for the exposed {fleet-server} HTTPS endpoint.
 
 Note that additionally an optional passphrase for the private key may be specified with:
 
-`fleet-server-cert-key-passphrase-file`::
+`fleet-server-cert-key-passphrase`::
 Passphrase file used to decrypt {fleet-server}'s private key.
 
 .What happens if you enroll {fleet-server} without specifying certificates?

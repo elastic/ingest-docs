@@ -44,7 +44,7 @@ The 8.7.1 release adds the following new and notable features.
 === Enhancements
 
 {fleet}::
-* The agent policy "Host name format" selector is now enabled by default {kibana-pull}154563[#154563]
+* The agent policy `Host name format`` selector is now enabled by default {kibana-pull}154563[#154563]
 
 [discrete]
 [[bug-fixes-8.7.1]]

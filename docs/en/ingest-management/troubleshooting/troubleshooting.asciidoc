@@ -625,4 +625,3 @@ curl -u elastic:<password> --request POST \
   --header 'Content-Type: application/json' \
   --header 'kbn-xsrf: xyz' \
 ----
-

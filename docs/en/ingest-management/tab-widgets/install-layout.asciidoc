@@ -50,6 +50,8 @@ Log files for {agent}footnote:lognumbering[]
 `C:\Program Files\Elastic\Agent\data\elastic-agent-*\logs\default\*-json.log*`::
 Log files for {beats} shippers
 
+You can install {agent} in a custom base path that's different from `C:\Program Files`.  When installing {agent} with the `./elastic-agent install`
+command, provide the custom base path via the `--base-path` CLI option.
 // end::win[]
 
 // tag::deb[]

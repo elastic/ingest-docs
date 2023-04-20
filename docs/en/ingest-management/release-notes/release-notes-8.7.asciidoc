@@ -59,7 +59,7 @@ The 8.7.1 release adds the following new and notable features.
 * Fix parsing of paths from the `container-paths.yml` file used internally when `elastic-agent container` is run {agent-pull}2340[#2340]
 * Fix action acknowledgements taking up to 5 minutes. Fixed OSQuery live query results taking up to five minutes to show up in Kibana.{agent-pull}2406[#2406] {agent-issue}2410[#2410]
 * Fixes a bug that `logging.level` settings were not being respected, coming either from Fleet UI or a config file {agent-pull}2456[#2456] {agent-issue}2450[#2450]
-* Fixes a bug that caused an empty proxy from the {agent} policy to override the proxy set by `--proxy-url` {agent-pull}2468[#2468] {agent-issue}2304[#2304] {agent-issue}2447[#2447]
+* Fixes a bug that caused an empty proxy from a Fleet managed {agent} policy to override the proxy set by `--proxy-url` {agent-pull}2468[#2468] {agent-issue}2304[#2304] {agent-issue}2447[#2447]
 * Ensure that the `/usr/local/bin` directory exists on MacOS during {agent} installation {agent-pull}2490[#2490] {agent-issue}2487[#2487]
 
 // end 8.7.1 relnotes

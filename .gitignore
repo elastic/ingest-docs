@@ -9,7 +9,9 @@ bin
 
 /html_docs
 html_docs
-.vscode
+
+# IDE configuration files
+.vscode/
 .idea/
 
 *.swp

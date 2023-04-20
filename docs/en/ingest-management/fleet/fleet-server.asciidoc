@@ -95,8 +95,8 @@ To learn more about adding and scaling {fleet-server}, refer to:
 * <<fleet-server-monitoring>>
 
 [discrete]
-[[fleet-server-secrets]]
-== {fleet-server} secrets
+[[fleet-server-secrets-config]]
+== {fleet-server} secrets configuration
 
 Secrets used to configure {fleet-server} can either be directly specified in configuration or provided through secret files.
 See <<fleet-server-secrets>> for more information.

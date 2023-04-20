@@ -97,6 +97,8 @@ include::shared-env.asciidoc[tag=fleet-server-elasticsearch-ca]
 
 include::shared-env.asciidoc[tag=fleet-server-service-token]
 
+include::shared-env.asciidoc[tag=fleet-server-service-token-path]
+
 include::shared-env.asciidoc[tag=fleet-server-policy-name]
 
 include::shared-env.asciidoc[tag=fleet-server-policy-id]
@@ -108,6 +110,8 @@ include::shared-env.asciidoc[tag=fleet-server-port]
 include::shared-env.asciidoc[tag=fleet-server-cert]
 
 include::shared-env.asciidoc[tag=fleet-server-cert-key]
+
+include::shared-env.asciidoc[tag=fleet-server-cert-key-passphrase]
 
 include::shared-env.asciidoc[tag=fleet-server-insecure-http]
 

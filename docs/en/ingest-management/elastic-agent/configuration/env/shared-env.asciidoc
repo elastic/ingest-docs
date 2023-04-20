@@ -180,6 +180,19 @@ Overrides `FLEET_TOKEN_POLICY_NAME` when set.
 
 // =============================================================================
 
+// tag::fleet-server-service-token-path[]
+|
+[id="env-{type}-fleet-server-service-token-path"]
+`FLEET_SERVER_SERVICE_TOKEN_PATH`
+
+| (string) The path to the service token file to use for communication with {es}.
+
+*Default:* none
+
+// end::fleet-server-service-token-path[]
+
+// =============================================================================
+
 // tag::fleet-server-policy-id[]
 |
 [id="env-{type}-fleet-server-policy-id"]
@@ -242,6 +255,19 @@ Overrides the port defined in the policy.
 *Default:* none
 
 // end::fleet-server-cert-key[]
+
+// =============================================================================
+
+// tag::fleet-server-cert-key-passphrase[]
+|
+[id="env-{type}-fleet-server-cert-key-passphrase"]
+`FLEET_SERVER_CERT_KEY_PASSPHRASE`
+
+| (string) The path to the private key passphrase for an encrypted private key file.
+
+*Default:* none
+
+// end::fleet-server-cert-key-passphrase[]
 
 // =============================================================================
 

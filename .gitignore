@@ -10,5 +10,6 @@ bin
 /html_docs
 html_docs
 .vscode
+.idea/
 
 *.swp

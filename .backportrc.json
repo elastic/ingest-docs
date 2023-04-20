@@ -1,0 +1,10 @@
+{
+  "repoOwner": "elastic",
+  "repoName": "ingest-docs",
+  "targetBranchChoices": ["main", "8.7", "8.6", "7.17"],
+  "autoMerge": true,
+  "autoMergeMethod": "squash",
+  "branchLabelMapping": {
+    "^auto-backport-to-(.+)$": "$1"
+  }
+}

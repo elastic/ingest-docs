@@ -372,6 +372,16 @@ curl 'https://<kibana_url>/api/fleet/agents/<agentID>/unenroll' \
   --compressed
 ----
 
+Another possible solution to fix this problem without using a force unenroll is to use the {kib} **Dev Tools** to force the stale {agent} to upgrade:
+
+[source,shell]
+----
+POST kbn:/api/fleet/agents/5f18484c-17d5-12fe-c455-fcde50f8b/upgrade
+{ "force": true, "version": "8.7.0" }
+----
+
+This example upgrades the agent with agent-id `5f18484c-17d5-12fe-c455-fcde50f8b` to version `8.7.0`. The Dev Tools can be found by browsing in {kib} to **Management -> Dev Tools**. The `agent-id` of an agent can be found by browsing to **Management -> Fleet** and then searching for the agent using, for example, the hostname on which the agent is installed.
+
 [discrete]
 [[secondary-agent-not-connecting]]
 == {fleet-server} is running and healthy with data, but other Agents cannot use it to connect to {es}
@@ -615,4 +625,3 @@ curl -u elastic:<password> --request POST \
   --header 'Content-Type: application/json' \
   --header 'kbn-xsrf: xyz' \
 ----
-

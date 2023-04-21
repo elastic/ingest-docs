@@ -33,8 +33,8 @@ Log files for {beats} shippers
 `/usr/bin/elastic-agent`::
 Shell wrapper installed into PATH
 
-You can install {agent} in a custom base path that's different from `/opt`.  When installing {agent} with the `./elastic-agent install`
-command, provide the custom base path via the `--base-path` CLI option.
+You can install {agent} in a custom base path other than `/opt`.  When installing {agent} with the `./elastic-agent install`
+command, use the `--base-path` CLI option to specify the custom base path.
 // end::linux[]
 
 // tag::win[]

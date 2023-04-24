@@ -46,7 +46,14 @@ Also see:
 [[release-notes-7.17.10]]
 == {fleet} and {agent} 7.17.10
 
-There are no bug fixes for {fleet} or {agent} in this release.
+Review important information about the {fleet} and {agent} 7.17.10 release.
+
+[discrete]
+[[bug-fixes-7.17.10]]
+=== Bug fixes
+
+{fleet-server}::
+* Accept raw errors as a fallback to detailed error type. This fixes a bug that enrollment or other operations would fail when an error was returned by Elastic in a raw string instead of JSON format. {fleet-server-pull}2079[#2079]
 
 // end 7.17.10 relnotes
 

@@ -62,7 +62,7 @@ The 8.7.1 release adds the following new and notable features.
 * Fixes a bug that caused an empty proxy from a Fleet managed {agent} policy to override the proxy set by `--proxy-url` {agent-pull}2468[#2468] {agent-issue}2304[#2304] {agent-issue}2447[#2447]
 * Ensure that the `/usr/local/bin` directory exists on MacOS during {agent} installation {agent-pull}2490[#2490] {agent-issue}2487[#2487]
 * Fixes a bug that caused the lumberjack input type to be missing from the Filebeat `filebeat.spec.yaml` file, which is required by the `barracuda_cloudgen_firewall` integration {agent-pull}2511[#2511]
-* Fixes a bug that prevented sub-directories from being created under the `/logs` path in diagnostics ZIP files {agent-pull}2523[#2523]
+* Fixes a bug that prevented sub-directories from being created under the `logs/` path in diagnostics ZIP files {agent-pull}2523[#2523]
 
 // end 8.7.1 relnotes
 

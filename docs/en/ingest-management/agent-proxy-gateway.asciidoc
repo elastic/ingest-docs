@@ -1,0 +1,82 @@
+[[agent-proxy-gateway]]
+= {agent} connectivity through a proxy gateway
+
+Many enterprises secure their assets by placing a proxy server between them and the internet. The main role of the proxy server is to filter content and provide a single gateway through which all traffic traverses in/out of a data center. These proxy servers provide a various degree of functionality, security and privacy.
+
+{agents} generally egress two sets of connections, one for Control plane traffic to the {fleet-server}, the other Data plane traffic to an output such as {es}. In a similar fashion operators would place {agent} behind a proxy server, and proxy the control and data plane traffic to their final destinations. 
+
+{fleet} central management enables the users to define their proxy servers and then configure an output or the fleet server to be reachable via any of these proxies. This also enables the operator to modify the proxy server details if needed without having to re-install {agents}.
+
+image::images/elastic-agent-proxy-gateway.png[Image showing data traffic from {agent} to proxies, then to {fleet-server} and {es}]
+
+_In this scenario Fleet Server and Elasticsearch are deployed in {ecloud} and reachable on port 443._
+
+[discrete]
+[[agent-proxy-gateway-setup]]
+== Setting up Fleet components to use a proxy
+
+To set up Fleet for use as a proxy:
+
+. **Globally add proxy server details to {fleet}.**
+.. In {kib}, navigate to the **Fleet** page and go to the **Settings** tab.
+.. Select **Add proxy**.
+
+**ADD IMAGE**
+.. In the **Add Proxy** flyout, add a name (in this example `Proxy-A`) and specify the Proxy URL. (**← Where do they find this?**)
+.. Add any other optional settings.
+.. Select **Save and apply settings**. The proxy information is saved and that proxy is ready for other components in {fleet} to use.
+. **Attach the proxy to a {fleet-server}.**
+
+If the control plane traffic to/from the Fleet Server needs to also go through the proxy server, the proxy created needs to also be added to the definition of that Fleet Server.
+
+.. In {kib}, navigate to the **Fleet** page and go to the **Settings** tab.
+.. In the list of **Fleet Server Hosts**, choose a host and select the edit button to configure it.
+.. In the **Proxy** section dropdown list, select the proxy that you configured.
+
+**ADD IMAGE**
+
+In this example, All the {agents} in a policy that uses this {fleets-server} will now connect to the {fleet-server} through the proxy server defined in `Proxy-A`.
+
+WARNING: Any invalid changes to the {fleet-server} definition that may cause connectivity issues between the {agents} and the {fleet-server} will cause them to disconnect. The only remedy would be to re-install the affected agents. This is because the connectivity to the {fleet-server} ensures policy updates reach the agents. If a policy with an invalid host address reaches the agent it will no longer be able to connect and therefore won't receive any other updates from the {fleet-server} (including the corrected setting). In this regard, adding a proxy server that is not reachable by the agents will break connectivity to the {fleet-server}.
+
+. **Attach the proxy to the output** **← Fleet output?**
+
+Similarly, if the data plane traffic to an output is to traverse via a proxy, that proxy definition would need to be added to the output defined in the Fleet.
+
+.. In {kib}, navigate to the **Fleet** page and go to the **Settings** tab.
+.. In the list of **Outputs**, choose an output and select the edit button to configure it.
+.. In the **Proxy** section dropdown list, select the proxy that you configured.
+
+**ADD IMAGE**
+
+In this example, All the {agents} in a policy that is configured to write to the chosen output will now write to that output through the proxy server defined in `Proxy-A`.
+
+WARNING: If agents don’t have reachability to the configured proxy server, they will not be able to write data to the output that has the proxy server configured. When changing the proxy of an output, please ensure that the affected agents all have connectivity to the proxy itself.
+
+. **Configure the {agent} policy**
+You can now configure the {agent} policy to use the {fleet-server} and the outputs that are reachable through a proxy server.
+** If the policy is configured with a {fleet-server} that has a proxy attached to it, all the control plane traffic from the agents in that policy will reach the {fleet-server} through that proxy. 
+** Similarly, if the output definition has a proxy attached to it, all the agents in that policy will write (data plane) to the output through the proxy.
+. **Enroll the {agents}**
+
+Now that {fleet} is configured, all policy downloads will update the agent with the latest configured proxies. When the agent is first installed it needs to communicate with the {fleet} (through {fleet-server}) in order to download its first policy configuration. 
+
+If the initial agent communication with the {fleet} (that is, control plane) needs to traverse the proxy server, then the agent needs to be configured to do so through the `-proxy-url` command line flag which is applied during installation of {agent}.
+
+[discrete]
+[[agent-proxy-gateway-secure]]
+= {agent} connectivity through a secure proxy gateway
+
+Many secure proxy gateways are configured to perform mutual TLS and expect all connections to present their certificate. In these instances the Client (in this case the Elastic Agent) would need to present a certificate and key to the Server (the secure proxy). In return the client expects to see a certificate authority chain from the server to ensure it is also communicating to a trusted entity.
+
+image::images/elastic-agent-proxy-gateway-secure.png[Image showing data flow between the proxy server and the Certificate Authority]
+
+If mTLs is a requirement when connecting to your proxy server, then you have the option to add the Client certificate and Client certificate key to the proxy. Once configured, all the Elastic Agents in a policy that connect to this secure proxy (via an output or fleet server), will use the nominated certificates to establish connections to the proxy server. 
+ 
+It should be noted that the user can define a local path to the certificate and key as in many common scenarios the certificate and key will be unique for each Elastic Agent.
+
+Equally important is the Certificate Authority that the agents need to use to validate the certificate they are receiving from the secure proxy server. This can also be added when creating the proxy definition in the Fleet settings.
+
+**ADD IMAGE WITH SECURITY SETTINGS**
+
+NOTE: Currently Elastic Agents will not present a certificate for Control Plane traffic to the Fleet Server.  This issue will be resolved by {agent-issue}2248(issue #2248). Our recommendation is to avoid adding a secure proxy as such in a Fleet Server configuration flyout.

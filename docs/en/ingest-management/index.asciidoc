@@ -80,6 +80,8 @@ include::elastic-agent/installation-layout.asciidoc[leveloffset=+2]
 include::fleet/air-gapped.asciidoc[leveloffset=+2]
 
 include::fleet-agent-proxy-support.asciidoc[leveloffset=+2]
+ 
+include::agent-proxy-gateway.asciidoc[leveloffset=+2]
 
 include::elastic-agent/uninstall-elastic-agent.asciidoc[leveloffset=+2]
 

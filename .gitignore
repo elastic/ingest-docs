@@ -13,3 +13,5 @@ html_docs
 # IDE configuration files
 .vscode/
 .idea/
+
+*.swp

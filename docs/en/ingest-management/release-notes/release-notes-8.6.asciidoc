@@ -90,13 +90,13 @@ For more information, refer to {agent-issue}2103[#2103].
 Ensure that the application used to install {agent} (for example, the Terminal or custom package) has Full Disk Access before running `sudo ./elastic-agent install`.
 ====
 
-[[known-issue-issue-2342-8.6.2]]
+[[known-issue-issue-2343-8.6.2]]
 .{agent} upgrades scheduled for a future time do not run.
 [%collapsible]
 ====
 *Details* +
 A known issue in {agent} may prevent upgrades scheduled to execute at a later time from running.
-For more information refer to {agent-issue}2342[#2342].
+For more information refer to {agent-issue}2343[#2343].
 
 *Impact* +
 {kib} may show an agent as being stuck with the `Updating` status.
@@ -279,13 +279,13 @@ For more information, refer to {agent-issue}2103[#2103].
 Ensure that the application used to install {agent} (for example, the Terminal or custom package) has Full Disk Access before running `sudo ./elastic-agent install`.
 ====
 
-[[known-issue-issue-2342-8.6.1]]
+[[known-issue-issue-2343-8.6.1]]
 .{agent} upgrades scheduled for a future time do not run.
 [%collapsible]
 ====
 *Details* +
 A known issue in {agent} may prevent upgrades scheduled to execute at a later time from running.
-For more information refer to {agent-issue}2342[#2342].
+For more information refer to {agent-issue}2343[#2343].
 
 *Impact* +
 {kib} may show an agent as being stuck with the `Updating` status.
@@ -437,13 +437,13 @@ For more information, refer to {agent-issue}2086[#2086].
 event data to {es} or Logstash.
 ====
 
-[[known-issue-issue-2342-8.6.0]]
+[[known-issue-issue-2343-8.6.0]]
 .{agent} upgrades scheduled for a future time do not run.
 [%collapsible]
 ====
 *Details* +
 A known issue in {agent} may prevent upgrades scheduled to execute at a later time from running.
-For more information refer to {agent-issue}2342[#2342].
+For more information refer to {agent-issue}2343[#2343].
 
 *Impact* +
 {kib} may show an agent as being stuck with the `Updating` status.

@@ -15,7 +15,7 @@ Log files for {beats} shippersfootnote:lognumbering[]
 Shell wrapper installed into PATH
 
 You can install {agent} in a custom base path other than `/Library`.  When installing {agent} with the `./elastic-agent install`
-command, use the `--base-path` CLI option to specify the custom base path.
+command, use the `--base-path` CLI option to specify the custom absolute base path.
 // end::mac[]
 
 // tag::linux[]
@@ -34,7 +34,7 @@ Log files for {beats} shippers
 Shell wrapper installed into PATH
 
 You can install {agent} in a custom base path other than `/opt`.  When installing {agent} with the `./elastic-agent install`
-command, use the `--base-path` CLI option to specify the custom base path.
+command, use the `--base-path` CLI option to specify the custom absolute base path.
 // end::linux[]
 
 // tag::win[]
@@ -51,7 +51,7 @@ Log files for {agent}footnote:lognumbering[]
 Log files for {beats} shippers
 
 You can install {agent} in a custom base path other than `C:\Program Files`.  When installing {agent} with the `./elastic-agent install`
-command, use the `--base-path` CLI option to specify the custom base path.
+command, use the `--base-path` CLI option to specify the custom absolute base path.
 // end::win[]
 
 // tag::deb[]

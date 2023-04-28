@@ -204,7 +204,8 @@ Enrollment token to use to enroll {agent} into {fleet}. You can use
 the same enrollment token for multiple agents.
 
 `--fleet-server-cert <string>`::
-Certificate to use for exposed {fleet-server} HTTPS endpoint.
+Specifies the path for the PEM encoded certificate (or certificate chain) 
+that is associated with --fleet-server-cert-key to use for exposed {fleet-server} HTTPS endpoint.
 
 `--fleet-server-cert-key <string>`::
 Private key to use for exposed {fleet-server} HTTPS endpoint.

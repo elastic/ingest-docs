@@ -63,6 +63,7 @@ The 8.7.1 release adds the following new and notable features.
 * Ensure that the `/usr/local/bin` directory exists on MacOS during {agent} installation {agent-pull}2490[#2490] {agent-issue}2487[#2487]
 * Fixes a bug that caused the lumberjack input type to be missing from the Filebeat `filebeat.spec.yaml` file, which is required by the `barracuda_cloudgen_firewall` integration {agent-pull}2511[#2511]
 * Fixes a bug that prevented sub-directories from being created under the `logs/` path in diagnostics ZIP files {agent-pull}2523[#2523]
+* Make best effort in copying the run directory on upgrades to avoid unnecessary failures. Fixes intermittent upgrade failures when an osquery is running. {agent-pull}2448[#2448] {agent-issue}2433[#2433]
 
 // end 8.7.1 relnotes
 

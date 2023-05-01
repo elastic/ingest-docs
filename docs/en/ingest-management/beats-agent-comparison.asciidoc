@@ -168,7 +168,7 @@ configuration experience.
 queues by an end user. You can configure the output queue settings in standalone
 {agents}.
 
-|{filebeat-ref}/load-balancing.html[Load balance output hosts]
+|{filebeat-ref}/elasticsearch-output.html#_loadbalance[Load balance output hosts]
 |Within the {fleet} UI, you can add YAML settings to configure multiple hosts
 per output type, which enables load balancing.
 

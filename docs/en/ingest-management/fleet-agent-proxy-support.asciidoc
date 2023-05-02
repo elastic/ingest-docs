@@ -132,7 +132,7 @@ HTTP_PROXY=http://my.proxy:8080
 
 After adding environment variables, restart the service.
 
-NOTE: If you use a proxy server to download artifacts from `artifacts.elastic.co`, configure <<fleet-agent-binary-download-settings>>.
+NOTE: If you use a proxy server to download new agent versions from `artifacts.elastic.co` for upgrading, configure <<fleet-agent-binary-download-settings>>. 
 
 [discrete]
 [[proxy-settings-in-agent-policy]]

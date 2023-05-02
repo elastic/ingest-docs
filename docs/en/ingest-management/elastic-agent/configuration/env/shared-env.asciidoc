@@ -172,7 +172,8 @@ Overrides `FLEET_TOKEN_POLICY_NAME` when set.
 [id="env-{type}-fleet-server-service-token"]
 `FLEET_SERVER_SERVICE_TOKEN`
 
-| (string) Service token to use for communication with {es}.
+| (string) Service token to use for communication with {es} and {kib} if <<kibana-fleet-setup>> is enabled.
+If the service token value and service token path are specified the value may be used for setup and the path is passed to the agent in the container.
 
 *Default:* none
 
@@ -185,7 +186,8 @@ Overrides `FLEET_TOKEN_POLICY_NAME` when set.
 [id="env-{type}-fleet-server-service-token-path"]
 `FLEET_SERVER_SERVICE_TOKEN_PATH`
 
-| (string) The path to the service token file to use for communication with {es}.
+| (string) The path to the service token file to use for communication with {es} and {kib} if <<kibana-fleet-setup>> is enabled.
+If the service token value and service token path are specified the value may be used for setup and the path is passed to the agent in the container.
 
 *Default:* none
 

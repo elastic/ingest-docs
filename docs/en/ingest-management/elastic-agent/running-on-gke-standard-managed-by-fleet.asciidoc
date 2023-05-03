@@ -16,12 +16,12 @@ components. In this regard, the respective **dashboards** will not be populated 
 
 Although autopilot removes many administration challenges (like workload management, deployment automation etc. of kubernetes clusters), additionally restricts access to specific namespaces (i.e. `kube-system`) and host paths which is the reason that default Elastic Agent manifests would not work.
 
-Specific manifests are made to provide **[Autopilot support](https://github.com/elastic/elastic-agent/blob/autopilotdocumentaton/docs/elastic-agent-gke-autopilot.md)**.
+Specific manifests are made to provide **https://github.com/elastic/elastic-agent/blob/autopilotdocumentaton/docs/elastic-agent-gke-autopilot.md[Autopilot support]**.
 
 > `kube-state-metrics` also needs to be installed to another namespace rather than default as access to kube-system is not allowed
 
 == Additonal Resources:
 
-- Blog [Using Elastic to observe GKE Autopilot clusters](https://www.elastic.co/blog/elastic-observe-gke-autopilot-clusters) 
-- Elastic speakers webinar: ["Get full Kubernetes visibility into GKE Autopilot with Elastic Observability"](https://www.elastic.co/virtual-events/get-full-kubernetes-visibility-into-gke-autopilot-with-elastic-observability)
+- Blog https://www.elastic.co/blog/elastic-observe-gke-autopilot-clusters[Using Elastic to observe GKE Autopilot clusters]
+- Elastic speakers webinar: https://www.elastic.co/virtual-events/get-full-kubernetes-visibility-into-gke-autopilot-with-elastic-observability["Get full Kubernetes visibility into GKE Autopilot with Elastic Observability"]
 

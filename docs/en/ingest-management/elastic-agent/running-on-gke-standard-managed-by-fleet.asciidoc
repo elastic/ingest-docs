@@ -19,3 +19,9 @@ Although autopilot removes many administration challenges (like workload managem
 Specific manifests are made to provide **[Autopilot support](https://github.com/elastic/elastic-agent/blob/autopilotdocumentaton/docs/elastic-agent-gke-autopilot.md)**.
 
 > kube-state metrics library also needs to be installed to another namespace rather than default as access to kube-system is not allowed
+
+== Additonal Resources:
+
+- Blog [Using Elastic to observe GKE Autopilot clusters](https://www.elastic.co/blog/elastic-observe-gke-autopilot-clusters) 
+- Elastic speakers webinar: ["Get full Kubernetes visibility into GKE Autopilot with Elastic Observability"](https://www.elastic.co/virtual-events/get-full-kubernetes-visibility-into-gke-autopilot-with-elastic-observability)
+

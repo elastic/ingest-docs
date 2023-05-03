@@ -1,5 +1,5 @@
-[[running-on-gke-standard-managed-by-fleet]]
-= Run {agent} on GKE standard managed by {fleet}
+[[running-on-gke-managed-by-fleet]]
+= Run {agent} on GKE managed by {fleet}
 
 Please follow the steps to run the {agent} on <<running-on-kubernetes-managed-by-fleet>> page.
 

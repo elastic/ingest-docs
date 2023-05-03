@@ -12,4 +12,10 @@ On managed Kubernetes solutions like GKE, {agent} has no access to several data 
 components. In this regard, the respective **dashboards** will not be populated with data.
 2. **Audit logs** are available only on Kubernetes master nodes as well, hence cannot be collected by {agent}.
 
-Also note that the documentation page only applies to Standard GKE and not Autopilot. **Autopilot support** is a work in progress at the time of writing these docs.
+== Autopilot GKE
+
+Although autopilot removes many administration challenges (like workload management, deployment automation etc. of kubernetes clusters), additionally restrict access to specific namespaces (i.e. kube-system) and host paths which is the reason that default Elastic Agent manifests would not work.
+
+Specific manifests are made to provide **[Autopilot support](https://github.com/elastic/elastic-agent/blob/autopilotdocumentaton/docs/elastic-agent-gke-autopilot.md)**.
+
+> kube-state metrics library also needs to be installed to another namespace rather than default as access to kube-system is not allowed

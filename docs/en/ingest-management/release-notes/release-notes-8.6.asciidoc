@@ -121,7 +121,7 @@ Settings with input blocks, such as Max agents are still effective.
 [%collapsible]
 ====
 *Details* +
-{agent} will not load `fleet.yml` information after upgrading from a version up to 8.2 to 8.6.
+{agent} will not load `fleet.yml` information after upgrading to {agent} version 8.6.x from version 8.2 or earlier
 This is due to the unencrypted config stored in `fleet.yml` not being migrated correctly to the encrypted config store `fleet.enc`.
 For a managed agent the symptom manifests as the inability to connect to {fleet} after upgrade with the following log:
 

@@ -117,11 +117,11 @@ Settings with input blocks, such as Max agents are still effective.
 ====
 
 [[known-issue-issue-2249-8.6.2]]
-.{agent} does not load {fleet} configuration when upgrading to {agent} version 8.6.x from version 8.2 or earlier.
+.{agent} does not load {fleet} configuration when upgrading to {agent} version 8.6.x from version 8.2.x or earlier.
 [%collapsible]
 ====
 *Details* +
-{agent} will not load `fleet.yml` information after upgrading to {agent} version 8.6.x from version 8.2 or earlier
+{agent} will not load `fleet.yml` information after upgrading to {agent} version 8.6.x from version 8.2.x or earlier
 This is due to the unencrypted config stored in `fleet.yml` not being migrated correctly to the encrypted config store `fleet.enc`.
 For a managed agent the symptom manifests as the inability to connect to {fleet} after upgrade with the following log:
 
@@ -326,11 +326,11 @@ Settings with input blocks, such as Max agents are still effective.
 ====
 
 [[known-issue-issue-2249-8.6.1]]
-.{agent} does not load {fleet} configuration when upgrading to {agent} version 8.6.x from version 8.2 or earlier.
+.{agent} does not load {fleet} configuration when upgrading to {agent} version 8.6.x from version 8.2.x or earlier.
 [%collapsible]
 ====
 *Details* +
-{agent} will not load `fleet.yml` information after upgrading to {agent} version 8.6.x from version 8.2 or earlier
+{agent} will not load `fleet.yml` information after upgrading to {agent} version 8.6.x from version 8.2.x or earlier
 This is due to the unencrypted config stored in `fleet.yml` not being migrated correctly to the encrypted config store `fleet.enc`.
 For a managed agent the symptom manifests as the inability to connect to {fleet} after upgrade with the following log:
 
@@ -505,11 +505,11 @@ Settings with input blocks, such as Max agents are still effective.
 ====
 
 [[known-issue-issue-2249-8.6.0]]
-.{agent} does not load {fleet} configuration when upgrading to {agent} version 8.6.x from version 8.2 or earlier.
+.{agent} does not load {fleet} configuration when upgrading to {agent} version 8.6.x from version 8.2.x or earlier.
 [%collapsible]
 ====
 *Details* +
-{agent} will not load `fleet.yml` information after upgrading to {agent} version 8.6.x from version 8.2 or earlier
+{agent} will not load `fleet.yml` information after upgrading to {agent} version 8.6.x from version 8.2.x or earlier
 This is due to the unencrypted config stored in `fleet.yml` not being migrated correctly to the encrypted config store `fleet.enc`.
 For a managed agent the symptom manifests as the inability to connect to {fleet} after upgrade with the following log:
 

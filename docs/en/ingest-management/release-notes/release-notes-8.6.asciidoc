@@ -117,7 +117,7 @@ Settings with input blocks, such as Max agents are still effective.
 ====
 
 [[known-issue-issue-2249-8.6.2]]
-.{agent} does not load fleet configuration after upgrade from unencrypted config
+.{agent} does not load {fleet} configuration after upgrade from unencrypted config
 [%collapsible]
 ====
 *Details* +

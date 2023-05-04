@@ -117,7 +117,7 @@ Settings with input blocks, such as Max agents are still effective.
 ====
 
 [[known-issue-issue-2249-8.6.2]]
-.{agent} does not load {fleet} configuration when upgrading to {agent} version 8.6.x from version 8.2 or earlier
+.{agent} does not load {fleet} configuration when upgrading to {agent} version 8.6.x from version 8.2 or earlier.
 [%collapsible]
 ====
 *Details* +
@@ -326,7 +326,7 @@ Settings with input blocks, such as Max agents are still effective.
 ====
 
 [[known-issue-issue-2249-8.6.1]]
-.{agent} does not load {fleet} configuration when upgrading to {agent} version 8.6.x from version 8.2 or earlier
+.{agent} does not load {fleet} configuration when upgrading to {agent} version 8.6.x from version 8.2 or earlier.
 [%collapsible]
 ====
 *Details* +
@@ -505,7 +505,7 @@ Settings with input blocks, such as Max agents are still effective.
 ====
 
 [[known-issue-issue-2249-8.6.0]]
-.{agent} does not load {fleet} configuration when upgrading to {agent} version 8.6.x from version 8.2 or earlier
+.{agent} does not load {fleet} configuration when upgrading to {agent} version 8.6.x from version 8.2 or earlier.
 [%collapsible]
 ====
 *Details* +

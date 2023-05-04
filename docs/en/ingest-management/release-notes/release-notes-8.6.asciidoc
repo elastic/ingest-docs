@@ -116,6 +116,25 @@ Custom yaml settings are silently ignored by {fleet}.
 Settings with input blocks, such as Max agents are still effective.
 ====
 
+[[known-issue-issue-2249-8.6.2]]
+.{agent} does not load fleet configuration after upgrade from unencrypted config
+[%collapsible]
+====
+*Details* +
+{agent} will not load `fleet.yml` information after upgrading to a version that uses encrypted configuration (> 8.3).
+For a managed agent the symptom manifests as the inability to connect back to fleet after upgrade and the following log:
+
+[source,shell]
+----
+Error: fleet configuration is invalid: empty access token
+...
+----
+For more information refer to {agent-issue}2249[#2249].
+
+*Impact* +
+{agent} loses the ability to connect back to {fleet} after upgrade.
+Fix for this issue is available in version 8.7.0 and higher, for versions 8.3-8.6 a re-enroll is necessary for the agent to connect back to {fleet}
+====
 
 [discrete]
 [[enhancements-8.6.2]]

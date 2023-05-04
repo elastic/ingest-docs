@@ -122,7 +122,7 @@ Settings with input blocks, such as Max agents are still effective.
 ====
 *Details* +
 {agent} will not load `fleet.yml` information after upgrading to a version that uses encrypted configuration (> 8.3).
-For a managed agent the symptom manifests as the inability to connect back to fleet after upgrade and the following log:
+For a managed agent the symptom manifests as the inability to connect to {fleet} after upgrade with the following log:
 
 [source,shell]
 ----

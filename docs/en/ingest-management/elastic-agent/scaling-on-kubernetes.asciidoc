@@ -61,7 +61,6 @@ Based on our tests[TODO add a link here], the following table provides guideline
 
 Based on our tests we advise to configure only limit resources in the manifest. This way `request` resources will fall back  and equal to the limits specified. The `limits` is the upper bound limit of your microservice process, meaning that can operate in less resources and protect kubenretes to assign bigger usage and protect from possible resource exhaustion.
 
-+
 [source,yaml]
 ------------------------------------------------
 resources:
@@ -100,7 +99,6 @@ image::../images/agent-status.png[Agent Status]
 
 Additionally you can verify the process status with following commands:
 
-+
 [source,bash]
 ------------------------------------------------
 kubectl get pods -A | grep elastic
@@ -110,7 +108,8 @@ kube-system   elastic-agent-wvmpj                        1/1     Running   0    
 ------------------------------------------------
 
 Find leader agent:
-+
+
+
 [source,bash]
 ------------------------------------------------
 ❯ k get leases -n kube-system | grep elastic
@@ -120,7 +119,6 @@ elastic-agent-cluster-leader   elastic-agent-leader-elastic-agent-qw6f4         
 
 Exec into Leader agent and verify the process status:
 
-+
 [source,bash]
 ------------------------------------------------
 ❯ kubectl exec -ti -n kube-system elastic-agent-qw6f4 -- bash
@@ -144,7 +142,6 @@ Components:
 
 It is a common problem of lack of CPU/memory resources that agent process restart as kubernetes size grows. In the logs of agent you 
 
-+
 [source,json]
 ------------------------------------------------
 kubectl logs -n kube-system elastic-agent-qw6f4 | grep "kubernetes/metrics"
@@ -157,7 +154,6 @@ kubectl logs -n kube-system elastic-agent-qw6f4 | grep "kubernetes/metrics"
 
 You can verify the instant resource consumption by running `top pod` command and indentify if agents are close to the limits you have specified in your manifest. 
 
-+
 [source,bash]
 ------------------------------------------------
 kubectl top pod  -n kube-system | grep elastic
@@ -184,7 +180,7 @@ image::../images/state-pod.png[Kubernetes State Pod Metricser]
 --
 
 Identify how many events have been sent to Elasticsearch:
-+
+
 [source,bash]
 ------------------------------------------------
 kubectl logs -n kube-system elastic-agent-h24hh -f | grep -i state_pod 

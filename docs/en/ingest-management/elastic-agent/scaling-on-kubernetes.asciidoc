@@ -46,12 +46,13 @@ Daemonset installation simplify the installation of {agent} because we specify l
 
 Based on our tests[TODO add a link here], the following table provides guidelines to adjust {agent} limits on diffrent kubernetes sizes:
 
-| No of Pods in K8s Cluster | Leader Agent Resources | Rest of Agents |
-| :------ | :------: | ------:|
-| 1000   | cpu: "2000m",  memory: "1000Mi" | cpu: "300m",  memory: "600Mi" |
-| 3000   | cpu: "100m",  memory: "100Mi" | cpu: "400m",  memory: "800Mi" |
-| 5000   | cpu: "3000m",  memory: "2500Mi" | cpu: "500m",  memory: "900Mi" |
-| 10000  | cpu: "3400m",  memory: "4500Mi" | cpu: "700m",  memory: "1000Mi" |
+|===
+| No of Pods in K8s Cluster | Leader Agent Resources | Rest of Agents 
+| 1000   | cpu: "2000m",  memory: "1000Mi" | cpu: "300m",  memory: "600Mi" 
+| 3000   | cpu: "100m",  memory: "100Mi" | cpu: "400m",  memory: "800Mi" 
+| 5000   | cpu: "3000m",  memory: "2500Mi" | cpu: "500m",  memory: "900Mi" 
+| 10000  | cpu: "3400m",  memory: "4500Mi" | cpu: "700m",  memory: "1000Mi" 
+|===
 
 > Above tests run with {agent} version 8.7 and scraping period of 10sec in Kubernetes Policy
 

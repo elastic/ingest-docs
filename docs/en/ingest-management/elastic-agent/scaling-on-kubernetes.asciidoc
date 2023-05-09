@@ -1,0 +1,221 @@
+[[scaling-on-kubenretes]]
+= Scaling {agent} on kubernetes
+
+- Please follow the steps to run the {agent} on <<running-on-kubernetes-managed-by-fleet>> page.
+- Please follow the steps to run the {agent} on <<running-on-kubernetes-standalone>> page.
+
+
+
+[discrete]
+== Observability under scale
+
+Using https://www.elastic.co/guide/en/welcome-to-elastic/current/getting-started-kubernetes.html[Elastic Observability] to monitor Kubernetes infrastructure at scale, imposes a higher complexity in order to configure and adjust Elastic Stack based on diffrent kubernetes sizes. The Horizontal Pod scaling changes the shape of your Kubernetes workload by automatically increasing or decreasing the number of Pods, thus this will impact the following:
+
+- The amount of metrics being collected from several kubernetes endpoints
+- The agent's resources to cope up with the higher CPU and Memory needed for internal processesing
+- The ElasticSearch resources due to higher rate of metric ingestion needs
+- The Dashboard's Visualisations response times as more data are requested on a given time window 
+
+
+[discrete]
+== Configure Agent Resources
+
+The kubernetes observability is based on https://docs.elastic.co/en/integrations/kubernetes[kubernetes integration], which is fetching metrics from several components:
+
+- **Per node:**
+  - kubelet
+  - controller-manager
+  - scheduler
+  - proxy
+- **Cluster Wide (i.e. correspond to the whole cluster):**
+  - kube-state-metrics
+  - apiserver
+
+The Elastic Agent manifest is deployed by default as daemonset. That said, each elastic agent by default is being deployed on every node of kubernetes cluster. 
+
+Additionally by default, one agent is elected as **leader**(more info <<kubernetes_leaderelection-provider>>) in our https://github.com/elastic/elastic-agent/blob/main/deploy/kubernetes/elastic-agent-standalone-kubernetes.yaml#L32[manifests] and this will be responsbile for also collecting the cluster wide metrics
+
+--
+[role="screenshot"]
+image::../images/k8sscaling.png[Agent as daemonset]
+--
+
+Above schema explains how {agent} collect and send metrics to ElasticSearch. Because Leader Agent is responsible to collect also cluster wide metrics this means that requires additional resources.
+
+Daemonset installation simplify the installation of {agent} because we specify less kubernetes resource types inside the manifest and it is the only supported way of <<running-on-kubernetes-managed-by-fleet, managed Elastic Agent scenario>>
+
+Based on our tests[TODO add a link here], the following table provides guidelines to adjust {agent} limits on diffrent kubernetes sizes:
+
+| No of Pods in K8s Cluster | Leader Agent Resources | Rest of Agents |
+| :------ | :------: | ------:|
+| 1000   | cpu: "2000m",  memory: "1000Mi" | cpu: "300m",  memory: "600Mi" |
+| 3000   | cpu: "100m",  memory: "100Mi" | cpu: "400m",  memory: "800Mi" |
+| 5000   | cpu: "3000m",  memory: "2500Mi" | cpu: "500m",  memory: "900Mi" |
+| 10000  | cpu: "3400m",  memory: "4500Mi" | cpu: "700m",  memory: "1000Mi" |
+
+> Above tests run with {agent} version 8.7 and scraping period of 10sec in Kubernetes Policy
+
+[discrete]
+=== Specifying resource and limits in agent manifests
+
+Based on our tests we advise to configure only limit resources in the manifest. This way `request` resources will fall back  and equal to the limits specified. The `limits` is the upper bound limit of your microservice process, meaning that can operate in less resources and protect kubenretes to assign bigger usage and protect from possible resource exhaustion.
+
++
+[source,yaml]
+------------------------------------------------
+resources:
+    limits:
+      cpu: "1000m"
+      memory: "200Mi"
+------------------------------------------------
+
+The autoscheduling of agent inside a kubernetes cluster depends on the limits specified. Additonally our tests revelead that to avoid auto-schduling failures, just specify the memory requirements,  https://github.com/elastic/elastic-agent/blob/main/docs/manifests/elastic-agent-managed-gke-autopilot.yaml#L74-L77[eg. Autopilot GKE manifest]
+
+
+[discrete]
+=== Alternative Agent Installations as Deployment
+
+Although daemonset installation is simpler, it can not diffrentiate the alternative agent resource requirements depending on the collected metrics. The need for better resource assighnment led us to exclude **Leader Agent** from the daemonset specification and use a deployment resource like the example:[TODO add link]
+
+[discrete]
+=== Agent Scheduling
+
+Parallel to {agent} resource specification problem, the scheduling of agents is an other common problem that users phase as kubernetes cluster is growing. Trying to prioritise the agent installation before rest of application microservices, https://github.com/elastic/elastic-agent/blob/main/docs/manifests/elastic-agent-managed-gke-autopilot.yaml#L8-L16[PriorityClasses suggested]
+
+
+[discrete]
+=== Define if Agents are collecting as expected 
+
+After {agent} deployment, we need to verify that agent services are healthy, not restarting (stability) and that collection of metrics continues with expected rate (latency).
+
+**For stability:**
+
+If {agent} is configured as managed, in {kib} you can observe under **Fleet>Agents**
+
+--
+[role="screenshot"]
+image::../images/agent-status.png[Agent Status]
+--
+
+Additionally you can verify the process status with following commands:
+
++
+[source,bash]
+------------------------------------------------
+kubectl get pods -A | grep elastic
+kube-system   elastic-agent-ltzkf                        1/1     Running   0          25h
+kube-system   elastic-agent-qw6f4                        1/1     Running   0          25h
+kube-system   elastic-agent-wvmpj                        1/1     Running   0          25h
+------------------------------------------------
+
+Find leader agent:
++
+[source,bash]
+------------------------------------------------
+❯ k get leases -n kube-system | grep elastic
+NAME                                      HOLDER                                                                       AGE
+elastic-agent-cluster-leader   elastic-agent-leader-elastic-agent-qw6f4                                     25h
+------------------------------------------------
+
+Exec into Leader agent and verify the process status:
+
++
+[source,bash]
+------------------------------------------------
+❯ kubectl exec -ti -n kube-system elastic-agent-qw6f4 -- bash
+root@gke-gke-scaling-gizas-te-default-pool-6689889a-sz02:/usr/share/elastic-agent# ./elastic-agent status
+State: HEALTHY
+Message: Running
+Fleet State: HEALTHY
+Fleet Message: (no message)
+Components:
+  * kubernetes/metrics  (HEALTHY)
+                        Healthy: communicating with pid '42423'
+  * filestream          (HEALTHY)
+                        Healthy: communicating with pid '42431'
+  * filestream          (HEALTHY)
+                        Healthy: communicating with pid '42443'
+  * beat/metrics        (HEALTHY)
+                        Healthy: communicating with pid '42453'
+  * http/metrics        (HEALTHY)
+                        Healthy: communicating with pid '42462'
+------------------------------------------------
+
+It is a common problem of lack of CPU/memory resources that agent process restart as kubernetes size grows. In the logs of agent you 
+
++
+[source,json]
+------------------------------------------------
+kubectl logs -n kube-system elastic-agent-qw6f4 | grep "kubernetes/metrics"
+[ouptut truncated ...]
+
+(HEALTHY->STOPPED): Suppressing FAILED state due to restart for '46554' exited with code '-1'","log":{"source":"elastic-agent"},"component":{"id":"kubernetes/metrics-default","state":"STOPPED"},"unit":{"id":"kubernetes/metrics-default-kubernetes/metrics-kube-state-metrics-c6180794-70ce-4c0d-b775-b251571b6d78","type":"input","state":"STOPPED","old_state":"HEALTHY"},"ecs.version":"1.6.0"}
+{"log.level":"info","@timestamp":"2023-04-03T09:33:38.919Z","log.origin":{"file.name":"coordinator/coordinator.go","file.line":861},"message":"Unit state changed kubernetes/metrics-default-kubernetes/metrics-kube-apiserver-c6180794-70ce-4c0d-b775-b251571b6d78 (HEALTHY->STOPPED): Suppressing FAILED state due to restart for '46554' exited with code '-1'","log":{"source":"elastic-agent"}
+
+------------------------------------------------
+
+You can verify the instant resource consumption by running `top pod` command and indentify if agents are close to the limits you have specified in your manifest. 
+
++
+[source,bash]
+------------------------------------------------
+kubectl top pod  -n kube-system | grep elastic
+NAME                                                             CPU(cores)   MEMORY(bytes)
+elastic-agent-ltzkf                                              30m          354Mi
+elastic-agent-qw6f4                                              67m          467Mi
+elastic-agent-wvmpj                                              27m          357Mi
+------------------------------------------------
+
+**For latency:**
+
+Kibana Discovery can be used to identify frequency of your metrics being ingested.
+
+Filter for Pod dataset:
+--
+[role="screenshot"]
+image::../images/pod-latency.png[Pod Metricser]
+--
+
+Filter for State_Pod dataset
+--
+[role="screenshot"]
+image::../images/state-pod.png[Kubernetes State Pod Metricser]
+--
+
+Identify how many events have been sent to Elasticsearch:
++
+[source,bash]
+------------------------------------------------
+kubectl logs -n kube-system elastic-agent-h24hh -f | grep -i state_pod 
+[ouptut truncated ...]
+
+"state_pod":{"events":2936,"success":2936}
+------------------------------------------------
+
+The number of events denotes the number of documents that should be depicted inside Kibana Discovery page.
+
+> For eg, in a cluster with 798 pods, then 798 docs should be depicted in block of ingestion inside {kib}
+
+== Kubernetes Policy Configuration
+
+Policy configuration of kubernetes package can heavily affect the amount of metrics collected and finally ingested. Factors that should be considered in order to make your collection and ingestin lighter:
+
+- Scraping period of Kubernetes endpoints
+- Disabling log collection
+  - Keep audit logs disabled
+- Disable events dataset
+- Disable Kubernetes control plane datasets in Cloud managed kubernetes instances (see more info ** <<running-on-gke-managed-by-fleet>>, <<running-on-eks-managed-by-fleet>>, <<running-on-aks-managed-by-fleet>> pages)
+
+== Visualisation best practises
+
+User experience regarding Dashboard responses is also affected from the size of data being requested. As dashbords can contain multiple visualisations, the general conisderation is to split visualisasations and group them according to the frequency of access. The less number of visualisations tends to be better in order to have access to users
+
+Additionally, https://github.com/elastic/integrations/blob/main/docs/dashboard_guidelines.md[Dashboard Guidelines] is constantly updated also to track needs of observability at scale.
+
+== Kube-State-Metrics horizontal scaling
+[TODO]
+
+== Relevant links
+
+- https://www.elastic.co/guide/en/welcome-to-elastic/current/getting-started-kubernetes.html[Monitor Kubernetes Infrastructure]
+- https://www.elastic.co/blog/kubernetes-cluster-metrics-logs-monitoring[Blog: Managing your Kubernetes cluster with Elastic Observability]

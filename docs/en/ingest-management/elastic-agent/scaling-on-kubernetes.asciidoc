@@ -9,7 +9,7 @@
 [discrete]
 == Observability under scale
 
-Using https://www.elastic.co/guide/en/welcome-to-elastic/current/getting-started-kubernetes.html[Elastic Observability] to monitor Kubernetes infrastructure at scale, imposes a higher complexity in order to configure and adjust Elastic Stack based on diffrent kubernetes sizes. The Horizontal Pod scaling changes the shape of your Kubernetes workload by automatically increasing or decreasing the number of Pods, thus this will impact the following:
+Using https://www.elastic.co/guide/en/welcome-to-elastic/current/getting-started-kubernetes.html[Elastic Observability] to monitor Kubernetes infrastructure at scale, imposes a higher complexity in order to configure and adjust Elastic Stack based on different kubernetes sizes. The Horizontal Pod scaling changes the shape of your Kubernetes workload by automatically increasing or decreasing the number of Pods, thus this will impact the following:
 
 - The amount of metrics being collected from several kubernetes endpoints
 - The agent's resources to cope up with the higher CPU and Memory needed for internal processesing

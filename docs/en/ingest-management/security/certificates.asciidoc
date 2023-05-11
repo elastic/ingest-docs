@@ -241,7 +241,7 @@ which is associated with the fleet-server-cert-key to expose this {fleet-server}
 to the other {agents}
 `fleet-server-cert-key`::
 Private key to use to expose this {fleet-server} HTTPS endpoint 
-to the other Elastic Agents
+to the other {agents}
 
 Note that additionally an optional passphrase for the private key may be specified with:
 

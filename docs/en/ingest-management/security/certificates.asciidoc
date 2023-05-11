@@ -142,8 +142,8 @@ the *Action* column.
 {es}:
 
 // lint ignore elasticsearch
-* If you have a CA trusted fingerprint, specify it in the
-*Elasticsearch CA trusted fingerprint* field. To learn more, refer to the
+* If you have a valid HEX encoded SHA-256 CA trusted fingerprint from root CA, 
+specify it in the *Elasticsearch CA trusted fingerprint* field. To learn more, refer to the
 {ref}/configuring-stack-security.html[{es} security documentation].
 
 * Otherwise, under *Advanced YAML configuration*, set
@@ -231,13 +231,17 @@ Where:
 `fleet-server-service-token`::
 Service token to use to communicate with {es}.
 `fleet-server-es-ca`::
-CA certificate to use to connect to {es}.
+CA certificate that the current {fleet-server} uses to connect to {es}.
 `certificate-authorities`::
-CA certificate to use to connect to {fleet-server}.
+List of paths to PEM-encoded CA certificate files that should be trusted 
+for the other {agents} to connect to this {fleet-server}
 `fleet-server-cert`::
-Certificate to use for the exposed {fleet-server} HTTPS endpoint.
+The path for the PEM-encoded certificate (or certificate chain) 
+which is associated with the fleet-server-cert-key to expose this {fleet-server} HTTPS endpoint 
+to the other {agents}
 `fleet-server-cert-key`::
-Private key to use for the exposed {fleet-server} HTTPS endpoint.
+Private key to use to expose this {fleet-server} HTTPS endpoint 
+to the other {agents}
 
 Note that additionally an optional passphrase for the private key may be specified with:
 

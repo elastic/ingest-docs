@@ -36,7 +36,7 @@ docker run \
 <2> Your cluster's {es} host URL.
 <3> The {fleet} service token. <<create-fleet-enrollment-tokens,Generate one in the {fleet} UI>> if you don't have one already.
 <4> ID of the {fleet-server} policy. We recommend only having one fleet-server policy. To learn how to create a policy, refer to <<create-a-policy-no-ui>>.
-<5> publish container port 8220 to host
+<5> publish container port 8220 to host.
 <6> If you want to run *elastic-agent-complete* image, replace `elastic-agent` to `elastic-agent-complete`. Use the `elastic-agent` user instead of root to run Synthetics Browser tests. Synthetic tests cannot run under the root user. Refer to {observability-guide}/uptime-set-up.html[Synthetics {fleet} Quickstart] for more information.
 
 Refer to <<agent-environment-variables>> for all available options.

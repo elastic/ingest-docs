@@ -231,7 +231,7 @@ Where:
 `fleet-server-service-token`::
 Service token to use to communicate with {es}.
 `fleet-server-es-ca`::
-CA certificate that the current fleet server uses to connect to {es}.
+CA certificate that the current {fleet-server} uses to connect to {es}.
 `certificate-authorities`::
 List of paths to PEM encoded CA certificate files that should be trusted 
 for the other Elastic Agents uses to connect to this {fleet-server}

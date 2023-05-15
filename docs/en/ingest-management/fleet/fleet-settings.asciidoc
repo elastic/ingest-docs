@@ -299,6 +299,8 @@ These settings control the format of information provided about the current host
 
 | When this setting is selected, information about the current host is in FQDN format (`somehost.example.com` rather than `somehost`). This helps you to distinguish between hosts on different domains that have similar names. The fully qualified hostname allows each host to be more easily identified when viewed in {kib}, for example.
 
+preview::[]
+
 For FQDN reporting to work as expected, the hostname of the current host must either:
 
 * Have a CNAME entry defined in DNS.

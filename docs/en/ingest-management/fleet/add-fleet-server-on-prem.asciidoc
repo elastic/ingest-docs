@@ -10,9 +10,8 @@ image::images/fleet-server-on-prem-deployment.png[{fleet-server} on-premises dep
 
 To deploy a self-managed {fleet-server}, you need to: 
 
-* Satisfy all <<add-fleet-server-on-prem-compatibility,compatibility requirements>> and <<add-fleet-server-on-prem-prereq,prerequisites>>
-* Add hosts including <<add-fleet-server-on-prem-hosts,{fleet-server} hosts and {es} hosts>>
-* <<add-fleet-server-on-prem-add-server,Add {fleet-server}>> by installing an {agent} and enrolling it in an agent policy containing the {fleet-server} integration
+* Satisfy all <<add-fleet-server-on-prem-compatibility,compatibility requirements>> and <<add-fleet-server-on-prem-prereq,prerequisites>>.
+* <<add-fleet-server-on-prem-add-server,Add a {fleet-server}>> by installing an {agent} and enrolling it in an agent policy containing the {fleet-server} integration.
 
 NOTE: You can install only a single {agent} per host, which means you cannot run
 {fleet-server} and another {agent} on the same host unless you deploy a
@@ -85,9 +84,11 @@ You may need to allow access to these ports. See the following table for default
 | {fleet-server} → {es} | 9200
 |===
 
-[discrete]
-[[add-fleet-server-on-prem-hosts]]
-= Add {fleet-server} hosts
+//[discrete]
+//[[add-fleet-server-on-prem-hosts]]
+//= Add {fleet-server} hosts
+
+//////
 
 // tag::fleet-server-host-prereq[]
 Start by adding one or more {fleet-server} hosts.
@@ -133,6 +134,8 @@ NOTE: Skip this step if you've started the {stack} with security enabled
 
 . Save and apply the settings.
 
+//////
+
 [discrete]
 [[add-fleet-server-on-prem-add-server]]
 = Add {fleet-server}
@@ -142,7 +145,8 @@ The policy configures the agent to operate in a special mode to serve as a {flee
 
 To add a {fleet-server}:
 
-. Click the **Agents** tab.
+. In {kib}, go to *Management* -> *{fleet}*
+. Click the **Agents** tab if it isn't already selected.
 . Click *Add {fleet-server}*.
 . This will open in-product instructions to add a {fleet-server} using 
 one of two options: *Quick Start* or *Advanced*.
@@ -183,20 +187,33 @@ image::images/add-fleet-server-advanced.png[In-product instructions for adding a
 +
 [NOTE]
 ====
-The `install` command installs the {agent} as a managed service and enrolls it
+. The `install` command installs the {agent} as a managed service and enrolls it
 in a {fleet-server} policy. For more {fleet-server} commands, see
 {fleet-guide}/elastic-agent-cmd-options.html[{agent} command reference].
+. When you **Add your {fleet-server} host**, if the **Edit hosts** fields are 
+grayed out, {fleet-server} hosts are configured outside of {fleet}. 
+For more information, refer to {kibana-ref}/fleet-settings-kb.html[{fleet} 
+settings in {kib}].
 ====
 
 . If installation is successful, you'll see confirmation that {fleet-server}
 connected. Click **Continue enrolling {agent}** to begin enrolling your
-agents in {fleet-server}.
+agents in {fleet-server}. 
++
+You can update your {fleet-server} configuration in {kib} at any time by going 
+to *Management* -> *{fleet}* -> *Settings*. From there, you can:
+** Update the {fleet-server} host URL.
+** Configure additional outputs where agents will send data.
+** Specify the location from where agents will download binaries.
+** Specify proxy URLs to use for {fleet-server} or {agent} outputs.
 
 [NOTE]
 ====
-It's recommended you generate a unique service token for each
+* It's recommended you generate a unique service token for each
 {fleet-server}. For other ways to generate service tokens, see
 {ref}/service-tokens-command.html[`elasticsearch-service-tokens`].
+* 
+
 ====
 
 [discrete]

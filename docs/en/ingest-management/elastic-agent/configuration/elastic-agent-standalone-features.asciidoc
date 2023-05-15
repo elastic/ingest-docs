@@ -30,6 +30,8 @@ When enabled, information provided about the current host through the <<host-pro
 +
 preview::[]
 +
+NOTE: FQDN reporting is not currently supported in {endpoint-sec} or APM.
++
 For FQDN reporting to work as expected, the hostname of the current host must either:
 +
 --

@@ -121,9 +121,6 @@ and ensure a smooth operation in a bursty environment.
 
 Now that the policy exists, you can add {fleet-server}s.
 
-//include::add-fleet-server-on-prem.asciidoc[tag=add-fleet-server-steps]
-
-
 A {fleet-server} is an {agent} that is enrolled in a {fleet-server} policy.
 The policy configures the agent to operate in a special mode to serve as a {fleet-server} in your deployment.
 

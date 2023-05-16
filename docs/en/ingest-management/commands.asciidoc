@@ -126,6 +126,8 @@ to start the agent from a terminal.
 [discrete]
 === Synopsis
 
+// tag::enroll[]
+
 To enroll the {agent} in {fleet}:
 
 [source,shell]
@@ -142,6 +144,8 @@ elastic-agent enroll --url <string>
                      [--tag <string>]
                      [global-flags]
 ----
+
+// end::enroll[]
 
 To enroll the {agent} in {fleet} and set up {fleet-server}:
 

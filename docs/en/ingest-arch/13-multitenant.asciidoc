@@ -22,10 +22,10 @@ Note that the System and Windows integrations must be installed on all {es} clus
 [[multi-resources]]
 ==== Resources
 
-Info on {agent} and agent integrations:
+Info on configuring {agent}:
 
 * {fleet-guide}[Fleet and Elastic Agent Guide]
-* {integrations-docs}[{agent} integrations]
+* {fleet-guide}/elastic-agent-output-configuration.html[Configuring outputs for {agent}]
 
 Info on {ls} and {ls} outputs:
 

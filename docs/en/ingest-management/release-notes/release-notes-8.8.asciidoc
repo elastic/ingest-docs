@@ -82,7 +82,7 @@ The 8.8.0 release Added the following new and notable features.
 * Added a `memory_limit` configuration setting to help prevent OOM errors {fleet-server-pull}2514[#2514]
 
 {agent}::
-* Make download of {agent} upgrade artifacts asynchronous during Fleet-managed upgrade {agent-pull}2205[#2205] {agent-issue}1706[#1706]
+* Make download of {agent} upgrade artifacts asynchronous during Fleet-managed upgrade and increase the download timeout to 2 hours {agent-pull}2205[#2205] {agent-issue}1706[#1706]
 * Make the language used in CLI commands more consistent {fleet-server-pull}2496[#2496]
 
 [discrete]

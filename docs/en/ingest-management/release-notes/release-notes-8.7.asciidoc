@@ -12,6 +12,8 @@
 [[release-notes]]
 = Release notes
 
+//test
+
 This section summarizes the changes in each release.
 
 * <<release-notes-8.7.1>>

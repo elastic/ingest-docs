@@ -52,7 +52,6 @@ The 8.8.0 release Added the following new and notable features.
 * Added a specification file for the link:https://www.elastic.co/observability/universal-profiling[Universal Profiling Symbolizer] {agent-pull}2401[#2401]
 * Added a specification file for the link:https://www.elastic.co/observability/universal-profiling[Universal Profiling Collector] {agent-pull}2407[#2407]
 * Added support to specify the {fleet-server} `service_token` through a file specified with `service_token_file` {agent-pull}2424[#2424]
-* Added support to specify custom base paths during {agent} installation {agent-pull}2500[#2500]
 
 [discrete]
 [[enhancements-8.8.0]]

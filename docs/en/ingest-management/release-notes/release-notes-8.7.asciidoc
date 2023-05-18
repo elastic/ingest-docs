@@ -46,6 +46,9 @@ The 8.7.1 release adds the following new and notable features.
 {fleet}::
 * The agent policy `Host name format` selector is now enabled by default {kibana-pull}154563[#154563]
 
+{agent}::
+* Diagnostics now preserve the Elastic Agent upgrade watcher logs, allowing upgrades that were rolled back to be debugged {agent-pull}2518[#2518] {agent-issue}2262[#2262]
+
 [discrete]
 [[bug-fixes-8.7.1]]
 === Bug fixes

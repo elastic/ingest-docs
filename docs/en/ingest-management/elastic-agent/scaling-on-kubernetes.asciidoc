@@ -1,4 +1,4 @@
-[[scaling-on-kubenretes]]
+[[scaling-on-kubernetes]]
 = Scaling {agent} on kubernetes
 
 - Please follow the steps to run the {agent} on <<running-on-kubernetes-managed-by-fleet>> page.
@@ -44,12 +44,12 @@ Above schema explains how {agent} collect and send metrics to ElasticSearch. Bec
 
 Daemonset installation simplify the installation of {agent} because we specify less kubernetes resource types inside the manifest and it is the only supported way of <<running-on-kubernetes-managed-by-fleet, managed Elastic Agent scenario>>
 
-Based on our tests[TODO add a link here], the following table provides guidelines to adjust {agent} limits on diffrent kubernetes sizes:
+Based on our tests, the following table provides guidelines to adjust {agent} limits on diffrent kubernetes sizes:
 
 |===
 | No of Pods in K8s Cluster | Leader Agent Resources | Rest of Agents 
-| 1000   | cpu: "2000m",  memory: "1000Mi" | cpu: "300m",  memory: "600Mi" 
-| 3000   | cpu: "100m",  memory: "100Mi" | cpu: "400m",  memory: "800Mi" 
+| 1000   | cpu: "1500m",  memory: "800Mi" | cpu: "300m",  memory: "600Mi" 
+| 3000   | cpu: "2000m",  memory: "1000Mi" | cpu: "400m",  memory: "800Mi" 
 | 5000   | cpu: "3000m",  memory: "2500Mi" | cpu: "500m",  memory: "900Mi" 
 | 10000  | cpu: "3400m",  memory: "4500Mi" | cpu: "700m",  memory: "1000Mi" 
 |===
@@ -69,13 +69,18 @@ resources:
       memory: "200Mi"
 ------------------------------------------------
 
-The autoscheduling of agent inside a kubernetes cluster depends on the limits specified. Additonally our tests revelead that to avoid auto-schduling failures, just specify the memory requirements,  https://github.com/elastic/elastic-agent/blob/main/docs/manifests/elastic-agent-managed-gke-autopilot.yaml#L74-L77[eg. Autopilot GKE manifest]
-
-
 [discrete]
 === Alternative Agent Installations as Deployment
 
-Although daemonset installation is simpler, it can not diffrentiate the alternative agent resource requirements depending on the collected metrics. The need for better resource assighnment led us to exclude **Leader Agent** from the daemonset specification and use a deployment resource like the example:[TODO add link]
+Although daemonset installation is simpler, it can not diffrentiate the alternative agent resource requirements depending on the collected metrics. The need for better resource assighnment led us to exclude **Leader Agent** from the daemonset specification and use a deployment resource 
+
+We suggest **3 alternative configuration methods** to deploy elastic-agent in big scale Kubernetes clusters with Kube State Metrics (KSM) in sharding configuration:
+
+1. With `hostNetwork:false` for non-leader deployments of KSM shards
+2. With `podAntiAffinity` to isolate the daemonset pods from rest of deployments
+3. With `taint/tolerations` to isolate the daemonset pods from rest of deployments
+
+For more information, please advise https://github.com/elastic/elastic-agent/blob/ksmsharding/docs/elastic-agent-ksm-sharding.md[following guide]
 
 [discrete]
 === Agent Scheduling
@@ -208,9 +213,6 @@ Policy configuration of kubernetes package can heavily affect the amount of metr
 User experience regarding Dashboard responses is also affected from the size of data being requested. As dashbords can contain multiple visualisations, the general conisderation is to split visualisasations and group them according to the frequency of access. The less number of visualisations tends to be better in order to have access to users
 
 Additionally, https://github.com/elastic/integrations/blob/main/docs/dashboard_guidelines.md[Dashboard Guidelines] is constantly updated also to track needs of observability at scale.
-
-== Kube-State-Metrics horizontal scaling
-[TODO]
 
 == Relevant links
 

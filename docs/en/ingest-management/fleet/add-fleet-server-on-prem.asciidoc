@@ -211,7 +211,7 @@ is set up and connected.
 After {fleet-server} is installed and enrolled in {fleet}, the newly created 
 {fleet-server} policy is applied. You can see this on the {fleet-server} policy page.
 
-The {fleet-server} agent will also show up on the main {fleet} page as another agent
+The {fleet-server} agent also shows up on the main {fleet} page as another agent
 whose life-cycle can be managed (like other agents in the deployment).
 
 You can update your {fleet-server} configuration in {kib} at any time

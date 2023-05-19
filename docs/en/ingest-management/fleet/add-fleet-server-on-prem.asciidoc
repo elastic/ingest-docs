@@ -218,8 +218,8 @@ You can update your {fleet-server} configuration in {kib} at any time
 by going to: *Management* -> *{fleet}* -> *Settings*. From there you can:
 
 ** Update the {fleet-server} host URL.
-** Configure additional outputs where agents will send data.
-** Specify the location from where agents will download binaries.
+** Configure additional outputs where agents should send data.
+** Specify the location from where agents should download binaries.
 ** Specify proxy URLs to use for {fleet-server} or {agent} outputs.
 
 [discrete]

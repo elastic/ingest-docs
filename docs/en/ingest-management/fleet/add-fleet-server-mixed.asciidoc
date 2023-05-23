@@ -12,7 +12,7 @@ To deploy a self-managed {fleet-server} on-premises to work with a hosted {ess},
 you need to: 
 
 * Satisfy all <<add-fleet-server-mixed-compatibility,compatibility requirements>> and <<add-fleet-server-mixed-prereq,prerequisites>>
-* Add <<fleet-server-add-hosts,{fleet-server} hosts>>
+//* Add <<fleet-server-add-hosts,{fleet-server} hosts>>
 * Create a <<fleet-server-create-policy,{fleet-server} policy>>
 * <<fleet-server-add-server,Add {fleet-server}>> by installing an {agent} and enrolling it in an agent policy containing the {fleet-server} integration
 
@@ -74,21 +74,21 @@ You may need to allow access to these ports. See the following table for default
 
 NOTE: If you do not specify the port for {es} as 443, the {agent} defaults to 9200.
 
-[discrete]
-[[fleet-server-add-hosts]]
-= Add {fleet-server} hosts
+//[discrete]
+//[[fleet-server-add-hosts]]
+//= Add {fleet-server} hosts
 
-include::add-fleet-server-on-prem.asciidoc[tag=fleet-server-host-prereq]
+//include::add-fleet-server-on-prem.asciidoc[tag=fleet-server-host-prereq]
 
-include::add-fleet-server-on-prem.asciidoc[tag=add-fleet-server-host]
+//include::add-fleet-server-on-prem.asciidoc[tag=add-fleet-server-host]
 
-. Save and apply the settings.
+//. Save and apply the settings.
 
 [discrete]
 [[fleet-server-create-policy]]
 = Create a {fleet-server} policy
 
-Next, you'll create a {fleet-server} policy. The {fleet-server} policy manages
+First, create a {fleet-server} policy. The {fleet-server} policy manages
 and configures the {agent} running on the {fleet-server} host to launch a
 {fleet-server} process.
 
@@ -120,13 +120,14 @@ and ensure a smooth operation in a bursty environment.
 = Add {fleet-server}s
 
 Now that the policy exists, you can add {fleet-server}s.
+
 A {fleet-server} is an {agent} that is enrolled in a {fleet-server} policy.
 The policy configures the agent to operate in a special mode to serve as a {fleet-server} in your deployment.
 
 To add a {fleet-server}:
 
+. In {kib}, go to *Management* -> *{fleet}*
 . Click the **Agents** tab.
-
 . Click *Add {fleet-server}*.
 
 . This will open in-product instructions for adding a {fleet-server} using 
@@ -136,22 +137,33 @@ one of two options. Choose *Advanced*.
 image::images/add-fleet-server-advanced.png[In-product instructions for adding a {fleet-server} in advanced mode]
 
 . Follow the in-product instructions to add a {fleet-server}.
-.. Choose the policy name for this deployment.
+.. Select the agent policy that you created for this deployment.
 .. Choose **Production** as your deployment mode.
 +
 Production mode is the fully secured mode where TLS certificates ensure a secure communication between {fleet-server} and {es}.
-.. Select the {fleet-server} host that was identified earlier. Click **Add host**.
+.. Open the *{fleet-server} Hosts* dropdown and select *Add new {fleet-server} Hosts*.
+Specify one or more host URLs your {agent}s will use to connect to {fleet-server}. 
+For example, `https://192.0.2.1:8220`, where `192.0.2.1` is the host IP where you will install {fleet-server}.
 .. A **Service Token** is required so the {fleet-server} can write data to the connected {es} instance.
 Click **Generate service token** and copy the generated token.
 .. Copy the installation instructions provided in {kib}, which include some of the known deployment parameters.
 .. Replace the value of the `--certificate-authorities` parameter with your <<add-fleet-server-mixed-prereq,CA certificate>>.
+. If installation is successful, a confirmation indicates that {fleet-server}
+is set up and connected.
 
-After {fleet-server} is installed and enrolled in {fleet},
-the newly created {fleet-server} policy is applied.
-You can see this on the {fleet-server} policy page.
+After {fleet-server} is installed and enrolled in {fleet}, the newly created 
+{fleet-server} policy is applied. You can see this on the {fleet-server} policy page.
 
 The {fleet-server} agent will also show up on the main {fleet} page as another agent
 whose life-cycle can be managed (like other agents in the deployment).
+
+You can update your {fleet-server} configuration in {kib} at any time
+by going to: *Management* -> *{fleet}* -> *Settings*. From there you can:
+
+** Update the {fleet-server} host URL.
+** Configure additional outputs where agents will send data.
+** Specify the location from where agents will download binaries.
+** Specify proxy URLs to use for {fleet-server} or {agent} outputs.
 
 [discrete]
 [[fleet-server-install-agents]]

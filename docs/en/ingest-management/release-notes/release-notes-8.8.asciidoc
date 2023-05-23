@@ -47,7 +47,6 @@ The 8.8.0 release Added the following new and notable features.
 * Added action APM metadata to help debug agent actions {fleet-server-pull}2472[#2472]
 
 {agent}::
-* Added a new StateWatch operating mode for watching the current state of the running {agent} {agent-pull}2252[#2252]
 * Added a specification file for the link:https://www.elastic.co/observability/universal-profiling[Universal Profiling Symbolizer] {agent-pull}2401[#2401]
 * Added a specification file for the link:https://www.elastic.co/observability/universal-profiling[Universal Profiling Collector] {agent-pull}2407[#2407]
 * Added support to specify the {fleet-server} `service_token` through a file specified with `service_token_file` {agent-pull}2424[#2424]

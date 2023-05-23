@@ -24,7 +24,6 @@ include::{observability-docs-root}/docs/en/shared/spin-up-the-stack/widget.ascii
 [discrete]
 == Step 1: Pull the image
 
-
 There are two images for {agent}, *elastic-agent* and *elastic-agent-complete*. The *elastic-agent* image contains all the binaries for running {beats}, while the *elastic-agent-complete* image contains these binaries plus additional dependencies to run browser monitors through Elastic Synthetics. Refer to {observability-guide}/uptime-set-up.html[Synthetic monitoring via {agent} and {fleet}] for more information.
 
 Run the `docker pull` command against the Elastic Docker registry:
@@ -42,7 +41,44 @@ docker pull docker.elastic.co/beats/elastic-agent-complete:{version}
 ----
 
 [discrete]
-== Step 2: Get aware of the  {agent} container command
+== Step 2: Optional: Verify the image
+
+Although it's optional, we highly recommend verifying the signatures included with your downloaded Docker images to ensure that the images are valid.
+
+Elastic images are signed with https://docs.sigstore.dev/cosign/overview/[Cosign] which is part of the https://www.sigstore.dev/[Sigstore] project. Cosign supports container signing, verification, and storage in an OCI registry. Install the appropriate https://docs.sigstore.dev/cosign/installation/[Cosign application]
+for your operating system.
+
+Run the following commands to verify the *elastic-agent* container image signature for {agent} v{version}:
+
+["source","sh",subs="attributes"]
+--------------------------------------------
+wget https://artifacts.elastic.co/cosign.pub <1>
+cosign verify --key cosign.pub docker.elastic.co/beats/elastic-agent:{version} <2>
+--------------------------------------------
+<1> Download the Elastic public key to verify container signature
+<2> Verify the container against the Elastic public key
+
+If you're using the *elastic-agent-complete* image, run the commands as follows:
+
+["source","sh",subs="attributes"]
+--------------------------------------------
+wget https://artifacts.elastic.co/cosign.pub <1>
+cosign verify --key cosign.pub docker.elastic.co/beats/elastic-agent-complete:{version} <2>
+--------------------------------------------
+
+The command prints the check results and the signature payload in JSON format, for example:
+
+["source","sh",subs="attributes"]
+--------------------------------------------
+Verification for docker.elastic.co/beats/elastic-agent-complete:{version} --
+The following checks were performed on each of these signatures:
+  - The cosign claims were validated
+  - Existence of the claims in the transparency log was verified offline
+  - The signatures were verified against the specified public key
+--------------------------------------------
+
+[discrete]
+== Step 3: Get aware of the  {agent} container command
 
 
 The {agent} container command offers a wide variety of options.
@@ -54,12 +90,12 @@ docker run --rm docker.elastic.co/beats/elastic-agent:{version} elastic-agent co
 ----
 
 [discrete]
-== Step 3: Run the {agent} image
+== Step 4: Run the {agent} image
 
 include::{tab-widgets}/run-agent-image/widget.asciidoc[]
 
 [discrete]
-== Step 4: View your data in {kib}
+== Step 5: View your data in {kib}
 
 
 include::run-container-common/kibana-fleet-data.asciidoc[]

@@ -68,7 +68,7 @@ cosign verify --key cosign.pub docker.elastic.co/beats/elastic-agent-complete:{v
 
 The command prints the check results and the signature payload in JSON format, for example:
 
-[source,sh]
+["source","sh",subs="attributes"]
 --------------------------------------------
 Verification for docker.elastic.co/beats/elastic-agent-complete:{version} --
 The following checks were performed on each of these signatures:

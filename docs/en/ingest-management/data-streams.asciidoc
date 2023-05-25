@@ -445,3 +445,177 @@ The result should include `type: "boolean"` for the specified field.
   }
 }
 ----
+
+[[data-streams-experimental-features]]
+== Enabling and disabling experimental indexing features for {fleet}-managed data streams
+
+++++
+<titleabbrev>Experimental data stream features</titleabbrev>
+++++
+
+{fleet} provides support for several experimental features around its data streams including:
+
+* link:{ref}/mapping-source-field.html#synthetic-source[Synthetic `_source`]
+* link:{ref}/tsds.html[Time series data streams (TSDS)]
+
+These features can be enabled and disabled for {fleet}-managed data streams by using the index template API and a few key settings.
+
+NOTE: If you are already making use of `@custom` component templates for ingest or retention customization (as shown for example in <<data-streams-ilm-tutorial,Tutorial: Customize data retention policies>>), exercise care to ensure you don't overwrite your customizations when making these requests.
+
+We recommended using link:{kibana-ref}/devtools-kibana.html[{kib} Dev Tools] to run the following requests. Replace `<NAME>` with the name of a given integration data stream. For example specifying `metrics-nginx.stubstatus` results in making a PUT request to `_component_template/metrics-nginx.stubstatus@custom`. Use the index management interface to explore what integration data streams are available to you.
+
+Once you've executed a given request below, you also need to execute a data stream rollover to ensure any incoming data is ingested with your new settings immediately. For example:
+
+[source,sh]
+----
+POST metrics-nginx.stubstatus/_rollover
+----
+
+Refer to steps to enable or disable the following data stream features:
+
+* <<data-streams-experimental-synthetic-enable>>
+* <<data-streams-experimental-synthetic-disable>>
+* <<data-streams-experimental-tsds-enable>>
+* <<data-streams-experimental-tsds-disable>>
+
+[discrete]
+[[data-streams-experimental-synthetic-enable]]
+== Enable synthetic `_source`
+
+[source,json]
+----
+PUT _component_template/<NAME>@custom
+
+{
+  "template": {
+    "mappings": {
+      "_source": {
+        "mode": "synthetic"
+      }
+    }
+  }
+}
+----
+
+[discrete]
+[[data-streams-experimental-synthetic-disable]]
+== Disable synthetic `_source`
+
+[source,json]
+----
+PUT _component_template/<NAME>@custom
+
+{
+  "template": {
+    "mappings": {
+      "_source": {}
+    }
+  }
+}
+----
+
+[discrete]
+[[data-streams-experimental-tsds-enable]]
+== Enable TSDS
+
+NOTE: TSDS uses synthetic `_source`, so if you want to trial both features you need to enable only TSDS.
+
+Due to restrictions in the {es} API, TSDS must be enabled at the *index template* level. So, you'll need to make some sequential requests to enable or disable TSDS.
+
+. Send a GET request to retrieve the index template:
++
+[source,json]
+----
+GET _index_template/<NAME>
+----
++
+. Use the JSON payload returned from the GET request to populate a PUT request, for example:
++
+[source,json]
+----
+PUT _index_template/<NAME>
+{
+  # You can copy & paste this directly from the GET request above
+  "index_patterns": [
+    "<index pattern from GET request>"
+  ],
+
+  # Make sure this is added
+  "template": {
+    "settings": {
+      "index": {
+        "mode": "time_series"
+      }
+    }
+  },
+
+  # You can copy & paste this directly from the GET request above
+  "composed_of": [ 
+    "<NAME>@package",
+    "<NAME>@custom",
+    ".fleet_globals-1",
+    ".fleet_agent_id_verification-1"
+  ],
+
+  # You can copy & paste this directly from the GET request above
+  "priority": 200,
+
+  # Make sure this is added
+  "data_stream": {
+    "allow_custom_routing": false
+  }
+}
+
+----
+
+[discrete]
+[[data-streams-experimental-tsds-disable]]
+== Disable TSDS
+
+To disable TSDS, follow the preview procedure, but specify `null` for `index.mode` instead of `time_series`.
+
+. Send a GET request to retrieve the index template:
++
+[source,json]
+----
+GET _index_template/<NAME>
+----
++
+. Use the JSON payload returned from the GET request to populate a PUT request, for example:
++
+[source,json]
+----
+PUT _index_template/<NAME>
+{
+  # You can copy/paste this directly from the GET request above
+  "index_patterns": [
+    "<index pattern from GET request>"
+  ],
+
+  # Make sure this is added
+  "template": {
+    "settings": {
+      "index": {
+        "mode": null
+      }
+    }
+  },
+
+  # You can copy/paste this directly from the GET request above
+  "composed_of": [ 
+    "<NAME>@package",
+    "<NAME>@custom",
+    ".fleet_globals-1",
+    ".fleet_agent_id_verification-1"
+  ],
+
+  # You can copy/paste this directly from the GET request above
+  "priority": 200,
+
+  # Make sure this is added
+  "data_stream": {
+    "allow_custom_routing": false
+  }
+}
+
+----

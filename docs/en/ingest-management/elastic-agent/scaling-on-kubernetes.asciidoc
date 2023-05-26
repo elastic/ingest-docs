@@ -1,15 +1,14 @@
 [[scaling-on-kubernetes]]
 = Scaling {agent} on kubernetes
 
-- Please follow the steps to run the {agent} on <<running-on-kubernetes-managed-by-fleet>> page.
-- Please follow the steps to run the {agent} on <<running-on-kubernetes-standalone>> page.
-
-
+For more information on how to deploy Elastic Agent in Kubernetes please advise below pages:
+- How to run the {agent} on <<running-on-kubernetes-managed-by-fleet>>.
+- How to run the {agent} on <<running-on-kubernetes-standalone>>.
 
 [discrete]
 == Observability under scale
 
-Using https://www.elastic.co/guide/en/welcome-to-elastic/current/getting-started-kubernetes.html[Elastic Observability] to monitor Kubernetes infrastructure at scale, imposes a higher complexity in order to configure and adjust Elastic Stack based on different kubernetes sizes. The Horizontal Pod scaling changes the shape of your Kubernetes workload by automatically increasing or decreasing the number of Pods, thus this will impact the following:
+This document will try to summarise the key factors and best practises for using https://www.elastic.co/guide/en/welcome-to-elastic/current/getting-started-kubernetes.html[Elastic Observability] to monitor Kubernetes infrastructure at scale. Users need to consider diffrent parameters and adjust Elastic Stack accordingly. The following elements are being affected as the size of Kubernetes cluster increases:
 
 - The amount of metrics being collected from several kubernetes endpoints
 - The agent's resources to cope up with the higher CPU and Memory needed for internal processesing

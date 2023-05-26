@@ -453,10 +453,12 @@ The result should include `type: "boolean"` for the specified field.
 <titleabbrev>Experimental data stream features</titleabbrev>
 ++++
 
-{fleet} provides support for several experimental features around its data streams including:
+{fleet} provides support for several experimental features around its data streams, including:
 
 * link:{ref}/mapping-source-field.html#synthetic-source[Synthetic `_source`]
 * link:{ref}/tsds.html[Time series data streams (TSDS)]
+
+preview::[]
 
 These features can be enabled and disabled for {fleet}-managed data streams by using the index template API and a few key settings.
 
@@ -471,7 +473,7 @@ Once you've executed a given request below, you also need to execute a data stre
 POST metrics-nginx.stubstatus/_rollover
 ----
 
-Refer to steps to enable or disable the following data stream features:
+Refer to the following steps to enable or disable experimental data stream features:
 
 * <<data-streams-experimental-synthetic-enable>>
 * <<data-streams-experimental-synthetic-disable>>
@@ -572,7 +574,7 @@ PUT _index_template/<NAME>
 [[data-streams-experimental-tsds-disable]]
 == Disable TSDS
 
-To disable TSDS, follow the preview procedure, but specify `null` for `index.mode` instead of `time_series`.
+To disable TSDS, follow the same procedure as to <<data-streams-experimental-tsds-enable,enable TSDS>>, but specify `null` for `index.mode` instead of `time_series`.
 
 . Send a GET request to retrieve the index template:
 +

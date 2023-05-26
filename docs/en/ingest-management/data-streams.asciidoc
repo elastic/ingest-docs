@@ -446,19 +446,17 @@ The result should include `type: "boolean"` for the specified field.
 }
 ----
 
-[[data-streams-experimental-features]]
-== Enabling and disabling experimental indexing features for {fleet}-managed data streams
+[[data-streams-advanced-features]]
+== Enabling and disabling advanced indexing features for {fleet}-managed data streams
 
 ++++
-<titleabbrev>Experimental data stream features</titleabbrev>
+<titleabbrev>Advanced data stream features</titleabbrev>
 ++++
 
-{fleet} provides support for several experimental features around its data streams, including:
+{fleet} provides support for several advanced features around its data streams, including:
 
 * link:{ref}/mapping-source-field.html#synthetic-source[Synthetic `_source`]
 * link:{ref}/tsds.html[Time series data streams (TSDS)]
-
-preview::[]
 
 These features can be enabled and disabled for {fleet}-managed data streams by using the index template API and a few key settings.
 
@@ -473,51 +471,12 @@ Once you've executed a given request below, you also need to execute a data stre
 POST metrics-nginx.stubstatus/_rollover
 ----
 
-Refer to the following steps to enable or disable experimental data stream features:
+Refer to the following steps to enable or disable advanced data stream features:
 
-* <<data-streams-experimental-synthetic-enable>>
-* <<data-streams-experimental-synthetic-disable>>
-* <<data-streams-experimental-tsds-enable>>
-* <<data-streams-experimental-tsds-disable>>
+* <<data-streams-advanced-synthetic-disable>>
 
 [discrete]
-[[data-streams-experimental-synthetic-enable]]
-== Enable synthetic `_source`
-
-[source,json]
-----
-PUT _component_template/<NAME>@custom
-
-{
-  "template": {
-    "mappings": {
-      "_source": {
-        "mode": "synthetic"
-      }
-    }
-  }
-}
-----
-
-[discrete]
-[[data-streams-experimental-synthetic-disable]]
-== Disable synthetic `_source`
-
-[source,json]
-----
-PUT _component_template/<NAME>@custom
-
-{
-  "template": {
-    "mappings": {
-      "_source": {}
-    }
-  }
-}
-----
-
-[discrete]
-[[data-streams-experimental-tsds-enable]]
+[[data-streams-advanced-tsds-enable]]
 == Enable TSDS
 
 NOTE: TSDS uses synthetic `_source`, so if you want to trial both features you need to enable only TSDS.
@@ -571,10 +530,10 @@ PUT _index_template/<NAME>
 ----
 
 [discrete]
-[[data-streams-experimental-tsds-disable]]
+[[data-streams-advanced-tsds-disable]]
 == Disable TSDS
 
-To disable TSDS, follow the same procedure as to <<data-streams-experimental-tsds-enable,enable TSDS>>, but specify `null` for `index.mode` instead of `time_series`.
+To disable TSDS, follow the same procedure as to <<data-streams-advanced-tsds-enable,enable TSDS>>, but specify `null` for `index.mode` instead of `time_series`. Follow the steps below or you can copy the <<data-streams-advanced-tsds-disable-nginx-example,NGINX example>>. 
 
 . Send a GET request to retrieve the index template:
 +
@@ -619,5 +578,73 @@ PUT _index_template/<NAME>
     "allow_custom_routing": false
   }
 }
+----
++
+For example, the following payload disables TSDS on `nginx.stubstatus`:
++
+[[data-streams-advanced-tsds-disable-nginx-example]]
+[source,json]
+----
+{
+  "index_patterns": [
+      "metrics-nginx.stubstatus-*"
+  ],
 
+  "template": {
+    "settings": {
+      "index": {
+        "mode": null
+      }
+    }
+  },
+
+  "composed_of": [ 
+    "metrics-nginx.stubstatus@package",
+    "metrics-nginx.stubstatus@custom",
+    ".fleet_globals-1",
+    ".fleet_agent_id_verification-1"
+  ],
+
+  "priority": 200,
+
+  "data_stream": {
+    "allow_custom_routing": false
+  }
+}
+----
+
+[discrete]
+[[data-streams-advanced-synthetic-enable]]
+== Enable synthetic `_source`
+
+[source,json]
+----
+PUT _component_template/<NAME>@custom
+
+{
+  "template": {
+    "mappings": {
+      "_source": {
+        "mode": "synthetic"
+      }
+    }
+  }
+}
+----
+
+[discrete]
+[[data-streams-advanced-synthetic-disable]]
+== Disable synthetic `_source`
+
+[source,json]
+----
+PUT _component_template/<NAME>@custom
+
+{
+  "template": {
+    "mappings": {
+      "_source": {}
+    }
+  }
+}
 ----

@@ -455,8 +455,8 @@ The result should include `type: "boolean"` for the specified field.
 
 {fleet} provides support for several advanced features around its data streams, including:
 
-* link:{ref}/mapping-source-field.html#synthetic-source[Synthetic `_source`]
 * link:{ref}/tsds.html[Time series data streams (TSDS)]
+* link:{ref}/mapping-source-field.html#synthetic-source[Synthetic `_source`]
 
 These features can be enabled and disabled for {fleet}-managed data streams by using the index template API and a few key settings.
 

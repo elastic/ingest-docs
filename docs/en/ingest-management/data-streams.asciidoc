@@ -468,7 +468,7 @@ Once you've executed a given request below, you also need to execute a data stre
 
 [source,sh]
 ----
-POST metrics-nginx.stubstatus/_rollover
+POST metrics-nginx.stubstatus-default/_rollover
 ----
 
 Refer to the following steps to enable or disable advanced data stream features:

@@ -27,7 +27,7 @@ The kubernetes observability is based on https://docs.elastic.co/en/integrations
   - controller-manager
   - scheduler
   - proxy
-- **Cluster Wide (i.e. correspond to the whole cluster):**
+- **Cluster Wide (i.e. unique metrics for the whole cluster):**
   - kube-state-metrics
   - apiserver
 

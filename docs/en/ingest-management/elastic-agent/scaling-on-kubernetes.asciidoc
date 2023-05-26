@@ -57,7 +57,7 @@ Based on our tests, the following table provides guidelines to adjust {agent} li
 > Above tests run with {agent} version 8.7 and scraping period of 10sec in Kubernetes Policy
 
 [discrete]
-=== Specifying resource and limits in agent manifests
+=== Specifying resources and limits in Agent manifests
 
 Based on our tests we advise to configure only limit resources in the manifest. This way `request` resources will fall back  and equal to the limits specified. The `limits` is the upper bound limit of your microservice process, meaning that can operate in less resources and protect kubenretes to assign bigger usage and protect from possible resource exhaustion.
 

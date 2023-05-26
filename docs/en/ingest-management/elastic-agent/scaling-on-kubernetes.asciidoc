@@ -59,7 +59,7 @@ Based on our tests, the following table provides guidelines to adjust {agent} li
 [discrete]
 === Specifying resources and limits in Agent manifests
 
-Based on our tests we advise to configure only limit resources in the manifest. This way `request` resources will fall back  and equal to the limits specified. The `limits` is the upper bound limit of your microservice process, meaning that can operate in less resources and protect kubenretes to assign bigger usage and protect from possible resource exhaustion.
+Based on our tests we advise to configure only the `limit` section of the `resources` section in the manifest. In this way the `request`'s settings of the `resources` will fall back to the `limits` specified. The `limits` is the upper bound limit of your microservice process, meaning that can operate in less resources and protect Kubernetes to assign bigger usage and protect from possible resource exhaustion.
 
 [source,yaml]
 ------------------------------------------------

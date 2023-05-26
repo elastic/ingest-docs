@@ -445,3 +445,206 @@ The result should include `type: "boolean"` for the specified field.
   }
 }
 ----
+
+[[data-streams-advanced-features]]
+== Enabling and disabling advanced indexing features for {fleet}-managed data streams
+
+++++
+<titleabbrev>Advanced data stream features</titleabbrev>
+++++
+
+{fleet} provides support for several advanced features around its data streams, including:
+
+* link:{ref}/tsds.html[Time series data streams (TSDS)]
+* link:{ref}/mapping-source-field.html#synthetic-source[Synthetic `_source`]
+
+These features can be enabled and disabled for {fleet}-managed data streams by using the index template API and a few key settings.
+
+NOTE: If you are already making use of `@custom` component templates for ingest or retention customization (as shown for example in <<data-streams-ilm-tutorial,Tutorial: Customize data retention policies>>), exercise care to ensure you don't overwrite your customizations when making these requests.
+
+We recommended using link:{kibana-ref}/devtools-kibana.html[{kib} Dev Tools] to run the following requests. Replace `<NAME>` with the name of a given integration data stream. For example specifying `metrics-nginx.stubstatus` results in making a PUT request to `_component_template/metrics-nginx.stubstatus@custom`. Use the index management interface to explore what integration data streams are available to you.
+
+Once you've executed a given request below, you also need to execute a data stream rollover to ensure any incoming data is ingested with your new settings immediately. For example:
+
+[source,sh]
+----
+POST metrics-nginx.stubstatus-default/_rollover
+----
+
+Refer to the following steps to enable or disable advanced data stream features:
+
+* <<data-streams-advanced-synthetic-disable>>
+
+[discrete]
+[[data-streams-advanced-tsds-enable]]
+== Enable TSDS
+
+NOTE: TSDS uses synthetic `_source`, so if you want to trial both features you need to enable only TSDS.
+
+Due to restrictions in the {es} API, TSDS must be enabled at the *index template* level. So, you'll need to make some sequential requests to enable or disable TSDS.
+
+. Send a GET request to retrieve the index template:
++
+[source,json]
+----
+GET _index_template/<NAME>
+----
++
+. Use the JSON payload returned from the GET request to populate a PUT request, for example:
++
+[source,json]
+----
+PUT _index_template/<NAME>
+{
+  # You can copy & paste this directly from the GET request above
+  "index_patterns": [
+    "<index pattern from GET request>"
+  ],
+
+  # Make sure this is added
+  "template": {
+    "settings": {
+      "index": {
+        "mode": "time_series"
+      }
+    }
+  },
+
+  # You can copy & paste this directly from the GET request above
+  "composed_of": [ 
+    "<NAME>@package",
+    "<NAME>@custom",
+    ".fleet_globals-1",
+    ".fleet_agent_id_verification-1"
+  ],
+
+  # You can copy & paste this directly from the GET request above
+  "priority": 200,
+
+  # Make sure this is added
+  "data_stream": {
+    "allow_custom_routing": false
+  }
+}
+
+----
+
+[discrete]
+[[data-streams-advanced-tsds-disable]]
+== Disable TSDS
+
+To disable TSDS, follow the same procedure as to <<data-streams-advanced-tsds-enable,enable TSDS>>, but specify `null` for `index.mode` instead of `time_series`. Follow the steps below or you can copy the <<data-streams-advanced-tsds-disable-nginx-example,NGINX example>>. 
+
+. Send a GET request to retrieve the index template:
++
+[source,json]
+----
+GET _index_template/<NAME>
+----
++
+. Use the JSON payload returned from the GET request to populate a PUT request, for example:
++
+[source,json]
+----
+PUT _index_template/<NAME>
+{
+  # You can copy/paste this directly from the GET request above
+  "index_patterns": [
+    "<index pattern from GET request>"
+  ],
+
+  # Make sure this is added
+  "template": {
+    "settings": {
+      "index": {
+        "mode": null
+      }
+    }
+  },
+
+  # You can copy/paste this directly from the GET request above
+  "composed_of": [ 
+    "<NAME>@package",
+    "<NAME>@custom",
+    ".fleet_globals-1",
+    ".fleet_agent_id_verification-1"
+  ],
+
+  # You can copy/paste this directly from the GET request above
+  "priority": 200,
+
+  # Make sure this is added
+  "data_stream": {
+    "allow_custom_routing": false
+  }
+}
+----
++
+For example, the following payload disables TSDS on `nginx.stubstatus`:
++
+[[data-streams-advanced-tsds-disable-nginx-example]]
+[source,json]
+----
+{
+  "index_patterns": [
+      "metrics-nginx.stubstatus-*"
+  ],
+
+  "template": {
+    "settings": {
+      "index": {
+        "mode": null
+      }
+    }
+  },
+
+  "composed_of": [ 
+    "metrics-nginx.stubstatus@package",
+    "metrics-nginx.stubstatus@custom",
+    ".fleet_globals-1",
+    ".fleet_agent_id_verification-1"
+  ],
+
+  "priority": 200,
+
+  "data_stream": {
+    "allow_custom_routing": false
+  }
+}
+----
+
+[discrete]
+[[data-streams-advanced-synthetic-enable]]
+== Enable synthetic `_source`
+
+[source,json]
+----
+PUT _component_template/<NAME>@custom
+
+{
+  "template": {
+    "mappings": {
+      "_source": {
+        "mode": "synthetic"
+      }
+    }
+  }
+}
+----
+
+[discrete]
+[[data-streams-advanced-synthetic-disable]]
+== Disable synthetic `_source`
+
+[source,json]
+----
+PUT _component_template/<NAME>@custom
+
+{
+  "template": {
+    "mappings": {
+      "_source": {}
+    }
+  }
+}
+----

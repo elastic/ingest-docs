@@ -301,7 +301,7 @@ These settings control the format of information provided about the current host
 
 preview::[]
 
-NOTE: FQDN reporting is not currently supported in {endpoint-sec} or APM.
+NOTE: FQDN reporting is not currently supported in APM.
 
 For FQDN reporting to work as expected, the hostname of the current host must either:
 

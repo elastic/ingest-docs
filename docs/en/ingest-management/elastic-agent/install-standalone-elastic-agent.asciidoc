@@ -21,7 +21,7 @@ Note the following restrictions for running standalone {agent}:
 versions automatically. When you upgrade the integration in {kib}, you'll
 need to update the standalone policy manually.
 
-* The file path where {agent} is installed cannot exceed 103 characters.
+* {agent} file paths cannot exceed 103 characters. This restriction applies to all paths, including the {agent} install directory and the data path used by any integrations.
 
 * You can install only a single {agent} per host.
 ====

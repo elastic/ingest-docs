@@ -173,7 +173,7 @@ Burst of file end upload requests to accomodate before falling back to the rate 
 Maximum size in bytes of the uploadEnd API request body.
 
 `upload_chunk_limit.max`:::
-Maximum number of agents that can call the uploadChunk API concurrently. This setting allows the user to avoid overloading the Fleet Server from status API calls.
+Maximum number of agents that can call the uploadChunk API concurrently. This setting allows the user to avoid overloading the Fleet Server from uploadChunk API calls.
 
 `upload_chunk_limit.interval`:::
 How frequently agents can submit file chunk upload requests to the Fleet Server.

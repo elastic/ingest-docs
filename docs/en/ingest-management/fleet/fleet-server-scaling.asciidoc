@@ -77,7 +77,7 @@ this setting may improve performance.
 How often a new policy is rolled out to the agents.
 
 `checkin_limit.max`:::
-Maximum number of agents.
+Maximum number of agents that can call the checkin API concurrently.
 
 `checkin_limit.interval`:::
 How fast the agents can check in to the {fleet-server}.

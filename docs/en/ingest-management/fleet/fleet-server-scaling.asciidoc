@@ -149,7 +149,7 @@ Burst of status requests to accomodate before falling back to the rate defined b
 Maximum size in bytes of the status API request body.
 
 `upload_start_limit.max`:::
-Maximum number of agents that can call the uploadStart API concurrently. This setting allows the user to avoid overloading the Fleet Server from status API calls.
+Maximum number of agents that can call the uploadStart API concurrently. This setting allows the user to avoid overloading the Fleet Server from uploadStart API calls.
 
 `upload_start_limit.interval`:::
 How frequently agents can submit file start upload requests to the Fleet Server.

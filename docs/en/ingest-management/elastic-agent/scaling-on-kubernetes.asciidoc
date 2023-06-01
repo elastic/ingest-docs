@@ -2,6 +2,7 @@
 = Scaling {agent} on kubernetes
 
 For more information on how to deploy Elastic Agent in Kubernetes please advise below pages:
+
 - How to run the {agent} on <<running-on-kubernetes-managed-by-fleet>>.
 - How to run the {agent} on <<running-on-kubernetes-standalone>>.
 
@@ -15,9 +16,16 @@ This document will try to summarise the key factors and best practises for using
 - The ElasticSearch resources due to higher rate of metric ingestion needs
 - The Dashboard's Visualisations response times as more data are requested on a given time window 
 
+The document is divided in two main sections:
+
+- [Configuration practises](configuration-practises) 
+- [Validation and Troubleshooting practises](validation-and-roubleshooting-practises)
 
 [discrete]
-== Configure Agent Resources
+== Configuration Practises
+
+[discrete]
+=== Configure Agent Resources
 
 The kubernetes observability is based on https://docs.elastic.co/en/integrations/kubernetes[kubernetes integration], which is fetching metrics from several components:
 

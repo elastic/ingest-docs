@@ -18,10 +18,11 @@ This document will try to summarise the key factors and best practises for using
 
 The document is divided in two main sections:
 
-- [Configuration practises](#configuration-practises) 
-- [Validation and Troubleshooting practises](#validation-and-roubleshooting-practises)
+- <<configuration-practises,Configuration practises>>
+- <<validation-and-troubleshooting-practises,Validation and Troubleshooting practises>>
 
 [discrete]
+[[configuration-practises]]
 == Configuration Practises
 
 [discrete]
@@ -140,6 +141,7 @@ The configuration of Elastic Stack needs to be taken under consideration in larg
 For heavy processing and big ingestion rate needs, the `CPU-optimised` profile is proposed.
 
 [discrete]
+[[validation-and-troubleshooting-practises]]
 == Validation and Troubleshooting practises
 
 [discrete]

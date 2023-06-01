@@ -129,7 +129,7 @@ Policy configuration of kubernetes package can heavily affect the amount of metr
 
 == Visualisation Configuration best practices
 
-User experience regarding Dashboard responses is also affected from the size of data being requested. As dashbords can contain multiple visualisations, the general conisderation is to split visualisasations and group them according to the frequency of access. The less number of visualisations tends to be better in order to have access to users
+User experience regarding Dashboard responses is also affected from the size of data being requested. As dashbords can contain multiple visualisations, the general conisderation is to split visualisasations and group them according to the frequency of access. The less number of visualisations tends to improve user experience.
 
 Additionally, https://github.com/elastic/integrations/blob/main/docs/dashboard_guidelines.md[Dashboard Guidelines] is constantly updated also to track needs of observability at scale.
 

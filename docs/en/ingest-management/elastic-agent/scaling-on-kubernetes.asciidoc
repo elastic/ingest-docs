@@ -117,7 +117,8 @@ The following table aims to assist users on how to configure their KSM Sharding 
 
 Parallel to {agent} resource specification problem, the scheduling of agents is an other common problem that users phase as kubernetes cluster is growing. Trying to prioritise the agent installation before rest of application microservices, https://github.com/elastic/elastic-agent/blob/main/docs/manifests/elastic-agent-managed-gke-autopilot.yaml#L8-L16[PriorityClasses suggested]
 
-== Kubernetes Policy Configuration
+[discrete]
+=== Kubernetes Policy Configuration
 
 Policy configuration of kubernetes package can heavily affect the amount of metrics collected and finally ingested. Factors that should be considered in order to make your collection and ingestin lighter:
 
@@ -127,13 +128,12 @@ Policy configuration of kubernetes package can heavily affect the amount of metr
 - Disable events dataset
 - Disable Kubernetes control plane datasets in Cloud managed kubernetes instances (see more info ** <<running-on-gke-managed-by-fleet>>, <<running-on-eks-managed-by-fleet>>, <<running-on-aks-managed-by-fleet>> pages)
 
-== Visualisation Configuration best practices
-
 User experience regarding Dashboard responses is also affected from the size of data being requested. As dashbords can contain multiple visualisations, the general conisderation is to split visualisasations and group them according to the frequency of access. The less number of visualisations tends to improve user experience.
 
 Additionally, https://github.com/elastic/integrations/blob/main/docs/dashboard_guidelines.md[Dashboard Guidelines] is constantly updated also to track needs of observability at scale.
 
-== Elastic Stack Configuration
+[discrete]
+=== Elastic Stack Configuration
 
 The configuration of Elastic Stack needs to be taken under consideration in large scale deployments. In case of Elastic Cloud deployments the choice of the deployment [hardware profile](https://www.elastic.co/guide/en/cloud/current/ec-getting-started-profiles.html) is important. 
 

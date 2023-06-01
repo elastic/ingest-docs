@@ -18,8 +18,8 @@ This document will try to summarise the key factors and best practises for using
 
 The document is divided in two main sections:
 
-- [Configuration practises](configuration-practises) 
-- [Validation and Troubleshooting practises](validation-and-roubleshooting-practises)
+- [Configuration practises](#configuration-practises) 
+- [Validation and Troubleshooting practises](#validation-and-roubleshooting-practises)
 
 [discrete]
 == Configuration Practises
@@ -93,6 +93,10 @@ For more information, please advise https://github.com/elastic/elastic-agent/blo
 === Agent Scheduling
 
 Parallel to {agent} resource specification problem, the scheduling of agents is an other common problem that users phase as kubernetes cluster is growing. Trying to prioritise the agent installation before rest of application microservices, https://github.com/elastic/elastic-agent/blob/main/docs/manifests/elastic-agent-managed-gke-autopilot.yaml#L8-L16[PriorityClasses suggested]
+
+
+[discrete]
+== Configuration Practises
 
 
 [discrete]

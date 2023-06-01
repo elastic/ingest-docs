@@ -99,7 +99,7 @@ For more information, please advise https://github.com/elastic/elastic-agent/blo
 
 Based on our [tests](https://github.com/elastic/elastic-agent/blob/7467fd72bccab9a0e1b0adc1761cde8520390943/docs/elastic-agent-scaling-tests.md), the following table provides number of KSM sharding configuration per different kubernetes sizes:
 
-Sampe Elastic Agent Configurations:
+The following table aims to assist users on how to configure their KSM Sharding as Kubernetes cluster scales:
 |===
 | No of Pods in K8s Cluster | No of KSM Shards | Agent Resources
 | 1000   | No Sharding can be handled with default KSM config | limits: memory: 700Mi , cpu:500m 
@@ -108,7 +108,9 @@ Sampe Elastic Agent Configurations:
 | 10000  | 8 Shards | limits: memory: 1400Mi , cpu:1500m 
 |===
 
-> Above tests run with {agent} version 8..8 and scraping period of 10sec in Kubernetes Policy. Those numbers are just indicators and should be validated per different kubernetes policy configuration, along with applications that the kubernetes cluster might include
+> Above tests run with {agent} version 8.8 + TSDB Enabled and scraping period of 10sec in Kubernetes Policy. Those numbers are just indicators and should be validated per different kubernetes policy configuration, along with applications that the kubernetes cluster might include
+
+> Tests have run until 10K pods per cluster. Scaling to bigger number of pods might require additional confguration from Kubernetes Side and Cloud Providers but the basic idea of installing Elastic Agent while horizontally scaling KSM remains the same
 
 [discrete]
 === Agent Scheduling

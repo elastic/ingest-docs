@@ -69,7 +69,7 @@ resources:
 
 Based on our [tests](https://github.com/elastic/elastic-agent/blob/7467fd72bccab9a0e1b0adc1761cde8520390943/docs/elastic-agent-scaling-tests.md), the following table provides guidelines to adjust {agent} limits on different kubernetes sizes:
 
-Sampe Elastic Agent Configurations:
+Sample Elastic Agent Configurations:
 |===
 | No of Pods in K8s Cluster | Leader Agent Resources | Rest of Agents 
 | 1000   | cpu: "1500m",  memory: "800Mi" | cpu: "300m",  memory: "600Mi" 

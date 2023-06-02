@@ -50,7 +50,7 @@ image::../images/k8sscaling.png[Agent as daemonset]
 
 The above schema explains how {agent} collects and sends metrics to Elasticsearch. Because of Leader Agent being responsible to also collecting cluster-lever metrics, this means that it requires additional resources.
 
-Daemonset deployment approach simplifies the installation of the {agent} because we define less Kubernetes Resources in our manifest and we only need one single Agent policy for our Agents. Hence it is the only supported way of <<running-on-kubernetes-managed-by-fleet, managed Elastic Agent scenario>>
+Daemonset deployment approach simplifies the installation of the {agent} because we define less Kubernetes Resources in our manifest and we only need one single Agent policy for our Agents. Hence it is the default supported method for <<running-on-kubernetes-managed-by-fleet, Managed Elastic Agent installation>>
 
 
 [discrete]
@@ -86,7 +86,7 @@ Sample Elastic Agent Configurations:
 Although daemonset installation is simpler, it can not differentiate the alternative agent resource requirements depending on the collected metrics. The need for better 
 resource assignment led us to alternatives installation methods. 
 
-The main suggestion for big scale clusters *is to install Elastic Agent as side container with Kube State Metrics Shard*. The installation is explained in details https://github.com/elastic/elastic-agent/tree/909b09def863205ae928f440d04851494c8e9933/docs/manifests/kustomize-autosharding[here]
+IMPORTANT: The main suggestion for big scale clusters *is to install Elastic Agent as side container with Kube State Metrics Shard*. The installation is explained in details https://github.com/elastic/elastic-agent/tree/909b09def863205ae928f440d04851494c8e9933/docs/manifests/kustomize-autosharding[here]
 
 In general **3 alternative configuration methods** to deploy elastic-agent in big scale Kubernetes clusters with Kube State Metrics (KSM) in sharding configuration have been verified:
 
@@ -111,7 +111,7 @@ The following table aims to assist users on how to configure their KSM Sharding 
 
 > Above tests run with {agent} version 8.8 + TSDB Enabled and scraping period of 10sec in Kubernetes Policy. Those numbers are just indicators and should be validated per different kubernetes policy configuration, along with applications that the kubernetes cluster might include
 
-> Tests have run until 10K pods per cluster. Scaling to bigger number of pods might require additional confguration from Kubernetes Side and Cloud Providers but the basic idea of installing Elastic Agent while horizontally scaling KSM remains the same
+NOTE: Tests have run until 10K pods per cluster. Scaling to bigger number of pods might require additional confguration from Kubernetes Side and Cloud Providers but the basic idea of installing Elastic Agent while horizontally scaling KSM remains the same
 
 [discrete]
 === Agent Scheduling

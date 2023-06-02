@@ -37,9 +37,8 @@ Review important information about the {fleet} and {agent} 8.8.0 release.
 [%collapsible]
 ====
 
-*Details*
-
-* When an internally generated file path exceeds this length it is truncated using a hash, and the newly constructed path might not be accessible to the agent.
+*Details* +
+When an internally generated file path exceeds this length it is truncated using a hash, and the newly constructed path might not be accessible to the agent.
 
 To identify the problem, check the output of `elastic-agent status --output=yaml` or the `state.yaml` file in a diagnostics bundle for output like the following:
 

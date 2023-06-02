@@ -67,7 +67,7 @@ resources:
 ------------------------------------------------
 
 
-Based on our [tests](https://github.com/elastic/elastic-agent/blob/7467fd72bccab9a0e1b0adc1761cde8520390943/docs/elastic-agent-scaling-tests.md), the following table provides guidelines to adjust {agent} limits on different kubernetes sizes:
+Based on our https://github.com/elastic/elastic-agent/blob/7467fd72bccab9a0e1b0adc1761cde8520390943/docs/elastic-agent-scaling-tests.md[tests], the following table provides guidelines to adjust {agent} limits on different kubernetes sizes:
 
 Sample Elastic Agent Configurations:
 |===
@@ -86,7 +86,7 @@ Sample Elastic Agent Configurations:
 Although daemonset installation is simpler, it can not differentiate the alternative agent resource requirements depending on the collected metrics. The need for better 
 resource assignment led us to alternatives installation methods. 
 
-The main suggestion for big scale clusters *is to install Elastic Agent as side container with Kube State Metrics Shard*. The installation is explained in details [here](https://github.com/elastic/elastic-agent/tree/909b09def863205ae928f440d04851494c8e9933/docs/manifests/kustomize-autosharding)
+The main suggestion for big scale clusters *is to install Elastic Agent as side container with Kube State Metrics Shard*. The installation is explained in details https://github.com/elastic/elastic-agent/tree/909b09def863205ae928f440d04851494c8e9933/docs/manifests/kustomize-autosharding[here]
 
 In general **3 alternative configuration methods** to deploy elastic-agent in big scale Kubernetes clusters with Kube State Metrics (KSM) in sharding configuration have been verified:
 
@@ -98,7 +98,7 @@ In general **3 alternative configuration methods** to deploy elastic-agent in bi
 
 For more information, please advise https://github.com/elastic/elastic-agent/blob/ksmsharding/docs/elastic-agent-ksm-sharding.md[following guide]
 
-Based on our [tests](https://github.com/elastic/elastic-agent/blob/7467fd72bccab9a0e1b0adc1761cde8520390943/docs/elastic-agent-scaling-tests.md), the following table provides number of KSM sharding configuration per different kubernetes sizes:
+Based on our https://github.com/elastic/elastic-agent/blob/7467fd72bccab9a0e1b0adc1761cde8520390943/docs/elastic-agent-scaling-tests.md[tests], the following table provides number of KSM sharding configuration per different kubernetes sizes:
 
 The following table aims to assist users on how to configure their KSM Sharding as Kubernetes cluster scales:
 |===
@@ -136,7 +136,7 @@ Additionally, https://github.com/elastic/integrations/blob/main/docs/dashboard_g
 [discrete]
 === Elastic Stack Configuration
 
-The configuration of Elastic Stack needs to be taken under consideration in large scale deployments. In case of Elastic Cloud deployments the choice of the deployment [hardware profile](https://www.elastic.co/guide/en/cloud/current/ec-getting-started-profiles.html) is important. 
+The configuration of Elastic Stack needs to be taken under consideration in large scale deployments. In case of Elastic Cloud deployments the choice of the deployment https://www.elastic.co/guide/en/cloud/current/ec-getting-started-profiles.html[hardware profile] is important. 
 
 For heavy processing and big ingestion rate needs, the `CPU-optimised` profile is proposed.
 

@@ -75,7 +75,7 @@ Sampe Elastic Agent Configurations:
 | 1000   | cpu: "1500m",  memory: "800Mi" | cpu: "300m",  memory: "600Mi" 
 | 3000   | cpu: "2000m",  memory: "1500Mi" | cpu: "400m",  memory: "800Mi" 
 | 5000   | cpu: "3000m",  memory: "2500Mi" | cpu: "500m",  memory: "900Mi" 
-| 10000  | cpu: "3400m",  memory: "4500Mi" | cpu: "700m",  memory: "1000Mi" 
+| 10000  | cpu: "3000m",  memory: "3600Mi" | cpu: "700m",  memory: "1000Mi" 
 |===
 
 > Above tests run with {agent} version 8.7 and scraping period of 10sec in Kubernetes Policy. Those numbers are just indicators and should be validated per different kubernetes policy configuration, along with applications that the kubernetes cluster might include

@@ -83,7 +83,7 @@ Sampe Elastic Agent Configurations:
 [discrete]
 === Proposed Agent Installations for large scale
 
-Although daemonset installation is simpler, it can not diffrentiate the alternative agent resource requirements depending on the collected metrics. The need for better 
+Although daemonset installation is simpler, it can not differentiate the alternative agent resource requirements depending on the collected metrics. The need for better 
 resource assignment led us to alternatives installation methods. 
 
 The main suggestion for big scale clusters *is to install Elastic Agent as side container with Kube State Metrics Shard*. The installation is explained in details [here](https://github.com/elastic/elastic-agent/tree/909b09def863205ae928f440d04851494c8e9933/docs/manifests/kustomize-autosharding)

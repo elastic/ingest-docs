@@ -18,12 +18,12 @@ This document will try to summarize the key factors and best practices for using
 
 The document is divided in two main sections:
 
-- <<configuration-practises,Configuration practises>>
-- <<validation-and-troubleshooting-practises,Validation and Troubleshooting practises>>
+- <<configuration-practices,Configuration practices>>
+- <<validation-and-troubleshooting-practices,Validation and Troubleshooting practices>>
 
 [discrete]
-[[configuration-practises]]
-== Configuration Practises
+[[configuration-practices]]
+== Configuration Practices
 
 [discrete]
 === Configure Agent Resources
@@ -141,8 +141,8 @@ The configuration of Elastic Stack needs to be taken under consideration in larg
 For heavy processing and big ingestion rate needs, the `CPU-optimised` profile is proposed.
 
 [discrete]
-[[validation-and-troubleshooting-practises]]
-== Validation and Troubleshooting practises
+[[validation-and-troubleshooting-practices]]
+== Validation and Troubleshooting practices
 
 [discrete]
 === Define if Agents are collecting as expected 

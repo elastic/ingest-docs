@@ -73,7 +73,7 @@ Sampe Elastic Agent Configurations:
 |===
 | No of Pods in K8s Cluster | Leader Agent Resources | Rest of Agents 
 | 1000   | cpu: "1500m",  memory: "800Mi" | cpu: "300m",  memory: "600Mi" 
-| 3000   | cpu: "2000m",  memory: "1000Mi" | cpu: "400m",  memory: "800Mi" 
+| 3000   | cpu: "2000m",  memory: "1500Mi" | cpu: "400m",  memory: "800Mi" 
 | 5000   | cpu: "3000m",  memory: "2500Mi" | cpu: "500m",  memory: "900Mi" 
 | 10000  | cpu: "3400m",  memory: "4500Mi" | cpu: "700m",  memory: "1000Mi" 
 |===

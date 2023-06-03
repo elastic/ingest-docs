@@ -1,9 +1,8 @@
 [[fleet-elastic-agent-quick-start]]
 = Quick starts
 
-Want to get up and running with {fleet} and {agent} quickly? Read our quick
-start guides:
+Want to get up and running with {fleet} and {agent} quickly? Read our getting
+started guides:
 
-* {observability-guide}/ingest-logs-metrics-uptime.html[Ingest logs, metrics, and uptime data with {agent}]
-
-* {observability-guide}/ingest-traces.html[Ingest application traces with {agent}]
+* {observability-guide}/logs-metrics-get-started.html[Get started with logs and metrics]
+* {observability-guide}/ingest-traces.html[Get started with application traces and APM]

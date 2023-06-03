@@ -93,11 +93,9 @@ development environment before deploying across your infrastructure.
 You can continue to run {beats} alongside {agent} until you're satisfied with
 the data its sending to {es}.
 
-Read our {observability-guide}/ingest-logs-metrics-uptime.html[quick start
-guide] to learn how to deploy an {agent}. (Skip the step about setting up
-{fleet-server} if it's already running.) To save time, return to this page when
-the {agent} is deployed, healthy, and successfully sending data. You don't have
-to complete all the steps in the quick start.
+Read <<elastic-agent-installation>> to learn how to deploy an {agent}. To
+save time, return to this page when the {agent} is deployed, healthy, and
+successfully sending data.
 
 Here's a high-level overview to help you understand the deployment process.
 

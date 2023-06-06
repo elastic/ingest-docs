@@ -44,5 +44,5 @@ policy.
 If you haven't deployed any {agent}s yet or set up agent policies, start with
 one of our quick start guides:
 
-* {observability-guide}/ingest-logs-metrics-uptime.html[Ingest logs, metrics, and uptime data with {agent}]
-* {observability-guide}/ingest-traces.html[Ingest application traces with {agent}]
+* {observability-guide}/logs-metrics-get-started.html[Get started with logs and metrics]
+* {observability-guide}/ingest-traces.html[Get started with application traces and APM]

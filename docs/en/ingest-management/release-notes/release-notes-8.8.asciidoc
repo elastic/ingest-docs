@@ -47,9 +47,9 @@ Review important information about the {fleet} and {agent} 8.7.x release.
 * Include hidden data streams in package upgrade. {kibana-pull}158654[#158654]
 
 {agent}::
-* Fix potential deadlock issue in communication between updated components and RuntimeManager. {agent-pull}2729[#2729] {agent-pull}2691[#2691]
+* Fix potential communication issue when a running component would lose connection to the {agent} and unable to re-connect because of a concurrent updated component model. {agent-pull}2729[#2729] {agent-pull}2691[#2691]
 
-* Add a retry download step to the upgrade process. {agent-pull}2776[#2776] 
+* Retry download step during upgrade process. {agent-pull}2776[#2776] 
 
 // end 8.8.1 relnotes
 

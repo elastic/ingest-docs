@@ -94,7 +94,7 @@ Each of these groups of elastic agents will have its own policy specific to its 
 
 resource assignment led us to alternatives installation methods. 
 
-IMPORTANT: The main suggestion for big scale clusters *is to install Elastic Agent as side container with Kube State Metrics Shard*. The installation is explained in details https://github.com/elastic/elastic-agent/tree/909b09def863205ae928f440d04851494c8e9933/docs/manifests/kustomize-autosharding[here]
+IMPORTANT: The main suggestion for big scale clusters *is to install Elastic Agent as side container along with `kube-state-metrics` Shard*. The installation is explained in details https://github.com/elastic/elastic-agent/tree/909b09def863205ae928f440d04851494c8e9933/docs/manifests/kustomize-autosharding[here]
 
 The following **3 alternative configuration methods** have been verified:
 

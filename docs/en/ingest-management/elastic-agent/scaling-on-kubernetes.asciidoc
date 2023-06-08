@@ -39,7 +39,7 @@ The kubernetes observability is based on https://docs.elastic.co/en/integrations
   - kube-state-metrics
   - apiserver
 
-The Elastic Agent manifest is deployed by default as daemonset. That said, each elastic agent by default is being deployed on every node of the Kubernetes cluster. 
+The default manifest provided deploys elastic agent as DaemonSet which results in an elastic agent being deployed on every node of the Kubernetes cluster. 
 
 Additionally, by default one agent is elected as **leader**(for more information visit <<kubernetes_leaderelection-provider>>). This is configured in our https://github.com/elastic/elastic-agent/blob/main/deploy/kubernetes/elastic-agent-standalone-kubernetes.yaml#L32[manifests]. The Agent Pod which holds the leadership lock will be responsible for also collecting the cluster wide metrics in addition to its node's metrics.
 

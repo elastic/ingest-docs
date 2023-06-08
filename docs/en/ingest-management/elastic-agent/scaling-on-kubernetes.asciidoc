@@ -1,7 +1,7 @@
 [[scaling-on-kubernetes]]
 = Scaling {agent} on kubernetes
 
-For more information on how to deploy Elastic Agent in Kubernetes please advise below pages:
+For more information on how to deploy Elastic Agent on Kubernetes please advise the pages below:
 
 - How to run the {agent} on <<running-on-kubernetes-managed-by-fleet>>.
 - How to run the {agent} on <<running-on-kubernetes-standalone>>.

@@ -83,7 +83,15 @@ Sample Elastic Agent Configurations:
 [discrete]
 === Proposed Agent Installations for large scale
 
-Although daemonset installation is simpler, it can not differentiate the alternative agent resource requirements depending on the collected metrics. The need for better 
+Although daemonset installation is simple, it can not accomodate the varying agent resource requirements depending on the collected metrics. The need for appropriate resource assignment at large scale requires more granular installation methods.
+
+Elastic Agent deployment is broken in groups as follows:
+- a dedicated elastic agent deployment of a single agent for collecting cluster wide metrics from the apiserver
+- Node level elastic agents(no leader agent) in a Daemonset 
+- kube-state-metrics shards and elastic agents in the StatefulSet defined in the kube-state-metrics autosharding manifest
+ 
+Each of these groups of elastic agents will have its own policy specific to its function and can be resourced independently in the appropriate manifest to accomodate its specific resource requirements.
+
 resource assignment led us to alternatives installation methods. 
 
 IMPORTANT: The main suggestion for big scale clusters *is to install Elastic Agent as side container with Kube State Metrics Shard*. The installation is explained in details https://github.com/elastic/elastic-agent/tree/909b09def863205ae928f440d04851494c8e9933/docs/manifests/kustomize-autosharding[here]

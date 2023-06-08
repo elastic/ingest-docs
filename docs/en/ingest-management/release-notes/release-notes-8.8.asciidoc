@@ -14,12 +14,44 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.8.1>>
 * <<release-notes-8.8.0>>
 
 Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.8.1 relnotes
+
+[[release-notes-8.8.1]]
+== {fleet} and {agent} 8.8.1
+
+Review important information about the {fleet} and {agent} 8.7.x release.
+
+[discrete]
+[[enhancements-8.8.1]]
+=== Enhancements
+
+{fleet}::
+* Add {agent} UI instructions for Universal Profile. {kibana-pull}158936[#158936]
+
+{fleet-server}::
+* Add {fleet} configuration file to {agent} diagnostics bundle. {fleet-server-pull}2632[#2632] {fleet-server-issue}2623[#2623]
+
+[discrete]
+[[bug-fixes-8.8.1]]
+=== Bug fixes
+
+{fleet}::
+* Include hidden data streams in package upgrade. {kibana-pull}158654[#158654]
+
+{agent}::
+* Fix potential communication issue when a running component would lose connection to the {agent} and be unable to re-connect because of a concurrent updated component model. {agent-pull}2729[#2729] {agent-pull}2691[#2691]
+
+* Retry download step during upgrade process. {agent-pull}2776[#2776] 
+
+// end 8.8.1 relnotes
 
 // begin 8.8.0 relnotes
 

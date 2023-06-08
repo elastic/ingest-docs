@@ -19,7 +19,7 @@ This document will try to summarize the key factors and best practices for using
 The document is divided in two main sections:
 
 - <<configuration-practices,Configuration practices>>
-- <<validation-and-troubleshooting-practices,Validation and Troubleshooting practices>>
+- <<validation-and-troubleshooting-practices,Validation and Troubleshooting methods>>
 
 [discrete]
 [[configuration-practices]]

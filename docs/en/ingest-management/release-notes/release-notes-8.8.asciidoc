@@ -64,6 +64,20 @@ Review important information about the {fleet} and {agent} 8.8.0 release.
 [[known-issues-8.8.0]]
 === Known issues
 
+[[known-issue-issue-upgrade-20230608]]
+.{agent} upgrade process can sometimes stall.
+[%collapsible]
+====
+
+*Details* +
+{agent} upgrades can sometimes stall without returning an error message, and without the agent upgrade process restarting automatically.
+
+*Impact* +
+As a workaround, if the upgrade hasn't completed within about an hour you can trigger the upgrade manually.
+
+This issue is specific to version 8.8.0 and is resolved in version 8.8.1.
+====
+
 [[known-issue-issue-2749]]
 .{agent} can fail when file paths generated to represent Unix sockets exceed 103 characters.
 [%collapsible]

@@ -117,7 +117,7 @@ The following table aims to assist users on how to configure their KSM Sharding 
 | 10000  | 8 Shards | limits: memory: 1400Mi , cpu:1500m 
 |===
 
-> Above tests run with {agent} version 8.8 + TSDB Enabled and scraping period of 10sec in Kubernetes Policy. Those numbers are just indicators and should be validated per different kubernetes policy configuration, along with applications that the kubernetes cluster might include
+> The tests above were performed with {agent} version 8.8 + TSDB Enabled and scraping period of `10sec` (for the Kubernetes integration). Those numbers are just indicators and should be validated per different kubernetes policy configuration, along with applications that the kubernetes cluster might include
 
 NOTE: Tests have run until 10K pods per cluster. Scaling to bigger number of pods might require additional confguration from Kubernetes Side and Cloud Providers but the basic idea of installing Elastic Agent while horizontally scaling KSM remains the same
 

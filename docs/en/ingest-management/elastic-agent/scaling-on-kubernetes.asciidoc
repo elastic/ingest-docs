@@ -96,7 +96,7 @@ resource assignment led us to alternatives installation methods.
 
 IMPORTANT: The main suggestion for big scale clusters *is to install Elastic Agent as side container with Kube State Metrics Shard*. The installation is explained in details https://github.com/elastic/elastic-agent/tree/909b09def863205ae928f440d04851494c8e9933/docs/manifests/kustomize-autosharding[here]
 
-In general **3 alternative configuration methods** to deploy elastic-agent in big scale Kubernetes clusters with Kube State Metrics (KSM) in sharding configuration have been verified:
+The following **3 alternative configuration methods** have been verified:
 
 1. With `hostNetwork:false` 
   - Elastic Agent as Side Container within KSM Shard pod

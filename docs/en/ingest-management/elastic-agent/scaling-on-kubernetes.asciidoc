@@ -50,7 +50,7 @@ image::../images/k8sscaling.png[Agent as daemonset]
 
 The above schema explains how {agent} collects and sends metrics to Elasticsearch. Because of Leader Agent being responsible to also collecting cluster-lever metrics, this means that it requires additional resources.
 
-Daemonset deployment approach simplifies the installation of the {agent} because we define less Kubernetes Resources in our manifest and we only need one single Agent policy for our Agents. Hence it is the default supported method for <<running-on-kubernetes-managed-by-fleet, Managed Elastic Agent installation>>
+The DaemonSet deployment approach with leader election simplifies the installation of the {agent} because we define less Kubernetes Resources in our manifest and we only need one single Agent policy for our Agents. Hence it is the default supported method for <<running-on-kubernetes-managed-by-fleet, Managed Elastic Agent installation>>
 
 
 [discrete]

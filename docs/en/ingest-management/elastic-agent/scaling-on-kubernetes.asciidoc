@@ -78,7 +78,7 @@ Sample Elastic Agent Configurations:
 | 10000  | cpu: "3000m",  memory: "3600Mi" | cpu: "700m",  memory: "1000Mi" 
 |===
 
-> Above tests run with {agent} version 8.7 and scraping period of 10sec in Kubernetes Policy. Those numbers are just indicators and should be validated per different kubernetes policy configuration, along with applications that the kubernetes cluster might include
+> The above tests were performed with {agent} version 8.7 and scraping period of `10sec` (period setting for the Kubernetes integration). Those numbers are just indicators and should be validated for each different kubernetes environment and amount of workloads.
 
 [discrete]
 === Proposed Agent Installations for large scale

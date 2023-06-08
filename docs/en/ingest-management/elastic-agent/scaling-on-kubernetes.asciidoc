@@ -41,7 +41,7 @@ The kubernetes observability is based on https://docs.elastic.co/en/integrations
 
 The default manifest provided deploys elastic agent as DaemonSet which results in an elastic agent being deployed on every node of the Kubernetes cluster. 
 
-Additionally, by default one agent is elected as **leader**(for more information visit <<kubernetes_leaderelection-provider>>). This is configured in our https://github.com/elastic/elastic-agent/blob/main/deploy/kubernetes/elastic-agent-standalone-kubernetes.yaml#L32[manifests]. The Agent Pod which holds the leadership lock will be responsible for also collecting the cluster wide metrics in addition to its node's metrics.
+Additionally, by default one agent is elected as **leader**(for more information visit <<kubernetes_leaderelection-provider>>). The Agent Pod which holds the leadership lock will be responsible for also collecting the cluster wide metrics in addition to its node's metrics.
 
 --
 [role="screenshot"]
@@ -55,6 +55,9 @@ The DaemonSet deployment approach with leader election simplifies the installati
 
 [discrete]
 === Specifying resources and limits in Agent manifests
+
+Resourcing of your Pods and the Scheduling priority (check section <<agent-scheduling,Scheduling priority>>) of them are two topics that might be affected as the kubernetes cluster size increases. 
+The increasing demand of resources might result to under-resource the Elastic Agents of your cluster.
 
 Based on our tests we advise to configure only the `limit` section of the `resources` section in the manifest. In this way the `request`'s settings of the `resources` will fall back to the `limits` specified. The `limits` is the upper bound limit of your microservice process, meaning that can operate in less resources and protect Kubernetes to assign bigger usage and protect from possible resource exhaustion.
 
@@ -122,9 +125,12 @@ The following table aims to assist users on how to configure their KSM Sharding 
 NOTE: Tests have run until 10K pods per cluster. Scaling to bigger number of pods might require additional confguration from Kubernetes Side and Cloud Providers but the basic idea of installing Elastic Agent while horizontally scaling KSM remains the same
 
 [discrete]
+[[agent-scheduling]]
 === Agent Scheduling
 
-Parallel to {agent} resource specification problem, the scheduling of agents is an other common problem that users phase as kubernetes cluster is growing. Trying to prioritise the agent installation before rest of application microservices, https://github.com/elastic/elastic-agent/blob/main/docs/manifests/elastic-agent-managed-gke-autopilot.yaml#L8-L16[PriorityClasses suggested]
+Setting the low priority to {agent} comparing to other pdos might also result to {agent} being in Pending State.The scheduler tries to preempt (evict) lower priority Pods to make scheduling of the higher pending Pods possible.
+
+Trying to prioritise the agent installation before rest of application microservices, https://github.com/elastic/elastic-agent/blob/main/docs/manifests/elastic-agent-managed-gke-autopilot.yaml#L8-L16[PriorityClasses suggested]
 
 [discrete]
 === Kubernetes Policy Configuration

@@ -29,6 +29,7 @@ body:
       label: Collaboration
       description: Choose the expected collaboration model
       options:
+        - "Please choose a preferred collaboration model."
         - "The documentation team will investigate the issue and create the initial content."
         - "The product team will provide the initial content."
         - "TBD. The docs and product team will work together to determine the best path forward."

@@ -73,7 +73,7 @@ Review important information about the {fleet} and {agent} 8.8.0 release.
 {agent} upgrades can sometimes stall without returning an error message, and without the agent upgrade process restarting automatically.
 
 *Impact* +
-As a workaround, if the upgrade hasn't completed within about an hour you can trigger the upgrade manually.
+In this situation the agent returns from `Updating` to a `Healthy` state, but without the new version having been installed. To address this, you can trigger a new upgrade manually.
 
 This issue is specific to version 8.8.0 and is resolved in version 8.8.1.
 ====

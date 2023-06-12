@@ -18,7 +18,7 @@ Although autopilot removes many administration challenges (like workload managem
 
 Specific manifests are provided to cover **https://github.com/elastic/elastic-agent/blob/main/docs/elastic-agent-gke-autopilot.md[Autopilot environments]**.
 
-> `kube-state-metrics` also needs to be installed to another namespace rather than the `default` as access to `kube-system` is not allowed.
+> `kube-state-metrics` also must be installed to another namespace rather than the `default` as access to `kube-system` is not allowed.
 
 == Additonal Resources:
 

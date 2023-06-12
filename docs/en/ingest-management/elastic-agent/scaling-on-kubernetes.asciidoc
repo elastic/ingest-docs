@@ -18,17 +18,17 @@ This document will try to summarize the key factors and best practices for using
 
 The document is divided in two main sections:
 
-- <<configuration-practices,Configuration practices>>
+- <<configuration-practices,Configuration Best Practices>>
 - <<validation-and-troubleshooting-practices,Validation and Troubleshooting methods>>
 
 [discrete]
 [[configuration-practices]]
-== Configuration Practices
+== Configuration Best Practices
 
 [discrete]
 === Configure Agent Resources
 
-The kubernetes observability is based on https://docs.elastic.co/en/integrations/kubernetes[kubernetes integration], which is fetching metrics from several components:
+The kubernetes observability is based on https://docs.elastic.co/en/integrations/kubernetes[kubernetes integration], which collects metrics from several components:
 
 - **Per node:**
   - kubelet
@@ -38,6 +38,8 @@ The kubernetes observability is based on https://docs.elastic.co/en/integrations
 - **Cluster Wide (i.e. unique metrics for the whole cluster):**
   - kube-state-metrics
   - apiserver
+
+> Controller manager and Scheduler datastreams are being enableb only to the specific node that actually run based on autodiscovery rules
 
 The default manifest provided deploys elastic agent as DaemonSet which results in an elastic agent being deployed on every node of the Kubernetes cluster. 
 

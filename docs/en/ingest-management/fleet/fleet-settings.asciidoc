@@ -93,7 +93,7 @@ are configured outside of {fleet}. For more information, refer to
 
 [discrete]
 [[es-output-settings]]
-=== {es} output settings
+== {es} output settings
 
 Specify these settings to send data over a secure connection to {es}.
 
@@ -163,7 +163,7 @@ Sending monitoring data to a remote {es} cluster is currently not supported.
 
 [discrete]
 [[ls-output-settings]]
-=== {ls} output settings
+== {ls} output settings
 
 Specify these settings to send data over a secure connection to {ls}. You must
 also configure a {ls} pipeline that reads encrypted data from {agent}s and sends

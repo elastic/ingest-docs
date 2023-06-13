@@ -33,11 +33,11 @@ The kubernetes observability is based on https://docs.elastic.co/en/integrations
 - **Per node:**
   - kubelet
   - controller-manager
-  - scheduler
-  - proxy
-- **Cluster Wide (i.e. unique metrics for the whole cluster):**
-  - kube-state-metrics
-  - apiserver
+** scheduler
+** proxy
+* **Cluster wide (such as unique metrics for the whole cluster):**
+** kube-state-metrics
+** apiserver
 
 > Controller manager and Scheduler datastreams are being enableb only to the specific node that actually run based on autodiscovery rules
 

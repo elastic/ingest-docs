@@ -39,7 +39,7 @@ The kubernetes observability is based on https://docs.elastic.co/en/integrations
 ** kube-state-metrics
 ** apiserver
 
-> Controller manager and Scheduler datastreams are being enableb only to the specific node that actually run based on autodiscovery rules
+Controller manager and Scheduler datastreams are being enabled only on the specific node that actually runs based on autodiscovery rules
 
 The default manifest provided deploys elastic agent as DaemonSet which results in an elastic agent being deployed on every node of the Kubernetes cluster. 
 

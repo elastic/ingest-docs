@@ -30,9 +30,9 @@ The document is divided in two main sections:
 
 The {k8s} {observability} is based on https://docs.elastic.co/en/integrations/kubernetes[Elastic {k8s} integration], which collects metrics from several components:
 
-- **Per node:**
-  - kubelet
-  - controller-manager
+* **Per node:**
+** kubelet
+** controller-manager
 ** scheduler
 ** proxy
 * **Cluster wide (such as unique metrics for the whole cluster):**

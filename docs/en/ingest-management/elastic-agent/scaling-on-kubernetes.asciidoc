@@ -43,7 +43,7 @@ Controller manager and Scheduler datastreams are being enabled only on the speci
 
 The default manifest provided deploys {agent} as DaemonSet which results in an {agent} being deployed on every node of the {k8s} cluster. 
 
-Additionally, by default one agent is elected as **leader**(for more information visit <<kubernetes_leaderelection-provider>>). The Agent Pod which holds the leadership lock will be responsible for also collecting the cluster wide metrics in addition to its node's metrics.
+Additionally, by default one agent is elected as **leader** (for more information visit <<kubernetes_leaderelection-provider>>). The Agent Pod which holds the leadership lock is responsible for collecting the cluster-wide metrics in addition to its node's metrics.
 
 --
 [role="screenshot"]

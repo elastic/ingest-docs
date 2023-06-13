@@ -9,7 +9,7 @@ For more information on how to deploy Elastic Agent on Kubernetes, please review
 [discrete]
 == Observability at scale
 
-This document will try to summarize the key factors and best practices for using https://www.elastic.co/guide/en/welcome-to-elastic/current/getting-started-kubernetes.html[Elastic Observability] to monitor Kubernetes infrastructure at scale. Users need to consider different parameters and adjust Elastic Stack accordingly. The following elements are being affected as the size of Kubernetes cluster increases:
+This document summarizes some key factors and best practices for using https://www.elastic.co/guide/en/welcome-to-elastic/current/getting-started-kubernetes.html[Elastic {observability}] to monitor {k8s} infrastructure at scale. Users need to consider different parameters and adjust {stack} accordingly. These elements are affected as the size of {k8s} cluster increases:
 
 - The amount of metrics being collected from several {k8s} endpoints
 - The {agent}'s resources to cope with the high CPU and Memory needs for the internal processing

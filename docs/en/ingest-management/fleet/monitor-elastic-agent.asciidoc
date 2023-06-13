@@ -62,13 +62,13 @@ using {kibana-ref}/kuery-query.html[{kib} Query Language]. For example, enter
 [[view-agent-details]]
 = View details for an agent
 
-In {fleet}, you can access the detailed status for of individual agent and the integrations that are associated with it through the agent policy.
+In {fleet}, you can access the detailed status of an individual agent and the integrations that are associated with it through the agent policy.
 
 . In {kib}, go to **Management -> {fleet} -> Agents**.
 
 . In the **Host** column, click the agent's name.
 
-On the **Agent details** tab, the **Overview** pane shows details about the agent and its performance, including its memory and CPU usage, last activity time, and last checkin message. You can also <<view-agent-metrics>> in {kib}.
+On the **Agent details** tab, the **Overview** pane shows details about the agent and its performance, including its memory and CPU usage, last activity time, and last checkin message. To access metrics visualizations, you can also <<view-agent-metrics>>.
 
 image::images/agent-detail-overview.png[Agent details overview pane with various metrics]
 
@@ -167,7 +167,7 @@ Note that the bundles are stored in {es} and will be removed after 30 days.
 
 [discrete]
 [[view-agent-metrics]]
-= View {agent} metrics
+= View the {agent} metrics dashboard
 
 When agent monitoring is configured to collect metrics (the default), you can
 use the **[Elastic Agent] Agent metrics** dashboard in {kib} to view details

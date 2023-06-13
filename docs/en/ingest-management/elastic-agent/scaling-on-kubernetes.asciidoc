@@ -1,7 +1,7 @@
 [[scaling-on-kubernetes]]
-= Scaling {agent} on kubernetes
+= Scaling {agent} on {k8s}
 
-For more information on how to deploy Elastic Agent on Kubernetes, please review these pages:
+For more information on how to deploy {agent} on {k8s}, please review these pages:
 
 - <<running-on-kubernetes-managed-by-fleet>>.
 - <<running-on-kubernetes-standalone>>.
@@ -28,7 +28,7 @@ The document is divided in two main sections:
 [discrete]
 === Configure Agent Resources
 
-The kubernetes observability is based on https://docs.elastic.co/en/integrations/kubernetes[kubernetes integration], which collects metrics from several components:
+The {k8s} {observability} is based on https://docs.elastic.co/en/integrations/kubernetes[Elastic {k8s} integration], which collects metrics from several components:
 
 - **Per node:**
   - kubelet
@@ -43,25 +43,25 @@ Controller manager and Scheduler datastreams are being enabled only on the speci
 
 The default manifest provided deploys {agent} as DaemonSet which results in an {agent} being deployed on every node of the {k8s} cluster. 
 
-Additionally, by default one agent is elected as **leader** (for more information visit <<kubernetes_leaderelection-provider>>). The Agent Pod which holds the leadership lock is responsible for collecting the cluster-wide metrics in addition to its node's metrics.
+Additionally, by default one agent is elected as **leader** (for more information visit <<kubernetes_leaderelection-provider>>). The {agent} Pod which holds the leadership lock is responsible for collecting the cluster-wide metrics in addition to its node's metrics.
 
 --
 [role="screenshot"]
-image::../images/k8sscaling.png[Agent as daemonset]
+image::../images/k8sscaling.png[{agent} as daemonset]
 --
 
-The above schema explains how {agent} collects and sends metrics to Elasticsearch. Because of Leader Agent being responsible to also collecting cluster-lever metrics, this means that it requires additional resources.
+The above schema explains how {agent} collects and sends metrics to {es}. Because of Leader Agent being responsible to also collecting cluster-lever metrics, this means that it requires additional resources.
 
-The DaemonSet deployment approach with leader election simplifies the installation of the {agent} because we define less Kubernetes Resources in our manifest and we only need one single Agent policy for our Agents. Hence it is the default supported method for <<running-on-kubernetes-managed-by-fleet, Managed Elastic Agent installation>>
+The DaemonSet deployment approach with leader election simplifies the installation of the {agent} because we define less {k8s} Resources in our manifest and we only need one single Agent policy for our Agents. Hence it is the default supported method for <<running-on-kubernetes-managed-by-fleet, Managed {agent} installation>>
 
 
 [discrete]
 === Specifying resources and limits in Agent manifests
 
-Resourcing of your Pods and the Scheduling priority (check section <<agent-scheduling,Scheduling priority>>) of them are two topics that might be affected as the kubernetes cluster size increases. 
+Resourcing of your Pods and the Scheduling priority (check section <<agent-scheduling,Scheduling priority>>) of them are two topics that might be affected as the {k8s} cluster size increases. 
 The increasing demand of resources might result to under-resource the Elastic Agents of your cluster.
 
-Based on our tests we advise to configure only the `limit` section of the `resources` section in the manifest. In this way the `request`'s settings of the `resources` will fall back to the `limits` specified. The `limits` is the upper bound limit of your microservice process, meaning that can operate in less resources and protect Kubernetes to assign bigger usage and protect from possible resource exhaustion.
+Based on our tests we advise to configure only the `limit` section of the `resources` section in the manifest. In this way the `request`'s settings of the `resources` will fall back to the `limits` specified. The `limits` is the upper bound limit of your microservice process, meaning that can operate in less resources and protect {k8s} to assign bigger usage and protect from possible resource exhaustion.
 
 [source,yaml]
 ------------------------------------------------
@@ -72,7 +72,7 @@ resources:
 ------------------------------------------------
 
 
-Based on our https://github.com/elastic/elastic-agent/blob/7467fd72bccab9a0e1b0adc1761cde8520390943/docs/elastic-agent-scaling-tests.md[tests], the following table provides guidelines to adjust {agent} limits on different kubernetes sizes:
+Based on our https://github.com/elastic/elastic-agent/blob/main/docs/elastic-agent-scaling-tests.md[{agent} Scaling tests], the following table provides guidelines to adjust {agent} limits on different {k8s} sizes:
 
 Sample Elastic Agent Configurations:
 |===
@@ -83,39 +83,39 @@ Sample Elastic Agent Configurations:
 | 10000  | cpu: "3000m",  memory: "3600Mi" | cpu: "700m",  memory: "1000Mi" 
 |===
 
-> The above tests were performed with {agent} version 8.7 and scraping period of `10sec` (period setting for the Kubernetes integration). Those numbers are just indicators and should be validated for each different kubernetes environment and amount of workloads.
+> The above tests were performed with {agent} version 8.7 and scraping period of `10sec` (period setting for the {k8s} integration). Those numbers are just indicators and should be validated for each different {k8s} environment and amount of workloads.
 
 [discrete]
 === Proposed Agent Installations for large scale
 
 Although daemonset installation is simple, it can not accomodate the varying agent resource requirements depending on the collected metrics. The need for appropriate resource assignment at large scale requires more granular installation methods.
 
-Elastic Agent deployment is broken in groups as follows:
+{agent} deployment is broken in groups as follows:
 
-- A dedicated elastic agent deployment of a single agent for collecting cluster wide metrics from the apiserver
+- A dedicated {agent} deployment of a single Agent for collecting cluster wide metrics from the apiserver
 
-- Node level elastic agents(no leader agent) in a Daemonset 
+- Node level {agent}(no leader Agent) in a Daemonset 
 
-- kube-state-metrics shards and elastic agents in the StatefulSet defined in the kube-state-metrics autosharding manifest
+- kube-state-metrics shards and {agent} in the StatefulSet defined in the kube-state-metrics autosharding manifest
  
-Each of these groups of elastic agents will have its own policy specific to its function and can be resourced independently in the appropriate manifest to accomodate its specific resource requirements.
+Each of these groups of {agent} will have its own policy specific to its function and can be resourced independently in the appropriate manifest to accomodate its specific resource requirements.
 
-resource assignment led us to alternatives installation methods. 
+Resource assignment led us to alternatives installation methods. 
 
-IMPORTANT: The main suggestion for big scale clusters *is to install Elastic Agent as side container along with `kube-state-metrics` Shard*. The installation is explained in details https://github.com/elastic/elastic-agent/tree/909b09def863205ae928f440d04851494c8e9933/docs/manifests/kustomize-autosharding[here]
+IMPORTANT: The main suggestion for big scale clusters *is to install {agent} as side container along with `kube-state-metrics` Shard*. The installation is explained in details https://github.com/elastic/elastic-agent/tree/main/docs/manifests/kustomize-autosharding[{agent} with Kustomize in Autosharding]
 
-The following ** alternative configuration methods** have been verified:
+The following **alternative configuration methods** have been verified:
 
 1. With `hostNetwork:false` 
-  - Elastic Agent as Side Container within KSM Shard pod
-  - For non-leader Elastic Agent deployments that collect per KSM shards
-2. With `taint/tolerations` to isolate the Elastic Agent daemonset pods from rest of deployments
+  - {agent} as Side Container within KSM Shard pod
+  - For non-leader {agent} deployments that collect per KSM shards
+2. With `taint/tolerations` to isolate the {agent} daemonset pods from rest of deployments
 
 You can find more information in the document called https://github.com/elastic/elastic-agent/blob/ksmsharding/docs/elastic-agent-ksm-sharding.md[{agent} Manifests in order to support Kube-State-Metrics Sharding].
 
-Based on our https://github.com/elastic/elastic-agent/blob/ksmsharding/docs/elastic-agent-scaling-tests.md[tests], the following table provides number of KSM sharding configuration per different kubernetes sizes:
+Based on our https://github.com/elastic/elastic-agent/blob/ksmsharding/docs/elastic-agent-scaling-tests.md[{agent} scaling tests], the following table provides number of KSM sharding configuration per different {k8s} sizes:
 
-The following table aims to assist users on how to configure their KSM Sharding as Kubernetes cluster scales:
+The following table aims to assist users on how to configure their KSM Sharding as {k8s} cluster scales:
 |===
 | No of Pods in K8s Cluster | No of KSM Shards | Agent Resources
 | 1000   | No Sharding can be handled with default KSM config | limits: memory: 700Mi , cpu:500m 
@@ -124,9 +124,9 @@ The following table aims to assist users on how to configure their KSM Sharding 
 | 10000  | 8 Shards | limits: memory: 1400Mi , cpu:1500m 
 |===
 
-> The tests above were performed with {agent} version 8.8 + TSDB Enabled and scraping period of `10sec` (for the Kubernetes integration). Those numbers are just indicators and should be validated per different kubernetes policy configuration, along with applications that the kubernetes cluster might include
+> The tests above were performed with {agent} version 8.8 + TSDB Enabled and scraping period of `10sec` (for the {k8s} integration). Those numbers are just indicators and should be validated per different {k8s} policy configuration, along with applications that the {k8s} cluster might include
 
-NOTE: Tests have run until 10K pods per cluster. Scaling to bigger number of pods might require additional confguration from Kubernetes Side and Cloud Providers but the basic idea of installing Elastic Agent while horizontally scaling KSM remains the same
+NOTE: Tests have run until 10K pods per cluster. Scaling to bigger number of pods might require additional confguration from {k8s} Side and Cloud Providers but the basic idea of installing {agent} while horizontally scaling KSM remains the same.
 
 [discrete]
 [[agent-scheduling]]
@@ -137,24 +137,24 @@ Setting the low priority to {agent} comparing to other pdos might also result to
 Trying to prioritise the agent installation before rest of application microservices, https://github.com/elastic/elastic-agent/blob/main/docs/manifests/elastic-agent-managed-gke-autopilot.yaml#L8-L16[PriorityClasses suggested]
 
 [discrete]
-=== Kubernetes Policy Configuration
+=== {k8s} Policy Configuration
 
-Policy configuration of kubernetes package can heavily affect the amount of metrics collected and finally ingested. Factors that should be considered in order to make your collection and ingestin lighter:
+Policy configuration of {k8s} package can heavily affect the amount of metrics collected and finally ingested. Factors that should be considered in order to make your collection and ingestin lighter:
 
-- Scraping period of Kubernetes endpoints
+- Scraping period of {k8s} endpoints
 - Disabling log collection
   - Keep audit logs disabled
 - Disable events dataset
-- Disable Kubernetes control plane datasets in Cloud managed kubernetes instances (see more info ** <<running-on-gke-managed-by-fleet>>, <<running-on-eks-managed-by-fleet>>, <<running-on-aks-managed-by-fleet>> pages)
+- Disable {k8s} control plane datasets in Cloud managed {k8s} instances (see more info ** <<running-on-gke-managed-by-fleet>>, <<running-on-eks-managed-by-fleet>>, <<running-on-aks-managed-by-fleet>> pages)
 
-User experience regarding Dashboard responses is also affected from the size of data being requested. As dashbords can contain multiple visualisations, the general conisderation is to split visualisasations and group them according to the frequency of access. The less number of visualisations tends to improve user experience.
+User experience regarding Dashboard responses, is also affected from the size of data being requested. As dashbords can contain multiple visualisations, the general conisderation is to split visualisasations and group them according to the frequency of access. The less number of visualisations tends to improve user experience.
 
 Additionally, https://github.com/elastic/integrations/blob/main/docs/dashboard_guidelines.md[Dashboard Guidelines] is constantly updated also to track needs of observability at scale.
 
 [discrete]
 === Elastic Stack Configuration
 
-The configuration of Elastic Stack needs to be taken under consideration in large scale deployments. In case of Elastic Cloud deployments the choice of the deployment https://www.elastic.co/guide/en/cloud/current/ec-getting-started-profiles.html[hardware profile] is important. 
+The configuration of Elastic Stack needs to be taken under consideration in large scale deployments. In case of Elastic Cloud deployments the choice of the deployment https://www.elastic.co/guide/en/cloud/current/ec-getting-started-profiles.html[{ecloud} hardware profile] is important. 
 
 For heavy processing and big ingestion rate needs, the `CPU-optimised` profile is proposed.
 
@@ -165,7 +165,7 @@ For heavy processing and big ingestion rate needs, the `CPU-optimised` profile i
 [discrete]
 === Define if Agents are collecting as expected 
 
-After {agent} deployment, we need to verify that agent services are healthy, not restarting (stability) and that collection of metrics continues with expected rate (latency).
+After {agent} deployment, we need to verify that Agent services are healthy, not restarting (stability) and that collection of metrics continues with expected rate (latency).
 
 **For stability:**
 
@@ -173,7 +173,7 @@ If {agent} is configured as managed, in {kib} you can observe under **Fleet>Agen
 
 --
 [role="screenshot"]
-image::../images/agent-status.png[Agent Status]
+image::../images/agent-status.png[{agent} Status]
 --
 
 Additionally you can verify the process status with following commands:
@@ -219,7 +219,7 @@ Components:
                         Healthy: communicating with pid '42462'
 ------------------------------------------------
 
-It is a common problem of lack of CPU/memory resources that agent process restart as kubernetes size grows. In the logs of agent you 
+It is a common problem of lack of CPU/memory resources that agent process restart as {k8s} size grows. In the logs of agent you 
 
 [source,json]
 ------------------------------------------------
@@ -245,21 +245,21 @@ elastic-agent-wvmpj                                              27m          35
 [discrete]
 === Verify Ingestion Latency
 
-Kibana Discovery can be used to identify frequency of your metrics being ingested.
+{kib} Discovery can be used to identify frequency of your metrics being ingested.
 
 Filter for Pod dataset:
 --
 [role="screenshot"]
-image::../images/pod-latency.png[Pod Metricser]
+image::../images/pod-latency.png[{k8s} Pod Metricset]
 --
 
 Filter for State_Pod dataset
 --
 [role="screenshot"]
-image::../images/state-pod.png[Kubernetes State Pod Metricser]
+image::../images/state-pod.png[{k8s} State Pod Metricset]
 --
 
-Identify how many events have been sent to Elasticsearch:
+Identify how many events have been sent to {es}:
 
 [source,bash]
 ------------------------------------------------
@@ -269,22 +269,20 @@ kubectl logs -n kube-system elastic-agent-h24hh -f | grep -i state_pod
 "state_pod":{"events":2936,"success":2936}
 ------------------------------------------------
 
-The number of events denotes the number of documents that should be depicted inside Kibana Discovery page.
+The number of events denotes the number of documents that should be depicted inside {kib} Discovery page.
 
 > For eg, in a cluster with 798 pods, then 798 docs should be depicted in block of ingestion inside {kib}
 
 
 [discrete]
-=== Define if Elasticsearch is the bottleneck of ingestion
+=== Define if {es} is the bottleneck of ingestion
 
-In some cases maybe the Elasticsearch can not cope with the rate of data that are trying to be ingested. In order to verify the resource utilisation the installation of [Monitoring Cluster](https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-overview.html) is advised
+In some cases maybe the {es} can not cope with the rate of data that are trying to be ingested. In order to verify the resource utilisation, installation of [{stack}Monitoring Cluster](https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-overview.html) is advised.
 
-Additionally, in Elastic Cloud deployments you can navigate to *Manage Deployment > Deployments > Monitoring > Performance*.
-Corresponding dashboards for `CPU Usage`, `Index Response Times` and `Memory Pressure` can reveal possible problems and suggest vertical scaling of Elastic Stack resources.
-
-
+Additionally, in {ecloud} deployments you can navigate to *Manage Deployment > Deployments > Monitoring > Performance*.
+Corresponding dashboards for `CPU Usage`, `Index Response Times` and `Memory Pressure` can reveal possible problems and suggest vertical scaling of {stack} resources.
 
 == Relevant links
 
-- https://www.elastic.co/guide/en/welcome-to-elastic/current/getting-started-kubernetes.html[Monitor Kubernetes Infrastructure]
-- https://www.elastic.co/blog/kubernetes-cluster-metrics-logs-monitoring[Blog: Managing your Kubernetes cluster with Elastic Observability]
+- https://www.elastic.co/guide/en/welcome-to-elastic/current/getting-started-kubernetes.html[Monitor {k8s} Infrastructure]
+- https://www.elastic.co/blog/kubernetes-cluster-metrics-logs-monitoring[Blog: Managing your {k8s} cluster with Elastic {observability}]

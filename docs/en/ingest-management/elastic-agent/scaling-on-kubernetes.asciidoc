@@ -3,8 +3,8 @@
 
 For more information on how to deploy Elastic Agent on Kubernetes, please review these pages:
 
-- How to run the {agent} on <<running-on-kubernetes-managed-by-fleet>>.
-- How to run the {agent} on <<running-on-kubernetes-standalone>>.
+- <<running-on-kubernetes-managed-by-fleet>>.
+- <<running-on-kubernetes-standalone>>.
 
 [discrete]
 == Observability at scale

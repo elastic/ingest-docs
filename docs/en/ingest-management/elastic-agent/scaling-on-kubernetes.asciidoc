@@ -18,8 +18,8 @@ This document summarizes some key factors and best practices for using https://w
 
 The document is divided in two main sections:
 
-- <<configuration-practices,Configuration Best Practices>>
-- <<validation-and-troubleshooting-practices,Validation and Troubleshooting methods>>
+- <<configuration-practices>>
+- <<validation-and-troubleshooting-practices>>
 
 [discrete]
 [[configuration-practices]]

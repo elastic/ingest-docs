@@ -94,11 +94,11 @@ Although daemonset installation is simple, it can not accomodate the varying age
 
 - A dedicated {agent} deployment of a single Agent for collecting cluster wide metrics from the apiserver
 
-- Node level {agent}(no leader Agent) in a Daemonset 
+- Node level {agent}s(no leader Agent) in a Daemonset 
 
-- kube-state-metrics shards and {agent} in the StatefulSet defined in the kube-state-metrics autosharding manifest
+- kube-state-metrics shards and {agent}s in the StatefulSet defined in the kube-state-metrics autosharding manifest
  
-Each of these groups of {agent} will have its own policy specific to its function and can be resourced independently in the appropriate manifest to accomodate its specific resource requirements.
+Each of these groups of {agent}s will have its own policy specific to its function and can be resourced independently in the appropriate manifest to accomodate its specific resource requirements.
 
 Resource assignment led us to alternatives installation methods. 
 
@@ -113,9 +113,7 @@ The following **alternative configuration methods** have been verified:
 
 You can find more information in the document called https://github.com/elastic/elastic-agent/blob/ksmsharding/docs/elastic-agent-ksm-sharding.md[{agent} Manifests in order to support Kube-State-Metrics Sharding].
 
-Based on our https://github.com/elastic/elastic-agent/blob/ksmsharding/docs/elastic-agent-scaling-tests.md[{agent} scaling tests], the following table provides number of KSM sharding configuration per different {k8s} sizes:
-
-The following table aims to assist users on how to configure their KSM Sharding as {k8s} cluster scales:
+Based on our https://github.com/elastic/elastic-agent/blob/ksmsharding/docs/elastic-agent-scaling-tests.md[{agent} scaling tests], the following table aims to assist users on how to configure their KSM Sharding as {k8s} cluster scales:
 |===
 | No of Pods in K8s Cluster | No of KSM Shards | Agent Resources
 | 1000   | No Sharding can be handled with default KSM config | limits: memory: 700Mi , cpu:500m 

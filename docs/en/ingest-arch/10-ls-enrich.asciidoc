@@ -19,23 +19,13 @@ Examples::
 Example: An API that takes geo points with the collected data and returns available real estate in the region, and then passes to {ls} enrichment for enrichment between agents and {es}.
 
 [discrete]
-[[ls-enrich-proc]]
-==== Process overview
-
-* Find the integration for your data source. In {kib},  go to *Management> Integrations*.
-* Enable the integration and set up {agent}. 
-* Launch discover/dashboard to explore.
-
-For details and next steps, check out the {integrations-docs}[{agent} integrations] docs for your data source.
-
-[discrete]
 [[ls-enrich-resources]]
 ==== Resources
 
-Info on {agent} and agent integrations:
+Info on configuring {agent}:
 
 * {fleet-guide}[Fleet and Elastic Agent Guide]
-* {integrations-docs}[{agent} integrations]
+* {fleet-guide}/elastic-agent-output-configuration.html[Configuring outputs for {agent}]
 
 For info on {ls} for enriching data, check out these sections in the {logstash-ref}[Logstash Reference]:
 

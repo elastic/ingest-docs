@@ -712,10 +712,10 @@ elastic-agent status [--output <string>]
 
 `--output <string>`::
 Output the status information in either `human` (the default),
-`human_full`, `json`, or `yaml`.  `human` returns limited information
+`full`, `json`, or `yaml`.  `human` returns limited information
 when {agent} is in the `HEALTHY` state, if any components or units are
 not in `HEALTHY` state, then full details are displayed for that
-component or unit.  `human_full`, `json` and `yaml` always return the
+component or unit.  `full`, `json` and `yaml` always return the
 full status information.  Components map to individual processes
 running underneath {agent}, for example {filebeat} or {endpoint-sec}.
 Units map to discrete configuration units within that process, for

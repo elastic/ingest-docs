@@ -1,0 +1,4 @@
+[[fleet-agent-proxy-standalone]]
+= Standalone {agent} connectivity using a proxy server
+
+TBD

@@ -102,7 +102,7 @@ Each of these groups of {agent}s will have its own policy specific to its functi
 
 Resource assignment led us to alternatives installation methods. 
 
-IMPORTANT: The main suggestion for big scale clusters *is to install {agent} as side container along with `kube-state-metrics` Shard*. The installation is explained in details https://github.com/elastic/elastic-agent/tree/main/docs/manifests/kustomize-autosharding[{agent} with Kustomize in Autosharding]
+IMPORTANT: The main suggestion for big scale clusters *is to install {agent} as side container along with `kube-state-metrics` Shard*. The installation is explained in details https://github.com/elastic/elastic-agent/tree/main/deploy/kubernetes#kube-state-metrics-ksm-in-autosharding-configuration[{agent} with Kustomize in Autosharding]
 
 The following **alternative configuration methods** have been verified:
 
@@ -111,9 +111,9 @@ The following **alternative configuration methods** have been verified:
   - For non-leader {agent} deployments that collect per KSM shards
 2. With `taint/tolerations` to isolate the {agent} daemonset pods from rest of deployments
 
-You can find more information in the document called https://github.com/elastic/elastic-agent/blob/ksmsharding/docs/elastic-agent-ksm-sharding.md[{agent} Manifests in order to support Kube-State-Metrics Sharding].
+You can find more information in the document called https://github.com/elastic/elastic-agent/blob/main/docs/elastic-agent-ksm-sharding.md[{agent} Manifests in order to support Kube-State-Metrics Sharding].
 
-Based on our https://github.com/elastic/elastic-agent/blob/ksmsharding/docs/elastic-agent-scaling-tests.md[{agent} scaling tests], the following table aims to assist users on how to configure their KSM Sharding as {k8s} cluster scales:
+Based on our https://github.com/elastic/elastic-agent/blob/main/docs/elastic-agent-scaling-tests.md[{agent} scaling tests], the following table aims to assist users on how to configure their KSM Sharding as {k8s} cluster scales:
 |===
 | No of Pods in K8s Cluster | No of KSM Shards | Agent Resources
 | 1000   | No Sharding can be handled with default KSM config | limits: memory: 700Mi , cpu:500m 

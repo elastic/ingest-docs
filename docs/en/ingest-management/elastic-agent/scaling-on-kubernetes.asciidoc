@@ -47,7 +47,7 @@ Additionally, by default one agent is elected as **leader** (for more informatio
 
 --
 [role="screenshot"]
-image::../images/k8sscaling.png[{agent} as daemonset]
+image::images/k8sscaling.png[{agent} as daemonset]
 --
 
 The above schema explains how {agent} collects and sends metrics to {es}. Because of Leader Agent being responsible to also collecting cluster-lever metrics, this means that it requires additional resources.
@@ -102,7 +102,7 @@ Each of these groups of {agent}s will have its own policy specific to its functi
 
 Resource assignment led us to alternatives installation methods. 
 
-IMPORTANT: The main suggestion for big scale clusters *is to install {agent} as side container along with `kube-state-metrics` Shard*. The installation is explained in details https://github.com/elastic/elastic-agent/tree/main/docs/manifests/kustomize-autosharding[{agent} with Kustomize in Autosharding]
+IMPORTANT: The main suggestion for big scale clusters *is to install {agent} as side container along with `kube-state-metrics` Shard*. The installation is explained in details https://github.com/elastic/elastic-agent/tree/main/deploy/kubernetes#kube-state-metrics-ksm-in-autosharding-configuration[{agent} with Kustomize in Autosharding]
 
 The following **alternative configuration methods** have been verified:
 
@@ -111,9 +111,9 @@ The following **alternative configuration methods** have been verified:
   - For non-leader {agent} deployments that collect per KSM shards
 2. With `taint/tolerations` to isolate the {agent} daemonset pods from rest of deployments
 
-You can find more information in the document called https://github.com/elastic/elastic-agent/blob/ksmsharding/docs/elastic-agent-ksm-sharding.md[{agent} Manifests in order to support Kube-State-Metrics Sharding].
+You can find more information in the document called https://github.com/elastic/elastic-agent/blob/main/docs/elastic-agent-ksm-sharding.md[{agent} Manifests in order to support Kube-State-Metrics Sharding].
 
-Based on our https://github.com/elastic/elastic-agent/blob/ksmsharding/docs/elastic-agent-scaling-tests.md[{agent} scaling tests], the following table aims to assist users on how to configure their KSM Sharding as {k8s} cluster scales:
+Based on our https://github.com/elastic/elastic-agent/blob/main/docs/elastic-agent-scaling-tests.md[{agent} scaling tests], the following table aims to assist users on how to configure their KSM Sharding as {k8s} cluster scales:
 |===
 | No of Pods in K8s Cluster | No of KSM Shards | Agent Resources
 | 1000   | No Sharding can be handled with default KSM config | limits: memory: 700Mi , cpu:500m 
@@ -171,7 +171,7 @@ If {agent} is configured as managed, in {kib} you can observe under **Fleet>Agen
 
 --
 [role="screenshot"]
-image::../images/agent-status1.png[{agent} Status]
+image::images/agent-status1.png[{agent} Status]
 --
 
 Additionally you can verify the process status with following commands:
@@ -248,13 +248,13 @@ elastic-agent-wvmpj                                              27m          35
 Filter for Pod dataset:
 --
 [role="screenshot"]
-image::../images/pod-latency.png[{k8s} Pod Metricset]
+image::images/pod-latency.png[{k8s} Pod Metricset]
 --
 
 Filter for State_Pod dataset
 --
 [role="screenshot"]
-image::../images/state-pod.png[{k8s} State Pod Metricset]
+image::images/state-pod.png[{k8s} State Pod Metricset]
 --
 
 Identify how many events have been sent to {es}:

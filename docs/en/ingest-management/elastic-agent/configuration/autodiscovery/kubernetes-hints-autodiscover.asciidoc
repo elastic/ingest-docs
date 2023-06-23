@@ -92,7 +92,7 @@ https://github.com/elastic/elastic-agent/tree/main/deploy/kubernetes/elastic-age
 [discrete]
 == Configure hints autodiscovery
 
-To enable hints, you must add `hints.enabled: true` to the provider's configuration of https://github.com/elastic/elastic-agent/blob/main/deploy/kubernetes/elastic-agent-standalone-kubernetes.yaml[{agent}-standalone manifest] :
+To enable hints, you must add `hints.enabled: true` to the provider's configuration:
 
 [source,yaml]
 ----

@@ -92,7 +92,7 @@ https://github.com/elastic/elastic-agent/tree/main/deploy/kubernetes/elastic-age
 [discrete]
 == Configure hints autodiscovery
 
-To enable hints, you must add `hints.enabled: true` to the provider's configuration:
+To enable hints, you must add `hints.enabled: true` to the provider's configuration of https://github.com/elastic/elastic-agent/blob/main/deploy/kubernetes/elastic-agent-standalone-kubernetes.yaml[{agent}-standalone manifest] :
 
 [source,yaml]
 ----
@@ -115,8 +115,7 @@ volumes:
 ...
 ----
 
-An init container is also required to download the hints templates.
-The init container is already defined, so uncomment the respective section:
+Uncomment the init container section to download the hints templates:
 
 ["source", "yaml", subs="attributes"]
 ----
@@ -133,6 +132,10 @@ initContainers:
     - name: external-inputs
       mountPath: /etc/elastic-agent/inputs.d
 ----
+
+
+NOTE: The {agent} can read from `{path.config}/inputs.d`  multiple configuration files and finally produce a unified one (refer to <<elastic-agent-configuration>>). Users have the ability to manually mount their own templates under `/etc/elastic-agent/inputs.d` if they want to skip enabling initContainers section.
+
 
 [discrete]
 == Example: Hints autodiscovery

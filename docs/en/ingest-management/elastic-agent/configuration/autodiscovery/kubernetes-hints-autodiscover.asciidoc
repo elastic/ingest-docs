@@ -115,7 +115,8 @@ volumes:
 ...
 ----
 
-Uncomment the init container section to download the hints templates:
+An init container is also required to download the hints templates.
+The init container is already defined, so uncomment the respective section:
 
 ["source", "yaml", subs="attributes"]
 ----

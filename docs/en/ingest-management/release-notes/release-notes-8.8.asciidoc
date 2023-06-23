@@ -55,7 +55,7 @@ Review important information about the {fleet} and {agent} 8.8.2 release.
 
 {agent}::
 * Explicitly specify timeout units as seconds in the Endpoint spec file. {agent-pull}2870[#2870]  {agent-issue}2863[#2863]
-* Fix logs collection In diagnostics when {agent} is running on K8s. {agent-pull}2905[#2905]  {agent-issue}2899[#2899]
+* Fix logs collection in diagnostics when {agent} is running on Kubernetes. {agent-pull}2905[#2905]  {agent-issue}2899[#2899]
 
 // end 8.8.2 relnotes
 

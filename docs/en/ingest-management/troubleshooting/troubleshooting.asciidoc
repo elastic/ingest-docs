@@ -512,7 +512,7 @@ agent you want to unenroll.
 == On {fleet-server} startup, ERROR seen with `State changed to CRASHED: exited with code: 1`
 
 You may see this error message for a number of different reasons. A common reason is when attempting production-like usage and the ca.crt file passed in cannot be found.  To verify if this is the problem, bootstrap {fleet-server} without passing a ca.crt file. This implies you would test any subsequent
-{agent} installs temporarily with {fleet-sever}'s own self-signed cert.
+{agent} installs temporarily with {fleet-server}'s own self-signed cert.
 
 TIP: Ensure to pass in the full path to the ca.crt file. A relative path is not viable.
 

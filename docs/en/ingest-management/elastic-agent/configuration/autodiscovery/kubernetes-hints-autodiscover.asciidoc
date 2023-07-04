@@ -81,7 +81,7 @@ and avoid placing passwords in plain text.
 
 The stream to use for logs collection, for example, stdout/stderr.
 
-If the specified package has no logs support, a generic container's logs input will be used as a fallback. See example `Hints autodiscovery for kubernetes log collection` below.
+If the specified package has no logs support, a generic container's logs input will be used as a fallback. See the `Hints autodiscovery for kubernetes log collection` example below.
 
 [discrete]
 == Available packages that support hints autodiscovery

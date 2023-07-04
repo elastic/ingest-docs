@@ -20,11 +20,11 @@ These steps describe how to set up {fleet} components to use a proxy.
 . **Globally add proxy server details to {fleet}.**
 
 .. In {kib}, navigate to the **Fleet** page and go to the **Settings** tab.
-.. Select **Add proxy**.
+.. Select **Add proxy**. The **Add proxy** or **Edit proxy** flyout opens.
 +
-**image TBD**
+image::images/elastic-agent-proxy-edit-proxy.png[Screen capture of the Edit Proxy UI in Fleet]
 +
-.. In the **Add Proxy** flyout, add a name (in this example `Proxy-A`) and specify the Proxy URL.
+.. Add a name for the proxy (in this example `Proxy-A`) and specify the Proxy URL.
 .. Add any other optional settings.
 .. Select **Save and apply settings**. The proxy information is saved and that proxy is ready for other components in {fleet} to reference.
 
@@ -36,8 +36,7 @@ If the control plane traffic to/from the Fleet Server needs to also go through t
 .. In the list of **Fleet Server Hosts**, choose a host and select the edit button to configure it.
 .. In the **Proxy** section dropdown list, select the proxy that you configured.
 +
-**image TBD**
-
+image::images/elastic-agent-proxy-edit-fleet-server.png[Screen capture of the Edit Fleet Server UI]
 +
 In this example, All the {agents} in a policy that uses this {fleets-server} will now connect to the {fleet-server} through the proxy server defined in `Proxy-A`.
 

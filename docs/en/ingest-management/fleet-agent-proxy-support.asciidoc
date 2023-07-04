@@ -28,7 +28,7 @@ described later.
 Refer to <<elastic-agent-proxy-config,When to configure proxy settings>> for more
 detail, or jump into one of the following guides:
 
-* <<fleet-agent-proxy-host-variables>>
+* <<host-proxy-env-vars>>
 * <<fleet-agent-proxy-managed>>
 * <<fleet-agent-proxy-standalone>>
 

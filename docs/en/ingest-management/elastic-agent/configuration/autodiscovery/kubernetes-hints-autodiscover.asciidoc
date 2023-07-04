@@ -81,7 +81,7 @@ and avoid placing passwords in plain text.
 
 The stream to use for logs collection, for example, stdout/stderr.
 
-If the specified package has no logs support, a generic container's logs input will be used as a fallback.
+If the specified package has no logs support, a generic container's logs input will be used as a fallback. See example `Hints autodiscovery for kubernetes log collection` below.
 
 [discrete]
 == Available packages that support hints autodiscovery
@@ -186,17 +186,17 @@ providers.kubernetes:
     enabled: true
 ----
 
-Example to manually mount the needed generic_logs template under the inputs.d folder of Elastic Agent
+Example to manually mount the needed container_logs template under the inputs.d folder of Elastic Agent
 [source,yaml]
 ----
 volumeMounts:
 - name: external-inputs
-  mountPath: /etc/elastic-agent/inputs.d/generic_logs.yml
+  mountPath: /etc/elastic-agent/inputs.d/container_logs.yml
 ...
 volumes:
 - name: external-inputs
   hostPath:
-    path: /var/log/test/generic_logs.yml
+    path: /var/log/test/container_logs.yml
 ...
 ----
 

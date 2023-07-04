@@ -174,7 +174,7 @@ NOTE: All assets (dashboards, ingest pipelines, and so on) related to the Redis 
 [discrete]
 === Hints autodiscovery for kubernetes log collection
 
-The log collection for Kubernetes autodiscovered pods can be supported by using  https://github.com/elastic/elastic-agent/tree/main/deploy/kubernetes/elastic-agent-standalone/templates.d/generic_logs.yml[generic_logs.yml template]. Users need to emit a generic_logs mapping so as to start collecting logs for all the discovered containers *even if no annotations are present in the containers*. 
+The log collection for Kubernetes autodiscovered pods can be supported by using  https://github.com/elastic/elastic-agent/tree/main/deploy/kubernetes/elastic-agent-standalone/templates.d/container_logs.yml[container_logs.yml template]. Users need to emit a caontainer_logs mapping so as to start collecting logs for all the discovered containers *even if no annotations are present in the containers*. 
 
 Enabling hints in the kubernetes standalone manifest: 
 [source,yaml]
@@ -213,7 +213,7 @@ So this will disable the automatic logs collection from all discovered pods. Use
 [source,yaml]
 ----
 annotations:
-  co.elastic.hints/package: "generic_logs.container_logs"
+  co.elastic.hints/package: "container_logs"
 ----
 
 
@@ -248,7 +248,7 @@ spec:
       labels:
         app: nginx
       annotations:
-        co.elastic.hints/package: "generic_logs.container_logs"
+        co.elastic.hints/package: "container_logs"
         co.elastic.hints/stream: "stderr"
     spec:
       containers:

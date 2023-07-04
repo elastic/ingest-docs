@@ -96,7 +96,8 @@ are configured outside of {fleet}. For more information, refer to
 == {es} output settings
 
 Specify these settings to send data over a secure connection to {es}.
-TIP: Elasticsearch output must match only to the cluster with which the server fleet is associated. It's not possible to reference urls belonging to other elasticsearch clusters.
+
+TIP: {es} output must match only the cluster with which {fleet-server} is associated. It's not possible to reference URLs belonging to other {es} clusters.
 
 [cols="2*<a"]
 |===

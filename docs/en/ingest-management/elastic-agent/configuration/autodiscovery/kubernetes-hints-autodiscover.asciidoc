@@ -81,7 +81,7 @@ and avoid placing passwords in plain text.
 
 The stream to use for logs collection, for example, stdout/stderr.
 
-If the specified package has no logs support, a generic container's logs input will be used as a fallback.
+If the specified package has no logs support, a generic container's logs input will be used as a fallback. See the `Hints autodiscovery for kubernetes log collection` example below.
 
 [discrete]
 == Available packages that support hints autodiscovery
@@ -139,7 +139,10 @@ NOTE: The {agent} can load multiple configuration files from `{path.config}/inpu
 
 
 [discrete]
-== Example: Hints autodiscovery
+== Examples: 
+
+[discrete]
+=== Hints autodiscovery for redis
 
 Enabling hints allows users deploying Pods on the cluster to automatically turn on Elastic
 monitoring at Pod deployment time.
@@ -167,6 +170,115 @@ After deploying this Pod, the data will start flowing in automatically. You can 
 
 NOTE: All assets (dashboards, ingest pipelines, and so on) related to the Redis integration are not installed. You need to explicitly <<install-uninstall-integration-assets,install them through {kib}>>.
 
+
+[discrete]
+=== Hints autodiscovery for kubernetes log collection
+
+The log collection for Kubernetes autodiscovered pods can be supported by using  https://github.com/elastic/elastic-agent/tree/main/deploy/kubernetes/elastic-agent-standalone/templates.d/container_logs.yml[container_logs.yml template]. Elastic Agent needs to emit a container_logs mapping so as to start collecting logs for all the discovered containers *even if no annotations are present in the containers*. 
+
+1. Follow steps described above to enable Hints Autodiscover
+2. Make sure that relevant `container_logs.yml` template will be mounted under /etc/elastic-agent/inputs.d/ folder of Elastic Agent
+3. Deploy Elastic Agent Manifest
+4. Elastic Agent should be able to discover all containers inside kuernetes cluster and to collect available logs.
+
+The previous default behaviour can be disabled with `hints.default_container_logs: false`. 
+So this will disable the automatic logs collection from all discovered pods. Users need specifically to annotate their pod with following annotations:
+
+[source,yaml]
+----
+annotations:
+  co.elastic.hints/package: "container_logs"
+----
+
+
+[source,yaml]
+----
+providers.kubernetes:
+  node: ${NODE_NAME}
+  scope: node
+  hints:
+    enabled: true
+    default_container_logs: false 
+...
+----
+
+In the following sample nginx manifest, we will additionally provide specific stream annotation, in order to configure the filestream input to read only stderr stream:
+
+[source,yaml]
+----
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx
+  name: nginx
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+      annotations:
+        co.elastic.hints/package: "container_logs"
+        co.elastic.hints/stream: "stderr"
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+...
+----
+
+Users can monitor the final rendered Elastic Agent configuration:
+
+[source,bash]
+----
+kubectl exec -ti -n kube-system elastic-agent-7fkzm -- bash
+
+
+/usr/share/elastic-agent# /elastic-agent inspect -v --variables --variables-wait 2s
+
+inputs:
+- data_stream.namespace: default
+  id: hints-container-logs-3f69573a1af05c475857c1d0f98fc55aa01b5650f146d61e9653a966cd50bd9c-kubernetes-1780aca0-3741-4c8c-aced-b9776ba3fa81.nginx
+  name: filestream-generic
+  original_id: hints-container-logs-3f69573a1af05c475857c1d0f98fc55aa01b5650f146d61e9653a966cd50bd9c
+  [output truncated ....]
+  streams:
+  - data_stream:
+      dataset: kubernetes.container_logs
+      type: logs
+    exclude_files: []
+    exclude_lines: []
+    parsers:
+    - container:
+        format: auto
+        stream: stderr
+    paths:
+    - /var/log/containers/*3f69573a1af05c475857c1d0f98fc55aa01b5650f146d61e9653a966cd50bd9c.log
+    prospector:
+      scanner:
+        symlinks: true
+    tags: []
+  type: filestream
+  use_output: default
+outputs:
+  default:
+    hosts:
+    - https://elasticsearch:9200
+    password: changeme
+    type: elasticsearch
+    username: elastic
+providers:
+  kubernetes:
+    hints:
+      default_container_logs: false
+      enabled: true
+    node: control-plane
+    scope: node
+----
 
 
 [discrete]

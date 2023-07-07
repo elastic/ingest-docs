@@ -1,5 +1,5 @@
 [[fleet-agent-proxy-support]]
-= Using a proxy server
+= Using a proxy server with {agent} and {fleet}
 
 Many enterprises secure their assets by placing a proxy server between them and
 the internet. The main role of the proxy server is to filter content and provide

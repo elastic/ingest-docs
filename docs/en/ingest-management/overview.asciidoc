@@ -76,12 +76,14 @@ integrations are updated and released periodically. You can find more informatio
 environments in the section about {fleet-guide}/air-gapped.html[Air-gapped environments].
 
 [discrete]
-[[communication-urls-needed]]
-== {agent} {fleet-server} {integrations}
+[[artifact-registry-intro]]
+== Elastic Artifact Registry
 
-Multiple public URLs need to be resolved in order to have {fleet} and {agent} working properly. First of, the {agent} running on any of your internal hosts should have access to `artifacts.elastic.co` as well as `artifacts.security.elastic.co`, this is needed for {agent} updates and security artifacts when leveraging Elastic Defend.
+{fleet} and {agent} require access to the public Elastic Artifact Registry. The {agent} running on any of your internal hosts should have access to `artifacts.elastic.co` in order to perform self-upgrades and install of certain components which are needed for some of the data integrations.
 
-You can find more information about running most of the above mentioned resources in air-gapped
+Additionally, access to `artifacts.security.elastic.co` is needed for {agent} updates and security artifacts when using {elastic-defend}.
+
+You can find more information about running the above mentioned resources in air-gapped
 environments in the section about {fleet-guide}/air-gapped.html[Air-gapped environments].
 
 [discrete]

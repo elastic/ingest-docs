@@ -25,7 +25,7 @@ scheme is assumed. An error is returned if the value is a different form.
 
 [discrete]
 [[where-to-set-proxy-env-vars]]
-=== Where to set proxy environment variables
+== Where to set proxy environment variables
 
 The location where you set these environment variables is platform-specific and
 based on the system manager you're using. Here are some examples to get you

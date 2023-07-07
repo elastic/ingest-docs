@@ -3,7 +3,7 @@
 
 Many enterprises secure their assets by placing a proxy server between them and
 the internet. The main role of the proxy server is to filter content and provide
-a single gateway through which all traffic traverses in/out of a data center.
+a single gateway through which all traffic traverses in and out of a data center.
 These proxy servers provide a various degree of functionality, security and
 privacy.
 
@@ -15,10 +15,6 @@ the proxy can connect to {es} through the firewall.
 
 Support is available in {agent} and {fleet} for connections through HTTP Connect
 (HTTP 1 only) and SOCKS5 proxy servers.
-
-These guides describe where a proxy server is allowed in your deployment and how
-to configure proxy settings for {agent} and (if applicable) {fleet}. The steps
-for deploying the proxy server itself are beyond the scope of this article.
 
 NOTE: Some environments require users to authenticate with the proxy. There are
 no explicit settings for proxy authentication in {agent} or {fleet}, except the

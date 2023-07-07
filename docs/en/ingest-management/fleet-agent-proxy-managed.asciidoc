@@ -1,7 +1,9 @@
 [[fleet-agent-proxy-managed]]
 = Fleet managed {agent} connectivity using a proxy server
 
-This page describes how to configure proxy settings for {agent} managed by {fleet}.
+Proxy settings in the {agent} policy override proxy settings specified by environment variables. This means you can specify proxy settings for {agent} that are different from host or system-level environment settings.
+
+This page describes where a proxy server is allowed in your deployment and how to configure proxy settings for {agent} and {fleet}. The steps for deploying the proxy server itself are beyond the scope of this article.
 
 {agents} generally egress two sets of connections, one for Control plane traffic to the {fleet-server}, the other Data plane traffic to an output such as {es}. In a similar fashion operators would place {agent} behind a proxy server, and proxy the control and data plane traffic to their final destinations. 
 
@@ -54,7 +56,7 @@ Similarly, if the data plane traffic to an output is to traverse via a proxy, th
 .. In the list of **Outputs**, choose an output and select the edit button to configure it.
 .. In the **Proxy** section dropdown list, select the proxy that you configured.
 +
-**ADD IMAGE**
+image::images/elastic-agent-proxy-edit-output.png[Screen capture of the Edit output UI in Fleet]
 +
 In this example, All the {agents} in a policy that is configured to write to the chosen output will now write to that output through the proxy server defined in `Proxy-A`.
 
@@ -67,12 +69,13 @@ If agents are unable to reach the configured proxy server, they will not be able
 . **Configure the {agent} policy**
 +
 You can now configure the {agent} policy to use the {fleet-server} and the outputs that are reachable through a proxy server.
+
 ** If the policy is configured with a {fleet-server} that has a proxy attached to it, all the control plane traffic from the agents in that policy will reach the {fleet-server} through that proxy. 
 ** Similarly, if the output definition has a proxy attached to it, all the agents in that policy will write (data plane) to the output through the proxy.
 +
 . **Enroll the {agents}**
 +
-Now that {fleet} is configured, all policy downloads will update the agent with the latest configured proxies. When the agent is first installed it needs to communicate with the {fleet} (through {fleet-server}) in order to download its first policy configuration. 
+Now that {fleet} is configured, all policy downloads will update the agent with the latest configured proxies. When the agent is first installed it needs to communicate with {fleet} (through {fleet-server}) in order to download its first policy configuration. 
 
 [discrete]
 [[cli-proxy-settings]]
@@ -156,6 +159,6 @@ It should be noted that the user can define a local path to the certificate and 
 
 Equally important is the Certificate Authority that the agents need to use to validate the certificate they are receiving from the secure proxy server. This can also be added when creating the proxy definition in the Fleet settings.
 
-**ADD IMAGE WITH SECURITY SETTINGS**
+image::images/elastic-agent-edit-proxy-secure-settings.png[Screen capture of the Edit Proxy UI, highlighting the Certificate and Certificate key settings]
 
-NOTE: Currently Elastic Agents will not present a certificate for Control Plane traffic to the Fleet Server.  This issue will be resolved by {agent-issue}2248(issue #2248). Our recommendation is to avoid adding a secure proxy as such in a Fleet Server configuration flyout.
+NOTE: Currently {agents} will not present a certificate for Control Plane traffic to the {fleet-server}. Some proxy servers are setup to mandate that the client setting up a connection presents a certificate to them before allowing that client to connect. This issue will be resolved by link:https://github.com/elastic/elastic-agent/issues/2248[issue #2248]. Our recommendation is to avoid adding a secure proxy as such in a {fleet-server} configuration flyout.

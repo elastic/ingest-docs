@@ -8,7 +8,7 @@ A preview of the API specifications can be added to the Fleet and Elastic Agent 
 
 . Make sure that your system has perl enabled.
 
-. Create a local clone of the [elastic/kibana](https://github.com/elastic/kibana) and [elastic/observability-docs](https://github.com/elastic/observability-docs) repositories in your `$GIT_PATH` directory.
+. Create a local clone of the [elastic/kibana](https://github.com/elastic/kibana) and [elastic/ingest-docs](https://github.com/elastic/ingest-docs) repositories in your `$GIT_PATH` directory.
 
 . Install [OpenAPI Generator](https://openapi-generator.tech/docs/installation),
 or a similar tool that can generate HTML output from OAS.

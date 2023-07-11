@@ -292,14 +292,7 @@ does not include the collection of logs of metrics.
 [discrete]
 === Collect {agent} diagnostics bundle
 
-Run the following command to generate a zip archive containing diagnostics information that the Elastic team can use for debugging cases.
-
-[source,shell]
-----
-elastic-agent diagnostics
-----
-
-This archive collects the following information:
+The {agent} diagnostics bundle collects the following information:
 
 . {agent} versions numbers
 . {beats} (and other process) version numbers and process metadata
@@ -311,6 +304,36 @@ Note that the diagnostics bundle is intended for debugging purposes only, its st
 
 IMPORTANT: The configuration files in the archive may have credentials in *plain text*.
 These will need to be manually redacted before the archive is shared.
+
+**Get the diagnostics bundle using the CLI**
+
+Run the following command to generate a zip archive containing diagnostics information that the Elastic team can use for debugging cases.
+
+[source,shell]
+----
+elastic-agent diagnostics
+----
+
+**Get the diagnostics bundle through {fleet}**
+
+{fleet} provides the ability to remotely generate and gather an {agent}'s diagnostics bundle.
+An agent can gather and upload diagnostics if it is online in a `Healthy` or `Unhealthy` state.
+To download the diagnostics bundle for local viewing:
+
+. In {kib}, go to **Management -> {fleet} -> Agents**.
+
+. In the **Host** column, click the agent's name.
+
+. Click the **Diagnostics** tab.
+
+. Click the **Request diagnostics .zip** button.
++
+[role="screenshot"]
+image::images/collect-agent-diagnostics2.png[Collect agent diagnostics under agent details]
+
+Any in-progress or previously collected bundles for the {agent} will be listed on this page.
+
+Note that the bundles are stored in {es} and will be removed after 30 days.
 
 [discrete]
 [[not-installing-no-logs-in-terminal]]

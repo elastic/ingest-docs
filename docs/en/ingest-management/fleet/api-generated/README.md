@@ -18,17 +18,17 @@ or a similar tool that can generate HTML output from OAS.
 . Generate HTML output. For example:
 
   ```
-  openapi-generator generate -g html -i $GIT_HOME/kibana/x-pack/plugins/fleet/common/openapi/bundled.json -o $GIT_HOME/observability-docs/docs/en/ingest-management/fleet/api-generated/rules -t $GIT_HOME/observability-docs/docs/en/ingest-management/fleet/api-generated/template
+  openapi-generator generate -g html -i $GIT_HOME/kibana/x-pack/plugins/fleet/common/openapi/bundled.json -o $GIT_HOME/ingest-docs/docs/en/ingest-management/fleet/api-generated/rules -t $GIT_HOME/ingest-docs/docs/en/ingest-management/fleet/api-generated/template
   ```
 
 . Rename the output files. For example:
   ```
-  mv $GIT_HOME/observability-docs/docs/en/ingest-management/fleet/api-generated/rules/index.html $GIT_HOME/observability-docs/docs/en/ingest-management/fleet/api-generated/rules/fleet-apis-passthru.asciidoc
+  mv $GIT_HOME/ingest-docs/docs/en/ingest-management/fleet/api-generated/rules/index.html $GIT_HOME/ingest-docs/docs/en/ingest-management/fleet/api-generated/rules/fleet-apis-passthru.asciidoc
   ```
 
 . Run a perl search-and-replace command to fix the header text for each section of the API page:
   ```
-  perl -i -pe'while (s/">[A-Z][^ ]*[a-z]\K([A-Z])/ $1/g) {}' $GIT_HOME/observability-docs/docs/en/ingest-management/fleet/api-generated/rules/fleet-apis-passthru.asciidoc
+  perl -i -pe'while (s/">[A-Z][^ ]*[a-z]\K([A-Z])/ $1/g) {}' $GIT_HOME/ingest-docs/docs/en/ingest-management/fleet/api-generated/rules/fleet-apis-passthru.asciidoc
   ```
 
 . If you're creating a new set of API output, you will need to have a page that incorporates the output by using passthrough blocks. For more information, refer to [Asciidoctor docs](https://docs.asciidoctor.org/asciidoc/latest/pass/pass-block/)

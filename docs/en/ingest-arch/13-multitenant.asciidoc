@@ -16,7 +16,31 @@ These logs need to be sent to different {es} clusters and to S3 for backup and a
 In such use cases, agents send the data to {ls} as a routing mechanism to different destinations. 
 Note that the System and Windows integrations must be installed on all {es} clusters to which the data is routed.
 
-// ToDo: Add config example/logic in Logstash for routing data to different destinations
+Sample config::
++ 
+[source,ruby]
+input {
+  elastic_agent {
+    port => 5044
+  }
+}
+output {
+  elasticsearch {
+    cloud_id => "<cloud id>"
+    api_key => "<api key>"
+  }
+  elasticsearch {
+    cloud_id => "<cloud id>"
+    api_key => "<api key>"
+  }
+   s3 {
+     access_key_id => "my_key" 
+     secret_access_key => "my_access_key"
+     bucket => "our_bucket"
+   }
+  }
+}
+
 
 [discrete]
 [[multi-resources]]

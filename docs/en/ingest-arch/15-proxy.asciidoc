@@ -6,8 +6,7 @@ image::images/ea-proxy-fs-es.png[Image showing connections between {agent} and {
 image::images/ea-fs-proxy-es.png[Image showing connections between {agent} and {es} using a proxy]
 
 TIP: This architecture works with a variety of proxying tools to allow for more flexibility in your environment.
-Consider using <<ls-networkbridge,{ls} as proxy>> when it is feasable for your use case.
-{ls} and the rest of the {stack} are designed and tested to work together, and can be easier to support. 
+Consider using <<ls-networkbridge,{ls} as a proxy>>, as {ls} and the rest of the {stack} are designed and tested to work together, and can be easier to support.  
 
 Ingest model::
  +

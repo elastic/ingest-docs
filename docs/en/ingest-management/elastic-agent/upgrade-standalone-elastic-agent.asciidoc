@@ -34,18 +34,18 @@ The basic upgrade scenario should work for most use cases. However, in an air-ga
 As an alterative, you can do one of the following:
 
 * <<fleet-agent-proxy-support,Configure a proxy server>> for standalone {agent} to access the {artifact-registry}.
-* <<host-artifact-registry,Host your own artifact registry for binary downloads>>
+* <<host-artifact-registry,Host your own artifact registry>> for standalone {agent} to access binary downloads.
 
-To learn more, refer to <<air-gapped,Air-gapped environments>> for more details.
+Refer to <<air-gapped,Air-gapped environments>> for more details.
 
 [[upgrade-standalone-verify-package]]
 == Verifying {agent} package signatures
 
-Standalone {agent} verifies each package that it downloads using publically available SHA hash and .asc PGP signature files. The SHA file is used to verify that the package has not been modified, and the .asc file is used to verify that the package was released by Elastic. For this purpose, the Elastic public key is embedded in {agent} itself.
+Standalone {agent} verifies each package that it downloads using publically available SHA hash and .asc PGP signature files. The SHA file is used to verify that the package has not been modified, and the .asc file is used to verify that the package was released by Elastic. For this purpose, the Elastic public GPG key is embedded in {agent} itself.
 
 At times, the Elastic private GPG key may need to be rotated, either due to the key expiry or due to the private key having been exposed. In this case, standalone {agent} upgrades can fail because the embedded public key no longer works.
 
-In the event of a private key rotation, you can use the following options with the <<elastic-agent-upgrade-command,`upgrade`>> command to force {agent} to use a new public key for verification:
+In the event of a private GPG key rotation, you can use the following options with the <<elastic-agent-upgrade-command,`upgrade`>> command to either skip the verification process (not recommended) or force {agent} to use a new public key for verification:
 
 `--skip-verify`::
 Skip the package verification process. This option is not recommended as it is insecure.

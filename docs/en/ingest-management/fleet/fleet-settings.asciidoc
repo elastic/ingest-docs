@@ -255,6 +255,104 @@ data if no other output is set in the agent policy.
 |===
 
 [discrete]
+[[kafka-output-settings]]
+== Kafka output settings
+
+Specify these settings to send data over a secure connection to Logstash. 
+
+[cols="2*<a"]
+|===
+|
+[id="kafka-output-version"]
+**Kafka version**
+
+| The Kafka protocol version that {agent} will request when connecting. 
+Defaults to 1.0.0.
+
+// =============================================================================
+
+|
+[id="kafka-output-hosts"]
+**Hosts**
+
+| The addresses your {agent}s will use to connect to one or more Kafka brokers. 
+Use the format `host:port`. Click **add** row to specify additional addresses.
+
+**Examples:**
+
+* `https://localhost:9092`
+* `mykafkahost:9092` 
+// Is this the correct port number? The definition doc says 9092 and the demo shows 2301.
+
+// =============================================================================
+
+|
+[id="kafka-output-authentication"]
+**Authentication**
+
+| Choose an authentication method.
+
+**Username / Password**
+
+Provide a username and password for connecting to Kafka.
+
+Select a Simple Authentication and Security Layer (SASL) mechanism for your login credentials:
+
+* Plain
+* SCRAM-SHA-256
+* SCRAM-SHA-512
+
+**SSL**
+
+Use the Secure Sockets Layer (SSL) protocol to authenticate. 
+
+* **Server SSL certificate authorities**: The CA certificate to use to connect to Kafka. This is the CA used to generate the certificate and key for Kafka. Copy and paste in the full contents for the CA certificate.
++
+This setting is optional.
+
+* **Client SSL certificate**: The certificate generated for the client. Copy and paste in the full contents of the certificate. This is the certificate that all the agents will use to connect to Kafka.
++
+In cases where each client has a unique certificate, the local path to that certificate can be placed here. The agents will pick the certificate in that location when establishing a connection to Kafka.
+
+* **Client SSL certificate key**: The private key generated for the client. This must be in PKCS 8 key. Copy and paste in the full contents of the certificate key. This is the certificate key that all the agents will use to connect to Kafka.
++
+In cases where each client has a unique certificate key, the local path to that certificate key can be placed here. The agents will pick the certificate key in that location when establishing a connection to Kafka.
+
+**Kerberos**
+
+Use Kerberos authentication between {agent} and Kafka.
+
+// =============================================================================
+
+|
+[id="kafka-output-partitioning"]
+**Partitioning**
+
+| Select a Kafka output broker event partitioning strategy. By default the random partitioner is used.
+
+When you select **Random** or **Round robin**, you must also specify the number of events to be published to the same partition, before the partitioner selects a new partition, either at random or by a round robin sequence.
+
+When you select **Hash**, you must also specify the list of fields used to compute the partitioning hash value from. If no field is configured, the events `key` value will be used.
+
+// =============================================================================
+
+|
+[id="kafka-output-topics"]
+**Topics**
+
+| Use these settings to dynamically set the topic for an event
+
+tbd
+
+|===
+
+
+
+
+
+
+
+[discrete]
 [[fleet-agent-binary-download-settings]]
 == Agent binary download settings
 

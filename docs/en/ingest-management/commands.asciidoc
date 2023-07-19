@@ -812,8 +812,20 @@ The version of {agent} to upgrade to.
 The source URI to download the new version from. By default, {agent} uses the
 Elastic Artifacts URL.
 
+`--skip-verify`::
+Skip the package verification process. This option is not recommended as it is insecure.
+
+`--pgp-path <string>`::
+Use a locally stored copy of the PGP key to verify the upgrade package.
+
+`--pgp-uri <string>`::
+Use the specified online PGP key to verify the upgrade package.
+
 `--help`::
 Show help for the `upgrade` command.
+
+For details about using the `--skip-verify`, `--pgp-path <string>`, and `--pgp-uri <string>`
+package verification options, refer to <<upgrade-standalone-verify-package>>.
 
 {global-flags-link}
 

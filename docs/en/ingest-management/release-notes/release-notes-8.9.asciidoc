@@ -1,0 +1,235 @@
+// Use these for links to issue and pulls.
+:kibana-issue: https://github.com/elastic/kibana/issues/
+:kibana-pull: https://github.com/elastic/kibana/pull/
+:beats-issue: https://github.com/elastic/beats/issues/
+:beats-pull: https://github.com/elastic/beats/pull/
+:agent-libs-pull: https://github.com/elastic/elastic-agent-libs/pull/
+:agent-issue: https://github.com/elastic/elastic-agent/issues/
+:agent-pull: https://github.com/elastic/elastic-agent/pull/
+:fleet-server-issue: https://github.com/elastic/fleet-server/issues/
+:fleet-server-pull: https://github.com/elastic/fleet-server/pull/
+
+[[release-notes]]
+= Release notes
+
+This section summarizes the changes in each release.
+
+* <<release-notes-8.9.0>>
+
+Also see:
+
+* {kibana-ref}/release-notes.html[{kib} release notes]
+* {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.9.0 relnotes
+
+[[release-notes-8.9.0]]
+== {fleet} and {agent} 8.9.0
+
+Review important information about the {fleet} and {agent} 8.8.0 release.
+
+[discrete]
+[[security-updates-8.9.0]]
+=== Security updates
+
+{fleet-server}::
+* Use a verified base image for building Fleet Server binaries. {fleet-server-pull}2339[#2339]
+
+[discrete]
+[[breaking-changes-8.9.0]]
+=== Breaking changes
+
+Breaking changes can prevent your application from optimal operation and
+performance. Before you upgrade, review the breaking changes, then mitigate the
+impact to your application.
+
+[discrete]
+[[breaking-2531]]
+.Status command has been changed
+[%collapsible]
+====
+*Details* +
+The {agent} `status` command has been changed so that the default human output now uses a list format and summaries output.
+
+*Impact* +
+Full human output can be obtained with the new `full` option.
+For for information, refer to {agent-pull}2890[#2890].
+====
+
+[discrete]
+[[breaking-2890]]
+.API default error code is now 500
+[%collapsible]
+====
+*Details* +
+Previously, when {fleet-server} encountered an unexpected error it resulted in a `Bad Request` response.
+
+*Impact* +
+Now, any unexpected error returns an `Internal Server Error` response while keeping most of the current behavior
+unchanged. On expected failure paths (for example, Agent Inactive, Missing Agent ID, Missing Auth Header) a `Bad Request` response is returned. For more information, refer to {fleet-server-pull}2531[#2531].
+====
+
+[discrete]
+[[new-features-8.9.0]]
+=== New features
+
+The 8.9.0 release Added the following new and notable features.
+
+{fleet}::
+* Adds CloudFormation install method to CSPM. {kibana-pull}159994[#159994]
+* Adds flags to give permissions to write to any dataset and namespace. {kibana-pull}157897[#157897]
+* Disables Agent ID verification for Observability projects. {kibana-pull}157400[#157400]
+* Setup `ignore_malformed` in {fleet}. {kibana-pull}157184[#157184]
+
+{fleet-server}::
+* A new `elastic-api` version header is added, allow versioning of the {fleet-server} APIs. {fleet-server-pull}2677[#2677]
+
+{agent}::
+* {agent} upgrade now supports upgrading to specific snapshots. {agent-pull}2752[#2752] {agent-issue}1864[#1864]
+* Add the logs subcommand to the agent CLI. {agent-pull}2752[#2745] {agent-issue}114[#114]
+* Retry service commands indefinitely with exponential backoff {agent-pull}2889[#2889]
+
+[discrete]
+[[enhancements-8.9.0]]
+=== Enhancements
+
+{fleet}::
+* Adds agent integration health reporting in the Fleet UI {kibana-pull}158826[#158826]
+
+{fleet-server}::
+* {fleet-server} metrics are now exposed in Prometheus format. Metrics collected by Prometheus are now shipped with with an APM tracer. {fleet-server-pull}2610[#2610]
+* Delivery of user-uploaded files to integrations is now supported. {fleet-server-pull}2666[#2666]
+
+{agent}::
+* Updated node version to 18.16.0. {agent-pull}2696[#2696] 
+* Upgraded `github.com/elastic/go-sysinfo` from version `1.10.0` to `1.11.0`. {agent-pull}2767[#2767] 
+* Updated Go version to 1.19.10. {agent-pull}2846[#2846]
+* Add additional elements to support the Universal Profiling integration. {agent-pull}2881[#2881]
+* Service components can now optionally specify retries for their operations. {agent-pull}2889[#2889]
+
+[discrete]
+[[bug-fixes-8.9.0]]
+=== Bug fixes
+
+{fleet}::
+* Fixes a bug that prevented `index.mapping` settings to be propagated into component templates from default settings. {kibana-pull}157289[#157289]
+
+{fleet-server}::
+* Fixes a bug during {agent} upgrades where `action_seq_no` was overwritten with 0 if the `ackToken` was not provided. {fleet-server-pull}2582[#2582]
+* Fixes an issue that caused {fleet-server} to go offline after reboot. {fleet-server-pull}2697[#2697] {fleet-server-pull}2431[#2431]
+
+{agent}::
+* Change monitoring socket to use a hash of the ID instead of the actual ID. {agent-pull}2912[#2912]
+* Fixes the drop processor for monitoring component logs to use the `component.id` instead of the dataset. {agent-pull}2982[#2982] {agent-issue}2388[#2388]
+
+// end 8.9.0 relnotes
+
+
+// ---------------------
+//TEMPLATE
+//Use the following text as a template. Remember to replace the version info.
+
+// begin 8.7.x relnotes
+
+//[[release-notes-8.7.x]]
+//== {fleet} and {agent} 8.7.x
+
+//Review important information about the {fleet} and {agent} 8.7.x release.
+
+//[discrete]
+//[[security-updates-8.7.x]]
+//=== Security updates
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[breaking-changes-8.7.x]]
+//=== Breaking changes
+
+//Breaking changes can prevent your application from optimal operation and
+//performance. Before you upgrade, review the breaking changes, then mitigate the
+//impact to your application.
+
+//[discrete]
+//[[breaking-PR#]]
+//.Short description
+//[%collapsible]
+//====
+//*Details* +
+//<Describe new behavior.> For more information, refer to {kibana-pull}PR[#PR].
+
+//*Impact* +
+//<Describe how users should mitigate the change.> For more information, refer to {fleet-guide}/fleet-server.html[Fleet Server].
+//====
+
+//[discrete]
+//[[known-issues-8.7.x]]
+//=== Known issues
+
+//[[known-issue-issue#]]
+//.Short description
+//[%collapsible]
+//====
+
+//*Details*
+
+//<Describe known issue.>
+
+//*Impact* +
+
+//<Describe impact or workaround.>
+
+//====
+
+//[discrete]
+//[[deprecations-8.7.x]]
+//=== Deprecations
+
+//The following functionality is deprecated in 8.7.x, and will be removed in
+//8.7.x. Deprecated functionality does not have an immediate impact on your
+//application, but we strongly recommend you make the necessary updates after you
+//upgrade to 8.7.x.
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[new-features-8.7.x]]
+//=== New features
+
+//The 8.7.x release Added the following new and notable features.
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[enhancements-8.7.x]]
+//=== Enhancements
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[bug-fixes-8.7.x]]
+//=== Bug fixes
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+// end 8.7.x relnotes

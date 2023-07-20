@@ -89,9 +89,6 @@ The 8.9.0 release Added the following new and notable features.
 * Add the logs subcommand to the agent CLI. {agent-pull}2752[#2745] {agent-issue}114[#114]
 * Support upgrading to specific snapshots by specifying the build ID. {agent-pull}2752[#2752]
 
-
-// * Retry service commands indefinitely with exponential backoff {agent-pull}2889[#2889]
-
 [discrete]
 [[enhancements-8.9.0]]
 === Enhancements
@@ -104,10 +101,7 @@ The 8.9.0 release Added the following new and notable features.
 
 
 {agent}::
-//* Upgraded `github.com/elastic/go-sysinfo` from version `1.10.0` to `1.11.0`. {agent-pull}2767[#2767] 
-// * Updated Go version to 1.19.10. {agent-pull}2846[#2846]
 * Add additional elements to support the Universal Profiling integration. {agent-pull}2881[#2881]
-// * Service components can now optionally specify retries for their operations. {agent-pull}2889[#2889]
 * Lowercase reported hostnames per Elastic Common Schema (Ecs) Guidelines for the `host.name` field.
 
 [discrete]

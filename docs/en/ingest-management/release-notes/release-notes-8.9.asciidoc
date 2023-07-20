@@ -44,7 +44,7 @@ performance. Before you upgrade, review the breaking changes, then mitigate the
 impact to your application.
 
 [discrete]
-[[breaking-2531]]
+[[breaking-2890]]
 .Status command has been changed
 [%collapsible]
 ====
@@ -57,7 +57,7 @@ For for information, refer to {agent-pull}2890[#2890].
 ====
 
 [discrete]
-[[breaking-2890]]
+[[breaking-2531]]
 .API default error code is now 500
 [%collapsible]
 ====
@@ -83,11 +83,14 @@ The 8.9.0 release Added the following new and notable features.
 
 {fleet-server}::
 * A new `elastic-api` version header is added, allow versioning of the {fleet-server} APIs. {fleet-server-pull}2677[#2677]
+* Support delivery of user-uploaded files to integrations. {fleet-server-pull}2666[#2666]
 
 {agent}::
-* {agent} upgrade now supports upgrading to specific snapshots. {agent-pull}2752[#2752] {agent-issue}1864[#1864]
 * Add the logs subcommand to the agent CLI. {agent-pull}2752[#2745] {agent-issue}114[#114]
-* Retry service commands indefinitely with exponential backoff {agent-pull}2889[#2889]
+* Support upgrading to specific snapshots by specifying the build ID. {agent-pull}2752[#2752]
+
+
+// * Retry service commands indefinitely with exponential backoff {agent-pull}2889[#2889]
 
 [discrete]
 [[enhancements-8.9.0]]
@@ -97,15 +100,15 @@ The 8.9.0 release Added the following new and notable features.
 * Adds agent integration health reporting in the Fleet UI {kibana-pull}158826[#158826]
 
 {fleet-server}::
-* {fleet-server} metrics are now exposed in Prometheus format. Metrics collected by Prometheus are now shipped with with an APM tracer. {fleet-server-pull}2610[#2610]
-* Delivery of user-uploaded files to integrations is now supported. {fleet-server-pull}2666[#2666]
+* Expose Prometheus metrics on metrics listener (when enabled). Ship Prometheus metrics with apm.Tracer when tracer is enabled. {fleet-server-pull}2610[#2610]
+
 
 {agent}::
-* Updated node version to 18.16.0. {agent-pull}2696[#2696] 
-* Upgraded `github.com/elastic/go-sysinfo` from version `1.10.0` to `1.11.0`. {agent-pull}2767[#2767] 
-* Updated Go version to 1.19.10. {agent-pull}2846[#2846]
+//* Upgraded `github.com/elastic/go-sysinfo` from version `1.10.0` to `1.11.0`. {agent-pull}2767[#2767] 
+// * Updated Go version to 1.19.10. {agent-pull}2846[#2846]
 * Add additional elements to support the Universal Profiling integration. {agent-pull}2881[#2881]
-* Service components can now optionally specify retries for their operations. {agent-pull}2889[#2889]
+// * Service components can now optionally specify retries for their operations. {agent-pull}2889[#2889]
+* Lowercase reported hostnames per Elastic Common Schema (Ecs) Guidelines for the `host.name` field.
 
 [discrete]
 [[bug-fixes-8.9.0]]
@@ -120,7 +123,8 @@ The 8.9.0 release Added the following new and notable features.
 
 {agent}::
 * Change monitoring socket to use a hash of the ID instead of the actual ID. {agent-pull}2912[#2912]
-* Fixes the drop processor for monitoring component logs to use the `component.id` instead of the dataset. {agent-pull}2982[#2982] {agent-issue}2388[#2388]
+* Fix the drop processor for monitoring component logs to use the `component.id` instead of the dataset. {agent-pull}2982[#2982] {agent-issue}2388[#2388]
+* Update Node version to 18.16.0. {agent-pull}2696[#2696] 
 
 // end 8.9.0 relnotes
 

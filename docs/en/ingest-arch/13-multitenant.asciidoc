@@ -24,20 +24,24 @@ input {
     port => 5044
   }
 }
+filter {
+  translate {
+    source => "[http][host]"
+    target => "[@metadata][tenant]"
+    dictionary_path => "/etc/conf.d/logstash/tenants.yml"
+  }
+}
 output {
-  elasticsearch {
-    cloud_id => "<cloud id>"
-    api_key => "<api key>"
-  }
-  elasticsearch {
-    cloud_id => "<cloud id>"
-    api_key => "<api key>"
-  }
-   s3 {
-     access_key_id => "my_key" 
-     secret_access_key => "my_access_key"
-     bucket => "our_bucket"
-   }
+  if [@metadata][tenant] == "tenant01" {
+    elasticsearch {
+      cloud_id => "<cloud id>"
+      api_key => "<api key>"
+    }
+  } else if [@metadata][tenant] == "tenant02" {
+    elasticsearch {
+      cloud_id => "<cloud id>"
+      api_key => "<api key>"
+    }
   }
 }
 

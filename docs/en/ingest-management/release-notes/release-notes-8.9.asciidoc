@@ -45,7 +45,7 @@ impact to your application.
 
 [discrete]
 [[breaking-2890]]
-.Status command has been changed
+.Status command has been changed.
 [%collapsible]
 ====
 *Details* +
@@ -58,7 +58,7 @@ For for information, refer to {agent-pull}2890[#2890].
 
 [discrete]
 [[breaking-2531]]
-.API default error code is now 500
+.API default error code is now 500.
 [%collapsible]
 ====
 *Details* +
@@ -97,7 +97,7 @@ The 8.9.0 release Added the following new and notable features.
 === Enhancements
 
 {fleet}::
-* Adds agent integration health reporting in the Fleet UI {kibana-pull}158826[#158826]
+* Adds agent integration health reporting in the Fleet UI. {kibana-pull}158826[#158826]
 
 {fleet-server}::
 * Expose Prometheus metrics on metrics listener (when enabled). Ship Prometheus metrics with apm.Tracer when tracer is enabled. {fleet-server-pull}2610[#2610]

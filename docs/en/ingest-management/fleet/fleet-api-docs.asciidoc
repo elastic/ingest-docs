@@ -356,7 +356,7 @@ Example response (truncated for readability):
 == Get enrollment tokens
 
 To get a list of valid enrollment tokens from {fleet}, call
-`GET /api/fleet/enrollment_api_keys`. 
+`GET kb:/api/fleet/enrollment_api_keys`. 
 
 This cURL example returns a list of enrollment tokens.
 

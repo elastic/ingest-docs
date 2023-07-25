@@ -42,6 +42,15 @@ normally. To learn more about trusted fingerprints, refer to the
 // =============================================================================
 
 |
+[id="es-agent-proxy-output"]
+**Proxy**
+
+| Select a proxy URL for {agent} to connect to {es}.
+To learn about proxy configuration, refer to <<fleet-agent-proxy-support>>.
+
+// =============================================================================
+
+|
 [id="es-output-advanced-yaml-setting"]
 **Advanced YAML configuration**
 

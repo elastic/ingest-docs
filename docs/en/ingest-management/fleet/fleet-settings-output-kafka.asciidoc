@@ -1,7 +1,7 @@
 [[kafka-output-settings]]
 = Kafka output settings
 
-Specify these settings to send data over a secure connection to Logstash. 
+Specify these settings to send data over a secure connection to Kafka. 
 
 preview::[]
 
@@ -24,7 +24,7 @@ Defaults to 1.0.0.
 **Hosts**
 
 | The addresses your {agent}s will use to connect to one or more Kafka brokers. 
-Use the format `host:port`. Click **add** row to specify additional addresses.
+Use the format `host:port`. Click **Add row** to specify additional addresses.
 
 **Examples:**
 
@@ -37,7 +37,7 @@ Use the format `host:port`. Click **add** row to specify additional addresses.
 [discrete]
 == Authentication settings
 
-Select the method by which {agent} will authenticate with Kafka.
+Select the mechanism that {agent} uses to authenticate with Kafka.
 
 [cols="2*<a"]
 |===
@@ -45,7 +45,7 @@ Select the method by which {agent} will authenticate with Kafka.
 [id="kafka-output-authentication-basic"]
 **Username / Password**
 
-| Authenticate using a username and password.
+| Connect to Kafka with a username and password.
 
 Provide your username and password, and select a Simple Authentication and Security Layer (SASL) mechanism for your login credentials:
 
@@ -61,16 +61,19 @@ Provide your username and password, and select a Simple Authentication and Secur
 
 | Authenticate using the Secure Sockets Layer (SSL) protocol. Provide the following details for your SSL certificate:
 
+// Matches Logstash SSL settings: https://www.elastic.co/guide/en/fleet/current/fleet-settings.html#ls-output-settings
 Server SSL certificate authorities::
 The CA certificate to use to connect to Kafka. This is the CA used to generate the certificate and key for Kafka. Copy and paste in the full contents for the CA certificate.
 +
 This setting is optional.
 
-Client SSL certificate:: The certificate generated for the client. Copy and paste in the full contents of the certificate. This is the certificate that all the agents will use to connect to Kafka.
+Client SSL certificate::
+The certificate generated for the client. Copy and paste in the full contents of the certificate. This is the certificate that all the agents will use to connect to Kafka.
 +
 In cases where each client has a unique certificate, the local path to that certificate can be placed here. The agents will pick the certificate in that location when establishing a connection to Kafka.
 
-Client SSL certificate key:: The private key generated for the client. This must be in PKCS 8 key. Copy and paste in the full contents of the certificate key. This is the certificate key that all the agents will use to connect to Kafka.
+Client SSL certificate key::
+The private key generated for the client. This must be in PKCS 8 key. Copy and paste in the full contents of the certificate key. This is the certificate key that all the agents will use to connect to Kafka.
 +
 In cases where each client has a unique certificate key, the local path to that certificate key can be placed here. The agents will pick the certificate key in that location when establishing a connection to Kafka.
 
@@ -94,7 +97,7 @@ In cases where each client has a unique certificate key, the local path to that 
 [id="kafka-output-partitioning-random"]
 **Random**
 
-| Record records to partitions randomly. Specify the number of events to be published to the same partition before the partitioner selects a new partition.
+| Record records to Kafka output broker event partitions randomly. Specify the number of events to be published to the same partition before the partitioner selects a new partition.
 
 // =============================================================================
 
@@ -102,7 +105,7 @@ In cases where each client has a unique certificate key, the local path to that 
 [id="kafka-output-partitioning-roundrobin"]
 **Round robin**
 
-| Record records to partitions in a round-robin fashion. Specify the number of events to be published to the same partition before the partitioner selects a new partition.
+| Record records to Kafka output broker event partitions in a round-robin fashion. Specify the number of events to be published to the same partition before the partitioner selects a new partition.
 
 // =============================================================================
 
@@ -110,12 +113,14 @@ In cases where each client has a unique certificate key, the local path to that 
 [id="kafka-output-partitioning-hash"]
 **Hash**
 
-| Record records to partitions based on a hash computed from the specified list of fields.
+| Record records to Kafka output broker event partitions based on a hash computed from the specified list of fields. If a field is not specified, the Kafka event key value is used.
 
 |===
 
 [discrete]
 == Topics settings
+
+Use these options to dynamically set the Kafka topic for each {agent} event.
 
 [cols="2*<a"]
 |===
@@ -124,7 +129,7 @@ In cases where each client has a unique certificate key, the local path to that 
 [id="kafka-output-topics-default"]
 **Default topic**
 
-TBD
+| Set the default topic to use. Click **Add topic processor** to specify additional processors to set topics based on event contents.
 
 // =============================================================================
 
@@ -132,37 +137,184 @@ TBD
 [id="kafka-output-topics-processors"]
 **Processors**
 
-TBD
+| For each processor provide a condition, the event value to check against, and the resulting Kafka topic.
 
-The following conditions are supported:
+Refer to <<processor-conditions,conditions>> in the {agent} processor syntax for a full list of available conditions. Events that don't match against any defined processor are set to the default topic.
 
-`equals`::
-tbd
+You can drag and drop processors that you've defined in order to change the order in which they're applied to events.
 
-`contains`::
-tbd
+For example, you might route log events based on severity. To do so, you can specify a default topic for all events not matched by other processors:
 
-`regexp`::
-tbd
+* `%{[fields.log_topic]}`.
 
-`range`::
-tbd
+Then, create a processor to route critical events:
 
-`network`::
-tbd
+* Condition: `Contains`
+* Value: `message: “CRITICAL”`  
+// Is this correct? Or would someone specify just CRITICAL without "message:" or any quotation marks?
+* Topic: `critical-%{[agent.version]}`
 
-`has_fields`::
-tbd
+And create another processor to route error events:
 
-`or`::
-tbd
+* Condition: `Contains`
+* Value: `message: “ERR”`
+// Same question as above.
+* Topic: `error-%{[agent.version]}`
 
-`and`::
-tbd
-
-`not`::
-tbd
+All non-critical and non-error events will then route to the default `%{[fields.log_topic]}` topic.
 
 |===
 
+[discrete]
+== Header settings
 
+A header is a key-value pair, and multiple headers can be included with the same key. Only string values are supported. These headers will be included in each produced Kafka message.
+
+[cols="2*<a"]
+|===
+
+|
+[id="kafka-output-headers-key"]
+**Key**
+
+| The key to set in the Kafka header.
+// Is there more we can say here?
+
+// =============================================================================
+
+|
+[id="kafka-output-headers-value"]
+**Value**
+
+| The value to set in the Kafka header.
+
+// =============================================================================
+
+|
+[id="kafka-output-headers-clientid"]
+**Client ID**
+
+| The configurable ClientID used for logging, debugging, and auditing purposes. The default is `Elastic Agent`. The Client ID is part of the protocol to identify where the messages are coming from.
+
+|===
+
+[discrete]
+== Compression settings
+
+You can enable compression to reduce the volume of Kafka output.
+
+[cols="2*<a"]
+|===
+
+|
+[id="kafka-output-compression-codec"]
+**Codec**
+
+| Select a compression codec to use. Supported codecs are `snappy`, `lz4` and `gzip`. The default is `gzip`.
+
+Level::
+For `gzip` you can choose a compression level. The level must be in the range of `1` (best speed) to `9` (best compression).
++
+Increasing the compression level reduces the network usage but increases the CPU usage. The default value is 4.
+
+|===
+
+[discrete]
+== Broker settings
+
+Configure timeout and buffer size values for the Kafka brokers.
+
+[cols="2*<a"]
+|===
+
+|
+[id="kafka-output-broker-timeout"]
+**Broker timeout**
+
+| The maximum length of time a Kafka broker waits for the required number of ACKs (see the `ACK reliability` setting) before timing out. The default is 10 seconds.
+
+// =============================================================================
+
+|
+[id="kafka-output-broker-reachability-timeout"]
+**Broker reachability timeout**
+
+| The maximum length of time that an {agent} waits for a response from a Kafka broker before timing out. The default is 30 seconds.
+
+// =============================================================================
+
+|
+[id="kafka-output-broker-buffer-size"]
+**Channel buffer size**
+
+| For each Kafka broker, The number of messages to buffer in the output pipeline. The default is 256.
+
+// =============================================================================
+
+|
+[id="kafka-output-broker-ack-reliability"]
+**ACK reliability**
+
+| The ACK reliability level required from broker. Options are:
+
+* Wait for local commit
+* Wait for all replicas to commit
+* Do not wait
+
+The default is `Wait for local commit`.
+
+Note that if ACK reliability is set to `Do not wait` no ACKs are returned by Kafka. Messages might be lost silently in the event of an error.
+
+|===
+
+[discrete]
+== Other settings
+
+[cols="2*<a"]
+|===
+
+|
+[id="kafka-output-other-key"]
+**Key**
+
+| An optional formatted string specifying the Kafka event key. If configured, the event key can be extracted from the event using a format string.
+
+See the Kafka documentation for the implications of a particular choice of key; by default, the key is chosen by the Kafka cluster.
+
+// =============================================================================
+
+[id="kafka-output-other-proxy"]
+**Proxy**
+
+| Select a proxy URL for {agent} to connect to Kafka.
+To learn about proxy configuration, refer to <<fleet-agent-proxy-support>>.
+
+// =============================================================================
+
+|
+[id="kafka-output-advanced-yaml-setting"]
+**Advanced YAML configuration**
+
+| YAML settings that will be added to the Kafka output section of each policy
+that uses this output. Make sure you specify valid YAML. The UI does not
+currently provide validation.
+
+// =============================================================================
+
+|
+[id="kafka-output-agent-integrations"]
+**Make this output the default for agent integrations**
+
+| When this setting is on, {agent}s use this output to send data if no other
+output is set in the agent policy.
+
+// =============================================================================
+
+|
+[id="kafka-output-agent-monitoring"]
+**Make this output the default for agent monitoring**
+
+| When this setting is on, {agent}s use this output to send agent monitoring
+data if no other output is set in the agent policy.
+
+|===

@@ -61,6 +61,15 @@ The agents will pick the certificate key in that location when establishing a co
 // =============================================================================
 
 |
+[id="ls-agent-proxy-output"]
+**Proxy**
+
+| Select a proxy URL for {agent} to connect to {ls}.
+To learn about proxy configuration, refer to <<fleet-agent-proxy-support>>.
+
+// =============================================================================
+
+|
 [id="ls-output-advanced-yaml-setting"]
 **Advanced YAML configuration**
 

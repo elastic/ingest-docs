@@ -195,6 +195,8 @@ If you make a mistake, you can always re-configure or re-add an integration.
 
 Any saved changes are immediately distributed and applied to all {agent}s enrolled in the given {policy}.
 
+To update any secret values in an integration policy, refer to <<agent-policy-secret-values>>.
+
 [discrete]
 [[copy-policy]]
 == Copy a policy
@@ -273,6 +275,30 @@ Make sure that the {agent}s assigned to this policy all have connectivity to the
 that you added. Lack of connectivity will prevent the {agent}
 from checking in with the {fleet-server} and receiving policy updates, but the agents
 will still forward data to the cluster.
+
+[discrete]
+[[agent-policy-secret-values]]
+== Policy secret values
+
+When you create an integration policy you often need to provide sensitive information such as an API key or a password. To help ensure that data can't be accessed inappropriately, any secret values used in an integration policy are stored separately from other all policy details.
+
+As well, after you've saved a secret value in {fleet}, the value can be updated but in can't be viewed either in the UI or in the policy definition. When you view the policy definition (**Actions -> View policy**), any secret values are hidden and an environment variable is displayed instead, for example `${SECRET_0}`.
+
+To update a secret value used in an integration policy:
+
+. In {fleet}, click **Agent policies**.
+Select the name of the policy you want to edit.
+
+. Search or scroll to a specific integration.
+Open the **Actions** menu and select **Edit integration**. Any secret information is marked as being hidden.
+
+. Click the link to replace the secret value with a new one.
++
+[role="screenshot"]
+image::images/fleet-policy-hidden-secret.png[Screen capture showing a hidden secret value as part of an integration policy]
+// This graphic should be updated once a higher resolution version is available.
+
+. Click **Save integration**. The original secret value is overwritten in the policy.
 
 [discrete]
 [[agent-policy-scale]]

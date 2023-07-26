@@ -60,7 +60,11 @@ The {agent} used the default policy, running the system integration and self-mon
 // lint ignore mem
 |===
 | **CPU** | Under 2% total, including all monitoring processes
+<<<<<<< HEAD
 | **Disk** | 1.7G
+=======
+| **Disk** | 1.7 GB
+>>>>>>> de518af (Update recommended Disk and RSS Mem Size settings for Elastic Agent (#344))
 | **RSS Mem Size** | 400 MB
 |===
 Adding integrations will increase the memory used by the agent and its processes.

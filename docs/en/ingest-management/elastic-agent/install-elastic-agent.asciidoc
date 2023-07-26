@@ -51,7 +51,7 @@ The {agent} used the default policy, running the system integration and self-mon
 // lint ignore mem
 |===
 | **CPU** | Under 2% total, including all monitoring processes
-| **Disk** | 640 MB
-| **RSS Mem Size** | 300 MB
+| **Disk** | 420 MB
+| **RSS Mem Size** | 700 MB
 |===
 Adding integrations will increase the memory used by the agent and its processes.

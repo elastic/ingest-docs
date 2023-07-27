@@ -1,0 +1,19 @@
+[[epr-proxy-setting]]
+= Set the proxy URL of the {package-registry}
+
+{fleet} might be unable to access the {package-registry} because {kib} is
+behind a proxy server.
+
+Also your organization might have network traffic restrictions that prevent {kib}
+from reaching the public {package-registry} (EPR) endpoints, like
+https://epr.elastic.co/[epr.elastic.co], to download package metadata and
+content. You can route traffic to the public endpoint of EPR through a network
+gateway, then configure proxy settings in the
+{kibana-ref}/fleet-settings-kb.html[{kib} configuration file], `kibana.yml`. For
+example:
+
+[source,yaml]
+----
+xpack.fleet.registryProxyUrl: your-nat-gateway.corp.net
+----
+

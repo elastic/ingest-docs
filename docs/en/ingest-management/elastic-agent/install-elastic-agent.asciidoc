@@ -55,7 +55,7 @@ Refer to:
 == Minimum Requirements
 
 // lint ignore 2vcpu 1gb
-Minimum requirements have been determined by running the {agent} (`v8.9.0`) on a GCP `e2-micro` instance (2vCPU/1GB).
+Minimum requirements have been determined by running the {agent} on a GCP `e2-micro` instance (2vCPU/1GB).
 The {agent} used the default policy, running the system integration and self-monitoring.
 
 // lint ignore mem

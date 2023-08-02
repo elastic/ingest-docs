@@ -87,6 +87,8 @@ To add or edit an output:
 * <<ls-output-settings>>
 * <<kafka-output-settings>>
 
+. Click **Save and apply settings**.
+
 TIP: If the options for editing an output are grayed out, outputs
 are configured outside of {fleet}. For more information, refer to
 {kibana-ref}/fleet-settings-kb.html[{fleet} settings in {kib}].

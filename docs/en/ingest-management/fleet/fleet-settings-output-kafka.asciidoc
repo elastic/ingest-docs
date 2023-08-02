@@ -66,6 +66,8 @@ Server SSL certificate authorities::
 The CA certificate to use to connect to Kafka. This is the CA used to generate the certificate and key for Kafka. Copy and paste in the full contents for the CA certificate.
 +
 This setting is optional.
++
+Click **Add row** to specify additional certificate authories.
 
 Client SSL certificate::
 The certificate generated for the client. Copy and paste in the full contents of the certificate. This is the certificate that all the agents will use to connect to Kafka.
@@ -141,9 +143,9 @@ Use these options to dynamically set the Kafka topic for each {agent} event.
 
 Refer to <<processor-conditions,conditions>> in the {agent} processor syntax for a full list of available conditions. Events that don't match against any defined processor are set to the default topic.
 
-You can drag and drop processors that you've defined in order to change the order in which they're applied to events.
+Processors are applied in the order that they appear, from top to bottom.
 
-For example, you might route log events based on severity. To do so, you can specify a default topic for all events not matched by other processors:
+As an example for setting up your processors, you might want to route log events based on severity. To do so, you can specify a default topic for all events not matched by other processors:
 
 * `%{[fields.log_topic]}`.
 
@@ -210,7 +212,7 @@ You can enable compression to reduce the volume of Kafka output.
 [id="kafka-output-compression-codec"]
 **Codec**
 
-| Select a compression codec to use. Supported codecs are `snappy`, `lz4` and `gzip`. The default is `gzip`.
+| Select a compression codec to use. Supported codecs are `snappy`, `lz4` and `gzip`.
 
 Level::
 For `gzip` you can choose a compression level. The level must be in the range of `1` (best speed) to `9` (best compression).
@@ -231,7 +233,7 @@ Configure timeout and buffer size values for the Kafka brokers.
 [id="kafka-output-broker-timeout"]
 **Broker timeout**
 
-| The maximum length of time a Kafka broker waits for the required number of ACKs (see the `ACK reliability` setting) before timing out. The default is 10 seconds.
+| The maximum length of time a Kafka broker waits for the required number of ACKs before timing out (see the `ACK reliability` setting further in). The default is 30 seconds.
 
 // =============================================================================
 
@@ -247,7 +249,7 @@ Configure timeout and buffer size values for the Kafka brokers.
 [id="kafka-output-broker-buffer-size"]
 **Channel buffer size**
 
-| For each Kafka broker, The number of messages to buffer in the output pipeline. The default is 256.
+| For each Kafka broker, the number of messages to buffer in the output pipeline. The default is 256.
 
 // =============================================================================
 
@@ -283,6 +285,7 @@ See the Kafka documentation for the implications of a particular choice of key; 
 
 // =============================================================================
 
+|
 [id="kafka-output-other-proxy"]
 **Proxy**
 

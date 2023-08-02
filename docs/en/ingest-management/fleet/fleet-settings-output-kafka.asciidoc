@@ -42,6 +42,16 @@ Select the mechanism that {agent} uses to authenticate with Kafka.
 [cols="2*<a"]
 |===
 |
+[id="kafka-output-authentication-none"]
+**None**
+
+| No authentication is used between {agent} and Kafka. This is the default option. In production, it's recommended to have an authentication method selected.
+
+|===
+
+[cols="2*<a"]
+|===
+|
 [id="kafka-output-authentication-basic"]
 **Username / Password**
 
@@ -53,7 +63,7 @@ Provide your username and password, and select a Simple Authentication and Secur
 * SCRAM-SHA-256
 * SCRAM-SHA-512
 
-// =============================================================================
+// ============================================================================
 
 |
 [id="kafka-output-authentication-ssl"]

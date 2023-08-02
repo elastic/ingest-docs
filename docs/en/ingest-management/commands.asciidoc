@@ -461,7 +461,8 @@ manager like systemd.
 
 IMPORTANT: If you installed {agent} from a DEB or RPM package, the `install`
 command will skip the installation itself and function as an alias of the
-<<elastic-agent-enroll-command,`enroll` command>> instead.
+<<elastic-agent-enroll-command,`enroll` command>> instead. Note that after
+an upgrade of the {agent} via DEB or RPM the {agent} service would need to be restarted.
 
 You must run this command as the root user (or Administrator on Windows)
 to write files to the correct locations. This command overwrites the

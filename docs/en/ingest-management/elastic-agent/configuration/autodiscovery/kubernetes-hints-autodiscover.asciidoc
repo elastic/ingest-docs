@@ -83,64 +83,6 @@ The stream to use for logs collection, for example, stdout/stderr.
 
 If the specified package has no logs support, a generic container's logs input will be used as a fallback. See the `Hints autodiscovery for kubernetes log collection` example below.
 
-[float]
-=== `co.elastic.hints/processors`
-
-Define a processor to be added to the  input configuration. See <<elastic-agent-processor-configuration>> for the list of supported processors.
-
-If processors configuration uses list data structure, object fields must be enumerated. For example, hints for the rename processor configuration below
-
-[source,yaml]
-----
-processors:
-  - rename:
-      fields:
-        - from: "a.g"
-          to: "e.d"
-      fail_on_error: true
-----
-
-will look like:
-
-[source,yaml]
-----
-co.elastic.hints/processors.rename.fields.0.from: "a.g"
-co.elastic.hints/processors.rename.fields.1.to: "e.d"
-co.elastic.hints/processors.rename.fail_on_error: 'true'
-----
-
-If processors configuration uses map data structure, enumeration is not needed. For example, the equivalent to the add_fields configuration below
-
-[source,yaml]
-----
-processors:
-  - add_fields:
-      target: project
-      fields:
-        name: myproject
-----
-
-is
-
-[source,yaml]
-----
-co.elastic.hints/processors.1.add_fields.target: "project"
-co.elastic.hints/processors.1.add_fields.fields.name: "myproject"
-----
-
-In order to provide ordering of the processor definition, numbers can be provided. If not, the hints builder will do arbitrary ordering:
-
-[source,yaml]
-----
-co.elastic.hints/processors.1.dissect.tokenizer: "%{key1} %{key2}"
-co.elastic.hints/processors.dissect.tokenizer: "%{key2} %{key1}"
-----
-
-In the above sample the processor definition tagged with 1 would be executed first.
-
-IMPORTANT: Processor configuration is not supported on datastream level. So annotations like `co.elastic.hints/<datastream>.processors` will be ignored.
-
-
 [discrete]
 == Available packages that support hints autodiscovery
 
@@ -150,7 +92,7 @@ https://github.com/elastic/elastic-agent/tree/main/deploy/kubernetes/elastic-age
 [discrete]
 == Configure hints autodiscovery
 
-To enable hints, you must add `hints.enabled: true` to the provider's configuration:
+To enable hints autodiscovery, you must add `hints.enabled: true` to the provider's configuration:
 
 [source,yaml]
 ----
@@ -193,7 +135,7 @@ initContainers:
 ----
 
 
-NOTE: The {agent} can load multiple configuration files from `{path.config}/inputs.d`  and finally produce a unified one (refer to <<elastic-agent-configuration>>). Users have the ability to manually mount their own templates under `/etc/elastic-agent/inputs.d` if they want to skip enabling initContainers section.
+NOTE: The {agent} can load multiple configuration files from `{path.config}/inputs.d`  and finally produce a unified one (refer to <<elastic-agent-configuration>>). Users have the ability to manually mount their own templates under `/etc/elastic-agent/inputs.d` *if they want to skip enabling initContainers section*.
 
 
 [discrete]

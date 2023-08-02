@@ -85,6 +85,16 @@ include::fleet/air-gapped.asciidoc[leveloffset=+2]
 
 include::fleet-agent-proxy-support.asciidoc[leveloffset=+2]
 
+include::fleet-agent-proxy-when-to-configure.asciidoc[leveloffset=+3]
+
+include::fleet-agent-proxy-host-variables.asciidoc[leveloffset=+3]
+
+include::fleet-agent-proxy-managed.asciidoc[leveloffset=+3]
+
+include::fleet-agent-proxy-standalone.asciidoc[leveloffset=+3]
+
+include::fleet-agent-proxy-package-registry.asciidoc[leveloffset=+3]
+
 include::elastic-agent/uninstall-elastic-agent.asciidoc[leveloffset=+2]
 
 include::elastic-agent/start-stop-elastic-agent.asciidoc[leveloffset=+2]
@@ -181,7 +191,7 @@ include::troubleshooting/troubleshooting.asciidoc[leveloffset=+2]
 
 include::troubleshooting/faq.asciidoc[leveloffset=+2]
 
-include::release-notes/release-notes-8.8.asciidoc[leveloffset=+1]
+include::release-notes/release-notes-8.9.asciidoc[leveloffset=+1]
 
 include::elastic-agent/install-fleet-managed-agent.asciidoc[leveloffset=+2]
 

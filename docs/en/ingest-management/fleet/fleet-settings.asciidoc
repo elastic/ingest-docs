@@ -97,6 +97,8 @@ are configured outside of {fleet}. For more information, refer to
 
 Specify these settings to send data over a secure connection to {es}.
 
+TIP: {es} output must match only the cluster with which {fleet-server} is associated. It's not possible to reference URLs belonging to other {es} clusters.
+
 [cols="2*<a"]
 |===
 |

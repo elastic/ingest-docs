@@ -79,8 +79,6 @@ You may need to allow access to these ports. Refer to the following table for de
 | Elastic Agent → {fleet-server} | 8220
 | Elastic Agent → {es} | 9200
 | Elastic Agent → Logstash | 5044
-| Elastic Agent → {fleet} | 5601
-| {fleet-server} → {fleet} | 5601
 | {fleet-server} → {es} | 9200
 |===
 

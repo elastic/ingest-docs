@@ -212,7 +212,7 @@ In cases where each client has a unique certificate, the local path to that cert
 placed here. The agents will pick the certificate in that location when establishing a connection to
 {ls}.
 
-This setting is mandatory.
+This setting is required.
 
 // =============================================================================
 

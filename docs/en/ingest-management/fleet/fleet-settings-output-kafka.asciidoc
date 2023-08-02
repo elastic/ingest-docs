@@ -89,14 +89,6 @@ The private key generated for the client. This must be in PKCS 8 key. Copy and p
 +
 In cases where each client has a unique certificate key, the local path to that certificate key can be placed here. The agents will pick the certificate key in that location when establishing a connection to Kafka.
 
-// =============================================================================
-
-|
-[id="kafka-output-authentication-kerberos"]
-**Kerberos**
-
-| Use Kerberos to manage authentication between {agent} and Kafka.
-
 |===
 
 [discrete]

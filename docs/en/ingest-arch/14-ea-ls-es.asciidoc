@@ -1,5 +1,5 @@
 [[ls-networkbridge]]
-=== {agent} to {ls} to {es}: {ls} to bridge networks
+=== {agent} to {ls} to {es}: {ls} as a proxy
 
 image::images/ea-ls-bridge.png[Image showing {agent}s collecting data and sending to {ls} for proxying before sending on to {es}]
 

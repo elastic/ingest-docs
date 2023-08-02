@@ -461,7 +461,8 @@ manager like systemd.
 
 IMPORTANT: If you installed {agent} from a DEB or RPM package, the `install`
 command will skip the installation itself and function as an alias of the
-<<elastic-agent-enroll-command,`enroll` command>> instead.
+<<elastic-agent-enroll-command,`enroll` command>> instead. Note that after
+an upgrade of the {agent} using DEB or RPM the {agent} service needs to be restarted.
 
 You must run this command as the root user (or Administrator on Windows)
 to write files to the correct locations. This command overwrites the
@@ -825,8 +826,20 @@ The version of {agent} to upgrade to.
 The source URI to download the new version from. By default, {agent} uses the
 Elastic Artifacts URL.
 
+`--skip-verify`::
+Skip the package verification process. This option is not recommended as it is insecure.
+
+`--pgp-path <string>`::
+Use a locally stored copy of the PGP key to verify the upgrade package.
+
+`--pgp-uri <string>`::
+Use the specified online PGP key to verify the upgrade package.
+
 `--help`::
 Show help for the `upgrade` command.
+
+For details about using the `--skip-verify`, `--pgp-path <string>`, and `--pgp-uri <string>`
+package verification options, refer to <<upgrade-standalone-verify-package>>.
 
 {global-flags-link}
 

@@ -212,6 +212,8 @@ In cases where each client has a unique certificate, the local path to that cert
 placed here. The agents will pick the certificate in that location when establishing a connection to
 {ls}.
 
+This setting is mandatory.
+
 // =============================================================================
 
 |
@@ -223,6 +225,8 @@ Copy and paste in the full contents of the certificate key. This is the certific
 
 In cases where each client has a unique certificate key, the local path to that certificate key can be placed here.
 The agents will pick the certificate key in that location when establishing a connection to {ls}.
+
+This setting is mandatory.
 
 // =============================================================================
 

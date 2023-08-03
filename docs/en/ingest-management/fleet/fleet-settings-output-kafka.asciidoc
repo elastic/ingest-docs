@@ -248,14 +248,6 @@ Configure timeout and buffer size values for the Kafka brokers.
 // =============================================================================
 
 |
-[id="kafka-output-broker-buffer-size"]
-**Channel buffer size**
-
-| For each Kafka broker, the number of messages to buffer in the output pipeline. The default is 256.
-
-// =============================================================================
-
-|
 [id="kafka-output-broker-ack-reliability"]
 **ACK reliability**
 

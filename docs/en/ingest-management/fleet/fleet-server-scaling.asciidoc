@@ -188,8 +188,10 @@ Maximum size in bytes of the uploadChunk API request body.
 [[scaling-recommendations]]
 == Scaling recommendations ({ecloud})
 
-The following tables provide resource requirements and scaling guidelines based
-on the number of agents required by your deployment:
+The following tables provide the minimum resource requirements and scaling guidelines based
+on the number of agents required by your deployment. It should be noted that these compute
+resource can be spread across multiple availability zones (for example: a 32GB RAM requirement 
+can be satisfed with 16GB of RAM in 2 different zones).
 
 * <<resource-requirements-by-number-agents>>
 
@@ -198,15 +200,22 @@ on the number of agents required by your deployment:
 === Resource requirements by number of agents
 |===
 | Number of Agents | {fleet-server} Memory | {fleet-server} vCPU | {es} Hot Tier
-| 2,000            | 2GB                   | up to 8 vCPU        | 16GB x2 RAM  \| 4 vCPU x2
-| 5,000            | 4GB                   | up to 8 vCPU        | 16GB x2 RAM  \| 4 vCPU x2
-| 10,000           | 8GB                   | up to 8 vCPU        | 64GB x2 RAM  \| 16 vCPU x2
-| 15,000           | 8GB                   | up to 8 vCPU        | 128GB x2 RAM \| 32 vCPU x2
-| 25,000           | 8GB                   | up to 8 vCPU        | 128GB x2 RAM \| 32 vCPU x2
-| 50,000           | 8GB                   | up to 8 vCPU        | 192GB x2 RAM \| 48 vCPU x2
-| 75,000           | 8GB                   | up to 8 vCPU        | 192GB x2 RAM \| 48 vCPU x2
-| 100,000          | 8GB x2                | 8 vCPU x2           | 256GB x2 RAM \| 64 vCPU x2
+| 2,000            | 2GB                   | up to 8 vCPU        | 32GB  RAM  \| 8 vCPU
+| 5,000            | 4GB                   | up to 8 vCPU        | 32GB  RAM  \| 8 vCPU
+| 10,000           | 8GB                   | up to 8 vCPU        | 128GB RAM  \| 32 vCPU
+| 15,000           | 8GB                   | up to 8 vCPU        | 256GB RAM  \| 64 vCPU
+| 25,000           | 8GB                   | up to 8 vCPU        | 256GB RAM  \| 64 vCPU
+| 50,000           | 8GB                   | up to 8 vCPU        | 384GB RAM  \| 96 vCPU
+| 75,000           | 8GB                   | up to 8 vCPU        | 384GB RAM  \| 96 vCPU
+| 100,000          | 16GB                  | 16 vCPU             | 512GB RAM  \| 128 vCPU
 |===
+
+A series of scale performance tests are regularly executed in order to verify the above requirements
+and the ability for {fleet} to manage the advertised scale of {agent}s. These tests go through a set
+of acceptance criteria. The criteria mimics a typical platform operator workflow. The test cases are
+performing agent installations, version upgrades, policy modifications, and adding/removing integrations, 
+tags, and policies. Acceptance criteria is passed when the {agent}s reach a `Healthy` state after any
+of these operations.
 
 [discrete]
 [[agent-policy-scaling-recommendations]]

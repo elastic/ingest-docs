@@ -24,13 +24,12 @@ Defaults to 1.0.0.
 **Hosts**
 
 | The addresses your {agent}s will use to connect to one or more Kafka brokers. 
-Use the format `host:port`. Click **Add row** to specify additional addresses.
+Use the format `host:port` (without any protocol `http://`). Click **Add row** to specify additional addresses.
 
 **Examples:**
 
-* `https://localhost:9092`
-* `mykafkahost:9092` 
-// Is this the correct port number? The definition doc says 9092 and the demo shows 2301.
+* `localhost:9092`
+* `mykafkahost:9092`
 
 |===
 
@@ -200,7 +199,7 @@ Click **Add header** to configure additional headers to be included in each Kafk
 [id="kafka-output-headers-clientid"]
 **Client ID**
 
-| The configurable ClientID used for logging, debugging, and auditing purposes. The default is `Elastic Agent`. The Client ID is part of the protocol to identify where the messages are coming from.
+| The configurable ClientID used for logging, debugging, and auditing purposes. The default is `Elastic`. The Client ID is part of the protocol to identify where the messages are coming from.
 
 |===
 

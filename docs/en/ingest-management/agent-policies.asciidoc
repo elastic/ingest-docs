@@ -280,11 +280,11 @@ will still forward data to the cluster.
 [[agent-policy-secret-values]]
 == Policy secret values
 
-When you create an integration policy you often need to provide sensitive information such as an API key or a password. To help ensure that data can't be accessed inappropriately, any secret values used in an integration policy are stored separately from other all policy details.
+When you create an integration policy you often need to provide sensitive information such as an API key or a password. To help ensure that data can't be accessed inappropriately, any secret values used in an integration policy are stored separately from other policy details.
 
-As well, after you've saved a secret value in {fleet}, the value can be updated but in can't be viewed either in the UI or in the policy definition. When you view the policy definition (**Actions -> View policy**), any secret values are hidden and an environment variable is displayed instead, for example `${SECRET_0}`.
+As well, after you've saved a secret value in {fleet}, the value is hidden in both the {fleet} UI and in the integration policy definition. When you view the policy definition (**Actions -> View policy**), an environment variable is displayed in place of any secret values, for example `${SECRET_0}`.
 
-To update a secret value used in an integration policy:
+Though secret values stored in {fleet} are hidden, they can be updated. To update a secret value in an integration policy:
 
 . In {fleet}, click **Agent policies**.
 Select the name of the policy you want to edit.

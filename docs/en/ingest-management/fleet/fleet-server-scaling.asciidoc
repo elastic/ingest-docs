@@ -211,10 +211,10 @@ can be satisfed with 16GB of RAM in 2 different zones).
 |===
 
 A series of scale performance tests are regularly executed in order to verify the above requirements
-and the ability for Fleet to manage the advertised scale of {agent}s. These tests go through a set
+and the ability for {fleet} to manage the advertised scale of {agent}s. These tests go through a set
 of acceptance criteria. The criteria mimics a typical platform operator workflow. The test cases are
-perofming agent installations, version upgrades, policy modifications, adding/removing integrations, 
-tags and policies. An acceptance criteria is passed when the {agent}s reach a Healthy state after any
+performing agent installations, version upgrades, policy modifications, and adding/removing integrations, 
+tags, and policies. Acceptance criteria is passed when the {agent}s reach a `Healthy` state after any
 of these operations.
 
 [discrete]

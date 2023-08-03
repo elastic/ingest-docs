@@ -192,6 +192,8 @@ A header is a key-value pair, and multiple headers can be included with the same
 
 | The value to set in the Kafka header.
 
+Click **Add header** to configure additional headers to be included in each Kafka message.
+
 // =============================================================================
 
 |
@@ -216,9 +218,14 @@ You can enable compression to reduce the volume of Kafka output.
 
 | Select a compression codec to use. Supported codecs are `snappy`, `lz4` and `gzip`.
 
-Level::
-For `gzip` you can choose a compression level. The level must be in the range of `1` (best speed) to `9` (best compression).
-+
+// =============================================================================
+
+|
+[id="kafka-output-compression-level"]
+**Level**
+
+| For the `gzip` codec you can choose a compression level. The level must be in the range of `1` (best speed) to `9` (best compression).
+
 Increasing the compression level reduces the network usage but increases the CPU usage. The default value is 4.
 
 |===

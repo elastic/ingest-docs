@@ -10,3 +10,19 @@ There are two different ways to use autodiscovery:
 * <<conditions-based-autodiscover>>
 
 * <<hints-annotations-autodiscovery>>
+
+
+[discrete]
+== How to configure autodiscovery
+
+`Conditions Based Autodiscovery` is more suitable for scnarios when users know the diffrent group of containers they want to monitor in advance. It is advisable to choose conditions-based configuration when administrators can configure specific conditions that match their needs. Conditions are supported in both Managed and Standalone {agent}.
+
+`Hints Based Autodiscovry` is suitable for more general scenarios, especially when users dont know the exact configuration of the system in monitor and can not create in advance conditions. Additionally a big advantage of Hints Autodiscovery is the ability to offer dynamic configuration of inputs based on annotations from containers. If dynamic configuration is needed, then Hints should be enabled. Hints are supported only in Standalone {agent} mode.
+
+Best Practises when you configure autodiscovery:
+
+- Always define alternatives and default values to your variables that used in conditions or [hint templates](eg. See `auth.basic` set as `auth.basic.user: ${kubernetes.hints.nginx.access.username|kubernetes.hints.nginx.username|''}`` in [nginx.yml](https://github.com/elastic/elastic-agent/blob/main/deploy/kubernetes/elastic-agent-standalone/templates.d/nginx.yml#L8))
+
+IMPORTANT: When an input uses a variable substitution that is not present in the current key/value mappings being evaluated, the input is removed in the result. (See more information in <<dynamic-input-configuration>>)   
+
+- To debug configurations that include variable substitution and conditions, use the inspect command of {agent}. ((See more information in <<dynamic-input-configuration>> in *Debugging* Section))

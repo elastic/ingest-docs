@@ -79,7 +79,7 @@ Specifies the output archive name. Defaults to `elastic-agent-diagnostics-<times
 `--help`::
 Show help for the `diagnostics` command.
 
-`--p`::
+`-p`::
 Additionally runs a 30-second CPU profile on each running component.
 
 {global-flags-link}

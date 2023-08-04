@@ -302,8 +302,38 @@ The {agent} diagnostics bundle collects the following information:
 
 Note that the diagnostics bundle is intended for debugging purposes only, its structure may change between releases.
 
-IMPORTANT: The configuration files in the archive may have credentials in *plain text*.
-These will need to be manually redacted before the archive is shared.
+IMPORTANT: {agent} attempts to automatically redact credentials and API keys when creating diagnostics. 
+Please review the contents of the archive before sharing to ensure that there are no credentials in plain text.
+
+**Get the diagnostics bundle using the CLI**
+
+Run the following command to generate a zip archive containing diagnostics information that the Elastic team can use for debugging cases.
+
+[source,shell]
+----
+elastic-agent diagnostics
+----
+
+**Get the diagnostics bundle through {fleet}**
+
+{fleet} provides the ability to remotely generate and gather an {agent}'s diagnostics bundle.
+An agent can gather and upload diagnostics if it is online in a `Healthy` or `Unhealthy` state.
+To download the diagnostics bundle for local viewing:
+
+. In {kib}, go to **Management -> {fleet} -> Agents**.
+
+. In the **Host** column, click the agent's name.
+
+. Click the **Diagnostics** tab.
+
+. Click the **Request diagnostics .zip** button.
++
+[role="screenshot"]
+image::images/collect-agent-diagnostics2.png[Collect agent diagnostics under agent details]
+
+Any in-progress or previously collected bundles for the {agent} will be listed on this page.
+
+Note that the bundles are stored in {es} and will be removed after 30 days.
 
 **Get the diagnostics bundle using the CLI**
 

@@ -210,6 +210,13 @@ can be satisfed with 16GB of RAM in 2 different zones).
 | 100,000          | 16GB                  | 16 vCPU             | 512GB RAM  \| 128 vCPU
 |===
 
+A series of scale performance tests are regularly executed in order to verify the above requirements
+and the ability for {fleet} to manage the advertised scale of {agent}s. These tests go through a set
+of acceptance criteria. The criteria mimics a typical platform operator workflow. The test cases are
+performing agent installations, version upgrades, policy modifications, and adding/removing integrations, 
+tags, and policies. Acceptance criteria is passed when the {agent}s reach a `Healthy` state after any
+of these operations.
+
 [discrete]
 [[agent-policy-scaling-recommendations]]
 == Policy scaling recommendations

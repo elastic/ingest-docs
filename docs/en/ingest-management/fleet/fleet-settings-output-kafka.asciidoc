@@ -93,6 +93,38 @@ This setting is optional.
 
 Click **Add row** to specify additional certificate authories.
 
+// ============================================================================
+
+|
+**Verification mode**
+// from beats/libbeat/docs/shared-ssl-config.asciidoc
+
+| Controls the verification of server certificates. Valid values are:
+
+`Full`::
+Verifies that the provided certificate is signed by a trusted
+authority (CA) and also verifies that the server's hostname (or IP address)
+matches the names identified within the certificate.
+
+`None`::
+Performs _no verification_ of the server's certificate. This
+mode disables many of the security benefits of SSL/TLS and should only be used
+after cautious consideration. It is primarily intended as a temporary
+diagnostic mechanism when attempting to resolve TLS errors; its use in
+production environments is strongly discouraged.
+
+`Strict`::
+Verifies that the provided certificate is signed by a trusted
+authority (CA) and also verifies that the server's hostname (or IP address)
+matches the names identified within the certificate. If the Subject Alternative
+Name is empty, it returns an error.
+
+`Certificate`::
+Verifies that the provided certificate is signed by a
+trusted authority (CA), but does not perform any hostname verification.
+
+The default value is `Full`.
+
 |===
 
 [discrete]

@@ -88,7 +88,7 @@ Sample Elastic Agent Configurations:
 [discrete]
 === Proposed Agent Installations for large scale
 
-Although daemonset installation is simple, it can not accomodate the varying agent resource requirements depending on the collected metrics. The need for appropriate resource assignment at large scale requires more granular installation methods.
+Although daemonset installation is simple, it can not accommodate the varying agent resource requirements depending on the collected metrics. The need for appropriate resource assignment at large scale requires more granular installation methods.
 
 {agent} deployment is broken in groups as follows:
 
@@ -98,7 +98,7 @@ Although daemonset installation is simple, it can not accomodate the varying age
 
 - kube-state-metrics shards and {agent}s in the StatefulSet defined in the kube-state-metrics autosharding manifest
  
-Each of these groups of {agent}s will have its own policy specific to its function and can be resourced independently in the appropriate manifest to accomodate its specific resource requirements.
+Each of these groups of {agent}s will have its own policy specific to its function and can be resourced independently in the appropriate manifest to accommodate its specific resource requirements.
 
 Resource assignment led us to alternatives installation methods. 
 
@@ -124,7 +124,7 @@ Based on our https://github.com/elastic/elastic-agent/blob/main/docs/elastic-age
 
 > The tests above were performed with {agent} version 8.8 + TSDB Enabled and scraping period of `10sec` (for the {k8s} integration). Those numbers are just indicators and should be validated per different {k8s} policy configuration, along with applications that the {k8s} cluster might include
 
-NOTE: Tests have run until 10K pods per cluster. Scaling to bigger number of pods might require additional confguration from {k8s} Side and Cloud Providers but the basic idea of installing {agent} while horizontally scaling KSM remains the same.
+NOTE: Tests have run until 10K pods per cluster. Scaling to bigger number of pods might require additional configuration from {k8s} Side and Cloud Providers but the basic idea of installing {agent} while horizontally scaling KSM remains the same.
 
 [discrete]
 [[agent-scheduling]]
@@ -137,7 +137,7 @@ Trying to prioritise the agent installation before rest of application microserv
 [discrete]
 === {k8s} Policy Configuration
 
-Policy configuration of {k8s} package can heavily affect the amount of metrics collected and finally ingested. Factors that should be considered in order to make your collection and ingestin lighter:
+Policy configuration of {k8s} package can heavily affect the amount of metrics collected and finally ingested. Factors that should be considered in order to make your collection and ingestion lighter:
 
 - Scraping period of {k8s} endpoints
 - Disabling log collection
@@ -145,7 +145,7 @@ Policy configuration of {k8s} package can heavily affect the amount of metrics c
 - Disable events dataset
 - Disable {k8s} control plane datasets in Cloud managed {k8s} instances (see more info ** <<running-on-gke-managed-by-fleet>>, <<running-on-eks-managed-by-fleet>>, <<running-on-aks-managed-by-fleet>> pages)
 
-User experience regarding Dashboard responses, is also affected from the size of data being requested. As dashbords can contain multiple visualisations, the general conisderation is to split visualisasations and group them according to the frequency of access. The less number of visualisations tends to improve user experience.
+User experience regarding Dashboard responses, is also affected from the size of data being requested. As dashboards can contain multiple visualisations, the general consideration is to split visualisations and group them according to the frequency of access. The less number of visualisations tends to improve user experience.
 
 Additionally, https://github.com/elastic/integrations/blob/main/docs/dashboard_guidelines.md[Dashboard Guidelines] is constantly updated also to track needs of observability at scale.
 
@@ -229,7 +229,7 @@ kubectl logs -n kube-system elastic-agent-qw6f4 | grep "kubernetes/metrics"
 
 ------------------------------------------------
 
-You can verify the instant resource consumption by running `top pod` command and indentify if agents are close to the limits you have specified in your manifest. 
+You can verify the instant resource consumption by running `top pod` command and identify if agents are close to the limits you have specified in your manifest. 
 
 [source,bash]
 ------------------------------------------------

@@ -80,7 +80,7 @@ Specifies the output archive name. Defaults to `elastic-agent-diagnostics-<times
 Show help for the `diagnostics` command.
 
 `-p`::
-Additionally runs a 30-second CPU profile on each running component.
+Additionally runs a 30-second CPU profile on each running component. This will generate an additional `cpu.pprof` file for each component.
 
 {global-flags-link}
 

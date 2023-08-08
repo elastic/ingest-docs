@@ -46,10 +46,16 @@ Select the mechanism that {agent} uses to authenticate with Kafka.
 
 | No authentication is used between {agent} and Kafka. This is the default option. In production, it's recommended to have an authentication method selected.
 
-|===
+Plaintext::
+Set this option for traffic between {agent} and Kafka to be sent as plaintext, without any transport layer security.
++
+This is the default option when no authentication is set.
 
-[cols="2*<a"]
-|===
+Encryption::
+Set this option for traffic between {agent} and Kafka to use transport layer security.
++
+When **Encryption** is selected, the **Server SSL certificate authorities** and **Verification mode** mode options become available.
+
 |
 [id="kafka-output-authentication-basic"]
 **Username / Password**

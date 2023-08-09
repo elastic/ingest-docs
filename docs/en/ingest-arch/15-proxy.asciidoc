@@ -16,7 +16,7 @@ Use when::
 * Network restrictions prevent connection between {agent} and {fleet-server} network and the network where {stack} is deployed, as when {stack} is deployed on {ecloud}
 
 Currently {agent} is not able to present a certificate for connectivity to {fleet-server}. Therefore if a proxy placed between the {agent} and {fleet-server} is configured for mutual TLS, {agents} won't be able
-to establish connectivity to the {fleet server}.
+to establish connectivity to {fleet server}.
 
 [discrete]
 [[agent-proxy-resources]]

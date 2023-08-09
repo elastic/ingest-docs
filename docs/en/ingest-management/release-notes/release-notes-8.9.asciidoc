@@ -14,12 +14,46 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.9.1>>
 * <<release-notes-8.9.0>>
 
 Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.9.1 relnotes
+
+[[release-notes-8.9.1]]
+== {fleet} and {agent} 8.9.1
+
+Review important information about the {fleet} and {agent} 8.9.1 release.
+
+[discrete]
+[[security-updates-8.9.1]]
+=== Security updates
+
+{agent}::
+//* TBD {agent-pull}xxxx[#xxxx] 
+
+[discrete]
+[[enhancements-8.9.1]]
+=== Enhancements
+//* TBD {agent-pull}xxxx[#xxxx] {agent-issue}xxxx[#xxxx]
+
+[discrete]
+[[bug-fixes-8.9.1]]
+=== Bug fixes
+
+{fleet}::
+//* TBD {kibana-pull}xxxxxx[#xxxxxx]
+//* TBD {kibana-pull}xxxxxx[#xxxxxx]
+
+{agent}::
+//* TBD {agent-pull}xxxx[#xxxx]  {agent-issue}xxxx[#xxxx]
+//* TBD {agent-pull}xxxx[#xxxx]  {agent-issue}2899[#xxxx]
+
+// end 8.9.1 relnotes
 
 // begin 8.9.0 relnotes
 

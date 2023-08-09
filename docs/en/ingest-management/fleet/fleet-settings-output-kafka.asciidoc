@@ -136,6 +136,8 @@ The default value is `Full`.
 [discrete]
 == Partitioning settings
 
+The number of partitions created is set automatically by the Kafka broker based on the list of topics. Records are then published to partitions either randomly, in round-robin order, or according to a calculated hash.
+
 [cols="2*<a"]
 |===
 
@@ -143,7 +145,7 @@ The default value is `Full`.
 [id="kafka-output-partitioning-random"]
 **Random**
 
-| Record records to Kafka output broker event partitions randomly. Specify the number of events to be published to the same partition before the partitioner selects a new partition.
+| Publish records to Kafka output broker event partitions randomly. Specify the number of events to be published to the same partition before the partitioner selects a new partition.
 
 // =============================================================================
 
@@ -151,7 +153,7 @@ The default value is `Full`.
 [id="kafka-output-partitioning-roundrobin"]
 **Round robin**
 
-| Record records to Kafka output broker event partitions in a round-robin fashion. Specify the number of events to be published to the same partition before the partitioner selects a new partition.
+| Publish records to Kafka output broker event partitions in a round-robin fashion. Specify the number of events to be published to the same partition before the partitioner selects a new partition.
 
 // =============================================================================
 
@@ -159,7 +161,7 @@ The default value is `Full`.
 [id="kafka-output-partitioning-hash"]
 **Hash**
 
-| Record records to Kafka output broker event partitions based on a hash computed from the specified list of fields. If a field is not specified, the Kafka event key value is used.
+| Publish records to Kafka output broker event partitions based on a hash computed from the specified list of fields. If a field is not specified, the Kafka event key value is used.
 
 |===
 
@@ -199,14 +201,12 @@ Then, create a processor to route critical events:
 
 * Condition: `Contains`
 * Value: `message: “CRITICAL”`  
-// Is this correct? Or would someone specify just CRITICAL without "message:" or any quotation marks?
 * Topic: `critical-%{[agent.version]}`
 
 And create another processor to route error events:
 
 * Condition: `Contains`
 * Value: `message: “ERR”`
-// Same question as above.
 * Topic: `error-%{[agent.version]}`
 
 All non-critical and non-error events will then route to the default `%{[fields.log_topic]}` topic.

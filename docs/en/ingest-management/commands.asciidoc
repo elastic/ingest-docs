@@ -46,15 +46,16 @@ This command produces an archive that contains:
 * components-expected.yaml - expected computed components model from the computed-config.yaml
 * components-actual.yaml - actual running components model as reported by the runtime manager
 * state.yaml - current state information of all running components
-* goroutine.txt - goroutine dump
-* heap.txt - memory allocation of live objects
-* allocs.txt - sampling past memory allocations
-* threadcreate.txt - traces led to creation of new OS threads
-* block.txt - stack traces that led to blocking on synchronization primitives
-* mutex.txt - stack traces of holders of contended mutexes
-* components directory - diagnostic information from each running component (content defined by the inputs)
+* Components Directory - diagnostic information from each running component:
+** goroutine.txt - goroutine dump
+** heap.txt - memory allocation of live objects
+** allocs.txt - sampling past memory allocations
+** threadcreate.txt - traces led to creation of new OS threads
+** block.txt - stack traces that led to blocking on synchronization primitives
+** mutex.txt - stack traces of holders of contended mutexes
+** Unit Directory - If a given unit provides specific diagnostics, it will be placed here.
 
-Note that *credentials are not redacted* in the archive; they may appear in plain text in the configuration or policy files inside the archive.
+Note that *credentials may not be redacted* in the archive; they may appear in plain text in the configuration or policy files inside the archive.
 
 This command is intended for debugging purposes only. The output format and structure of the archive may change between releases.
 
@@ -64,6 +65,7 @@ This command is intended for debugging purposes only. The output format and stru
 [source,shell]
 ----
 elastic-agent diagnostics [--file <string>]
+                          [-p]
                           [--help]
                           [global-flags]
 ----
@@ -76,6 +78,9 @@ Specifies the output archive name. Defaults to `elastic-agent-diagnostics-<times
 
 `--help`::
 Show help for the `diagnostics` command.
+
+`-p`::
+Additionally runs a 30-second CPU profile on each running component. This will generate an additional `cpu.pprof` file for each component.
 
 {global-flags-link}
 

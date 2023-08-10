@@ -5,6 +5,8 @@ Specify these settings to send data over a secure connection to Kafka.
 
 preview::[]
 
+TIP: Kafka output is currently not supported on {agents} using the {elastic-defend} integration.
+
 [discrete]
 == General settings
 
@@ -15,7 +17,9 @@ preview::[]
 **Kafka version**
 
 | The Kafka protocol version that {agent} will request when connecting. 
-Defaults to 1.0.0.
+Defaults to `1.0.0`.
+Currently Kafka versions from `0.8.2.0` to `2.6.0` are supported, however the latest 
+Kafka version (`3.x.x`) is expected to be compatible when version `2.6.0` is selected.
 
 // =============================================================================
 
@@ -95,7 +99,7 @@ In cases where each client has a unique certificate key, the local path to that 
 
 | The CA certificate to use to connect to Kafka. This is the CA used to generate the certificate and key for Kafka. Copy and paste in the full contents for the CA certificate.
 
-This setting is optional.
+This setting is optional. This setting is not available when the authentication `None` and `Plaintext` options are selected.
 
 Click **Add row** to specify additional certificate authories.
 
@@ -129,7 +133,7 @@ Name is empty, it returns an error.
 Verifies that the provided certificate is signed by a
 trusted authority (CA), but does not perform any hostname verification.
 
-The default value is `Full`.
+The default value is `Full`. This setting is not available when the authentication `None` and `Plaintext` options are selected.
 
 |===
 
@@ -192,6 +196,8 @@ Refer to <<processor-conditions,conditions>> in the {agent} processor syntax for
 Events that don't match against any defined processor are set to the default topic.
 
 Processors are applied in the order that they appear, from top to bottom.
+
+The value field must be specified in a `[key]: value` format with both the key and value being strings. For example, `host.port: 2000` or `message: Test`.
 
 As an example for setting up your processors, you might want to route log events based on severity. To do so, you can specify a default topic for all events not matched by other processors:
 

@@ -78,6 +78,10 @@ To add or edit an output:
 . Go to **{fleet} -> Settings**.
 
 . Under **Outputs**, click **Add output** or **Edit**.
++
+image::images/fleet-add-output-button.png[{fleet} Add output button]
++
+The **Add new output** UI opens.
 
 . Set the output name and type.
 

@@ -115,6 +115,8 @@ include::shared-env.asciidoc[tag=fleet-server-cert-key-passphrase]
 
 include::shared-env.asciidoc[tag=fleet-server-insecure-http]
 
+include::shared-env.asciidoc[tag=fleet-server-es-ca-trusted-fingerprint]
+
 |===
 
 [discrete]

@@ -78,6 +78,10 @@ To add or edit an output:
 . Go to **{fleet} -> Settings**.
 
 . Under **Outputs**, click **Add output** or **Edit**.
++
+image::images/fleet-add-output-button.png[{fleet} Add output button]
++
+The **Add new output** UI opens.
 
 . Set the output name and type.
 
@@ -85,178 +89,13 @@ To add or edit an output:
 +
 * <<es-output-settings>>
 * <<ls-output-settings>>
+* <<kafka-output-settings>>
+
+. Click **Save and apply settings**.
 
 TIP: If the options for editing an output are grayed out, outputs
 are configured outside of {fleet}. For more information, refer to
 {kibana-ref}/fleet-settings-kb.html[{fleet} settings in {kib}].
-
-
-[discrete]
-[[es-output-settings]]
-== {es} output settings
-
-Specify these settings to send data over a secure connection to {es}.
-
-TIP: {es} output must match only the cluster with which {fleet-server} is associated. It's not possible to reference URLs belonging to other {es} clusters.
-
-[cols="2*<a"]
-|===
-|
-[id="es-output-hosts-setting"]
-**Hosts**
-
-| The {es} URLs where {agent}s will send data. By default, {es} is exposed
-on the following ports:
-
-`9200`::
-Default {es} port for self-managed clusters
-
-`443`::
-Default {es} port for {ecloud}
-
-**Examples:**
-
-* `https://192.0.2.0:9200`
-* `https://1d7a52f5eb344de18ea04411fe09e564.fleet.eu-west-1.aws.qa.cld.elstc.co:443`
-* `https://[2001:db8::1]:9200`
-
-// =============================================================================
-
-|
-[id="es-trusted-fingerprint-yaml-setting"]
-**{es} CA trusted fingerprint**
-
-| HEX encoded SHA-256 of a CA certificate. If this certificate is
-present in the chain during the handshake, it will be added to the
-`certificate_authorities` list and the handshake will continue
-normally. To learn more about trusted fingerprints, refer to the
-{ref}/configuring-stack-security.html[{es} security documentation].
-
-// =============================================================================
-
-|
-[id="es-output-advanced-yaml-setting"]
-**Advanced YAML configuration**
-
-| YAML settings that will be added to the {es} output section of each policy
-that uses this output. Make sure you specify valid YAML. The UI does not
-currently provide validation.
-
-// =============================================================================
-
-|
-[id="es-agent-integrations-output"]
-**Make this output the default for agent integrations**
-
-| When this setting is on, {agent}s use this output to send data if no other
-output is set in the agent policy.
-
-// =============================================================================
-
-|
-[id="es-agent-monitoring-output"]
-**Make this output the default for agent monitoring**
-
-| When this setting is on, {agent}s use this output to send agent monitoring
-data if no other output is set in the agent policy.
-
-Sending monitoring data to a remote {es} cluster is currently not supported.
-|===
-
-[discrete]
-[[ls-output-settings]]
-== {ls} output settings
-
-Specify these settings to send data over a secure connection to {ls}. You must
-also configure a {ls} pipeline that reads encrypted data from {agent}s and sends
-the data to {es}. Follow the in-product steps to configure the {ls} pipeline.
-
-To learn how to generate certificates, refer to <<secure-logstash-connections>>.
-
-[cols="2*<a"]
-|===
-|
-[id="ls-logstash-hosts"]
-**{ls} hosts**
-
-| The addresses your {agent}s will use to connect to {ls}. Use the format
-`host:port`. Click **add** row to specify additional {ls} addresses.
-
-**Examples:**
-
-* `192.0.2.0:5044`
-* `mylogstashhost:5044`
-
-// =============================================================================
-
-|
-[id="ls-server-ssl-certificate-authorities-setting"]
-**Server SSL certificate authorities**
-
-| The CA certificate to use to connect to {ls}. This is the CA used to generate
-the certificate and key for {ls}. Copy and paste in the full contents for the CA
-certificate.
-
-This setting is optional.
-
-// =============================================================================
-
-|
-[id="ls-client-ssl-certificate-setting"]
-**Client SSL certificate**
-
-| The certificate generated for the client. Copy and paste in the full contents
-of the certificate. This is the certificate that all the agents will use to connect to {ls}.
-
-In cases where each client has a unique certificate, the local path to that certificate can be
-placed here. The agents will pick the certificate in that location when establishing a connection to
-{ls}.
-
-This setting is required.
-
-// =============================================================================
-
-|
-[id="ls-client-ssl-certificate-key-setting"]
-**Client SSL certificate key**
-
-| The private key generated for the client. This must be in PKCS 8 key.
-Copy and paste in the full contents of the certificate key. This is the certificate key that all the agents will use to connect to {ls}.
-
-In cases where each client has a unique certificate key, the local path to that certificate key can be placed here.
-The agents will pick the certificate key in that location when establishing a connection to {ls}.
-
-This setting is required.
-
-// =============================================================================
-
-|
-[id="ls-output-advanced-yaml-setting"]
-**Advanced YAML configuration**
-
-| YAML settings that will be added to the {ls} output section of each policy
-that uses this output. Make sure you specify valid YAML. The UI does not
-currently provide validation.
-
-// =============================================================================
-
-|
-[id="ls-agent-integrations-output"]
-**Make this output the default for agent integrations**
-
-| When this setting is on, {agent}s use this output to send data if no other
-output is set in the agent policy.
-
-// =============================================================================
-
-|
-[id="ls-agent-monitoring-output"]
-**Make this output the default for agent monitoring**
-
-| When this setting is on, {agent}s use this output to send agent monitoring
-data if no other output is set in the agent policy.
-
-|===
 
 [discrete]
 [[fleet-agent-binary-download-settings]]
@@ -317,3 +156,4 @@ For FQDN reporting to work as expected, the hostname of the current host must ei
 If neither pre-requisite is satisfied, `host.name` continues to report the hostname of the current host in a non-fully-qualified format.
 
 |===
+

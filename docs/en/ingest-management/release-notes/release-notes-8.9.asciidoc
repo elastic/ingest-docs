@@ -34,24 +34,19 @@ Review important information about the {fleet} and {agent} 8.9.1 release.
 === Security updates
 
 {agent}::
-//* TBD {agent-pull}xxxx[#xxxx] 
-
-[discrete]
-[[enhancements-8.9.1]]
-=== Enhancements
-//* TBD {agent-pull}xxxx[#xxxx] {agent-issue}xxxx[#xxxx]
+* Updated Go version to 1.19.12. {agent-pull}3186[#3186] 
 
 [discrete]
 [[bug-fixes-8.9.1]]
 === Bug fixes
 
 {fleet}::
-//* TBD {kibana-pull}xxxxxx[#xxxxxx]
-//* TBD {kibana-pull}xxxxxx[#xxxxxx]
+* Fixes for query error on Agents list in the UI. ({kibana-pull}162816[#162816])
+* Remove duplicate path being pushed to package archive. ({kibana-pull}162724[#162724])
 
 {agent}::
-//* TBD {agent-pull}xxxx[#xxxx]  {agent-issue}xxxx[#xxxx]
-//* TBD {agent-pull}xxxx[#xxxx]  {agent-issue}2899[#xxxx]
+* Improve two unclear error messages in the Upgrade Watcher {agent-pull}3093[#3093]
+* Add default UTC timezone to synthetics agent Docker images to prevent navigation errors {agent-pull}3160[#3160] {beats-issue}36117[#36117]
 
 // end 8.9.1 relnotes
 

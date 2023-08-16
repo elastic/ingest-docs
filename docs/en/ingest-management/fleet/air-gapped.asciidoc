@@ -217,6 +217,12 @@ curl -O https://artifacts.elastic.co/downloads/fleet-server/fleet-server-{versio
 curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-host-agent-{version}-linux-x86_64.tar.gz
 curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-host-agent-{version}-linux-x86_64.tar.gz.sha512
 curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-host-agent-{version}-linux-x86_64.tar.gz.asc
+curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-collector-{version}-linux-x86_64.tar.gz
+curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-collector-{version}-linux-x86_64.tar.gz.sha512
+curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-collector-{version}-linux-x86_64.tar.gz.asc
+curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-symbolizer-{version}-linux-x86_64.tar.gz
+curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-symbolizer-{version}-linux-x86_64.tar.gz.sha512
+curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-symbolizer-{version}-linux-x86_64.tar.gz.asc
 ----
 .. On your HTTP file server, group the artifacts into directories and
 sub-directories that follow the same convention used by the {artifact-registry}:

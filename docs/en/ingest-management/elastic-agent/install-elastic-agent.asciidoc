@@ -65,3 +65,26 @@ The {agent} used the default policy, running the system integration and self-mon
 | **RSS Mem Size** | 400 MB
 |===
 Adding integrations will increase the memory used by the agent and its processes.
+
+[discrete]
+=== Limiting {agent} resources
+
+If you need to limit the amount of resource consumed by {agent} you can use the `agent.limits.go_max_procs` configuration option. This option sets the maximum number of CPUs that can be executing simultaneously.
+
+To enable the option, run a <<fleet-api-docs,{fleet} API>> request from the {kib} {kibana-ref}/console-kibana.html[Dev Tools console] to override your current {agent} policy and add the `go_max_procs` parameter. For example, to limit {agent} to two CPUs, run:
+
+[source,shell]
+--
+PUT kbn:/api/fleet/agent_policies/<policy-id>
+{
+  "name": "<policy-name>",
+  "namespace": "default",
+  "overrides": {
+    "agent": {
+      "limits": {
+        "go_max_procs": 2
+      }
+    }
+  }
+}
+--

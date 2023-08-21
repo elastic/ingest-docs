@@ -69,9 +69,11 @@ Adding integrations will increase the memory used by the agent and its processes
 [discrete]
 === Limiting CPU usage
 
-If you need to limit the amount of CPU consumption you can use the `agent.limits.go_max_procs` configuration option. This option sets the maximum number of CPUs used by {beats} that are supervised by {agent}.
+If you need to limit the amount of CPU consumption you can use the `agent.limits.go_max_procs` configuration option. This option accepts an integer value and sets the maximum number of CPUs used by {beats} that are supervised by {agent}.
 
-For example, setting `agent.limits.go_max_procs` to `1` means that all and only the {beats} supervised by the agent will be limited to 1 vCPU. Run the <<elastic-agent-status-command,elastic-agent status>> command to check how many {beats} are being supervised by the agent.
+For example, setting `agent.limits.go_max_procs` to `1` means that all and only the {beats} supervised by the agent will be limited to 1 vCPU. Run the <<elastic-agent-status-command,elastic-agent status>> command to check how many {beats} are currently supervised by the agent.
+
+The `agent.limits.go_max_procs` configuration option is similar to the {beats} {filebeat-ref}/configuration-general-options.html#_max_procs[`max_procs`] setting, except that it applies to a set of {beats} underlying an agent.
 
 To enable the option, run a <<fleet-api-docs,{fleet} API>> request from the {kib} {kibana-ref}/console-kibana.html[Dev Tools console] to override your current {agent} policy and add the `go_max_procs` parameter. For example, to limit {agent} to two CPUs, run:
 

@@ -1,7 +1,7 @@
 [[kafka-output-settings]]
 = Kafka output settings
 
-Specify these settings to send data over a secure connection to Kafka. 
+Specify these settings to send data over a secure connection to Kafka. In the {fleet} <<output-settings,Output settings>>, make sure that the Kafka output type is selected. 
 
 preview::[]
 
@@ -68,9 +68,17 @@ When **Encryption** is selected, the **Server SSL certificate authorities** and 
 
 Provide your username and password, and select a Simple Authentication and Security Layer (SASL) mechanism for your login credentials:
 
+<<<<<<< HEAD
 * Plain
 * SCRAM-SHA-256
 * SCRAM-SHA-512
+=======
+When SCRAM is enabled, {agent} uses the link:https://en.wikipedia.org/wiki/Salted_Challenge_Response_Authentication_Mechanism[SCRAM] mechanism to authenticate the user credential. SCRAM is based on the IETF RFC5802 standard which describes a challenge-response mechanism for authenticating users.
+
+* Plain - SCRAM is not used to authenticate
+* SCRAM-SHA-256 - uses the SHA-256 hashing function
+* SCRAM-SHA-512 - uses the SHA-512 hashing function
+>>>>>>> 307b8ae (Small fixes for Kafka output docs (#421))
 
 // ============================================================================
 

@@ -67,9 +67,9 @@ The {agent} used the default policy, running the system integration and self-mon
 Adding integrations will increase the memory used by the agent and its processes.
 
 [discrete]
-=== Limiting {agent} resources
+=== Limiting CPU usage
 
-If you need to limit the amount of resource consumed by {agent} you can use the `agent.limits.go_max_procs` configuration option. This option sets the maximum number of CPUs used by the underlying {beats} that are supervised by {agent}.
+If you need to limit the amount of CPU consumption you can use the `agent.limits.go_max_procs` configuration option. This option sets the maximum number of CPUs used by {beats} that are supervised by {agent}.
 
 For example, setting `agent.limits.go_max_procs` to `1` means that all and only the {beats} supervised by the agent will be limited to 1 vCPU. Run the <<elastic-agent-status-command,elastic-agent status>> command to check how many {beats} are being supervised by the agent.
 

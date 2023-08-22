@@ -88,7 +88,7 @@ If the specified package has no logs support, a generic container's logs input w
 
 Define a processor to be added to the  input configuration. See <<elastic-agent-processor-configuration>> for the list of supported processors.
 
-If processors configuration uses list data structure, object fields must be enumerated. For example, hints for the rename processor configuration below
+If the processors configuration uses list data structure, object fields must be enumerated. For example, hints for the rename processor configuration below
 
 [source,yaml]
 ----

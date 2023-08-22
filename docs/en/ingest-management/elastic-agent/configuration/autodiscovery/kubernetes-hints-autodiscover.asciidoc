@@ -138,7 +138,7 @@ co.elastic.hints/processors.dissect.tokenizer: "%{key2} %{key1}"
 
 In the above sample the processor definition tagged with `1` would be executed first.
 
-IMPORTANT: Processor configuration is not supported on datastream level. So annotations like `co.elastic.hints/<datastream>.processors` will be ignored.
+IMPORTANT: Processor configuration is not supported on the datastream level, so annotations like `co.elastic.hints/<datastream>.processors` are ignored.
 
 
 [discrete]

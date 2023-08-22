@@ -69,7 +69,7 @@ Adding integrations will increase the memory used by the agent and its processes
 [discrete]
 === Limiting CPU usage
 
-If you need to limit the amount of CPU consumption you can use the `agent.limits.go_max_procs` configuration option. This parameter sets how many CPUs the Go runtime can schedule Go routines on for both the agent and the underlying {beats} that it supervises. The `agent.limits.go_max_procs` option accepts any integer value.
+If you need to limit the amount of CPU consumption you can use the `agent.limits.go_max_procs` configuration option. This parameter sets how many CPUs the Go runtime can schedule Go routines on for both the agent and the underlying {beats} that it supervises. The `agent.limits.go_max_procs` option accepts an integer value not less than `0`, which is the default value that stands for "all available CPUs".
 
 The `agent.limits.go_max_procs` configuration option is similar to the {beats} {filebeat-ref}/configuration-general-options.html#_max_procs[`max_procs`] setting except that it applies to both an agent and its underlying set of {beats}.
 

@@ -109,7 +109,7 @@ co.elastic.hints/processors.rename.fields.1.to: "e.d"
 co.elastic.hints/processors.rename.fail_on_error: 'true'
 ----
 
-If processors configuration uses map data structure, enumeration is not needed. For example, the equivalent to the add_fields configuration below
+If the processors configuration uses map data structure, enumeration is not needed. For example, the equivalent to the `add_fields` configuration below
 
 [source,yaml]
 ----

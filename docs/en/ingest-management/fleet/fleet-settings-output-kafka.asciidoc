@@ -1,7 +1,7 @@
 [[kafka-output-settings]]
 = Kafka output settings
 
-Specify these settings to send data over a secure connection to Kafka. 
+Specify these settings to send data over a secure connection to Kafka. In the {fleet} <<output-settings,Output settings>>, make sure that Kafka is selected. 
 
 preview::[]
 
@@ -66,11 +66,13 @@ When **Encryption** is selected, the **Server SSL certificate authorities** and 
 
 | Connect to Kafka with a username and password.
 
-Provide your username and password, and select a Simple Authentication and Security Layer (SASL) mechanism for your login credentials:
+Provide your username and password, and select a SASL (Simple Authentication and Security Layer) mechanism for your login credentials.
 
-* Plain
-* SCRAM-SHA-256
-* SCRAM-SHA-512
+When SCRAM is enabled, {agent} uses the link:https://en.wikipedia.org/wiki/Salted_Challenge_Response_Authentication_Mechanism[SCRAM mechanism] to authenticate the user credential. SCRAM is based on the IETF RFC5802 standard which describes a challenge-response mechanism for authenticating users.
+
+* Plain - SCRAM is not used to authenticate
+* SCRAM-SHA-256 - uses the SHA-256 hashing function
+* SCRAM-SHA-512 - uses the SHA-512 hashing function
 
 // ============================================================================
 
@@ -331,7 +333,7 @@ Note that if ACK reliability is set to `Do not wait` no ACKs are returned by Kaf
 
 | An optional formatted string specifying the Kafka event key. If configured, the event key can be extracted from the event using a format string.
 
-See the Kafka documentation for the implications of a particular choice of key; by default, the key is chosen by the Kafka cluster.
+See the link:https://kafka.apache.org/intro#intro_topics[Kafka documentation] for the implications of a particular choice of key; by default, the key is chosen by the Kafka cluster.
 
 // =============================================================================
 

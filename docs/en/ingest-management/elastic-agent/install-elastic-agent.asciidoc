@@ -73,7 +73,7 @@ If you need to limit the amount of CPU consumption you can use the `agent.limits
 
 The `agent.limits.go_max_procs` configuration option is similar to the {beats} {filebeat-ref}/configuration-general-options.html#_max_procs[`max_procs`] setting. For more detail about the option, refer to the link:https://pkg.go.dev/runtime#GOMAXPROCS[GOMAXPROCS] function in the Go runtime documentation.
 
-To enable `agent.limits.go_max_procs`, run a <<fleet-api-docs,{fleet} API>> request from the {kib} {kibana-ref}/console-kibana.html[Dev Tools console] to override your current {agent} policy and add the `go_max_procs` parameter. For example, to limit Go code to two operating system threads, run:
+To enable `agent.limits.go_max_procs`, run a <<fleet-api-docs,{fleet} API>> request from the {kib} {kibana-ref}/console-kibana.html[Dev Tools console] to override your current {agent} policy and add the `go_max_procs` parameter. For example, to limit Go processes supervised by {agent} to two operating system threads each, run:
 
 [source,shell]
 --

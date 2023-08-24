@@ -280,6 +280,47 @@ providers:
     scope: node
 ----
 
+[discrete]
+=== Hints autodiscovery for kubernetes logs with JSON decoding
+
+Based on previous example, users might want to perform extra processing on specific logs, eg. to decode specific fields containing JSON strings. Usage of << decode-json-fields >> is advisable as follows:
+
+Users need to have enabled hints autodiscovery as described in `Hints autodiscovery for kubernetes log collection` example before
+
+The pod that will produce json logs needs to be annotated with:
+
+[source,yaml]
+----
+
+ annotations:
+        co.elastic.hints/package: "container_logs"
+        co.elastic.hints/processors.decode_json_fields.fields: "message"
+        co.elastic.hints/processors.decode_json_fields.add_error_key: 'true'
+        co.elastic.hints/processors.decode_json_fields.overwrite_keys: 'true'
+        co.elastic.hints/processors.decode_json_fields.target: "team"
+----
+
+> NOTE: Above parameters for decode_json_fields processor are just an example
+
+A following log entry :
+
+[source,json]
+----
+{"myteam": "ole"}
+----
+
+Will produce both fields, the original `message` field and also the target field `team`
+
+[source,json]
+----
+
+"team": {
+      "pasole3": "ole"
+    },
+
+"message": "{\"myteam\": \"ole\"}",
+----
+
 
 [discrete]
 == Troubleshooting

@@ -25,4 +25,6 @@ Best Practises when you configure autodiscovery:
 
 IMPORTANT: When an input uses a variable substitution that is not present in the current key/value mappings being evaluated, the input is removed in the result. (See more information in <<dynamic-input-configuration>>)   
 
-- To debug configurations that include variable substitution and conditions, use the inspect command of {agent}. ((See more information in <<dynamic-input-configuration>> in *Debugging* Section))
+- To debug configurations that include variable substitution and conditions, use the inspect command of {agent}. (See more information in <<dynamic-input-configuration>> in *Debugging* Section)
+
+- In Condition Based autodiscovery is advisable to define a general last condition that will act as your default condition that will be validated when all others fail or dont apply. If applicable, such conditons might help identify processing and troubleshoot possible problems.

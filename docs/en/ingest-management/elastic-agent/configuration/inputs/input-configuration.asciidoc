@@ -1,8 +1,9 @@
 [[elastic-agent-input-configuration]]
-= Configure inputs for Standalone {agent}s
+= Configure inputs for standalone {agent}s
 
-include::{fleet-repo-dir}/standalone-note.asciidoc[]
-
+++++
+<titleabbrev>Inputs</titleabbrev>
+++++
 
 The `inputs` section of the `elastic-agent.yml` file specifies how {agent} locates and processes input data.
 

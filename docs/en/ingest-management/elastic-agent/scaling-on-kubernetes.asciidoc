@@ -130,7 +130,7 @@ NOTE: Tests have run until 10K pods per cluster. Scaling to bigger number of pod
 [[agent-scheduling]]
 === Agent Scheduling
 
-Setting the low priority to {agent} comparing to other pdos might also result to {agent} being in Pending State.The scheduler tries to preempt (evict) lower priority Pods to make scheduling of the higher pending Pods possible.
+Setting the low priority to {agent} comparing to other pods might also result to {agent} being in Pending State.The scheduler tries to preempt (evict) lower priority Pods to make scheduling of the higher pending Pods possible.
 
 Trying to prioritise the agent installation before rest of application microservices, https://github.com/elastic/elastic-agent/blob/main/docs/manifests/elastic-agent-managed-gke-autopilot.yaml#L8-L16[PriorityClasses suggested]
 

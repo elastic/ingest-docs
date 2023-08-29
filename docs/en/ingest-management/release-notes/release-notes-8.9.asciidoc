@@ -14,6 +14,7 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.9.2>>
 * <<release-notes-8.9.1>>
 * <<release-notes-8.9.0>>
 
@@ -21,6 +22,35 @@ Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.9.2 relnotes
+
+[[release-notes-8.9.2]]
+== {fleet} and {agent} 8.9.2
+
+Review important information about the {fleet} and {agent} 8.9.2 release.
+
+[discrete]
+[[security-updates-8.9.2]]
+=== Security updates
+
+{agent}::
+//* Example. {agent-pull}....[#....] 
+
+[discrete]
+[[bug-fixes-8.9.2]]
+=== Bug fixes
+
+{fleet}::
+//* Example ({kibana-pull}......[#......])
+
+{fleet-server}::
+//* Example {fleet-server-pull}2677[#2677]
+
+{agent}::
+//* Example {agent-pull}....[#....]
+
+// end 8.9.2 relnotes
 
 // begin 8.9.1 relnotes
 

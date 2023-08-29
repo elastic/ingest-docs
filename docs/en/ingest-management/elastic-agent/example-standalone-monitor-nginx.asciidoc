@@ -1,0 +1,124 @@
+[[example-standalone-monitor-nginx]]
+= Example: Use standalone {agent} to monitor nginx
+
+This guide walks you through a simple monitoring scenario so you can learn the basics of setting up standalone {agent}, using it to work with {ecloud} and an Elastic integration. 
+
+Following these steps, you'll deploy the {stack}, install a standalone {agent} on a host to monitor an nginx web server instance, and visualize the collected logs and metrics.
+
+[discrete]
+[[nginx-guide-prereqs]]
+=== Prerequisites
+
+To get started, you need:
+
+. An internet connection and an email address for your {ecloud} trial.
+. A Linux host machine on which you'll install an nginx web server and, optionally, the Linux stress tool. The commands in this guide use an Ubuntu image but any Linux distribution should be fine.
+
+[discrete]
+[[nginx-guide-install-nginx]]
+=== Step 1: Install nginx
+
+To start, we'll set up a basic link:https://docs.nginx.com/nginx/admin-guide/web-server/[nginx web server].
+
+. Run the following command on an Ubuntu Linux host, or refer to the link:https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/[nginx install documentation] for the command appropriate to your operating system.
++
+[source,sh]
+----
+sudo apt update
+sudo apt install nginx
+----
++
+. Open a web browser and visit your host machine's external URL, for example `http://192.168.64.17/`. You should see the nginx welcome message.
++
+[role="screenshot"]
+image::images/guide-nginx-welcome.png["Browser window showing Welcome to nginx!"]
+
+[discrete]
+[[nginx-guide-sign-up]]
+=== Step 2: Create an {ecloud} deployment
+
+NOTE: If you've already signed up for a trial deployment you can skip this step.
+
+Now that your web server is running, let's get set up to monitor it in {ecloud}. An {ecloud} deployment offers you all of the features of the {stack} as a hosted service. To test drive your first deployment, sign up for a free {ecloud} trial:
+
+. Go to our link:https://cloud.elastic.co/registration?elektra=guide-welcome-cta[{ecloud} Trial] page.
+
+. Enter your email address and a password.
++
+[role="screenshot"]
+image::images/guide-sign-up-trial.png["Start your free Elastic Cloud trial",width="50%"]
+
+. After you've link:https://cloud.elastic.co/login[logged in], you can create a deployment. Give your deployment a name and select *Create deployment*.
++
+[role="screenshot"]
+image::images/guide-create-first-deployment.png["Create your first deployment",width="70%"]
+
+. While the deployment sets up, make a note of your `elastic` superuser password and keep it in a safe place.
+
+. Once the deployment is ready, select *Continue*. At this point, you access {kib} and a selection of setup guides.
+
+[discrete]
+[[nginx-guide-add-agent]]
+=== Step 3: Add standalone {agent}
+
+{agent} is a single, unified way to add monitoring for logs, metrics, and other types of data to a host. It can also protect hosts from security threats, query data from operating systems, and more. A single agent makes it easy and fast to deploy monitoring across your infrastructure. Each agent has a single policy (a collection of input settings) that you can update to add integrations for new data sources, security protections, and more.
+
+. When your {ecloud} deployment is ready, open the {kib} menu and go to **{fleet} -> Agent policies**.
++
+image::images/guide-agent-policies.png["Agent policies tab in Fleet"]
+. Click *Create agent policy*.
+. Give your policy a name. For this example we'll call it `nginx-policy`.
+. Leave *Collect system logs and metrics* selected.
+. Click *Create agent policy*.
++
+image::images/guide-create-agent-policy.png["Create agent policy UI"]
+
+[discrete]
+[[nginx-guide-add-integration]]
+=== Step 4: Add the Nginx Integration
+
+Elastic integrations are a streamlined way to connect your data from popular services and platforms to the {stack}, including nginx.
+
+. From the **{fleet} -> Agent policies** tab, click the link for your new `nginx-policy`.
++
+image::images/guide-nginx-policy.png["The nginx-policy UI with integrations tab selected"]
+. Note that `system-` integration is included because you opted earlier to collect system logs and metrics.
+. Click **Add integration**.
+. On the Integrations page search for "nginx".
++
+image::images/guide-integrations-page.png["Integrations page with nginx in the search bar"]
+. Select the **Nginx** card.
+. Click **Add Nginx**.
+. Click the link to **Add integration only (skip agent installation)**. We'll install standalone {agent} in a later step.
+. Here, you can select options such as the paths to where your nginx logs are stored, whether or not to collect metrics data, and various other settings.
++
+For now, leave all of the default settings and click **Save and continue** to add the Nginx Integration to your `nginx-policy` policy.
++
+image::images/guide-add-nginx-integration.png["Add Nginx Integration UI"]
+. In the confirmation dialog, select to **Add {agent} later**.
++
+image::images/guide-nginx-integration-added.png["Nginx Integration added confirmation UI with Add {agent} later selected."]
+
+[discrete]
+[[nginx-guide-configure-standalone-agent]]
+=== Step 5: Configure standalone {agent}
+
+Rather than opt for {fleet} to centrally manage {agent}, we'll configure an agent to run in standalone mode, so it will be managed by hand.
+
+. Open the {kib} menu and go to **{fleet} -> Agents** and click **Add agent**.
+. For the **What type of host are you adding?** step, select `nginx-policy` from the drop-down menu if it's not already selected.
+. For the **Enroll in {fleet}?** step, select **Run standalone**.
++
+image::images/guide-add-agent-standalone01.png["Add agent UI with nginx-policy and Run-standalone selected."]
+. For the **Configure the agent** step, choose **Download Policy**. Save the `elastic-agent.yml` file to a directory on the host where you'll install nginx for monitoring.
++
+Notice that the policy contains all of the input, output, and other settings for the Nginx and System Integrations. If you already have a standalone agent installed on a host with an existing {agent} policy, you can use the method described here to add a new integration. Just add the settings from the **Download Policy** UI to your existing `elastic-agent.yml` file.
+. For the **Install {agent} on your host** step, select the tab for your host operating system and run the commands on your host.
++
+image::images/guide-install-agent-on-host.png["Install {agent} on your host step, showing tabs with the commands for different operating systems."]
+
+
+
+
+
+

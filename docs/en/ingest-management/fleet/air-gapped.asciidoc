@@ -8,6 +8,12 @@ steps to make sure:
 content.
 * {agent}s are able to download binaries during upgrades.
 
+[TIP]
+====
+See the Elastic Security if using elastic endpoint in this air-gapped environment 
+https://www.elastic.co/guide/en/security/current/offline-endpoint.html  
+====
+
 When upgrading all the components in an air-gapped environment, it is recommended that you upgrade in the following order:
 
 . Upgrade the {package-registry}.

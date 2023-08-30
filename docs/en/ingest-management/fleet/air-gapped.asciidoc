@@ -10,7 +10,7 @@ content.
 
 [TIP]
 ====
-See the Elastic Security for air-gapped https://www.elastic.co/guide/en/security/current/offline-endpoint.html[offline endpoints].
+See the {elastic-sec} Solution documentation for air-gapped {security-guide}/offline-endpoint.html[offline endpoints].
 ====
 
 When upgrading all the components in an air-gapped environment, it is recommended that you upgrade in the following order:

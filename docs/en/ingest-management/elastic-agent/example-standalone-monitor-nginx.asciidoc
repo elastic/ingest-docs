@@ -3,7 +3,7 @@
 
 This guide walks you through a simple monitoring scenario so you can learn the basics of setting up standalone {agent}, using it to work with {ecloud} and an Elastic integration. 
 
-Following these steps, you'll deploy the {stack}, install a standalone {agent} on a host to monitor an nginx web server instance, and visualize the collected logs and metrics.
+Following these steps, you'll deploy the {stack}, install a standalone {agent} on a host to monitor an nginx web server instance, and visualize the collected logs.
 
 [discrete]
 [[nginx-guide-prereqs]]
@@ -58,8 +58,8 @@ image::images/guide-create-first-deployment.png["Create your first deployment",w
 . Once the deployment is ready, select *Continue*. At this point, you access {kib} and a selection of setup guides.
 
 [discrete]
-[[nginx-guide-add-agent]]
-=== Step 3: Add standalone {agent}
+[[nginx-guide-create-policy]]
+=== Step 3: Create an {agent} policy
 
 {agent} is a single, unified way to add monitoring for logs, metrics, and other types of data to a host. It can also protect hosts from security threats, query data from operating systems, and more. A single agent makes it easy and fast to deploy monitoring across your infrastructure. Each agent has a single policy (a collection of input settings) that you can update to add integrations for new data sources, security protections, and more.
 
@@ -112,10 +112,120 @@ Rather than opt for {fleet} to centrally manage {agent}, we'll configure an agen
 image::images/guide-add-agent-standalone01.png["Add agent UI with nginx-policy and Run-standalone selected."]
 . For the **Configure the agent** step, choose **Download Policy**. Save the `elastic-agent.yml` file to a directory on the host where you'll install nginx for monitoring.
 +
-Notice that the policy contains all of the input, output, and other settings for the Nginx and System Integrations. If you already have a standalone agent installed on a host with an existing {agent} policy, you can use the method described here to add a new integration. Just add the settings from the **Download Policy** UI to your existing `elastic-agent.yml` file.
+Notice that the policy contains all of the input, output, and other settings for the Nginx and System Integrations. If you already have a standalone agent installed on a host with an existing {agent} policy, you can use the method described here to add a new integration. Just add the settings from the **Configure the agent** step to your existing `elastic-agent.yml` file.
 . For the **Install {agent} on your host** step, select the tab for your host operating system and run the commands on your host.
 +
 image::images/guide-install-agent-on-host.png["Install {agent} on your host step, showing tabs with the commands for different operating systems."]
++
+If you're prompted with `Elastic Agent will be installed at {installation location} and will run as a service. Do you want to continue?` answer `Y` or `Yes`.
++
+If you're prompted with `Do you want to enroll this Agent into Fleet?` answer `n` or `no`.
+. You can run the `status` command to confirm that {agent} is running.
++
+[source,sh]
+----
+elastic-agent status
+
+┌─ fleet
+│  └─ status: (STOPPED) Not enrolled into Fleet
+└─ elastic-agent
+   └─ status: (HEALTHY) Running
+----
++
+Since you're running the agent in standalone mode the `Not enrolled into Fleet` message is expected.
+. Open the `elastic-agent.yml` policy file that you saved.
+. Near the top of the file, replace `${ES_USERNAME}` with the username for the {ecloud} deployment that you created in <<nginx-guide-sign-up,Step 2>>. The default is `elastic`.
+. Similarly, replace `${ES_PASSWORD}` with your superuser password.
+. Find the location of the default `elastic-agent.yml` policy file that is included in your {agent} install. Install directories for each platform are described in <<installation-layout,Installation layout>>. In our example Ubuntu image the default policy file can be found in `/etc/elastic-agent/elastic-agent.yml`.
+. Replace the default policy file with the version that you downloaded and updated. For example:
++
+[source,sh]
+----
+cp /home/ubuntu/homedir/downloads/elastic-agent.yml /etc/elastic-agent/elastic-agent.yml
+----
++
+NOTE: You may need to prefix the `cp` command with `sudo` for the permission required to replace the default file.
++
+By default, {agent} monitors the configuration file and reloads the configuration automatically when `elastic-agent.yml` is updated.
+
+. Run the `status` command again, this time with the `--output yaml` option which provides structured and much more detailed output. See the <<elastic-agent-status-command,`elastic-agent status`>> command documentation for more details.
++
+[source,shell]
+----
+elastic-agent status --output yaml
+----
++
+The results show you the agent status together with details about the running components, which correspond to the inputs and outputs defined for the integrations that have been added to the {agent} policy, in this case the System and Nginx Integrations.
+. At the top of the command output, the `info` section contains details about the agent instance. Make a note of the agent ID. In this example the ID is `4779b439-1130-4841-a878-e3d7d1a457d0`. You'll use that ID in the next section.
++
+[source,yaml]
+----
+elastic-agent status --output yaml
+
+info:
+  id: 4779b439-1130-4841-a878-e3d7d1a457d0
+  version: 8.9.1
+  commit: 5640f50143410fe33b292c9f8b584117c7c8f188
+  build_time: 2023-08-10 17:04:04 +0000 UTC
+  snapshot: false
+state: 2
+message: Running
+----
+
+[discrete]
+[[nginx-guide-confirm-agent-data]]
+=== Step 6: Confirm that your {agent} data is flowing
+
+Now that {agent} is running, it's time to confirm that the agent data is flowing into {es} and {kib}.
+
+. Check that {agent} logs are flowing.
+.. Open the {kib} menu and go to **Analytics -> Discover**.
+.. In the KQL query bar, enter the query `agent.id : "{agent-id}"` where `agent-id` you retrieved from the `elastic-agent status --output yaml` command.
++
+If {agent} has connected successfully with your {ecloud} deployment, the agent logs should be flowing into {es} and visible in {kib} Discover.
++
+image::images/guide-agent-logs-flowing.png["Kibana Discover shows agent logs are flowing into Elasticsearch."]
+. Check that {agent} metrics are flowing.
+.. Open the {kib} menu and go to **Analytics -> Dashboard**.
+.. In the search field, search for `Elastic Agent` and select `[Elastic Agent] Agent metrics` in the results.
++
+like the agent logs, the agent metrics should be flowing into {es} and visible in {kib} Dashboard. You can view metrics on CPU usage, memory usage, open handles, events rate, and more.
++
+image::images/guide-agent-metrics-flowing.png["Kibana Dashboard shows agent metrics are flowing into Elasticsearch."]
+
+[discrete]
+[[nginx-guide-view-system-data]]
+=== Step 7: View your system data
+
+In the step to <<nginx-guide-create-policy,create an {agent} policy>> you chose to collect system logs and metrics, so you can access those now.
+
+. View your system logs.
+.. Open the {kib} menu and go to **Management -> Integrations -> Installed integrations**.
+.. Select the **System** card and open the **Assets** tab. This is a quick way to access all of the dashboards, saved searches, and visualizations that come with each integration.
+.. Select `[Logs System] Syslog dashboard`. The {kib} Dashboard opens with visualizations of Syslog events, hostnames and processes, and more.
+. View your system metrics.
+
+.. Return to **Management -> Integrations -> Installed integrations**.
+.. Select the **System** card and open the **Assets** tab.
+.. Select `[Metrics System] Host overview`. The {kib} Dashboard opens with visualizations of host metrics including CPU usage, memory usage, running processes, and others.
++
+image::images/guide-system-metrics-dashboard.png["The System metrics host overview showing CPU usage, memory usage, and other visualizations"]
+
+[discrete]
+[[nginx-guide-view-nginx-data]]
+=== Step 8: View your nginx data
+
+Now let's view your nginx logs data.
+
+. Open the {kib} menu and go to **Management -> Integrations -> Installed integrations**.
+. Select the **Nginx** card and open the **Assets** tab.
+. Select `[Logs Nginx] Overview`. The {kib} Dashboard opens with geographical log details, response codes and errors over time, top pages, and more.
++
+image::images/guide-nginx-logs-dashboard.png["The nginx logs dashboard shows various visualizations on the nginx logs."]
+. Refresh your nginx web page several times to update the logging data. You can also try accessing the nginx page from different web browsers. After a minute or so, the `Browsers breakdown` visualization shows the respective volume of requests from the different browser types.
++
+image::images/guide-nginx-browser-breakdown.png["Kibana Dashboard shows agent metrics are flowing into Elasticsearch."]
+
 
 
 

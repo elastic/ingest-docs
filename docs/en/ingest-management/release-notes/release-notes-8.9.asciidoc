@@ -31,24 +31,21 @@ Also see:
 Review important information about the {fleet} and {agent} 8.9.2 release.
 
 [discrete]
-[[security-updates-8.9.2]]
-=== Security updates
+[[enhancements-8.9.2]]
+=== Enhancements
+
+{fleet}::
+* Adds the configuration setting `xpack.fleet.packageVerification.gpgKeyPath` as an environment variable in the {kib} container. {kibana-pull}163783[#163783].
 
 {agent}::
-//* Example. {agent-pull}....[#....] 
+* Adds logging to the restart step of the {agemt} upgrade rollback process. {agent-pull}3245[#3245]
 
 [discrete]
 [[bug-fixes-8.9.2]]
 === Bug fixes
 
-{fleet}::
-//* Example ({kibana-pull}......[#......])
-
-{fleet-server}::
-//* Example {fleet-server-pull}2677[#2677]
-
 {agent}::
-//* Example {agent-pull}....[#....]
+* Correctly identify retryable errors when attempting to uninstall on Windows. {agent-pull}3317[#3317]
 
 // end 8.9.2 relnotes
 

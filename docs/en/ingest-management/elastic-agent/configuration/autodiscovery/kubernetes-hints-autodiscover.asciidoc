@@ -367,7 +367,7 @@ The following log entry:
 {"myteam": "ole"}
 ----
 
-Will produce both fields, the original `message` field and also the target field `team`
+Will produce both fields: the original `message` field and also the target field `team`.
 
 [source,json]
 ----

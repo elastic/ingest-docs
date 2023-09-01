@@ -33,7 +33,7 @@ Info on {agent} and agent integrations:
 
 Info on using a proxy server:
 
-* {fleet-guide}//fleet-agent-proxy-support.html[Using a proxy server with {agent} and {fleet}]
+* {fleet-guide}/fleet-agent-proxy-support.html[Using a proxy server with {agent} and {fleet}]
 
 Info on {es}:
 

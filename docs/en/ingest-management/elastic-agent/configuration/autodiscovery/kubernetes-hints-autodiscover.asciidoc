@@ -343,7 +343,7 @@ providers:
 
 Based on the previous example, users might want to perform extra processing on specific logs, for example to decode specific fields containing JSON strings. Use of <<decode-json-fields>> is advisable as follows:
 
-Users need to have enabled hints autodiscovery as described in `Hints autodiscovery for kubernetes log collection` example before
+You need to have enabled hints autodiscovery, as described in the previous `Hints autodiscovery for Kubernetes log collection` example.
 
 The pod that will produce json logs needs to be annotated with:
 

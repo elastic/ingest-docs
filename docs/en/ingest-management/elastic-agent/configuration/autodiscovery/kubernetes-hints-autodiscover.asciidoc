@@ -360,7 +360,7 @@ The pod that will produce json logs needs to be annotated with:
 
 > NOTE: These parameters for the `decode_json_fields` processor are just an example.
 
-A following log entry :
+The following log entry:
 
 [source,json]
 ----

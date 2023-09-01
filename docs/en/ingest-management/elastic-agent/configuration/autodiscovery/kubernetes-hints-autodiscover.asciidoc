@@ -83,6 +83,64 @@ The stream to use for logs collection, for example, stdout/stderr.
 
 If the specified package has no logs support, a generic container's logs input will be used as a fallback. See the `Hints autodiscovery for kubernetes log collection` example below.
 
+[float]
+=== `co.elastic.hints/processors`
+
+Define a processor to be added to the  input configuration. See <<elastic-agent-processor-configuration>> for the list of supported processors.
+
+If the processors configuration uses list data structure, object fields must be enumerated. For example, hints for the rename processor configuration below
+
+[source,yaml]
+----
+processors:
+  - rename:
+      fields:
+        - from: "a.g"
+          to: "e.d"
+      fail_on_error: true
+----
+
+will look like:
+
+[source,yaml]
+----
+co.elastic.hints/processors.rename.fields.0.from: "a.g"
+co.elastic.hints/processors.rename.fields.1.to: "e.d"
+co.elastic.hints/processors.rename.fail_on_error: 'true'
+----
+
+If the processors configuration uses map data structure, enumeration is not needed. For example, the equivalent to the `add_fields` configuration below
+
+[source,yaml]
+----
+processors:
+  - add_fields:
+      target: project
+      fields:
+        name: myproject
+----
+
+is
+
+[source,yaml]
+----
+co.elastic.hints/processors.1.add_fields.target: "project"
+co.elastic.hints/processors.1.add_fields.fields.name: "myproject"
+----
+
+In order to provide ordering of the processor definition, numbers can be provided. If not, the hints builder will do arbitrary ordering:
+
+[source,yaml]
+----
+co.elastic.hints/processors.1.dissect.tokenizer: "%{key1} %{key2}"
+co.elastic.hints/processors.dissect.tokenizer: "%{key2} %{key1}"
+----
+
+In the above sample the processor definition tagged with `1` would be executed first.
+
+IMPORTANT: Processor configuration is not supported on the datastream level, so annotations like `co.elastic.hints/<datastream>.processors` are ignored.
+
+
 [discrete]
 == Available packages that support hints autodiscovery
 
@@ -280,6 +338,46 @@ providers:
     scope: node
 ----
 
+[discrete]
+=== Hints autodiscovery for kubernetes logs with JSON decoding
+
+Based on the previous example, users might want to perform extra processing on specific logs, for example to decode specific fields containing JSON strings. Use of <<decode-json-fields>> is advisable as follows:
+
+You need to have enabled hints autodiscovery, as described in the previous `Hints autodiscovery for Kubernetes log collection` example.
+
+The pod that will produce JSON logs needs to be annotated with:
+
+[source,yaml]
+----
+
+ annotations:
+        co.elastic.hints/package: "container_logs"
+        co.elastic.hints/processors.decode_json_fields.fields: "message"
+        co.elastic.hints/processors.decode_json_fields.add_error_key: 'true'
+        co.elastic.hints/processors.decode_json_fields.overwrite_keys: 'true'
+        co.elastic.hints/processors.decode_json_fields.target: "team"
+----
+
+> NOTE: These parameters for the `decode_json_fields` processor are just an example.
+
+The following log entry:
+
+[source,json]
+----
+{"myteam": "ole"}
+----
+
+Will produce both fields: the original `message` field and also the target field `team`.
+
+[source,json]
+----
+
+"team": {
+      "myteam": "ole"
+    },
+
+"message": "{\"myteam\": \"ole\"}",
+----
 
 [discrete]
 == Troubleshooting

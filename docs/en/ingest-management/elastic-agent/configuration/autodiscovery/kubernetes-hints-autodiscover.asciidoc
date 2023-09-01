@@ -358,7 +358,7 @@ The pod that will produce json logs needs to be annotated with:
         co.elastic.hints/processors.decode_json_fields.target: "team"
 ----
 
-> NOTE: Above parameters for decode_json_fields processor are just an example
+> NOTE: These parameters for the `decode_json_fields` processor are just an example.
 
 A following log entry :
 

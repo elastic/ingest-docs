@@ -38,7 +38,7 @@ Review important information about the {fleet} and {agent} 8.9.2 release.
 * Adds the configuration setting `xpack.fleet.packageVerification.gpgKeyPath` as an environment variable in the {kib} container. {kibana-pull}163783[#163783].
 
 {agent}::
-* Adds logging to the restart step of the {agemt} upgrade rollback process. {agent-pull}3245[#3245]
+* Adds logging to the restart step of the {agent} upgrade rollback process. {agent-pull}3245[#3245]
 
 [discrete]
 [[bug-fixes-8.9.2]]

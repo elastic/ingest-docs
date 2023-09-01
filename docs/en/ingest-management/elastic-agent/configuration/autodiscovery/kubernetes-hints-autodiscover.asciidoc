@@ -345,7 +345,7 @@ Based on the previous example, users might want to perform extra processing on s
 
 You need to have enabled hints autodiscovery, as described in the previous `Hints autodiscovery for Kubernetes log collection` example.
 
-The pod that will produce json logs needs to be annotated with:
+The pod that will produce JSON logs needs to be annotated with:
 
 [source,yaml]
 ----

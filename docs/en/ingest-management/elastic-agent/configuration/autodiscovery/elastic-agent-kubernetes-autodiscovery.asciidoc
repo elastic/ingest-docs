@@ -15,7 +15,7 @@ There are two different ways to use autodiscovery:
 [discrete]
 == How to configure autodiscovery
 
-`Conditions Based Autodiscovery` is more suitable for scenarios when users know the diffrent group of containers they want to monitor in advance. It is advisable to choose conditions-based configuration when administrators can configure specific conditions that match their needs. Conditions are supported in both Managed and Standalone {agent}.
+`Conditions Based Autodiscovery` is more suitable for scenarios when users know the different group of containers they want to monitor in advance. It is advisable to choose conditions-based configuration when administrators can configure specific conditions that match their needs. Conditions are supported in both Managed and Standalone {agent}.
 
 `Hints Based Autodiscovry` is suitable for more general scenarios, especially when users dont know the exact configuration of the system in monitor and can not create in advance conditions. Additionally a big advantage of Hints Autodiscovery is the ability to offer dynamic configuration of inputs based on annotations from containers. If dynamic configuration is needed, then Hints should be enabled. Hints are supported only in Standalone {agent} mode.
 

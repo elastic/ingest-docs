@@ -21,7 +21,7 @@ There are two different ways to use autodiscovery:
 
 *Best Practises when you configure autodiscovery:*
 
-- Always define alternatives and default values to your variables that used in conditions or [hint templates](eg. See `auth.basic` set as `auth.basic.user: ${kubernetes.hints.nginx.access.username|kubernetes.hints.nginx.username|''}`` in [nginx.yml](https://github.com/elastic/elastic-agent/blob/main/deploy/kubernetes/elastic-agent-standalone/templates.d/nginx.yml#L8))
+- Always define alternatives and default values to your variables that are used in conditions or [hint templates](eg. See `auth.basic` set as `auth.basic.user: ${kubernetes.hints.nginx.access.username|kubernetes.hints.nginx.username|''}`` in [nginx.yml](https://github.com/elastic/elastic-agent/blob/main/deploy/kubernetes/elastic-agent-standalone/templates.d/nginx.yml#L8))
 
 IMPORTANT: When an input uses a variable substitution that is not present in the current key/value mappings being evaluated, the input is removed in the result. (See more information in <<dynamic-input-configuration>>)   
 

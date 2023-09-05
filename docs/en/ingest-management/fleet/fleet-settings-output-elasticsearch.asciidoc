@@ -65,7 +65,7 @@ currently provide validation.
 **Make this output the default for agent integrations**
 
 | When this setting is on, {agent}s use this output to send data if no other
-output is set in the agent policy.
+output is set in the <<agent-policy,agent policy>>.
 
 // =============================================================================
 
@@ -73,8 +73,7 @@ output is set in the agent policy.
 [id="es-agent-monitoring-output"]
 **Make this output the default for agent monitoring**
 
-| When this setting is on, {agent}s use this output to send agent monitoring
-data if no other output is set in the agent policy.
+| When this setting is on, {agent}s use this output to send <<monitor-elastic-agent,agent monitoring data>> if no other output is set in the <<agent-policy,agent policy>>.
 
 Sending monitoring data to a remote {es} cluster is currently not supported.
 |===

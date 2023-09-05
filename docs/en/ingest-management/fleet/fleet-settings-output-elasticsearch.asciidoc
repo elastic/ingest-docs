@@ -56,7 +56,7 @@ To learn about proxy configuration, refer to <<fleet-agent-proxy-support>>.
 
 | YAML settings that will be added to the {es} output section of each policy
 that uses this output. Make sure you specify valid YAML. The UI does not
-currently provide validation.
+currently provide validation. See below for which settings are available.
 
 // =============================================================================
 
@@ -78,3 +78,103 @@ data if no other output is set in the agent policy.
 
 Sending monitoring data to a remote {es} cluster is currently not supported.
 |===
+
+Advanced YAML configuration
+
+// TODO: DRY up copied docs from docs/en/ingest-management/elastic-agent/configuration/outputs/output-elasticsearch.asciidoc
+
+[cols="2*<a"]
+|===
+| Setting | Description
+
+// tag::backoff.init-setting[]
+|
+[id="{type}-backoff.init-setting"]
+`backoff.init`
+
+| (string) The number of seconds to wait before trying to reconnect to {es}
+after a network error. After waiting `backoff.init` seconds, {agent} tries to
+reconnect. If the attempt fails, the backoff timer is increased exponentially up
+to `backoff.max`. After a successful connection, the backoff timer is reset.
+
+*Default:* `1s`
+// end::backoff.init-setting[]
+
+// =============================================================================
+
+// tag::backoff.max-setting[]
+|
+[id="{type}-backoff.max-setting"]
+`backoff.max`
+
+| (string) The maximum number of seconds to wait before attempting to connect to
+{es} after a network error.
+
+*Default:* `60s`
+// end::backoff.max-setting[]
+
+// =============================================================================
+
+// tag::bulk_max_size-setting[]
+|
+[id="{type}-bulk_max_size-setting"]
+`bulk_max_size`
+
+| (int) The maximum number of events to bulk in a single {es} bulk API index
+request. 
+
+Events can be collected into batches. {agent} will split batches larger than
+`bulk_max_size` into multiple batches.
+
+Specifying a larger batch size can improve performance by lowering the overhead
+of sending events. However big batch sizes can also increase processing times,
+which might result in API errors, killed connections, timed-out publishing
+requests, and, ultimately, lower throughput.
+
+Setting `bulk_max_size` to values less than or equal to 0 turns off the
+splitting of batches. When splitting is disabled, the queue decides on the
+number of events to be contained in a batch.
+
+*Default:* `50`
+// end::bulk_max_size-setting[]
+
+// =============================================================================
+
+include::output-shared-settings.asciidoc[tag=compression_level-setting]
+
+*Default:* `0`
+
+// =============================================================================
+
+// tag::max_retries-setting[]
+|
+[id="{type}-max_retries-setting"]
+`max_retries`
+
+| (int) The number of times to retry publishing an event after a publishing
+failure. After the specified number of retries, the events are typically
+dropped.
+
+Set `max_retries` to a value less than 0 to retry until all events are published.
+
+*Default:* `3`
+// end::max_retries-setting[]
+
+// =============================================================================
+
+// tag::timeout-setting[]
+|
+[id="{type}-timeout-setting"]
+`timeout`
+
+| (string) The HTTP request timeout in seconds for the {es} request.
+
+*Default:* `90s`
+
+// end::timeout-setting[]
+
+// =============================================================================
+
+include::output-shared-settings.asciidoc[tag=worker-setting]
+
+// =============================================================================

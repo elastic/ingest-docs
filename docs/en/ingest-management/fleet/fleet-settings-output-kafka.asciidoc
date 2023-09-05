@@ -35,6 +35,8 @@ Use the format `host:port` (without any protocol `http://`). Click **Add row** t
 * `localhost:9092`
 * `mykafkahost:9092`
 
+Refer to the <<add-a-fleet-server,{fleet-server}>> documentation for default ports and other configuration details.
+
 |===
 
 [discrete]

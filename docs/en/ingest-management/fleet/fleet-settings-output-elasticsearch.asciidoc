@@ -27,6 +27,8 @@ Default {es} port for {ecloud}
 * `https://1d7a52f5eb344de18ea04411fe09e564.fleet.eu-west-1.aws.qa.cld.elstc.co:443`
 * `https://[2001:db8::1]:9200`
 
+Refer to the <<add-a-fleet-server,{fleet-server}>> documentation for default ports and other configuration details.
+
 // =============================================================================
 
 |
@@ -65,7 +67,7 @@ currently provide validation.
 **Make this output the default for agent integrations**
 
 | When this setting is on, {agent}s use this output to send data if no other
-output is set in the agent policy.
+output is set in the <<agent-policy,agent policy>>.
 
 // =============================================================================
 
@@ -73,8 +75,7 @@ output is set in the agent policy.
 [id="es-agent-monitoring-output"]
 **Make this output the default for agent monitoring**
 
-| When this setting is on, {agent}s use this output to send agent monitoring
-data if no other output is set in the agent policy.
+| When this setting is on, {agent}s use this output to send <<monitor-elastic-agent,agent monitoring data>> if no other output is set in the <<agent-policy,agent policy>>.
 
 Sending monitoring data to a remote {es} cluster is currently not supported.
 |===

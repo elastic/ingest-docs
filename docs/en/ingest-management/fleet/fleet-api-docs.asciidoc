@@ -22,6 +22,22 @@ https://github.com/elastic/kibana/tree/main/x-pack/plugins/fleet/common/openapi/
 In this section, we provide examples of some commonly used {fleet} APIs.
 
 [discrete]
+[[using-the-console]]
+== Using the Console
+
+You can run {fleet} API requests through the {kib} Console.
+
+. Open the {kib} menu and go to **Management -> Dev Tools**.
+. In your request, prepend your {fleet} API endpoint with `kbn:`, for example:
++
+[source,sh]
+----
+GET kbn:/api/fleet/agent_policies
+----
+
+For more detail about using the {kib} Console refer to {kibana-ref}/console-kibana.html[Run API requests].
+
+[discrete]
 [[authentication]]
 == Authentication
 

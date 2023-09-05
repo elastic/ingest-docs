@@ -14,6 +14,7 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.9.2>>
 * <<release-notes-8.9.1>>
 * <<release-notes-8.9.0>>
 
@@ -21,6 +22,32 @@ Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.9.2 relnotes
+
+[[release-notes-8.9.2]]
+== {fleet} and {agent} 8.9.2
+
+Review important information about the {fleet} and {agent} 8.9.2 release.
+
+[discrete]
+[[enhancements-8.9.2]]
+=== Enhancements
+
+{fleet}::
+* Adds the configuration setting `xpack.fleet.packageVerification.gpgKeyPath` as an environment variable in the {kib} container. {kibana-pull}163783[#163783].
+
+{agent}::
+* Adds logging to the restart step of the {agent} upgrade rollback process. {agent-pull}3245[#3245]
+
+[discrete]
+[[bug-fixes-8.9.2]]
+=== Bug fixes
+
+{agent}::
+* Correctly identify retryable errors when attempting to uninstall on Windows. {agent-pull}3317[#3317]
+
+// end 8.9.2 relnotes
 
 // begin 8.9.1 relnotes
 

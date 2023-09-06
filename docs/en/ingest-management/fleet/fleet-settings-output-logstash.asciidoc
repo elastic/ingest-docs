@@ -112,15 +112,33 @@ output is set in the <<agent-policy,agent policy>>.
 |===
 | Setting | Description
 
-include::../elastic-agent/configuration/outputs/output-shared-settings.asciidoc[tag=escape_html-setting]
+include::../elastic-agent/configuration/outputs/output-logstash.asciidoc[tag=backoff.init-setting]
 
 // =============================================================================
 
-include::../elastic-agent/configuration/outputs/output-logstash.asciidoc[tag=proxy_use_local_resolver-setting]
+include::../elastic-agent/configuration/outputs/output-logstash.asciidoc[tag=backoff.max-setting]
+
+// =============================================================================
+
+include::../elastic-agent/configuration/outputs/output-logstash.asciidoc[tag=bulk_max_size-setting]
 
 // =============================================================================
 
 include::../elastic-agent/configuration/outputs/output-shared-settings.asciidoc[tag=compression_level-setting]
+
+// =============================================================================
+
+include::../elastic-agent/configuration/outputs/output-shared-settings.asciidoc[tag=escape_html-setting]
+
+// =============================================================================
+
+// tag::index-setting[]
+|
+[id="{type}-index-setting"]
+`index`
+
+| (string) The index root name to write events to.
+// end::index-setting[]
 
 // =============================================================================
 
@@ -133,6 +151,10 @@ include::../elastic-agent/configuration/outputs/output-logstash.asciidoc[tag=max
 // =============================================================================
 
 include::../elastic-agent/configuration/outputs/output-logstash.asciidoc[tag=pipelining-setting]
+
+// =============================================================================
+
+include::../elastic-agent/configuration/outputs/output-logstash.asciidoc[tag=proxy_use_local_resolver-setting]
 
 // =============================================================================
 

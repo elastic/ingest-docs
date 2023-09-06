@@ -879,7 +879,7 @@ elastic-agent logs [--follow] [--number <int>] [--component <string>] [--no-colo
 === Options
 
 `--follow` or `-f`::
-Follow log updates until the command is interrupted (e.g. with Ctrl-C).
+Follow log updates until the command is interrupted (for example with `Ctrl-C`).
 
 `--number <int>` or `-n <int>`::
 How many lines of logs to print. If logs following is enabled, affects the initial output.

@@ -90,8 +90,8 @@ NOTE: {elastic-defend} and APM Server have a different output matrix.
 
 |Kafka
 |{y}
-|Under consideration
-|Under consideration
+|{y} (beta)
+|{y} (beta)
 
 |Redis
 |{y}

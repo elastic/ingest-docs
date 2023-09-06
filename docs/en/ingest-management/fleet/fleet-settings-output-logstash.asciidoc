@@ -1,3 +1,5 @@
+:type: output-logstash-fleet-settings
+
 [[ls-output-settings]]
 = {ls} output settings
 
@@ -81,6 +83,8 @@ To learn about proxy configuration, refer to <<fleet-agent-proxy-support>>.
 that uses this output. Make sure you specify valid YAML. The UI does not
 currently provide validation.
 
+See <<ls-output-settings-yaml-config>> for descriptions of the available settings.
+
 // =============================================================================
 
 |
@@ -99,3 +103,53 @@ output is set in the <<agent-policy,agent policy>>.
 | When this setting is on, {agent}s use this output to send <<monitor-elastic-agent,agent monitoring data>> if no other output is set in the <<agent-policy,agent policy>>.
 
 |===
+
+
+[[ls-output-settings-yaml-config]]
+== Advanced YAML configuration
+
+[cols="2*<a"]
+|===
+| Setting | Description
+
+include::../elastic-agent/configuration/outputs/output-shared-settings.asciidoc[tag=escape_html-setting]
+
+// =============================================================================
+
+include::../elastic-agent/configuration/outputs/output-logstash.asciidoc[tag=proxy_use_local_resolver-setting]
+
+// =============================================================================
+
+include::../elastic-agent/configuration/outputs/output-shared-settings.asciidoc[tag=compression_level-setting]
+
+// =============================================================================
+
+include::../elastic-agent/configuration/outputs/output-logstash.asciidoc[tag=loadbalance-setting]
+
+// =============================================================================
+
+include::../elastic-agent/configuration/outputs/output-logstash.asciidoc[tag=max_retries-setting]
+
+// =============================================================================
+
+include::../elastic-agent/configuration/outputs/output-logstash.asciidoc[tag=pipelining-setting]
+
+// =============================================================================
+
+include::../elastic-agent/configuration/outputs/output-logstash.asciidoc[tag=slow_start-setting]
+
+// =============================================================================
+
+include::../elastic-agent/configuration/outputs/output-logstash.asciidoc[tag=timeout-setting]
+
+// =============================================================================
+
+include::../elastic-agent/configuration/outputs/output-logstash.asciidoc[tag=ttl-setting]
+
+// =============================================================================
+
+include::../elastic-agent/configuration/outputs/output-shared-settings.asciidoc[tag=worker-setting]
+
+|===
+
+:type!:

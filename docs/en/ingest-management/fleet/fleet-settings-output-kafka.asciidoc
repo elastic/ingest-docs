@@ -391,7 +391,7 @@ output is set in the <<agent-policy,agent policy>>.
 [id="{type}-client_id-setting"]
 `client_id`
 
-| The configurable ClientID used for logging, debugging, and auditing purposes.
+| (string) The configurable ClientID used for logging, debugging, and auditing purposes.
 
 *Default:* `Elastic Agent`
 // end::client_id-setting[]
@@ -525,7 +525,7 @@ request.
 [id="{type}-keep_alive-setting"]
 `keep_alive`
 
-| The keep-alive period for an active network connection. If `0s`, keep-alives are disabled.
+| (string) The keep-alive period for an active network connection. If `0s`, keep-alives are disabled.
 
 *Default:* `0s`
 // end::keep_alive-setting[]
@@ -537,7 +537,7 @@ request.
 [id="{type}-max_message_bytes-setting"]
 `max_message_bytes`
 
-| The maximum permitted size of JSON-encoded messages. Bigger messages will be dropped. This value should be equal to or less than the broker's `message.max.bytes`.
+| (int) The maximum permitted size of JSON-encoded messages. Bigger messages will be dropped. This value should be equal to or less than the broker's `message.max.bytes`.
 
 *Default:* `1000000` (bytes)
 // end::max_message_bytes-setting[]

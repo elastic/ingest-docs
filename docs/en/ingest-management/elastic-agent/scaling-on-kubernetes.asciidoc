@@ -156,7 +156,7 @@ User experience regarding Dashboard responses, is also affected from the size of
 [discrete]
 === Disabling indexing host.ip and host.mac fields 
 
-A new environemntal variable `NETINFO: false` has been introduced to globally disable the indexing of fields `host.ip` and `host.mac` in your {k8s} integration. For more information see <<agent-environment-variables>>.
+A new environemntal variable `ELASTIC_NETINFO: false` has been introduced to globally disable the indexing of fields `host.ip` and `host.mac` in your {k8s} integration. For more information see <<agent-environment-variables>>.
 
 Setting this to `false` is recommended for large scale setups where the host.ip and host.mac fields index size increases.
 

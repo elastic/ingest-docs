@@ -560,10 +560,10 @@ contains your CA's certificate.
 
 // end::kibana-ca[]
 
-// tag::netinfo[]
+// tag::elastic-netinfo[]
 |
-[id="env-{type}-netinfo"]
-`NETINFO`
+[id="env-{type}-elastic-netinfo"]
+`ELASTIC_NETINFO`
 
 | (bool) When `false`, disables `netinfo.enabled` parameter of `add_host_metadata` processor.
 Setting this to `false` is recommended for large scale setups where the host.ip and host.mac fields index size increases.
@@ -574,6 +574,6 @@ For more information see <<add_host_metadata-processor>>
 
 *Default:* `""`
 
-// end::netinfo[]
+// end::elastic-netinfo[]
 
 // =============================================================================

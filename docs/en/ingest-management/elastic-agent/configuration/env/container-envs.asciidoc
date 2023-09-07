@@ -48,7 +48,7 @@ include::shared-env.asciidoc[tag=kibana-password]
 
 include::shared-env.asciidoc[tag=kibana-ca]
 
-include::shared-env.asciidoc[tag=netinfo]
+include::shared-env.asciidoc[tag=elastic-netinfo]
 
 
 |===

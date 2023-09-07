@@ -572,7 +572,7 @@ By default, {agent} initialises the add_host_metadata processor with netinfo.ena
 For more information see <<add_host_metadata-processor>>
 
 
-*Default:* `""`
+*Default:* `"false"`
 
 // end::elastic-netinfo[]
 

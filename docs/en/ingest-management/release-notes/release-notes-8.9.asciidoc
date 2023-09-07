@@ -126,6 +126,19 @@ unchanged. On expected failure paths (for example, Agent Inactive, Missing Agent
 ====
 
 [discrete]
+[[breaking-ecs-hostname]]
+.`host.name` field changed to ECS lowercase format.
+[%collapsible]
+====
+*Details* +
+In {agent} output the `host.name` field has been changed to lowercase to match Elastic Common Schema (ECS) guidelines. The agent name is also reported in lowercase (`AGENT-name` becomes `agent-name`).
+
+*Impact* +
+After upgrading {agent} to version 8.9.0 or higher, any case-sensitive searches may result in false-positive alerts. For example, a case-sensitive search based on the upper-case `AGENT-name` could result in an alert such as `system.load.1 reported no data in the last 5m for AGENT-name`. After upgrading, you may need to manually clear alerts and adjust some searches to match the new `host.name` format.
+
+====
+
+[discrete]
 [[new-features-8.9.0]]
 === New features
 
@@ -158,7 +171,6 @@ The 8.9.0 release Added the following new and notable features.
 
 {agent}::
 * Add additional elements to support the Universal Profiling integration. {agent-pull}2881[#2881]
-* Lowercase reported hostnames per Elastic Common Schema (Ecs) Guidelines for the `host.name` field.
 
 [discrete]
 [[bug-fixes-8.9.0]]

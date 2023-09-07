@@ -1,0 +1,218 @@
+// Use these for links to issue and pulls.
+:kibana-issue: https://github.com/elastic/kibana/issues/
+:kibana-pull: https://github.com/elastic/kibana/pull/
+:beats-issue: https://github.com/elastic/beats/issues/
+:beats-pull: https://github.com/elastic/beats/pull/
+:agent-libs-pull: https://github.com/elastic/elastic-agent-libs/pull/
+:agent-issue: https://github.com/elastic/elastic-agent/issues/
+:agent-pull: https://github.com/elastic/elastic-agent/pull/
+:fleet-server-issue: https://github.com/elastic/fleet-server/issues/
+:fleet-server-pull: https://github.com/elastic/fleet-server/pull/
+
+[[release-notes]]
+= Release notes
+
+This section summarizes the changes in each release.
+
+* <<release-notes-8.10.0>>
+
+Also see:
+
+* {kibana-ref}/release-notes.html[{kib} release notes]
+* {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.10.0 relnotes
+
+[[release-notes-8.10.0]]
+== {fleet} and {agent} 8.10.0
+
+Review important information about the {fleet} and {agent} 8.10.0 release.
+
+[discrete]
+[[security-updates-8.10.0]]
+=== Security updates
+
+{fleet-server}::
+* Example {fleet-server-pull}xxxx[#xxxx]
+
+[discrete]
+[[breaking-changes-8.10.0]]
+=== Breaking changes
+
+Breaking changes can prevent your application from optimal operation and
+performance. Before you upgrade, review the breaking changes, then mitigate the
+impact to your application.
+
+[discrete]
+[[breaking-6862]]
+.{agent} diagnostics unavailable with {fleet-server} below 8.10.0.
+[%collapsible]
+====
+*Details* +
+The mechanism that {fleet} uses to generate diagnostic bundles has been updated. To <<collect-agent-diagnostics,collect {agent} diagnostics>>, {fleet-server} needs to be at version 8.10.0 or higher.
+
+*Impact* +
+If you need to access a diagnostic bundle for an agent, ensure that {fleet-server} is at the required version.
+
+====
+
+[discrete]
+[[new-features-8.10.0]]
+=== New features
+
+The 8.10.0 release Added the following new and notable features.
+
+{fleet}::
+* Only enable secret storage once all fleet servers are above 8.10.0 ({kibana-pull}163627[#163627]).
+* Kafka integration API ({kibana-pull}159110[#159110]).
+
+{fleet-server}::
+//* A new `elastic-api` version header is added, allow versioning of the {fleet-server} APIs. {fleet-server-pull}2677[#2677]
+//* Support delivery of user-uploaded files to integrations. {fleet-server-pull}2666[#2666]
+
+{agent}::
+//* Add the logs subcommand to the agent CLI. {agent-pull}2752[#2745] {agent-issue}114[#114]
+//* Support upgrading to specific snapshots by specifying the build ID. {agent-pull}2752[#2752]
+
+[discrete]
+[[enhancements-8.10.0]]
+=== Enhancements
+
+{fleet}::
+* Adds support for runtime fields ({kibana-pull}161129[#161129]).
+
+{fleet-server}::
+//* Expose Prometheus metrics on metrics listener (when enabled). Ship Prometheus metrics with apm.Tracer when tracer is enabled. {fleet-server-pull}2610[#2610]
+
+{agent}::
+//* Add additional elements to support the Universal Profiling integration. {agent-pull}2881[#2881]
+
+[discrete]
+[[bug-fixes-8.10.0]]
+=== Bug fixes
+
+{fleet}::
+* Only show agent dashboard links if there is more than one non-server agent and if the dashboards exist ({kibana-pull}164469[#164469]).
+* Exclude Synthetics from per-policy-outputs ({kibana-pull}161949[#161949]).
+* Fixing the path for hint templates for auto-discover ({kibana-pull}161075[#161075]).
+
+{fleet-server}::
+//* Fixes a bug during {agent} upgrades where `action_seq_no` was overwritten with 0 if the `ackToken` was not provided. {fleet-server-pull}2582[#2582]
+//* Fixes an issue that caused {fleet-server} to go offline after reboot. {fleet-server-pull}2697[#2697] {fleet-server-pull}2431[#2431]
+
+{agent}::
+//* Change monitoring socket to use a hash of the ID instead of the actual ID. {agent-pull}2912[#2912]
+//* Fix the drop processor for monitoring component logs to use the `component.id` instead of the dataset. {agent-pull}2982[#2982] {agent-issue}2388[#2388]
+//* Update Node version to 18.16.0. {agent-pull}2696[#2696] 
+
+// end 8.10.0 relnotes
+
+
+// ---------------------
+//TEMPLATE
+//Use the following text as a template. Remember to replace the version info.
+
+// begin 8.7.x relnotes
+
+//[[release-notes-8.7.x]]
+//== {fleet} and {agent} 8.7.x
+
+//Review important information about the {fleet} and {agent} 8.7.x release.
+
+//[discrete]
+//[[security-updates-8.7.x]]
+//=== Security updates
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[breaking-changes-8.7.x]]
+//=== Breaking changes
+
+//Breaking changes can prevent your application from optimal operation and
+//performance. Before you upgrade, review the breaking changes, then mitigate the
+//impact to your application.
+
+//[discrete]
+//[[breaking-PR#]]
+//.Short description
+//[%collapsible]
+//====
+//*Details* +
+//<Describe new behavior.> For more information, refer to {kibana-pull}PR[#PR].
+
+//*Impact* +
+//<Describe how users should mitigate the change.> For more information, refer to {fleet-guide}/fleet-server.html[Fleet Server].
+//====
+
+//[discrete]
+//[[known-issues-8.7.x]]
+//=== Known issues
+
+//[[known-issue-issue#]]
+//.Short description
+//[%collapsible]
+//====
+
+//*Details*
+
+//<Describe known issue.>
+
+//*Impact* +
+
+//<Describe impact or workaround.>
+
+//====
+
+//[discrete]
+//[[deprecations-8.7.x]]
+//=== Deprecations
+
+//The following functionality is deprecated in 8.7.x, and will be removed in
+//8.7.x. Deprecated functionality does not have an immediate impact on your
+//application, but we strongly recommend you make the necessary updates after you
+//upgrade to 8.7.x.
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[new-features-8.7.x]]
+//=== New features
+
+//The 8.7.x release Added the following new and notable features.
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[enhancements-8.7.x]]
+//=== Enhancements
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[bug-fixes-8.7.x]]
+//=== Bug fixes
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+// end 8.7.x relnotes

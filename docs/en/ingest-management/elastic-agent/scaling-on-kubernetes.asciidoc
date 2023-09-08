@@ -158,7 +158,7 @@ User experience regarding Dashboard responses, is also affected from the size of
 
 A new environemntal variable `ELASTIC_NETINFO: false` has been introduced to globally disable the indexing of `host.ip` and `host.mac` fields in your {k8s} integration. For more information see <<agent-environment-variables>>.
 
-Setting this to `false` is recommended for large scale setups where the host.ip and host.mac fields index size increases. The number of ips and mac addresses reported, is increasing significantly as kubenetes cluster is growing. This leads to increase indexing time considerably, extra storage is needed and additional overhead in visualisation rendering required.
+Setting this to `false` is recommended for large scale setups where the `host.ip` and `host.mac` fields' index size increases. The number of IPs and MAC addresses reported increases significantly as a Kubenetes cluster grows. This leads to considerably increased indexing time, as well as the need for extra storage and additional overhead for visualization rendering.
 
 
 [discrete]

@@ -62,7 +62,7 @@ The 8.10.0 release Added the following new and notable features.
 {fleet-server}::
 * Add a new policy token that can be used to enroll {agent} into fleet server. {fleet-server-pull}2654[#2654]
 * Add a Kafka output type for agent policies. {fleet-server-pull}2850[#2850]
-* Secret references are now replaced with with secret values in an {agent} policy. {fleet-server-pull}2863[#2863] {fleet-server-issue}2485[#2485]
+* Secret references are now replaced with secret values in an {agent} policy. {fleet-server-pull}2863[#2863] {fleet-server-issue}2485[#2485]
 
 {agent}::
 * Report the version from the {agent} package instead of the agent binary to enhance release process. {agent-pull}2908[#2908]
@@ -89,7 +89,7 @@ The 8.10.0 release Added the following new and notable features.
 * Add runtime prevention to prevent {elastic-defend} from running if {agent} is not installed in the default location. {agent-pull}3114[#3114]
 * Add a new flag `complete` to agent metadata to signal that the instance running is synthetics-capable. {agent-pull}3190[#3190] {fleet-server-issue}1754[#1754]
 * Add support for setting GOMAXPROCS to limit CPU usage through the agent policy. {agent-pull}3179[#3179]
-* Adds logging to the restart step of the {agent} upgrade rollback process. {agent-pull}3245[#3245] {agent-issue}3305[#3305]
+* Add logging to the restart step of the {agent} upgrade rollback process. {agent-pull}3245[#3245] {agent-issue}3305[#3305]
 
 [discrete]
 [[bug-fixes-8.10.0]]
@@ -97,12 +97,12 @@ The 8.10.0 release Added the following new and notable features.
 
 {fleet}::
 * Only show agent dashboard links if there is more than one non-server agent and if the dashboards exist. {kibana-pull}164469[#164469].
-* Exclude Synthetics from per-policy-outputs. {kibana-pull}161949[#161949].
-* Fixing the path for hint templates for auto-discover. {kibana-pull}161075[#161075].
+* Exclude synthetics from per-policy-outputs. {kibana-pull}161949[#161949].
+* Fix the path for hint templates for auto-discover. {kibana-pull}161075[#161075].
 
 {agent}::
 * Don't trigger IOC alert on Windows uninstall. {agent-pull}3014[#3014] {agent-issue}2970[#2970]
-* Fix credential redaction in diagnostic bundle collection {agent-pull}3165[#3165]
+* Fix credential redaction in diagnostic bundle collection. {agent-pull}3165[#3165]
 * Ensure that {agent} upgrades are rolled back even when the upgraded agent crashes immediately and repeatedly. {agent-pull}3220[#3220] {agent-issue}3123[#3123]
 * Add components in the diagnostic collection when initialized from {kib}. {agent-pull}3295[#3295] {agent-issue}3294[#3294]
 * Ensure that Elastic Agent is restarted during rollback. {agent-pull}3268[#3268]

@@ -648,3 +648,10 @@ curl -u elastic:<password> --request POST \
   --header 'Content-Type: application/json' \
   --header 'kbn-xsrf: xyz' \
 ----
+
+[discrete]
+[[php-key-download-fail]]
+== Air-gapped {agent} upgrade can fail due to an inaccessible PGP key
+
+In versions 8.9 and above, an {agent} upgrade may fail when the upgrader can't access a PGP key required to verify the binary signature. For details and a workaround, refer to the <<known-issue-3375,PGP key download fails in an air-gapped environment>> known issue in the version 8.9.0 Release Notes.
+

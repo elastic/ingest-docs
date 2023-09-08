@@ -149,7 +149,7 @@ Policy configuration of {k8s} package can heavily affect the amount of metrics c
 [discrete]
 === Dashboards and Visualisations 
 
-https://github.com/elastic/integrations/blob/main/docs/dashboard_guidelines.md[Dashboard Guidelines] document can provide guidance on how to implement your dashboards and is constantly updated also to track needs of observability at scale.
+The https://github.com/elastic/integrations/blob/main/docs/dashboard_guidelines.md[Dashboard Guidelines] document provides guidance on how to implement your dashboards and is constantly updated to track the needs of Observability at scale.
 
 User experience regarding Dashboard responses, is also affected from the size of data being requested. As dashboards can contain multiple visualisations, the general consideration is to split visualisations and group them according to the frequency of access. The less number of visualisations tends to improve user experience.
 

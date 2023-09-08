@@ -3,7 +3,16 @@
 
 This guide walks you through a simple monitoring scenario so you can learn the basics of setting up standalone {agent}, using it to work with {ecloud} and an Elastic integration. 
 
-Following these steps, you'll deploy the {stack}, install a standalone {agent} on a host to monitor an nginx web server instance, and visualize the collected logs.
+Following these steps, you'll deploy the {stack}, install a standalone {agent} on a host to monitor an nginx web server instance, and access visualizations based on the collected logs.
+
+. <<nginx-guide-install-nginx,Install nginx>>.
+. <<nginx-guide-sign-up,Create an {ecloud} deployment>>.
+. <<nginx-guide-create-policy,Create an {agent} policy>>.
+. <<nginx-guide-add-integration,Add the Nginx Integration>>.
+. <<nginx-guide-configure-standalone-agent,Configure standalone {agent}>>.
+. <<nginx-guide-confirm-agent-data,Confirm that your {agent} data is flowing>>.
+. <<nginx-guide-view-system-data,View your system data>>.
+. <<nginx-guide-view-nginx-data,View your nginx logging data>>.
 
 [discrete]
 [[nginx-guide-prereqs]]
@@ -12,7 +21,7 @@ Following these steps, you'll deploy the {stack}, install a standalone {agent} o
 To get started, you need:
 
 . An internet connection and an email address for your {ecloud} trial.
-. A Linux host machine on which you'll install an nginx web server and, optionally, the Linux stress tool. The commands in this guide use an Ubuntu image but any Linux distribution should be fine.
+. A Linux host machine on which you'll install an nginx web server. The commands in this guide use an Ubuntu image but any Linux distribution should be fine.
 
 [discrete]
 [[nginx-guide-install-nginx]]
@@ -24,7 +33,6 @@ To start, we'll set up a basic link:https://docs.nginx.com/nginx/admin-guide/web
 +
 [source,sh]
 ----
-sudo apt update
 sudo apt install nginx
 ----
 +
@@ -89,7 +97,7 @@ image::images/guide-nginx-policy.png["The nginx-policy UI with integrations tab 
 image::images/guide-integrations-page.png["Integrations page with nginx in the search bar"]
 . Select the **Nginx** card.
 . Click **Add Nginx**.
-. Click the link to **Add integration only (skip agent installation)**. We'll install standalone {agent} in a later step.
+. Click the link to **Add integration only (skip agent installation)**. You'll install standalone {agent} in a later step.
 . Here, you can select options such as the paths to where your nginx logs are stored, whether or not to collect metrics data, and various other settings.
 +
 For now, leave all of the default settings and click **Save and continue** to add the Nginx Integration to your `nginx-policy` policy.
@@ -103,7 +111,7 @@ image::images/guide-nginx-integration-added.png["Nginx Integration added confirm
 [[nginx-guide-configure-standalone-agent]]
 === Step 5: Configure standalone {agent}
 
-Rather than opt for {fleet} to centrally manage {agent}, we'll configure an agent to run in standalone mode, so it will be managed by hand.
+Rather than opt for {fleet} to centrally manage {agent}, you'll configure an agent to run in standalone mode, so it will be managed by hand.
 
 . Open the {kib} menu and go to **{fleet} -> Agents** and click **Add agent**.
 . For the **What type of host are you adding?** step, select `nginx-policy` from the drop-down menu if it's not already selected.
@@ -117,12 +125,18 @@ Notice that the policy contains all of the input, output, and other settings for
 +
 image::images/guide-install-agent-on-host.png["Install {agent} on your host step, showing tabs with the commands for different operating systems."]
 +
-If you're prompted with `Elastic Agent will be installed at {installation location} and will run as a service. Do you want to continue?` answer `Y` or `Yes`.
+[NOTE] 
+==== 
+{agent} commands need to be run as `root`. You can prefix each agent command with `sudo` or you can start a new shell as `root` by running `sudo su`. 
+====
 +
-If you're prompted with `Do you want to enroll this Agent into Fleet?` answer `n` or `no`.
+If you're prompted with `Elastic Agent will be installed at {installation location} and will run as a service. Do you want to continue?` answer `Yes`.
++
+If you're prompted with `Do you want to enroll this Agent into Fleet?` answer `no`.
++
 . You can run the `status` command to confirm that {agent} is running.
 +
-[source,sh]
+[source,yaml]
 ----
 elastic-agent status
 
@@ -176,11 +190,11 @@ message: Running
 [[nginx-guide-confirm-agent-data]]
 === Step 6: Confirm that your {agent} data is flowing
 
-Now that {agent} is running, it's time to confirm that the agent data is flowing into {es} and {kib}.
+Now that {agent} is running, it's time to confirm that the agent data is flowing into {es}.
 
 . Check that {agent} logs are flowing.
 .. Open the {kib} menu and go to **Analytics -> Discover**.
-.. In the KQL query bar, enter the query `agent.id : "{agent-id}"` where `agent-id` you retrieved from the `elastic-agent status --output yaml` command.
+.. In the KQL query bar, enter the query `agent.id : "{agent-id}"` where `{agent-id}` is the ID you retrieved from the `elastic-agent status --output yaml` command. For example: `agent.id : "4779b439-1130-4841-a878-e3d7d1a457d0"`.
 +
 If {agent} has connected successfully with your {ecloud} deployment, the agent logs should be flowing into {es} and visible in {kib} Discover.
 +
@@ -213,9 +227,9 @@ image::images/guide-system-metrics-dashboard.png["The System metrics host overvi
 
 [discrete]
 [[nginx-guide-view-nginx-data]]
-=== Step 8: View your nginx data
+=== Step 8: View your nginx logging data
 
-Now let's view your nginx logs data.
+Now let's view your nginx logging data.
 
 . Open the {kib} menu and go to **Management -> Integrations -> Installed integrations**.
 . Select the **Nginx** card and open the **Assets** tab.
@@ -226,9 +240,10 @@ image::images/guide-nginx-logs-dashboard.png["The nginx logs dashboard shows var
 +
 image::images/guide-nginx-browser-breakdown.png["Kibana Dashboard shows agent metrics are flowing into Elasticsearch."]
 
+You have now successfully set up monitoring for nginx logs using standalone {agent} and an {ecloud} deployment.
 
+[discrete]
+=== What's next?
 
-
-
-
-
+* Learn more about <<fleet-overview,{fleet} and {agent}>>.
+* Learn more about {integrations-docs}[{integrations}].

@@ -228,6 +228,13 @@ All non-critical and non-error events will then route to the default `%{[fields.
 
 A header is a key-value pair, and multiple headers can be included with the same key. Only string values are supported. These headers will be included in each produced Kafka message.
 
+[IMPORTANT]
+====
+Quotation marks cannot be used in the value of a key:value pair. This includes both single (') and double (") quotes.
+
+Also, spaces are removed from both the key and the value so as to preserve the YAML syntax in the {agent} configuration file.
+====
+
 [cols="2*<a"]
 |===
 

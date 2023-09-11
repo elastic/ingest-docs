@@ -62,7 +62,7 @@ The 8.10.0 release Added the following new and notable features.
 {fleet-server}::
 * Add a new policy token that can be used to enroll {agent} into fleet server. {fleet-server-pull}2654[#2654]
 * Add a Kafka output type for agent policies. {fleet-server-pull}2850[#2850]
-* Secret references are now replaced with secret values in an {agent} policy. {fleet-server-pull}2863[#2863] {fleet-server-issue}2485[#2485]
+* Fleet Server support to handle agent policy secrets. {fleet-server-pull}2863[#2863] {fleet-server-issue}2485[#2485]
 
 {agent}::
 * Report the version from the {agent} package instead of the agent binary to enhance release process. {agent-pull}2908[#2908]

@@ -56,7 +56,7 @@ If you need to access a diagnostic bundle for an agent, ensure that {fleet-serve
 The 8.10.0 release Added the following new and notable features.
 
 {fleet}::
-* Only enable secret storage once all fleet servers are above 8.10.0 {kibana-pull}163627[#163627].
+* Enable agent policy secret storage when all fleet servers are above 8.10.0 {kibana-pull}163627[#163627].
 * Kafka integration API {kibana-pull}159110[#159110].
 
 {fleet-server}::

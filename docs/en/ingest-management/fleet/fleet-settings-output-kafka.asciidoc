@@ -203,6 +203,13 @@ Processors are applied in the order that they appear, from top to bottom.
 
 The value field must be specified in a `[key]: value` format with both the key and value being strings. For example, `host.port: 2000` or `message: Test`.
 
+[NOTE]
+====
+Quotation marks cannot be used in the value of a key:value pair. This includes both single (') and double (") quotes.
+
+Also, spaces are removed from both the key and the value so as to preserve the YAML syntax in the {agent} configuration file.
+====
+
 As an example for setting up your processors, you might want to route log events based on severity. To do so, you can specify a default topic for all events not matched by other processors:
 
 * `%{[fields.log_topic]}`.
@@ -227,13 +234,6 @@ All non-critical and non-error events will then route to the default `%{[fields.
 == Header settings
 
 A header is a key-value pair, and multiple headers can be included with the same key. Only string values are supported. These headers will be included in each produced Kafka message.
-
-[IMPORTANT]
-====
-Quotation marks cannot be used in the value of a key:value pair. This includes both single (') and double (") quotes.
-
-Also, spaces are removed from both the key and the value so as to preserve the YAML syntax in the {agent} configuration file.
-====
 
 [cols="2*<a"]
 |===

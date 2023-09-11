@@ -104,7 +104,6 @@ The 8.10.0 release Added the following new and notable features.
 * Don't trigger IOC alert on Windows uninstall. {agent-pull}3014[#3014] {agent-issue}2970[#2970]
 * Fix credential redaction in diagnostic bundle collection. {agent-pull}3165[#3165]
 * Ensure that {agent} upgrades are rolled back even when the upgraded agent crashes immediately and repeatedly. {agent-pull}3220[#3220] {agent-issue}3123[#3123]
-* Add components in the diagnostic collection when initialized from {kib}. {agent-pull}3295[#3295] {agent-issue}3294[#3294]
 * Ensure that Elastic Agent is restarted during rollback. {agent-pull}3268[#3268]
 * Fix how the diagnostics command handles the custom path to save the diagnostics. {agent-pull}3340[#3340] {agent-issue}3339[#3339]
 

@@ -101,7 +101,7 @@ The 8.10.0 release Added the following new and notable features.
 * Fix the path for hint templates for auto-discover. {kibana-pull}161075[#161075].
 
 {agent}::
-* Don't trigger IOC alert on Windows uninstall. {agent-pull}3014[#3014] {agent-issue}2970[#2970]
+* Don't trigger Indicator of Compromise (IoC) alert on Windows uninstall. {agent-pull}3014[#3014] {agent-issue}2970[#2970]
 * Fix credential redaction in diagnostic bundle collection. {agent-pull}3165[#3165]
 * Ensure that {agent} upgrades are rolled back even when the upgraded agent crashes immediately and repeatedly. {agent-pull}3220[#3220] {agent-issue}3123[#3123]
 * Ensure that Elastic Agent is restarted during rollback. {agent-pull}3268[#3268]

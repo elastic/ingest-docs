@@ -1,0 +1,220 @@
+// Use these for links to issue and pulls.
+:kibana-issue: https://github.com/elastic/kibana/issues/
+:kibana-pull: https://github.com/elastic/kibana/pull/
+:beats-issue: https://github.com/elastic/beats/issues/
+:beats-pull: https://github.com/elastic/beats/pull/
+:agent-libs-pull: https://github.com/elastic/elastic-agent-libs/pull/
+:agent-issue: https://github.com/elastic/elastic-agent/issues/
+:agent-pull: https://github.com/elastic/elastic-agent/pull/
+:fleet-server-issue: https://github.com/elastic/fleet-server/issues/
+:fleet-server-pull: https://github.com/elastic/fleet-server/pull/
+
+[[release-notes]]
+= Release notes
+
+This section summarizes the changes in each release.
+
+* <<release-notes-8.10.0>>
+
+Also see:
+
+* {kibana-ref}/release-notes.html[{kib} release notes]
+* {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.10.0 relnotes
+
+[[release-notes-8.10.0]]
+== {fleet} and {agent} 8.10.0
+
+Review important information about the {fleet} and {agent} 8.10.0 release.
+
+[discrete]
+[[breaking-changes-8.10.0]]
+=== Breaking changes
+
+Breaking changes can prevent your application from optimal operation and
+performance. Before you upgrade, review the breaking changes, then mitigate the
+impact to your application.
+
+[discrete]
+[[breaking-6862]]
+.{agent} diagnostics unavailable with {fleet-server} below 8.10.0.
+[%collapsible]
+====
+*Details* +
+The mechanism that {fleet} uses to generate diagnostic bundles has been updated. To <<collect-agent-diagnostics,collect {agent} diagnostics>>, {fleet-server} needs to be at version 8.10.0 or higher.
+
+*Impact* +
+If you need to access a diagnostic bundle for an agent, ensure that {fleet-server} is at the required version.
+
+====
+
+[discrete]
+[[new-features-8.10.0]]
+=== New features
+
+The 8.10.0 release Added the following new and notable features.
+
+{fleet}::
+* Enable agent policy secret storage when all fleet servers are above 8.10.0 {kibana-pull}163627[#163627].
+* Kafka integration API {kibana-pull}159110[#159110].
+
+{fleet-server}::
+* Add a new policy token that can be used to enroll {agent} into fleet server. {fleet-server-pull}2654[#2654]
+* Add a Kafka output type for agent policies. {fleet-server-pull}2850[#2850]
+* Fleet Server support to handle agent policy secrets. {fleet-server-pull}2863[#2863] {fleet-server-issue}2485[#2485]
+
+{agent}::
+* Report the version from the {agent} package instead of the agent binary to enhance release process. {agent-pull}2908[#2908]
+* Implement tamper protection for {elastic-endpoint} uninstall use cases. {agent-pull}2781[#2781]
+* Add component-level diagnostics and CPU profiling. {agent-pull}3118[#3118]
+* Improve upgrade process to use upgraded version of Watcher to ensure a successful upgrade. {agent-pull}3140[#3140] {agent-issue}2873[#2873]
+
+[discrete]
+[[enhancements-8.10.0]]
+=== Enhancements
+
+{fleet}::
+* Add support for runtime fields. {kibana-pull}161129[#161129].
+
+{fleet-server}::
+* Keep the {fleet-server} service running when {es} is not available. {fleet-server-pull}2693[#2693] {fleet-server-issue}2683[#2683]
+* Add APM trace fields to HTTP request logs. {fleet-server-pull}2743[#2743]
+* File transfers with integrations now use datastreams. {fleet-server-pull}2743[#2741]
+* Use a unique ID for agent action results to ensure accurate counts on {fleet} UI. {fleet-server-pull}2782[#2782] {fleet-server-issue}2596[#2596]
+
+{agent}::
+* Redundant calls to `/api/fleet/setup` were removed in favor of {kib}-initiated calls. {agent-pull}2985[#2985] {agent-issue}2910[#2910]
+* Updated Go version to 1.20.7. {agent-pull}3177[#3177]
+* Add runtime prevention to prevent {elastic-defend} from running if {agent} is not installed in the default location. {agent-pull}3114[#3114]
+* Add a new flag `complete` to agent metadata to signal that the instance running is synthetics-capable. {agent-pull}3190[#3190] {fleet-server-issue}1754[#1754]
+* Add support for setting GOMAXPROCS to limit CPU usage through the agent policy. {agent-pull}3179[#3179]
+* Add logging to the restart step of the {agent} upgrade rollback process. {agent-pull}3245[#3245] {agent-issue}3305[#3305]
+
+[discrete]
+[[bug-fixes-8.10.0]]
+=== Bug fixes
+
+{fleet}::
+* Only show agent dashboard links if there is more than one non-server agent and if the dashboards exist. {kibana-pull}164469[#164469].
+* Exclude synthetics from per-policy-outputs. {kibana-pull}161949[#161949].
+* Fix the path for hint templates for auto-discover. {kibana-pull}161075[#161075].
+
+{agent}::
+* Don't trigger Indicator of Compromise (IoC) alert on Windows uninstall. {agent-pull}3014[#3014] {agent-issue}2970[#2970]
+* Fix credential redaction in diagnostic bundle collection. {agent-pull}3165[#3165]
+* Ensure that {agent} upgrades are rolled back even when the upgraded agent crashes immediately and repeatedly. {agent-pull}3220[#3220] {agent-issue}3123[#3123]
+* Ensure that Elastic Agent is restarted during rollback. {agent-pull}3268[#3268]
+* Fix how the diagnostics command handles the custom path to save the diagnostics. {agent-pull}3340[#3340] {agent-issue}3339[#3339]
+
+// end 8.10.0 relnotes
+
+
+// ---------------------
+//TEMPLATE
+//Use the following text as a template. Remember to replace the version info.
+
+// begin 8.7.x relnotes
+
+//[[release-notes-8.7.x]]
+//== {fleet} and {agent} 8.7.x
+
+//Review important information about the {fleet} and {agent} 8.7.x release.
+
+//[discrete]
+//[[security-updates-8.7.x]]
+//=== Security updates
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[breaking-changes-8.7.x]]
+//=== Breaking changes
+
+//Breaking changes can prevent your application from optimal operation and
+//performance. Before you upgrade, review the breaking changes, then mitigate the
+//impact to your application.
+
+//[discrete]
+//[[breaking-PR#]]
+//.Short description
+//[%collapsible]
+//====
+//*Details* +
+//<Describe new behavior.> For more information, refer to {kibana-pull}PR[#PR].
+
+//*Impact* +
+//<Describe how users should mitigate the change.> For more information, refer to {fleet-guide}/fleet-server.html[Fleet Server].
+//====
+
+//[discrete]
+//[[known-issues-8.7.x]]
+//=== Known issues
+
+//[[known-issue-issue#]]
+//.Short description
+//[%collapsible]
+//====
+
+//*Details*
+
+//<Describe known issue.>
+
+//*Impact* +
+
+//<Describe impact or workaround.>
+
+//====
+
+//[discrete]
+//[[deprecations-8.7.x]]
+//=== Deprecations
+
+//The following functionality is deprecated in 8.7.x, and will be removed in
+//8.7.x. Deprecated functionality does not have an immediate impact on your
+//application, but we strongly recommend you make the necessary updates after you
+//upgrade to 8.7.x.
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[new-features-8.7.x]]
+//=== New features
+
+//The 8.7.x release Added the following new and notable features.
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[enhancements-8.7.x]]
+//=== Enhancements
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[bug-fixes-8.7.x]]
+//=== Bug fixes
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+// end 8.7.x relnotes

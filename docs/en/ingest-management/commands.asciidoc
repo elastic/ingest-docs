@@ -25,6 +25,7 @@ invoking the wrong binary.
 * <<elastic-agent-status-command,status>>
 * <<elastic-agent-uninstall-command,uninstall>>
 * <<elastic-agent-upgrade-command,upgrade>>
+* <<elastic-agent-logs-command,logs>>
 * <<elastic-agent-version-command,version>>
 //* <<elastic-agent-watch-command,watch>>
 
@@ -854,6 +855,52 @@ package verification options, refer to <<upgrade-standalone-verify-package>>.
 [source,shell]
 ----
 elastic-agent upgrade 7.10.1
+----
+
+++++
+<hr>
+++++
+
+[discrete]
+[[elastic-agent-logs-command]]
+== elastic-agent logs
+
+Show the logs of the running {agent}.
+
+[discrete]
+=== Synopsis
+
+[source,shell]
+----
+elastic-agent logs [--follow] [--number <int>] [--component <string>] [--no-color] [--help] [global-flags]
+----
+
+[discrete]
+=== Options
+
+`--follow` or `-f`::
+Follow log updates until the command is interrupted (for example with `Ctrl-C`).
+
+`--number <int>` or `-n <int>`::
+How many lines of logs to print. If logs following is enabled, affects the initial output.
+
+`--component <string>` or `-C <string>`::
+Filter logs based on the component name.
+
+`--no-color`::
+Disable color based on log-level of each entry.
+
+`--help`::
+Show help for the `logs` command.
+
+{global-flags-link}
+
+[discrete]
+=== Example
+
+[source,shell]
+----
+elastic-agent logs -n 100 -f -C "system/metrics-default"
 ----
 
 ++++

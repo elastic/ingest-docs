@@ -7,8 +7,6 @@
 <titleabbrev>{ls}</titleabbrev>
 ++++
 
-include::{fleet-repo-dir}/standalone-note.asciidoc[]
-
 The {ls} output uses an internal protocol to send events directly to {ls} over
 TCP. {ls} provides additional parsing, transformation, and routing of data
 collected by {agent}.

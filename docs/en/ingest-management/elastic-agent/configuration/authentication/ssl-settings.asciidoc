@@ -1,5 +1,5 @@
 [[elastic-agent-ssl-configuration]]
-= Configure SSL/TLS
+= Configure SSL/TLS for standalone {agent}s
 
 ++++
 <titleabbrev>SSL/TLS</titleabbrev>

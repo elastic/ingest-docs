@@ -42,6 +42,7 @@ incoming {agent} connections and routes received events to {es}:
 input {
   elastic_agent {
     port => 5044
+    enrich => none
   }
 }
 

@@ -1,5 +1,9 @@
 [[providers]]
-= Providers
+= Configure providers for standalone {agent}s
+
+++++
+<titleabbrev>Providers</titleabbrev>
+++++
 
 Providers supply the key-value pairs that are used for variable substitution
 and conditionals. Each provider's keys are automatically prefixed with the name

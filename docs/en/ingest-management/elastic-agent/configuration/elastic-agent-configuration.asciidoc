@@ -1,8 +1,6 @@
 [[elastic-agent-configuration]]
 = Configure standalone {agent}s
 
-include::{fleet-repo-dir}/standalone-note.asciidoc[]
-
 TIP: To get started quickly, use {kib} to create and download a standalone
 policy file. You'll still need to deploy and manage the file, though. For more
 information, refer to <<create-standalone-agent-policy>>.

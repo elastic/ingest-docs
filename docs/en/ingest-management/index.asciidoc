@@ -159,9 +159,7 @@ include::elastic-agent/configuration/elastic-agent-configuration.asciidoc[levelo
 
 include::elastic-agent/configuration/create-standalone-agent-policy.asciidoc[leveloffset=+2]
 
-include::elastic-agent/grant-access-to-elasticsearch.asciidoc[leveloffset=+2]
-
-include::elastic-agent/debug-standalone-elastic-agent.asciidoc[leveloffset=+2]
+include::elastic-agent/configuration/structure-config-file.asciidoc[leveloffset=+2]
 
 include::elastic-agent/configuration/inputs/input-configuration.asciidoc[leveloffset=+2]
 
@@ -176,6 +174,12 @@ include::elastic-agent/configuration/authentication/ssl-settings.asciidoc[levelo
 include::elastic-agent/configuration/elastic-agent-standalone-logging.asciidoc[leveloffset=+2]
 
 include::elastic-agent/configuration/elastic-agent-standalone-features.asciidoc[leveloffset=+2]
+
+include::elastic-agent/configuration/elastic-agent-standalone-download.asciidoc[leveloffset=+2]
+
+include::elastic-agent/grant-access-to-elasticsearch.asciidoc[leveloffset=+2]
+
+include::elastic-agent/debug-standalone-elastic-agent.asciidoc[leveloffset=+2]
 
 include::elastic-agent/configuration/autodiscovery/elastic-agent-kubernetes-autodiscovery.asciidoc[leveloffset=+2]
 

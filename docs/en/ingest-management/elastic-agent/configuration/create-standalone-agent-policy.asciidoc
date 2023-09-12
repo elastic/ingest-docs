@@ -1,8 +1,6 @@
 [[create-standalone-agent-policy]]
 = Create a standalone {agent} policy
 
-include::{fleet-repo-dir}/standalone-note.asciidoc[]
-
 To get started quickly, use {kib} to add integrations to an agent policy, then
 download the policy to use as a starting point for your standalone {agent}
 policy. This approach saves time, is less error prone, and populates the

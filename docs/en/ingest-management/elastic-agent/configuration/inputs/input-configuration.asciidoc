@@ -58,7 +58,7 @@ To enable {agent} to collect log files, you can use a configuration like the fol
   id: your-input-id <2>
   streams:
     - id: your-filestream-stream-id <3>
-      data_stream:
+      data_stream: <4>
         dataset: generic
       paths:
         - /var/log/*.log
@@ -67,6 +67,7 @@ To enable {agent} to collect log files, you can use a configuration like the fol
 <1> A generic type describing the data.
 <2> A unique ID for the input.
 <3> A unique ID for the data stream to track the state of the ingested files.
+<4> The streams block is required only if multiple streams are used on the same input. 
 
 The input in this example harvests all files in the path `/var/log/*.log`, which
 means that {beatname_uc} will harvest all files in the directory `/var/log/`

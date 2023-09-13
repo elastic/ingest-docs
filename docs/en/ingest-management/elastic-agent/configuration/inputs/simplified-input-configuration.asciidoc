@@ -3,8 +3,8 @@
 
 include::{fleet-repo-dir}/standalone-note.asciidoc[]
 
-There is a simplified option for ingesting log files with the
-Elastic-Agent, the simplest input configuration to ingest the file
+There is a simplified option for ingesting log files with {agent}.
+The simplest input configuration to ingest the file
 `/var/log/my-application/log-file.log` is:
 
 ["source","yaml"]

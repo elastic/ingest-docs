@@ -275,7 +275,7 @@ The number of events denotes the number of documents that should be depicted ins
 [discrete]
 === Define if {es} is the bottleneck of ingestion
 
-In some cases maybe the {es} can not cope with the rate of data that are trying to be ingested. In order to verify the resource utilisation, installation of [{stack}Monitoring Cluster](https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-overview.html) is advised.
+In some cases maybe the {es} can not cope with the rate of data that are trying to be ingested. In order to verify the resource utilisation, installation of an {ref}/monitoring-overview.html[{stack} monitoring cluster] is advised.
 
 Additionally, in {ecloud} deployments you can navigate to *Manage Deployment > Deployments > Monitoring > Performance*.
 Corresponding dashboards for `CPU Usage`, `Index Response Times` and `Memory Pressure` can reveal possible problems and suggest vertical scaling of {stack} resources.

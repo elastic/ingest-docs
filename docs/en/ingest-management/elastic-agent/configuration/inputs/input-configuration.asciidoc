@@ -69,13 +69,8 @@ To enable {agent} to collect log files, you can use a configuration like the fol
 <3> A unique ID for the data stream to track the state of the ingested files.
 <4> The streams block is required only if multiple streams are used on the same input. Refer to the <<elastic-agent-simplified-input-configuration,simplified log ingestion>> example to ingest a set of log files specified as an array.
 
-The input in this example harvests all files in the path `/var/log/*.log`, which
-means that {beatname_uc} will harvest all files in the directory `/var/log/`
-that end with `.log`. All patterns supported by
-https://golang.org/pkg/path/filepath/#Glob[Go Glob] are also supported here.
+The input in this example harvests all files in the path `/var/log/*.log`, that is, all logs in the directory `/var/log/` that end with `.log`. All patterns supported by https://golang.org/pkg/path/filepath/#Glob[Go Glob] are also supported here.
 
 To fetch all files from a predefined level of subdirectories, use this pattern:
-`/var/log/*/*.log`. This fetches all `.log` files from the subfolders of
-`/var/log`. It does not fetch log files from the `/var/log` folder itself.
-Currently it is not possible to recursively fetch all files in all
-subdirectories of a directory.
+`/var/log/*/*.log`. This fetches all `.log` files from the subfolders of `/var/log`. It does not fetch log files from the `/var/log` folder itself.
+Currently it is not possible to recursively fetch all files in all subdirectories of a directory.

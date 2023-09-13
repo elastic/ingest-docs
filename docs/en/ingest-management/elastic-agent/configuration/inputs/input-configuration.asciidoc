@@ -9,6 +9,7 @@ The `inputs` section of the `elastic-agent.yml` file specifies how {agent} locat
 
 * <<elastic-agent-input-configuration-sample-metrics>>
 * <<elastic-agent-input-configuration-sample-logs>>
+* <<elastic-agent-simplified-input-configuration>>
 
 [discrete]
 [[elastic-agent-input-configuration-sample-metrics]]
@@ -74,3 +75,26 @@ The input in this example harvests all files in the path `/var/log/*.log`, that 
 To fetch all files from a predefined level of subdirectories, use this pattern:
 `/var/log/*/*.log`. This fetches all `.log` files from the subfolders of `/var/log`. It does not fetch log files from the `/var/log` folder itself.
 Currently it is not possible to recursively fetch all files in all subdirectories of a directory.
+
+[[elastic-agent-simplified-input-configuration]]
+= Simplified log ingestion
+
+There is a simplified option for ingesting log files with {agent}.
+The simplest input configuration to ingest the file
+`/var/log/my-application/log-file.log` is:
+
+["source","yaml"]
+-----------------------------------------------------------------------
+inputs:
+  - type: filestream <1>
+    id: unique-id-per-input <2>
+    paths: <3>
+      - /var/log/my-application/log-file.log
+-----------------------------------------------------------------------
+
+<1> The input type must be `filestream`.
+<2> A unique ID for the input.
+<3> An array containing all log file paths.
+
+For other custom options to configure the input, refer to the
+{filebeat-ref}/filebeat-input-filestream.html[filestream input] in the {filebeat} documentation.

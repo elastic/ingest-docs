@@ -163,8 +163,6 @@ include::elastic-agent/configuration/structure-config-file.asciidoc[leveloffset=
 
 include::elastic-agent/configuration/inputs/input-configuration.asciidoc[leveloffset=+2]
 
-include::elastic-agent/configuration/inputs/simplified-input-configuration.asciidoc[leveloffset=+3]
-
 include::elastic-agent/elastic-agent-dynamic-inputs.asciidoc[leveloffset=+3]
 
 include::elastic-agent/configuration/providers/elastic-agent-providers.asciidoc[leveloffset=+2]

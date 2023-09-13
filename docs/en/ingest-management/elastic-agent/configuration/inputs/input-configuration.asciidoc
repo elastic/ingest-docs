@@ -7,7 +7,14 @@
 
 The `inputs` section of the `elastic-agent.yml` file specifies how {agent} locates and processes input data.
 
-By default {agent} collects system metrics, such as CPU, memory, network, and file system metrics, and sends them to the default output. For example, to define the datastream for `cpu` metrics, this is the configuration:
+* <<elastic-agent-input-configuration-sample-metrics>>
+* <<elastic-agent-input-configuration-sample-logs>>
+
+[discrete]
+[[elastic-agent-input-configuration-sample-metrics]]
+== Sample metrics input configuration
+
+By default {agent} collects system metrics, such as CPU, memory, network, and file system metrics, and sends them to the default output. For example, to define datastream for `cpu`, `memory`, `network` and `filesystem` metrics, this is the configuration:
 
 ["source","yaml"]
 -----------------------------------------------------------------------
@@ -43,3 +50,36 @@ By default {agent} collects system metrics, such as CPU, memory, network, and fi
 +
 Refer to the {metricbeat} {metricbeat-ref}/metricbeat-module-system.html[System module] for a list of available options. The metricset fields can be configured.
 <7> A user-defined dataset. It can contain anything that makes sense to signify the source of the data.
+
+[discrete]
+[[elastic-agent-input-configuration-sample-logs]]
+== Sample log files input configuration
+
+To enable {agent} to collect log files, you can use a configuration like the following.
+
+["source","yaml"]
+-----------------------------------------------------------------------
+- type: filestream <1>
+  id: your-input-id <2>
+  streams:
+    - id: your-filestream-stream-id <3>
+#     data_stream:
+#       dataset: generic
+#     paths:
+#       - /var/log/*.log
+-----------------------------------------------------------------------
+
+<1> A generic type describing the data.
+<2> A unique ID for the input.
+<3> A unique ID for the data stream to track the state of the ingested files.
+
+The input in this example harvests all files in the path `/var/log/*.log`, which
+means that {beatname_uc} will harvest all files in the directory `/var/log/`
+that end with `.log`. All patterns supported by
+https://golang.org/pkg/path/filepath/#Glob[Go Glob] are also supported here.
+
+To fetch all files from a predefined level of subdirectories, use this pattern:
+`/var/log/*/*.log`. This fetches all `.log` files from the subfolders of
+`/var/log`. It does not fetch log files from the `/var/log` folder itself.
+Currently it is not possible to recursively fetch all files in all
+subdirectories of a directory.

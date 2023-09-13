@@ -145,27 +145,9 @@ Policy configuration of {k8s} package can heavily affect the amount of metrics c
 - Disable events dataset
 - Disable {k8s} control plane datasets in Cloud managed {k8s} instances (see more info ** <<running-on-gke-managed-by-fleet>>, <<running-on-eks-managed-by-fleet>>, <<running-on-aks-managed-by-fleet>> pages)
 
-<<<<<<< HEAD
 User experience regarding Dashboard responses, is also affected from the size of data being requested. As dashboards can contain multiple visualisations, the general consideration is to split visualisations and group them according to the frequency of access. The less number of visualisations tends to improve user experience.
 
 Additionally, https://github.com/elastic/integrations/blob/main/docs/dashboard_guidelines.md[Dashboard Guidelines] is constantly updated also to track needs of observability at scale.
-=======
-
-[discrete]
-=== Dashboards and Visualisations
-
-The https://github.com/elastic/integrations/blob/main/docs/dashboard_guidelines.md[Dashboard Guidelines] document provides guidance on how to implement your dashboards and is constantly updated to track the needs of Observability at scale.
-
-User experience regarding Dashboard responses, is also affected from the size of data being requested. As dashboards can contain multiple visualisations, the general consideration is to split visualisations and group them according to the frequency of access. The less number of visualisations tends to improve user experience.
-
-[discrete]
-=== Disabling indexing host.ip and host.mac fields
-
-A new environemntal variable `ELASTIC_NETINFO: false` has been introduced to globally disable the indexing of `host.ip` and `host.mac` fields in your {k8s} integration. For more information see <<agent-environment-variables>>.
-
-Setting this to `false` is recommended for large scale setups where the `host.ip` and `host.mac` fields' index size increases. The number of IPs and MAC addresses reported increases significantly as a Kubenetes cluster grows. This leads to considerably increased indexing time, as well as the need for extra storage and additional overhead for visualization rendering.
-
->>>>>>> 9732394 (Fix malformed link (#488))
 
 [discrete]
 === Elastic Stack Configuration

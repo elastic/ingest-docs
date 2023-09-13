@@ -58,10 +58,10 @@ To enable {agent} to collect log files, you can use a configuration like the fol
   id: your-input-id <2>
   streams:
     - id: your-filestream-stream-id <3>
-#     data_stream:
-#       dataset: generic
-#     paths:
-#       - /var/log/*.log
+      data_stream:
+        dataset: generic
+      paths:
+        - /var/log/*.log
 -----------------------------------------------------------------------
 
 <1> A generic type describing the data.

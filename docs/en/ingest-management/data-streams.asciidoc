@@ -5,7 +5,7 @@
 while giving you a single named resource for requests.
 Data streams are well-suited for logs, metrics, traces, and other continuously generated data.
 They offer a host of benefits over other indexing strategies:
-
+david
 * *Reduced number of fields per index*: Indices only need to store a specific subset of your
 data–meaning no more indices with hundreds of thousands of fields.
 This leads to better space efficiency and faster queries.

@@ -14,12 +14,22 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.10.1>>
 * <<release-notes-8.10.0>>
 
 Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.10.1 relnotes
+
+[[release-notes-8.10.1]]
+== {fleet} and {agent} 8.10.1
+
+There are no bug fixes for {fleet} or {agent} in this release.
+
+// end 8.10.1 relnotes
 
 // begin 8.10.0 relnotes
 

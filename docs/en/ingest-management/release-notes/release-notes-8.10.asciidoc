@@ -50,6 +50,80 @@ If you need to access a diagnostic bundle for an agent, ensure that {fleet-serve
 ====
 
 [discrete]
+[[known-issues-8.10.0]]
+=== Known issues
+
+[[known-issue-3375-v8100]]
+.PGP key download fails in an air-gapped environment
+[%collapsible]
+====
+
+*Details*
+
+IMPORTANT: If you're using an air-gapped environment, we recommended waiting for this issue to be resolved before installing 8.9.x or any higher version, to avoid being unable to upgrade.
+
+Starting from version 8.9.0, when {agent} tries to perform an upgrade, it first verifies the binary signature with the key bundled in the agent.
+This process has a backup mechanism that will use the key coming from `https://artifacts.elastic.co/GPG-KEY-elastic-agent` instead of the one it already has.
+
+In an air-gapped environment, the agent won't be able to download the remote key and therefore cannot be upgraded. 
+
+*Impact* +
+
+For the upgrade to succeed, the agent needs to download the remote key from a server accessible from the air-gapped environment. Two workarounds are available.
+
+*Option 1*
+
+If an HTTP proxy is available to be used by the {agents} in your {fleet}, add the proxy settings using environment variables as explained in <<host-proxy-env-vars,Proxy Server connectivity using default host variables>>.
+Please note that you need to enable HTTP Proxy usage for `artifacts.elastic.co` to bypass this problem, so you can craft the `HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY` environment variables to be used exclusively for it.
+
+*Option 2*
+
+As the upgrade URL is not customizable, we have to "trick" the system by pointing `https://artifacts.elastic.co/` to another host that will have the file.
+
+The following examples require a server in your air-gapped environment that will expose the key you will have downloaded from `https://artifacts.elastic.co/GPG-KEY-elastic-agent``.
+
+_Example 1: Manual_
+
+Edit the {agent} server hosts file to add the following content:
+
+[source,sh]
+----
+<YOUR_HOST_IP> artifacts.elastic.co
+----
+
+The Linux hosts file path is `/etc/hosts`.
+
+Windows hosts file path is `C:\Windows\System32\drivers\etc\hosts`.
+
+_Example 2: Puppet_
+
+[source,yaml]
+----
+host { 'elastic-artifacts':
+  ensure       => 'present'
+  comment      => 'Workaround for PGP check'
+  ip           => '<YOUR_HOST_IP>'
+}
+----
+
+_Example 3: Ansible_
+
+[source,yaml]
+----
+- name  : 'elastic-artifacts'
+  hosts : 'all'
+  become: 'yes'  
+
+  tasks:
+    - name: 'Add entry to /etc/hosts'
+      lineinfile:
+        path: '/etc/hosts'
+        line: '<YOUR_HOST_IP> artifacts.elastic.co'
+----
+
+====
+
+[discrete]
 [[new-features-8.10.0]]
 === New features
 

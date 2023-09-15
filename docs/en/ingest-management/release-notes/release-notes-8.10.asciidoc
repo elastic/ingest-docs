@@ -30,11 +30,22 @@ Also see:
 Review important information about the {fleet} and {agent} 8.10.1 release.
 
 [discrete]
+[[enhancements-8.10.1]]
+=== Enhancements
+
+{agent}::
+* Improve logging during {agent} upgrades. {agent-pull}3382[#3382]
+
+[discrete]
 [[bug-fixes-8.10.1]]
 === Bug fixes
 
 {fleet}::
-* Show snapshot version in agent upgrade modal and allow custom values ({kibana-pull}165978[#165978]).
+* Show snapshot version in agent upgrade modal and allow custom values. ({kibana-pull}165978[#165978]).
+
+{agent}::
+* Rollback {agent} upgrade if upgraded agent process crashes immediately. {agent-pull}3166[#3166] {agent-issue}3124[#3124]
+
 
 // end 8.10.1 relnotes
 

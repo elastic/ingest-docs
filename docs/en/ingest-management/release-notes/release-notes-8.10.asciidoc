@@ -27,7 +27,14 @@ Also see:
 [[release-notes-8.10.1]]
 == {fleet} and {agent} 8.10.1
 
-There are no bug fixes for {fleet} or {agent} in this release.
+Review important information about the {fleet} and {agent} 8.10.1 release.
+
+[discrete]
+[[bug-fixes-8.10.1]]
+=== Bug fixes
+
+{fleet}::
+* Show snapshot version in agent upgrade modal and allow custom values ({kibana-pull}165978[#165978]).
 
 // end 8.10.1 relnotes
 

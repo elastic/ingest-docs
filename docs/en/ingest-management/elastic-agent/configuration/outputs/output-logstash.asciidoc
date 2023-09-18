@@ -42,7 +42,9 @@ incoming {agent} connections and routes received events to {es}:
 input {
   elastic_agent {
     port => 5044
-    enrich => none
+    enrich => none # don't modify the events' schema at all
+    # or minimal change, add only ssl and source metadata
+    # enrich => [ssl_peer_metadata, source_metadata]
   }
 }
 

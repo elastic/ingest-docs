@@ -179,6 +179,8 @@ include::elastic-agent/configuration/elastic-agent-standalone-download.asciidoc[
 
 include::elastic-agent/grant-access-to-elasticsearch.asciidoc[leveloffset=+2]
 
+include::elastic-agent/example-standalone-monitor-nginx.asciidoc[leveloffset=+2]
+
 include::elastic-agent/debug-standalone-elastic-agent.asciidoc[leveloffset=+2]
 
 include::elastic-agent/configuration/autodiscovery/elastic-agent-kubernetes-autodiscovery.asciidoc[leveloffset=+2]

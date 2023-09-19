@@ -1,3 +1,4 @@
+:type: output-elasticsearch-fleet-settings
 
 [[es-output-settings]]
 = {es} output settings
@@ -60,6 +61,8 @@ To learn about proxy configuration, refer to <<fleet-agent-proxy-support>>.
 that uses this output. Make sure you specify valid YAML. The UI does not
 currently provide validation.
 
+See <<es-output-settings-yaml-config>> for descriptions of the available settings.
+
 // =============================================================================
 
 |
@@ -79,3 +82,36 @@ output is set in the <<agent-policy,agent policy>>.
 
 Sending monitoring data to a remote {es} cluster is currently not supported.
 |===
+
+[[es-output-settings-yaml-config]]
+== Advanced YAML configuration
+
+[cols="2*<a"]
+|===
+| Setting | Description
+
+include::../elastic-agent/configuration/outputs/output-elasticsearch.asciidoc[tag=backoff.init-setting]
+
+// =============================================================================
+
+include::../elastic-agent/configuration/outputs/output-elasticsearch.asciidoc[tag=backoff.max-setting]
+
+// =============================================================================
+
+include::../elastic-agent/configuration/outputs/output-elasticsearch.asciidoc[tag=bulk_max_size-setting]
+
+// =============================================================================
+
+include::../elastic-agent/configuration/outputs/output-elasticsearch.asciidoc[tag=max_retries-setting]
+
+// =============================================================================
+
+include::../elastic-agent/configuration/outputs/output-elasticsearch.asciidoc[tag=timeout-setting]
+
+// =============================================================================
+
+include::../elastic-agent/configuration/outputs/output-shared-settings.asciidoc[tag=worker-setting]
+
+|===
+
+:type!:

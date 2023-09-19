@@ -48,8 +48,8 @@ escaping.
 [id="{type}-worker-setting"]
 `worker`
 
-| (int) The number of workers per configured host publishing events to
-{output-type}. This is best used with load balancing mode enabled. Example: If
+| (int) The number of workers per configured host publishing events. 
+This is best used with load balancing mode enabled. Example: If
 you have two hosts and three workers, in total six workers are started (three
 for each host).
 

@@ -48,7 +48,7 @@ IMPORTANT: The <<known-issue-3375-v8100,known issue>> that prevents successful u
 === Bug fixes
 
 {agent}::
-* Fix GPG verification; if one is successful upgrade should continue. {agent-pull}3426[#3426] {agent-issue}3368[#3368]
+* Fix GPG verification; if one GPG check is successful the upgrade should continue. {agent-pull}3426[#3426] {agent-issue}3368[#3368]
 
 // end 8.10.2 relnotes
 

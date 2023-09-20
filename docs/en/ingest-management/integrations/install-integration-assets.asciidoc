@@ -22,6 +22,11 @@ and select an integration.
 
 . Click **Install <integration> assets** to set up the {kib} and {es} assets.
 
+There are a couple of things to note about installing integration assets:
+
+* {agent} integration assets can be installed only on a single {kib} {kibana-ref}/xpack-spaces.html[space]. If you want to access assets in a different space, you can {kibana-ref}/managing-saved-objects.html#managing-saved-objects-copy-to-space[copy them].
+* It's currently not possible to have multiple versions of the same integration running. When you upgrade an integration, the previous version assets are removed and replaced by the current version.
+
 [discrete]
 [[uninstall-integration-assets]]
 == Uninstall integration assets

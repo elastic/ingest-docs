@@ -14,6 +14,7 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.10.2>>
 * <<release-notes-8.10.1>>
 * <<release-notes-8.10.0>>
 
@@ -21,6 +22,35 @@ Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.10.2 relnotes
+
+[[release-notes-8.10.2]]
+== {fleet} and {agent} 8.10.2
+
+Review important information about the {fleet} and {agent} 8.10.2 release.
+
+[discrete]
+[[known-issues-8.10.2]]
+=== Known issues
+
+IMPORTANT: The <<known-issue-3375-v8100,known issue>> that prevents successful upgrades in an air-gapped environment for {agent} versions 8.9.0 to 8.10.1 has been resolved in this release. If you're using an air-gapped environment, we recommend installing version 8.10.2 or higher to avoid not being unable to upgrade.
+
+[discrete]
+[[enhancements-8.10.2]]
+=== Enhancements
+
+{agent}::
+* * Updated Go version to 1.20.8. {agent-pull}3393[#3393]
+
+[discrete]
+[[bug-fixes-8.10.2]]
+=== Bug fixes
+
+{agent}::
+* Fix GPG verification; if one is successful upgrade should continue. {agent-pull}3426[#3426] {agent-issue}3368[#3368]
+
+// end 8.10.2 relnotes
 
 // begin 8.10.1 relnotes
 
@@ -40,7 +70,7 @@ Review important information about the {fleet} and {agent} 8.10.1 release.
 
 *Details*
 
-IMPORTANT: If you're using an air-gapped environment, we recommended waiting for this issue to be resolved before installing 8.9.x or any higher version, to avoid being unable to upgrade.
+IMPORTANT: If you're using an air-gapped environment, we recommend installing version 8.10.2 or higher to avoid not being unable to upgrade.
 
 Starting from version 8.9.0, when {agent} tries to perform an upgrade, it first verifies the binary signature with the key bundled in the agent.
 This process has a backup mechanism that will use the key coming from `https://artifacts.elastic.co/GPG-KEY-elastic-agent` instead of the one it already has.
@@ -162,7 +192,7 @@ If you need to access a diagnostic bundle for an agent, ensure that {fleet-serve
 
 *Details*
 
-IMPORTANT: If you're using an air-gapped environment, we recommended waiting for this issue to be resolved before installing 8.9.x or any higher version, to avoid being unable to upgrade.
+IMPORTANT: If you're using an air-gapped environment, we recommend installing version 8.10.2 or higher to avoid not being unable to upgrade.
 
 Starting from version 8.9.0, when {agent} tries to perform an upgrade, it first verifies the binary signature with the key bundled in the agent.
 This process has a backup mechanism that will use the key coming from `https://artifacts.elastic.co/GPG-KEY-elastic-agent` instead of the one it already has.

@@ -52,6 +52,7 @@ IMPORTANT: The <<known-issue-3375-v8100,known issue>> that prevents successful u
 
 {agent}::
 * Fix GPG verification; if one GPG check is successful the upgrade should continue. {agent-pull}3426[#3426] {agent-issue}3368[#3368]
+* Resilient handling of air gapped PGP checks. {agent-pull}3427[#3427] {agent-issue}3368[#3368]
 
 // end 8.10.2 relnotes
 

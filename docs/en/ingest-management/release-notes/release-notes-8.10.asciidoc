@@ -41,11 +41,14 @@ IMPORTANT: The <<known-issue-3375-v8100,known issue>> that prevents successful u
 === Enhancements
 
 {agent}::
-* * Updated Go version to 1.20.8. {agent-pull}3393[#3393]
+* Updated Go version to 1.20.8. {agent-pull}3393[#3393]
 
 [discrete]
 [[bug-fixes-8.10.2]]
 === Bug fixes
+
+{fleet}::
+* Fix force delete package, updated used by agents check. ({kibana-pull}166623[#166623]).
 
 {agent}::
 * Fix GPG verification; if one GPG check is successful the upgrade should continue. {agent-pull}3426[#3426] {agent-issue}3368[#3368]

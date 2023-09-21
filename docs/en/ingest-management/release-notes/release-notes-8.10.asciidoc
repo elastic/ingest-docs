@@ -116,7 +116,7 @@ _Example 3: Ansible_
 === Bug fixes
 
 {fleet}::
-* Fix force delete package, updated used by agents check. ({kibana-pull}166623[#166623])
+* Fixed force delete package API, fixed validation check to reject request if package is used by agents. ({kibana-pull}166623[#166623])
 
 // end 8.10.2 relnotes
 

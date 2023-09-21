@@ -92,7 +92,8 @@ Read more in {fleet-guide}/agent-policy.html#add-fleet-server-to-policy[Add a {f
 
 . Download, install, and enroll the {agent} on your host by selecting
 your host operating system and following the **Install {agent} on your host**
-step.
+step. Note that the commands shown are for AMD platforms, but ARM packages are also available.
+Refer to the {agent} https://www.elastic.co/downloads/elastic-agent[downloads page] for the full list of available packages.
 .. If you are enrolling the agent in a {fleet-server} that uses your
 organization's certificate you _must_ add the `--certificate-authorities`
 option to the command provided in the in-product instructions.

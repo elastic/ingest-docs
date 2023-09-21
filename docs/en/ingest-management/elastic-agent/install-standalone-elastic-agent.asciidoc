@@ -21,7 +21,7 @@ data from remote services and hardware where direct deployment is not possible.
 
 To install and run {agent} standalone:
 
-. On your host, download and extract the installation package.
+. On your host, download and extract the installation package. 
 +
 --
 // tag::install-elastic-agent[]
@@ -31,8 +31,9 @@ include::{tab-widgets}/download-widget.asciidoc[]
 // end::install-elastic-agent[]
 --
 +
-Refer to the https://www.elastic.co/downloads/elastic-agent[download page] for other
-installation options.
+The commands shown are for AMD platforms, but ARM packages are also available.
+Refer to the {agent} https://www.elastic.co/downloads/elastic-agent[downloads page]
+for the full list of available packages.
 
 . Modify settings in the `elastic-agent.yml` as required.
 +

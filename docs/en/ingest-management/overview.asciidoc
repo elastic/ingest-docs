@@ -20,6 +20,16 @@ image::images/agent-architecture.png[Image showing {agent} collecting data from 
 
 To learn about installation options, refer to <<elastic-agent-installation>>.
 
+ifeval::["{serverless-feature-flag}"=="yes"]
+.{agent} with {serverless-full}
+****
+If you are using {agent} with link:{serverless-docs}[{serverless-full}], note these differences from use with {ess} and self-managed {es}:
+
+* The number of {agents} that may be connected to an {serverless-full} project is limited to 25 thousand.
+* The minimum supported version of {agent} supported for use with {serverless-full} is **VERSION TBD**.
+****
+endif::[]
+
 [discrete]
 [[unified-integrations]]
 == {integrations}
@@ -138,6 +148,15 @@ a scalable infrastructure and is supported in {ecloud} and self-managed clusters
 It can be started from any available x64 architecture {agent} artifact.
 
 For more information, refer to <<fleet-server>>.
+
+ifeval::["{serverless-feature-flag}"=="yes"]
+.{fleet-server} with {serverless-full}
+****
+On-premises {fleet-server} is not currently available for use with
+link:{serverless-docs}[{serverless-full}] projects. In a {serverless-short}
+environment we recommend using {fleet-server} on {ecloud}.
+****
+endif::[]
 
 [discrete]
 [[fleet-communication-layer]]

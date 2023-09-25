@@ -203,7 +203,7 @@ Processors are applied in the order that they appear, from top to bottom.
 
 The value field must be specified in a `[key]: value` format with both the key and value being strings. For example, `host.port: 2000` or `message: Test`.
 
-NOTE: Quotation marks are included in the match string. That is, they should be specified in the key or value only if it's expected for them to be included in the events being matched against. So, `message: "error"` will match against the literal string `"error"`, including the quotations marks. This applies to both single (') and double (") quotation marks.
+NOTE: Quotation marks are included in the match string. That is, they should be specified in the key or value only if it's expected for them to be included in the events being matched against. So, `message: "error"` will match against the literal string `"error"`, including the quotations marks, and not against the unquoted `error`. This applies to both single (') and double (") quotation marks.
 
 As an example for setting up your processors, you might want to route log events based on severity. To do so, you can specify a default topic for all events not matched by other processors:
 

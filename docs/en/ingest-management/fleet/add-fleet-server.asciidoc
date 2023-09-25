@@ -12,7 +12,7 @@ when deploying {fleet-server}:
 ifeval::["{serverless-feature-flag}"=="yes"]
 IMPORTANT: On-premises {fleet-server} is not currently available for use with
 link:{serverless-docs}[{serverless-full}] projects. In a {serverless-short}
-environment we you must use {fleet-server} on {ecloud}.
+environment you must use {fleet-server} on {ecloud}.
 endif::[]
 
 Read more about each to choose the best approach for your situation.

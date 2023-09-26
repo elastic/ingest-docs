@@ -32,7 +32,7 @@ existing agent policy or create a new one.
 +
 --
 * To use the UI, click **Save integration**.
-* beta[] To use the {fleet} API, click **Preview API request** and run the
+* To use the {fleet} API, click **Preview API request** and run the
 request.
 --
 

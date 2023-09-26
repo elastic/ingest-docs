@@ -111,7 +111,7 @@ image::images/create-agent-policy.png[{fleet} in {kib}]
 +
 . Create the agent policy:
 * To use the UI, click **Create agent policy**.
-* beta[] To use the {fleet} API, click **Preview API request** and run the
+* To use the {fleet} API, click **Preview API request** and run the
 request.
 
 Also see <<create-a-policy-no-ui>>.
@@ -141,7 +141,7 @@ policies.
 +
 --
 * To use the UI, click **Save and continue**.
-* beta[] To use the {fleet} API, click **Preview API request** and run the
+* To use the {fleet} API, click **Preview API request** and run the
 request.
 --
 

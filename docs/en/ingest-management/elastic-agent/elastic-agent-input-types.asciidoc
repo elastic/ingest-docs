@@ -1,0 +1,252 @@
+[[elastic-agent-input-types]]
+= {agent} input types
+
+When you <<elastic-agent-input-configuration,configure inputs>> for standalone {agents}, the following values are supported for the input `type` parameter.
+
+* <<elastic-agent-input-types-auditbeat>>
+* <<elastic-agent-input-types-filebeat>>
+* <<elastic-agent-input-types-heartbeat>>
+* <<elastic-agent-input-types-metricbeat>>
+* <<elastic-agent-input-types-packetbeat>>
+
+// Auditbeat
+[[elastic-agent-input-types-auditbeat]]
+.Audit the activities of users and processes on your systems
+|===
+|Input type |Description |Learn more
+
+|`audit/auditd`
+|Receives audit events from the Linux Audit Framework that is a part of the Linux kernel.
+|{auditbeat-ref}/auditbeat-module-auditd.html[Auditd Module] ({auditbeat} docs)
+
+|`audit/file_integrity`
+|Sends events when a file is changed (created, updated, or deleted) on disk. The events contain file metadata and hashes.
+|{auditbeat-ref}/auditbeat-module-file_integrity.html[File Integrity Module] ({auditbeat} docs)
+
+|`audit/system`
+|beta[] Collects various security related information about a system. All datasets send both periodic state information (e.g. all currently running processes) and real-time changes (e.g. when a new process starts or stops).
+|{auditbeat-ref}/auditbeat-module-system.html[System Module] ({auditbeat} docs)
+
+|===
+
+// Filebeat
+[[elastic-agent-input-types-filebeat]]
+.Forward and centralize log data 
+|===
+|Input type |Description |Learn more
+
+|`aws-cloudwatch`
+|Stores log files
+from Amazon Elastic Compute Cloud(EC2), AWS CloudTrail, Route53, and other sources.
+|{filebeat-ref}/filebeat-input-aws-cloudwatch.html[AWS CloudWatch input] ({filebeat} docs)
+
+|`aws-s3`
+|Retrieves logs from S3 objects that are pointed to by S3 notification events read from an SQS queue or directly polling list of S3 objects in an S3 bucket.
+|{filebeat-ref}/filebeat-input-aws-s3.html[AWS S3 input] ({filebeat} docs)
+
+|`azure-blob-storage`
+|Reads content from files stored in containers which reside on your Azure Cloud.
+|{filebeat-ref}/filebeat-input-azure-blob-storage.html[Azure Blob Storage] ({filebeat} docs)
+
+|`azure-eventhub`
+|Reads messages from an azure eventhub.
+|{filebeat-ref}/filebeat-input-azure-eventhub.html[Azure eventhub input] ({filebeat} docs)
+
+|`cel`
+|Reads messages from a file path or HTTP API with a variety of payloads using the https://opensource.google.com/projects/cel[Common Expression Language (CEL)] and the https://pkg.go.dev/github.com/elastic/mito/lib[mito] CEL extension libraries.
+|{filebeat-ref}/filebeat-input-cel.html[Common Expression Language input] ({filebeat} docs)
+
+|`cloudbeat`
+|?
+|?
+
+|`cloudbeat/cis_k8s`
+|CIS Kubernetes monitoring
+|?
+
+|`cloudbeat/cis_aws`
+|CIS AWS monitoring
+|?
+
+|`cloudbeat/cis_eks`
+|CIS Elastic Kubernetes monitoring
+|?
+
+|`cloudbeat/cis_gcp`
+|CIS GCP monitoring
+|?
+
+|`cloudbeat/vuln_mgmt_aws`
+|AWS Vulnerabilities management
+|?
+
+|`cloudfoundry`
+|Gets HTTP access logs, container logs and error logs from Cloud Foundry.
+|{filebeat-ref}/filebeat-input-cloudfoundry.html[Cloud Foundry input] ({filebeat} docs)
+
+|`cometd`
+|Streams the real-time events from a Salesforce generic subscription Push Topic.
+|{filebeat-ref}/filebeat-input-cometd.html[CometD input] ({filebeat} docs)
+
+|`container`
+|Reads containers log files.
+|{filebeat-ref}/filebeat-input-container.html[Container input] ({filebeat} docs)
+
+|`docker`
+|Reads Docker log files.
+|?
+
+|`log/docker`
+|Alias for `docker`.
+|n/a
+
+|`entity-analytics`
+|Collects identity assets, such as users, from external identity providers.
+|{filebeat-ref}/filebeat-input-entity-analytics.html[Entity Analytics input] ({filebeat} docs)
+
+|`event/file`
+|Alias for `log`.
+|n/a
+
+|`event/tcp`
+|Alias for `tcp`.
+|n/a
+
+|`filestream`
+|Reads lines from active log files. Replaces and imporoves on the `log` input.
+|{filebeat-ref}/filebeat-input-filestream.html[filestream input] ({filebeat} docs)
+
+|`gcp-pubsub`
+|Reads messages from a Google Cloud Pub/Sub topic subscription.
+|{filebeat-ref}/filebeat-input-gcp-pubsub.html[GCP Pub/Sub input] ({filebeat} docs)
+
+|`gcs`
+|beta[] Reads content from files stored in buckets which reside on your Google Cloud.
+|{filebeat-ref}/filebeat-input-gcs.html[Google Cloud Storage input] ({filebeat} docs)
+
+|`http_endpoint`
+|beta[] Initializes a listening HTTP server that collects incoming HTTP POST requests containing a JSON body.
+|{filebeat-ref}/filebeat-input-http_endpoint.html[HTTP Endpoint input] ({filebeat} docs)
+
+|`httpjson`
+|Read messages from an HTTP API with JSON payloads.
+|{filebeat-ref}/filebeat-input-httpjson.html[HTTP JSON input] ({filebeat} docs)
+
+|`journald`
+|beta[] A system service that collects and stores logging data.
+|{filebeat-ref}/filebeat-input-journald.html[Journald input] ({filebeat} docs)
+
+|`kafka`
+|Reads from topics in a Kafka cluster.
+|{filebeat-ref}/filebeat-input-kafka.html[Kafka input] ({filebeat} docs)
+
+|`log`
+|DEPRECATED: Please use the `filestream` input instead.
+|n/a
+
+|`logfile`
+|Alias for `log`.
+|n/a
+
+|`log/redis_slowlog`
+|Alias for `redis`.
+|n/a
+
+|`log/syslog`
+|Alias for `syslog`.
+|n/a
+
+|`lumberjack`
+|?
+|?
+
+|`mqtt`
+|Reads data transmitted using lightweight messaging protocol for small and mobile devices, optimized for high-latency or unreliable networks.
+|{filebeat-ref}/filebeat-input-mqtt.html[MQTT input] ({filebeat} docs)
+
+|`netflow`
+|Reads NetFlow and IPFIX exported flows and options records over UDP.
+|{filebeat-ref}/filebeat-input-netflow.html[NetFlow input] ({filebeat} docs)
+
+|`o365audit`
+|beta[] Retrieves audit messages from Office 365 and Azure AD activity logs.
+|{filebeat-ref}/filebeat-input-o365audit.html[Office 365 Management Activity API input] ({filebeat} docs)
+
+|`osquery`
+|Collects and decodes the result logs written by https://osquery.readthedocs.io/en/latest/introduction/using-osqueryd/[osqueryd] in the JSON format.
+|?
+
+|`redis`
+|beta[] Reads entries from Redis slowlogs.
+|{filebeat-ref}/[Redis input] ({filebeat} docs)
+
+|`syslog`
+|Reads Syslog events as specified by RFC 3164 and RFC 5424, over TCP, UDP, or a Unix stream socket.
+|{filebeat-ref}/filebeat-input-syslog.html[Syslog input] ({filebeat} docs)
+
+|`tcp`
+|Reads events over TCP.
+|{filebeat-ref}/filebeat-input-tcp.html[TCP input] ({filebeat} docs)
+
+|`udp`
+|Reads events over UDP.
+|{filebeat-ref}/filebeat-input-udp.html[UDP input] ({filebeat} docs)
+
+|`unix`
+|beta[] Reads events over a stream-oriented Unix domain socket.
+|{filebeat-ref}/[Unix input] ({filebeat} docs)
+
+|`winlog`
+|?
+|?
+
+|===
+
+
+// Heartbeat
+[[elastic-agent-input-types-heartbeat]]
+.Periodically check the status of your services
+|===
+|Input type |Description |Learn more
+
+|`synthetics/browser`
+|?
+|?
+
+|`synthetics/http`
+|?
+|?
+
+|`synthetics/icmp`
+|?
+|?
+
+|`synthetics/tcp`
+|?
+|?
+
+|===
+
+// Metricbeat
+[[elastic-agent-input-types-metricbeat]]
+.Periodically collect metrics from operating systems and services running on your servers
+|===
+|Input type |Description |Learn more
+
+|`beat/metrics`
+|Collects metrics about any Beat or other software based on libbeat.
+|{metricbeat-ref}/metricbeat-module-beat.html[Beat module] ({metricbeat} docs)
+
+|===
+
+// Packetbeat
+[[elastic-agent-input-types-packetbeat]]
+.View network traffic between the servers of your network
+|===
+|Input type |Description |Learn more
+
+|`packet`
+|Sniffs the traffic between your servers, parses the application-level protocols on the fly, and correlates the messages into transactions.
+|{packetbeat-ref}/packetbeat-overview.html[Packetbeat overview] ({packetbeat} docs)
+
+|===

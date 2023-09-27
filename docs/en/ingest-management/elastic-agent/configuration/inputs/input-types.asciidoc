@@ -3,7 +3,7 @@
 
 When you <<elastic-agent-input-configuration,configure inputs>> for standalone {agents}, the following values are supported for the input `type` parameter.
 
-Expand any section to view the available input types:
+*Expand any section to view the available input types:*
 
 // Auditbeat
 [[elastic-agent-input-types-auditbeat]]

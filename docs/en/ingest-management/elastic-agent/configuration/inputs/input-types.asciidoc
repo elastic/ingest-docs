@@ -246,28 +246,28 @@ from Amazon Elastic Compute Cloud(EC2), AWS CloudTrail, Route53, and other sourc
 |{filebeat-ref}/filebeat-input-cel.html[Common Expression Language input] ({filebeat} docs)
 
 |`cloudbeat`
-|?
-|?
+|-
+|-
 
 |`cloudbeat/cis_k8s`
 |CIS Kubernetes monitoring
-|?
+|-
 
 |`cloudbeat/cis_aws`
 |CIS AWS monitoring
-|?
+|-
 
 |`cloudbeat/cis_eks`
 |CIS Elastic Kubernetes monitoring
-|?
+|-
 
 |`cloudbeat/cis_gcp`
 |CIS GCP monitoring
-|?
+|-
 
 |`cloudbeat/vuln_mgmt_aws`
 |AWS Vulnerabilities management
-|?
+|-
 
 |`cloudfoundry`
 |Gets HTTP access logs, container logs and error logs from Cloud Foundry.
@@ -283,7 +283,7 @@ from Amazon Elastic Compute Cloud(EC2), AWS CloudTrail, Route53, and other sourc
 
 |`docker`
 |Reads Docker log files.
-|? otast
+|-
 
 |`log/docker`
 |Alias for `docker`.
@@ -346,8 +346,8 @@ from Amazon Elastic Compute Cloud(EC2), AWS CloudTrail, Route53, and other sourc
 |n/a
 
 |`lumberjack`
-|?
-|?
+|-
+|-
 
 |`mqtt`
 |Reads data transmitted using lightweight messaging protocol for small and mobile devices, optimized for high-latency or unreliable networks.
@@ -363,7 +363,7 @@ from Amazon Elastic Compute Cloud(EC2), AWS CloudTrail, Route53, and other sourc
 
 |`osquery`
 |Collects and decodes the result logs written by https://osquery.readthedocs.io/en/latest/introduction/using-osqueryd/[osqueryd] in the JSON format.
-|{filebeat-ref}/filebeat-module-osquery.html[Osquery module] ({filebeat} docs)
+| -
 
 |`redis`
 |beta[] Reads entries from Redis slowlogs.
@@ -403,20 +403,20 @@ from Amazon Elastic Compute Cloud(EC2), AWS CloudTrail, Route53, and other sourc
 |Input type |Description |Learn more
 
 |`synthetics/browser`
-|?
-|?
+|-
+|-
 
 |`synthetics/http`
-|?
-|?
+|Connect via HTTP and optionally verify that the host returns the expected response.
+|{heartbeat-ref}/monitor-http-options.html[HTTP options] ({heartbeat} docs)
 
 |`synthetics/icmp`
-|?
-|?
+|Use ICMP (v4 and v6) Echo Requests to check the configured hosts.
+|{heartbeat-ref}/monitor-icmp-options.html[ICMP options] ({heartbeat} docs)
 
 |`synthetics/tcp`
-|?
-|?
+|Connect via TCP and optionally verify the endpoint by sending and/or receiving a custom payload.
+|{heartbeat-ref}/monitor-tcp-options.html[TCP options] ({heartbeat} docs)
 
 |===
 

@@ -323,6 +323,51 @@ _Example 3: Ansible_
 
 ====
 
+[[known-issue-166553]]
+.Filtering Elastic Agents in Kibana generates an "Error fetching agents" message
+[%collapsible]
+====
+
+*Details*
+
+A {kibana-ref}/kuery-query.html[KQL query] in a Fleet search field now returns a `400` error when the query is not valid.
+
+Previously, the search fields would accept any type of query, but with the merge of {kibana-pull}161064[#161064] any type of KQL sent to {fleet} needs to have a valid field name, otherwise it returns an error.
+
+Note that this is expected behaviour.
+
+*Cause* +
+
+Entering an invalid KQL query on one of the {fleet} KQL search fields or through the API produces the error.
+
+Affected search fields in the {fleet} UI:
+
+* Agent list
+* Agent policies
+* Enrollment Keys
+
+Affected endpoints in the <<fleet-api-docs>> (these are the endpoints that accept the parameter `ListWithKuery`):
+
+* `GET api/fleet/agents`
+* `GET api/fleet/agent_status`
+* `GET api/fleet/agent_policies`
+* `GET api/fleet/package_policies`
+* `GET api/fleet/enrollment_api_keys`
+* `GET api/fleet/agent_status`
+
+*Impact* +
+
+To avoid getting the `400` error, the queries should be valid.
+
+For instance, entering the query `8.10.0` results in an error. The correct query should be: `local_metadata.agent.version="8.10.0"`.
+
+As another example, when viewing the *Agents* tab in *Fleet*, typing a hostname such as `a0c8c88ef2f5` in the search field results in an error. The correct query should have the correct field name, taken from among the allowed ones, for example `local_metadata.host.hostname: a0c8c88ef2f5`.
+
+The list of available field names is visible by clicking on any of the search fields.
+
+====
+
+
 [discrete]
 [[new-features-8.10.0]]
 === New features

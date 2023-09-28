@@ -2,7 +2,7 @@
 = Install standalone {agent}s (advanced users)
 
 To run an {agent} in standalone mode, install the agent and manually configure
-the agent locally on the system where it’s installed. You are responsible for
+the agent locally on the system where it's installed. You are responsible for
 managing and upgrading the agents. This approach is recommended for advanced
 users only.
 
@@ -18,6 +18,17 @@ NOTE: You can install only a single {agent} per host.
 
 {agent} can monitor the host where it's deployed, and it can collect and forward
 data from remote services and hardware where direct deployment is not possible.
+
+[discrete]
+[[elastic-agent-standalone-prereqs]]
+== Prerequisites
+
+* Check the <<install-agent-account-requirements,account and permissions requirements>>
+to ensure that all {agent} components can run on your system.
+
+[discrete]
+[[elastic-agent-standalone-installation-steps]]
+== Installation steps
 
 To install and run {agent} standalone:
 

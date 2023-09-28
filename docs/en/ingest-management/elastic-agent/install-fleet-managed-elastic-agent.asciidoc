@@ -32,6 +32,9 @@ Just want to learn how to install {agent}? Continue reading this page.
 
 You will always need:
 
+* *Account permissions requirements.* * Check the <<install-agent-account-requirements,requirements>>
+to ensure that all {agent} components can run on your system.
+
 * *A {kib} user with `All` privileges on {fleet} and {integrations}.* Since many
 Integrations assets are shared across spaces, users need the {kib} privileges in
 all spaces.

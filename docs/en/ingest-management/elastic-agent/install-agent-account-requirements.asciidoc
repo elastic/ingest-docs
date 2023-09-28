@@ -1,0 +1,60 @@
+[[install-agent-account-requirements]]
+= {agent} account and permissions requirements
+
+There are a number of account and permissions requirements that should be met before running {agent} on your system.
+
+* <<elastic-agent-account-requirements-linux>>
+* <<elastic-agent-account-requirements-windows>>
+
+[discrete]
+[[elastic-agent-account-requirements-linux]]
+== Linux and Unix requirements
+
+Currently, on Linux and Unix systems {agent} needs to run as a super user with `root` privileges. 
+
+As well, {agent} components (Beats) each use a unique account with specific controlled `root` privileges, as shown in the following table.
+
+.Linux and Unix requirements for agent components
+|===
+|Component |Function |Requirements
+
+|{auditbeat}
+|Monitors the activities of users and processes on your systems.
+a|* SUDO privilege to run the `auditd` command.
+* Permissions to read and audit directories, such as `/user/bin`, `user/sbin`, `/bin`, `/etc`.
+* Permissions to read logs in `/var/log`.
+* Permissions to read and write logs cached in `/var/log/Elastic/.
+
+|{heartbeat}
+|Monitors the status of your services.
+a|* SUDO privilege to run the `auditd` command.
+* SUDO privilege to run commands to check disk IO, network IO, memory, process, and CPU level statistics.
+* Permissions to read and audit directories, such as `/user/bin`, `user/sbin`, `/bin`, `/etc`.
+* Permissions to read logs in `/var/log`.
+* Permissions to read and write logs in cache to `/var/log/Elastic/.
+
+|{filebeat}
+|Forwards and centralizes your log data.
+a|* Permissions to read logs in `/var/log`.
+* Permissions to read and write logs in cache to `/var/log/Elastic/.
+
+|{metricbeat}
+|Collect metrics from operating systems and services running on your servers.
+a|* SUDO privilege to run commands to check disk IO, network IO, memory, process, and CPU level statistics.
+* Permissions to read logs in `/var/log`.
+* Permissions to read and write logs in cache to `/var/log/Elastic/.
+
+|{packetbeat}
+|Monitors network traffic on your servers.
+a|* SUDO privilege to run commands to capture network statistics.
+* Permissions to read logs in `/var/log`.
+* Permissions to read and write logs in cache to `/var/log/Elastic/.
+
+|===
+
+[discrete]
+[[elastic-agent-account-requirements-windows]]
+== Windows requirements
+
+Currently, on Windows systems {agent} needs to run as the `SYSTEM` user.
+

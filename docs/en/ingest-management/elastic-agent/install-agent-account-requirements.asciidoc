@@ -19,7 +19,7 @@ Currently, on Linux and Unix systems {agent} needs to run as a super user with `
 useradd elastic
 ----
 
-. Add the new user to `sudo` group.
+. Add the new user to the `sudo` group.
 +
 [source,sh]
 ----

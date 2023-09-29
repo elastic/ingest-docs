@@ -24,6 +24,9 @@ To manage your {agent}s, go to *Management > {fleet} > Agents* in {kib}. On the
 |<<upgrade-elastic-agent>>
 |Upgrade {agent}s to the latest version.
 
+|<<migrate-elastic-agent>>
+|Migrate {agent}s from one cluster to another.
+
 |<<filter-agent-list-by-tags>>
 |Add tags to {agent}, then use the tags to filter the Agents list in {fleet}.
 

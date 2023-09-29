@@ -125,6 +125,8 @@ include::fleet/set-inactivity-timeout.asciidoc[leveloffset=+3]
 
 include::fleet/upgrade-elastic-agent.asciidoc[leveloffset=+3]
 
+include::fleet/migrate-elastic-agent.asciidoc[leveloffset=+3]
+
 include::fleet/filter-agent-list-by-tags.asciidoc[leveloffset=+3]
 
 include::fleet/monitor-elastic-agent.asciidoc[leveloffset=+3]

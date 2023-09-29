@@ -334,8 +334,6 @@ A {kibana-ref}/kuery-query.html[KQL query] in a Fleet search field now returns a
 
 Previously, the search fields would accept any type of query, but with the merge of {kibana-pull}161064[#161064] any type of KQL sent to {fleet} needs to have a valid field name, otherwise it returns an error.
 
-Note that this is expected behaviour.
-
 *Cause* +
 
 Entering an invalid KQL query on one of the {fleet} KQL search fields or through the API produces the error.

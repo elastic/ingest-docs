@@ -36,7 +36,7 @@ As well, {agent} components (Beats) each use a unique account with specific cont
 
 |{auditbeat}
 |Monitors the activities of users and processes on your systems.
-a|* `sudo`` privilege to run the `auditd` command.
+a|* `sudo` privilege to run the `auditd` command.
 * Permissions to read and audit directories, such as `/user/bin`, `user/sbin`, `/bin`, `/etc`.
 * Permissions to read logs in `/var/log`.
 * Permissions to read and write logs cached in `/var/log/Elastic/.

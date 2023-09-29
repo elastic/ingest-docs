@@ -52,7 +52,9 @@ To create a new agent policy in {fleet}, call
 `POST /api/fleet/agent_policies`.
 
 This cURL example creates an agent policy called `Agent policy 1` in
-the default namespace.
+the default namespace. 
+
+In the example URL the `?sys_monitoring=true` parameter will add the system integration to the policy. It can be removed if the integration is not needed.
 
 [source,shell]
 ----

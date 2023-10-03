@@ -9,7 +9,7 @@ There are situations where you may need to move your installed {agent}s from bei
 
 For a seamless migration, we advise that you create an identical agent policy in the new cluster that is configured in the same manner as the original cluster. There are a few methods to do this.
 
-This guide takes you through the steps to migrate your {agent}s by snapshotting a source cluster and restoring it on a target cluster. These instructions assume that you have an {ecloud} deployment, but they apply to on-premise clusters as well.
+This guide takes you through the steps to migrate your {agent}s by snapshotting a source cluster and restoring it on a target cluster. These instructions assume that you have an {ecloud} deployment, but they can be applied to on-premise clusters as well.
 
 [discrete]
 [[migrate-elastic-agent-take-snapshot]]
@@ -31,7 +31,7 @@ image::images/migrate-agent-take-snapshot.png[Deployments Snapshots page]
 You can create a new cluster based on the snapshot taken in the previous step, and then migrate your {agent}s and {fleet} to the new cluster. For best results, it's recommended that the new target cluster be at the same version as the cluster that the agents are migrating from.
 
 . Open the {ecloud} console and select *Create deployment*.
-. Enable *Restore snapshot data*.
+. Select *Restore snapshot data*.
 . In the *Restore from* field, select your source deployment.
 . Choose your deployment settings, and, optimally, choose the same {stack} version as the source cluster.
 . Click *Create deployment*.
@@ -43,7 +43,7 @@ image::images/migrate-agent-new-deployment.png[Create a deployment page]
 [[migrate-elastic-agent-target-settings]]
 == Update settings in the target cluster
 
-Once the target cluster is available, you'll need to adjust a few settings. Take some time to examine the {fleet} setup in the new cluster.
+when the target cluster is available you'll need to adjust a few settings. Take some time to examine the {fleet} setup in the new cluster.
 
 . Open the {kib} menu and select *Fleet*.
 . On the *Agents* tab, your agents should visible, however they'll appear as `Offline`. This is because these agents have not yet enrolled in the new, target cluster, and are still enrolled in the original, source cluster.
@@ -52,35 +52,35 @@ Once the target cluster is available, you'll need to adjust a few settings. Take
 image::images/migrate-agent-agents-offline.png[Agents tab in Fleet showing offline agents]
 
 . Open the {fleet} *Settings* tab.
-. Examine the configurations captured there for {fleet}. Note that these settings copied from the snapshot of the source cluster and may not have a meaning in the target cluster, so they need to be modified accordingly.
+. Examine the configurations captured there for {fleet}. Note that these settings are scopied from the snapshot of the source cluster and may not have a meaning in the target cluster, so they need to be modified accordingly.
 +
-In the following example, both the *Fleet Server hosts* and the *Outputs* settings are from the source cluster and need to be modified:
+In the following example, both the *Fleet Server hosts* and the *Outputs* settings are copied over from the source cluster:
 +
 [role="screenshot"]
 image::images/migrate-agent-host-output-settings.png[Settings tab in Fleet showing source deployment host and output settings]
 +
-The next steps will show you how to obtain the relevant {fleet-server} host and {es} output details applicable to the new target cluster in {ecloud}.
+The next steps explain how to obtain the relevant {fleet-server} host and {es} output details applicable to the new target cluster in {ecloud}.
 
 [discrete]
 [[migrate-elastic-agent-elasticsearch-output]]
 === Modify the {es} output
 
-. In the new target cluster on {ecloud}, on the {fleet} *Settings* tab in the *Outputs* section, you will see an internal output called `{ecloud} internal output`. The host address is in the form:
+. In the new target cluster on {ecloud}, in the *Outputs* section, on the {fleet} *Settings* tab, you will find an internal output named `Elastic Cloud internal output`. The host address is in the form:
 +
-`https://<cluster ID-target>.containerhost:9244`
+`https://<cluster-id-target>.containerhost:9244`
 +
-Record this <cluster ID> from the target cluster. In the example shown, the ID is `fcccb85b651e452aa28703a59aea9b00`.
+Record this `<cluster-id-target>` from the target cluster. In the example shown, the ID is `fcccb85b651e452aa28703a59aea9b00`.
 
 . Also in the *Outputs* section, notice that the default {es} output (that was copied over from the source cluster) is also in the form:
 +
-`https://<cluster ID-source>.<cloud endpoint address>:443`.
+`https://<cluster-id-source>.<cloud endpoint address>:443`.
 +
-Modify the {es} output so that the cluster ID is the same as that for `{ecloud} internal output`. In this example we also rename the output to `New {es}`.
+Modify the {es} output so that the cluster ID is the same as that for `Elastic Cloud internal output`. In this example we also rename the output to `New Elasticsearch`.
 +
 [role="screenshot"]
 image::images/migrate-agent-elasticsearch-output.png[Outputs section showing the new Elasticsearch host setting]
 +
-In this example, the new {es} output and the `Elastic Cloud internal output` now have the same cluster ID, namely `fcccb85b651e452aa28703a59aea9b00`.
+In this example, the `New Elasticsearch` output and the `Elastic Cloud internal output` now have the same cluster ID, namely `fcccb85b651e452aa28703a59aea9b00`.
 
 You have now created an {es} output that agents can use to write data to the new, target cluster. For on-premise environments not using {ecloud}, you should similarly be able to use the host address of the new cluster.
 
@@ -88,7 +88,7 @@ You have now created an {es} output that agents can use to write data to the new
 [[migrate-elastic-agent-fleet-host]]
 === Modify the {fleet-server} host
 
-Like the {es} host, the {fleet-server} host has also changed with the new target cluster. Note that if you're deploying {fleet-server} on premise, the host has probably not chnaged address and this setting does not need to be modified. We still recommend that you ensure the agents are able to reach the the on-premise {fleet-server} host (which they should be able to as they were connect to it prior to the migration).
+Like the {es} host, the {fleet-server} host has also changed with the new target cluster. Note that if you're deploying {fleet-server} on premise, the host has probably not changed address and this setting does not need to be modified. We still recommend that you ensure the agents are able to reach the the on-premise {fleet-server} host (which they should be able to as they were able to connect to it prior to the migration).
 
 The {ecloud} {fleet-server} host has a similar format to the {es} output:
 
@@ -110,7 +110,7 @@ Using that value for `deployment-id`, the new {fleet-server} host URL is:
 +
 `https://eed4ae8e2b604fae8f8d515479a16b7b.fleet.us-central1.gcp.cloud.es.io:443`
 
-. In the target cluster, under *Fleet server hosts*, replace the host URL with the new value.
+. In the target cluster, under *Fleet server hosts*, replace the original host URL with the new value.
 +
 [role="screenshot"]
 image::images/migrate-agent-fleet-server-host.png[Fleet server hosts showing the new host URL]

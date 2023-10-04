@@ -349,7 +349,8 @@ elastic-agent enroll \
   --certificate-authorities=/path/to/ca.crt \
   --fleet-server-es-ca=/path/to/elasticsearch-ca.crt \
   --fleet-server-cert=/path/to/fleet-server.crt \
-  --fleet-server-cert-key=/path/to/fleet-server.key
+  --fleet-server-cert-key=/path/to/fleet-server.key \
+  --fleet-server-port=8220
 ----
 
 Then enroll another {agent} into the {fleet-server} started in the previous
@@ -586,7 +587,8 @@ elastic-agent install \
   --certificate-authorities=/path/to/ca.crt \
   --fleet-server-es-ca=/path/to/elasticsearch-ca.crt \
   --fleet-server-cert=/path/to/fleet-server.crt \
-  --fleet-server-cert-key=/path/to/fleet-server.key
+  --fleet-server-cert-key=/path/to/fleet-server.key \
+  --fleet-server-port=8220
 ----
 
 Then install another {agent} and enroll it into the {fleet-server} started in

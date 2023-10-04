@@ -219,7 +219,8 @@ sudo ./elastic-agent install \
    --fleet-server-es-ca=/path/to/elasticsearch-ca.crt \
    --certificate-authorities=/path/to/ca.crt \
    --fleet-server-cert=/path/to/fleet-server.crt \
-   --fleet-server-cert-key=/path/to/fleet-server.key
+   --fleet-server-cert-key=/path/to/fleet-server.key \
+   --fleet-server-port=8220
 ----
 
 Where:

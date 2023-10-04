@@ -153,7 +153,7 @@ integrations that are currently installed, the policy the agent is enrolled in,
 and information about the host machine:
 +
 [role="screenshot"]
-image::images/migration-agent-details.png[Screen showing that agent status is Healthy]
+image::images/migration-agent-details01.png[Screen showing that agent status is Healthy]
 
 . Go back to the main {fleet} page and click the *Data streams* tab. You should
 be able to see the data streams for various logs and metrics from the host. This

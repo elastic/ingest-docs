@@ -146,7 +146,7 @@ refer to <<data-streams>>.
 . On the *Agents* tab in *{fleet}*, confirm that the {agent} status is `Healthy`.
 +
 [role="screenshot"]
-image::images/migration-agent-status-healthy.png[Screen showing that agent status is Healthy]
+image::images/migration-agent-status-healthy01.png[Screen showing that agent status is Healthy]
 
 . Click the host name to examine the {agent} details. This page shows the
 integrations that are currently installed, the policy the agent is enrolled in,
@@ -160,7 +160,7 @@ be able to see the data streams for various logs and metrics from the host. This
 is out-of-the-box without any extra configuration or dashboard creation:
 +
 [role="screenshot"]
-image::images/migration-agent-data-streams.png[Screen showing data streams created by the {agent}]
+image::images/migration-agent-data-streams01.png[Screen showing data streams created by the {agent}]
 
 . Go to *Analytics > Discover* and examine the data streams. Note that documents
 indexed by {agent} match these patterns:

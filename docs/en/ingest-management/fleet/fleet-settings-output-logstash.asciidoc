@@ -94,6 +94,8 @@ See <<ls-output-settings-yaml-config>> for descriptions of the available setting
 | When this setting is on, {agent}s use this output to send data if no other
 output is set in the <<agent-policy,agent policy>>.
 
+Output to {ls} is not supported for agent integrations in a policy used by {fleet-server} or APM.
+
 // =============================================================================
 
 |
@@ -101,6 +103,8 @@ output is set in the <<agent-policy,agent policy>>.
 **Make this output the default for agent monitoring**
 
 | When this setting is on, {agent}s use this output to send <<monitor-elastic-agent,agent monitoring data>> if no other output is set in the <<agent-policy,agent policy>>.
+
+Output to {ls} is not supported for agent monitoring in a policy used by {fleet-server} or APM.
 
 |===
 

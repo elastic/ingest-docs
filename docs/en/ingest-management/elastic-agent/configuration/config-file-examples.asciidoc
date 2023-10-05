@@ -1,0 +1,11 @@
+[[config-file-examples]]
+= Config file examples
+
+intro
+
+examples:
+
+* <<config-file-example-apache>>
+
+include::config-file-example-apache.asciidoc[leveloffset=+1]
+

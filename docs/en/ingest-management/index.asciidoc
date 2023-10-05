@@ -181,6 +181,8 @@ include::elastic-agent/configuration/elastic-agent-standalone-features.asciidoc[
 
 include::elastic-agent/configuration/elastic-agent-standalone-download.asciidoc[leveloffset=+2]
 
+include::elastic-agent/configuration/config-file-examples.asciidoc[leveloffset=+2]
+
 include::elastic-agent/grant-access-to-elasticsearch.asciidoc[leveloffset=+2]
 
 include::elastic-agent/example-standalone-monitor-nginx.asciidoc[leveloffset=+2]

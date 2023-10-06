@@ -16,8 +16,8 @@ date and time.
 
 In most failure cases the {agent} may retry an upgrade after a short wait. The
 wait durations between retries are: 1m, 5m, 10m, 15m, 30m, and 1h. During this
-time, the {agent} may show up as "retrying" in the {fleet} UI. Note that you
-can abort an upgrade that is being retried. See <<abort-agent-upgrade>>.
+time, the {agent} may show up as "retrying" in the {fleet} UI. 
+//Note that you can abort an upgrade that is being retried. See <<abort-agent-upgrade>>.
 
 This approach simplifies the process of keeping your agents up to date. It also
 saves you time because you don’t need third-party tools or processes to
@@ -50,9 +50,6 @@ can perform the following upgrade-related actions:
 |<<view-upgrade-status>>
 |View the status of an upgrade, including upgrade metrics and agent logs.
 
-|<<abort-agent-upgrade>>
-|Stop an in-progress upgrade.
-
 |===
 
 
@@ -84,9 +81,6 @@ a large number of {agent}s.
 . On the **Agents** tab, select multiple agents, and click **Actions**.
 
 . From the **Actions** menu, choose to upgrade the agents.
-+
-[role="screenshot"]
-image::images/rolling-agent-upgrade.png[Menu for bulk upgrading {agent}s]
 
 . In the Upgrade agents window, select an upgrade version.
 
@@ -128,8 +122,7 @@ subscriptions].
 [[view-upgrade-status]]
 == View upgrade status
 
-. On the **Agents** tab, when you trigger an upgrade, notice that the upgrade
- status appears in a banner at the top of the page. Agents that are upgrading
+. On the **Agents** tab, when you trigger an upgrade, agents that are upgrading
  have the status `Updating` until the upgrade is complete, then the status
  changes back to `Healthy`.
 +
@@ -145,18 +138,9 @@ don't see the host name, try refreshing the page.
 
 . If the upgrade fails, view the agent logs to find the reason:
 +
-.. From the **Agent details** tab in {fleet}, click **Logs**.
+.. In {fleet}, in the Host column, click the agent's name.
+.. Open the **Logs** tab.
 .. Search for failures.
 +
 [role="screenshot"]
 image::images/upgrade-failure.png[Agent logs showing upgrade failure]
-
-[discrete]
-[[abort-agent-upgrade]]
-== Abort an upgrade
-
-If you need to stop an upgrade because it's stalled or consuming too many
-resources, abort the upgrade:
-
-. On the **Agents** tab, look for the banner that shows upgrade progress.
-. Click **Abort**.

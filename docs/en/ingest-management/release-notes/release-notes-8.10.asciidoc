@@ -42,7 +42,7 @@ IMPORTANT: The <<known-issue-3375-v8100,known issue>> that prevents successful u
 === Enhancements
 
 {agent}::
-* Improve {agent} uninstall by adding some pause between retries when removal is blocked by busy files {agent-pull}3431[#3431] {agent-issue}3221[#3221]
+* Improve {agent} uninstall on Windows by adding delay between retries when file removal is blocked by busy files {agent-pull}3431[#3431] {agent-issue}3221[#3221]
 
 [discrete]
 [[bug-fixes-8.10.3]]

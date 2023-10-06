@@ -49,9 +49,9 @@ IMPORTANT: The <<known-issue-3375-v8100,known issue>> that prevents successful u
 === Bug fixes
 
 {fleet}::
-* Fixes incorrect index template used from the data stream name ({kibana-pull}166941[#166941]).
-* Increase package install max timeout limit and add concurrency control to rollovers ({kibana-pull}166775[#166775]).
-* Fixes bulk action dropdown ({kibana-pull}166475[#166475]).
+* Fix incorrect index template used from the data stream name ({kibana-pull}166941[#166941])
+* Increase package install max timeout limit and add concurrency control to rollovers ({kibana-pull}166775[#166775])
+* Fix bulk action dropdown ({kibana-pull}166475[#166475])
 
 {agent}::
 * Fix GPG verification; if one GPG check is successful the upgrade should continue. {agent-pull}3426[#3426] {agent-issue}3368[#3368]

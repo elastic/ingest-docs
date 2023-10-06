@@ -20,7 +20,7 @@ time, the {agent} may show up as "retrying" in the {fleet} UI.
 //Note that you can abort an upgrade that is being retried. See <<abort-agent-upgrade>>.
 
 This approach simplifies the process of keeping your agents up to date. It also
-saves you time because you don’t need third-party tools or processes to
+saves you time because you don't need third-party tools or processes to
 manage upgrades.
 
 By default, {agent}s require internet access to perform binary upgrades from
@@ -49,6 +49,12 @@ can perform the following upgrade-related actions:
 
 |<<view-upgrade-status>>
 |View the status of an upgrade, including upgrade metrics and agent logs.
+
+|<<restart-upgrade-single>>
+|Restart an upgrade process that has stalled for a single agent.
+
+|<<restart-upgrade-multiple>>
+|Do a bulk restart of the upgrade process for a set of agents.
 
 |===
 
@@ -144,3 +150,50 @@ don't see the host name, try refreshing the page.
 +
 [role="screenshot"]
 image::images/upgrade-failure.png[Agent logs showing upgrade failure]
+
+[discrete]
+[[restart-upgrade-single]]
+== Restart an upgrade for a single agent
+
+An {agent} upgrade process may sometimes stall. This can happen for various
+reasons, including, for example, network connectivity issues or a delayed shutdown.
+
+When an {agent} upgrade has been detected to be stuck, a warning indicator
+appears on the UI. When this occurs, you can restart the upgrade from either the
+*Agents* tab on the main {fleet} page or from the details page for any individual
+agent.
+
+Restart from main {fleet} page:
+
+. From the **Actions** menu next to an agent that is stuck in an `Updating`
+state, choose **Restart upgrade**.
+. In the **Restart upgrade** window, select an upgrade version and click
+**Upgrade agent**.
+
+Restart from an agent details page:
+
+. In {fleet}, in the **Host** column, click the agent's name. On the
+**Agent details** tab, a warning notice appears if the agent is detected to have
+stalled during an upgrade.
+. Click *Restart upgrade*.
+. In the **Restart upgrade** window, select an upgrade version and click
+**Upgrade agent**.
+
+[discrete]
+[[restart-upgrade-multiple]]
+== Restart an upgrade for multiple agents
+
+When the upgrade process for multiple agents has been detected to have stalled,
+you can restart the upgrade process in bulk.
+
+. On the **Agents** tab, select any set of the agents that are indicated to be stuck, and click **Actions**.
+. From the **Actions** menu, select **Restart upgrade <number> agents**.
+. In the **Restart upgrade...** window, select an upgrade version.
+. Select the amount of time available for the maintenance window. The upgrades
+are spread out uniformly across this maintenance window to avoid exhausting
+network resources.
++
+To force selected agents to upgrade immediately when the upgrade is
+triggered, select **Immediately**. Avoid using this setting for batches of more
+than 10 agents.
+. Restart the upgrades.

@@ -6,6 +6,7 @@ In {fleet}, you can:
 
 * <<view-agent-status>>
 * <<view-agent-details>>
+* <<view-agent-activity>>
 * <<view-agent-logs>>
 * <<collect-agent-diagnostics>>
 * <<view-agent-metrics>>
@@ -79,6 +80,17 @@ image::images/agent-detail-integrations-health.png[Agent details integrations pa
 To gather more detail about a particular error or warning, from the **Actions** menu select **View agent JSON**. The JSON contains all of the raw agent data tracked by Fleet.
 
 NOTE: Currently, the **Integrations** pane shows the health status only for agent inputs. Health status is not yet available for agent outputs.
+
+[discrete]
+[[view-agent-activity]]
+= View agent activity
+
+You can view a chronological list of all operations performed by your {agent}s.
+
+On the **Agents** tab, click **Agent activity**. All agent operations are shown, beginning from the most recent, including any in progress operations.
+
+[role="screenshot"]
+image::images/agent-activity.png[Agent activity panel, showing the operations for an {agent}]
 
 [discrete]
 [[view-agent-logs]]

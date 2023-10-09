@@ -14,6 +14,7 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.10.3>>
 * <<release-notes-8.10.2>>
 * <<release-notes-8.10.1>>
 * <<release-notes-8.10.0>>
@@ -22,6 +23,40 @@ Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.10.3 relnotes
+
+[[release-notes-8.10.3]]
+== {fleet} and {agent} 8.10.3
+
+Review important information about the {fleet} and {agent} 8.10.3 release.
+
+[discrete]
+[[known-issues-8.10.3]]
+=== Known issues
+
+IMPORTANT: The <<known-issue-3375-v8100,known issue>> that prevents successful upgrades in an air-gapped environment for {agent} versions 8.9.0 to 8.10.2 has been resolved in this release. If you're using an air-gapped environment, we recommend installing version 8.10.3 or any higher version to avoid not being unable to upgrade.
+
+[discrete]
+[[enhancements-8.10.3]]
+=== Enhancements
+
+{agent}::
+* Improve {agent} uninstall on Windows by adding delay between retries when file removal is blocked by busy files {agent-pull}3431[#3431] {agent-issue}3221[#3221]
+
+[discrete]
+[[bug-fixes-8.10.3]]
+=== Bug fixes
+
+{fleet}::
+* Fix incorrect index template used from the data stream name ({kibana-pull}166941[#166941])
+* Increase package install max timeout limit and add concurrency control to rollovers ({kibana-pull}166775[#166775])
+* Fix bulk action dropdown ({kibana-pull}166475[#166475])
+
+{agent}::
+* Resilient handling of air gapped PGP checks. {agent} should not fail when remote PGP is specified (or official Elastic fallback PGP is used) and remote is not available {agent-pull}3427[#3427] {agent-pull}3426[#3426] {agent-issue}3368[#3368]
+
+// end 8.10.3 relnotes
 
 // begin 8.10.2 relnotes
 
@@ -41,7 +76,7 @@ Review important information about the {fleet} and {agent} 8.10.2 release.
 
 *Details*
 
-IMPORTANT: If you're using an air-gapped environment, we recommended waiting for this issue to be resolved before installing 8.9.x or any higher version, to avoid being unable to upgrade.
+IMPORTANT: If you're using an air-gapped environment, we recommended installing version 8.10.3 or any higher version, to avoid being unable to upgrade.
 
 Starting from version 8.9.0, when {agent} tries to perform an upgrade, it first verifies the binary signature with the key bundled in the agent.
 This process has a backup mechanism that will use the key coming from `https://artifacts.elastic.co/GPG-KEY-elastic-agent` instead of the one it already has.
@@ -138,7 +173,7 @@ Review important information about the {fleet} and {agent} 8.10.1 release.
 
 *Details*
 
-IMPORTANT: If you're using an air-gapped environment, we recommended waiting for this issue to be resolved before installing 8.9.x or any higher version, to avoid being unable to upgrade.
+IMPORTANT: If you're using an air-gapped environment, we recommended installing version 8.10.3 or any higher version, to avoid being unable to upgrade.
 
 Starting from version 8.9.0, when {agent} tries to perform an upgrade, it first verifies the binary signature with the key bundled in the agent.
 This process has a backup mechanism that will use the key coming from `https://artifacts.elastic.co/GPG-KEY-elastic-agent` instead of the one it already has.
@@ -260,7 +295,7 @@ If you need to access a diagnostic bundle for an agent, ensure that {fleet-serve
 
 *Details*
 
-IMPORTANT: If you're using an air-gapped environment, we recommended waiting for this issue to be resolved before installing 8.9.x or any higher version, to avoid being unable to upgrade.
+IMPORTANT: If you're using an air-gapped environment, we recommended installing version 8.10.3 or any higher version, to avoid being unable to upgrade.
 
 Starting from version 8.9.0, when {agent} tries to perform an upgrade, it first verifies the binary signature with the key bundled in the agent.
 This process has a backup mechanism that will use the key coming from `https://artifacts.elastic.co/GPG-KEY-elastic-agent` instead of the one it already has.

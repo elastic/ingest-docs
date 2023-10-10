@@ -32,6 +32,22 @@ Also see:
 Review important information about the {fleet} and {agent} 8.10.3 release.
 
 [discrete]
+[[security-update-8.10.3]]
+=== Security updates
+
+* **Fleet Server Insertion of Sensitive Information into Log File (ESA-2023-20)**
++
+An issue was discovered in Fleet Server >= v8.10.0 and < v8.10.3 where Agent enrollment tokens are being inserted into the Fleet Server’s log file in plain text.
++
+These enrollment tokens could allow someone to enroll an agent into an agent policy, and potentially use that to retrieve other secrets in the policy including for Elasticsearch and third-party services. Alternatively a threat actor could potentially enroll agents to the clusters and send arbitrary events to Elasticsearch.
++
+The issue is resolved in 8.10.3.
++
+For more information, see our related
+https://discuss.elastic.co/t/fleet-server-v8-10-3-security-update/344737[security
+announcement].
+
+[discrete]
 [[known-issues-8.10.3]]
 === Known issues
 

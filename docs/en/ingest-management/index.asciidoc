@@ -165,6 +165,13 @@ include::elastic-agent/configuration/structure-config-file.asciidoc[leveloffset=
 
 include::elastic-agent/configuration/inputs/input-configuration.asciidoc[leveloffset=+2]
 
+<<<<<<< HEAD
+=======
+include::elastic-agent/configuration/inputs/simplified-input-configuration.asciidoc[leveloffset=+3]
+
+include::elastic-agent/configuration/inputs/inputs-list.asciidoc[leveloffset=+3]
+
+>>>>>>> 389af46d (Add list of Elastic Agent inputs for standalone configuration (#561))
 include::elastic-agent/elastic-agent-dynamic-inputs.asciidoc[leveloffset=+3]
 
 include::elastic-agent/configuration/providers/elastic-agent-providers.asciidoc[leveloffset=+2]

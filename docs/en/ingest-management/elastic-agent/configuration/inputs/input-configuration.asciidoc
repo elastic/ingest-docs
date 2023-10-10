@@ -33,7 +33,7 @@ By default {agent} collects system metrics, such as CPU, memory, network, and fi
 -----------------------------------------------------------------------
 
 <1> A unique ID for the input.
-<2> A generic type describing the data.
+<2> The name of the input. Refer to <<elastic-agent-inputs-list>> for the list of what's available.
 <3> The name of the `output` to use. If not specified, `default` will be used.
 <4> Package specification.
 <5> A user-defined namespace.

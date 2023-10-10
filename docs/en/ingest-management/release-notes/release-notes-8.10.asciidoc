@@ -14,6 +14,7 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.10.4>>
 * <<release-notes-8.10.3>>
 * <<release-notes-8.10.2>>
 * <<release-notes-8.10.1>>
@@ -23,6 +24,35 @@ Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.10.4 relnotes
+
+[[release-notes-8.10.4]]
+== {fleet} and {agent} 8.10.4
+
+Review important information about the {fleet} and {agent} 8.10.4 release.
+
+[discrete]
+[[enhancements-8.10.4]]
+=== Enhancements
+
+{agent}::
+//EXAMPLE * Improve {agent} uninstall on Windows by adding delay between retries when file removal is blocked by busy files {agent-pull}3431[#3431] {agent-issue}3221[#3221]
+
+[discrete]
+[[bug-fixes-8.10.4]]
+=== Bug fixes
+
+{fleet}::
+//EXAMPLE * Fix incorrect index template used from the data stream name ({kibana-pull}166941[#166941])
+
+{fleet-server}::
+//EXAMPLE * Fleet Server support to handle agent policy secrets. {fleet-server-pull}2863[#2863] {fleet-server-issue}2485[#2485]
+
+{agent}::
+//EXAMPLE * Resilient handling of air gapped PGP checks. {agent} should not fail when remote PGP is specified (or official Elastic fallback PGP is used) and remote is not available {agent-pull}3427[#3427] {agent-pull}3426[#3426] {agent-issue}3368[#3368]
+
+// end 8.10.4 relnotes
 
 // begin 8.10.3 relnotes
 

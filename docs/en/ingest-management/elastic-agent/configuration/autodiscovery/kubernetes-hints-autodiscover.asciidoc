@@ -21,13 +21,15 @@ This is the full list of supported hints:
 
 The package to use for monitoring.
 
+[discrete]
+== Optional hints available:
+
 [float]
 === `co.elastic.hints/host`
 
-The host to use for metrics retrieval.
+The host to use for metrics retrieval. If not defined, the host will be set as the default one: `<pod-ip>:<container-port>`.
 
-[discrete]
-== Optional hints available:
+
 
 [float]
 === `co.elastic.hints/data_stream`

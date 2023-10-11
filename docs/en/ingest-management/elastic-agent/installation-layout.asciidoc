@@ -1,7 +1,6 @@
 [[installation-layout]]
 = Installation layout
 
-{agent} files are installed in the following locations. You cannot override
-these installation paths because they are required for upgrades.
+{agent} files are installed in the following locations.
 
 include::{tab-widgets}/install-layout-widget.asciidoc[]

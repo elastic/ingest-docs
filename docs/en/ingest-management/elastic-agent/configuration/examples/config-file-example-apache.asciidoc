@@ -1,0 +1,120 @@
+[[config-file-example-apache]]
+= Config file example: Apache HTTP Server
+
+++++
+<titleabbrev>Apache HTTP Server</titleabbrev>
+++++
+
+Include these settings in your standalone {agent} `elastic-agent.yml` configuration file to ingest data from Apache HTTP server. 
+
+* <<config-file-example-apache-logs>>
+* <<config-file-example-apache-metrics>>
+
+[[config-file-example-apache-logs]]
+== Apache HTTP Server logs
+
+["source","yaml"]
+----
+outputs: <1>
+  default:
+    type: elasticsearch <2>
+    hosts:
+      - 'https://94d343762a2b465f976aa292df6a0fe1.us-central1.gcp.cloud.es.io:443'
+    username: '${ES_USERNAME}'
+    password: '${ES_PASSWORD}'
+agent:
+  download: <3>
+    sourceURI: 'https://artifacts.elastic.co/downloads/'
+  monitoring: <4>
+    enabled: true
+    use_output: default
+    namespace: default
+    logs: true
+    metrics: true
+inputs: <5>
+  - id: logfile-apache-fb9e632d-3708-4e76-bf4e-9758d379507e
+    name: apache-1
+    type: logfile <6>
+    use_output: default
+    data_stream:
+      namespace: default
+    streams:
+      - id: logfile-apache.access-fb9e632d-3708-4e76-bf4e-9758d379507e
+        data_stream:
+          dataset: apache.access
+          type: logs
+        paths:
+          - /var/log/apache2/access.log*
+          - /var/log/apache2/other_vhosts_access.log*
+          - /var/log/httpd/access_log*
+        tags:
+          - apache-access
+        exclude_files:
+          - .gz$
+      - id: logfile-apache.error-fb9e632d-3708-4e76-bf4e-9758d379507e
+        data_stream:
+          dataset: apache.error
+          type: logs
+        paths:
+          - /var/log/apache2/error.log*
+          - /var/log/httpd/error_log*
+        exclude_files:
+          - .gz$
+        tags:
+          - apache-error
+        processors:
+          - add_locale: null
+----
+
+<1> For available output settings, refer to <<elastic-agent-output-configuration>>.
+<2> For settings specific to the {es} output, refer to <<elasticsearch-output>>.
+<3> For available download settings, refer to <<elastic-agent-standalone-download>>.
+<4> For available monitoring settings, refer to <<elastic-agent-monitoring-configuration>>.
+<5> For available input settings, refer to <<elastic-agent-input-configuration>>.
+<6> For available input types, refer to <<elastic-agent-inputs-list>>.
+
+[[config-file-example-apache-metrics]]
+== Apache HTTP Server metrics
+
+["source","yaml"]
+----
+outputs: <1>
+  default:
+    type: elasticsearch <2>
+    hosts:
+      - 'https://94d343762a2b465f976aa292df6a0fe1.us-central1.gcp.cloud.es.io:443'
+    username: '${ES_USERNAME}'
+    password: '${ES_PASSWORD}'
+agent:
+  download: <3>
+    sourceURI: 'https://artifacts.elastic.co/downloads/'
+  monitoring: <4>
+    enabled: true
+    use_output: default
+    namespace: default
+    logs: true
+    metrics: true
+inputs: <5>
+    type: apache/metrics <6>
+    use_output: default
+    data_stream:
+      namespace: default
+    streams:
+      - id: apache/metrics-apache.status-6c23c542-9460-4ef5-b155-ab1bec34d489
+        data_stream:
+          dataset: apache.status
+          type: metrics
+        metricsets:
+          - status
+        hosts:
+          - 'http://127.0.0.1'
+        period: 30s
+        server_status_path: /server-status
+----
+
+<1> For available output settings, refer to <<elastic-agent-output-configuration>>.
+<2> For settings specific to the {es} output, refer to <<elasticsearch-output>>.
+<3> For available download settings, refer to <<elastic-agent-standalone-download>>.
+<4> For available monitoring settings, refer to <<elastic-agent-monitoring-configuration>>.
+<5> For available input settings, refer to <<elastic-agent-input-configuration>>.
+<6> For available input types, refer to <<elastic-agent-inputs-list>>.

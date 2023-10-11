@@ -44,7 +44,7 @@ Review important information about the {fleet} and {agent} 8.10.4 release.
 === Bug fixes
 
 {fleet}::
-//EXAMPLE * Fix incorrect index template used from the data stream name ({kibana-pull}166941[#166941])
+* Fix validation errors in KQL queries ({kibana-pull}168329[#168329])
 
 {fleet-server}::
 //EXAMPLE * Fleet Server support to handle agent policy secrets. {fleet-server-pull}2863[#2863] {fleet-server-issue}2485[#2485]

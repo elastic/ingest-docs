@@ -10,6 +10,11 @@ yourself.
 deployment.** {ecloud} runs a hosted version of {integrations-server} that
 includes {fleet-server}.
 
+ifeval::["{serverless-feature-flag}"=="yes"]
+* On-premises {fleet-server} is not currently available for use in an link:{serverless-docs}[{serverless-full}] environment.
+We recommend using the hosted {fleet-server} that is included and configured automatically in {serverless-short} {observability} and Security projects.
+endif::[]
+
 [discrete]
 == What is {fleet-server}?
 

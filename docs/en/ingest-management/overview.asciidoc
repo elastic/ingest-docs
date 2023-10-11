@@ -21,13 +21,7 @@ image::images/agent-architecture.png[Image showing {agent} collecting data from 
 To learn about installation options, refer to <<elastic-agent-installation>>.
 
 ifeval::["{serverless-feature-flag}"=="yes"]
-.{agent} with {serverless-full}
-****
-If you are using {agent} with link:{serverless-docs}[{serverless-full}], note these differences from use with {ess} and self-managed {es}:
-
-* The number of {agents} that may be connected to an {serverless-full} project is limited to 25 thousand.
-* The minimum supported version of {agent} supported for use with {serverless-full} is **VERSION TBD**.
-****
+IMPORTANT: Using {fleet} and {agent} with link:{serverless-docs}[{serverless-full}]? Please note these <<fleet-agent-serverless-restrictions,restrictions>>.
 endif::[]
 
 [discrete]

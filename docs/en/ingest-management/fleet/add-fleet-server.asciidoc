@@ -9,6 +9,11 @@ when deploying {fleet-server}:
 * <<deployed-on-prem>> to work with {es} running on-premises. You self-manage both {fleet-server} and {es}.
 * <<fleet-server-on-prem-es-cloud>>. You manage {fleet-server} and Elastic manages {es}.
 
+ifeval::["{serverless-feature-flag}"=="yes"]
+IMPORTANT: On-premises {fleet-server} is not currently available for use in a {serverless-short} environment.
+We recommend using the hosted {fleet-server} that is included and configured automatically in {serverless-short} {observability} and Security projects.
+endif::[]
+
 Read more about each to choose the best approach for your situation.
 
 [discrete]

@@ -49,6 +49,15 @@ Refer to:
 * {eck-ref}/k8s-elastic-agent.html[Run {agent} on ECK] -- for {eck} users
 --
 
+[IMPORTANT] 
+.Restrictions in {serverless-short}
+==== 
+If you are using {agent} with link:{serverless-docs}[{serverless-full}], note these differences from use with {ess} and self-managed {es}:
+
+* The number of {agents} that may be connected to an {serverless-full} project is limited to 25 thousand.
+* The minimum supported version of {agent} supported for use with {serverless-full} is version **VERSION TBD**.
+====
+
 [discrete]
 == Minimum Requirements
 

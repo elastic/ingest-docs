@@ -29,6 +29,10 @@ include::{docs-root}/shared/attributes.asciidoc[]
 
 include::overview.asciidoc[leveloffset=+1]
 
+ifeval::["{serverless-feature-flag}"=="yes"]
+include::serverless-restrictions.asciidoc[leveloffset=+2]
+endif::[]
+
 include::beats-agent-comparison.asciidoc[leveloffset=+1]
 
 include::quick-starts.asciidoc[leveloffset=+1]
@@ -125,9 +129,11 @@ include::fleet/set-inactivity-timeout.asciidoc[leveloffset=+3]
 
 include::fleet/upgrade-elastic-agent.asciidoc[leveloffset=+3]
 
-include::fleet/filter-agent-list-by-tags.asciidoc[leveloffset=+3]
+include::fleet/migrate-elastic-agent.asciidoc[leveloffset=+3]
 
 include::fleet/monitor-elastic-agent.asciidoc[leveloffset=+3]
+
+include::fleet/filter-agent-list-by-tags.asciidoc[leveloffset=+3]
 
 include::agent-policies.asciidoc[leveloffset=+2]
 
@@ -165,6 +171,8 @@ include::elastic-agent/configuration/inputs/input-configuration.asciidoc[levelof
 
 include::elastic-agent/configuration/inputs/simplified-input-configuration.asciidoc[leveloffset=+3]
 
+include::elastic-agent/configuration/inputs/inputs-list.asciidoc[leveloffset=+3]
+
 include::elastic-agent/elastic-agent-dynamic-inputs.asciidoc[leveloffset=+3]
 
 include::elastic-agent/configuration/providers/elastic-agent-providers.asciidoc[leveloffset=+2]
@@ -180,6 +188,8 @@ include::elastic-agent/configuration/elastic-agent-standalone-features.asciidoc[
 include::elastic-agent/configuration/elastic-agent-standalone-download.asciidoc[leveloffset=+2]
 
 include::elastic-agent/grant-access-to-elasticsearch.asciidoc[leveloffset=+2]
+
+include::elastic-agent/example-standalone-monitor-nginx.asciidoc[leveloffset=+2]
 
 include::elastic-agent/debug-standalone-elastic-agent.asciidoc[leveloffset=+2]
 

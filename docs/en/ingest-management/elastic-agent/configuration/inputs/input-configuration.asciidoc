@@ -37,8 +37,7 @@ By default {agent} collects system metrics, such as CPU, memory, network, and fi
       data_stream.dataset: system.filesystem
 -----------------------------------------------------------------------
 
-<1> The name of the input. 
-//Refer to <<elastic-agent-inputs-list>> for the list of what's available.
+<1> The name of the input. Refer to <<elastic-agent-inputs-list>> for the list of what's available.
 <2> A unique ID for the input.
 <3> A user-defined namespace.
 <4> The name of the `output` to use. If not specified, `default` will be used.

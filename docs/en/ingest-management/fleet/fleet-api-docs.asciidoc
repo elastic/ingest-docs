@@ -76,7 +76,7 @@ curl --request POST \
 ----
 
 ****
-beta[] To save time, you can use {kib} to generate the API request, then run it
+To save time, you can use {kib} to generate the API request, then run it
 from the Dev Tools console. 
 
 . Go to **{fleet} -> Agent policies**.
@@ -162,7 +162,7 @@ curl --request POST \
 ----
 
 ****
-* beta[] To save time, you can use {kib} to generate the API call, then run it
+* To save time, you can use {kib} to generate the API call, then run it
 from the Dev Tools console. 
 +
 . Go to **Integrations**, select an {agent} integration, and click

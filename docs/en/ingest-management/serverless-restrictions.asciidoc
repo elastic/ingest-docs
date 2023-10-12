@@ -1,0 +1,22 @@
+[[fleet-agent-serverless-restrictions]]
+= {fleet} and {agent} restrictions for {serverless-full}
+
+++++
+<titleabbrev>Restrictions for {serverless-full}</titleabbrev>
+++++
+
+[discrete]
+[[elastic-agent-serverless-restrictions]]
+== {agent}
+
+If you are using {agent} with link:{serverless-docs}[{serverless-full}], note these differences from use with {ess} and self-managed {es}:
+
+* The number of {agents} that may be connected to an {serverless-full} project is limited to 25 thousand.
+* The minimum supported version of {agent} supported for use with {serverless-full} is 8.11.0.
+
+[discrete]
+[[fleet-server-serverless-restrictions]]
+== {fleet-server}
+
+On-premises {fleet-server} is not currently available for use in a {serverless-short} environment.
+We recommend using the hosted {fleet-server} that is included and configured automatically in {serverless-short} {observability} and Security projects.

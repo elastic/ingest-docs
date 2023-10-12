@@ -14,12 +14,263 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.10.3>>
+* <<release-notes-8.10.2>>
+* <<release-notes-8.10.1>>
 * <<release-notes-8.10.0>>
 
 Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.10.3 relnotes
+
+[[release-notes-8.10.3]]
+== {fleet} and {agent} 8.10.3
+
+Review important information about the {fleet} and {agent} 8.10.3 release.
+
+[discrete]
+[[security-update-8.10.3]]
+=== Security updates
+
+* **Fleet Server Insertion of Sensitive Information into Log File (ESA-2023-20)**
++
+An issue was discovered in Fleet Server >= v8.10.0 and < v8.10.3 where Agent enrollment tokens are being inserted into the Fleet Server’s log file in plain text.
++
+These enrollment tokens could allow someone to enroll an agent into an agent policy, and potentially use that to retrieve other secrets in the policy including for Elasticsearch and third-party services. Alternatively a threat actor could potentially enroll agents to the clusters and send arbitrary events to Elasticsearch.
++
+The issue is resolved in 8.10.3.
++
+For more information, see our related
+https://discuss.elastic.co/t/fleet-server-v8-10-3-security-update/344737[security
+announcement].
+
+[discrete]
+[[known-issues-8.10.3]]
+=== Known issues
+
+IMPORTANT: The <<known-issue-3375-v8100,known issue>> that prevents successful upgrades in an air-gapped environment for {agent} versions 8.9.0 to 8.10.2 has been resolved in this release. If you're using an air-gapped environment, we recommend installing version 8.10.3 or any higher version to avoid not being unable to upgrade.
+
+[discrete]
+[[enhancements-8.10.3]]
+=== Enhancements
+
+{agent}::
+* Improve {agent} uninstall on Windows by adding delay between retries when file removal is blocked by busy files {agent-pull}3431[#3431] {agent-issue}3221[#3221]
+
+[discrete]
+[[bug-fixes-8.10.3]]
+=== Bug fixes
+
+{fleet}::
+* Fix incorrect index template used from the data stream name ({kibana-pull}166941[#166941])
+* Increase package install max timeout limit and add concurrency control to rollovers ({kibana-pull}166775[#166775])
+* Fix bulk action dropdown ({kibana-pull}166475[#166475])
+
+{agent}::
+* Resilient handling of air gapped PGP checks. {agent} should not fail when remote PGP is specified (or official Elastic fallback PGP is used) and remote is not available {agent-pull}3427[#3427] {agent-pull}3426[#3426] {agent-issue}3368[#3368]
+
+// end 8.10.3 relnotes
+
+// begin 8.10.2 relnotes
+
+[[release-notes-8.10.2]]
+== {fleet} and {agent} 8.10.2
+
+Review important information about the {fleet} and {agent} 8.10.2 release.
+
+[discrete]
+[[known-issues-8.10.2]]
+=== Known issues
+
+[[known-issue-3375-v8102]]
+.PGP key download fails in an air-gapped environment
+[%collapsible]
+====
+
+*Details*
+
+IMPORTANT: If you're using an air-gapped environment, we recommended installing version 8.10.3 or any higher version, to avoid being unable to upgrade.
+
+Starting from version 8.9.0, when {agent} tries to perform an upgrade, it first verifies the binary signature with the key bundled in the agent.
+This process has a backup mechanism that will use the key coming from `https://artifacts.elastic.co/GPG-KEY-elastic-agent` instead of the one it already has.
+
+In an air-gapped environment, the agent won't be able to download the remote key and therefore cannot be upgraded. 
+
+*Impact* +
+
+For the upgrade to succeed, the agent needs to download the remote key from a server accessible from the air-gapped environment. Two workarounds are available.
+
+*Option 1*
+
+If an HTTP proxy is available to be used by the {agents} in your {fleet}, add the proxy settings using environment variables as explained in <<host-proxy-env-vars,Proxy Server connectivity using default host variables>>.
+Please note that you need to enable HTTP Proxy usage for `artifacts.elastic.co` to bypass this problem, so you can craft the `HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY` environment variables to be used exclusively for it.
+
+*Option 2*
+
+As the upgrade URL is not customizable, we have to "trick" the system by pointing `https://artifacts.elastic.co/` to another host that will have the file.
+
+The following examples require a server in your air-gapped environment that will expose the key you will have downloaded from `https://artifacts.elastic.co/GPG-KEY-elastic-agent``.
+
+_Example 1: Manual_
+
+Edit the {agent} server hosts file to add the following content:
+
+[source,sh]
+----
+<YOUR_HOST_IP> artifacts.elastic.co
+----
+
+The Linux hosts file path is `/etc/hosts`.
+
+Windows hosts file path is `C:\Windows\System32\drivers\etc\hosts`.
+
+_Example 2: Puppet_
+
+[source,yaml]
+----
+host { 'elastic-artifacts':
+  ensure       => 'present'
+  comment      => 'Workaround for PGP check'
+  ip           => '<YOUR_HOST_IP>'
+}
+----
+
+_Example 3: Ansible_
+
+[source,yaml]
+----
+- name  : 'elastic-artifacts'
+  hosts : 'all'
+  become: 'yes'  
+
+  tasks:
+    - name: 'Add entry to /etc/hosts'
+      lineinfile:
+        path: '/etc/hosts'
+        line: '<YOUR_HOST_IP> artifacts.elastic.co'
+----
+
+====
+
+[discrete]
+[[enhancements-8.10.2]]
+=== Enhancements
+
+{agent}::
+* Updated Go version to 1.20.8. {agent-pull}3393[#3393]
+
+[discrete]
+[[bug-fixes-8.10.2]]
+=== Bug fixes
+
+{fleet}::
+* Fixed force delete package API, fixed validation check to reject request if package is used by agents. ({kibana-pull}166623[#166623])
+
+// end 8.10.2 relnotes
+
+// begin 8.10.1 relnotes
+
+[[release-notes-8.10.1]]
+== {fleet} and {agent} 8.10.1
+
+Review important information about the {fleet} and {agent} 8.10.1 release.
+
+[discrete]
+[[known-issues-8.10.1]]
+=== Known issues
+
+[[known-issue-3375-v8101]]
+.PGP key download fails in an air-gapped environment
+[%collapsible]
+====
+
+*Details*
+
+IMPORTANT: If you're using an air-gapped environment, we recommended installing version 8.10.3 or any higher version, to avoid being unable to upgrade.
+
+Starting from version 8.9.0, when {agent} tries to perform an upgrade, it first verifies the binary signature with the key bundled in the agent.
+This process has a backup mechanism that will use the key coming from `https://artifacts.elastic.co/GPG-KEY-elastic-agent` instead of the one it already has.
+
+In an air-gapped environment, the agent won't be able to download the remote key and therefore cannot be upgraded. 
+
+*Impact* +
+
+For the upgrade to succeed, the agent needs to download the remote key from a server accessible from the air-gapped environment. Two workarounds are available.
+
+*Option 1*
+
+If an HTTP proxy is available to be used by the {agents} in your {fleet}, add the proxy settings using environment variables as explained in <<host-proxy-env-vars,Proxy Server connectivity using default host variables>>.
+Please note that you need to enable HTTP Proxy usage for `artifacts.elastic.co` to bypass this problem, so you can craft the `HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY` environment variables to be used exclusively for it.
+
+*Option 2*
+
+As the upgrade URL is not customizable, we have to "trick" the system by pointing `https://artifacts.elastic.co/` to another host that will have the file.
+
+The following examples require a server in your air-gapped environment that will expose the key you will have downloaded from `https://artifacts.elastic.co/GPG-KEY-elastic-agent``.
+
+_Example 1: Manual_
+
+Edit the {agent} server hosts file to add the following content:
+
+[source,sh]
+----
+<YOUR_HOST_IP> artifacts.elastic.co
+----
+
+The Linux hosts file path is `/etc/hosts`.
+
+Windows hosts file path is `C:\Windows\System32\drivers\etc\hosts`.
+
+_Example 2: Puppet_
+
+[source,yaml]
+----
+host { 'elastic-artifacts':
+  ensure       => 'present'
+  comment      => 'Workaround for PGP check'
+  ip           => '<YOUR_HOST_IP>'
+}
+----
+
+_Example 3: Ansible_
+
+[source,yaml]
+----
+- name  : 'elastic-artifacts'
+  hosts : 'all'
+  become: 'yes'  
+
+  tasks:
+    - name: 'Add entry to /etc/hosts'
+      lineinfile:
+        path: '/etc/hosts'
+        line: '<YOUR_HOST_IP> artifacts.elastic.co'
+----
+
+====
+
+[discrete]
+[[enhancements-8.10.1]]
+=== Enhancements
+
+{agent}::
+* Improve logging during {agent} upgrades. {agent-pull}3382[#3382]
+
+[discrete]
+[[bug-fixes-8.10.1]]
+=== Bug fixes
+
+{fleet}::
+* Show snapshot version in agent upgrade modal and allow custom values. ({kibana-pull}165978[#165978]).
+
+{agent}::
+* Rollback {agent} upgrade if upgraded agent process crashes immediately. {agent-pull}3166[#3166] {agent-issue}3124[#3124]
+
+
+// end 8.10.1 relnotes
 
 // begin 8.10.0 relnotes
 
@@ -48,6 +299,123 @@ The mechanism that {fleet} uses to generate diagnostic bundles has been updated.
 If you need to access a diagnostic bundle for an agent, ensure that {fleet-server} is at the required version.
 
 ====
+
+[discrete]
+[[known-issues-8.10.0]]
+=== Known issues
+
+[[known-issue-3375-v8100]]
+.PGP key download fails in an air-gapped environment
+[%collapsible]
+====
+
+*Details*
+
+IMPORTANT: If you're using an air-gapped environment, we recommended installing version 8.10.3 or any higher version, to avoid being unable to upgrade.
+
+Starting from version 8.9.0, when {agent} tries to perform an upgrade, it first verifies the binary signature with the key bundled in the agent.
+This process has a backup mechanism that will use the key coming from `https://artifacts.elastic.co/GPG-KEY-elastic-agent` instead of the one it already has.
+
+In an air-gapped environment, the agent won't be able to download the remote key and therefore cannot be upgraded. 
+
+*Impact* +
+
+For the upgrade to succeed, the agent needs to download the remote key from a server accessible from the air-gapped environment. Two workarounds are available.
+
+*Option 1*
+
+If an HTTP proxy is available to be used by the {agents} in your {fleet}, add the proxy settings using environment variables as explained in <<host-proxy-env-vars,Proxy Server connectivity using default host variables>>.
+Please note that you need to enable HTTP Proxy usage for `artifacts.elastic.co` to bypass this problem, so you can craft the `HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY` environment variables to be used exclusively for it.
+
+*Option 2*
+
+As the upgrade URL is not customizable, we have to "trick" the system by pointing `https://artifacts.elastic.co/` to another host that will have the file.
+
+The following examples require a server in your air-gapped environment that will expose the key you will have downloaded from `https://artifacts.elastic.co/GPG-KEY-elastic-agent``.
+
+_Example 1: Manual_
+
+Edit the {agent} server hosts file to add the following content:
+
+[source,sh]
+----
+<YOUR_HOST_IP> artifacts.elastic.co
+----
+
+The Linux hosts file path is `/etc/hosts`.
+
+Windows hosts file path is `C:\Windows\System32\drivers\etc\hosts`.
+
+_Example 2: Puppet_
+
+[source,yaml]
+----
+host { 'elastic-artifacts':
+  ensure       => 'present'
+  comment      => 'Workaround for PGP check'
+  ip           => '<YOUR_HOST_IP>'
+}
+----
+
+_Example 3: Ansible_
+
+[source,yaml]
+----
+- name  : 'elastic-artifacts'
+  hosts : 'all'
+  become: 'yes'  
+
+  tasks:
+    - name: 'Add entry to /etc/hosts'
+      lineinfile:
+        path: '/etc/hosts'
+        line: '<YOUR_HOST_IP> artifacts.elastic.co'
+----
+
+====
+
+[[known-issue-166553]]
+.Filtering Elastic Agents in Kibana generates an "Error fetching agents" message
+[%collapsible]
+====
+
+*Details*
+
+A {kibana-ref}/kuery-query.html[KQL query] in a Fleet search field now returns a `400` error when the query is not valid.
+
+Previously, the search fields would accept any type of query, but with the merge of {kibana-pull}161064[#161064] any type of KQL sent to {fleet} needs to have a valid field name, otherwise it returns an error.
+
+*Cause* +
+
+Entering an invalid KQL query on one of the {fleet} KQL search fields or through the API produces the error.
+
+Affected search fields in the {fleet} UI:
+
+* Agent list
+* Agent policies
+* Enrollment Keys
+
+Affected endpoints in the <<fleet-api-docs>> (these are the endpoints that accept the parameter `ListWithKuery`):
+
+* `GET api/fleet/agents`
+* `GET api/fleet/agent_status`
+* `GET api/fleet/agent_policies`
+* `GET api/fleet/package_policies`
+* `GET api/fleet/enrollment_api_keys`
+* `GET api/fleet/agent_status`
+
+*Impact* +
+
+To avoid getting the `400` error, the queries should be valid.
+
+For instance, entering the query `8.10.0` results in an error. The correct query should be: `local_metadata.agent.version="8.10.0"`.
+
+As another example, when viewing the *Agents* tab in *Fleet*, typing a hostname such as `a0c8c88ef2f5` in the search field results in an error. The correct query should have the correct field name, taken from among the allowed ones, for example `local_metadata.host.hostname: a0c8c88ef2f5`.
+
+The list of available field names is visible by clicking on any of the search fields.
+
+====
+
 
 [discrete]
 [[new-features-8.10.0]]

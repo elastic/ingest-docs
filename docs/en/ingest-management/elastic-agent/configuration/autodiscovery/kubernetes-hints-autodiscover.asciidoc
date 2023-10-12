@@ -140,6 +140,20 @@ In the above sample the processor definition tagged with `1` would be executed f
 
 IMPORTANT: Processor configuration is not supported on the datastream level, so annotations like `co.elastic.hints/<datastream>.processors` are ignored.
 
+[discrete]
+== Multiple containers
+
+When a pod has multiple containers, the settings are shared unless you put the container name in the hint. For example, these hints configure `processors.decode_json_fields` for all containers in the pod, but set a specific `stream` hint for the container called sidecar.
+
+[source,yaml]
+----
+annotations:
+  co.elastic.hints/processors.decode_json_fields.fields: "message"
+	co.elastic.hints/processors.decode_json_fields.add_error_key: true
+	co.elastic.hints/processors.decode_json_fields.overwrite_keys: true
+	co.elastic.hints/processors.decode_json_fields.target: "team"
+	co.elastic.hints.sidecar/stream: "stderr"
+----
 
 [discrete]
 == Available packages that support hints autodiscovery

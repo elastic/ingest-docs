@@ -1,0 +1,115 @@
+[[config-file-example-apache]]
+= Config file example: Apache HTTP Server
+
+++++
+<titleabbrev>Apache HTTP Server</titleabbrev>
+++++
+
+Include these settings in your standalone {agent} `elastic-agent.yml` configuration file to ingest data from nginx HTTP server.
+
+* <<config-file-example-nginx-logs>>
+* <<config-file-example-nginx-metrics>>
+
+[[config-file-example-nginx-logs]]
+== Nginx HTTP Server logs
+
+["source","yaml"]
+----
+outputs:
+  default:
+    type: elasticsearch
+    hosts:
+      - 'https://94d343762a2b465f976aa292df6a0fe1.us-central1.gcp.cloud.es.io:443'
+    username: '${ES_USERNAME}'
+    password: '${ES_PASSWORD}'
+agent:
+  download:
+    sourceURI: 'https://artifacts.elastic.co/downloads/'
+  monitoring:
+    enabled: true
+    use_output: default
+    namespace: default
+    logs: true
+    metrics: true
+inputs:
+  - id: logfile-nginx-afc3fbe6-bcba-4e17-8d90-63e88fbb1cc9
+    name: nginx-1
+    type: logfile
+    use_output: default
+    data_stream:
+      namespace: default
+    streams:
+      - id: logfile-nginx.access-afc3fbe6-bcba-4e17-8d90-63e88fbb1cc9
+        data_stream:
+          dataset: nginx.access
+          type: logs
+        ignore_older: 72h
+        paths:
+          - /var/log/nginx/access.log*
+        tags:
+          - nginx-access
+        exclude_files:
+          - .gz$
+        processors:
+          - add_locale: null
+      - id: logfile-nginx.error-afc3fbe6-bcba-4e17-8d90-63e88fbb1cc9
+        data_stream:
+          dataset: nginx.error
+          type: logs
+        ignore_older: 72h
+        paths:
+          - /var/log/nginx/error.log*
+        tags:
+          - nginx-error
+        exclude_files:
+          - .gz$
+        multiline:
+          pattern: '^\d{4}\/\d{2}\/\d{2} '
+          negate: true
+          match: after
+        processors:
+          - add_locale: null
+----
+
+
+
+
+[[config-file-example-nginx-metrics]]
+== Nginx HTTP Server metrics
+
+["source","yaml"]
+----
+outputs:
+  default:
+    type: elasticsearch
+    hosts:
+      - 'https://94d343762a2b465f976aa292df6a0fe1.us-central1.gcp.cloud.es.io:443'
+    username: '${ES_USERNAME}'
+    password: '${ES_PASSWORD}'
+agent:
+  download:
+    sourceURI: 'https://artifacts.elastic.co/downloads/'
+  monitoring:
+    enabled: true
+    use_output: default
+    namespace: default
+    logs: true
+    metrics: true
+inputs:
+  - id: nginx/metrics-nginx-c5fa65cf-0bc7-44dc-a2fa-14cb7d115e64
+    type: nginx/metrics
+    use_output: default
+    data_stream:
+      namespace: default
+    streams:
+      - id: nginx/metrics-nginx.stubstatus-c5fa65cf-0bc7-44dc-a2fa-14cb7d115e64
+        data_stream:
+          dataset: nginx.stubstatus
+          type: metrics
+        metricsets:
+          - stubstatus
+        hosts:
+          - 'http://127.0.0.1:80'
+        period: 10s
+        server_status_path: /nginx_status
+====

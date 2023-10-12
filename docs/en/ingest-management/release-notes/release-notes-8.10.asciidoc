@@ -39,6 +39,13 @@ Review important information about the {fleet} and {agent} 8.10.4 release.
 {agent}::
 * Enable {agent} to upgrade securely in an air-gapped environment where {fleet-server} is the only reachable URI. {agent-pull}3453[#3453] {agent-issue}3264[#3264]
 
+[discrete]
+[[bug-fixes-8.10.4]]
+=== Bug fixes
+
+{fleet}::
+* Fix validation errors in KQL queries. ({kibana-pull}168329[#168329])
+
 // end 8.10.4 relnotes
 
 // begin 8.10.3 relnotes

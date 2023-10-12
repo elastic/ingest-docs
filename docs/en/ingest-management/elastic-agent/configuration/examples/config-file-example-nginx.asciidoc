@@ -1,11 +1,11 @@
-[[config-file-example-apache]]
-= Config file example: Apache HTTP Server
+[[config-file-example-nginx]]
+= Config file example: Nginx HTTP Server
 
 ++++
-<titleabbrev>Apache HTTP Server</titleabbrev>
+<titleabbrev>Nginx HTTP Server</titleabbrev>
 ++++
 
-Include these settings in your standalone {agent} `elastic-agent.yml` configuration file to ingest data from nginx HTTP server.
+Include these settings in your standalone {agent} `elastic-agent.yml` configuration file to ingest data from Nginx HTTP Server.
 
 * <<config-file-example-nginx-logs>>
 * <<config-file-example-nginx-metrics>>
@@ -15,36 +15,36 @@ Include these settings in your standalone {agent} `elastic-agent.yml` configurat
 
 ["source","yaml"]
 ----
-outputs:
+outputs: <1>
   default:
-    type: elasticsearch
+    type: elasticsearch <2>
     hosts:
-      - 'https://94d343762a2b465f976aa292df6a0fe1.us-central1.gcp.cloud.es.io:443'
+      - '{elasticsearch-host-url}' <3>
     username: '${ES_USERNAME}'
     password: '${ES_PASSWORD}'
 agent:
-  download:
+  download: <4>
     sourceURI: 'https://artifacts.elastic.co/downloads/'
-  monitoring:
+  monitoring: <5>
     enabled: true
     use_output: default
     namespace: default
     logs: true
     metrics: true
-inputs:
-  - id: logfile-nginx-afc3fbe6-bcba-4e17-8d90-63e88fbb1cc9
+inputs: <6>
+  - id: {user-defined-unique-id} <7>
     name: nginx-1
-    type: logfile
+    type: logfile <8>
     use_output: default
-    data_stream:
+    data_stream: <9>
       namespace: default
     streams:
-      - id: logfile-nginx.access-afc3fbe6-bcba-4e17-8d90-63e88fbb1cc9
+      - id: {user-defined-unique-id} <7>
         data_stream:
-          dataset: nginx.access
+          dataset: nginx.access <10>
           type: logs
         ignore_older: 72h
-        paths:
+        paths: <11>
           - /var/log/nginx/access.log*
         tags:
           - nginx-access
@@ -52,12 +52,12 @@ inputs:
           - .gz$
         processors:
           - add_locale: null
-      - id: logfile-nginx.error-afc3fbe6-bcba-4e17-8d90-63e88fbb1cc9
+      - id: {user-defined-unique-id} <7>
         data_stream:
-          dataset: nginx.error
+          dataset: nginx.error <10>
           type: logs
         ignore_older: 72h
-        paths:
+        paths: <11>
           - /var/log/nginx/error.log*
         tags:
           - nginx-error
@@ -71,45 +71,67 @@ inputs:
           - add_locale: null
 ----
 
+<1> For available output settings, refer to <<elastic-agent-output-configuration>>.
+<2> For settings specific to the {es} output, refer to <<elasticsearch-output>>.
+<3> The URL of the Elasticsearch cluster where output should be sent, including the port number. For example `https://12345ab6789cd12345ab6789cd.us-central1.gcp.cloud.es.io:443`.
+<4> For available download settings, refer to <<elastic-agent-standalone-download>>.
+<5> For available monitoring settings, refer to <<elastic-agent-monitoring-configuration>>.
+<6> For available input settings, refer to <<elastic-agent-input-configuration>>.
+<7> A user-defined unique ID to identify the input stream.
+<8> For available input types, refer to <<elastic-agent-inputs-list>>.
+<9> Learn about <<data-streams>> for time series data.
+<10> Refer to {integrations-docs}/nginx#logs-reference[Logs reference] in the Nginx HTTP integration documentation for the logs available to ingest and exported fields.
+<11> Path to the log files to be monitored.
 
-
-
+[discrete]
 [[config-file-example-nginx-metrics]]
 == Nginx HTTP Server metrics
 
 ["source","yaml"]
 ----
-outputs:
+outputs: <1>
   default:
-    type: elasticsearch
+    type: elasticsearch <2>
     hosts:
-      - 'https://94d343762a2b465f976aa292df6a0fe1.us-central1.gcp.cloud.es.io:443'
+      - '{elasticsearch-host-url}' <3>
     username: '${ES_USERNAME}'
     password: '${ES_PASSWORD}'
 agent:
-  download:
+  download: <4>
     sourceURI: 'https://artifacts.elastic.co/downloads/'
-  monitoring:
+  monitoring: <5>
     enabled: true
     use_output: default
     namespace: default
     logs: true
     metrics: true
-inputs:
-  - id: nginx/metrics-nginx-c5fa65cf-0bc7-44dc-a2fa-14cb7d115e64
-    type: nginx/metrics
+inputs: <6>
+  - id: {user-defined-unique-id} <7>
+    type: nginx/metrics <8>
     use_output: default
-    data_stream:
+    data_stream: <9>
       namespace: default
     streams:
-      - id: nginx/metrics-nginx.stubstatus-c5fa65cf-0bc7-44dc-a2fa-14cb7d115e64
-        data_stream:
-          dataset: nginx.stubstatus
+      - id: {user-defined-unique-id} <7>
+        data_stream: <9>
+          dataset: nginx.stubstatus <10>
           type: metrics
-        metricsets:
+        metricsets: <11>
           - stubstatus
         hosts:
           - 'http://127.0.0.1:80'
         period: 10s
         server_status_path: /nginx_status
-====
+----
+
+<1> For available output settings, refer to <<elastic-agent-output-configuration>>.
+<2> For settings specific to the {es} output, refer to <<elasticsearch-output>>.
+<3> The URL of the Elasticsearch cluster where output should be sent, including the port number. For example `https://12345ab6789cd12345ab6789cd.us-central1.gcp.cloud.es.io:443`.
+<4> For available download settings, refer to <<elastic-agent-standalone-download>>.
+<5> For available monitoring settings, refer to <<elastic-agent-monitoring-configuration>>.
+<6> For available input settings, refer to <<elastic-agent-input-configuration>>.
+<7> A user-defined unique ID to identify the input stream.
+<8> For available input types, refer to <<elastic-agent-inputs-list>>.
+<9> Learn about <<data-streams>> for time series data.
+<10> A user-defined dataset. You can specify anything that makes sense to signify the source of the data.
+<11> Refer to {integrations-docs}/nginx#metrics-reference[Metrics reference] in the Nginx integration documentation for the type of metrics collected and exported fields.

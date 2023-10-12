@@ -47,8 +47,6 @@ Review important information about the {fleet} and {agent} 8.8.2 release.
 [[bug-fixes-8.8.2]]
 === Bug fixes
 
-
-
 {fleet}::
 * Fixes usage of AsyncLocalStorage for audit log. {kibana-pull}159807[#159807]
 * Fixing issue of returning output API key. {kibana-pull}159179[#159179]
@@ -56,6 +54,7 @@ Review important information about the {fleet} and {agent} 8.8.2 release.
 {agent}::
 * Explicitly specify timeout units as seconds in the Endpoint spec file. {agent-pull}2870[#2870]  {agent-issue}2863[#2863]
 * Fix logs collection in diagnostics when {agent} is running on Kubernetes. {agent-pull}2905[#2905]  {agent-issue}2899[#2899]
+* The <<known-issue-sdh-endpoint-316-v880,known issue>> that caused an {elastic-defend} and {agent} CPU spike when connectivity to Elasticsearch and/or Logstash is lost has been resolved in this release.
 
 // end 8.8.2 relnotes
 
@@ -65,6 +64,27 @@ Review important information about the {fleet} and {agent} 8.8.2 release.
 == {fleet} and {agent} 8.8.1
 
 Review important information about the {fleet} and {agent} 8.8.1 release.
+
+[discrete]
+[[known-issues-8.8.1]]
+=== Known issues
+
+[[known-issue-sdh-endpoint-316-v881]]
+.{elastic-defend} and {agent} CPU spike when connectivity to Elasticsearch and/or Logstash is lost.
+[%collapsible]
+====
+
+*Details*
+
+When the output server ({es} or {ls}) is unreachable, versions 8.8.0 & 8.8.1 of {elastic-defend} (or {elastic-endpoint}) and {agent} may enter a state where they repeatedly communicate with each other indefinitely. This manifests as both processes consuming dramatically more CPU, constantly.
+
+Versions 8.8.0 & 8.8.1 are affected on all operating systems. {agent} does not manifest the behavior unless the {elastic-defend} integration is enabled.
+
+*Impact* +
+
+This issue was resolved in version 8.8.2. If you are using {agent} with the {elastic-defend} integration, please update to 8.8.2 or later.
+
+====
 
 [discrete]
 [[enhancements-8.8.1]]
@@ -160,6 +180,23 @@ logs/elastic-agent-20230530-23.ndjson:{"log.level":"error","@timestamp":"2023-05
 *Impact* +
 
 This issue is being investigated. Until it's resolved, as a workaround you can reduce the length of the agent output name until the problem stops occurring.
+====
+
+[[known-issue-sdh-endpoint-316-v880]]
+.{elastic-defend} and {agent} CPU spike when connectivity to Elasticsearch and/or Logstash is lost.
+[%collapsible]
+====
+
+*Details*
+
+When the output server ({es} or {ls}) is unreachable, versions 8.8.0 & 8.8.1 of {elastic-defend} (or {elastic-endpoint}) and {agent} may enter a state where they repeatedly communicate with each other indefinitely. This manifests as both processes consuming dramatically more CPU, constantly.
+
+Versions 8.8.0 & 8.8.1 are affected on all operating systems. {agent} does not manifest the behavior unless the {elastic-defend} integration is enabled.
+
+*Impact* +
+
+This issue was resolved in version 8.8.2. If you are using {agent} with the {elastic-defend} integration, please update to 8.8.2 or later.
+
 ====
 
 [discrete]

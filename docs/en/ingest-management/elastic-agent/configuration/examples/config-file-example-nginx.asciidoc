@@ -5,7 +5,7 @@
 <titleabbrev>Nginx HTTP Server</titleabbrev>
 ++++
 
-Include these settings in your standalone {agent} `elastic-agent.yml` configuration file to ingest data from Nginx HTTP Server.
+Include these sample settings in your standalone {agent} `elastic-agent.yml` configuration file to ingest data from Nginx HTTP Server.
 
 * <<config-file-example-nginx-logs>>
 * <<config-file-example-nginx-metrics>>
@@ -77,7 +77,7 @@ inputs: <6>
 <4> For available download settings, refer to <<elastic-agent-standalone-download>>.
 <5> For available monitoring settings, refer to <<elastic-agent-monitoring-configuration>>.
 <6> For available input settings, refer to <<elastic-agent-input-configuration>>.
-<7> A user-defined unique ID to identify the input stream.
+<7> A user-defined ID to uniquely identify the input stream.
 <8> For available input types, refer to <<elastic-agent-inputs-list>>.
 <9> Learn about <<data-streams>> for time series data.
 <10> Refer to {integrations-docs}/nginx#logs-reference[Logs reference] in the Nginx HTTP integration documentation for the logs available to ingest and exported fields.
@@ -130,7 +130,7 @@ inputs: <6>
 <4> For available download settings, refer to <<elastic-agent-standalone-download>>.
 <5> For available monitoring settings, refer to <<elastic-agent-monitoring-configuration>>.
 <6> For available input settings, refer to <<elastic-agent-input-configuration>>.
-<7> A user-defined unique ID to identify the input stream.
+<7> A user-defined ID to uniquely identify the input stream.
 <8> For available input types, refer to <<elastic-agent-inputs-list>>.
 <9> Learn about <<data-streams>> for time series data.
 <10> A user-defined dataset. You can specify anything that makes sense to signify the source of the data.

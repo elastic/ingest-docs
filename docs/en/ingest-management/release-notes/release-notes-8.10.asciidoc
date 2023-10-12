@@ -37,20 +37,7 @@ Review important information about the {fleet} and {agent} 8.10.4 release.
 === Enhancements
 
 {agent}::
-//EXAMPLE * Improve {agent} uninstall on Windows by adding delay between retries when file removal is blocked by busy files {agent-pull}3431[#3431] {agent-issue}3221[#3221]
-
-[discrete]
-[[bug-fixes-8.10.4]]
-=== Bug fixes
-
-{fleet}::
-* Fix validation errors in KQL queries ({kibana-pull}168329[#168329])
-
-{fleet-server}::
-//EXAMPLE * Fleet Server support to handle agent policy secrets. {fleet-server-pull}2863[#2863] {fleet-server-issue}2485[#2485]
-
-{agent}::
-//EXAMPLE * Resilient handling of air gapped PGP checks. {agent} should not fail when remote PGP is specified (or official Elastic fallback PGP is used) and remote is not available {agent-pull}3427[#3427] {agent-pull}3426[#3426] {agent-issue}3368[#3368]
+* Enable {agent} to upgrade securely in an air-gapped environment where {fleet-server} is the only reachable URI. {agent-pull}3453[#3453] {agent-issue}3264[#3264]
 
 // end 8.10.4 relnotes
 

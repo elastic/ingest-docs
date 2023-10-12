@@ -105,11 +105,11 @@ inputs: <6>
     data_stream: <8>
       namespace: default
     streams:
-      - id: {user-defined-unique-id}
+      - id: {user-defined-unique-id} <9>
         data_stream: <8>
-          dataset: apache.status <9>
+          dataset: apache.status <10>
           type: metrics
-        metricsets: <10>
+        metricsets: <11>
           - status
         hosts:
           - 'http://127.0.0.1'
@@ -125,5 +125,6 @@ inputs: <6>
 <6> For available input settings, refer to <<elastic-agent-input-configuration>>.
 <7> For available input types, refer to <<elastic-agent-inputs-list>>.
 <8> Learn about <<data-streams>> for time series data.
-<9> A user-defined dataset. You can specify anything that makes sense to signify the source of the data.
-<10> Refer to {integrations-docs}/apache#metrics[Metrics] in the Apache HTTP Server integration documentation for the type of metrics collected and exported fields.
+<9> A user-defined unique ID to identify the input stream.
+<10> A user-defined dataset. You can specify anything that makes sense to signify the source of the data.
+<11> Refer to {integrations-docs}/apache#metrics[Metrics] in the Apache HTTP Server integration documentation for the type of metrics collected and exported fields.

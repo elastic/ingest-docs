@@ -50,7 +50,7 @@ can perform the following upgrade-related actions:
 |Schedule an upgrade of one or more agents to begin at a specific time.
 
 |<<view-upgrade-status>>
-|View the status of an upgrade, including upgrade metrics and agent logs.
+|View the detailed status of an agent upgrade, including upgrade metrics and agent logs.
 
 |<<restart-upgrade-single>>
 |Restart an upgrade process that has stalled for a single agent.
@@ -65,9 +65,12 @@ can perform the following upgrade-related actions:
 [[upgrade-an-agent]]
 == Upgrade a single {agent}
 
-. On the **Agents** tab, click **Upgrade available** to see a list of agents
-that you can upgrade.
-
+. On the **Agents** tab, agents that can be upgraded are identified with an **Upgrade available** indicator.
++
+[role="screenshot"]
+image::images/upgrade-available-indicator.png[Indicator on the UI showing that the agent can be upgraded]
++
+You can also click the **Upgrade available** button to filter the list agents to only those that currently can be upgraded.
 . From the **Actions** menu next to the agent, choose **Upgrade agent**.
 +
 [role="screenshot"]
@@ -130,22 +133,49 @@ subscriptions].
 [[view-upgrade-status]]
 == View upgrade status
 
-. On the **Agents** tab, when you trigger an upgrade, agents that are upgrading
- have the status `Updating` until the upgrade is complete, then the status
- changes back to `Healthy`.
-+
+On the **Agents** tab, when you trigger an upgrade, agents that are currently 
+upgrading show a detailed upgrade status indicator beside the agent version.
+
 [role="screenshot"]
-image::images/upgrade-status.png[Screenshot of Agents tab showing upgrade status]
+image::images/upgrade-states.png[Detailed state of an upgrading agent]
 
-. When upgrading many agents, you can fine tune the maintenance window by
+The following table explains the various possible upgrade states.
+
+.{agent} upgrade states
+|===
+| State | Description
+
+| Upgrade downloading | {agent} is downloading the archive containing the new version artifact.
+| Upgrade extracting | {agent} is extracting the new version artifact from the downloaded archive.
+| Upgrade failed | An error has been detected in the newly upgraded {agent} and the attempt to roll the upgrade back to the previous version has failed.
+| Upgrade monitoring | The newly upgraded {agent} has started as is being monitored for errors.
+| Upgrade replacing | {agent} is currently replacing the former, pre-upgrade agent artifact with the new one.
+| Upgrade requested | {agent} has received the upgrade notice from {fleet} and the upgrade will start when the request has been received.
+| Upgrade restarting | {agent} has been replaced with a new version and is now restarting in order to apply the update.
+| Upgrade rolled Back | Due to an error detected in the newly upgraded {agent}, it has been rolled back to the previous version.
+| Upgrade scheduled | {agent} has received the upgrade notice from {fleet} and the upgrade will start at the indicated time.
+
+|===
+
+As well, for {agents} on version 8.11 and higher, you can hover your cursor over the information icon to get more granular details about the upgrade state.
+
+[role="screenshot"]
+image::images/upgrade-detailed-state01.png[Granular upgrade details shown as hover text (agent has requested an upgrade)]
+
+[role="screenshot"]
+image::images/upgrade-detailed-state02.png[Granular upgrade details shown as hover text (agent is restarting to apply the update)]
+
+When upgrading many agents, you can fine tune the maintenance window by
 viewing stats and metrics about the upgrade:
-+
-.. On the **Agents** tab, click the host name to view agent details. If you
-don't see the host name, try refreshing the page.
-.. Click **View agent dashboard** to open the **[{agent}] metrics** dashboard.
 
-. If the upgrade fails, view the agent logs to find the reason:
-+
+. On the **Agents** tab, click the host name to view agent details. If you
+don't see the host name, try refreshing the page.
+. Click **View more agent metrics** to open the **[{agent}] Agent metrics** dashboard.
+
+If an upgrade appears to have stalled, you can <<restart-upgrade-single,restart it>>.
+
+If an upgrade fails, you can view the agent logs to find the reason:
+
 .. In {fleet}, in the Host column, click the agent's name.
 .. Open the **Logs** tab.
 .. Search for failures.

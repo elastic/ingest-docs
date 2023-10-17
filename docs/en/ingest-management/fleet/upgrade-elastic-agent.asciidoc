@@ -165,6 +165,10 @@ appears on the UI. When this occurs, you can restart the upgrade from either the
 *Agents* tab on the main {fleet} page or from the details page for any individual
 agent.
 
+Note that there is a required 10 minute cooldown period in between restart attempts.
+After launching a restart action you need to wait for the cooldown to complete before
+initiating another restart.
+
 Restart from main {fleet} page:
 
 . From the **Actions** menu next to an agent that is stuck in an `Updating`
@@ -186,7 +190,9 @@ stalled during an upgrade.
 == Restart an upgrade for multiple agents
 
 When the upgrade process for multiple agents has been detected to have stalled,
-you can restart the upgrade process in bulk.
+you can restart the upgrade process in bulk. As with
+<<restart-upgrade-single,restarting an upgrade for a single agent>>,
+a 10 minute cooldown period is enforced between restarts.
 
 . On the **Agents** tab, select any set of the agents that are indicated to be stuck, and click **Actions**.
 . From the **Actions** menu, select **Restart upgrade <number> agents**.

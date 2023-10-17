@@ -483,6 +483,7 @@ To install the {agent} as a service, enroll it in {fleet}, and start the
 ----
 elastic-agent install --url <string>
                       --enrollment-token <string>
+                      [--base-path <string>]
                       [--ca-sha256 <string>]
                       [--certificate-authorities <string>]
                       [--delay-enroll]
@@ -503,6 +504,7 @@ a `fleet-server` process alongside the `elastic-agent` service:
 elastic-agent install --fleet-server-es <string>
                       --fleet-server-service-token <string>
                       [--fleet-server-service-token-path <string>]
+                      [--base-path <string>]
                       [--ca-sha256 <string>]
                       [--certificate-authorities <string>]
                       [--delay-enroll]
@@ -536,6 +538,10 @@ For more information about custom certificates, refer to <<secure-connections>>.
 
 [discrete]
 === Options
+
+`--base-path <string>`::
+Install {agent} in a location other than the <<installation-layout,default>>.
+Specify the custom base path for the install.
 
 `--ca-sha256 <string>`::
 Comma-separated list of certificate authority hash pins used for certificate

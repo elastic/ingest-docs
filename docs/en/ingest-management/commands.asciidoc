@@ -194,9 +194,6 @@ For more information about custom certificates, refer to <<secure-connections>>.
 [discrete]
 === Options
 
-// These descriptions are included for the enroll and install commands
-// tag::enroll-install-options[]
-
 `--ca-sha256 <string>`::
 Comma-separated list of certificate authority hash pins used for certificate
 verification.
@@ -305,8 +302,6 @@ tags, you must unenroll the {agent}, then re-enroll it using new tags.
 
 `--url <string>`::
 {fleet-server} URL to use to enroll the {agent} into {fleet}.
-
-// end::enroll-install-options[]
 
 {global-flags-link}
 
@@ -488,6 +483,7 @@ To install the {agent} as a service, enroll it in {fleet}, and start the
 ----
 elastic-agent install --url <string>
                       --enrollment-token <string>
+                      [--base-path <path>]
                       [--ca-sha256 <string>]
                       [--certificate-authorities <string>]
                       [--delay-enroll]
@@ -508,6 +504,7 @@ a `fleet-server` process alongside the `elastic-agent` service:
 elastic-agent install --fleet-server-es <string>
                       --fleet-server-service-token <string>
                       [--fleet-server-service-token-path <string>]
+                      [--base-path <path>]
                       [--ca-sha256 <string>]
                       [--certificate-authorities <string>]
                       [--delay-enroll]
@@ -542,7 +539,114 @@ For more information about custom certificates, refer to <<secure-connections>>.
 [discrete]
 === Options
 
-include::commands.asciidoc[tag=enroll-install-options]
+`--ca-sha256 <string>`::
+Comma-separated list of certificate authority hash pins used for certificate
+verification.
+
+`--certificate-authorities <string>`::
+Comma-separated list of root certificates used for server verification.
+
+`--delay-enroll`::
+Delays enrollment to occur on first start of the {agent} service. This setting
+is useful when you don't want the {agent} to enroll until the next reboot or manual start of the service, for
+example, when you're preparing an image that includes {agent}.
+
+`--enrollment-token <string>`::
+Enrollment token to use to enroll {agent} into {fleet}. You can use
+the same enrollment token for multiple agents.
+
+`--fleet-server-cert <string>`::
+Certificate to use for exposed {fleet-server} HTTPS endpoint.
+
+`--fleet-server-cert-key <string>`::
+Private key to use for exposed {fleet-server} HTTPS endpoint.
+
+`--fleet-server-cert-key-passphrase <string>`::
+Path to passphrase file for decrypting {fleet-server}'s private key if an encrypted private key is used.
+
+`--fleet-server-es <string>`::
+Start a {fleet-server} process when {agent} is started, and connect to the
+specified {es} URL.
+
+`--fleet-server-es-ca <string>`::
+Path to certificate authority to use to communicate with {es}.
+
+`--fleet-server-es-ca-trusted-fingerprint <string>`::
+The SHA-256 fingerprint (hash) of the certificate authority used to self-sign {es} certificates.
+This fingerprint will be used to verify self-signed certificates presented by {fleet-server} and any inputs started by {agent} for communication.
+This flag is required when using self-signed certificates with {es}.
+
+`--fleet-server-es-insecure`::
+Allows fleet server to connect to {es} in the following situations:
++
+--
+* When connecting to an HTTP server.
+* When connecting to an HTTPs server and the certificate chain cannot be
+verified. The content is encrypted, but the certificate is not verified.
+--
++
+When this flag is used the certificate verification is disabled.
+
+`--fleet-server-host <string>`::
+{fleet-server} HTTP binding host (overrides the policy).
+
+`--fleet-server-insecure-http`::
+Expose {fleet-server} over HTTP. This option is not recommended because it's
+insecure. It's useful during development and testing, but should not be used in
+production. When using this option, you should bind {fleet-server} to the
+local host (this is the default).
+
+`--fleet-server-policy <string>`::
+Used when starting a self-managed {fleet-server} to allow a specific policy to be used.
+
+`--fleet-server-port <uint16>`::
+{fleet-server} HTTP binding port (overrides the policy).
+
+`--fleet-server-service-token <string>`::
+Service token to use for communication with {es}.
+Mutually exclusive with `--fleet-server-service-token-path`.
+
+`--fleet-server-service-token-path <string>`::
+Service token file to use for communication with {es}.
+Mutually exclusive with `--fleet-server-service-token`.
+
+`--force`::
+Force overwrite of current configuration without prompting for confirmation.
+This flag is helpful when using automation software or scripted deployments.
++
+NOTE: If the {agent} is already installed on the host, using `--force` may
+result in unpredictable behavior with duplicate {agent}s appearing in {fleet}.
+
+`--non-interactive`::
+Install {agent} in a non-interactive mode. This flag is helpful when
+using automation software or scripted deployments. If {agent} is
+already installed on the host, the installation will terminate.
+
+`--help`::
+Show help for the `enroll` command.
+
+`--insecure`::
+Allow the {agent} to connect to {fleet-server} over insecure connections. This
+setting is required in the following situations:
++
+--
+* When connecting to an HTTP server. The API keys are sent in clear text.
+* When connecting to an HTTPs server and the certificate chain cannot be
+verified. The content is encrypted, but the certificate is not verified.
+* When using self-signed certificates generated by {agent}.
+--
++
+We strongly recommend that you use a secure connection.
+
+`--tag <string>`::
+A comma-separated list of tags to apply to {fleet}-managed {agent}s. You can
+use these tags to filter the list of agents in {fleet}.
++
+NOTE: Currently, there is no way to remove or edit existing tags. To change the
+tags, you must unenroll the {agent}, then re-enroll it using new tags.
+
+`--url <string>`::
+{fleet-server} URL to use to enroll the {agent} into {fleet}.
 
 {global-flags-link}
 

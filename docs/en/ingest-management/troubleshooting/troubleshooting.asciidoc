@@ -384,26 +384,8 @@ if you had intended to uninstall the {fleet-server}. In which case, re-check and
 [[fleet-agent-stuck-on-updating]]
 ==  {agent} is stuck in status `Updating`
 
-In some rare situations during the upgrade process, an {agent} may hang with the status `Updating`. To fix this problem, authenticate as a superuser and force unenroll to remove the stale {agent}:
-
-[source,shell]
-----
-curl 'https://<kibana_url>/api/fleet/agents/<agentID>/unenroll' \
-  -H 'kbn-xsrf: xx' \
-  -H 'Content-type: application/json' \
-  --data-raw '{"force":true,"revoke":true}' \
-  --compressed
-----
-
-Another possible solution to fix this problem without using a force unenroll is to use the {kib} **Dev Tools** to force the stale {agent} to upgrade:
-
-[source,shell]
-----
-POST kbn:/api/fleet/agents/5f18484c-17d5-12fe-c455-fcde50f8b/upgrade
-{ "force": true, "version": "8.7.0" }
-----
-
-This example upgrades the agent with agent-id `5f18484c-17d5-12fe-c455-fcde50f8b` to version `8.7.0`. The Dev Tools can be found by browsing in {kib} to **Management -> Dev Tools**. The `agent-id` of an agent can be found by browsing to **Management -> Fleet** and then searching for the agent using, for example, the hostname on which the agent is installed.
+Beginning in {stack} version 8.11, a stuck {agent} upgrade should be detected automatically,
+and you can <<restart-upgrade-single,restart the upgrade>> from {fleet}.
 
 [discrete]
 [[secondary-agent-not-connecting]]

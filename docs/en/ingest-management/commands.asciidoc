@@ -483,7 +483,6 @@ To install the {agent} as a service, enroll it in {fleet}, and start the
 ----
 elastic-agent install --url <string>
                       --enrollment-token <string>
-                      [--base-path <path>]
                       [--ca-sha256 <string>]
                       [--certificate-authorities <string>]
                       [--delay-enroll]
@@ -504,7 +503,6 @@ a `fleet-server` process alongside the `elastic-agent` service:
 elastic-agent install --fleet-server-es <string>
                       --fleet-server-service-token <string>
                       [--fleet-server-service-token-path <string>]
-                      [--base-path <path>]
                       [--ca-sha256 <string>]
                       [--certificate-authorities <string>]
                       [--delay-enroll]

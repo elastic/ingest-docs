@@ -126,6 +126,6 @@ inputs: <6>
 <6> For available input settings, refer to <<elastic-agent-input-configuration>>.
 <7> For available input types, refer to <<elastic-agent-inputs-list>>.
 <8> Learn about <<data-streams>> for time series data.
-<9> A user-defined ID to identify the input stream. The ID for each input stream needs to be unique. Naming the ID by appending the associated `data_stream` dataset (for example `{user-defined-unique-id}-apache.status`) is a recommended practice, but any unique ID will work.
+<9> A user-defined ID to identify the individual input stream. The ID for each input stream needs to be unique. Naming the ID by appending the associated `data_stream` dataset (for example `{user-defined-unique-id}-apache.status`) is a recommended practice, but any unique ID will work.
 <10> A user-defined dataset. You can specify anything that makes sense to signify the source of the data.
 <11> Refer to {integrations-docs}/apache#metrics[Metrics] in the Apache HTTP Server integration documentation for the type of metrics collected and exported fields.

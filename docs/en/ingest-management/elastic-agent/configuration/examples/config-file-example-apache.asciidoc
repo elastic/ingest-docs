@@ -39,11 +39,11 @@ inputs: <6>
     data_stream: <9>
       namespace: default
     streams:
-      - id: {user-defined-unique-id}-apache.access <7>
+      - id: {user-defined-unique-id}-apache.access <10>
         data_stream:
-          dataset: apache.access <10>
+          dataset: apache.access <11>
           type: logs
-        paths: <11>
+        paths: <12>
           - /var/log/apache2/access.log*
           - /var/log/apache2/other_vhosts_access.log*
           - /var/log/httpd/access_log*
@@ -51,11 +51,11 @@ inputs: <6>
           - apache-access
         exclude_files:
           - .gz$
-      - id: {user-defined-unique-id}-apache.error <7>
+      - id: {user-defined-unique-id}-apache.error <10>
         data_stream:
-          dataset: apache.error <10>
+          dataset: apache.error <11>
           type: logs
-        paths: <11>
+        paths: <12>
           - /var/log/apache2/error.log*
           - /var/log/httpd/error_log*
         exclude_files:
@@ -72,11 +72,12 @@ inputs: <6>
 <4> For available download settings, refer to <<elastic-agent-standalone-download>>.
 <5> For available monitoring settings, refer to <<elastic-agent-monitoring-configuration>>.
 <6> For available input settings, refer to <<elastic-agent-input-configuration>>.
-<7> A user-defined ID to identify the input stream. The ID for each input stream needs to be unique. Naming each ID by appending the associated `data_stream` dataset (for example `{user-defined-unique-id}-apache.access` or `{user-defined-unique-id}-apache.error`) is a recommended practice, but any unique ID will work.
+<7> A user-defined, unique ID to identify the input.
 <8> For available input types, refer to <<elastic-agent-inputs-list>>.
 <9> Learn about <<data-streams>> for time series data.
-<10> Refer to {integrations-docs}/apache#logs[Logs] in the Apache HTTP Server integration documentation for the logs available to ingest and exported fields.
-<11> Path to the log files to be monitored.
+<10> A user-defined ID to identify the individual input stream. The ID for each input stream needs to be unique. Naming the ID by appending the associated `data_stream` dataset (for example `{user-defined-unique-id}-apache.access` or `{user-defined-unique-id}-apache.error`) is a recommended practice, but any unique ID will work.
+<11> Refer to {integrations-docs}/apache#logs[Logs] in the Apache HTTP Server integration documentation for the logs available to ingest and exported fields.
+<12> Path to the log files to be monitored.
 
 [[config-file-example-apache-metrics]]
 == Apache HTTP Server metrics

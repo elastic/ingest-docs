@@ -69,6 +69,21 @@ Review important information about the {fleet} and {agent} 8.8.1 release.
 [[known-issues-8.8.1]]
 === Known issues
 
+[[known-issue-sdh-elastic-agent-3061-v8.7.1]]
+.{elastic-agent} running on Microsoft Windows can slow or block WMI and other operations.
+[%collapsible]
+====
+
+*Details*
+
+A bug in Elastic Agent Windows Service handler was preventing the correct behavior of the operating system (and in particular Windows Management Instrumentation / WMI can block or slow down).
+Elastic Agent Service handler for Windows was able to receive only the first change request.
+
+*Impact* +
+
+This issue will be resolved in version 8.11. In the meantime, you can downgrade to the 8.7.0 version or older.
+====
+
 [[known-issue-sdh-endpoint-316-v881]]
 .{elastic-defend} and {agent} CPU spike when connectivity to Elasticsearch and/or Logstash is lost.
 [%collapsible]

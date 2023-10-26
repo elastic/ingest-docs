@@ -1,0 +1,8 @@
+[[config-file-examples]]
+= Config file examples
+
+These examples show a basic, sample configuration to include in a standalone {agent} `elastic-agent.yml` <<structure-config-file,configuration file>> to gather data from various source types.
+
+* <<config-file-example-apache,Apache HTTP Server>>
+
+include::config-file-example-apache.asciidoc[leveloffset=+1]

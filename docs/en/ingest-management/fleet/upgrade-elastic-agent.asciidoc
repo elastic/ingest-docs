@@ -139,25 +139,26 @@ upgrading show a detailed upgrade status indicator beside the agent version.
 [role="screenshot"]
 image::images/upgrade-states.png[Detailed state of an upgrading agent]
 
-The following table explains the various possible upgrade states.
+The following table explains the various possible upgrade states. States are listed in the order that they happen.
+
 
 .{agent} upgrade states
 |===
 | State | Description
 
+| Upgrade requested | {agent} has received the upgrade notice from {fleet} and the upgrade will start when the request has been received.
+| Upgrade scheduled | {agent} has received the upgrade notice from {fleet} and the upgrade will start at the indicated time.
 | Upgrade downloading | {agent} is downloading the archive containing the new version artifact.
 | Upgrade extracting | {agent} is extracting the new version artifact from the downloaded archive.
-| Upgrade failed | An error has been detected in the newly upgraded {agent} and the attempt to roll the upgrade back to the previous version has failed.
-| Upgrade monitoring | The newly upgraded {agent} has started as is being monitored for errors.
 | Upgrade replacing | {agent} is currently replacing the former, pre-upgrade agent artifact with the new one.
-| Upgrade requested | {agent} has received the upgrade notice from {fleet} and the upgrade will start when the request has been received.
 | Upgrade restarting | {agent} has been replaced with a new version and is now restarting in order to apply the update.
-| Upgrade rolled Back | Due to an error detected in the newly upgraded {agent}, it has been rolled back to the previous version.
-| Upgrade scheduled | {agent} has received the upgrade notice from {fleet} and the upgrade will start at the indicated time.
+| Upgrade monitoring | The newly upgraded {agent} has started as is being monitored for errors.
+| Upgrade rolled back | The upgrade was unsuccessful. {agent} is being rolled back to a previous version.
+| Upgrade failed | An error has been detected in the newly upgraded {agent} and the attempt to roll the upgrade back to the previous version has failed.
 
 |===
 
-As well, for {agents} on version 8.11 and higher, you can hover your cursor over the information icon to get more granular details about the upgrade state.
+As well, for {agents} on version 8.12 and higher, you can hover your cursor over the information icon to get more granular details about the upgrade state.
 
 [role="screenshot"]
 image::images/upgrade-detailed-state01.png[Granular upgrade details shown as hover text (agent has requested an upgrade)]

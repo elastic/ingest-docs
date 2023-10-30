@@ -18,7 +18,7 @@ integrations that work with {agent}.
 +
 [role="screenshot"]
 image::images/unified-view-selector.png[Screen capture showing options for filtering the view]
-. Search for and select an integration.
+. Search for and select an integration. You can select a category to narrow your search.
 . Click **Add <Integration>**.
 . Name the integration and add any required configuration variables.
 +

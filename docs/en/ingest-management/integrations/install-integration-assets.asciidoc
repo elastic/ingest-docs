@@ -16,7 +16,7 @@ index templates.
 == Install integration assets
 
 . In {kib}, go to **Management > Integrations > Browse integrations**. Search for
-and select an integration.
+and select an integration. You can select a category to narrow your search.
 
 . Click the **Settings** tab.
 

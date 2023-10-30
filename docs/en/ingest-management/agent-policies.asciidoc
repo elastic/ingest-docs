@@ -128,7 +128,7 @@ Click the name of the policy you want to add an integration to.
 
 . Click **Add integration**.
 
-. Search for and select an integration.
+. Search for and select an integration. You can select a category to narrow your search.
 
 . Click **Add <Integration>**.
 

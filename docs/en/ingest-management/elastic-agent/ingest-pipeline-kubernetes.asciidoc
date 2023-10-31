@@ -1,5 +1,5 @@
 [[ingest-pipeline-kubernetes]]
-= Using Custom Ingest Pipeline with {k8s} Integration
+= Using a custom ingest pipeline with the {k8s} Integration
 
 This tutorial explains how to add a custom ingest pipeline to a {k8s} Integration in order to add specific metadata fields for deployments and cronjobs of pods.
 

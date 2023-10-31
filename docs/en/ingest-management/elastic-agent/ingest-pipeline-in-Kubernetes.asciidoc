@@ -22,7 +22,7 @@ image::images/add_resource_metadata.png[Configure add_resource_metadata]
 
 Eg. Enabling the enrichment through `add_resource_metadata` in Managed {agent} Policy
 
-> **Note:** Enabling deployment and cronjob metadata enrichment leads to increase of {agent}'s memory consumption. Elastic agent utilizes local cache in order to keep records of the {k8s} assets being discovered.
+> **Note:** Enabling deployment and cronjob metadata enrichment leads to an increase of {agent}'s memory consumption. {agent} uses a local cache in order to keep records of the {k8s} assets from being discovered.
 
 == Add deployment and cronjob for {k8s} pods through ingest pipelines
 

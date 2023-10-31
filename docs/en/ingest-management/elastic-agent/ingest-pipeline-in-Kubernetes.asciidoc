@@ -11,7 +11,7 @@ The https://docs.elastic.co/en/integrations/kubernetes[{k8s} Integration] is use
 
 The https://www.elastic.co/guide/en/fleet/current/kubernetes-provider.html[{k8s} Provider] offers the `add_resource_metadata` option to configure the metadata enrichment options.
 
-For {agent} versions >[8.10.4], the default configuration for metadata enrichment is `add_resource_metadata.deployment=false` and `add_resource_metadata.cronjob=false`. This means that pods that created from replicasets that belong to specific deployments would not be enriched with `kubernetes.deployment.name`. Additionally, pods that are created from jobs that belong to specific cronjobs, would not be enriched with `kubernetes.cronjob.name`.
+For {agent} versions >[8.10.4], the default configuration for metadata enrichment is `add_resource_metadata.deployment=false` and `add_resource_metadata.cronjob=false`. This means that pods that are created from replicasets that belong to specific deployments would not be enriched with `kubernetes.deployment.name`. Additionally, pods that are created from jobs that belong to specific cronjobs, would not be enriched with `kubernetes.cronjob.name`.
 
 **Kubernetes Integration Policy > Collect Kubernetes metrics from Kube-state-metrics > Kubernetes Pod Metrics**
 

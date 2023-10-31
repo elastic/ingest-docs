@@ -81,7 +81,7 @@ include::elastic-agent/running-on-kubernetes-standalone.asciidoc[leveloffset=+3]
 
 include::elastic-agent/scaling-on-kubernetes.asciidoc[leveloffset=+3]
 
-include::elastic-agent/ingest-pipeline-in-kubernetes.asciidoc[leveloffset=+3]
+include::elastic-agent/ingest-pipeline-kubernetes.asciidoc[leveloffset=+3]
 
 include::elastic-agent/configuration/env/container-envs.asciidoc[leveloffset=+3]
 

@@ -3,7 +3,7 @@
 
 This tutorial explains how to add a custom ingest pipeline to a {k8s} Integration in order to add specific metadata fields for deployments and cronjobs of pods.
 
-Custom pipelines can be used to add custom data processing, like adding fields, obfuscate sensitive information, and more. Find more information in [data-streams-pipeline-tutorial](https://www.elastic.co/guide/en/fleet/master/data-streams-pipeline-tutorial.html) on how to use custom ingest pipelines.
+Custom pipelines can be used to add custom data processing, like adding fields, obfuscating sensitive information, and more. Find more information in our tutorial about <<ingest-pipeline-in-Kubernetes,transforming data with custom ingest pipelines>>.
 
 == Metadata Enrichment for Kubernetes
 

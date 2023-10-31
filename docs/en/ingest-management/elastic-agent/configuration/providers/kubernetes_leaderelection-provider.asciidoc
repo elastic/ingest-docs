@@ -63,7 +63,7 @@ In general:
 - Leaseduration must be greater than renewdeadline
 - Renewdeadline must be greater than retryperiod*JitterFactor. 
 
-NOTE: Constant JitterFactor=1.2 defined in https://pkg.go.dev/gopkg.in/kubernetes/client-go.v11/tools/leaderelection[leaderelection lib]
+NOTE: Constant JitterFactor=1.2 is defined in https://pkg.go.dev/gopkg.in/kubernetes/client-go.v11/tools/leaderelection[leaderelection lib].
 
 
 [discrete]

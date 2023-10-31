@@ -5,7 +5,7 @@ This tutorial explains how to add a custom ingest pipeline to a {k8s} Integratio
 
 Custom pipelines can be used to add custom data processing, like adding fields, obfuscating sensitive information, and more. Find more information in our tutorial about <<ingest-pipeline-kubernetes,transforming data with custom ingest pipelines>>.
 
-== Metadata Enrichment for Kubernetes
+== Metadata enrichment for Kubernetes
 
 The https://docs.elastic.co/en/integrations/kubernetes[{k8s} Integration] is used to collect logs and metrics from Kubernetes clusters with {agent}. During the collection, the integration enhances the collected information with extra useful information that users can correlate with different Kubernetes assets. This additional information added on top of collected data, such as labels, annotations, ancestor names of Kubernetes assets, and others, are called metadata.
 

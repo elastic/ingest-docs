@@ -43,7 +43,7 @@ image::images/ingest_pipeline_custom_k8s.png[Custom ingest pipeline]
 image::images/gsub_deployment.png[Gsub Processor for deployment]
 --
 
-=== Processor for Cronjob
+=== Processor for cronjob
 
 --
 [role="screenshot"]

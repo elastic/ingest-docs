@@ -28,7 +28,7 @@ Eg. Enabling the enrichment through `add_resource_metadata` in Managed {agent} P
 
 Alternative to keeping the feature on and use more memory resources for {agent}, users can make use of inegst pipelines to add the missing fields of `kubernetes.deployment.name` and `kubernetes.cronjob.name`.
 
-Following article https://www.elastic.co/guide/en/fleet/master/data-streams-pipeline-tutorial.html[data-streams-pipeline-tutorial], navigate to `state_pod` datastream under: **Kubernetes Integration Policy > Collect Kubernetes metrics from Kube-state-metrics > Kubernetes Pod Metrics**
+Following the <<ingest-pipeline-in-Kubernetes,transforming data with custom ingest pipelines>> tutorial, navigate to `state_pod` datastream under: **Kubernetes Integration Policy > Collect Kubernetes metrics from Kube-state-metrics > Kubernetes Pod Metrics**.
 
 Create the following custom ingest pipeline with two processors:
 --

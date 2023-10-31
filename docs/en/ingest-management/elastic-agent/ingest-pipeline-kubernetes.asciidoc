@@ -36,7 +36,7 @@ Create the following custom ingest pipeline with two processors:
 image::images/ingest_pipeline_custom_k8s.png[Custom ingest pipeline]
 --
 
-=== Processor for Deployment
+=== Processor for deployment
 
 --
 [role="screenshot"]

@@ -1,17 +1,17 @@
 [[ingest-pipeline-in-kubernetes]]
 = Using Custom Ingest Pipeline with {k8s} Integration
 
-This tutorial explains how to add a custom ingest pipeline to {k8s} Integration in order to add specific metadata fields for deployments and cronjobs of pods.
+This tutorial explains how to add a custom ingest pipeline to a {k8s} Integration in order to add specific metadata fields for deployments and cronjobs of pods.
 
-Custom pipelines can be used to add custom data processing, like adding fields, obfuscate sensitive information, and more. Find more information in [data-streams-pipeline-tutorial](https://www.elastic.co/guide/en/fleet/master/data-streams-pipeline-tutorial.html) on how to use custom ingest pipelines.
+Custom pipelines can be used to add custom data processing, like adding fields, obfuscating sensitive information, and more. Find more information in our tutorial about <<ingest-pipeline-in-Kubernetes,transforming data with custom ingest pipelines>>.
 
 == Metadata Enrichment for Kubernetes
 
-The https://docs.elastic.co/en/integrations/kubernetes[{k8s} Integration] is used to collect logs and metrics from Kubernetes clusters with {agent}. During the collection, integration enhances the collected information with extra useful information that can help users to correlate information and different Kubernetes assets with each other. All this additional information that are added on top of collected information like labels, annotations, ancestor names of Kubernetes assets etc. are called metadata.
+The https://docs.elastic.co/en/integrations/kubernetes[{k8s} Integration] is used to collect logs and metrics from Kubernetes clusters with {agent}. During the collection, the integration enhances the collected information with extra useful information that users can correlate with different Kubernetes assets. This additional information added on top of collected data, such as labels, annotations, ancestor names of Kubernetes assets, and others, are called metadata.
 
 The https://www.elastic.co/guide/en/fleet/current/kubernetes-provider.html[{k8s} Provider] offers the `add_resource_metadata` option to configure the metadata enrichment options.
 
-For {agent} versions >[8.10.4], the default configuration for metadata enrichment is `add_resource_metadata.deployment=false` and `add_resource_metadata.cronjob=false`. This means that pods that created from replicasets that belong to specific deployments would not be enriched with `kubernetes.deployment.name`. Additionally, pods that are created from jobs that belong to specific cronjobs, would not be enriched with `kubernetes.cronjob.name`.
+For {agent} versions >[8.10.4], the default configuration for metadata enrichment is `add_resource_metadata.deployment=false` and `add_resource_metadata.cronjob=false`. This means that pods that are created from replicasets that belong to specific deployments would not be enriched with `kubernetes.deployment.name`. Additionally, pods that are created from jobs that belong to specific cronjobs, would not be enriched with `kubernetes.cronjob.name`.
 
 **Kubernetes Integration Policy > Collect Kubernetes metrics from Kube-state-metrics > Kubernetes Pod Metrics**
 
@@ -20,15 +20,15 @@ For {agent} versions >[8.10.4], the default configuration for metadata enrichmen
 image::images/add_resource_metadata.png[Configure add_resource_metadata]
 --
 
-Eg. Enabling the enrichment through `add_resource_metadata` in Managed {agent} Policy
+Example: Enabling the enrichment through `add_resource_metadata` in a Managed {agent} Policy
 
-> **Note:** Enabling deployment and cronjob metadata enrichment leads to increase of {agent}'s memory consumption. Elastic agent utilizes local cache in order to keep records of the {k8s} assets being discovered.
+> **Note:** Enabling deployment and cronjob metadata enrichment leads to an increase of {agent}'s memory consumption. {agent} uses a local cache in order to keep records of the {k8s} assets from being discovered.
 
 == Add deployment and cronjob for {k8s} pods through ingest pipelines
 
-Alternative to keeping the feature on and use more memory resources for {agent}, users can make use of inegst pipelines to add the missing fields of `kubernetes.deployment.name` and `kubernetes.cronjob.name`.
+As an alternative to keeping the feature enabled and using more memory resources for {agent}, users can make use of ingest pipelines to add the missing fields of `kubernetes.deployment.name` and `kubernetes.cronjob.name`.
 
-Following article https://www.elastic.co/guide/en/fleet/master/data-streams-pipeline-tutorial.html[data-streams-pipeline-tutorial], navigate to `state_pod` datastream under: **Kubernetes Integration Policy > Collect Kubernetes metrics from Kube-state-metrics > Kubernetes Pod Metrics**
+Following the <<ingest-pipeline-in-Kubernetes,transforming data with custom ingest pipelines>> tutorial, navigate to `state_pod` datastream under: **Kubernetes Integration Policy > Collect Kubernetes metrics from Kube-state-metrics > Kubernetes Pod Metrics**.
 
 Create the following custom ingest pipeline with two processors:
 --
@@ -79,5 +79,5 @@ The final `metrics-kubernetes.state_pod@custom` ingest pipeline:
 ----
 
 
-> **Note**: The ingest-pipeline does not check for the actual existence of deployment and cronjob ancestor, only adds the specific values.
+> **Note**: The ingest pipeline does not check for the actual existence of a deployment and cronjob ancestor, it only adds the specific values.
 

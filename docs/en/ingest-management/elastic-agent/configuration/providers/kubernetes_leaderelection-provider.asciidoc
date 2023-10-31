@@ -52,8 +52,8 @@ The available key is:
 [discrete]
 = Understanding leader timings
 
-As described above, the LeaderElection configuration offers following parameters: Lease duration (`leader_leaseduration`), Renew deadline (`leader_renewdeadline`) and  
-Retry period (`leader_retryperiod`) . Based on the config provided, each agent will trigger {k8s} API requests and will try to check the status of the lease. 
+As described above, the LeaderElection configuration offers the following parameters: Lease duration (`leader_leaseduration`), Renew deadline (`leader_renewdeadline`), and  
+Retry period (`leader_retryperiod`). Based on the config provided, each agent will trigger {k8s} API requests and will try to check the status of the lease. 
 
 NOTE: The number of Leader API calls is proportional to the number of {agent}s installed. This means that Leader API requests will come from all {agent}s per `leader_retryperiod`. Setting `leader_retryperiod` to a greater value than the default (2sec), means that less API requests will be made towards {k8s} Control API, but will also increase the period where collection of metrics from Leader {agent} might be lost.
 

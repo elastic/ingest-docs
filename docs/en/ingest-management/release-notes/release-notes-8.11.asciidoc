@@ -21,16 +21,18 @@ Also see:
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
 
-// begin 8.10.0 relnotes
+// begin 8.11.0 relnotes
 
 [[release-notes-8.11.0]]
 == {fleet} and {agent} 8.11.0
 
-Review important information about the {fleet} and {agent} 8.11.0 release.
+Review important information about {fleet-server} and {agent} for the 8.11.0 release.
+
+For {fleet} updates, refer to the {kibana-ref}/release-notes.html[{kib} Release Notes].
 
 [discrete]
 [[breaking-changes-8.11.0]]
-=== Breaking changess
+=== Breaking changes
 
 Breaking changes can prevent your application from optimal operation and
 performance. Before you upgrade, review the breaking changes, then mitigate the
@@ -55,6 +57,7 @@ On typical workloads this is expected to decrease network data volume by 70-80%,
 ====
 *Details* +
 The `elastic-agent-autodiscover` Kubernetes library by default comes with `add_resource_metadata.deployment=false` and `add_resource_metadata.cronjob=false`.
+
 *Impact* +
 Pods that will be created from deployments or cronjobs will not have the extra metadata field for `kubernetes.deployment` or `kubernetes.cronjob`, respectively. This change was made to avoid the memory impact of keeping the feature enabled in big Kubernetes clusters.
 For more information, refer to {agent-pull}3593[#3593].
@@ -65,9 +68,6 @@ For more information, refer to {agent-pull}3593[#3593].
 === New features
 
 The 8.11.0 release Added the following new and notable features.
-
-{fleet}::
-//EXAMPLE * Enable agent policy secret storage when all fleet servers are above 8.11.0 {kibana-pull}163627[#163627].
 
 {fleet-server}::
 * Add new `upgrade_details` attribute to checkin requests and the agent index. {fleet-server-pull}2901[#2901]
@@ -82,14 +82,11 @@ The 8.11.0 release Added the following new and notable features.
 [[enhancements-8.11.0]]
 === Enhancements
 
-{fleet}::
-//EXAMPLE * Add support for runtime fields. {kibana-pull}161129[#161129].
-
 {fleet-server}::
 * Expand APM traces to track coordinator and monitor transactions. Add additonal spans across all API endpoints to better track what the server does. Add spans to bulker interactions that link with the queue flush transaction that the bulk action is executed through. {fleet-server-pull}2929[#2929]
 * Add endpoint to serve PGP keys that clients can use when validating upgrades in cases where the embedded PGP key in a client is compromised and the client can't reach the internet. {fleet-server-pull}2977[#2977] {fleet-server-issue}2887[#2887]
 * Add ActionLimit and a Gzip writer pool to handle checkin responses, to help prevent OOM errors when updates are issued to many clients. {fleet-server-pull}2929[#2994]
-* Fix errors produced by the {fleet-server} bulker to be ECS compliant. {fleet-server-pull}3034[#3034] {fleet-server-issue}3033[#3033]
+* Send errors in API calls and bulker flushes to APM. fleet-server-pull}3053[#3053]
 
 {agent}::
 * Improve {agent} uninstall on Windows by adding delay between retries when file removal is blocked by busy files. {agent-pull}3431[#3431] {agent-issue}3221[#3221]
@@ -105,14 +102,15 @@ The 8.11.0 release Added the following new and notable features.
 [[bug-fixes-8.11.0]]
 === Bug fixes
 
-{fleet}::
-
 {fleet-server}::
+* Fix errors produced by the {fleet-server} bulker to be ECS compliant. {fleet-server-pull}3034[#3034] {fleet-server-issue}3033[#3033]
 
 {agent}::
 * Enable resilient handling of air gapped PGP checks. {agent} should not fail when remote PGP is specified (or official Elastic fallback PGP is used) and remote is not available. {agent-pull}3427[#3427] {agent-pull}3426[#3426] {agent-issue}3368[#3368]
 * Prevent a standalone {agent} from being upgraded if an upgrade is already in progress. {agent-pull}3473[#3473] {agent-issue}2706[#2706]
 * Fix a bug that affected reporting progress of the {agent} artifact download during an upgrade. {agent-pull}3548[#3548]
+* Upgrade `elastic-agent-libs` to v0.6.0 to improve restart, uninstall, and shutdown performance. {agent-pull}3632[#3632]
+* Increase wait period between service restarts on failure to 15s on Windows. {agent-pull}3657[#3657]
 
 // end 8.11.0 relnotes
 

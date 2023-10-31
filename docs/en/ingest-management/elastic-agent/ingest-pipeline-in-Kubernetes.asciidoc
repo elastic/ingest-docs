@@ -20,7 +20,7 @@ For {agent} versions >[8.10.4], the default configuration for metadata enrichmen
 image::images/add_resource_metadata.png[Configure add_resource_metadata]
 --
 
-Eg. Enabling the enrichment through `add_resource_metadata` in Managed {agent} Policy
+Example: Enabling the enrichment through `add_resource_metadata` in a Managed {agent} Policy
 
 > **Note:** Enabling deployment and cronjob metadata enrichment leads to an increase of {agent}'s memory consumption. {agent} uses a local cache in order to keep records of the {k8s} assets from being discovered.
 

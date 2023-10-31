@@ -26,7 +26,7 @@ Eg. Enabling the enrichment through `add_resource_metadata` in Managed {agent} P
 
 == Add deployment and cronjob for {k8s} pods through ingest pipelines
 
-Alternative to keeping the feature on and use more memory resources for {agent}, users can make use of inegst pipelines to add the missing fields of `kubernetes.deployment.name` and `kubernetes.cronjob.name`.
+As an alternative to keeping the feature enabled and using more memory resources for {agent}, users can make use of ingest pipelines to add the missing fields of `kubernetes.deployment.name` and `kubernetes.cronjob.name`.
 
 Following the <<ingest-pipeline-in-Kubernetes,transforming data with custom ingest pipelines>> tutorial, navigate to `state_pod` datastream under: **Kubernetes Integration Policy > Collect Kubernetes metrics from Kube-state-metrics > Kubernetes Pod Metrics**.
 

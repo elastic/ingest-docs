@@ -57,7 +57,7 @@ Retry period (`leader_retryperiod`). Based on the config provided, each agent wi
 
 NOTE: The number of Leader API calls is proportional to the number of {agent}s installed. This means that Leader API requests will come from all {agent}s per `leader_retryperiod`. Setting `leader_retryperiod` to a greater value than the default (2sec), means that fewer API requests will be made towards the {k8s} Control API, but will also increase the period where collection of metrics from the leader {agent} might be lost.
 
-The library applies https://github.com/kubernetes/client-go/blob/master/tools/leaderelection/leaderelection.go#L76[specific checks] for the timing parameters and if those are not verified the {agent} will exit with `panic` error.
+The library applies https://github.com/kubernetes/client-go/blob/master/tools/leaderelection/leaderelection.go#L76[specific checks] for the timing parameters and if those are not verified {agent} will exit with a `panic` error.
 
 In general: 
 - Leaseduration must be greater than renewdeadline

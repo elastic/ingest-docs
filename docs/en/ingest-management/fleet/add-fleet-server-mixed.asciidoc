@@ -2,14 +2,24 @@
 = Deploy {fleet-server} on-premises and {es} on Cloud
 
 To use {fleet} for central management, a <<fleet-server,{fleet-server}>> must
-be running and accessible to your hosts. Deploying {fleet-server} on-premises to
-work with a hosted {ess} is one of <<add-a-fleet-server,several approaches>>
-to setting up {fleet-server}.
+be running and accessible to your hosts.
+
+Another approach is to deploy a cluster of {fleet-server}s on-premises and
+connect them back to {ecloud} with access to {es} and {kib}.
+In this <<deployment-models,deployment model>>, you are responsible for high-availability,
+fault-tolerance, and lifecycle management of {fleet-server}.
+
+This approach might be right for you if you would like to limit the control plane traffic
+out of your data center. For example, you might take this approach if you are a
+managed service provider or a larger enterprise that segregates its networks.
+
+This approach might _not_ be right for you if you don't want to manage the life cycle
+of an extra compute resource in your environment for {fleet-server} to reside on.
 
 image::images/fleet-server-on-prem-es-cloud.png[{fleet-server} on-premise and {es} on Cloud deployment model]
 
 To deploy a self-managed {fleet-server} on-premises to work with a hosted {ess},
-you need to: 
+you need to:
 
 * Satisfy all <<add-fleet-server-mixed-compatibility,compatibility requirements>> and <<add-fleet-server-mixed-prereq,prerequisites>>
 //* Add <<fleet-server-add-hosts,{fleet-server} hosts>>

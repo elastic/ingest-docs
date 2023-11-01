@@ -25,7 +25,7 @@ To learn how to generate certificates, refer to <<secure-logstash-connections>>.
 * `192.0.2.0:5044`
 * `mylogstashhost:5044`
 
-Refer to the <<add-a-fleet-server,{fleet-server}>> documentation for default ports and other configuration details.
+Refer to the <<fleet-server,{fleet-server}>> documentation for default ports and other configuration details.
 
 // =============================================================================
 

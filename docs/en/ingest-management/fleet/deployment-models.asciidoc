@@ -1,21 +1,27 @@
+[[deployment-models]]
+= Deployment models
+
+There are various models for setting up {agents} to work with {es}.
+The recommended approach is to use {fleet}, a web-based UI in Kibana, to centrally manage all of your {agents} and their policies.
+Using {fleet} requires having an instance of {fleet-server} that acts as the interface between the {fleet} UI and your {agents}.
+
+For an overview of {fleet-server}, including details about how it communicates with {es}, how to ensure high availability, and more, refer to <<fleet-server,What is {fleet-server}?>>.
+
+The requirements for setting up {fleet-server} differ, depending on your particular deployment model:
+
+{serverless-full}::
+In a link:{serverless-docs}[{serverless-short}] environment, {fleet-server} is offered as a service, it is configured and scaled automatically without the need for any user intervention.
+
+{ess}::
+If you're running {es} and {kib} hosted on {cloud}/ec-getting-started.html[{ess}], no extra setup is required unless you want to scale your deployment. {ess} runs a hosted version of {integrations-server} that includes {fleet-server}. For details about this deployment model, refer to <<add-fleet-server-cloud,Deploy on {ecloud}>>.
+
+{ess} with {fleet-server} on-premise::
+When you use a hosted {ess} deployment you may still choose to run {fleet-server} on-premise. For details about this deployment model and set up instructions, refer to <<add-fleet-server-mixed,Deploy {fleet-server} on-premises and {es} on Cloud>>.
+
+Self-managed::
+For self-managed deployments, you must install and host {fleet-server} yourself. For details about this deployment model and set up instructions, refer to <<add-fleet-server-on-prem,Deploy on-premises and self-managed>>.
+
 [[fleet-server]]
-= Set up {fleet-server}
-
-{fleet-server} is required if you plan to use {fleet} for central management.
-
-* For self-managed deployments, you must install and host {fleet-server}
-yourself.
-
-* **No extra setup is required on {ecloud} unless you want to scale your
-deployment.** {ecloud} runs a hosted version of {integrations-server} that
-includes {fleet-server}.
-
-ifeval::["{serverless-feature-flag}"=="yes"]
-* On-premises {fleet-server} is not currently available for use in an link:{serverless-docs}[{serverless-full}] environment.
-We recommend using the hosted {fleet-server} that is included and configured automatically in {serverless-short} {observability} and Security projects.
-endif::[]
-
-[discrete]
 == What is {fleet-server}?
 
 {fleet-server} is a component that connects {agent}s to {fleet}. It supports
@@ -24,6 +30,11 @@ policies, collecting status information, and coordinating actions across
 {agent}s. It also provides a scalable architecture. As the size of your agent
 deployment grows, you can deploy additional {fleet-server}s to manage the
 increased workload.
+
+ifeval::["{serverless-feature-flag}"=="yes"]
+* On-premises {fleet-server} is not currently available for use in an link:{serverless-docs}[{serverless-full}] environment.
+We recommend using the hosted {fleet-server} that is included and configured automatically in {serverless-short} {observability} and Security projects.
+endif::[]
 
 The following diagram shows how {agent}s communicate with {fleet-server} to
 retrieve agent policies:
@@ -74,7 +85,7 @@ advantage of using a separate token for each server is that you can invalidate
 each one separately.
 
 You can create a service token by either using the {fleet} UI or the {es} API.
-For more information, refer to <<add-a-fleet-server>>.
+For more information, refer to <<add-fleet-server-mixed>> or <<add-fleet-server-on-prem>>, depending on your deployment model.
 
 [discrete]
 [[fleet-server-HA-operations]]
@@ -85,15 +96,19 @@ load balanced as long as the {fleet-server} has capacity to accept more
 connections. Load balancing is done on a round-robin basis.
 
 How you handle high-availability, fault-tolerance, and lifecycle management of {fleet-server}
-depends on the deployment model you use. To compare deployment models, see <<add-a-fleet-server>>.
+depends on the deployment model you use.
 
 [discrete]
 == Learn more
 
-To learn more about adding and scaling {fleet-server}, refer to:
+To learn more about deploying and scaling {fleet-server}, refer to:
 
 [[add-fleet-server]]
-* <<add-a-fleet-server>>
+* <<add-fleet-server-cloud>>
+
+* <<add-fleet-server-mixed>>
+
+* <<add-fleet-server-on-prem>>
 
 * <<fleet-server-scalability>>
 

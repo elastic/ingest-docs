@@ -5,7 +5,7 @@ To use {fleet} for central management, a <<fleet-server,{fleet-server}>> must
 be running and accessible to your hosts.
 
 You can deploy {fleet-server} on-premises and manage it yourself.
-In this <<deployment-models,deployment model>>, you are responsible for high-availability,
+In this <<fleet-deployment-models,deployment model>>, you are responsible for high-availability,
 fault-tolerance, and lifecycle management of {fleet-server}.
 
 This approach might be right for you if you would like to limit the control plane traffic

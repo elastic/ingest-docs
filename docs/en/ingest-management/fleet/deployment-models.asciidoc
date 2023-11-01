@@ -10,7 +10,7 @@ For an overview of {fleet-server}, including details about how it communicates w
 The requirements for setting up {fleet-server} differ, depending on your particular deployment model:
 
 {serverless-full}::
-In a link:{serverless-docs}[{serverless-short}] environment, {fleet-server} is configured and managed automatically, beneath the covers. There's nothing that you need to configure.
+In a link:{serverless-docs}[{serverless-short}] environment, {fleet-server} is offered as a service, it is configured and scaled automatically without the need for any user intervention.
 
 {ess}::
 If you're running {es} and {kib} hosted on {cloud}/ec-getting-started.html[{ess}], no extra setup is required unless you want to scale your deployment. {ess} runs a hosted version of {integrations-server} that includes {fleet-server}. For details about this deployment model, refer to <<add-fleet-server-cloud,Deploy on {ecloud}>>.

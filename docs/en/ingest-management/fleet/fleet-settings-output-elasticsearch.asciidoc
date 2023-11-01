@@ -28,7 +28,7 @@ Default {es} port for {ecloud}
 * `https://1d7a52f5eb344de18ea04411fe09e564.fleet.eu-west-1.aws.qa.cld.elstc.co:443`
 * `https://[2001:db8::1]:9200`
 
-Refer to the <<add-a-fleet-server,{fleet-server}>> documentation for default ports and other configuration details.
+Refer to the <<fleet-server,{fleet-server}>> documentation for default ports and other configuration details.
 
 // =============================================================================
 

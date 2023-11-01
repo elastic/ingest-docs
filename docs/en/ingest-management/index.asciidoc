@@ -41,15 +41,13 @@ include::migrate-beats-to-agent.asciidoc[leveloffset=+1]
 
 include::migrate-auditbeat-to-agent.asciidoc[leveloffset=+2]
 
-include::fleet/fleet-server.asciidoc[leveloffset=+1]
+include::fleet/deployment-models.asciidoc[leveloffset=+1]
 
-include::fleet/add-fleet-server.asciidoc[leveloffset=+2]
+include::fleet/add-fleet-server-cloud.asciidoc[leveloffset=+2]
 
-include::fleet/add-fleet-server-cloud.asciidoc[leveloffset=+3]
+include::fleet/add-fleet-server-on-prem.asciidoc[leveloffset=+2]
 
-include::fleet/add-fleet-server-on-prem.asciidoc[leveloffset=+3]
-
-include::fleet/add-fleet-server-mixed.asciidoc[leveloffset=+3]
+include::fleet/add-fleet-server-mixed.asciidoc[leveloffset=+2]
 
 include::fleet/fleet-server-scaling.asciidoc[leveloffset=+2]
 

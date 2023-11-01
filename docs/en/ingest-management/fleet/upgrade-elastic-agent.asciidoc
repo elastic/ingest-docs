@@ -133,14 +133,14 @@ subscriptions].
 [[view-upgrade-status]]
 == View upgrade status
 
-On the **Agents** tab, when you trigger an upgrade, agents that are currently 
-upgrading show a detailed upgrade status indicator beside the agent version.
+On the Agents tab, when you trigger an upgrade, agents that are upgrading have the status `Updating` until the upgrade is complete, and then the status changes back to `Healthy`.
+
+Agents on version 8.12 and higher that are currently upgrading additionally show a detailed upgrade status indicator.
 
 [role="screenshot"]
 image::images/upgrade-states.png[Detailed state of an upgrading agent]
 
-The following table explains the various possible upgrade states. States are listed in the order that they happen.
-
+The following table explains the upgrade states in the order that they can occur.
 
 .{agent} upgrade states
 |===
@@ -158,13 +158,18 @@ The following table explains the various possible upgrade states. States are lis
 
 |===
 
-As well, for {agents} on version 8.12 and higher, you can hover your cursor over the information icon to get more granular details about the upgrade state.
+Beside the upgrade status indicator, you can hover your cursor over the information icon to get more detail about the upgrade.
 
 [role="screenshot"]
 image::images/upgrade-detailed-state01.png[Granular upgrade details shown as hover text (agent has requested an upgrade)]
 
 [role="screenshot"]
 image::images/upgrade-detailed-state02.png[Granular upgrade details shown as hover text (agent is restarting to apply the update)]
+
+Note that when you upgrade agents on versions below 8.12, the upgrade details are not provided.
+
+[role="screenshot"]
+image::images/upgrade-non-detailed.png[An earlier release agent showing only the updating state without additional details]
 
 When upgrading many agents, you can fine tune the maintenance window by
 viewing stats and metrics about the upgrade:

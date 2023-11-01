@@ -2,15 +2,26 @@
 = Deploy on {ecloud}
 
 To use {fleet} for central management, a <<fleet-server,{fleet-server}>> must
-be running and accessible to your hosts. Provisioning {fleet-server} on {ecloud}
-as part of the hosted {ess} is one of <<add-a-fleet-server,several approaches>>
-to setting up {fleet-server}.
+be running and accessible to your hosts.
+
+{fleet-server} can be provisioned and hosted on {ecloud}. When the Cloud deployment is created,
+a highly available set of {fleet-server}s is provisioned automatically.
+
+This approach might be right for you if you want to reduce on-prem compute resources
+and you'd like Elastic to take care of provisioning and life cycle management of
+your deployment.
+
+With this approach, multiple {fleet-server}s are automatically provisioned to satisfy
+the chosen instance size (instance sizes are modified to satisfy the scale requirement).
+You can also choose the resources allocated to each {fleet-server} and whether you want
+each {fleet-server} to be deployed in multiple availability zones.
+If you choose multiple availability zones to address your fault-tolerance
+requirements, those instances are also utilized to balance the load.
+
+This approach might _not_ be right for you if you have restrictions on connectivity
+to the internet.
 
 image::images/fleet-server-cloud-deployment.png[{fleet-server} Cloud deployment model]
-
-{ecloud} runs a hosted version of {integrations-server} that includes
-{fleet-server}. No extra setup is required unless you want to scale your
-deployment.
 
 [discrete]
 [[fleet-server-compatibility]]

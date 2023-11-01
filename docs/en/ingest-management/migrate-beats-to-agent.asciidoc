@@ -81,7 +81,8 @@ If you're using {ecloud}, you can skip this step because {ecloud} runs a hosted
 version of {fleet-server}.
 
 Otherwise, follow the steps for self-managed deployments described 
-in <<add-a-fleet-server>>, then return to this page when you are done.
+in <<add-fleet-server-mixed>> or <<add-fleet-server-on-prem>>, depending on your
+deployment model, and then return to this page when you are done.
 
 [discrete]
 == Deploy {agent} to your hosts to collect logs and metrics

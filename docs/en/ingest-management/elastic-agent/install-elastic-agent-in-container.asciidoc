@@ -22,5 +22,7 @@ To learn how to run {agent}s in a containerized environment, see:
 
 * <<scaling-on-kubernetes>>
 
+* <<ingest-pipeline-kubernetes>>
+
 * {eck-ref}/k8s-elastic-agent.html[Run {agent} on ECK] -- for {eck} users
 

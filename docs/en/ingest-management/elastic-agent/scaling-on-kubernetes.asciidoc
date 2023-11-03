@@ -111,7 +111,7 @@ The following **alternative configuration methods** have been verified:
   - For non-leader {agent} deployments that collect per KSM shards
 2. With `taint/tolerations` to isolate the {agent} daemonset pods from rest of deployments
 
-You can find more information in the document called https://github.com/elastic/elastic-agent/blob/ksmsharding/docs/elastic-agent-ksm-sharding.md[{agent} Manifests in order to support Kube-State-Metrics Sharding].
+You can find more information in the document called https://github.com/elastic/elastic-agent/blob/main/docs/elastic-agent-ksm-sharding.md[{agent} Manifests in order to support Kube-State-Metrics Sharding].
 
 Based on our https://github.com/elastic/elastic-agent/blob/ksmsharding/docs/elastic-agent-scaling-tests.md[{agent} scaling tests], the following table aims to assist users on how to configure their KSM Sharding as {k8s} cluster scales:
 |===

@@ -34,7 +34,7 @@ default QPS and burst settings are used.
 `leader_lease`:: (Optional) Specify the name of the leader lease.
 This is set to `elastic-agent-cluster-leader` by default.
 `leader_retryperiod`:: (Optional) Default value 2 (in sec). How long before {agent}s try to get the `leader` role. 
-`leader_leaseduration`:: (Optional) Default value 15 (in sec).  How long the Leader {agent} holds the `leader` state.
+`leader_leaseduration`:: (Optional) Default value 15 (in sec).  How long the leader {agent} holds the `leader` state.
 `leader_renewdeadline`:: (Optional) Default value 10 (in sec). How long leaders retry getting the `leader` role.
 
 The available key is:

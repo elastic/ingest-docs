@@ -38,7 +38,7 @@ outputs:
     api_key: "my_api_key"
 ----
 
-NOTE: Token-based authentication is required in a
+NOTE: Token-based authentication is required in an
 link:{serverless-docs}[{serverless-full}] environment.
 
 == {es} output configuration settings

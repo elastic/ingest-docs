@@ -1,0 +1,4 @@
+[[agent-ls-airgapped]]
+=== {agent} to {ls}: Air-gapped environment 
+
+image::images/ea-ls-airgapped.png[Image showing {agent}, {ls}, and {es} in an air-gapped environment]

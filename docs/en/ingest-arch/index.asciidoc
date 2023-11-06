@@ -16,6 +16,7 @@ include::16-agent-kafka.asciidoc[]
 
 include::8-ls-input.asciidoc[]
 
+include::99-airgapped.asciidoc[]
 
 // === Next set of architectures
 // include::3-schemamod.asciidoc[]

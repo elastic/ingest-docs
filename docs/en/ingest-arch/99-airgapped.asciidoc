@@ -1,0 +1,22 @@
+[[airgapped-env]]
+== Air-gapped architectures
+
+
+* 20. Agent, Elastic stack both is deployed in air gapped environment with no access to outside network
+** Set up self managed stack and self managed EPR 
+** Specify agent binary location for 8.4+, in other cases, you will need to upgrade these agents manually as described here
+** If geoip enrichment is required then it's necessary to manage database updates either through a proxy, a custom endpoint, or manually.
+** Additional architecture diagram to show geo-ip DBs? 
+
+[discrete]
+[[airgapped-resources]]
+=== Resources
+
+Info for air-gapped environments:
+
+* {stack-ref}/air-gapped-install.html[Installing the {stack} in an air-gapped environment]
+* {fleet-guide}/fleet-agent-proxy-support.html[Using a proxy server with Elastic Agent and Fleet]
+
+include::99a-airgapped-ea-es.asciidoc[]
+
+include::99b-airgapped-ea-ls.asciidoc[]

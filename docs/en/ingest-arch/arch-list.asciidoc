@@ -76,4 +76,13 @@ a|
 Check out the {logstash-ref}/input-plugins.html[{ls} input plugins].
 
 
+| <<airgapped-env>>
+
+image:images/ea-es-airgapped.png[Image showing {agent} and {es} in an air-gapped environment]
+
+image:images/ea-ls-airgapped.png[Image showing {agent}, {ls}, and {es} in an air-gapped environment]
+
+a|
+* {agent} and {stack} deployed in an air gapped environment with no access to outside networks
+
 |===

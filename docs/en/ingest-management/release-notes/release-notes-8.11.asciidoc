@@ -31,6 +31,13 @@ Review important information about {fleet-server} and {agent} for the 8.11.0 rel
 For {fleet} updates, refer to the {kibana-ref}/release-notes.html[{kib} Release Notes].
 
 [discrete]
+[[security-updates-8.7.x]]
+=== Security updates
+
+{agent}::
+* Updated Go version to 1.20.10. {agent-pull}3[#3601]
+
+[discrete]
 [[breaking-changes-8.11.0]]
 === Breaking changes
 
@@ -69,14 +76,10 @@ For more information, refer to {agent-pull}3593[#3593].
 
 The 8.11.0 release Added the following new and notable features.
 
-{fleet-server}::
-* Add new `upgrade_details` attribute to checkin requests and the agent index. {fleet-server-pull}2901[#2901]
-
 {agent}::
 * Add support for processors in hints-based Kubernetes autodiscover. {agent-pull}3107[#3107] {agent-issue}2959[#2959]
 * Print out {agent} installation steps to show progress. {agent-pull}3338[#3338]
-* Add colors to {agent} log messages based on their level. {agent-pull}3345[#3345]
-* Improve {agent} uninstall on Windows by adding delay between retries when file removal is blocked by busy files. {agent-pull}3431[#3431] {agent-issue}3221[#3221]
+* Add colors to {agent} messages printed by the elastic-agent logs command based on their level. {agent-pull}3345[#3345]
 
 [discrete]
 [[enhancements-8.11.0]]
@@ -90,13 +93,12 @@ The 8.11.0 release Added the following new and notable features.
 
 {agent}::
 * Improve {agent} uninstall on Windows by adding delay between retries when file removal is blocked by busy files. {agent-pull}3431[#3431] {agent-issue}3221[#3221]
-* Updating Elastic manifests with NETINFO variable. Setting a new environmental variable `ELASTIC_NETINFO=false` globally disables the `netinfo.enabled` parameter of the `add_host_metadata` processor. This disables the indexing of `host.ip` and `host.mac` fields. {agent-pull}3354[#3354]
-* The {agent} uninstall process now finds and kills any running Watcher process. {agent-pull}3384[#3384] {agent-issue}3371[#3371]
+* Support the NETINFO variable in Elastic Kubernetes manifests. Setting a new environmental variable `ELASTIC_NETINFO=false` globally disables the `netinfo.enabled` parameter of the `add_host_metadata` processor. This disables the indexing of `host.ip` and `host.mac` fields. {agent-pull}3354[#3354]
+* The {agent} uninstall process now finds and kills any running upgrade Watcher process. Uninstalls initiated within 10 minutes of a previous upgrade now work as expected. {agent-pull}3384[#3384] {agent-issue}3371[#3371]
 * Fix the Kubernetes `deploy/kubernetes/creator_k8.sh` script to correcly exclude configmaps. {agent-pull}3396[#3396]
-* Add a secondary fallback for package signature verification, to enable reliable upgrades in air gapped environments where {fleet-server} is the only reachable URI. {agent-pull}3543[#3543] {agent-issue}3264[#3264]
+* Allow fetching the GPG key used for upgrade package signature verification from {fleet-server}. This enables upgrades using rotated GPG keys in air gapped environments where {fleet-server} is the only reachable URI. {agent-pull}3543[#3543] {agent-issue}3264[#3264]
 * Enable tamper protection feature flag by default for {agent} version 8.11.0. {agent-pull}3478[#3478]
-* Increase {agent} monitoring metrics interval from 10s to 60s to reduce load. {agent-pull}3578[#3578]
-* Updated Go version to 1.20.10. {agent-pull}3[#3601]
+* Increase {agent} monitoring metrics interval from 10s to 60s to reduce the default ingestion load and long term storage requirements. {agent-pull}3578[#3578]
 
 [discrete]
 [[bug-fixes-8.11.0]]
@@ -109,7 +111,7 @@ The 8.11.0 release Added the following new and notable features.
 * Enable resilient handling of air gapped PGP checks. {agent} should not fail when remote PGP is specified (or official Elastic fallback PGP is used) and remote is not available. {agent-pull}3427[#3427] {agent-pull}3426[#3426] {agent-issue}3368[#3368]
 * Prevent a standalone {agent} from being upgraded if an upgrade is already in progress. {agent-pull}3473[#3473] {agent-issue}2706[#2706]
 * Fix a bug that affected reporting progress of the {agent} artifact download during an upgrade. {agent-pull}3548[#3548]
-* Upgrade `elastic-agent-libs` to v0.6.0 to improve restart, uninstall, and shutdown performance. {agent-pull}3632[#3632]
+* Upgrade `elastic-agent-libs` to v0.6.0 to fix the {agent} Windows service becoming unresponsive. Fixes Windows service timeouts during WMI queries and during service shutdown. {agent-pull}3632[#3632] {agent-issue}3061[#3061]
 * Increase wait period between service restarts on failure to 15s on Windows. {agent-pull}3657[#3657]
 
 // end 8.11.0 relnotes

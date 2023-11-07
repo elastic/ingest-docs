@@ -47,17 +47,14 @@ impact to your application.
 
 [discrete]
 [[breaking-3712]]
-.{agent} Docker container image can block ECE install
+.Integrations Server / APM unable to boot in specific ECE environments
 [%collapsible]
 ====
 *Details* +
-A permissions change in the {agent} Docker container can prevent {ece} deployments from booting up. The change affects ECE deployments that:
-
-* Are deployed with a non-default Linux user ID
-* Include the APM component (APM is included as part of Integrations Server)
+A permissions change in the {agent} Docker container can prevent the {agent} or Integrations Server component from booting up within an ECE deployment. The change affects ECE installations that are deployed with a Linux UID other than `1000`.
 
 *Impact* +
-ECE users with deployments that include APM are recommended to wait for the next patch release, which is planned to include a fix for this problem.
+ECE users with deployments that include APM or Integrations Server are recommended to wait for the next patch release, which is planned to include a fix for this problem.
 ====
 
 [discrete]

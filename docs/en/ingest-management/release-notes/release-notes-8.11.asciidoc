@@ -128,6 +128,7 @@ The 8.11.0 release Added the following new and notable features.
 * Fix a bug that affected reporting progress of the {agent} artifact download during an upgrade. {agent-pull}3548[#3548]
 * Upgrade `elastic-agent-libs` to v0.6.0 to fix the {agent} Windows service becoming unresponsive. Fixes Windows service timeouts during WMI queries and during service shutdown. {agent-pull}3632[#3632] {agent-issue}3061[#3061]
 * Increase wait period between service restarts on failure to 15s on Windows. {agent-pull}3657[#3657]
+* Prevent multiple attempts by {agent} to stop an already stopped service. {agent-pull}3482[#3482]
 
 // end 8.11.0 relnotes
 

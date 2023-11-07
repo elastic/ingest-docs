@@ -1,0 +1,240 @@
+// Use these for links to issue and pulls.
+:kibana-issue: https://github.com/elastic/kibana/issues/
+:kibana-pull: https://github.com/elastic/kibana/pull/
+:beats-issue: https://github.com/elastic/beats/issues/
+:beats-pull: https://github.com/elastic/beats/pull/
+:agent-libs-pull: https://github.com/elastic/elastic-agent-libs/pull/
+:agent-issue: https://github.com/elastic/elastic-agent/issues/
+:agent-pull: https://github.com/elastic/elastic-agent/pull/
+:fleet-server-issue: https://github.com/elastic/fleet-server/issues/
+:fleet-server-pull: https://github.com/elastic/fleet-server/pull/
+
+[[release-notes]]
+= Release notes
+
+This section summarizes the changes in each release.
+
+* <<release-notes-8.11.0>>
+
+Also see:
+
+* {kibana-ref}/release-notes.html[{kib} release notes]
+* {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.11.0 relnotes
+
+[[release-notes-8.11.0]]
+== {fleet} and {agent} 8.11.0
+
+Review important information about {fleet-server} and {agent} for the 8.11.0 release.
+
+For {fleet} updates, refer to the {kibana-ref}/release-notes.html[{kib} Release Notes].
+
+[discrete]
+[[security-updates-8.7.x]]
+=== Security updates
+
+{agent}::
+* Updated Go version to 1.20.10. {agent-pull}3[#3601]
+
+[discrete]
+[[breaking-changes-8.11.0]]
+=== Breaking changes
+
+Breaking changes can prevent your application from optimal operation and
+performance. Before you upgrade, review the breaking changes, then mitigate the
+impact to your application.
+
+[discrete]
+[[breaking-3712]]
+.Integrations Server / APM unable to boot in specific ECE environments
+[%collapsible]
+====
+*Details* +
+A permissions change in the {agent} Docker container can prevent the {agent} or Integrations Server component from booting up within an ECE deployment. The change affects ECE installations that are deployed with a Linux UID other than `1000`.
+
+*Impact* +
+ECE users with deployments that include APM or Integrations Server are recommended to wait for the next patch release, which is planned to include a fix for this problem.
+====
+
+[discrete]
+[[breaking-3505]]
+.Compression is enabled by default for {agent} {es} outputs
+[%collapsible]
+====
+*Details* +
+The default compression level for {es} outputs is changing from `0` to `1`. 
+
+*Impact* +
+On typical workloads this is expected to decrease network data volume by 70-80%, while increasing CPU use by 20-25% and ingestion time by 10%. The previous behavior can be restored by adding the setting `compression_level: 0` to the agent output configuration.
+====
+
+[discrete]
+[[breaking-3593]]
+.`elastic-agent-autodiscover` library has been updated to version 0.6.4, disabling metadata For `kubernetes.deployment` and `kubernetes.cronjob` fields.
+[%collapsible]
+====
+*Details* +
+The `elastic-agent-autodiscover` Kubernetes library by default comes with `add_resource_metadata.deployment=false` and `add_resource_metadata.cronjob=false`.
+
+*Impact* +
+Pods that will be created from deployments or cronjobs will not have the extra metadata field for `kubernetes.deployment` or `kubernetes.cronjob`, respectively. This change was made to avoid the memory impact of keeping the feature enabled in big Kubernetes clusters.
+For more information, refer to {agent-pull}3593[#3593].
+====
+
+[discrete]
+[[new-features-8.11.0]]
+=== New features
+
+The 8.11.0 release Added the following new and notable features.
+
+{agent}::
+* Add support for processors in hints-based Kubernetes autodiscover. {agent-pull}3107[#3107] {agent-issue}2959[#2959]
+* Print out {agent} installation steps to show progress. {agent-pull}3338[#3338]
+* Add colors to {agent} messages printed by the elastic-agent logs command based on their level. {agent-pull}3345[#3345]
+
+[discrete]
+[[enhancements-8.11.0]]
+=== Enhancements
+
+{fleet-server}::
+* Expand APM traces to track coordinator and monitor transactions. Add additonal spans across all API endpoints to better track what the server does. Add spans to bulker interactions that link with the queue flush transaction that the bulk action is executed through. {fleet-server-pull}2929[#2929]
+* Add endpoint to serve PGP keys that clients can use when validating upgrades in cases where the embedded PGP key in a client is compromised and the client can't reach the internet. {fleet-server-pull}2977[#2977] {fleet-server-issue}2887[#2887]
+* Add ActionLimit and a Gzip writer pool to handle checkin responses, to help prevent OOM errors when updates are issued to many clients. {fleet-server-pull}2929[#2994]
+* Send errors in API calls and bulker flushes to APM. fleet-server-pull}3053[#3053]
+
+{agent}::
+* Improve {agent} uninstall on Windows by adding delay between retries when file removal is blocked by busy files. {agent-pull}3431[#3431] {agent-issue}3221[#3221]
+* Support the NETINFO variable in Elastic Kubernetes manifests. Setting a new environmental variable `ELASTIC_NETINFO=false` globally disables the `netinfo.enabled` parameter of the `add_host_metadata` processor. This disables the indexing of `host.ip` and `host.mac` fields. {agent-pull}3354[#3354]
+* The {agent} uninstall process now finds and kills any running upgrade Watcher process. Uninstalls initiated within 10 minutes of a previous upgrade now work as expected. {agent-pull}3384[#3384] {agent-issue}3371[#3371]
+* Fix the Kubernetes `deploy/kubernetes/creator_k8.sh` script to correcly exclude configmaps. {agent-pull}3396[#3396]
+* Allow fetching the GPG key used for upgrade package signature verification from {fleet-server}. This enables upgrades using rotated GPG keys in air gapped environments where {fleet-server} is the only reachable URI. {agent-pull}3543[#3543] {agent-issue}3264[#3264]
+* Enable tamper protection feature flag by default for {agent} version 8.11.0. {agent-pull}3478[#3478]
+* Increase {agent} monitoring metrics interval from 10s to 60s to reduce the default ingestion load and long term storage requirements. {agent-pull}3578[#3578]
+
+[discrete]
+[[bug-fixes-8.11.0]]
+=== Bug fixes
+
+{fleet-server}::
+* Fix errors produced by the {fleet-server} bulker to be ECS compliant. {fleet-server-pull}3034[#3034] {fleet-server-issue}3033[#3033]
+
+{agent}::
+* Enable resilient handling of air gapped PGP checks. {agent} should not fail when remote PGP is specified (or official Elastic fallback PGP is used) and remote is not available. {agent-pull}3427[#3427] {agent-pull}3426[#3426] {agent-issue}3368[#3368]
+* Prevent a standalone {agent} from being upgraded if an upgrade is already in progress. {agent-pull}3473[#3473] {agent-issue}2706[#2706]
+* Fix a bug that affected reporting progress of the {agent} artifact download during an upgrade. {agent-pull}3548[#3548]
+* Upgrade `elastic-agent-libs` to v0.6.0 to fix the {agent} Windows service becoming unresponsive. Fixes Windows service timeouts during WMI queries and during service shutdown. {agent-pull}3632[#3632] {agent-issue}3061[#3061]
+* Increase wait period between service restarts on failure to 15s on Windows. {agent-pull}3657[#3657]
+* Prevent multiple attempts by {agent} to stop an already stopped service. {agent-pull}3482[#3482]
+
+// end 8.11.0 relnotes
+
+
+// ---------------------
+//TEMPLATE
+//Use the following text as a template. Remember to replace the version info.
+
+// begin 8.7.x relnotes
+
+//[[release-notes-8.7.x]]
+//== {fleet} and {agent} 8.7.x
+
+//Review important information about the {fleet} and {agent} 8.7.x release.
+
+//[discrete]
+//[[security-updates-8.7.x]]
+//=== Security updates
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[breaking-changes-8.7.x]]
+//=== Breaking changes
+
+//Breaking changes can prevent your application from optimal operation and
+//performance. Before you upgrade, review the breaking changes, then mitigate the
+//impact to your application.
+
+//[discrete]
+//[[breaking-PR#]]
+//.Short description
+//[%collapsible]
+//====
+//*Details* +
+//<Describe new behavior.> For more information, refer to {kibana-pull}PR[#PR].
+
+//*Impact* +
+//<Describe how users should mitigate the change.> For more information, refer to {fleet-guide}/fleet-server.html[Fleet Server].
+//====
+
+//[discrete]
+//[[known-issues-8.7.x]]
+//=== Known issues
+
+//[[known-issue-issue#]]
+//.Short description
+//[%collapsible]
+//====
+
+//*Details*
+
+//<Describe known issue.>
+
+//*Impact* +
+
+//<Describe impact or workaround.>
+
+//====
+
+//[discrete]
+//[[deprecations-8.7.x]]
+//=== Deprecations
+
+//The following functionality is deprecated in 8.7.x, and will be removed in
+//8.7.x. Deprecated functionality does not have an immediate impact on your
+//application, but we strongly recommend you make the necessary updates after you
+//upgrade to 8.7.x.
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[new-features-8.7.x]]
+//=== New features
+
+//The 8.7.x release Added the following new and notable features.
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[enhancements-8.7.x]]
+//=== Enhancements
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[bug-fixes-8.7.x]]
+//=== Bug fixes
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+// end 8.7.x relnotes

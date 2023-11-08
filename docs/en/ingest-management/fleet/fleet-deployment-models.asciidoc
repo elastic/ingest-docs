@@ -31,10 +31,8 @@ policies, collecting status information, and coordinating actions across
 deployment grows, you can deploy additional {fleet-server}s to manage the
 increased workload.
 
-ifeval::["{serverless-feature-flag}"=="yes"]
 * On-premises {fleet-server} is not currently available for use in an link:{serverless-docs}[{serverless-full}] environment.
 We recommend using the hosted {fleet-server} that is included and configured automatically in {serverless-short} {observability} and Security projects.
-endif::[]
 
 The following diagram shows how {agent}s communicate with {fleet-server} to
 retrieve agent policies:

@@ -29,9 +29,7 @@ include::{docs-root}/shared/attributes.asciidoc[]
 
 include::overview.asciidoc[leveloffset=+1]
 
-ifeval::["{serverless-feature-flag}"=="yes"]
 include::serverless-restrictions.asciidoc[leveloffset=+2]
-endif::[]
 
 include::beats-agent-comparison.asciidoc[leveloffset=+1]
 

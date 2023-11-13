@@ -21,7 +21,7 @@ If you run into problems, refer to <<fleet-troubleshooting>>.
 If you are using DEB or RPM, you can use the package manager to remove the
 installed package.
 
-NOTE: For hosts enrolled in the {elastic-defend} integration with Agent tamper protection enabled, you'll need to include the uninstall token in the command, using the `--uninstall-token` flag. Refer to the {security-guide}/agent-tamper-protection.html[{elastic-sec} documentation] for more information.
+NOTE: For hosts enrolled in the {elastic-defend} integration with Agent tamper protection enabled, you'll need to include the uninstall token in the command, using the `--uninstall-token` flag. Refer to the {security-guide}/agent-tamper-protection.html[Agent tamper protection docs] for more information.
 
 [discrete]
 == Remove {agent} files manually

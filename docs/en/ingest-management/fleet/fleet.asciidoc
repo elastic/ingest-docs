@@ -49,9 +49,7 @@ including {fleet-server} hosts and output settings.
 |<<fleet-enrollment-tokens>>
 |Create and revoke enrollment tokens.
 
-|Uninstall tokens
-// Include link once elastic/security-docs#4232 is published:
-// |{security-guide}/agent-tamper-protection.html[Uninstall tokens]
+|{security-guide}/agent-tamper-protection.html[Uninstall tokens]
 |({elastic-defend} integration only) Access tokens to allow uninstalling {agent} from endpoints with Agent tamper protection enabled.
 
 |<<data-streams>>

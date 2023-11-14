@@ -44,7 +44,7 @@ Main {agent} configuration
 `C:\Program Files\Elastic\Agent\fleet.enc`::
 Main {agent} {fleet} encrypted configuration
 `C:\Program Files\Elastic\Agent\data\elastic-agent-*\logs\elastic-agent.ndjson`::
-Log files for {agent} and beats shippers footnote:lognumbering[]
+Log files for {agent} and {beats} shippers footnote:lognumbering[]
 
 You can install {agent} in a custom base path other than `C:\Program Files`.  When installing {agent} with the `.\elastic-agent.exe install`
 command, use the `--base-path` CLI option to specify the custom base path.

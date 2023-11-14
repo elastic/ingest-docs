@@ -74,7 +74,7 @@ Main {agent} configuration
 `/etc/elastic-agent/fleet.enc`::
 Main {agent} {fleet} encrypted configuration
 `/var/lib/elastic-agent/data/elastic-agent-*/logs/elastic-agent.ndjson`::
-Log files for {agent} and beats shippers footnote:lognumbering[]
+Log files for {agent} and {beats} shippers footnote:lognumbering[]
 `/usr/bin/elastic-agent`::
 Shell wrapper installed into PATH
 

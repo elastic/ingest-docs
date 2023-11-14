@@ -18,6 +18,9 @@ providers.kubernetes_leaderelection:
   #  qps: 5
   #  burst: 10
   #leader_lease: agent-k8s-leader-lock
+  #leader_retryperiod: 2
+  #leader_leaseduration: 15
+  #leader_renewdeadline: 10
 ----
 
 `enabled`:: (Optional) Defaults to true. To explicitly disable the LeaderElection provider,
@@ -30,6 +33,9 @@ Supported options are `qps` and `burst`. If not set, the Kubernetes client's
 default QPS and burst settings are used.
 `leader_lease`:: (Optional) Specify the name of the leader lease.
 This is set to `elastic-agent-cluster-leader` by default.
+`leader_retryperiod`:: (Optional) Default value 2 (in sec). How long before {agent}s try to get the `leader` role. 
+`leader_leaseduration`:: (Optional) Default value 15 (in sec).  How long the leader {agent} holds the `leader` state.
+`leader_renewdeadline`:: (Optional) Default value 10 (in sec). How long leaders retry getting the `leader` role.
 
 The available key is:
 
@@ -41,6 +47,24 @@ The available key is:
 |The value of the leadership flag. This is set to `true` when the {agent} is the current leader, and is set to `false` otherwise.
 
 |===
+
+
+[discrete]
+= Understanding leader timings
+
+As described above, the LeaderElection configuration offers the following parameters: Lease duration (`leader_leaseduration`), Renew deadline (`leader_renewdeadline`), and  
+Retry period (`leader_retryperiod`). Based on the config provided, each agent will trigger {k8s} API requests and will try to check the status of the lease. 
+
+NOTE: The number of leader calls to the K8s Control API is proportional to the number of {agent}s installed. This means that requests will come from all {agent}s per `leader_retryperiod`. Setting `leader_retryperiod` to a greater value than the default (2sec), means that fewer requests will be made towards the {k8s} Control API, but will also increase the period where collection of metrics from the leader {agent} might be lost.
+
+The library applies https://github.com/kubernetes/client-go/blob/master/tools/leaderelection/leaderelection.go#L76[specific checks] for the timing parameters and if those are not verified {agent} will exit with a `panic` error.
+
+In general: 
+- Leaseduration must be greater than renewdeadline
+- Renewdeadline must be greater than retryperiod*JitterFactor. 
+
+NOTE: Constant JitterFactor=1.2 is defined in https://pkg.go.dev/gopkg.in/kubernetes/client-go.v11/tools/leaderelection[leaderelection lib].
+
 
 [discrete]
 = Enabling configurations only when on leadership
@@ -62,3 +86,5 @@ metricset only when the leadership lock is acquired:
   period: 10s
   condition: ${kubernetes_leaderelection.leader} == true
 ----
+
+

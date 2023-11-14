@@ -49,6 +49,9 @@ including {fleet-server} hosts and output settings.
 |<<fleet-enrollment-tokens>>
 |Create and revoke enrollment tokens.
 
+|{security-guide}/agent-tamper-protection.html[Uninstall tokens]
+|({elastic-defend} integration only) Access tokens to allow uninstalling {agent} from endpoints with Agent tamper protection enabled.
+
 |<<data-streams>>
 |View data streams and navigate to dashboards to analyze your data.
 

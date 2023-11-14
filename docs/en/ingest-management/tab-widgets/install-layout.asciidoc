@@ -7,9 +7,11 @@
 Main {agent} configuration
 `/Library/Elastic/Agent/fleet.enc`::
 Main {agent} {fleet} encrypted configuration
+
 `/Library/Elastic/Agent/data/elastic-agent-*/logs/elastic-agent.ndjson`::
 Log files for {agent} and beats shippers footnote:lognumbering[Logs file names end with a date (`YYYYMMDD`) and optional number: `elastic-agent-YYYYMMDD.ndjson`, `elastic-agent-YYYYMMDD-1.ndjson`, and so on as new files are created during rotation.]
 `/usr/bin/elastic-agent`::
+
 Shell wrapper installed into PATH
 
 You can install {agent} in a custom base path other than `/Library`.  When installing {agent} with the `./elastic-agent install`

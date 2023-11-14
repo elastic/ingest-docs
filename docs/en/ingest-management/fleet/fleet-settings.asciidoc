@@ -21,7 +21,7 @@ TIP: If the **Edit hosts** option is grayed out, {fleet-server} hosts
 are configured outside of {fleet}. For more information, refer to
 {kibana-ref}/fleet-settings-kb.html[{fleet} settings in {kib}].
 
-Not sure if {fleet-server} is running? Refer to <<add-a-fleet-server>>.
+Not sure if {fleet-server} is running? Refer to <<fleet-server>>.
 
 On self-managed clusters, you must specify one or more URLs.
 

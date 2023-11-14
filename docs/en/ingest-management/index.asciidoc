@@ -29,9 +29,7 @@ include::{docs-root}/shared/attributes.asciidoc[]
 
 include::overview.asciidoc[leveloffset=+1]
 
-ifeval::["{serverless-feature-flag}"=="yes"]
 include::serverless-restrictions.asciidoc[leveloffset=+2]
-endif::[]
 
 include::beats-agent-comparison.asciidoc[leveloffset=+1]
 
@@ -41,15 +39,13 @@ include::migrate-beats-to-agent.asciidoc[leveloffset=+1]
 
 include::migrate-auditbeat-to-agent.asciidoc[leveloffset=+2]
 
-include::fleet/fleet-server.asciidoc[leveloffset=+1]
+include::fleet/fleet-deployment-models.asciidoc[leveloffset=+1]
 
-include::fleet/add-fleet-server.asciidoc[leveloffset=+2]
+include::fleet/add-fleet-server-cloud.asciidoc[leveloffset=+2]
 
-include::fleet/add-fleet-server-cloud.asciidoc[leveloffset=+3]
+include::fleet/add-fleet-server-on-prem.asciidoc[leveloffset=+2]
 
-include::fleet/add-fleet-server-on-prem.asciidoc[leveloffset=+3]
-
-include::fleet/add-fleet-server-mixed.asciidoc[leveloffset=+3]
+include::fleet/add-fleet-server-mixed.asciidoc[leveloffset=+2]
 
 include::fleet/fleet-server-scaling.asciidoc[leveloffset=+2]
 
@@ -80,6 +76,8 @@ include::elastic-agent/running-on-aks-managed-by-fleet.asciidoc[leveloffset=+3]
 include::elastic-agent/running-on-kubernetes-standalone.asciidoc[leveloffset=+3]
 
 include::elastic-agent/scaling-on-kubernetes.asciidoc[leveloffset=+3]
+
+include::elastic-agent/ingest-pipeline-kubernetes.asciidoc[leveloffset=+3]
 
 include::elastic-agent/configuration/env/container-envs.asciidoc[leveloffset=+3]
 
@@ -141,25 +139,7 @@ include::create-agent-policies-no-UI.asciidoc[leveloffset=+3]
 
 include::security/enrollment-tokens.asciidoc[leveloffset=+2]
 
-include::data-streams.asciidoc[leveloffset=+2]
-
 include::fleet/fleet-api-docs.asciidoc[leveloffset=+2]
-
-include::integrations/integrations.asciidoc[leveloffset=+1]
-
-include::integrations/package-signatures.asciidoc[leveloffset=+2]
-
-include::integrations/add-integration-to-policy.asciidoc[leveloffset=+2]
-
-include::integrations/view-integration-policies.asciidoc[leveloffset=+2]
-
-include::integrations/edit-or-delete-integration-policy.asciidoc[leveloffset=+2]
-
-include::integrations/install-integration-assets.asciidoc[leveloffset=+2]
-
-include::integrations/view-integration-assets.asciidoc[leveloffset=+2]
-
-include::integrations/upgrade-integration.asciidoc[leveloffset=+2]
 
 include::elastic-agent/configuration/elastic-agent-configuration.asciidoc[leveloffset=+1]
 
@@ -205,6 +185,24 @@ include::elastic-agent/configuration/elastic-agent-monitoring.asciidoc[leveloffs
 
 include::elastic-agent/configuration/yaml/elastic-agent-reference-yaml.asciidoc[leveloffset=+2]
 
+include::integrations/integrations.asciidoc[leveloffset=+1]
+
+include::integrations/package-signatures.asciidoc[leveloffset=+2]
+
+include::integrations/add-integration-to-policy.asciidoc[leveloffset=+2]
+
+include::integrations/view-integration-policies.asciidoc[leveloffset=+2]
+
+include::integrations/edit-or-delete-integration-policy.asciidoc[leveloffset=+2]
+
+include::integrations/install-integration-assets.asciidoc[leveloffset=+2]
+
+include::integrations/view-integration-assets.asciidoc[leveloffset=+2]
+
+include::integrations/upgrade-integration.asciidoc[leveloffset=+2]
+
+include::data-streams.asciidoc[leveloffset=+2]
+
 include::processors/processors.asciidoc[leveloffset=+1]
 
 include::commands.asciidoc[leveloffset=+1]
@@ -215,7 +213,7 @@ include::troubleshooting/troubleshooting.asciidoc[leveloffset=+2]
 
 include::troubleshooting/faq.asciidoc[leveloffset=+2]
 
-include::release-notes/release-notes-8.10.asciidoc[leveloffset=+1]
+include::release-notes/release-notes-8.11.asciidoc[leveloffset=+1]
 
 include::elastic-agent/install-fleet-managed-agent.asciidoc[leveloffset=+2]
 

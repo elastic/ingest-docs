@@ -14,6 +14,7 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.11.1>>
 * <<release-notes-8.11.0>>
 
 Also see:
@@ -21,14 +22,45 @@ Also see:
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
 
+// begin 8.11.1 relnotes
+
+[[release-notes-8.11.1]]
+== {fleet} and {agent} 8.11.1
+
+Review important information about {fleet-server} and {agent} for the 8.11.1 release.
+
+[discrete]
+[[known-issues-8.11.1]]
+=== Known issues
+
+The <<breaking-3712,known issue>> that could prevent the {agent} or Integrations Server component from booting up within an ECE deployment has been resolved in this release.
+
+[discrete]
+[[new-features-8.11.1]]
+=== New features
+
+The 8.11.1 release Added the following new and notable features.
+
+{agent}::
+* Add the dimensions `component.id` and `component.binary` to {agent} and {beats} monitoring output, to support unique entries for the Time Series Database (TSDB) feature. {agent-pull}3626[#3626] https://github.com/elastic/integrations/issues//7977[#7977]
+
+[discrete]
+[[bug-fixes-8.11.1]]
+=== Bug fixes
+
+{fleet}::
+* Append space ID to security solution tag. ({kibana-pull}170789[#170789]).
+* Modify bulk unenroll to include inactive agents. ({kibana-pull}170249[#170249]).
+
+// end 8.11.1 relnotes
+
+
 // begin 8.11.0 relnotes
 
 [[release-notes-8.11.0]]
 == {fleet} and {agent} 8.11.0
 
 Review important information about {fleet-server} and {agent} for the 8.11.0 release.
-
-For {fleet} updates, refer to the {kibana-ref}/release-notes.html[{kib} Release Notes].
 
 [discrete]
 [[security-updates-8.7.x]]
@@ -88,6 +120,12 @@ For more information, refer to {agent-pull}3593[#3593].
 
 The 8.11.0 release Added the following new and notable features.
 
+{fleet}::
+* Set env variable `ELASTIC_NETINFO:false` in {kib} ({kibana-pull}166156[#166156]).
+* Added restart upgrade action ({kibana-pull}166154[#166154]).
+* Adds ability to set a proxy for agent binary source ({kibana-pull}164168[#164168]).
+* Adds ability to set a proxy for agent download source ({kibana-pull}164078[#164078]).
+
 {agent}::
 * Add support for processors in hints-based Kubernetes autodiscover. {agent-pull}3107[#3107] {agent-issue}2959[#2959]
 * Print out {agent} installation steps to show progress. {agent-pull}3338[#3338]
@@ -96,6 +134,9 @@ The 8.11.0 release Added the following new and notable features.
 [discrete]
 [[enhancements-8.11.0]]
 === Enhancements
+
+{fleet}::
+* Adds sidebar navigation showing headings extracted from the readme ({kibana-pull}167216[#167216]).
 
 {fleet-server}::
 * Expand APM traces to track coordinator and monitor transactions. Add additonal spans across all API endpoints to better track what the server does. Add spans to bulker interactions that link with the queue flush transaction that the bulk action is executed through. {fleet-server-pull}2929[#2929]
@@ -115,6 +156,9 @@ The 8.11.0 release Added the following new and notable features.
 [discrete]
 [[bug-fixes-8.11.0]]
 === Bug fixes
+
+{fleet}::
+* Vastly improve performance of Fleet final pipeline's date formatting logic for `event.ingested` ({kibana-pull}167318[#167318]).
 
 {fleet-server}::
 * Fix errors produced by the {fleet-server} bulker to be ECS compliant. {fleet-server-pull}3034[#3034] {fleet-server-issue}3033[#3033]

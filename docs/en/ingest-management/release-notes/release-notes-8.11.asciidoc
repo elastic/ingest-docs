@@ -30,10 +30,33 @@ Also see:
 Review important information about {fleet-server} and {agent} for the 8.11.1 release.
 
 [discrete]
+[[breaking-changes-8.11.1]]
+=== Breaking changes
+
+[[breaking-3712-8.11.1]]
+* The <<breaking-3712,breaking change>> that could prevent the {agent} or Integrations Server component from booting up within an ECE deployment has been resolved in this release.
+
+[discrete]
 [[known-issues-8.11.1]]
 === Known issues
 
-The <<breaking-3712,known issue>> that could prevent the {agent} or Integrations Server component from booting up within an ECE deployment has been resolved in this release.
+[[known-issue-169825-8.11.1]]
+.Version 8.11.0 is not in the list of {agent} versions in {kib} {fleet} UI
+[%collapsible]
+====
+
+*Details*
+
+On the {fleet} UI in {kib} version 8.11.0:
+
+* When adding a new {agent}, the user interface shows version 8.10.4 instead of 8.11.0.
+* When attempting to upgrade, the modal window to pick the version shows 8.10.4 as latest version.
+
+*Impact* +
+
+For a workaround, refer to the steps in this knowledge article: link:https://support.elastic.dev/knowledge/view/86bef2c1[Cannot upgrade Fleet Managed Elastic Agents to 8.11.0 via Fleet UI in 8.11.0].
+
+====
 
 [discrete]
 [[new-features-8.11.1]]
@@ -53,7 +76,6 @@ The 8.11.1 release Added the following new and notable features.
 * Modify bulk unenroll to include inactive agents. ({kibana-pull}170249[#170249]).
 
 // end 8.11.1 relnotes
-
 
 // begin 8.11.0 relnotes
 
@@ -76,6 +98,9 @@ Review important information about {fleet-server} and {agent} for the 8.11.0 rel
 Breaking changes can prevent your application from optimal operation and
 performance. Before you upgrade, review the breaking changes, then mitigate the
 impact to your application.
+
+
+
 
 [discrete]
 [[breaking-3712]]
@@ -113,6 +138,29 @@ The `elastic-agent-autodiscover` Kubernetes library by default comes with `add_r
 Pods that will be created from deployments or cronjobs will not have the extra metadata field for `kubernetes.deployment` or `kubernetes.cronjob`, respectively. This change was made to avoid the memory impact of keeping the feature enabled in big Kubernetes clusters.
 For more information, refer to {agent-pull}3593[#3593].
 ====
+
+[discrete]
+[[known-issues-8.11.0]]
+=== Known issues
+
+[[known-issue-169825-8.11.0]]
+.Version 8.11.0 is not in the list of {agent} versions in {kib} {fleet} UI
+[%collapsible]
+====
+
+*Details*
+
+On the {fleet} UI in {kib} version 8.11.0:
+
+* When adding a new {agent}, the user interface shows version 8.10.4 instead of 8.11.0.
+* When attempting to upgrade, the modal window to pick the version shows 8.10.4 as latest version.
+
+*Impact* +
+
+For a workaround, refer to the steps in this knowledge article: link:https://support.elastic.dev/knowledge/view/86bef2c1[Cannot upgrade Fleet Managed Elastic Agents to 8.11.0 via Fleet UI in 8.11.0].
+
+====
+
 
 [discrete]
 [[new-features-8.11.0]]

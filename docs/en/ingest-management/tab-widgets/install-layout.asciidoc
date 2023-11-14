@@ -9,7 +9,7 @@ Main {agent} configuration
 Main {agent} {fleet} encrypted configuration
 
 `/Library/Elastic/Agent/data/elastic-agent-*/logs/elastic-agent.ndjson`::
-Log files for {agent} and beats shippers footnote:lognumbering[Logs file names end with a date (`YYYYMMDD`) and optional number: `elastic-agent-YYYYMMDD.ndjson`, `elastic-agent-YYYYMMDD-1.ndjson`, and so on as new files are created during rotation.]
+Log files for {agent} and {beats} shippers footnote:lognumbering[Logs file names end with a date (`YYYYMMDD`) and optional number: `elastic-agent-YYYYMMDD.ndjson`, `elastic-agent-YYYYMMDD-1.ndjson`, and so on as new files are created during rotation.]
 `/usr/bin/elastic-agent`::
 
 Shell wrapper installed into PATH

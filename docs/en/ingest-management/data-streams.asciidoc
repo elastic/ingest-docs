@@ -122,7 +122,7 @@ Starting in version 8.4, all default ingest pipelines call a non-existent and no
 If left uncreated, this pipeline has no effect on your data. However, if added to a data stream and customized,
 this pipeline can be used for custom data processing, adding fields, sanitizing data, and more.
 
-Ingest pipelines can be configured to process events at various levels of customization.
+Staring in version 8.12, ingest pipelines can be configured to process events at various levels of customization.
 
 `@global`::
 Apply processing to all events
@@ -534,7 +534,7 @@ The result should include `type: "boolean"` for the specified field.
 [[data-streams-pipeline-six]]
 == Step 6: Add an ingest pipeline for a data type
 
-The previous steps demonstrated how to create a custom ingest pipeline that adds a new field to each {es} document generated for the Systems integrations CPU metrics (`system.cpu`) dataset.
+The previous steps demonstrated how to create a custom ingest pipeline that adds a new field to each {es} document generated for the Systems integration CPU metrics (`system.cpu`) dataset.
 
 You can create an ingest pipeline to process data at various levels of customization.
 An ingest pipeline processor can be applied:
@@ -567,7 +567,7 @@ PUT _ingest/pipeline/logs@custom
 ----
 
 . Allow some time for new data to be ingested, and then use a new {ref}/query-dsl-exists-query.html[exists query] to confirm that the
-new field, "my-logs-field" is being applied to log event documents. 
+new field "my-logs-field" is being applied to log event documents. 
 +
 For this example, we'll check the System integration `system.syslog` dataset:
 +

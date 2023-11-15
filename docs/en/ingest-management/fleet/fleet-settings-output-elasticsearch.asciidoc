@@ -102,6 +102,10 @@ include::../elastic-agent/configuration/outputs/output-elasticsearch.asciidoc[ta
 
 // =============================================================================
 
+include::../elastic-agent/configuration/outputs/output-shared-settings.asciidoc[tag=compression_level-setting]
+
+// =============================================================================
+
 include::../elastic-agent/configuration/outputs/output-elasticsearch.asciidoc[tag=max_retries-setting]
 
 // =============================================================================

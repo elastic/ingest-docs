@@ -124,14 +124,14 @@ this pipeline can be used for custom data processing, adding fields, sanitizing 
 
 Staring in version 8.12, ingest pipelines can be configured to process events at various levels of customization.
 
-`@global`::
+`global@custom`::
 Apply processing to all events
 +
 For example, the following {ref}/put-pipeline-api.html[pipeline API] request adds a new field `my-global-field` for all events:
 +
 [source,console]
 ----
-PUT _ingest/pipeline/@global
+PUT _ingest/pipeline/global@custom
 {
   "processors": [
     {

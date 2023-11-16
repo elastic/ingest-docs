@@ -122,10 +122,94 @@ Starting in version 8.4, all default ingest pipelines call a non-existent and no
 If left uncreated, this pipeline has no effect on your data. However, if added to a data stream and customized,
 this pipeline can be used for custom data processing, adding fields, sanitizing data, and more.
 
-The full name of the `@custom` pipeline follows the following pattern: `<type>-<dataset>@custom`.
-The `@custom` pipeline can directly contain processors or you can use the
-pipeline processor to call other pipelines that can be shared across multiple data streams or integrations.
-The `@custom` pipeline will persist across all version upgrades.
+Staring in version 8.12, ingest pipelines can be configured to process events at various levels of customization.
+
+`global@custom`::
+Apply processing to all events
++
+For example, the following {ref}/put-pipeline-api.html[pipeline API] request adds a new field `my-global-field` for all events:
++
+[source,console]
+----
+PUT _ingest/pipeline/global@custom
+{
+  "processors": [
+    {
+      "set": {
+        "description": "Process all events",
+        "field": "my-global-field",
+        "value": "foo"
+      }
+    }
+  ]
+}
+----
+
+`${type}`::
+Apply processing to all events of a given data type.
++
+For example, the following request adds a new field `my-logs-field` for all log events:
++
+[source,console]
+----
+PUT _ingest/pipeline/logs@custom
+{
+  "processors": [
+    {
+      "set": {
+        "description": "Process all log events",
+        "field": "my-logs-field",
+        "value": "foo"
+      }
+    }
+  ]
+}
+----
+
+`${type}-${package}`::
+Apply processing to all events of a given type in an integration
++
+For example, the following request creates a `logs-nginx@custom` pipeline that adds a new field `my-nginx-field` for all log events in the Nginx integration:
++
+[source,console]
+----
+PUT _ingest/pipeline/logs-nginx@custom
+{
+  "processors": [
+    {
+      "set": {
+        "description": "Process all nginx events",
+        "field": "my-nginx-field",
+        "value": "foo"
+      }
+    }
+  ]
+}
+----
+
+`${type}-${dataset}`::
+Apply processing to a specific dataset.
++
+For example, the following request creates a `metrics-system.cpu@custom` pipeline that adds a new field `my-system.cpu-field` for all CPU metrics events in the System integration:
++
+[source,console]
+----
+PUT _ingest/pipeline/metrics-system.cpu@custom
+{
+  "processors": [
+    {
+      "set": {
+        "description": "Process all events in the system.cpu dataset",
+        "field": "my-system.cpu-field",
+        "value": "foo"
+      }
+    }
+  ]
+}
+----
+
+Custom pipelines can directly contain processors or you can use the pipeline processor to call other pipelines that can be shared across multiple data streams or integrations.
+These pipelines will persist across all version upgrades.
 
 See <<data-streams-pipeline-tutorial>> to get started.
 
@@ -445,6 +529,81 @@ The result should include `type: "boolean"` for the specified field.
   }
 }
 ----
+
+[discrete]
+[[data-streams-pipeline-six]]
+== Step 6: Add an ingest pipeline for a data type
+
+The previous steps demonstrated how to create a custom ingest pipeline that adds a new field to each {es} document generated for the Systems integration CPU metrics (`system.cpu`) dataset.
+
+You can create an ingest pipeline to process data at various levels of customization.
+An ingest pipeline processor can be applied:
+
+* Globally to all events
+* To all events of a certain type (for example `logs` or `metrics`)
+* To all events of a certain type in an integration
+* To all events in a specific dataset
+
+Let's create a new custom ingest pipeline `logs@custom` that processes all log events.
+
+. Open {kib} and navigate to **{kib} Dev tools**.
+
+. Run a {ref}/put-pipeline-api.html[pipeline API] request to add a new field `my-logs-field`:
++
+[source,console]
+----
+PUT _ingest/pipeline/logs@custom
+{
+  "processors": [
+    {
+      "set": {
+        "description": "Custom field for all log events",
+        "field": "my-logs-field",
+        "value": "true"
+      }
+    }
+  ]
+}
+----
+
+. Allow some time for new data to be ingested, and then use a new {ref}/query-dsl-exists-query.html[exists query] to confirm that the
+new field "my-logs-field" is being applied to log event documents. 
++
+For this example, we'll check the System integration `system.syslog` dataset:
++
+[source,console]
+----
+GET /logs-system.syslog-default/_search?pretty
+{
+  "query": {
+    "exists": {
+      "field": "my-logs-field" 
+    }
+  }
+}
+----
+
+With the new pipeline applied, this query should return at least one document.
+
+You can modify your pipeline API request as needed to apply custom processing at various levels.
+Refer to <<data-streams-pipelines>> to learn more.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 [[data-streams-advanced-features]]
 == Enabling and disabling advanced indexing features for {fleet}-managed data streams

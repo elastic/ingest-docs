@@ -26,6 +26,21 @@ outputs:
     password: changeme
 ----
 
+This example is similar to the previous one, except that it uses
+<<output-elasticsearch-apikey-authentication-settings,token-based (API key) authentication>>:
+
+[source,yaml]
+----
+outputs:
+  default:
+    type: elasticsearch
+    hosts: [127.0.0.1:9200]
+    api_key: "my_api_key"
+----
+
+NOTE: Token-based authentication is required in an
+link:{serverless-docs}[{serverless-full}] environment.
+
 == {es} output configuration settings
 
 The `elasticsearch` output type supports the following settings, grouped by
@@ -215,7 +230,7 @@ outputs:
 [id="{type}-api_key-setting"]
 `api_key`
 
-| (string) Instead of using a username and password, you can use API keys to
+| (string) Instead of using a username and password, you can use {kibana-ref}/api-keys.html[API keys] to
 secure communication with {es}. The value must be the ID of the API key and the
 API key joined by a colon: `id:api_key`.
 // end::api_key-setting[]

@@ -78,6 +78,8 @@ When SCRAM is enabled, {agent} uses the link:https://en.wikipedia.org/wiki/Salte
 * SCRAM-SHA-256 - uses the SHA-256 hashing function
 * SCRAM-SHA-512 - uses the SHA-512 hashing function
 
+To prevent unauthorized access your Kafka password is stored as a <<agent-policy-secret-values,secret value>>, separate from other policy details. While secret storage is recommended, you can choose to override this setting and store the password as plain text in the agent policy definition.
+
 // ============================================================================
 
 |
@@ -97,6 +99,8 @@ Client SSL certificate key::
 The private key generated for the client. This must be in PKCS 8 key. Copy and paste in the full contents of the certificate key. This is the certificate key that all the agents will use to connect to Kafka.
 +
 In cases where each client has a unique certificate key, the local path to that certificate key can be placed here. The agents will pick the certificate key in that location when establishing a connection to Kafka.
+
+To prevent unauthorized access the certificate key is stored as a <<agent-policy-secret-values,secret value>>, separate from other policy details. While secret storage is recommended, you can choose to override this setting and store the key as plain text in the agent policy definition.
 
 // ============================================================================
 

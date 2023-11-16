@@ -64,6 +64,8 @@ Copy and paste in the full contents of the certificate key. This is the certific
 In cases where each client has a unique certificate key, the local path to that certificate key can be placed here.
 The agents will pick the certificate key in that location when establishing a connection to {ls}.
 
+To prevent unauthorized access the certificate key is stored as a <<agent-policy-secret-values,secret value>>, separate from other policy details. While secret storage is recommended, you can choose to override this setting and store the key as plain text in the agent policy definition.
+
 // =============================================================================
 
 |

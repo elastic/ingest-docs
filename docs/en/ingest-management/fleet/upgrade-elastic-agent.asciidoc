@@ -140,20 +140,22 @@ Agents on version 8.12 and higher that are currently upgrading additionally show
 [role="screenshot"]
 image::images/upgrade-states.png[Detailed state of an upgrading agent]
 
+Under routine circumstances, an {agent} upgrade happens quickly. You typically will not see the agent transition through each of the upgrade states. However, the detailed upgrade status can be a very useful tool to diagnose the state of an agent that may be stuck, or appears to be stuck, during the upgrade process.
+
 The following table explains the upgrade states in the order that they can occur.
 
 .{agent} upgrade states
 |===
 | State | Description
 
-| Upgrade requested | {agent} has received the upgrade notice from {fleet} and the upgrade will start when the request has been received.
+| Upgrade requested | {agent} has received the upgrade notice from {fleet}.
 | Upgrade scheduled | {agent} has received the upgrade notice from {fleet} and the upgrade will start at the indicated time.
 | Upgrade downloading | {agent} is downloading the archive containing the new version artifact.
 | Upgrade extracting | {agent} is extracting the new version artifact from the downloaded archive.
 | Upgrade replacing | {agent} is currently replacing the former, pre-upgrade agent artifact with the new one.
 | Upgrade restarting | {agent} has been replaced with a new version and is now restarting in order to apply the update.
-| Upgrade monitoring | The newly upgraded {agent} has started as is being monitored for errors.
-| Upgrade rolled back | The upgrade was unsuccessful. {agent} is being rolled back to a previous version.
+| Upgrade monitoring | The newly upgraded {agent} has started and is being monitored for errors.
+| Upgrade rolled back | The upgrade was unsuccessful. {agent} is being rolled back to the former, pre-upgrade version.
 | Upgrade failed | An error has been detected in the newly upgraded {agent} and the attempt to roll the upgrade back to the previous version has failed.
 
 |===
@@ -166,7 +168,7 @@ image::images/upgrade-detailed-state01.png[Granular upgrade details shown as hov
 [role="screenshot"]
 image::images/upgrade-detailed-state02.png[Granular upgrade details shown as hover text (agent is restarting to apply the update)]
 
-Note that when you upgrade agents on versions below 8.12, the upgrade details are not provided.
+Note that when you upgrade agents from versions below 8.12, the upgrade details are not provided.
 
 [role="screenshot"]
 image::images/upgrade-non-detailed.png[An earlier release agent showing only the updating state without additional details]

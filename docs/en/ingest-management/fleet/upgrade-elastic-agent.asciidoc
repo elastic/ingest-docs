@@ -140,8 +140,6 @@ Agents on version 8.12 and higher that are currently upgrading additionally show
 [role="screenshot"]
 image::images/upgrade-states.png[Detailed state of an upgrading agent]
 
-Under routine circumstances, an {agent} upgrade happens quickly. You typically will not see the agent transition through each of the upgrade states. The detailed upgrade status can be a very useful tool especially if you need to diagnose the state of an agent that may have become stuck, or just appears to have become stuck, during the upgrade process.
-
 The following table explains the upgrade states in the order that they can occur.
 
 .{agent} upgrade states
@@ -159,6 +157,8 @@ The following table explains the upgrade states in the order that they can occur
 | Upgrade failed | An error has been detected in the newly upgraded {agent} and the attempt to roll the upgrade back to the previous version has failed.
 
 |===
+
+Under routine circumstances, an {agent} upgrade happens quickly. You typically will not see the agent transition through each of the upgrade states. The detailed upgrade status can be a very useful tool especially if you need to diagnose the state of an agent that may have become stuck, or just appears to have become stuck, during the upgrade process.
 
 Beside the upgrade status indicator, you can hover your cursor over the information icon to get more detail about the upgrade.
 

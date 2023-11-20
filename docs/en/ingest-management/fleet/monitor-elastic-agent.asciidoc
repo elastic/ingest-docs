@@ -10,6 +10,8 @@ In {fleet}, you can:
 * <<view-agent-logs>>
 * <<collect-agent-diagnostics>>
 * <<view-agent-metrics>>
+* <<change-agent-monitoring>>
+* <<external-elasticsearch-monitoring>>
 
 Agent monitoring is turned on by default in the agent policy unless you
 turn it off. Want to turn off agent monitoring to stop collecting logs and
@@ -228,3 +230,55 @@ To turn off agent monitoring when creating a new agent policy:
 **Collect agent metrics**.
 
 . When you're done configuring the agent policy, click **Create agent policy**.
+
+[discrete]
+[[external-elasticsearch-monitoring]]
+= Send {agent} monitoring data to a remote {es} cluster
+
+You may want to store all of the health and status data about your {agents} in a remote {es} cluster, so that it's separate and independent from the deployment where you use {fleet} to manage the agents.
+
+To configure a remote {es} cluster for your {agent} monitoring data:
+
+. In {kib}, go to **Management -> {fleet} -> Settings**.
+
+. In the **Outputs** section, select **Add output**.
+
+. In the **Add new output** flyout, provide a name for the output and select **Remote Elasticsearch** as the output type.
+
+. In the **Hosts** field, add the URL that agents should use to access the remote {es} cluster.
+
+.. To find the remote host address, in the remote cluster open {kib} and go to **Management -> {fleet} -> Settings**.
+
+.. Copy the **Hosts** value for the default output.
+
+.. Back in your main cluster, paste the value you copied into the output **Hosts** field.
+
+. Create a service token to access the remote cluster.
+
+.. Below the **Service Token** field, copy the API request.
+
+.. In the remote cluster, open the {kib} menu and go to **Management -> Dev Tools**.
+
+.. Run the API request.
+
+.. Copy the value for the generated token.
+
+.. Back in your main cluster, paste the value you copied into the output **Service Token** field.
+
+. Choose whether or not the remote output should be the default for agent monitoring. When set, {agent}s use this output to send data if no other output is set in the <<agent-policy,agent policy>>.
+
+. Add any <<es-output-settings-yaml-config,advanced YAML configuration settings>> that you'd like for the output.
+
+. Click **Save and apply settings**.
+
+After the output is created, you can update an {agent} policy to use the new remote {es} cluster:
+
+. In {kib}, go to **Management -> {fleet} -> Agent policies**.
+
+. Click the agent policy to edit it, then click **Settings**.
+
+. Set the **Output for agent monitoring** option to use the output that you configured in the previous steps.
+
+. Click **Save changes**.
+
+The remote {es} cluster is now configured.

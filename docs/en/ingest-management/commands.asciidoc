@@ -8,7 +8,8 @@
 ++++
 
 {agent} provides commands for running {agent}, managing {fleet-server}, and
-doing common tasks.
+doing common tasks. The commands listed here apply to both <<manage-agents-in-fleet,{fleet}-managed>>
+and <<elastic-agent-configuration,standalone>> {agent}.
 
 NOTE: You might need to log in as a root user (or Administrator on Windows) to
 run these commands. After the {agent} service is installed and running, make
@@ -542,6 +543,8 @@ For more information about custom certificates, refer to <<secure-connections>>.
 `--base-path <string>`::
 Install {agent} in a location other than the <<installation-layout,default>>.
 Specify the custom base path for the install.
++
+The `--base-path` option is not currently supported with {security-guide}/install-endpoint.html[{elastic-defend}].
 
 `--ca-sha256 <string>`::
 Comma-separated list of certificate authority hash pins used for certificate

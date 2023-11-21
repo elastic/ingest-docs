@@ -73,7 +73,7 @@ beta[]
 Likewise, if the download traffic to or from the artifact registry needs to go through the proxy server, that proxy definition also needs to be added to the agent binary source defined in {Fleet}.
 
 .. In {kib}, navigate to the **Fleet** page and go to the **Settings** tab.
-.. In the list of **Agent Binary Download**, choose an agent binary source and select the edit button to configure it.
+.. In the **Agent Binary Download** list, choose an agent binary source and select the edit button to configure it.
 .. In the **Proxy** section dropdown list, select the proxy that you configured.
 +
 image::images/elastic-agent-proxy-edit-agent-binary-source.png[Screen capture of the Edit agent binary source UI in Fleet]

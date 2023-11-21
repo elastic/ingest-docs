@@ -105,7 +105,7 @@ POST kbn:/api/fleet/agents/bulk_upgrade
 }
 ----
 
-TIP: To get the {agent} IDs you see in the {fleet} UI you can inspect the Network tab of the Developer Tools of the browser and look for the request `/api/fleet/agents?kuery=...`. The kuery parameter is the KQL query passed from the UI. If you search or select a subset of {agents} using filters in the UI or KQL, you can get the list of agent IDs from such a request.
+TIP: To find the ID for any {agent}, open the **Agents** tab in {fleet} and select **View agent** from the **Actions** menu. The agent ID and other details are shown.
 
 To learn more about these requests, refer to the <<fleet-api-docs,{fleet} API documentation>>.
 
@@ -261,7 +261,7 @@ POST kbn:/api/fleet/agents/bulk_upgrade
 }
 ----
 
-TIP: To get the {agent} IDs you see in the {fleet} UI you can inspect the Network tab of the Developer Tools of the browser and look for the request `/api/fleet/agents?kuery=...`. The kuery parameter is the KQL query passed from the UI. If you search or select a subset of {agents} using filters in the UI or KQL, you can get the list of agent IDs from such a request.
+TIP: To find the ID for any {agent}, open the **Agents** tab in {fleet} and select **View agent** from the **Actions** menu. The agent ID and other details are shown.
 
 To learn more about these requests, refer to the <<fleet-api-docs,{fleet} API documentation>>.
 

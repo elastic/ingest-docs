@@ -83,7 +83,7 @@ In this example, All the {agents} in a policy that is configured to download fro
 +
 ====
 [WARNING]
-If agents are unable to reach the configured proxy server, they will not be able to download binaries from the agent download source that has the proxy server configured. When changing the proxy of an output, please ensure that the affected agents all have connectivity to the proxy itself.
+If agents are unable to reach the configured proxy server, they will not be able to download binaries from the agent download source that has the proxy server configured. When changing the proxy of an agent binary source, please ensure that the affected agents all have connectivity to the proxy itself.
 ====
 +
 . **Configure the {agent} policy**

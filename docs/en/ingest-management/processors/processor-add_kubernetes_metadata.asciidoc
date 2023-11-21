@@ -139,8 +139,8 @@ To change the default behavior, you can set `include_labels`, `exclude_labels`, 
 These settings are useful when storing labels and annotations that require special handling to avoid overloading the storage output.
 Note that wildcards are not supported in these settings.
 To turn off enrichment of `node` or `namespace` metadata individually, set `enabled: false`.
-* `deployment`: If the resource is `pod` and it is created from a `deployment`, the deployment name is added by default. To disable this behavior, set `deployment: false`.
-* `cronjob`: If the resource is `pod` and it is created from a `cronjob`, the cronjob name is added by default. To disable this behavior, set `cronjob: false`.
+* `deployment`: If the resource is `pod` and it is created from a `deployment`, the deployment name is not added by default. To enable this behavior, set `deployment: true`.
+* `cronjob`: If the resource is `pod` and it is created from a `cronjob`, the cronjob name is not added by default. To enable this behavior, set `cronjob: true`.
 
 [%collapsible]
 .Expand this to see an example
@@ -158,8 +158,8 @@ To turn off enrichment of `node` or `namespace` metadata individually, set `enab
           include_annotations: ["nodeannotation1"]
           #labels.dedot: true
           #annotations.dedot: true
-        deployment: false
-        cronjob: false
+        deployment: true
+        cronjob: true
 ----
 ====
 

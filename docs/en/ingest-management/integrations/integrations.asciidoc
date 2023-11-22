@@ -22,6 +22,11 @@ observability needs:
 * Documentation
 ****
 
+[NOTE]
+====
+Please be aware that some integrations may function differently across different spaces. Also, some might only work in the default space. We recommend reviewing the specific integration documentation for any space-related considerations.
+====
+
 The following table shows the main actions you can perform in the *Integrations*
 app in {kib}. You can perform some of these actions from other places in {kib},
 too.

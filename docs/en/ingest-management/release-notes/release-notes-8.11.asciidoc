@@ -41,7 +41,7 @@ Review important information about {fleet-server} and {agent} for the 8.11.1 rel
 === Known issues
 
 [[known-issue-115-8.11.1]]
-.Potential memory leak running {agent} in Windows environments
+.Memory leak running {agent} in Windows environments with the System Integration
 [%collapsible]
 ====
 
@@ -213,7 +213,7 @@ For more information, refer to {agent-pull}3593[#3593].
 === Known issues
 
 [[known-issue-115-8.11.0]]
-.Potential memory leak running {agent} in Windows environments
+.Memory leak running {agent} in Windows environments with the System Integration
 [%collapsible]
 ====
 

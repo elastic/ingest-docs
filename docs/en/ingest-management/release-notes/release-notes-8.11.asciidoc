@@ -47,11 +47,13 @@ Review important information about {fleet-server} and {agent} for the 8.11.1 rel
 
 *Details*
 
-A potential memory leak has been identified in the {filebeat} and {metricbeat} components of {agent} when running on a Windows system. The leak can cause the component to halt or crash, in a worst case scenario potentially leading to system down time.
+A memory leak has been identified in {metricbeat} on Windows. The leak also affects the {agent} system integration which is implemented with {metricbeat}. The leak will eventually exhaust all memory on the host system, typically after several days.
 
 *Impact* +
 
 This issue has been fixed in upcoming version 8.11.2. For a Windows environment, we recommend waiting for the official release of 8.11.2 before upgrading from 8.10.x or earlier.
+
+If you're already running {agent} version 8.11.0 or 8.11.1 on Windows, we recommend disabling the `process` and `process_summary` metrics in your integrations.
 
 ====
 
@@ -215,11 +217,13 @@ For more information, refer to {agent-pull}3593[#3593].
 
 *Details*
 
-A potential memory leak has been identified in the {filebeat} and {metricbeat} components of {agent} when running on a Windows system. The leak can cause the component to halt or crash, in a worst case scenario potentially leading to system down time.
+A memory leak has been identified in {metricbeat} on Windows. The leak also affects the {agent} system integration which is implemented with {metricbeat}. The leak will eventually exhaust all memory on the host system, typically after several days.
 
 *Impact* +
 
 This issue has been fixed in upcoming version 8.11.2. For a Windows environment, we recommend waiting for the official release of 8.11.2 before upgrading from 8.10.x or earlier.
+
+If you're already running {agent} version 8.11.0 or 8.11.1 on Windows, we recommend disabling the `process` and `process_summary` metrics in your integrations.
 
 ====
 

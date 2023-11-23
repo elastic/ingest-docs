@@ -309,7 +309,7 @@ The following table shows a comparison of capabilities supported by {beats} and 
 |{y}
 |{n}
 |{n}
-|Currently being considered for development https://github.com/elastic/elastic-agent/issues/3490
+|This feature is currently being link:https://github.com/elastic/elastic-agent/issues/3490[considered for development].
 |===
 
 [discrete]

@@ -60,16 +60,16 @@ Another workaround is to downgrade {agent} to a version below 8.11.0. Note that 
 ====
 
 [[known-issue-169825-8.11.1]]
-.Version 8.11.0 is not in the list of {agent} versions in {kib} {fleet} UI
+.Current stack version is not in the list of {agent} versions in {kib} {fleet} UI
 [%collapsible]
 ====
 
 *Details*
 
-On the {fleet} UI in {kib} version 8.11.0:
+On the {fleet} UI in {kib}:
 
-* When adding a new {agent}, the user interface shows version 8.10.4 instead of 8.11.0.
-* When attempting to upgrade, the modal window to pick the version shows 8.10.4 as latest version.
+* When adding a new {agent}, the user interface shows a previous version instead of the current version.
+* When attempting to upgrade, the modal window to pick the version shows an earlier version as the latest version.
 
 *Impact* +
 
@@ -232,16 +232,16 @@ Another workaround is to downgrade {agent} to a version below 8.11.0. Note that 
 ====
 
 [[known-issue-169825-8.11.0]]
-.Version 8.11.0 is not in the list of {agent} versions in {kib} {fleet} UI
+.Current stack version is not in the list of {agent} versions in {kib} {fleet} UI
 [%collapsible]
 ====
 
 *Details*
 
-On the {fleet} UI in {kib} version 8.11.0:
+On the {fleet} UI in {kib}:
 
-* When adding a new {agent}, the user interface shows version 8.10.4 instead of 8.11.0.
-* When attempting to upgrade, the modal window to pick the version shows 8.10.4 as latest version.
+* When adding a new {agent}, the user interface shows a previous version instead of the current version.
+* When attempting to upgrade, the modal window to pick the version shows an earlier version as the latest version.
 
 *Impact* +
 

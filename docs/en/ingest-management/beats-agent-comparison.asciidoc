@@ -305,7 +305,11 @@ The following table shows a comparison of capabilities supported by {beats} and 
 |{y}
 |{fleet} stores the agent policy in {es}. It does not integrate with external version control or infrastructure as code solutions, but we are considering https://github.com/elastic/kibana/issues/108524[improved support]. However, {beats} and {agent} in standalone mode use a YAML file that is compatible with these solutions.
 
-
+|Spooling data to local disk
+|{y}
+|{n}
+|{n}
+|This feature is currently being link:https://github.com/elastic/elastic-agent/issues/3490[considered for development].
 |===
 
 [discrete]

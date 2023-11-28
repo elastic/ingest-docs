@@ -29,6 +29,8 @@ Also see:
 
 Review important information about {fleet-server} and {agent} for the 8.11.1 release.
 
+IMPORTANT: Due to a memory leak issue, Windows users running {agent} are recommended to avoid upgrading to this release and waiting for the upcoming 8.11.2 release in which the issue is resolved. If you've already upgraded to version 8.11.0 or 8.11.1, we recommend upgrading to 8.11.2 as soon as it becomes available. See the <<known-issue-115-8.11.1,known issue>> for more detail.
+
 [discrete]
 [[breaking-changes-8.11.1]]
 === Breaking changes
@@ -155,6 +157,8 @@ The 8.11.1 release Added the following new and notable features.
 == {fleet} and {agent} 8.11.0
 
 Review important information about {fleet-server} and {agent} for the 8.11.0 release.
+
+IMPORTANT: Due to a memory leak issue, Windows users running {agent} are recommended to avoid upgrading to this release and waiting for the upcoming 8.11.2 release in which the issue is resolved. If you've already upgraded to 8.11.0 or 8.11.1, we recommend upgrading to 8.11.2 as soon as it becomes available. See the <<known-issue-115-8.11.0,known issue>> for more detail.
 
 [discrete]
 [[security-updates-8.7.x]]

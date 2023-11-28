@@ -94,6 +94,56 @@ For data streams, the index template configures the stream's backing indices as 
 {agent} integrations can also provide dataset-specific index templates, like `logs-nginx.access-*`.
 These templates are loaded when the integration is installed, and are used to configure the integration's data streams.
 
+=== Edit the {es} index template
+
+WARNING: Custom index mappings may conflict with the mappings defined by the integration
+and may break the integration in {kib}. Do not change or customize any default mappings.
+
+When you install an integration, {fleet} creates a default `@custom` component template for each data stream.
+You can edit this `@custom` component template to customize your {es} indices.
+The Custom component templates are named following this pattern: `<name_of_data_stream>@custom`.
+
+Open {kib} and navigate to to **{stack-manage-app}** > **Index Management** > **Data Streams**.
+Find and click on the name of the integration datastream, like `logs-cisco_ise.log-default'. 
+Then click on the index template link for that datastream to see the list of Component templates used for that data stream.
+
+Then, navigate to **{stack-manage-app}** > **Index Management** > **Component Templates**.
+Search for the name of the data stream's custom component template and select edit action.
+
+Add any custom index settings, metadata, or mappings.
+For example, you may want to...
+
+* Customize the index lifecycle policy applied to a data stream.
+See <<data-streams-custom-policy,custom index lifecycle policies>> for a walk-through.
+
+Specify lifecycle name in the **index settings**:
+[source,json]
+----
+{
+  "index": {
+    "lifecycle": {
+       "name": "my_policy"
+     }
+  }
+}
+----
+
+* Change the number of {ref}/docs-replication.html[replicas] per index.
+Specify the number of replica shards in the **index settings**:
++
+[source,json]
+----
+{
+  "index": {
+    "number_of_replicas": "2"
+  }
+}
+----
+
+Changes to component templates are not applied retroactively to existing indices.
+For changes to take effect, you must create a new write index for the data stream.
+This can be done with the {es} {ref}/indices-rollover-index.html[Rollover API].
+
 [discrete]
 [[data-streams-ilm]]
 = Index lifecycle management ({ilm-init})

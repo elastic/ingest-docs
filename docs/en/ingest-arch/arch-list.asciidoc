@@ -31,9 +31,10 @@ Eventually, we may move original here, but for now it needs to stay in cloud inf
 image:images/ea-es.png[Image showing {agent} collecting data and sending to {es}]
 
 a| 
-* An {integrations-docs}[{agent} integration] is available for your data source: 
-** Software components with <<agent-installed,{agent} installed>>
-** Software components using <<agent-apis,APIs for data collection>>
+An {integrations-docs}[{agent} integration] is available for your data source: 
+
+* Software components with <<agent-installed,{agent} installed>>
+* Software components using <<agent-apis,APIs for data collection>>
 
 
 | <<agent-ls>>
@@ -41,11 +42,12 @@ a|
 image:images/ea-ls-es.png[Image showing {agent} to {ls} to {es}]
 
 a|
-* You need additional capabilities from {ls}:
-** <<ls-enrich,*enrichment*>> between {agent} and {es}
-** <<lspq,*persistent queue (PQ) buffering*>> to accommodate network issues and downstream unavailability
-** <<ls-networkbridge,*proxying*>> in cases where {agent}s have network restrictions for connecting outside of the {agent} network 
-** data needs to be <<ls-multi,*routed to multiple*>> {es} clusters and other destinations depending on the content
+You need additional capabilities offered by {ls}:
+
+* <<ls-enrich,*enrichment*>> between {agent} and {es}
+* <<lspq,*persistent queue (PQ) buffering*>> to accommodate network issues and downstream unavailability
+* <<ls-networkbridge,*proxying*>> in cases where {agent}s have network restrictions for connecting outside of the {agent} network 
+* data needs to be <<ls-multi,*routed to multiple*>> {es} clusters and other destinations depending on the content
 
 
 | <<agent-proxy>>
@@ -53,8 +55,8 @@ a|
 image:images/ea-proxy-es.png[Image showing connections between {agent} and {es} using a proxy]
 
 a|
-* Agents have <<agent-proxy,network restrictions>> that prevent connecting outside of the {agent} network
-* Note that <<ls-networkbridge,{ls} as proxy>> is one option
+Agents have <<agent-proxy,network restrictions>> that prevent connecting outside of the {agent} network
+Note that <<ls-networkbridge,{ls} as proxy>> is one option.
 
 
 | <<agent-kafka-es>>
@@ -62,9 +64,10 @@ a|
 image:images/ea-kafka.png[Image showing {agent} collecting data and using Kafka as a message queue enroute to {es}]
 
 a|
-* Kafka is your <<agent-kafka-es,middleware message queue>>: 
-** <<agent-kafka-essink,Kafka ES sink connector>> to write from Kafka to {es}
-** <<agent-kafka-ls,{ls} to read from Kafka and route to {es}>>
+Kafka is your <<agent-kafka-es,middleware message queue>>: 
+
+* <<agent-kafka-essink,Kafka ES sink connector>> to write from Kafka to {es}
+* <<agent-kafka-ls,{ls} to read from Kafka and route to {es}>>
 
 
 | <<ls-for-input>>
@@ -72,17 +75,15 @@ a|
 image:images/ls-es.png[Image showing {ls} collecting data and sending to {es}]
 
 a|
-* You need to collect data from a source that {agent} can't read (such as databases, AWS Kinesis).
+You need to collect data from a source that {agent} can't read (such as databases, AWS Kinesis).
 Check out the {logstash-ref}/input-plugins.html[{ls} input plugins].
 
 
 | <<airgapped-env>>
 
-image:images/ea-es-airgapped.png[Image showing {agent} and {es} in an air-gapped environment]
-
-image:images/ea-ls-airgapped.png[Image showing {agent}, {ls}, and {es} in an air-gapped environment]
+image:images/ea-airgapped.png[Image showing {stack} in an air-gapped environment]
 
 a|
-* {agent} and {stack} deployed in an air gapped environment with no access to outside networks
+You want to deploy {agent} and {stack} in an air-gapped environment (no access to outside networks)
 
 |===

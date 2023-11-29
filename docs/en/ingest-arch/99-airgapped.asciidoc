@@ -1,12 +1,15 @@
 [[airgapped-env]]
-== Air-gapped architectures
+== Elastic air-gapped architectures
 
+You can deploy the {stack} with some or all components in a data center or other environment with no access to any outside networks. 
+Some stack components require additional configuration and local dependencies when deployed in air-gapped environments. 
 
-* 20. Agent, Elastic stack both is deployed in air gapped environment with no access to outside network
-** Set up self managed stack and self managed EPR 
-** Specify agent binary location for 8.4+, in other cases, you will need to upgrade these agents manually as described here
-** If geoip enrichment is required then it's necessary to manage database updates either through a proxy, a custom endpoint, or manually.
-** Additional architecture diagram to show geo-ip DBs? 
+[discrete]
+[[airgapped-archs]]
+=== {agent} to {es} architectures
+
+* <<agent-es-airgapped>>
+* <<agent-ls-airgapped>>
 
 [discrete]
 [[airgapped-resources]]

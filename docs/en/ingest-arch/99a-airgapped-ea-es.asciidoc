@@ -3,3 +3,10 @@
 
 image::images/ea-es-airgapped.png[Image showing {agent} and {es} in an air-gapped environment] 
 
+Ingest model::
+All {stack} components deployed inside a DMZ: 
+* Control path: {agent} to {fleet} to {es} +
+* Data path: {agent} to {es} 
+
+Use when::
+Your self-managed {stack} deployment has no access to outside networks

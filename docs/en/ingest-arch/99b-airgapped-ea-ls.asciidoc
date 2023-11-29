@@ -2,3 +2,17 @@
 === {agent} to {ls}: Air-gapped environment 
 
 image::images/ea-ls-airgapped.png[Image showing {agent}, {ls}, and {es} in an air-gapped environment]
+
+Ingest model::
+All {stack} components deployed inside a DMZ: 
+* Control path: {agent} to {fleet} to {es} +
+* Data path: {agent} to {es} 
+
+Use when::
+Your self-managed {stack} deployment has no access to outside networks
+
+[[ls-geoip]]
+==== Geoip database management in air-gapped environments
+
+If you are using the {logstash-ref}/plugins-filters-geoip.html[{ls} geoip filter] plugin in an air-gapped environment, you can 
+{logstash-ref}/plugins-filters-geoip.html#plugins-filters-geoip-manage_update[manage database updates] through a proxy, a custom endpoint, or manually.

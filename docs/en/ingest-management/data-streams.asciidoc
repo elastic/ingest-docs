@@ -94,7 +94,8 @@ For data streams, the index template configures the stream's backing indices as 
 {agent} integrations can also provide dataset-specific index templates, like `logs-nginx.access-*`.
 These templates are loaded when the integration is installed, and are used to configure the integration's data streams.
 
-=== Edit the {es} index template
+[discrete]
+== Edit the {es} index template
 
 WARNING: Custom index mappings may conflict with the mappings defined by the integration
 and may break the integration in {kib}. Do not change or customize any default mappings.
@@ -114,7 +115,7 @@ Add any custom index settings, metadata, or mappings.
 For example, you may want to...
 
 * Customize the index lifecycle policy applied to a data stream.
-See <<data-streams-custom-policy,custom index lifecycle policies>> for a walk-through.
+See {apm-guide-ref}/ilm-how-to.html#data-streams-custom-policy[Configure a custom index lifecycle policy] in the APM Guide for a walk-through.
 
 Specify lifecycle name in the **index settings**:
 [source,json]

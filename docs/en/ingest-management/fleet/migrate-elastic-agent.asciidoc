@@ -127,21 +127,21 @@ On your target cluster, certain settings from the original {ecloud} {agent} poli
 +
 [source,shell]
 ----
-curl --request POST
---url https://{KIBANA_HOST:PORT}/internal/fleet/reset_preconfigured_agent_policies/policy-elastic-agent-on-cloud
--u username:password
---header 'Content-Type: application/json'
---header 'kbn-xsrf: as'
+curl --request POST \
+--url https://{KIBANA_HOST:PORT}/internal/fleet/reset_preconfigured_agent_policies/policy-elastic-agent-on-cloud \
+-u username:password \
+--header 'Content-Type: application/json' \
+--header 'kbn-xsrf: as' \
 --header 'elastic-api-version: 1'
 ----
 ** If you're using a {kib} version below 8.11, run:
 +
 [source,shell]
 ----
-curl --request POST
---url https://{KIBANA_HOST:PORT}/internal/fleet/reset_preconfigured_agent_policies/policy-elastic-agent-on-cloud
--u username:password
---header 'Content-Type: application/json'
+curl --request POST \
+--url https://{KIBANA_HOST:PORT}/internal/fleet/reset_preconfigured_agent_policies/policy-elastic-agent-on-cloud \
+-u username:password \
+--header 'Content-Type: application/json' \
 --header 'kbn-xsrf: as'
 ----
 +

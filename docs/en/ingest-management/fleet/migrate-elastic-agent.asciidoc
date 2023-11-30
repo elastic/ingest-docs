@@ -116,6 +116,38 @@ Using that value for `deployment-id`, the new {fleet-server} host URL is:
 image::images/migrate-agent-fleet-server-host.png[Fleet server hosts showing the new host URL]
 
 [discrete]
+[[migrate-elastic-agent-reset-policy]]
+=== Reset the {ecloud} policy
+
+On your target cluster, certain settings from the original {agent} policies may still be retained, and need to be updated to reference the new cluster.
+
+. Open {kib} and navigate to *Management -> Dev Tools*.
+. Choose one of the API requests below and submit it through the console.
+** If you're using {kib} version 8.11 or higher, run:
++
+[source,shell]
+----
+curl --request POST
+--url https://{KIBANA_HOST:PORT}/internal/fleet/reset_preconfigured_agent_policies/policy-elastic-agent-on-cloud
+-u username:password
+--header 'Content-Type: application/json'
+--header 'kbn-xsrf: as'
+--header 'elastic-api-version: 1'
+----
+** If you're using a {kib} version below 8.11, run:
++
+[source,shell]
+----
+curl --request POST
+--url https://{KIBANA_HOST:PORT}/internal/fleet/reset_preconfigured_agent_policies/policy-elastic-agent-on-cloud
+-u username:password
+--header 'Content-Type: application/json'
+--header 'kbn-xsrf: as'
+----
++
+After running the command, your {agent} policy settings should all be updated appropriately.
+
+[discrete]
 [[migrate-elastic-agent-confirm-policy]]
 === Confirm your policy settings
 

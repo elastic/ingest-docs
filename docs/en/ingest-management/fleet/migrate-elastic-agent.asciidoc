@@ -119,7 +119,7 @@ image::images/migrate-agent-fleet-server-host.png[Fleet server hosts showing the
 [[migrate-elastic-agent-reset-policy]]
 === Reset the {ecloud} policy
 
-On your target cluster, certain settings from the original {ecloud} {agent} policiy may still be retained, and need to be updated to reference the new cluster.
+On your target cluster, certain settings from the original {ecloud} {agent} policiy may still be retained, and need to be updated to reference the new cluster. For example, in the APM policy installed to the {ecloud} {agent} policy, the original and outdated APM URL is preserved. This can be fixed by running the `reset_preconfigured_agent_policies` API request:
 
 . Open {kib} and navigate to *Management -> Dev Tools*.
 . Choose one of the API requests below and submit it through the console.

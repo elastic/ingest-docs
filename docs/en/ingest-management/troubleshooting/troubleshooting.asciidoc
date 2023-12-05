@@ -32,7 +32,7 @@ may experience issues updating. To resolve this problem:
 
 . In a terminal window, run the following `cURL` request, providing your {kib} superuser credentials to reset the {ecloud} agent policy.
 
-** On {kib} versions 8.11 and higher, run:
+** On {kib} versions 8.11 and later, run:
 +
 [source,shell]
 ----
@@ -43,7 +43,7 @@ curl -u <username>:<password> --request POST \
   --header 'elastic-api-version: 1'
 ----
 
-** On {kib} versions below 8.11, run:
+** On {kib} versions earlier than 8.11, run:
 +
 [source,shell]
 ----

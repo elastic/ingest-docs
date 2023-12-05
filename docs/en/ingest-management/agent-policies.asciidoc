@@ -282,7 +282,7 @@ will still forward data to the cluster.
 
 When you create an integration policy you often need to provide sensitive information such as an API key or a password. To help ensure that data can't be accessed inappropriately, any secret values used in an integration policy are stored separately from other policy details.
 
-When you add a secret value directly to the {kibana-ref}/fleet-settings-kb.html[`kibana.yml` configuration file], the value is replaced with a reference, with the original value stored outside of {fleet} and {kib} as a secure hash. Note that this type of secret storage requires all configured {fleet-server}s to be on version 8.12.0 or higher.
+As well, after you've saved a secret value in {fleet}, the value is hidden in both the {fleet} UI and in the agent policy definition. When you view the agent policy (**Actions -> View policy**), an environment variable is displayed in place of any secret values, for example `${SECRET_0}`.
 
 When you save a secret value in {fleet}, the value is hidden in both the {fleet} UI and in the agent policy definition. When you view the agent policy (**Actions -> View policy**), an environment variable is displayed in place of any secret values, for example `${SECRET_0}`. In order for sensitive values to be stored secretly in {fleet}, all configured {fleet-server}s must be on version 8.10.0 or higher.
 

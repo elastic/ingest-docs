@@ -284,7 +284,7 @@ When you create an integration policy you often need to provide sensitive inform
 
 As well, after you've saved a secret value in {fleet}, the value is hidden in both the {fleet} UI and in the agent policy definition. When you view the agent policy (**Actions -> View policy**), an environment variable is displayed in place of any secret values, for example `${SECRET_0}`.
 
-When you save a secret value in {fleet}, the value is hidden in both the {fleet} UI and in the agent policy definition. When you view the agent policy (**Actions -> View policy**), an environment variable is displayed in place of any secret values, for example `${SECRET_0}`. In order for sensitive values to be stored secretly in {fleet}, all configured {fleet-server}s must be on version 8.10.0 or higher.
+WARNING: In order for sensitive values to be stored secretly in {fleet}, all configured {fleet-server}s must be on version 8.10.0 or higher.
 
 Though secret values stored in {fleet} are hidden, they can be updated. To update a secret value in an integration policy:
 

@@ -29,7 +29,7 @@ Also see:
 [[release-notes-8.11.2]]
 == {fleet} and {agent} 8.11.2
 
-Review important information about {fleet-server} and {agent} for the 8.11.1 release.
+Review important information about {fleet-server} and {agent} for the 8.11.2 release.
 
 IMPORTANT: The memory leak <<known-issue-115-8.11.1,known issue>> that affects Windows users running {agent} is resolved in this release. If you're currently on {agent} version 8.11.0 or 8.11.1, we recommend upgrading to 8.11.2 to avoid the issue. If you're on an earlier version, avoid upgrading to version 8.11.0 or 8.11.1 and update directly to version 8.11.2.
 

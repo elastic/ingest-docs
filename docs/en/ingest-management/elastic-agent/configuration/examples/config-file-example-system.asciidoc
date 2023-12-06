@@ -1,0 +1,231 @@
+[[config-file-example-system]]
+= Config file example: host system data
+
+++++
+<titleabbrev>Host systems</titleabbrev>
+++++
+
+Include these sample settings in your standalone {agent} `elastic-agent.yml` configuration file to ingest system data from a host.
+
+* <<config-file-example-system-logs>>
+* <<config-file-example-system-metrics>>
+
+[discrete]
+[[config-file-example-system-logs]]
+== System logs (`auth` and `syslog` data streams)
+
+["source","yaml"]
+----
+outputs: <1>
+  default:
+    type: elasticsearch <2>
+    hosts:
+      - '{elasticsearch-host-url}' <3>
+    api_key: "my_api_key" <4>
+agent:
+  download: <5>
+    sourceURI: 'https://artifacts.elastic.co/downloads/'
+  monitoring: <6>
+    enabled: true
+    use_output: default
+    namespace: default
+    logs: true
+    metrics: true
+inputs: <7>
+  - id: "insert a unique identifier here" <8>
+    name: system-1
+    type: logfile <9>
+    use_output: default
+    data_stream: <10>
+      namespace: default
+    streams:
+      - id: "insert a unique identifier here" <11>
+        data_stream:
+          dataset: system.auth <12>
+          type: logs
+        ignore_older: 72h
+        paths: <13>
+          - /var/log/auth.log*
+          - /var/log/secure*
+        exclude_files:
+          - .gz$
+        multiline:
+          pattern: ^\s
+          match: after
+        tags:
+          - system-auth
+        processors:
+          - add_locale: null
+      - id: "insert a unique identifier here" <11>
+        data_stream:
+          dataset: system.syslog <12>
+          type: logs
+        paths: <13>
+          - /var/log/messages*
+          - /var/log/syslog*
+          - /var/log/system*
+        exclude_files:
+          - .gz$
+        multiline:
+          pattern: ^\s
+          match: after
+        processors:
+          - add_locale: null
+        ignore_older: 72h
+----
+
+<1> For available output settings, refer to <<elastic-agent-output-configuration,Configure outputs for standalone {agents}>>.
+<2> For settings specific to the {es} output, refer to <<elasticsearch-output,Configure the {es} output>>.
+<3> The URL of the {es} cluster where output should be sent, including the port number. For example `https://12345ab6789cd12345ab6789cd.us-central1.gcp.cloud.es.io:443`.
+<4> An {kibana-ref}/api-keys.html[API key] used to authenticate with the {es} cluster.
+<5> For available download settings, refer to <<elastic-agent-standalone-download,Configure download settings for standalone Elastic Agent upgrades>>.
+<6> For available monitoring settings, refer to <<elastic-agent-monitoring-configuration,Configure monitoring for standalone {agents}>>.
+<7> For available input settings, refer to <<elastic-agent-input-configuration,Configure inputs for standalone {agents}>>.
+<8> A user-defined ID to uniquely identify the input stream.
+<9> For available input types, refer to <<elastic-agent-inputs-list>>.
+<10> Learn about <<data-streams>> for time series data.
+<11> Specify a unique ID for each individual input stream. Naming the ID by appending the associated `data_stream` dataset (for example `{user-defined-unique-id}-nginx.access` or `{user-defined-unique-id}-nginx.error`) is a recommended practice, but any unique ID will work.
+<12> Refer to {integrations-docs}/nginx#logs-reference[Logs reference] in the Nginx HTTP integration documentation for the logs available to ingest and exported fields.
+<13> Path to the log files to be monitored.
+
+[discrete]
+[[config-file-example-system-metrics]]
+== System metrics
+
+["source","yaml"]
+----
+outputs: <1>
+  default:
+    type: elasticsearch <2>
+    hosts:
+      - '{elasticsearch-host-url}' <3>
+    api_key: "my_api_key" <4>
+agent:
+  download: <5>
+    sourceURI: 'https://artifacts.elastic.co/downloads/'
+  monitoring: <6>
+    enabled: true
+    use_output: default
+    namespace: default
+    logs: true
+    metrics: true
+inputs: <7>
+  - id: "insert a unique identifier here" <8>
+    name: system-2
+    revision: 1
+    type: system/metrics <9>
+    use_output: default
+    data_stream: <10>
+      namespace: default
+    streams:
+      - id: "insert a unique identifier here" <11>
+        data_stream:
+          dataset: system.cpu <12>
+          type: metrics
+        metricsets: <13>
+          - cpu
+        cpu.metrics:
+          - percentages
+          - normalized_percentages
+        period: 10s
+      - id: "insert a unique identifier here" <11>
+        data_stream:
+          dataset: system.diskio <12>
+          type: metrics
+        metricsets: <13>
+          - diskio
+        diskio.include_devices: null
+        period: 10s
+      - id: "insert a unique identifier here" <11>
+        data_stream:
+          dataset: system.filesystem <12>
+          type: metrics
+        metricsets: <13>
+          - filesystem
+        period: 1m
+        processors:
+          - drop_event.when.regexp:
+              system.filesystem.mount_point: ^/(sys|cgroup|proc|dev|etc|host|lib|snap)($|/)
+      - id: "insert a unique identifier here" <11>
+        data_stream:
+          dataset: system.fsstat <12>
+          type: metrics
+        metricsets: <13>
+          - fsstat
+        period: 1m
+        processors:
+          - drop_event.when.regexp:
+              system.fsstat.mount_point: ^/(sys|cgroup|proc|dev|etc|host|lib|snap)($|/)
+      - id: "insert a unique identifier here" <11>
+        data_stream: <10>
+          dataset: system.load <12>
+          type: metrics
+        metricsets: <13>
+          - load
+        condition: '${host.platform} != ''windows'''
+        period: 10s
+      - id: "insert a unique identifier here" <11>
+        data_stream: <10>
+          dataset: system.memory <12>
+          type: metrics
+        metricsets: <13>
+          - memory
+        period: 10s
+      - id: "insert a unique identifier here" <11>
+        data_stream: <10>
+          dataset: system.network <12>
+          type: metrics
+        metricsets: <13>
+          - network
+        period: 10s
+        network.interfaces: null
+      - id: "insert a unique identifier here" <11>
+        data_stream: <10>
+          dataset: system.process <12>
+          type: metrics
+        metricsets: <13>
+          - process
+        period: 10s
+        process.include_top_n.by_cpu: 5
+        process.include_top_n.by_memory: 5
+        process.cmdline.cache.enabled: true
+        process.cgroups.enabled: false
+        process.include_cpu_ticks: false
+        processes:
+          - .*
+      - id: "insert a unique identifier here" <11>
+        data_stream: <10>
+          dataset: system.process.summary <12>
+          type: metrics
+        metricsets: <13>
+          - process_summary
+        period: 10s
+      - id: "insert a unique identifier here" <11>
+        data_stream: <10>
+          dataset: system.socket_summary <12>
+          type: metrics
+        metricsets: <13>
+          - socket_summary
+        period: 10s
+      - id: "insert a unique identifier here" <11>
+        data_stream: <10>
+          dataset: system.uptime <12>
+          type: metrics
+        metricsets: <13>
+          - uptime
+        period: 10s
+----
+
+<1> For available output settings, refer to <<elastic-agent-output-configuration,Configure outputs for standalone {agents}>>.
+<2> For settings specific to the {es} output, refer to <<elasticsearch-output,Configure the {es} output>>.
+<3> The URL of the Elasticsearch cluster where output should be sent, including the port number. For example `https://12345ab6789cd12345ab6789cd.us-central1.gcp.cloud.es.io:443`.
+<4> An {kibana-ref}/api-keys.html[API key] used to authenticate with the {es} cluster.
+<5> For available download settings, refer to <<elastic-agent-standalone-download,Configure download settings for standalone Elastic Agent upgrades>>.
+<6> For available monitoring settings, refer to <<elastic-agent-monitoring-configuration,Configure monitoring for standalone {agents}>>.
+<7> For available input settings, refer to <<elastic-agent-input-configuration,Configure inputs for standalone {agents}>>.
+<8> A user-defined ID to uniquely identify the input stream.
+<9> For available input types, refer to <<elastic-agent-inputs-list>>.
+<10> Learn about <<data-streams>> for time series data.
+<11> Specify a unique ID for each individual input stream. Naming the ID by appending the associated `data_stream` dataset (for example `{user-defined-unique-id}-nginx.stubstatus`) is a recommended practice, but any unique ID will work.
+<12> A user-defined dataset. You can specify anything that makes sense to signify the source of the data.
+<13> Refer to {integrations-docs}/nginx#metrics-reference[Metrics reference] in the Nginx integration documentation for the type of metrics collected and exported fields.

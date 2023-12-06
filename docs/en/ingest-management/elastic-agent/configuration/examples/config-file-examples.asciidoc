@@ -5,6 +5,10 @@ These examples show a basic, sample configuration to include in a standalone {ag
 
 * <<config-file-example-apache,Apache HTTP Server>>
 * <<config-file-example-apache,Nginx HTTP Server>>
+* <<config-file-example-aws-s3,AWS S3>>
+* <<config-file-example-system,Host systems>>
 
 include::config-file-example-apache.asciidoc[leveloffset=+1]
 include::config-file-example-nginx.asciidoc[leveloffset=+1]
+include::config-file-example-aws-s3.asciidoc[leveloffset=+1]
+include::config-file-example-system.asciidoc[leveloffset=+1]

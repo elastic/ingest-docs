@@ -1,0 +1,13 @@
+[[config-file-example-ingest-http-metrics]]
+= Config file example: Ingest metrics from an HTTP endpoint
+
+++++
+<titleabbrev>Ingest HTTP metrics</titleabbrev>
+++++
+
+The following example shows a minimal configuration to ingest data from an HTTP endpoint.
+
+["source","yaml"]
+----
+tbd
+----

@@ -1,0 +1,13 @@
+[[config-file-example-ingest-file]]
+[[config-file-example-ingest-file]]
+
+++++
+<titleabbrev>Ingest from a file</titleabbrev>
+++++
+
+The following example shows a minimal configuration to ingest data from a single file.
+
+["source","yaml"]
+----
+tbd
+----

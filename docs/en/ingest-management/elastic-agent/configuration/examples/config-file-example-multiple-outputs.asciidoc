@@ -1,0 +1,13 @@
+[[config-file-example-multiple-outputs]]
+= Config file example: Configure multiple outputs
+
+++++
+<titleabbrev>Configure multiple outputs</titleabbrev>
+++++
+
+The following example shows a minimal configuration to ingest data and send it to multiple outputs.
+
+["source","yaml"]
+----
+tbd
+----

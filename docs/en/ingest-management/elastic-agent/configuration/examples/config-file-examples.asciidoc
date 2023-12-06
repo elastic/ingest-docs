@@ -3,11 +3,23 @@
 
 These examples show a basic, sample configuration to include in a standalone {agent} `elastic-agent.yml` <<structure-config-file,configuration file>> to gather data from various source types.
 
+Basic ingest configurations:
+
+* <<config-file-example-ingest-file,Ingest from a file>>
+* <<config-file-example-ingest-http-metrics,Ingest HTTP metrics>>
+* <<config-file-example-multiple-outputs,Configure multiple outputs>>
+
+Ingesting host and application data:
+
 * <<config-file-example-apache,Apache HTTP Server>>
 * <<config-file-example-apache,Nginx HTTP Server>>
 * <<config-file-example-aws-s3,AWS S3>>
 * <<config-file-example-system,Host systems>>
 
+
+include::config-file-example-ingest-file.asciidoc[leveloffset=+1]
+include::config-file-example-ingest-http-metrics.asciidoc[leveloffset=+1]
+include::config-file-example-multiple-outputs.asciidoc[leveloffset=+1]
 include::config-file-example-apache.asciidoc[leveloffset=+1]
 include::config-file-example-nginx.asciidoc[leveloffset=+1]
 include::config-file-example-aws-s3.asciidoc[leveloffset=+1]

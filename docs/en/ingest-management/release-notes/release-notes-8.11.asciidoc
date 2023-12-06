@@ -32,15 +32,11 @@ Review important information about {fleet-server} and {agent} for the 8.11.1 rel
 IMPORTANT: Due to a memory leak issue, Windows users running {agent} are recommended to avoid upgrading to this release and waiting for the upcoming 8.11.2 release in which the issue is resolved. If you've already upgraded to version 8.11.0 or 8.11.1, we recommend upgrading to 8.11.2 as soon as it becomes available. See the <<known-issue-115-8.11.1,known issue>> for more detail.
 
 [discrete]
-[[breaking-changes-8.11.1]]
-=== Breaking changes
-
-[[breaking-3712-8.11.1]]
-* The <<breaking-3712,breaking change>> that could prevent the {agent} or Integrations Server component from booting up within an ECE deployment has been resolved in this release.
-
-[discrete]
 [[known-issues-8.11.1]]
 === Known issues
+
+[[known-issue-3712-8.11.1]]
+* The <<known-issue-3712,known issue>> that could prevent the {agent} or Integrations Server component from booting up within an ECE deployment has been resolved in this release.
 
 [[known-issue-115-8.11.1]]
 .Memory leak running {agent} in Windows environments with the System Integration
@@ -176,18 +172,6 @@ performance. Before you upgrade, review the breaking changes, then mitigate the
 impact to your application.
 
 [discrete]
-[[breaking-3712]]
-.Integrations Server / APM unable to boot in specific ECE environments
-[%collapsible]
-====
-*Details* +
-A permissions change in the {agent} Docker container can prevent the {agent} or Integrations Server component from booting up within an ECE deployment. The change affects ECE installations that are deployed with a Linux UID other than `1000`.
-
-*Impact* +
-ECE users with deployments that include APM or Integrations Server are recommended to wait for the next patch release, which is planned to include a fix for this problem.
-====
-
-[discrete]
 [[breaking-3505]]
 .Compression is enabled by default for {agent} {es} outputs
 [%collapsible]
@@ -306,6 +290,17 @@ To learn more about these requests, refer to the <<fleet-api-docs,{fleet} API do
 
 ====
 
+[discrete]
+[[known-issue-3712]]
+.Integrations Server / APM unable to boot in specific ECE environments
+[%collapsible]
+====
+*Details* +
+A permissions change in the {agent} Docker container can prevent the {agent} or Integrations Server component from booting up within an ECE deployment. The change affects ECE installations that are deployed with a Linux UID other than `1000`.
+
+*Impact* +
+ECE users with deployments that include APM or Integrations Server are recommended to wait for the next patch release, which is planned to include a fix for this problem.
+====
 
 [discrete]
 [[new-features-8.11.0]]

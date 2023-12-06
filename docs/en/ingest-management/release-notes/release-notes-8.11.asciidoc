@@ -56,7 +56,7 @@ IMPORTANT: The memory leak <<known-issue-115-8.11.1,known issue>> that affects W
 * Fix inability to upgrade agents from version 8.10.4 to version 8.11. {kibana-pull}170974[#170974]
 
 {agent}::
-* Fix logging calls that incorrectly use non-f variants and have missing arguments. {agent-pull}3679[#3679]
+* Fix logging calls that have missing arguments. {agent-pull}3679[#3679]
 * Fix {fleet}-managed {agent} ignoring the `agent.download.proxy_url` setting after a policy is updated. {agent-pull}3803[#3803] {agent-issue}3560[#3560]
 * Create a custom `MarshalYAML()` method to properly handle error fields in agent diagnostics. {agent-pull}3835[#3835] {agent-issue}2940[#2940]
 

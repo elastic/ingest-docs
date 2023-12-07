@@ -1,5 +1,5 @@
 [[config-file-example-ingest-file]]
-[[config-file-example-ingest-file]]
+= Config file example: Ingest from a file
 
 ++++
 <titleabbrev>Ingest from a file</titleabbrev>
@@ -9,5 +9,28 @@ The following example shows a minimal configuration to ingest data from a single
 
 ["source","yaml"]
 ----
-tbd
+outputs: <1>
+  default:
+    type: elasticsearch <2>
+    hosts:
+      - '{elasticsearch-host-url}' <3>
+    api_key: "my_api_key" <4>
+agent:
+  download: <5>
+    sourceURI: 'https://artifacts.elastic.co/downloads/'
+inputs: <6>
+    id: "insert a unique identifier here" <7>
+  - type: filestream <8>
+    paths: <9>
+      - /var/log/my-application/log-file.log
 ----
+
+<1> For available output settings, refer to <<elastic-agent-output-configuration,Configure outputs for standalone {agents}>>.
+<2> For settings specific to the {es} output, refer to <<elasticsearch-output,Configure the {es} output>>.
+<3> The URL of the {es} cluster where output should be sent, including the port number. For example `https://12345ab6789cd12345ab6789cd.us-central1.gcp.cloud.es.io:443`.
+<4> An {kibana-ref}/api-keys.html[API key] used to authenticate with the {es} cluster.
+<5> For available download settings, refer to <<elastic-agent-standalone-download,Configure download settings for standalone Elastic Agent upgrades>>.
+<6> For available input settings, refer to <<elastic-agent-input-configuration,Configure inputs for standalone {agents}>>.
+<7> A user-defined ID to uniquely identify the input stream.
+<8> For available input types, refer to <<elastic-agent-inputs-list>>.
+<9> Path to the log files to be monitored.

@@ -10,6 +10,7 @@ Include these sample settings in your standalone {agent} `elastic-agent.yml` con
 * <<config-file-example-apache-logs>>
 * <<config-file-example-apache-metrics>>
 
+[discrete]
 [[config-file-example-apache-logs]]
 == Apache HTTP Server logs
 
@@ -79,6 +80,7 @@ inputs: <7>
 <12> Refer to {integrations-docs}/apache#logs[Logs] in the Apache HTTP Server integration documentation for the logs available to ingest and exported fields.
 <13> Path to the log files to be monitored.
 
+[discrete]
 [[config-file-example-apache-metrics]]
 == Apache HTTP Server metrics
 

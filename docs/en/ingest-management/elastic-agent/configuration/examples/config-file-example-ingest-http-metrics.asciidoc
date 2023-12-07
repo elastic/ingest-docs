@@ -9,5 +9,44 @@ The following example shows a minimal configuration to ingest data from an HTTP 
 
 ["source","yaml"]
 ----
-tbd
+outputs: <1>
+  default:
+    type: elasticsearch <2>
+    hosts:
+      - '{elasticsearch-host-url}' <3>
+    api_key: "my_api_key" <4>
+agent:
+  download: <5>
+    sourceURI: 'https://artifacts.elastic.co/downloads/'
+inputs: <6>
+  - id: "insert a unique identifier here" <7>
+    type: {metric type} <8>
+    use_output: default
+    data_stream: <9>
+      namespace: default
+    streams:
+      - id: "insert a unique identifier here" <10>
+        data_stream: <9>
+          dataset: "insert a name here" <11>
+          type: metrics
+        metricsets: <12>
+          - stubstatus
+        hosts:
+          - '{host-url-and-port}' <13>
+        period: 10s
+        server_status_path: {path-to-metrics-data}
 ----
+
+<1> For available output settings, refer to <<elastic-agent-output-configuration,Configure outputs for standalone {agents}>>.
+<2> For settings specific to the {es} output, refer to <<elasticsearch-output,Configure the {es} output>>.
+<3> The URL of the Elasticsearch cluster where output should be sent, including the port number. For example `https://12345ab6789cd12345ab6789cd.us-central1.gcp.cloud.es.io:443`.
+<4> An {kibana-ref}/api-keys.html[API key] used to authenticate with the {es} cluster.
+<5> For available download settings, refer to <<elastic-agent-standalone-download,Configure download settings for standalone Elastic Agent upgrades>>.
+<6> For available input settings, refer to <<elastic-agent-input-configuration,Configure inputs for standalone {agents}>>.
+<7> A user-defined ID to uniquely identify the input stream.
+<8> For available input types, refer to <<elastic-agent-inputs-list>>.
+<9> Learn about <<data-streams>> for time series data.
+<10> Specify a unique ID for each individual input stream. Naming the ID by appending the associated `data_stream` dataset (for example `{user-defined-unique-id}-nginx.stubstatus`) is a recommended practice, but any unique ID will work.
+<11> A user-defined dataset. You can specify anything that makes sense to signify the source of the data.
+<12> Refer to `Metrics reference` in the documentation for any {integrations-docs}[integrations] that support {agent} metrics ingestion, to find the type of metrics that can be collected and the exported fields. For example, to collect Nginx metrics you can specify the `/nginx_status` path.
+<13> The URL and port number from where the metrics will be collected. For example `http://127.0.0.1:80`.

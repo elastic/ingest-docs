@@ -10,6 +10,7 @@ Include these sample settings in your standalone {agent} `elastic-agent.yml` con
 * <<config-file-example-nginx-logs>>
 * <<config-file-example-nginx-metrics>>
 
+[discrete]
 [[config-file-example-nginx-logs]]
 == Nginx HTTP Server logs
 

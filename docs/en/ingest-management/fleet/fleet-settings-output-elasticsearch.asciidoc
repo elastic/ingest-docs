@@ -88,7 +88,7 @@ Sending monitoring data to a remote {es} cluster is currently not supported.
 [id="es-agent-performance-tuning"]
 **Performance tuning**
 
-| Choose one of the menu options to tune your {agent} performace when sending data to an {es} output. You can optimize for throughput, scale, latency, or select choose a balanced set of performance specifications. Refer to [Performance tuning settings] for details about the setting values and the potential impact on performance.
+| Choose one of the menu options to tune your {agent} performace when sending data to an {es} output. You can optimize for throughput, scale, latency, or you can choose a balanced (the default) set of performance specifications. Refer to <<es-output-settings-performance-tuning-settings,Performance tuning settings>> for details about the setting values and their potential impact on performance.
 
 You can also use the <<es-output-settings-yaml-config,Advanced YAML configuration>> field to set custom values. Note that if you adjust performance settings through the advanced YAML configuration, the **Performance tuning** option automatically changes to `Custom`.
 |===

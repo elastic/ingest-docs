@@ -14,6 +14,7 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.11.2>>
 * <<release-notes-8.11.1>>
 * <<release-notes-8.11.0>>
 
@@ -21,6 +22,45 @@ Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+
+// begin 8.11.2 relnotes
+
+[[release-notes-8.11.2]]
+== {fleet} and {agent} 8.11.2
+
+Review important information about {fleet-server} and {agent} for the 8.11.2 release.
+
+IMPORTANT: The memory leak <<known-issue-115-8.11.1,known issue>> that affects Windows users running {agent} is resolved in this release. If you're currently on {agent} version 8.11.0 or 8.11.1, we recommend upgrading to 8.11.2 to avoid the issue. If you're on an earlier version, avoid upgrading to version 8.11.0 or 8.11.1 and update directly to version 8.11.2.
+
+[discrete]
+[[enhancements-8.11.2]]
+=== Enhancements
+
+{fleet}::
+* Improve UX for policy secrets. {kibana-pull}171405[#171405]
+
+{agent}::
+* Add configuration parameters for the Kubernetes `leader_election` provider. {agent-pull}3625[#3625]
+* Update NodeJS version bundled with Heartbeat to v18.18.2. {agent-pull}3655[#3655]
+* Update Go version to 1.20.11. {agent-pull}3748[#3748]
+
+[discrete]
+[[bug-fixes-8.11.2]]
+=== Bug fixes
+
+{fleet}::
+* Support integration secrets in a local package registry with variables `secret: true` and `required: false`. {kibana-pull}172078[#172078]
+* Fix agent metrics retrieval on the agent list page, previously displaying N/A for metrics for users with more than 10 agents. {kibana-pull}172016[#172016]
+* Only add `time_series_metric` if TSDB is enabled. {kibana-pull}171712[#171712]
+* Fix inability to upgrade agents from version 8.10.4 to version 8.11. {kibana-pull}170974[#170974]
+
+{agent}::
+* Fix logging calls that have missing arguments. {agent-pull}3679[#3679]
+* Fix {fleet}-managed {agent} ignoring the `agent.download.proxy_url` setting after a policy is updated. {agent-pull}3803[#3803] {agent-issue}3560[#3560]
+* Properly convert component error fields to YAML in agent diagnostics. {agent-pull}3835[#3835] {agent-issue}2940[#2940]
+
+// end 8.11.2 relnotes
 
 // begin 8.11.1 relnotes
 

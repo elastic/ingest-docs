@@ -31,7 +31,7 @@ Also see:
 
 Review important information about {fleet-server} and {agent} for the 8.11.2 release.
 
-IMPORTANT: The memory leak <<known-issue-115-8.11.1,known issue>> that affects Windows users running {agent} is resolved in this release. If you're currently on {agent} version 8.11.0 or 8.11.1, we strongly recommend upgrading to 8.11.2 or a higher release to avoid the issue. If you're on an earlier version, avoid upgrading to version 8.11.0 or 8.11.1 and update directly to version 8.11.2 or higher.
+IMPORTANT: The memory leak <<known-issue-115-8.11.1,known issue>> that affects Windows users running {agent} is resolved in this release. If you're currently on {agent} version 8.11.0 or 8.11.1, we strongly recommend upgrading to 8.11.2 or a later release to avoid the issue. If you're on an earlier version, avoid upgrading to version 8.11.0 or 8.11.1 and update directly to version 8.11.2 or later.
 
 [discrete]
 [[enhancements-8.11.2]]
@@ -259,7 +259,7 @@ A memory leak has been identified in {beats} on Windows. All {beats} running Ela
 
 *Impact* +
 
-This issue has been fixed in version 8.11.2. For a Windows environment, we strongly recommend upgrading directly to 8.11.2 or any later release.
+This issue has been fixed in version 8.11.2. For a Windows environment, we strongly recommend upgrading directly to 8.11.2 or any higher release.
 
 If you're already running {agent} version 8.11.0 or 8.11.1 on Windows and do not want to upgrade, we recommend that you:
 

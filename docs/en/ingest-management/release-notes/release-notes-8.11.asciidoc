@@ -31,7 +31,7 @@ Also see:
 
 Review important information about {fleet-server} and {agent} for the 8.11.2 release.
 
-IMPORTANT: The memory leak <<known-issue-115-8.11.1,known issue>> that affects Windows users running {agent} is resolved in this release. If you're currently on {agent} version 8.11.0 or 8.11.1, we recommend upgrading to 8.11.2 to avoid the issue. If you're on an earlier version, avoid upgrading to version 8.11.0 or 8.11.1 and update directly to version 8.11.2.
+IMPORTANT: The memory leak <<known-issue-115-8.11.1,known issue>> that affects Windows users running {agent} is resolved in this release. If you're currently on {agent} version 8.11.0 or 8.11.1, we strongly recommend upgrading to 8.11.2 to avoid the issue. If you're on an earlier version, avoid upgrading to version 8.11.0 or 8.11.1 and update directly to version 8.11.2.
 
 [discrete]
 [[enhancements-8.11.2]]
@@ -85,13 +85,13 @@ IMPORTANT: Due to a memory leak issue, Windows users running {agent} are recomme
 
 *Details*
 
-A memory leak has been identified in {metricbeat} on Windows. The leak also affects the {agent} System integration which is implemented with {metricbeat}. The leak will eventually exhaust all memory on the host system, typically after several days.
+A memory leak has been identified in {beats} on Windows. All {beats} running Elastic Stack version 8.11.0 or 8.11.1 are affected. The leak also affects the {agent} System integration which is implemented with {beats}. The leak will eventually exhaust all memory on the host system, typically after several days.
 
 *Impact* +
 
-This issue has been fixed in upcoming version 8.11.2. For a Windows environment, we recommend waiting for the official release of 8.11.2 before upgrading from 8.10.x or earlier.
+This issue has been fixed in version 8.11.2. For a Windows environment, we recommend waiting for the official release of 8.11.2 before upgrading from 8.10.x or earlier.
 
-If you're already running {agent} version 8.11.0 or 8.11.1 on Windows, we recommend disabling the `process` and `process_summary` metrics in your System integration and restarting {agent}. Note that disablling these datasets will prevent the collection of process-related metrics.
+If you're already running {agent} version 8.11.0 or 8.11.1 on Windows, we recommend disabling the `process` and `process_summary` metrics in your System integration and restarting {agent}. Note that disabling these datasets will prevent the collection of process-related metrics.
 
 Another workaround is to downgrade {agent} to a version below 8.11.0. Note that this could result in missing or reindexed logs or metrics as the "state" will not be persisted after {agent} is uninstalled and reinstalled.
 
@@ -247,13 +247,13 @@ For more information, refer to {agent-pull}3593[#3593].
 
 *Details*
 
-A memory leak has been identified in {metricbeat} on Windows. The leak also affects the {agent} system integration which is implemented with {metricbeat}. The leak will eventually exhaust all memory on the host system, typically after several days.
+A memory leak has been identified in {beats} on Windows. All {beats} running Elastic Stack version 8.11.0 or 8.11.1 are affected. The leak also affects the {agent} System integration which is implemented with {beats}. The leak will eventually exhaust all memory on the host system, typically after several days.
 
 *Impact* +
 
 This issue has been fixed in upcoming version 8.11.2. For a Windows environment, we recommend waiting for the official release of 8.11.2 before upgrading from 8.10.x or earlier.
 
-If you're already running {agent} version 8.11.0 or 8.11.1 on Windows, we recommend disabling the `process` and `process_summary` metrics in your System integration and restarting {agent}. Note that disablling these datasets will prevent the collection of process-related metrics.
+If you're already running {agent} version 8.11.0 or 8.11.1 on Windows, we recommend disabling the `process` and `process_summary` metrics in your System integration and restarting {agent}. Note that disabling these datasets will prevent the collection of process-related metrics.
 
 Another workaround is to downgrade {agent} to a version below 8.11.0. Note that this could result in missing or reindexed logs or metrics as the "state" will not be persisted after {agent} is uninstalled and reinstalled.
 

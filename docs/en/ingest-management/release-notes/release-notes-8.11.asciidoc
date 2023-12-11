@@ -32,18 +32,6 @@ Also see:
 Review important information about {fleet-server} and {agent} for the 8.11.3 release.
 
 [discrete]
-[[enhancements-8.11.3]]
-=== Enhancements
-
-{fleet}::
-//* Improve UX for policy secrets. {kibana-pull}171405[#171405]
-
-{agent}::
-//* Add configuration parameters for the Kubernetes `leader_election` provider. {agent-pull}3625[#3625]
-//* Update NodeJS version bundled with Heartbeat to v18.18.2. {agent-pull}3655[#3655]
-//* Update Go version to 1.20.11. {agent-pull}3748[#3748]
-
-[discrete]
 [[bug-fixes-8.11.3]]
 === Bug fixes
 
@@ -52,11 +40,8 @@ Review important information about {fleet-server} and {agent} for the 8.11.3 rel
 //* Fix agent metrics retrieval on the agent list page, previously displaying N/A for metrics for users with more than 10 agents. {kibana-pull}172016[#172016]
 //* Only add `time_series_metric` if TSDB is enabled. {kibana-pull}171712[#171712]
 //* Fix inability to upgrade agents from version 8.10.4 to version 8.11. {kibana-pull}170974[#170974]
-
-{agent}::
-//* Fix logging calls that have missing arguments. {agent-pull}3679[#3679]
-//* Fix {fleet}-managed {agent} ignoring the `agent.download.proxy_url` setting after a policy is updated. {agent-pull}3803[#3803] {agent-issue}3560[#3560]
-//* Properly convert component error fields to YAML in agent diagnostics. {agent-pull}3835[#3835] {agent-issue}2940[#2940]
+* Fix a 500 error in the {fleet} API when a request for the product versions endpoint throws `ECONNREFUSED`. ({kibana-pull}172850[#172850])
+* Fix {agent} policy timeout to accept only integers. ({kibana-pull}172222[#172222])
 
 // end 8.11.3 relnotes
 

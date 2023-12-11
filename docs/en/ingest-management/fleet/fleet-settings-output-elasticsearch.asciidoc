@@ -88,9 +88,9 @@ Sending monitoring data to a remote {es} cluster is currently not supported.
 [id="es-agent-performance-tuning"]
 **Performance tuning**
 
-| Choose one of the menu options to tune your {agent} performace when sending data to an {es} output. You can optimize for throughput, scale, latency, or you can choose a balanced (the default) set of performance specifications. Refer to <<es-output-settings-performance-tuning-settings,Performance tuning settings>> for details about the setting values and their potential impact on performance.
+| Choose one of the menu options to tune your {agent} performance when sending data to an {es} output. You can optimize for throughput, scale, latency, or you can choose a balanced (the default) set of performance specifications. Refer to <<es-output-settings-performance-tuning-settings,Performance tuning settings>> for details about the setting values and their potential impact on performance.
 
-You can also use the <<es-output-settings-yaml-config,Advanced YAML configuration>> field to set custom values. Note that if you adjust performance settings through the advanced YAML configuration, the **Performance tuning** option automatically changes to `Custom`.
+You can also use the <<es-output-settings-yaml-config,Advanced YAML configuration>> field to set custom values. Note that if you adjust any of the performance settings described in the following **Advanced YAML configuration** section, the **Performance tuning** option automatically changes to `Custom` and cannot be changed.
 |===
 
 [[es-output-settings-yaml-config]]
@@ -198,12 +198,6 @@ For descriptions of each setting, refer to <<es-output-settings-yaml-config,Adva
 |10-20x
 |5-10x
 |1x
-
-|Serverless throughput (relative to stateful)
-|0.2-0.3x
-|0.3-0.5x
-|0.2-0.3x
-|0.1x
 
 |Connections
 |0.3x

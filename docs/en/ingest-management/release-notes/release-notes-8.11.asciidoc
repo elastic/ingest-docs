@@ -32,14 +32,17 @@ Also see:
 Review important information about {fleet-server} and {agent} for the 8.11.3 release.
 
 [discrete]
+[[security-updates-8.11.3]]
+=== Security updates
+
+{agent}::
+The 8.11.3 patch release contains a fix for a potential security vulnerability. Please see our link:https://discuss.elastic.co/c/announcements/security-announcements/31[security advisory for more details].
+
+[discrete]
 [[bug-fixes-8.11.3]]
 === Bug fixes
 
 {fleet}::
-//* Support integration secrets in a local package registry with variables `secret: true` and `required: false`. {kibana-pull}172078[#172078]
-//* Fix agent metrics retrieval on the agent list page, previously displaying N/A for metrics for users with more than 10 agents. {kibana-pull}172016[#172016]
-//* Only add `time_series_metric` if TSDB is enabled. {kibana-pull}171712[#171712]
-//* Fix inability to upgrade agents from version 8.10.4 to version 8.11. {kibana-pull}170974[#170974]
 * Fix a 500 error in the {fleet} API when a request for the product versions endpoint throws `ECONNREFUSED`. ({kibana-pull}172850[#172850])
 * Fix {agent} policy timeout to accept only integers. ({kibana-pull}172222[#172222])
 

@@ -293,3 +293,41 @@ You can access the health status of {fleet}-managed {agents} and other {fleet} s
 When used with {fleet}, this functionality allows you to effectively track an agent's status, and identify scenarios where it has gone offline, is experiencing health issues, or is facing challenges related to input or output.
 
 The following datastreams and fields are available.
+
+Datastream::
+`metrics-fleet_server.agent_status-default`
++
+This data stream publishes the number of {agents} in various states.
++
+**Fields**
++
+ * `@timestamp`
+ * `fleet.agents.total` - A count of all agents
+ * `fleet.agents.enrolled` - A count of all agents currently enrolled
+ * `fleet.agents.unenrolled` - A count of agents currently unenrolled
+ * `fleet.agents.healthy` - A count of agents currently healthy
+ * `fleet.agents.offline` - A count of agents currently offline
+ * `fleet.agents.updating` - A count of agents currently in the process of updating
+ * `fleet.agents.unhealthy` - A count of agents currently unhealthy
+ * `fleet.agents.inactive` - A count of agents currently inactive
+
+Datastream::
+`metrics-fleet_server.agent_versions-default`
++
+This index publishes a separate document for each version number and a count of enrolled agents only.
++
+**Fields**
++
+ * `@timestamp`
+ * `fleet.agent.version` - A keyword field containing the version number
+ * `fleet.agent.count` - A count of agents on the specified version
++
+[NOTE] 
+==== 
+The following fields which indicate reasons why an agent is unhealthy are being considered for a later releas :
+
+* `fleet.agents.unhealthy_reason.input` - A count of agents unhealthy due to an input issue
+* `fleet.agents.unhealthy_reason.output` - A count of agents unhealthy due to an output issue
+* `fleet.agents.unhealthy_reason.other` - A count of agents unhealthy due to another issue
+* `fleet.agents.upgrading_step.scheduled` - A count of agents in a scheduled upgrade state
+====

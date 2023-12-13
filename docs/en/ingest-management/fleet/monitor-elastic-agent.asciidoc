@@ -324,7 +324,7 @@ This index publishes a separate document for each version number and a count of 
 +
 [NOTE] 
 ==== 
-The following fields which indicate reasons why an agent is unhealthy are being considered for a later releas :
+The following fields which indicate reasons why an agent is unhealthy are being considered for a later release:
 
 * `fleet.agents.unhealthy_reason.input` - A count of agents unhealthy due to an input issue
 * `fleet.agents.unhealthy_reason.output` - A count of agents unhealthy due to an output issue

@@ -310,6 +310,8 @@ This data stream publishes the number of {agents} in various states.
  * `fleet.agents.updating` - A count of agents currently in the process of updating
  * `fleet.agents.unhealthy` - A count of agents currently unhealthy
  * `fleet.agents.inactive` - A count of agents currently inactive
++
+NOTE: Other fields regarding agent status, based on input and output health, are currently under consideration for future development.
 
 Datastream::
 `metrics-fleet_server.agent_versions-default`
@@ -321,13 +323,4 @@ This index publishes a separate document for each version number and a count of 
  * `@timestamp`
  * `fleet.agent.version` - A keyword field containing the version number
  * `fleet.agent.count` - A count of agents on the specified version
-+
-[NOTE] 
-==== 
-The following fields which indicate reasons why an agent is unhealthy are being considered for a later release:
 
-* `fleet.agents.unhealthy_reason.input` - A count of agents unhealthy due to an input issue
-* `fleet.agents.unhealthy_reason.output` - A count of agents unhealthy due to an output issue
-* `fleet.agents.unhealthy_reason.other` - A count of agents unhealthy due to another issue
-* `fleet.agents.upgrading_step.scheduled` - A count of agents in a scheduled upgrade state
-====

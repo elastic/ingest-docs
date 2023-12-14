@@ -182,46 +182,133 @@ include::../elastic-agent/configuration/outputs/output-shared-settings.asciidoc[
 
 For descriptions of each setting, refer to <<es-output-settings-yaml-config,Advanced YAML configuration>>. For the  `queue.mem.events`, `flush.min_events` and `flush.timeout` settings, refer to the {filebeat-ref}/configuring-internal-queue.html[internal queue configuration settings] in the {filebeat} documentation.
 
-.Potential performance effect
-[cols="1,1,1,1,1"]
+`Balanced` represents the new default setting (out of the box behaviour). Relative to `Balanced`, `Optimized for throughput` setting will improve EPS by 4 times, `Optimized for Scale` will perform on par and `Optimized for Latency` will show a 20% degredation in EPS (Events Per Second). These relative performance numbers were calculated from a performanc testbed which operates in a controlled setting ingesting a large log file. 
+
+As mentiond `custom` preset allows the user to input their own set of parameters for a finer tuning of performance. The following table
+is a summary of a few data points and how the resulting EPS compares to the `Balanced` setting mentioned above.
+
+
+[cols="1,1,1,1,1,1,1"]
 |===
-|Configuration |Balanced|Optimized for Throughput |Optimized for Scale |Optimized for Latency
+|worker |bulk_max_size |queue.mem_events |flush.min_events |flush.timeout |idle_timeout |Relative EPS
 
-|Stateful throughput
-|3x
-|5x
-|3x
-|1x
-
-|Serverless throughput
-|5-10x
-|10-20x
-|5-10x
+|1
+|1600
+|3200
+|1600
+|5
+|15
 |1x
 
-|Connections
-|0.3x
-|4x
-|0.04x
+|1
+|2048
+|4096
+|2048
+|5
+|15
 |1x
 
-|Network traffic
-|0.1x
-|0.1x
-|0.05x
-|0.1x
-
-|High-throughput queue latency
-|1x
-|1x
-|1x
+|1
+|4096
+|8192
+|4096
+|5
+|15
 |1x
 
-|Low-throughput queue latency
-|10x
-|5x
-|20x
-|1x
-|===
+|2
+|1600
+|6400
+|1600
+|5
+|15
+|2x
 
-:type!:
+|2
+|2048
+|8192
+|2048
+|5
+|15
+|2x
+
+|2
+|4096
+|16384
+|4096
+|5
+|15
+|2x
+
+|4
+|1600
+|12800
+|1600
+|5
+|15
+|3.6x
+
+|4
+|2048
+|16384
+|2048
+|5
+|15
+|3.6x
+
+|4
+|4096
+|32768
+|4096
+|5
+|15
+|3.6x
+
+|8
+|1600
+|25600
+|1600
+|5
+|15
+|5.3x
+
+|8
+|2048
+|32768
+|2048
+|5
+|15
+|5.1x
+
+|8
+|4096
+|65536
+|4096
+|5
+|15
+|5.2x
+
+|16
+|1600
+|51200
+|1600
+|5
+|15
+|5.3x
+
+|16
+|2048
+|65536
+|2048
+|5
+|15
+|5.2x
+
+|16
+|4096
+|131072
+|4096
+|5
+|15
+|5.3x
+

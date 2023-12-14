@@ -80,8 +80,6 @@ output is set in the <<agent-policy,agent policy>>.
 
 | When this setting is on, {agent}s use this output to send <<monitor-elastic-agent,agent monitoring data>> if no other output is set in the <<agent-policy,agent policy>>.
 
-Sending monitoring data to a remote {es} cluster is currently not supported.
-
 // =============================================================================
 
 |

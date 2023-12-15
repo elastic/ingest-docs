@@ -29,47 +29,64 @@ Also see:
 Review important information about {fleet-server} and {agent} for the 8.12.0 release.
 
 [discrete]
+[[security-updates-8.12.0]]
+=== Security updates
+
+{agent}::
+* Updated Go version to 1.20.11. {agent-pull}3[#3748]
+
+[discrete]
 [[new-features-8.12.0]]
 === New features
 
 The 8.12.0 release Added the following new and notable features.
 
 {fleet}::
-//* Set env variable `ELASTIC_NETINFO:false` in {kib} ({kibana-pull}166156[#166156]).
-
-{fleet-server}::
-//* Add endpoint to serve PGP keys that clients can use when validating upgrades in cases where the embedded PGP key in a client is compromised and the client can't reach the internet. {fleet-server-pull}2977[#2977] {fleet-server-issue}2887[#2887]
+//* tbd
 
 {agent}::
 //* Add support for processors in hints-based Kubernetes autodiscover. {agent-pull}3107[#3107] {agent-issue}2959[#2959]
+* Add a "preset" field to {es} output configurations that applies a set of configuration overrides based on a desired performance priority. {beats-pull}37259[#37259] {agent-issue}3797[#3797]
+* Add new fields for retryable upgrade steps to upgrade details metadata. {agent-pull}3845[#3845] {agent-issue}3818[#3818]
+* Send the current agent upgrade details to {fleet-server} as part of the check-in API's request body. {agent-pull}3528[#3528] {agent-issue}3119[#3119]
+* Improve the upgrade watcher to no longer require root access. {agent-pull}3622[#3622]
+* Enable hints autodiscovery for {agent} so that the host for a container in a Kubernetes pod no longer needs to be specified manually. {agent-pull}3575[#3575] 
+{agent-issue}1453[#1453]
+* Enable hints autodiscovery for {agent} so that a configuration can be defined through annotations for specific containers inside a pod. {agent-pull}3416[#3416] 
+{agent-issue}3161[#3161]
+* Support flattened `data_stream.*` fields in an {agent} input configuration. {agent-pull}3465[#3465] {agent-issue}3191[#3191]
 
 [discrete]
 [[enhancements-8.12.0]]
 === Enhancements
 
 {fleet}::
-//* Adds sidebar navigation showing headings extracted from the readme ({kibana-pull}167216[#167216]).
-
-{fleet-server}::
-//* Add endpoint to serve PGP keys that clients can use when validating upgrades in cases where the embedded PGP key in a client is compromised and the client can't reach the internet. {fleet-server-pull}2977[#2977] {fleet-server-issue}2887[#2887]
+//* tbd
 
 {agent}::
-//* Improve {agent} uninstall on Windows by adding delay between retries when file removal is blocked by busy files. {agent-pull}3431[#3431] {agent-issue}3221[#3221]
-
+* Use shorter timeouts for diagnostic requests unless CPU diagnostics are requested. {agent-pull}3794[#3794] {agent-issue}3197[#3197]
+* Add configuration parameters for the Kubernetes `leader_election` provider. {agent-pull}3625[#3625]
+* Remove duplicated tags that may be specified during an agent enrollment. {agent-pull}3740[#3740] {agent-issue}858[#858]
+* Include upgrade details in an agent diagnostics bundle {agent-pull}3624[#3624] and in the `elastic-agent status` command output. {agent-pull}3615[#3615] {agent-issue}3119[#3119]
+* Start and stop the monitoring server based on the monitoring configuration. {agent-pull}3584[#3584] {agent-issue}2734[#2734]
+* Copy files concurrently to reduce the time taken to install and upgrade {agent} on systems running SSDs. {agent-pull}3212[#3212]
 
 [discrete]
 [[bug-fixes-8.12.0]]
 === Bug fixes
 
 {fleet}::
-//* Vastly improve performance of Fleet final pipeline's date formatting logic for `event.ingested` ({kibana-pull}167318[#167318]).
-
-{fleet-server}::
-//* Fix errors produced by the {fleet-server} bulker to be ECS compliant. {fleet-server-pull}3034[#3034] {fleet-server-issue}3033[#3033]
+//* tbd
 
 {agent}::
-//* Prevent a standalone {agent} from being upgraded if an upgrade is already in progress. {agent-pull}3473[#3473] {agent-issue}2706[#2706]
-
+* Preserve build metadata in upgrade version strings. {agent-pull}3824[#3824] {agent-issue}3813[#3813]
+* Create a custom `MarshalYAML()` method to properly handle error fields in agent diagnostics. {agent-pull}3835[#3835] {agent-issue}2940[#2940]
+* Fix the {agent} ignoring the `agent.download.proxy_url` setting during a policy update. {agent-pull}3803[#3803] {agent-issue}3560[#3560]
+* Only try to download an upgrade locally if the `file://` prefix is specified for the source URI. {agent-pull}3682[#3682]
+* Fix logging calls that have missing arguments. {agent-pull}3679[#3679]
+* Update NodeJS version bundled with Heartbeat to v18.18.2. {agent-pull}3655[#3655]
+* Use a third-party library to track progress during install and uninstall operations. {agent-pull}3623[#3623] {agent-issue}3607[#3607]
+* Enable the {agent} container to run on Azure Container Instances. {agent-pull}3778[#3778] {agent-issue}3711[#3711]
 
 // end 8.12.0 relnotes
 

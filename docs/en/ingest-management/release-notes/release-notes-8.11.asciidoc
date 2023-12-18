@@ -45,7 +45,7 @@ Review important information about {fleet-server} and {agent} for the 8.11.3 rel
 On the {fleet} UI in {kib}:
 
 * When adding a new {agent}, the user interface shows a previous version instead of the current version.
-* When attempting to upgrade, the modal window to pick the version shows an earlier version as the latest version.
+* When you attempt an upgrade, the modal window shows an earlier version as the latest version.
 
 *Impact* +
 

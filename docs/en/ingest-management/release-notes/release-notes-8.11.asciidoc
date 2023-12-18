@@ -137,7 +137,7 @@ IMPORTANT: The memory leak <<known-issue-115-8.11.1,known issue>> that affects W
 === Known issues
 
 [[known-issue-169826-8.11.2]]
-.Triggering {agent} upgrades from {kib} {fleet} UI in an air-gapped environement will fail
+.Triggering {agent} upgrades from {kib} {fleet} UI in an air-gapped environment will fail
 [%collapsible]
 ====
 

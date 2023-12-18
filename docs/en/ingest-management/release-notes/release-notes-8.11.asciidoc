@@ -143,7 +143,7 @@ IMPORTANT: The memory leak <<known-issue-115-8.11.1,known issue>> that affects W
 
 *Details*
 
-When attempting to upgrade an {agent}, {kib} is trying to access https://www.elastic.co/api/product_versions to check the latest version available.
+When attempting to upgrade an {agent}, {kib} tries to access (https://www.elastic.co/api/product_versions)[available versions]. 
 In an air-gapped environment, this call will be blocked and the upgrade flow will therefore be blocked too.
 
 An upgrade for {kib} to version 8.11.3 is necessary to solve the issue.

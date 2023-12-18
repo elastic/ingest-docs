@@ -51,7 +51,7 @@ On the {fleet} UI in {kib}:
 
 You can use the following steps as a workaround:
 
-*When upgrading {agent} currently on versions 8.10.3 or lower (simpler)*
+*When upgrading {agent} currently on versions 8.10.3 or earlier (simpler)*
 
 . Open the {fleet} UI. Under the *Agents* tab select *Upgrade agent* from the actions menu. The version field in the *Upgrade agent* UI allows you to enter any version.
 . Enter `8.11.0` or whichever version you want to upgrade the [agents] to. Do not choose a version above the version of {kib} or {fleet-server} that you're running.

@@ -73,12 +73,12 @@ NOTE: {elastic-defend} and APM Server have a different output matrix.
 
 |{es} Service
 |{y}
-|{y} only to the same cluster where {fleet} runs
+|{y}
 |{y}
 
 |{es}
 |{y}
-|{y} only to the same cluster where {fleet} runs
+|{y}
 |{y}
 
 |{ls}
@@ -107,7 +107,6 @@ NOTE: {elastic-defend} and APM Server have a different output matrix.
 |{n}
 |===
 
-Currently, {agent}s managed by {fleet} can only output to the same {es} cluster where {fleet} is running. Support for outputting to remote {es} clusters is under consideration for a future release.
 
 [discrete]
 [[supported-configurations]]
@@ -162,9 +161,8 @@ configuration experience.
 |Autodiscover is facilitated through <<dynamic-input-configuration,dynamic inputs>>. {agent} does not support hints-based autodiscovery.
 
 |{filebeat-ref}/configuring-internal-queue.html[Internal queues]
-|{fleet}-managed {agent} does not support configuration of the internal memory
-queues by an end user. You can configure the output queue settings in standalone
-{agents}.
+|{fleet}-managed {agent} and Standalone {agent} both support configuration of the internal memory
+queues by an end user. 
 
 |{filebeat-ref}/elasticsearch-output.html#_loadbalance[Load balance output hosts]
 |Within the {fleet} UI, you can add YAML settings to configure multiple hosts
@@ -277,9 +275,9 @@ The following table shows a comparison of capabilities supported by {beats} and 
 
 |Separate monitoring cluster
 |{y}
-|{n}
 |{y}
-|{fleet}-managed {agent}s only provide a single global output to the same {es} cluster where {fleet} is running. We are considering support for https://github.com/elastic/kibana/issues/104980[remote monitoring clusters]. Standalone {agent} and {beats} can send to a remote monitoring cluster.
+|{y}
+|{fleet}-managed {agent}s, Standalone {agent} and {beats} can send to a remote monitoring cluster. 
 
 |Secret management
 |{y}

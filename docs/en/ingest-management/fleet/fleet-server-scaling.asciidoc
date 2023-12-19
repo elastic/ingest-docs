@@ -77,16 +77,16 @@ this setting may improve performance.
 How often a new policy is rolled out to the agents.
 Deprecated: Please use policy_limits settings.
 
-`action_limits.interval`:::
+`action_limit.interval`:::
 How fast the fleet-server dispatches pending actions to the agents.
 
-`action_limits.burst`:::
+`action_limit.burst`:::
 Burst of actions that may be dispatched befoe falling back to the rate limit defined by `interval`.
 
-`policy_limits.interval`:::
+`policy_limit.interval`:::
 How fast the fleet-server dispatches pending policies to the agents.
 
-`policy_limits.burst`:::
+`policy_limit.burst`:::
 Burst of pending policies that may be dispatched befoe falling back to the rate limit defined by `interval`.
 
 `checkin_limit.max`:::

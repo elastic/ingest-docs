@@ -25,7 +25,7 @@ For recommended settings, refer to <<scaling-recommendations>>.
 image::images/fleet-server-hosted-container.png[{fleet-server} hosted agent]
 --
 
-Next modify the {fleet-server} configuration by editing the agent policy: 
+Next modify the {fleet-server} configuration by editing the agent policy:
 
 . In {kib}, go to **Management > {fleet} > Agent Policies**. Click the name of
 the **{ecloud} agent policy** to edit the policy.
@@ -38,7 +38,7 @@ image::images/elastic-cloud-agent-policy.png[{ecloud} policy]
 
 . Under {fleet-server}, modify **Max Connections** and other
 <<fleet-server-configuration,advanced settings>> as described in
-<<scaling-recommendations>>. 
+<<scaling-recommendations>>.
 +
 [role="screenshot"]
 image::images/fleet-server-configuration.png[{fleet-server} configuration]
@@ -75,6 +75,20 @@ this setting may improve performance.
 `server.limits`::
 `policy_throttle`:::
 How often a new policy is rolled out to the agents.
++
+Deprecated: Use the `policy_limit` settings instead.
+
+`action_limit.interval`:::
+How quickly {fleet-server} dispatches pending actions to the agents.
+
+`action_limit.burst`:::
+Burst of actions that may be dispatched before falling back to the rate limit defined by `interval`.
+
+`policy_limit.interval`:::
+How quickly {fleet-server} dispatches pending policies to the agents.
+
+`policy_limit.burst`:::
+Burst of pending policies that may be dispatched befoe falling back to the rate limit defined by `interval`.
 
 `checkin_limit.max`:::
 Maximum number of agents that can call the checkin API concurrently.
@@ -190,7 +204,7 @@ Maximum size in bytes of the uploadChunk API request body.
 
 The following tables provide the minimum resource requirements and scaling guidelines based
 on the number of agents required by your deployment. It should be noted that these compute
-resource can be spread across multiple availability zones (for example: a 32GB RAM requirement 
+resource can be spread across multiple availability zones (for example: a 32GB RAM requirement
 can be satisfed with 16GB of RAM in 2 different zones).
 
 * <<resource-requirements-by-number-agents>>
@@ -213,7 +227,7 @@ can be satisfed with 16GB of RAM in 2 different zones).
 A series of scale performance tests are regularly executed in order to verify the above requirements
 and the ability for {fleet} to manage the advertised scale of {agent}s. These tests go through a set
 of acceptance criteria. The criteria mimics a typical platform operator workflow. The test cases are
-performing agent installations, version upgrades, policy modifications, and adding/removing integrations, 
+performing agent installations, version upgrades, policy modifications, and adding/removing integrations,
 tags, and policies. Acceptance criteria is passed when the {agent}s reach a `Healthy` state after any
 of these operations.
 

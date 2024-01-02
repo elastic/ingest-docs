@@ -12,6 +12,7 @@ In {fleet}, you can:
 * <<view-agent-metrics>>
 * <<change-agent-monitoring>>
 * <<external-elasticsearch-monitoring>>
+* <<fleet-alerting>>
 
 Agent monitoring is turned on by default in the agent policy unless you
 turn it off. Want to turn off agent monitoring to stop collecting logs and
@@ -284,3 +285,44 @@ After the output is created, you can update an {agent} policy to use the new rem
 . Click **Save changes**.
 
 The remote {es} cluster is now configured.
+
+[discrete]
+[[fleet-alerting]]
+= Enable alerts and ML jobs based on {fleet} and {agent} status
+
+You can access the health status of {fleet}-managed {agents} and other {fleet} settings through internal {fleet} indices. This enables you to leverage various applications within the {stack} that can be triggered by the provided information. For instance, you can now create alerts and machine learning (ML) jobs based on these specific fields. Refer to the {kibana-ref}/alerting-getting-started.html[Alerting documentation] to learn how to define rules that can trigger actions when certain conditions are met.
+
+This functionality allows you to effectively track an agent's status, and identify scenarios where it has gone offline, is experiencing health issues, or is facing challenges related to input or output.
+
+The following datastreams and fields are available.
+
+Datastream::
+`metrics-fleet_server.agent_status-default`
++
+This data stream publishes the number of {agents} in various states.
++
+**Fields**
++
+ * `@timestamp`
+ * `fleet.agents.total` - A count of all agents
+ * `fleet.agents.enrolled` - A count of all agents currently enrolled
+ * `fleet.agents.unenrolled` - A count of agents currently unenrolled
+ * `fleet.agents.healthy` - A count of agents currently healthy
+ * `fleet.agents.offline` - A count of agents currently offline
+ * `fleet.agents.updating` - A count of agents currently in the process of updating
+ * `fleet.agents.unhealthy` - A count of agents currently unhealthy
+ * `fleet.agents.inactive` - A count of agents currently inactive
++
+NOTE: Other fields regarding agent status, based on input and output health, are currently under consideration for future development.
+
+Datastream::
+`metrics-fleet_server.agent_versions-default`
++
+This index publishes a separate document for each version number and a count of enrolled agents only.
++
+**Fields**
++
+ * `@timestamp`
+ * `fleet.agent.version` - A keyword field containing the version number
+ * `fleet.agent.count` - A count of agents on the specified version
+

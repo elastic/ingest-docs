@@ -85,7 +85,7 @@ How quickly {fleet-server} dispatches pending actions to the agents.
 Burst of actions that may be dispatched before falling back to the rate limit defined by `interval`.
 
 `policy_limit.interval`:::
-How fast the fleet-server dispatches pending policies to the agents.
+How quickly {fleet-server} dispatches pending policies to the agents.
 
 `policy_limit.burst`:::
 Burst of pending policies that may be dispatched befoe falling back to the rate limit defined by `interval`.

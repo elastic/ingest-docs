@@ -79,7 +79,7 @@ How often a new policy is rolled out to the agents.
 Deprecated: Use the `policy_limit` settings instead.
 
 `action_limit.interval`:::
-How fast the fleet-server dispatches pending actions to the agents.
+How quickly {fleet-server} dispatches pending actions to the agents.
 
 `action_limit.burst`:::
 Burst of actions that may be dispatched befoe falling back to the rate limit defined by `interval`.

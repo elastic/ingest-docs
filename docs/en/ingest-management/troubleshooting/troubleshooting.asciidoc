@@ -329,7 +329,7 @@ elastic-agent diagnostics
 **Get the diagnostics bundle through {fleet}**
 
 {fleet} provides the ability to remotely generate and gather an {agent}'s diagnostics bundle.
-An agent can gather and upload diagnostics if it is online in a `Healthy` or `Unhealthy` state.
+An agent can gather and upload diagnostics if it is online in a `Healthy` or `Unhealthy` state. The diagnostics are sent to {fleet-server} which in turn adds it into {es}. Therefore, this works even with {agents} that are not using the {es} output.
 To download the diagnostics bundle for local viewing:
 
 . In {kib}, go to **Management -> {fleet} -> Agents**.

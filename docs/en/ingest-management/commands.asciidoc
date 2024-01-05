@@ -894,6 +894,18 @@ Permanently uninstall {agent} from the system.
 You must run this command as the root user (or Administrator on Windows)
 to remove files.
 
+[IMPORTANT] 
+==== 
+Be sure to run the `uninstall` command from the directory where {agent} is installed and not from the directory where you previously ran the `install` command.
+
+--
+
+include::{tab-widgets}/uninstall-widget.asciidoc[]
+
+--
+
+====
+
 [discrete]
 === Synopsis
 

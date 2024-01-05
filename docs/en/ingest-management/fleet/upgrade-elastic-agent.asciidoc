@@ -75,12 +75,14 @@ You can also click the **Upgrade available** button to filter the list agents to
 +
 [role="screenshot"]
 image::images/upgrade-single-agent.png[Menu for upgrading a single {agent}]
-+
-The **Upgrade agent** option is grayed out if an upgrade is unavailable or
-the {kib} version is lower than the agent version.
 
-. In the Upgrade agent window, select an upgrade version and click
+. In the Upgrade agent window, select or specify an upgrade version and click
 **Upgrade agent**.
++
+In certain cases the latest available {agent} version may not be recognized by {kib}. For instance, this occurs when the {kib} version is lower than the {agent} version. You can specify a custom version for {agent} to upgrade to by entering the version into the *Upgrade version* text field.
++
+[role="screenshot"]
+image::images/upgrade-agent-custom.png[Menu for upgrading a single {agent}]
 
 [discrete]
 [[rolling-agent-upgrade]]

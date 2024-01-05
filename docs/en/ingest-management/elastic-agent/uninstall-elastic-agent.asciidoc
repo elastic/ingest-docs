@@ -5,7 +5,9 @@
 == Uninstall on macOS, Linux, and Windows
 
 To uninstall {agent}, run the `uninstall` command from the directory where
-{agent} is running:
+{agent} is running.
+
+IMPORTANT: Be sure to run the `uninstall` command from the directory where {agent} is running, as shown in the example below, and not from the directory where you previously ran the `install` command. Running the command from the wrong directory can leave the agent in an inconsistent state.
 
 --
 include::{tab-widgets}/uninstall-widget.asciidoc[]

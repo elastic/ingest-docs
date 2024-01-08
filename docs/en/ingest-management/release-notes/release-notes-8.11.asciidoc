@@ -33,6 +33,13 @@ Also see:
 Review important information about {fleet-server} and {agent} for the 8.11.4 release.
 
 [discrete]
+[[security-updates-8.11.4]]
+=== Security updates
+
+{agent}::
+* Updated Go version to 1.20.12. {agent-pull}3885[#3885]
+
+[discrete]
 [[known-issues-8.11.4]]
 === Known issues
 
@@ -106,14 +113,6 @@ TIP: To find the ID for any {agent}, open the **Agents** tab in {fleet} and sele
 To learn more about these requests, refer to the <<fleet-api-docs,{fleet} API documentation>>.
 
 ====
-
-[discrete]
-[[bug-fixes-8.11.4]]
-=== Bug fixes
-
-//{fleet}::
-//* Fix a 500 error in the {fleet} API when a request for the product versions endpoint throws `ECONNREFUSED`. ({kibana-pull}172850[#172850])
-//* Fix {agent} policy timeout to accept only integers. ({kibana-pull}172222[#172222])
 
 // end 8.11.4 relnotes
 

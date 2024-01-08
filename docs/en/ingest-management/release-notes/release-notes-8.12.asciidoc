@@ -42,7 +42,12 @@ Review important information about {fleet-server} and {agent} for the 8.12.0 rel
 The 8.12.0 release Added the following new and notable features.
 
 {fleet}::
-//* tbd
+* Add support for preconfigured output secrets (Scrypt edition). ({kibana-pull}172041[#172041])
+* Add UI components to create and edit output secrets. ({kibana-pull}169429[#169429])
+* Add support for remote ES output. ({kibana-pull}169252[#169252])
+* Add the ability to specify secrets in outputs. ({kibana-pull}169221[#169221])
+* Add an integrations configs tab to display input templates. ({kibana-pull}168827[#168827])
+* Add a {kib} task to publish Agent metrics. ({kibana-pull}168435[#168435])
 
 {agent}::
 //* Add support for processors in hints-based Kubernetes autodiscover. {agent-pull}3107[#3107] {agent-issue}2959[#2959]
@@ -61,7 +66,11 @@ The 8.12.0 release Added the following new and notable features.
 === Enhancements
 
 {fleet}::
-//* tbd
+* Add support for Elasticsearch output performance presets. ({kibana-pull}172359[#172359])
+* Add a new `keep_monitoring_alive` flag to agent policies. ({kibana-pull}168865[#168865])
+* Add support for additional types for dynamic mappings. ({kibana-pull}168842[#168842])
+* Implement Elastic Agent upgrade states UI. ({kibana-pull}167539[#167539])
+* Use default component templates from Elasticsearch. ({kibana-pull}163731[#163731])
 
 {agent}::
 * Use shorter timeouts for diagnostic requests unless CPU diagnostics are requested. {agent-pull}3794[#3794] {agent-issue}3197[#3197]
@@ -76,7 +85,12 @@ The 8.12.0 release Added the following new and notable features.
 === Bug fixes
 
 {fleet}::
-//* tbd
+* Allow agent upgrades if patch version is higher than {kib}. ({kibana-pull}173167[#173167])
+* Fix secrets with dot-separated variable names. ({kibana-pull}173115[#173115])
+* Fix endpoint privilege management endpoints return errors. ({kibana-pull}171722[#171722])
+* Fix expiration time for immediate bulk upgrades being too short. ({kibana-pull}170879[#170879])
+* Fix incorrect overwrite of `logs-*` and `metrics-*` data views on every integration install. ({kibana-pull}170188[#170188])
+* Create intermediate objects when using dynamic mappings. ({kibana-pull}169981[#169981])
 
 {agent}::
 * Preserve build metadata in upgrade version strings. {agent-pull}3824[#3824] {agent-issue}3813[#3813]

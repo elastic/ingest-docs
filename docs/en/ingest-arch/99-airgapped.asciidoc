@@ -6,7 +6,7 @@ Some stack components require additional configuration and local dependencies wh
 
 [discrete]
 [[airgapped-archs]]
-=== {agent} to {es} architectures
+=== {agent} to {es} architectures: air-gapped environments
 
 * <<agent-es-airgapped>>
 * <<agent-ls-airgapped>>

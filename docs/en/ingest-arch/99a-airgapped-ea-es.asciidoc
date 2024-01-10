@@ -10,3 +10,12 @@ All {stack} components deployed inside a DMZ:
 
 Use when::
 Your self-managed {stack} deployment has no access to outside networks
+
+[discrete]
+[[airgapped-es-resources]]
+=== Resources
+
+Info for air-gapped environments:
+
+* {stack-ref}/air-gapped-install.html[Installing the {stack} in an air-gapped environment]
+* {fleet-guide}/fleet-agent-proxy-support.html[Using a proxy server with Elastic Agent and Fleet]

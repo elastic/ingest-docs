@@ -11,15 +11,5 @@ Some stack components require additional configuration and local dependencies wh
 * <<agent-es-airgapped>>
 * <<agent-ls-airgapped>>
 
-[discrete]
-[[airgapped-resources]]
-=== Resources
-
-Info for air-gapped environments:
-
-* {stack-ref}/air-gapped-install.html[Installing the {stack} in an air-gapped environment]
-* {fleet-guide}/fleet-agent-proxy-support.html[Using a proxy server with Elastic Agent and Fleet]
-
 include::99a-airgapped-ea-es.asciidoc[]
-
 include::99b-airgapped-ea-ls.asciidoc[]

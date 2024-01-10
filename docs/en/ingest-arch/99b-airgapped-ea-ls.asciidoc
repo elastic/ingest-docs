@@ -11,8 +11,20 @@ All {stack} components deployed inside a DMZ:
 Use when::
 Your self-managed {stack} deployment has no access to outside networks
 
-[[ls-geoip]]
-==== Geoip database management in air-gapped environments
+[discrete]
+[[airgapped-ls-resources]]
+=== Resources
 
-If you are using the {logstash-ref}/plugins-filters-geoip.html[{ls} geoip filter] plugin in an air-gapped environment, you can 
-{logstash-ref}/plugins-filters-geoip.html#plugins-filters-geoip-manage_update[manage database updates] through a proxy, a custom endpoint, or manually.
+Info for air-gapped environments:
+
+* {stack-ref}/air-gapped-install.html[Installing the {stack} in an air-gapped environment]
+* {fleet-guide}/fleet-agent-proxy-support.html[Using a proxy server with Elastic Agent and Fleet]
+
+[discrete]
+[[ls-geoip]]
+=== Geoip database management in air-gapped environments
+
+The {logstash-ref}/plugins-filters-geoip.html[{ls} geoip filter] relies on regular database updates to remain up-to-date with the latest information.
+If you are using the {ls} geoip filter plugin in an air-gapped environment, 
+you can manage updates through a proxy, a custom endpoint, or manually.
+Check out {logstash-ref}/plugins-filters-geoip.html#plugins-filters-geoip-manage_update[Manage your own database updates] for more info.

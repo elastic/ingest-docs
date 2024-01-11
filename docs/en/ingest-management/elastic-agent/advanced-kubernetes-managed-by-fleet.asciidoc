@@ -34,7 +34,7 @@ data:
 ------------------------------------------------
 
 Notes:: 
-1. In the above example the disablement of `kubernetes_leaderelection` provider is demonstrated. Same procedure can be followed for alternative scenarios. For eg. in order to configure the `kubernetes` provider metadata enrichment:
+1. The above example demonstrates how to disable the `kubernetes_leaderelection` provider. For alternative scenarios you can follow the same procedure. For example, the following settings configure the `kubernetes` provider metadata enrichment:
 
   [source,yaml]
   .Example of configmap for kubernetes provider configuration

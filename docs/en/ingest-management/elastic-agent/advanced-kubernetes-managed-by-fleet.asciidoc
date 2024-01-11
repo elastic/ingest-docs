@@ -1,0 +1,79 @@
+[[advanced-kubernetes-managed-by-fleet]]
+= Advanced {agent} configuration managed by {fleet}
+
+For basic {agent} managed by {fleet} scenarios follow the steps on <<running-on-kubernetes-managed-by-fleet>> page.
+
+On managed {agent} installations could be useful to provide the ability to configure more advanced options like the configuration of providers during the startup. Refer to <<providers>> for more details.
+
+Following steps demonstrate above scenario:
+
+[discrete]
+== Step 1: Download the {agent} manifest
+
+include::run-container-common/download-elastic-agent.asciidoc[]
+
+[discrete]
+== Step 2: Create a new configmap
+
+[source,yaml]
+. Create a new configmap
+------------------------------------------------
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: agent-node-datastreams
+  namespace: kube-system
+  labels:
+    k8s-app: elastic-agent
+data:
+  agent.yml: |-
+    providers.kubernetes_leaderelection.enabled: false
+    fleet.enabled: true
+    fleet.access_token: "<FLEET_ENROLLMENT_TOKEN>"
+---
+------------------------------------------------
+
+Notes:: 
+1. In the above example the disablement of `kubernetes_leaderelection` provider is demonstrated. Same procedure can be followed for alternative scenarios.
+2. Find more information for https://www.elastic.co/guide/en/fleet/current/fleet-enrollment-tokens.html[Enrollment Tokens].
+
+[discrete]
+== Step 3: Configure Daemonset
+
+Inside the downloaded manifest, update Daemonset resource part:
+
+[source,yaml]
+.Update entrypoint 
+------------------------------------------------
+containers:
+  - name: elastic-agent
+    image: docker.elastic.co/beats/elastic-agent: <Image Version>     #< Change this with the image version of agent
+    args: ["-c", "/etc/elastic-agent/agent.yml", "-e"]
+------------------------------------------------
+
+[source,yaml]
+.Add extra Volume Mount 
+------------------------------------------------
+volumeMounts:
+  - name: datastreams
+    mountPath: /etc/elastic-agent/agent.yml
+    readOnly: true
+    subPath: agent.yml
+------------------------------------------------
+
+[source,yaml]
+.Add new Volume 
+------------------------------------------------
+volumes:
+  - name: datastreams
+    configMap:
+      defaultMode: 0640
+      name: agent-node-datastreams
+------------------------------------------------
+
+[discrete]
+== Important Note
+
+By default the manifests for {agent} managed by {fleet} have `hostNetwork:true`. In order to support multiple installations of {agent}s in the same node you should set `hostNetwork:false`. See relevant https://github.com/elastic/elastic-agent/tree/main/docs/manifests/hostnetwork[example] as described in https://github.com/elastic/elastic-agent/blob/main/docs/elastic-agent-ksm-sharding.md[{agent} Manifests in order to support Kube-State-Metrics Sharding]  
+
+

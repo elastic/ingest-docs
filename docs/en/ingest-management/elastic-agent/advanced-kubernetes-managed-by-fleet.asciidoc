@@ -3,7 +3,7 @@
 
 For basic {agent} managed by {fleet} scenarios follow the steps in <<running-on-kubernetes-managed-by-fleet>>.
 
-On managed {agent} installations could be useful to provide the ability to configure more advanced options like the configuration of providers during the startup. Refer to <<providers>> for more details.
+On managed {agent} installations it can be useful to provide the ability to configure more advanced options, such as the configuration of providers during startup. Refer to <<providers>> for more details.
 
 Following steps demonstrate above scenario:
 

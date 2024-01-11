@@ -96,6 +96,6 @@ volumes:
 [discrete]
 == Important Note
 
-By default the manifests for {agent} managed by {fleet} have `hostNetwork:true`. In order to support multiple installations of {agent}s in the same node you should set `hostNetwork:false`. See relevant https://github.com/elastic/elastic-agent/tree/main/docs/manifests/hostnetwork[example] as described in https://github.com/elastic/elastic-agent/blob/main/docs/elastic-agent-ksm-sharding.md[{agent} Manifests in order to support Kube-State-Metrics Sharding]  
+By default the manifests for {agent} managed by {fleet} have `hostNetwork:true`. In order to support multiple installations of {agent}s in the same node you should set `hostNetwork:false`. See this relevant https://github.com/elastic/elastic-agent/tree/main/docs/manifests/hostnetwork[example] as described in https://github.com/elastic/elastic-agent/blob/main/docs/elastic-agent-ksm-sharding.md[{agent} Manifests in order to support Kube-State-Metrics Sharding].
 
 

@@ -62,7 +62,7 @@ Notes::
 [discrete]
 == Step 3: Configure Daemonset
 
-Inside the downloaded manifest, update Daemonset resource part:
+Inside the downloaded manifest, update the Daemonset resource:
 
 [source,yaml]
 .Update entrypoint 

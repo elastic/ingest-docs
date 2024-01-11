@@ -16,7 +16,7 @@ include::run-container-common/download-elastic-agent.asciidoc[]
 == Step 2: Create a new configmap
 
 [source,yaml]
-. Create a new configmap
+.Create a new configmap
 ------------------------------------------------
 apiVersion: v1
 kind: ConfigMap
@@ -37,7 +37,7 @@ Notes::
 1. In the above example the disablement of `kubernetes_leaderelection` provider is demonstrated. Same procedure can be followed for alternative scenarios. For eg. in order to configure the `kubernetes` provider metadata enrichment:
 
   [source,yaml]
-  . Example of configmap for kubernetes provider configuration
+  .Example of configmap for kubernetes provider configuration
   ------------------------------------------------
   apiVersion: v1
   kind: ConfigMap

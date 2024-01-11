@@ -1,7 +1,7 @@
 [[advanced-kubernetes-managed-by-fleet]]
 = Advanced {agent} configuration managed by {fleet}
 
-For basic {agent} managed by {fleet} scenarios follow the steps on <<running-on-kubernetes-managed-by-fleet>> page.
+For basic {agent} managed by {fleet} scenarios follow the steps in <<running-on-kubernetes-managed-by-fleet>>.
 
 On managed {agent} installations could be useful to provide the ability to configure more advanced options like the configuration of providers during the startup. Refer to <<providers>> for more details.
 

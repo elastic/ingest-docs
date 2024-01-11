@@ -24,7 +24,7 @@ Info for air-gapped environments:
 [[ls-geoip]]
 === Geoip database management in air-gapped environments
 
-The {logstash-ref}/plugins-filters-geoip.html[{ls} geoip filter] relies on regular database updates to remain up-to-date with the latest information.
+The {logstash-ref}/plugins-filters-geoip.html[{ls} geoip filter] requires regular database updates to remain up-to-date with the latest information.
 If you are using the {ls} geoip filter plugin in an air-gapped environment, 
 you can manage updates through a proxy, a custom endpoint, or manually.
 Check out {logstash-ref}/plugins-filters-geoip.html#plugins-filters-geoip-manage_update[Manage your own database updates] for more info.

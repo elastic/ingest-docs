@@ -535,14 +535,14 @@ Setting `bulk_max_size` to values less than or equal to 0 turns off the
 splitting of batches. When splitting is disabled, the queue decides on the
 number of events to be contained in a batch.
 
-*Default:* `50`
+*Default:* `1600`
 // end::bulk_max_size-setting[]
 
 // =============================================================================
 
 include::output-shared-settings.asciidoc[tag=compression_level-setting]
 
-*Default:* `0`
+*Default:* `1`
 
 // =============================================================================
 

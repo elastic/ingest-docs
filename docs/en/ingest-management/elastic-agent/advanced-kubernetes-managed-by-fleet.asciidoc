@@ -60,7 +60,7 @@ data:
 ------------------------------------------------
 
 Notes:: 
-1. Find more information about https://www.elastic.co/guide/en/fleet/current/fleet-enrollment-tokens.html[Enrollment Tokens].
+2. Find more information about https://www.elastic.co/guide/en/fleet/current/fleet-enrollment-tokens.html[Enrollment Tokens].
 
 [discrete]
 == Step 3: Configure Daemonset

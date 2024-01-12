@@ -12,7 +12,7 @@ Following steps demonstrate above scenario:
 
 It is advisable to follow the steps of <<install-fleet-managed-elastic-agent>> with Kubernetes Integration installed in your policy and download the {agent} manifest from Kibana UI
 
-image::images/k8kibanaUI.png[{agent} with K8s Package manifest]
+image::images/k8skibanaUI.png[{agent} with K8s Package manifest]
 
 Notes:: 
 Sample manifests can also be found https://github.com/elastic/elastic-agent/blob/main/deploy/kubernetes/elastic-agent-managed-kubernetes.yaml[here]

@@ -1,6 +1,8 @@
 [[advanced-kubernetes-managed-by-fleet]]
 = Advanced {agent} configuration managed by {fleet}
 
+:manifest: https://raw.githubusercontent.com/elastic/elastic-agent/{branch}/deploy/kubernetes/elastic-agent-managed-kubernetes.yaml
+
 For basic {agent} managed by {fleet} scenarios follow the steps in <<running-on-kubernetes-managed-by-fleet>>.
 
 On managed {agent} installations it can be useful to provide the ability to configure more advanced options, such as the configuration of providers during startup. Refer to <<providers>> for more details.
@@ -36,26 +38,26 @@ data:
 Notes:: 
 1. The above example demonstrates how to disable the `kubernetes_leaderelection` provider. For alternative scenarios you can follow the same procedure. For example, the following settings configure the `kubernetes` provider metadata enrichment:
 
-  [source,yaml]
-  .Example of configmap for kubernetes provider configuration
-  ------------------------------------------------
-  apiVersion: v1
-  kind: ConfigMap
-  metadata:
-    name: agent-node-datastreams
-    namespace: kube-system
-    labels:
-      k8s-app: elastic-agent
-  data:
-    agent.yml: |-
-      providers.kubernetes: 
-        add_resource_metadata: 
-          deployment: true
-          cronjob: true
-      fleet.enabled: true
-      fleet.access_token: "<FLEET_ENROLLMENT_TOKEN>"
-  ---
-  ------------------------------------------------
+[source,yaml]
+.Example of configmap for kubernetes provider configuration
+------------------------------------------------
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: agent-node-datastreams
+  namespace: kube-system
+  labels:
+    k8s-app: elastic-agent
+data:
+  agent.yml: |-
+    providers.kubernetes: 
+      add_resource_metadata: 
+        deployment: true
+        cronjob: true
+    fleet.enabled: true
+    fleet.access_token: "<FLEET_ENROLLMENT_TOKEN>"
+---
+------------------------------------------------
 
 Notes:: 
 1. Find more information about https://www.elastic.co/guide/en/fleet/current/fleet-enrollment-tokens.html[Enrollment Tokens].

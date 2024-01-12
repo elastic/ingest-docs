@@ -33,7 +33,7 @@ Review important information about {fleet-server} and {agent} for the 8.12.0 rel
 === Security updates
 
 {agent}::
-* Updated Go version to 1.20.12. {agent-pull}3885[#3885]
+* Update Go version to 1.20.12. {agent-pull}3885[#3885]
 
 [discrete]
 [[new-features-8.12.0]]
@@ -79,6 +79,7 @@ The 8.12.0 release Added the following new and notable features.
 * Include upgrade details in an agent diagnostics bundle {agent-pull}3624[#3624] and in the `elastic-agent status` command output. {agent-pull}3615[#3615] {agent-issue}3119[#3119]
 * Start and stop the monitoring server based on the monitoring configuration. {agent-pull}3584[#3584] {agent-issue}2734[#2734]
 * Copy files concurrently to reduce the time taken to install and upgrade {agent} on systems running SSDs. {agent-pull}3212[#3212]
+* Update golang.org/x/crypto from version 0.14.0 to 0.17.0. {agent-pull}4000[#4000]
 
 [discrete]
 [[bug-fixes-8.12.0]]
@@ -101,6 +102,8 @@ The 8.12.0 release Added the following new and notable features.
 * Update NodeJS version bundled with Heartbeat to v18.18.2. {agent-pull}3655[#3655]
 * Use a third-party library to track progress during install and uninstall operations. {agent-pull}3623[#3623] {agent-issue}3607[#3607]
 * Enable the {agent} container to run on Azure Container Instances. {agent-pull}3778[#3778] {agent-issue}3711[#3711]
+* When a scheduled upgrade expires, set the upgrade state to failed. {agent-pull}3902[#3902] {agent-issue}3817[#3817]
+* Update `elastic-agent-autodiscover` to version 0.6.6 and fix default metadata configuration. {agent-pull}3938[#3938] 
 
 // end 8.12.0 relnotes
 

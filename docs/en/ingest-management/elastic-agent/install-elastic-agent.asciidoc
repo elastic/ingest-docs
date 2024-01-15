@@ -59,7 +59,6 @@ Refer to:
 ** <<running-on-eks-managed-by-fleet>>
 ** <<running-on-aks-managed-by-fleet>>
 * <<running-on-kubernetes-standalone>>
-* <<kubernetes-metadata-enrichment>>
 * <<scaling-on-kubernetes>>
 * {eck-ref}/k8s-elastic-agent.html[Run {agent} on ECK] -- for {eck} users
 --

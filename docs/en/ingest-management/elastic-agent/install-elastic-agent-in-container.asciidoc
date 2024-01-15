@@ -20,8 +20,6 @@ To learn how to run {agent}s in a containerized environment, see:
 
 * <<running-on-kubernetes-standalone>>
 
-* <<kubernetes-metadata-enrichment>>
-
 * <<scaling-on-kubernetes>>
 
 * <<ingest-pipeline-kubernetes>>

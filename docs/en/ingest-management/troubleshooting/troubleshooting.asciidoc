@@ -645,12 +645,12 @@ Unable to create package policy. Package 'apm' already exists on this agent poli
 
 To work around this problem, you can reset the {ecloud} agent policy with an API call. Note that this will remove any custom integration policies that you've added to the policy, such as Synthetics monitors.
 
-[source,sh]
+[source,shell]
 ----
 curl -u elastic:<password> --request POST \
   --url <kibana_url>/internal/fleet/reset_preconfigured_agent_policies/policy-elastic-agent-on-cloud \
   --header 'Content-Type: application/json' \
-  --header 'kbn-xsrf: xyz' \
+  --header 'kbn-xsrf: xyz'
 ----
 
 [discrete]
@@ -658,3 +658,20 @@ curl -u elastic:<password> --request POST \
 == Air-gapped {agent} upgrade can fail due to an inaccessible PGP key
 
 In versions 8.9 and above, an {agent} upgrade may fail when the upgrader can't access a PGP key required to verify the binary signature. For details and a workaround, refer to the link:https://www.elastic.co/guide/en/fleet/8.9/release-notes-8.9.0.html#known-issue-3375[PGP key download fails in an air-gapped environment] known issue in the version 8.9.0 Release Notes or to the link:https://github.com/elastic/elastic-agent/blob/main/docs/pgp-workaround.md[workaround documentation] in the elastic-agent GitHub repository.
+
+[discrete]
+[[fleet-server-integration-removed]]
+== {agents} unable to connect after removing {fleet-server} integration
+
+When you use {fleet}-managed {agent}, at least one {agent} is running the link:https://docs.elastic.co/integrations/fleet_server[{fleet-server} integration]. In case the policy containing this integration is accidentally removed from {agent], all other agents will not be able to be managed. However, the {agents} will continue to send data to their configured output.
+
+One way to fix this issue is to deploy a new {agent} with the {fleet-server} integration on the same host and port, with TLS certificates that are accepted by the existing {agents}.
+
+To resolve this problem:
+
+. Follow the {agent} <<elastic-agent-installation-steps,installation steps>> as though you are installing a new {agent}. This will give you the CLI arguments that you need.
+
+. Next, you can either:
+
+.. Run the `./elastic-agent enroll` command on the {agent} that previously had the {fleet-server} integration. This effectively returns the agent to use the former {fleet-server} policy.
+.. Run `./elastic-agent install` to reinstall the {agent} from scratch using the former {fleet-server} policy.

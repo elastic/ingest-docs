@@ -1,5 +1,5 @@
-[[advanced-kubernetes-managed-by-fleet]]
-= Advanced {agent} configuration managed by {fleet}
+[[kubernetes-metadata-enrichment]]
+= Kubernetes metadata enrichment
 
 For basic {agent} managed by {fleet} scenarios follow the steps on <<running-on-kubernetes-managed-by-fleet>> page.
 

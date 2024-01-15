@@ -645,7 +645,7 @@ Unable to create package policy. Package 'apm' already exists on this agent poli
 
 To work around this problem, you can reset the {ecloud} agent policy with an API call. Note that this will remove any custom integration policies that you've added to the policy, such as Synthetics monitors.
 
-[source,shell]
+[source,sh]
 ----
 curl -u elastic:<password> --request POST \
   --url <kibana_url>/internal/fleet/reset_preconfigured_agent_policies/policy-elastic-agent-on-cloud \

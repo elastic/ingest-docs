@@ -11,7 +11,7 @@
 doing common tasks. The commands listed here apply to both <<manage-agents-in-fleet,{fleet}-managed>>
 and <<elastic-agent-configuration,standalone>> {agent}.
 
-[IMPORTANT] 
+[IMPORTANT]
 .Restrictions
 ====
 Note the following restrictions for running {agent} commands:
@@ -150,6 +150,8 @@ elastic-agent enroll --url <string>
                      --enrollment-token <string>
                      [--ca-sha256 <string>]
                      [--certificate-authorities <string>]
+                     [--elastic-agent-cert <string>]
+                     [--elastic-agent-cert-key <string>]
                      [--delay-enroll]
                      [--force]
                      [--non-interactive]
@@ -170,12 +172,17 @@ elastic-agent enroll --fleet-server-es <string>
                      [--fleet-server-service-token-path <string>]
                      [--ca-sha256 <string>]
                      [--certificate-authorities <string>]
+                     [--elastic-agent-cert <string>]
+                     [--elastic-agent-cert-key <string>]
                      [--delay-enroll]
                      [--fleet-server-cert <string>] <1>
                      [--fleet-server-cert-key <string>]
                      [--fleet-server-cert-key-passphrase <string>]
+                     [--fleet-server-client-auth <string>]
                      [--fleet-server-es-ca <string>]
                      [--fleet-server-es-ca-trusted-fingerprint <string>] <2>
+                     [--fleet-server-es-cert <string>]
+                     [--fleet-server-es-cert-key <string>]
                      [--fleet-server-es-insecure]
                      [--fleet-server-host <string>]
                      [--fleet-server-insecure-http]
@@ -209,6 +216,12 @@ verification.
 `--certificate-authorities <string>`::
 Comma-separated list of root certificates used for server verification.
 
+`--elastic-agent-cert`::
+Certificate to use as the client certificate for the {agent}'s connections to {fleet-server}.
+
+`--elastic-agent-cert-key`::
+Private key to use as for the {agent}'s connections to {fleet-server}.
+
 `--delay-enroll`::
 Delays enrollment to occur on first start of the {agent} service. This setting
 is useful when you don't want the {agent} to enroll until the next reboot or manual start of the service, for
@@ -227,6 +240,11 @@ Private key to use for exposed {fleet-server} HTTPS endpoint.
 `--fleet-server-cert-key-passphrase <string>`::
 Path to passphrase file for decrypting {fleet-server}'s private key if an encrypted private key is used.
 
+`--fleet-server-client-auth <string>`::
+One of "none", "optional", or "required". Defaults to "none". {fleet-server}'s client_authentication option
+for client mTLS connections. If "optional", or "required" are specified, client certificates are verified
+using CAs specified in the `--certificate-authorities` flag.
+
 `--fleet-server-es <string>`::
 Start a {fleet-server} process when {agent} is started, and connect to the
 specified {es} URL.
@@ -238,6 +256,12 @@ Path to certificate authority to use to communicate with {es}.
 The SHA-256 fingerprint (hash) of the certificate authority used to self-sign {es} certificates.
 This fingerprint will be used to verify self-signed certificates presented by {fleet-server} and any inputs started by {agent} for communication.
 This flag is required when using self-signed certificates with {es}.
+
+`--fleet-server-es-cert`::
+The path to the client certificate that {fleet-server} will use when connecting to {es}.
+
+`--fleet-server-es-cert-key`::
+The path to the private key that {fleet-server} will use when connecting to {es}.
 
 `--fleet-server-es-insecure`::
 Allows fleet server to connect to {es} in the following situations:
@@ -494,6 +518,8 @@ elastic-agent install --url <string>
                       [--base-path <string>]
                       [--ca-sha256 <string>]
                       [--certificate-authorities <string>]
+                      [--elastic-agent-cert <string>]
+                      [--elastic-agent-cert-key <string>]
                       [--delay-enroll]
                       [--force]
                       [--non-interactive]
@@ -515,12 +541,17 @@ elastic-agent install --fleet-server-es <string>
                       [--base-path <string>]
                       [--ca-sha256 <string>]
                       [--certificate-authorities <string>]
+                      [--elastic-agent-cert <string>]
+                      [--elastic-agent-cert-key <string>]
                       [--delay-enroll]
                       [--fleet-server-cert <string>] <1>
                       [--fleet-server-cert-key <string>]
                       [--fleet-server-cert-key-passphrase <string>]
+                      [--fleet-server-client-auth <string>]
                       [--fleet-server-es-ca <string>]
                       [--fleet-server-es-ca-trusted-fingerprint <string>] <2>
+                      [--fleet-server-es-cert <string>]
+                      [--fleet-server-es-cert-key <string>]
                       [--fleet-server-host <string>]
                       [--fleet-server-insecure-http]
                       [--fleet-server-policy <string>]
@@ -560,6 +591,12 @@ verification.
 `--certificate-authorities <string>`::
 Comma-separated list of root certificates used for server verification.
 
+`--elastic-agent-cert`::
+Certificate to use as the client certificate for the {agent}'s connections to {fleet-server}.
+
+`--elastic-agent-cert-key`::
+Private key to use as for the {agent}'s connections to {fleet-server}.
+
 `--delay-enroll`::
 Delays enrollment to occur on first start of the {agent} service. This setting
 is useful when you don't want the {agent} to enroll until the next reboot or manual start of the service, for
@@ -578,6 +615,11 @@ Private key to use for exposed {fleet-server} HTTPS endpoint.
 `--fleet-server-cert-key-passphrase <string>`::
 Path to passphrase file for decrypting {fleet-server}'s private key if an encrypted private key is used.
 
+`--fleet-server-client-auth <string>`::
+One of "none", "optional", or "required". Defaults to "none". {fleet-server}'s client_authentication option
+for client mTLS connections. If "optional", or "required" are specified, client certificates are verified
+using CAs specified in the `--certificate-authorities` flag.
+
 `--fleet-server-es <string>`::
 Start a {fleet-server} process when {agent} is started, and connect to the
 specified {es} URL.
@@ -589,6 +631,12 @@ Path to certificate authority to use to communicate with {es}.
 The SHA-256 fingerprint (hash) of the certificate authority used to self-sign {es} certificates.
 This fingerprint will be used to verify self-signed certificates presented by {fleet-server} and any inputs started by {agent} for communication.
 This flag is required when using self-signed certificates with {es}.
+
+`--fleet-server-es-cert`::
+The path to the client certificate that {fleet-server} will use when connecting to {es}.
+
+`--fleet-server-es-cert-key`::
+The path to the private key that {fleet-server} will use when connecting to {es}.
 
 `--fleet-server-es-insecure`::
 Allows fleet server to connect to {es} in the following situations:
@@ -894,8 +942,8 @@ Permanently uninstall {agent} from the system.
 You must run this command as the root user (or Administrator on Windows)
 to remove files.
 
-[IMPORTANT] 
-==== 
+[IMPORTANT]
+====
 Be sure to run the `uninstall` command from the directory where {agent} is installed and not from the directory where you previously ran the `install` command.
 
 --

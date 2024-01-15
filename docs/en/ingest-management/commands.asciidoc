@@ -241,8 +241,8 @@ Private key to use for exposed {fleet-server} HTTPS endpoint.
 Path to passphrase file for decrypting {fleet-server}'s private key if an encrypted private key is used.
 
 `--fleet-server-client-auth <string>`::
-One of "none", "optional", or "required". Defaults to "none". {fleet-server}'s client_authentication option
-for client mTLS connections. If "optional", or "required" are specified, client certificates are verified
+One of `none`, `optional`, or `required`. Defaults to `none`. {fleet-server}'s `client_authenticatio` option
+for client mTLS connections. If `optional`, or `required` is specified, client certificates are verified
 using CAs specified in the `--certificate-authorities` flag.
 
 `--fleet-server-es <string>`::
@@ -616,8 +616,8 @@ Private key to use for exposed {fleet-server} HTTPS endpoint.
 Path to passphrase file for decrypting {fleet-server}'s private key if an encrypted private key is used.
 
 `--fleet-server-client-auth <string>`::
-One of "none", "optional", or "required". Defaults to "none". {fleet-server}'s client_authentication option
-for client mTLS connections. If "optional", or "required" are specified, client certificates are verified
+One of `none`, `optional`, or `required`. Defaults to `none`. {fleet-server}'s `client_authentication` option
+for client mTLS connections. If `optional`, or `required` is specified, client certificates are verified
 using CAs specified in the `--certificate-authorities` flag.
 
 `--fleet-server-es <string>`::

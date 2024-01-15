@@ -40,7 +40,7 @@ Review important information about {fleet-server} and {agent} for the 8.12.0 rel
 === Known issues
 
 [[known-issue-4084]]
-.`elastic-agent enroll` command incorrectly reports failure
+.For new DEB and RPM installations the `elastic-agent enroll` command incorrectly reports failure
 [%collapsible]
 ====
 
@@ -75,10 +75,9 @@ The 8.12.0 release Added the following new and notable features.
 * Add a {kib} task to publish Agent metrics. ({kibana-pull}168435[#168435])
 
 {agent}::
-//* Add support for processors in hints-based Kubernetes autodiscover. {agent-pull}3107[#3107] {agent-issue}2959[#2959]
 * Add a "preset" field to {es} output configurations that applies a set of configuration overrides based on a desired performance priority. {beats-pull}37259[#37259] {agent-pull}3879[#3879] {agent-issue}3797[#3797]
-* Add new fields for retryable upgrade steps to upgrade details metadata. {agent-pull}3845[#3845] {agent-issue}3818[#3818]
 * Send the current agent upgrade details to {fleet-server} as part of the check-in API's request body. {agent-pull}3528[#3528] {agent-issue}3119[#3119]
+* Add new fields for retryable upgrade steps to upgrade details metadata. {agent-pull}3845[#3845] {agent-issue}3818[#3818]
 * Improve the upgrade watcher to no longer require root access. {agent-pull}3622[#3622]
 * Enable hints autodiscovery for {agent} so that the host for a container in a Kubernetes pod no longer needs to be specified manually. {agent-pull}3575[#3575] 
 {agent-issue}1453[#1453]

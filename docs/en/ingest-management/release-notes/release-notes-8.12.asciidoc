@@ -36,6 +36,31 @@ Review important information about {fleet-server} and {agent} for the 8.12.0 rel
 * Update Go version to 1.20.12. {agent-pull}3885[#3885]
 
 [discrete]
+[[known-issues-8.12.0]]
+=== Known issues
+
+[[known-issue-4084]]
+.`elastic-agent enroll` command incorrectly reports failure
+[%collapsible]
+====
+
+*Details*
+
+When you run the <<elastic-agent-enroll-command,`elastic-agent enroll`>> command for an RPM or DEB {agent} package, a `Retarting agent daemon` message appears in the command output, followed by a `Restart attempt failed` error.
+
+*Impact* +
+
+The error does not mean that the enrollment failed. The enrollment actually succeeded. You can ignore the `Restart attempt failed` error and continue by running the following commands, after which {agent} should successfully connect to {fleet}:
+
+[source,console]
+----
+sudo systemctl enable elastic-agent 
+sudo systemctl start elastic-agent
+----
+
+====
+
+[discrete]
 [[new-features-8.12.0]]
 === New features
 

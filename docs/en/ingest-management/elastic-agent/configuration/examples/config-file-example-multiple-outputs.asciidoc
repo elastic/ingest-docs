@@ -5,9 +5,38 @@
 <titleabbrev>Configure multiple outputs</titleabbrev>
 ++++
 
-The following example shows a minimal configuration to ingest data and send it to multiple outputs.
+The following example shows a minimal configuration to ingest data (from a file, in this example) and send it to multiple outputs.
 
 ["source","yaml"]
 ----
-tbd
+outputs: <1>
+  default:
+    type: elasticsearch <2>
+    hosts:
+      - '{elasticsearch-host-url}' <3>
+    api_key: "my_api_key" <4>
+outputs: <1>
+    type:  logstash <5>
+    hosts: 
+      - ["127.0.0.1:5044"] <6>
+agent:
+  download: <7>
+    sourceURI: 'https://artifacts.elastic.co/downloads/'
+inputs: <8>
+    id: "insert a unique identifier here" <9>
+  - type: filestream <10>
+    paths: <11>
+      - /var/log/my-application/log-file.log
 ----
+
+<1> For available output settings, refer to <<elastic-agent-output-configuration,Configure outputs for standalone {agents}>>.
+<2> For settings specific to the {es} output, refer to <<elasticsearch-output,Configure the {es} output>>.
+<3> The URL of the {es} cluster where output should be sent, including the port number. For example `https://12345ab6789cd12345ab6789cd.us-central1.gcp.cloud.es.io:443`.
+<4> An {kibana-ref}/api-keys.html[API key] used to authenticate with the {es} cluster.
+<5> For settings specific to the {ls} output, refer to <<logstash-output,{ls} output>>.
+<6> The URL of the {ls} instance where output should be sent, including the port number. For example `127.0.0.1:5044`.
+<7> For available download settings, refer to <<elastic-agent-standalone-download,Configure download settings for standalone Elastic Agent upgrades>>.
+<8> For available input settings, refer to <<elastic-agent-input-configuration,Configure inputs for standalone {agents}>>.
+<9> A user-defined ID to uniquely identify the input stream.
+<10> For available input types, refer to <<elastic-agent-inputs-list>>.
+<11> Path to the log files to be monitored.

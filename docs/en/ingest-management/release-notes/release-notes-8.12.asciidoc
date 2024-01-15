@@ -79,7 +79,7 @@ The 8.12.0 release Added the following new and notable features.
 * Include upgrade details in an agent diagnostics bundle {agent-pull}3624[#3624] and in the `elastic-agent status` command output. {agent-pull}3615[#3615] {agent-issue}3119[#3119]
 * Start and stop the monitoring server based on the monitoring configuration. {agent-pull}3584[#3584] {agent-issue}2734[#2734]
 * Copy files concurrently to reduce the time taken to install and upgrade {agent} on systems running SSDs. {agent-pull}3212[#3212]
-* Update golang.org/x/crypto from version 0.14.0 to 0.17.0. {agent-pull}4000[#4000]
+* Update `elastic-agent-libs` from version 0.7.2 to 0.7.3. {agent-pull}4000[#4000]
 
 [discrete]
 [[bug-fixes-8.12.0]]

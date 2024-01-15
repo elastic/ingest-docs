@@ -73,16 +73,24 @@ with `_`. By default it is `true`.
 while annotations are not. These settings are useful when storing labels and annotations
 that require special handling to avoid overloading the storage output. The enrichment of `node` or `namespace` metadata
 can be individually disabled by setting `enabled: false`.
+Wildcards are supported in these settings by using `use_regex_include: true` in case of `include_labels` and respectively set `use_regex_exclude: true` in combination with `exclude_labels`.
+
 Example:
 
 ["source","yaml",subs="attributes"]
 -------------------------------------------------------------------------------------
       add_resource_metadata:
         namespace:
+          # use_regex_include: false
           include_labels: ["namespacelabel1"]
+          # use_regex_exclude: false
+          # exclude_labels: ["namespacelabel2"]
         node:
+          # use_regex_include: false
           include_labels: ["nodelabel2"]
           include_annotations: ["nodeannotation1"]
+          # use_regex_exclude: false
+          # exclude_labels: ["nodelabel3"]
 -------------------------------------------------------------------------------------
 
 

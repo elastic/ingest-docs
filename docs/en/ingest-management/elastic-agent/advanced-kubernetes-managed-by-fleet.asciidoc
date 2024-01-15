@@ -57,7 +57,7 @@ containers:
 ------------------------------------------------
 
 Notes:: 
-The <ImageVersion> is just a placeholder for the elastic-agent image version that will you will download in your manifest: eg. `image: docker.elastic.co/beats/elastic-agent: 8.11.0`
+The <ImageVersion> is just a placeholder for the elastic-agent image version that you will download in your manifest: eg. `image: docker.elastic.co/beats/elastic-agent: 8.11.0`
 Important thing is to update your manifest with args details 
 
 [source,yaml]

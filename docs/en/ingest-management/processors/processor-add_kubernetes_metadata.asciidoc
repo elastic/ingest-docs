@@ -153,13 +153,15 @@ To turn off enrichment of `node` or `namespace` metadata individually, set `enab
           include_labels: ["namespacelabel1"]
           # use_regex_include: false
           # use_regex_exclude: false
+          # exclude_labels: ["namespacelabel2"]
           #labels.dedot: true
           #annotations.dedot: true
         node:
+          # use_regex_include: false
           include_labels: ["nodelabel2"]
           include_annotations: ["nodeannotation1"]
-          # use_regex_include: false
           # use_regex_exclude: false
+          # exclude_annotations: ["nodeannotation2"]
           #labels.dedot: true
           #annotations.dedot: true
         deployment: true

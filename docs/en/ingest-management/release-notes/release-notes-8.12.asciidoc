@@ -67,7 +67,7 @@ sudo systemctl start elastic-agent
 The 8.12.0 release Added the following new and notable features.
 
 {fleet}::
-* Add support for preconfigured output secrets (Scrypt edition). ({kibana-pull}172041[#172041])
+* Add support for preconfigured output secrets. ({kibana-pull}172041[#172041])
 * Add UI components to create and edit output secrets. ({kibana-pull}169429[#169429])
 * Add support for remote ES output. ({kibana-pull}169252[#169252])
 * Add the ability to specify secrets in outputs. ({kibana-pull}169221[#169221])

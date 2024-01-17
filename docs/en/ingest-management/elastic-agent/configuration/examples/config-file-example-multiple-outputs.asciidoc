@@ -32,7 +32,7 @@ inputs: <8>
 <1> For available output settings, refer to <<elastic-agent-output-configuration,Configure outputs for standalone {agents}>>.
 <2> For settings specific to the {es} output, refer to <<elasticsearch-output,Configure the {es} output>>.
 <3> The URL of the {es} cluster where output should be sent, including the port number. For example `https://12345ab6789cd12345ab6789cd.us-central1.gcp.cloud.es.io:443`.
-<4> An {kibana-ref}/api-keys.html[API key] used to authenticate with the {es} cluster.
+<4> An <<create-api-key-standalone-agent,API key>> used to authenticate with the {es} cluster.
 <5> For settings specific to the {ls} output, refer to <<logstash-output,{ls} output>>.
 <6> The URL of the {ls} instance where output should be sent, including the port number. For example `127.0.0.1:5044`.
 <7> For available download settings, refer to <<elastic-agent-standalone-download,Configure download settings for standalone Elastic Agent upgrades>>.

@@ -40,7 +40,7 @@ inputs: <6>
 <1> For available output settings, refer to <<elastic-agent-output-configuration,Configure outputs for standalone {agents}>>.
 <2> For settings specific to the {es} output, refer to <<elasticsearch-output,Configure the {es} output>>.
 <3> The URL of the Elasticsearch cluster where output should be sent, including the port number. For example `https://12345ab6789cd12345ab6789cd.us-central1.gcp.cloud.es.io:443`.
-<4> An {kibana-ref}/api-keys.html[API key] used to authenticate with the {es} cluster.
+<4> An <<create-api-key-standalone-agent,API key>> used to authenticate with the {es} cluster.
 <5> For available download settings, refer to <<elastic-agent-standalone-download,Configure download settings for standalone Elastic Agent upgrades>>.
 <6> For available input settings, refer to <<elastic-agent-input-configuration,Configure inputs for standalone {agents}>>.
 <7> A user-defined ID to uniquely identify the input stream.

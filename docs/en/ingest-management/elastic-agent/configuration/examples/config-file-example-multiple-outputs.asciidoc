@@ -5,7 +5,7 @@
 <titleabbrev>Configure multiple outputs</titleabbrev>
 ++++
 
-The following example shows a minimal configuration to ingest data (from a file, in this example) and send it to multiple outputs.
+The following example shows a minimal configuration to ingest data (from a file, in this example) and send it to multiple outputs. For this example the outputs are {es} and {ls}.
 
 ["source","yaml"]
 ----

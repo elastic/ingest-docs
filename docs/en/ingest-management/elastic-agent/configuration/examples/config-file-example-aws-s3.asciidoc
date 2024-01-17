@@ -62,8 +62,8 @@ inputs: <7>
 <8> A user-defined ID to uniquely identify the input stream.
 <9> For available input types, refer to <<elastic-agent-inputs-list>>.
 <10> Learn about <<data-streams>> for time series data.
-<11> Specify a unique ID for each individual input stream. Naming the ID by appending the associated `data_stream` dataset (for example `{user-defined-unique-id}-nginx.access` or `{user-defined-unique-id}-nginx.error`) is a recommended practice, but any unique ID will work.
-<12> Refer to {integrations-docs}/nginx#logs-reference[Logs reference] in the Nginx HTTP integration documentation for the logs available to ingest and exported fields.
+<11> Specify a unique ID for each individual input stream. Naming the ID by appending the associated `data_stream` dataset (for example `{user-defined-unique-id}-aws.s3access`) is a recommended practice, but any unique ID will work.
+<12> Refer to the {integrations-docs}/aws#reference[reference section] in the AWS integration documentation for the type of metrics collected and exported fields.
 
 [discrete]
 [[config-file-example-aws-s3-metrics]]
@@ -155,6 +155,6 @@ inputs: <7>
 <8> A user-defined ID to uniquely identify the input stream.
 <9> For available input types, refer to <<elastic-agent-inputs-list>>.
 <10> Learn about <<data-streams>> for time series data.
-<11> Specify a unique ID for each individual input stream. Naming the ID by appending the associated `data_stream` dataset (for example `{user-defined-unique-id}-nginx.stubstatus`) is a recommended practice, but any unique ID will work.
+<11> Specify a unique ID for each individual input stream. Naming the ID by appending the associated `data_stream` dataset (for example `{user-defined-unique-id}-aws.cloudwatch`) is a recommended practice, but any unique ID will work.
 <12> A user-defined dataset. You can specify anything that makes sense to signify the source of the data.
-<13> Refer to {integrations-docs}/nginx#metrics-reference[Metrics reference] in the Nginx integration documentation for the type of metrics collected and exported fields.
+<13> Refer to the {integrations-docs}/aws#reference[reference section] in the AWS integration documentation for the type of metrics collected and exported fields.

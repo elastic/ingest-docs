@@ -30,7 +30,7 @@ inputs: <6>
           dataset: "insert a name here" <11>
           type: metrics
         metricsets: <12>
-          - stubstatus
+          - {data-stream name}
         hosts:
           - '{host-url-and-port}' <13>
         period: 10s

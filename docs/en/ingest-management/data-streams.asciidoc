@@ -43,7 +43,7 @@ Using a namespace makes it easier to search data from a given source by using a 
 You can also use matching patterns to give users access to data when creating user roles.
 // Corresponds to the `data_stream.dataset` field.
 +
-By default the namespace defined for an agent policy is propagated to all integrations in that policy. if you'd like to define a more granular namespace for a policy:
+By default the namespace defined for an {agent} policy is propagated to all integrations in that policy. if you'd like to define a more granular namespace for a policy:
 
 . In {kib}, go to **Management -> Integrations**.
 . Open the **Integration policies** tab.

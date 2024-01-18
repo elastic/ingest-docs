@@ -60,6 +60,33 @@ sudo systemctl start elastic-agent
 
 ====
 
+
+[[known-issue-sec8366]]
+.{fleet} setup can fail when there are more than one thousand {agent} policies
+[%collapsible]
+====
+
+*Details*
+
+When you set up {fleet} with a very high volume of {agent} policies, one thousand or more, you may encounter an error similar to the following:
+
+[source,console]
+----
+[ERROR][plugins.fleet] Unknown error happened while checking Uninstall Tokens validity: 'ResponseError: all shards failed: search_phase_execution_exception
+	Caused by:
+		too_many_nested_clauses: Query contains too many nested clauses; maxClauseCount is set to 5173
+----
+
+The exact number of {agent} policies required to cause the error depends in part on the size of the {es} cluster, but generally it can happen with volumes above approximately one thousand policies.
+
+*Impact* +
+
+Currently there is no workaround for the issue but a fix is planned to be included in the next version 8.12 release.
+
+Note that according to our <<agent-policy-scaling-recommendations,policy scaling recommendations>>, the current recommended maximum number of {agent} policies supported by {fleet} is 500.
+
+====
+
 [discrete]
 [[new-features-8.12.0]]
 === New features

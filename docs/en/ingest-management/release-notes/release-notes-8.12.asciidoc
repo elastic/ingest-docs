@@ -62,7 +62,7 @@ sudo systemctl start elastic-agent
 
 
 [[known-issue-sec8366]]
-.{fleet} setup fails when thousands of {agent} policies are in place
+.{fleet} setup can fail when there are more than one thousand {agent} policies
 [%collapsible]
 ====
 
@@ -77,7 +77,7 @@ When you set up {fleet} with a very high volume of {agent} policies, one thousan
 		too_many_nested_clauses: Query contains too many nested clauses; maxClauseCount is set to 5173
 ----
 
-The exact number of policies that can cause the error depends in part on the size of the {es} cluster, but generally a volume above one thousand is required.
+The exact number of {agent} policies required to cause the error depends in part on the size of the {es} cluster, but generally it can happen with volumes above approximately one thousand policies.
 
 *Impact* +
 

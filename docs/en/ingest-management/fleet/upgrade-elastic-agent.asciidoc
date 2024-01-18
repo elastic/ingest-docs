@@ -33,6 +33,8 @@ By default, {agent}s require internet access to perform binary upgrades from
 NOTE: The upgrade feature is not supported for upgrading DEB/RPM packages or
 Docker images.
 
+For a detailed view of the {agent} upgrade process and the interactions between {fleet}, {agent}, and {es}, refer to the link:https://github.com/elastic/elastic-agent/blob/main/docs/upgrades.md[Communications amongst components] diagram in the `elastic-agent` GitHub repository.
+
 To upgrade your {agent}s, go to *Management > {fleet} > Agents* in {kib}. You
 can perform the following upgrade-related actions:
 

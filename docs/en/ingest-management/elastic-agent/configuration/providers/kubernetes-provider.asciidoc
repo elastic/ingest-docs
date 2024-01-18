@@ -89,7 +89,7 @@ Configuration parameters:
           include_labels: ["nodelabel2"]
           include_annotations: ["nodeannotation1"]
         deployment: true
-        cronjob: true
+        #cronjob: false
 -------------------------------------------------------------------------------------
 
 

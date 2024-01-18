@@ -67,6 +67,7 @@ sudo systemctl start elastic-agent
 The 8.12.0 release Added the following new and notable features.
 
 {fleet}::
+* Add {agent} upgrade states and display each agent's progress through the upgrade process. https://www.elastic.co/guide/en/fleet/current/upgrade-elastic-agent.html#view-upgrade-status ({kibana-pull}167539[#167539])
 * Add support for preconfigured output secrets. ({kibana-pull}172041[#172041])
 * Add UI components to create and edit output secrets. ({kibana-pull}169429[#169429])
 * Add support for remote ES output. ({kibana-pull}169252[#169252])
@@ -93,7 +94,6 @@ The 8.12.0 release Added the following new and notable features.
 * Add support for Elasticsearch output performance presets. ({kibana-pull}172359[#172359])
 * Add a new `keep_monitoring_alive` flag to agent policies. ({kibana-pull}168865[#168865])
 * Add support for additional types for dynamic mappings. ({kibana-pull}168842[#168842])
-* Implement Elastic Agent upgrade states UI. ({kibana-pull}167539[#167539])
 * Use default component templates from Elasticsearch. ({kibana-pull}163731[#163731])
 
 {agent}::

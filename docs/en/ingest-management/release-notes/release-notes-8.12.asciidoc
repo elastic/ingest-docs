@@ -67,7 +67,7 @@ sudo systemctl start elastic-agent
 The 8.12.0 release Added the following new and notable features.
 
 {fleet}::
-* Add {agent} upgrade states and display each agent's progress through the upgrade process. https://www.elastic.co/guide/en/fleet/current/upgrade-elastic-agent.html#view-upgrade-status ({kibana-pull}167539[#167539])
+* Add {agent} upgrade states and display each agent's progress through the upgrade process. See <<view-upgrade-status>> for details. ({kibana-pull}167539[#167539])
 * Add support for preconfigured output secrets. ({kibana-pull}172041[#172041])
 * Add UI components to create and edit output secrets. ({kibana-pull}169429[#169429])
 * Add support for remote ES output. ({kibana-pull}169252[#169252])

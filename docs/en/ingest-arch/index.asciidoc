@@ -2,7 +2,7 @@ include::{docs-root}/shared/versions/stack/{source_branch}.asciidoc[]
 include::{docs-root}/shared/attributes.asciidoc[]
 
 [[ingest-architectures]]
-= {es} Ingest Architectures
+= Elastic Ingest Reference Architectures
 
 include::arch-list.asciidoc[]
 
@@ -16,6 +16,7 @@ include::16-agent-kafka.asciidoc[]
 
 include::8-ls-input.asciidoc[]
 
+include::99-airgapped.asciidoc[]
 
 // === Next set of architectures
 // include::3-schemamod.asciidoc[]

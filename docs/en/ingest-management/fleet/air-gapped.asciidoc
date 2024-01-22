@@ -22,6 +22,17 @@ When upgrading all the components in an air-gapped environment, it is recommende
 . In {fleet}, issue an upgrade for all the {agent}s.
 
 [discrete]
+[[air-gapped-mode-flag]]
+== Enable air-gapped mode for {fleet}
+
+Set the following property in {kib} to enable air-gapped mode in {fleet}. This allows {fleet} to intelligently skip certain requests or operations that shouldn't be attempted in air-gapped environments.
+
+[source,yaml]
+----
+xpack.fleet.isAirGapped: true
+----
+
+[discrete]
 [[air-gapped-proxy-server]]
 == Use a proxy server to access the {package-registry}
 

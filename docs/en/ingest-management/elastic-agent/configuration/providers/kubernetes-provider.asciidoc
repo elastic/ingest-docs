@@ -83,10 +83,16 @@ Configuration parameters:
 -------------------------------------------------------------------------------------
       add_resource_metadata:
         namespace:
+          #use_regex_include: false
           include_labels: ["namespacelabel1"]
+          #use_regex_exclude: false
+          #exclude_labels: ["namespacelabel2"]
         node:
+          #use_regex_include: false
           include_labels: ["nodelabel2"]
           include_annotations: ["nodeannotation1"]
+          #use_regex_exclude: false
+          #exclude_labels: ["nodelabel3"]
         #deployment: false
         #cronjob: false
 -------------------------------------------------------------------------------------

@@ -1,8 +1,0 @@
-== 20. Airgapped {agent} and {stack}
-
-* 20. Agent, Elastic stack both is deployed in air gapped environment with no access to outside network
-** Set up self managed stack and self managed EPR 
-** Specify agent binary location for 8.4+, in other cases, you will need to upgrade these agents manually as described here
-** If geoip enrichment is required then it's necessary to manage database updates either through a proxy, a custom endpoint, or manually.
-*** Show the architecture diagram including the EPR, fleet server and geo-ip DBs 
-

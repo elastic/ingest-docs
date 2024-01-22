@@ -1,0 +1,15 @@
+[[airgapped-env]]
+== Elastic air-gapped architectures
+
+You can deploy the {stack} with some or all components in a data center or other environment with no access to any outside networks. 
+Some stack components require additional configuration and local dependencies when deployed in air-gapped environments. 
+
+[discrete]
+[[airgapped-archs]]
+=== {agent} to {es} architectures: air-gapped environments
+
+* <<agent-es-airgapped>>
+* <<agent-ls-airgapped>>
+
+include::99a-airgapped-ea-es.asciidoc[]
+include::99b-airgapped-ea-ls.asciidoc[]

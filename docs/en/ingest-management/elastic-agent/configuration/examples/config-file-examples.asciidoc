@@ -7,6 +7,7 @@ Basic ingest configurations:
 
 * <<config-file-example-ingest-file,Ingest from a file>>
 * <<config-file-example-ingest-http-metrics,Ingest HTTP metrics>>
+* <<config-file-example-multiple-outputs,Configure different outputs for each input>>
 
 Ingesting host and application data:
 
@@ -18,6 +19,7 @@ Ingesting host and application data:
 
 include::config-file-example-ingest-file.asciidoc[leveloffset=+1]
 include::config-file-example-ingest-http-metrics.asciidoc[leveloffset=+1]
+include::config-file-example-multiple-outputs.asciidoc[leveloffset=+1]
 include::config-file-example-apache.asciidoc[leveloffset=+1]
 include::config-file-example-nginx.asciidoc[leveloffset=+1]
 include::config-file-example-aws-s3.asciidoc[leveloffset=+1]

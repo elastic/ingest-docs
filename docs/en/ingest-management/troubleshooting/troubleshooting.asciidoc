@@ -719,7 +719,7 @@ After running these steps your {agents} should be able to connect with {fleet} a
 [[agent-oom-k8s]]
 == {agent} Out of Memory errors on Kubernetes
 
-On a Kubernetes environment, {agent} may be terminated due to inadequate memory.
+In a Kubernetes environment, {agent} may be terminated with reason `OOMKilled` due to inadequate available memory.
 
 To detect the problem, run the `kubectl describe pod` command and check the results for the following content:
 

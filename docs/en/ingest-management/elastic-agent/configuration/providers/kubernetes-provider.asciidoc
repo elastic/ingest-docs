@@ -68,21 +68,33 @@ will be excluded from the event.
 By default it is `true`.
 `annotations.dedot`:: (Optional) If set to be `true` in the provider config, then `.` in annotations will be replaced
 with `_`. By default it is `true`.
-`add_resource_metadata`:: (Optional) Specify labels and annotations filters for the extra metadata coming from node and namespace.
- `add_resource_metadata` can be done for `node` or `namespace`. By default all labels are included
-while annotations are not. These settings are useful when storing labels and annotations
-that require special handling to avoid overloading the storage output. The enrichment of `node` or `namespace` metadata
-can be individually disabled by setting `enabled: false`.
-Example:
+`add_resource_metadata`:: (Optional) Specify filters and configration for the extra metadata, that will be added to the event.
+Configuration parameters:
+ * `node` or `namespace`: Specify labels and annotations filters for the extra metadata coming from node and namespace. By default
+ all labels are included while annotations are not. To change the default behaviour `include_labels`, `exclude_labels` and `include_annotations`
+ can be defined. These settings are useful when storing labels and annotations that require special handling to avoid overloading the storage output.
+ The enrichment of `node` or `namespace` metadata can be individually disabled by setting `enabled: false`.
+ Wildcards are supported in these settings by using `use_regex_include: true` in combination with `include_labels`, and respectively by setting `use_regex_exclude: true` in combination with `exclude_labels`.
+ * `deployment`: If resource is `pod` and it is created from a `deployment`, by default the deployment name isn't added, this can be enabled by setting `deployment: true`.
+ * `cronjob`: If resource is `pod` and it is created from a `cronjob`, by default the cronjob name isn't added, this can be enabled by setting `cronjob: true`.
+ Example:
 
 ["source","yaml",subs="attributes"]
 -------------------------------------------------------------------------------------
       add_resource_metadata:
         namespace:
+          #use_regex_include: false
           include_labels: ["namespacelabel1"]
+          #use_regex_exclude: false
+          #exclude_labels: ["namespacelabel2"]
         node:
+          #use_regex_include: false
           include_labels: ["nodelabel2"]
           include_annotations: ["nodeannotation1"]
+          #use_regex_exclude: false
+          #exclude_labels: ["nodelabel3"]
+        #deployment: false
+        #cronjob: false
 -------------------------------------------------------------------------------------
 
 

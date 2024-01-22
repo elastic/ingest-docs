@@ -714,3 +714,20 @@ sudo ./elastic-agent install --url=https://fleet-server:8220 --enrollment-token=
 ----
 
 After running these steps your {agents} should be able to connect with {fleet} again.
+
+[discrete]
+[[agent-oom-k8s]]
+== {agent} Out of Memory errors on Kubernetes
+
+On a Kubernetes environment, {agent} may be terminated due to inadequate memory.
+
+To detect the problem, run the `kubectl describe pod` command and check the results for the following content:
+
+[source,sh]
+----
+       Last State:   Terminated
+       Reason:       OOMKilled
+       Exit Code:    137
+----
+
+To resolve the problem, allocate additional memory to the agent and then restart it.

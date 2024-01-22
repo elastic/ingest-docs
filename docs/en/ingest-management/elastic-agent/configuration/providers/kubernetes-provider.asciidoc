@@ -73,7 +73,7 @@ with `_`. By default it is `true`.
 while annotations are not. These settings are useful when storing labels and annotations
 that require special handling to avoid overloading the storage output. The enrichment of `node` or `namespace` metadata
 can be individually disabled by setting `enabled: false`.
-Wildcards are supported in these settings by using `use_regex_include: true` in case of `include_labels` and respectively set `use_regex_exclude: true` in combination with `exclude_labels`.
+Wildcards are supported in these settings by using `use_regex_include: true` in combination with `include_labels`, and respectively by setting `use_regex_exclude: true` in combination with `exclude_labels`.
 
 Example:
 

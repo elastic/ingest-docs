@@ -68,6 +68,7 @@ will be excluded from the event.
 By default it is `true`.
 `annotations.dedot`:: (Optional) If set to be `true` in the provider config, then `.` in annotations will be replaced
 with `_`. By default it is `true`.
+
 `add_resource_metadata`:: (Optional) Specify filters and configration for the extra metadata, that will be added to the event.
 Configuration parameters:
  * `node` or `namespace`: Specify labels and annotations filters for the extra metadata coming from node and namespace. By default

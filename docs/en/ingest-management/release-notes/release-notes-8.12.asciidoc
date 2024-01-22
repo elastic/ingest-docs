@@ -1,0 +1,270 @@
+// Use these for links to issue and pulls.
+:kibana-issue: https://github.com/elastic/kibana/issues/
+:kibana-pull: https://github.com/elastic/kibana/pull/
+:beats-issue: https://github.com/elastic/beats/issues/
+:beats-pull: https://github.com/elastic/beats/pull/
+:agent-libs-pull: https://github.com/elastic/elastic-agent-libs/pull/
+:agent-issue: https://github.com/elastic/elastic-agent/issues/
+:agent-pull: https://github.com/elastic/elastic-agent/pull/
+:fleet-server-issue: https://github.com/elastic/fleet-server/issues/
+:fleet-server-pull: https://github.com/elastic/fleet-server/pull/
+
+[[release-notes]]
+= Release notes
+
+This section summarizes the changes in each release.
+
+* <<release-notes-8.12.0>>
+
+Also see:
+
+* {kibana-ref}/release-notes.html[{kib} release notes]
+* {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.12.0 relnotes
+
+[[release-notes-8.12.0]]
+== {fleet} and {agent} 8.12.0
+
+Review important information about {fleet-server} and {agent} for the 8.12.0 release.
+
+[discrete]
+[[security-updates-8.12.0]]
+=== Security updates
+
+{agent}::
+* Update Go version to 1.20.12. {agent-pull}3885[#3885]
+
+[discrete]
+[[known-issues-8.12.0]]
+=== Known issues
+
+[[known-issue-4084]]
+.For new DEB and RPM installations the `elastic-agent enroll` command incorrectly reports failure
+[%collapsible]
+====
+
+*Details*
+
+When you run the <<elastic-agent-enroll-command,`elastic-agent enroll`>> command for an RPM or DEB {agent} package, a `Retarting agent daemon` message appears in the command output, followed by a `Restart attempt failed` error.
+
+*Impact* +
+
+The error does not mean that the enrollment failed. The enrollment actually succeeded. You can ignore the `Restart attempt failed` error and continue by running the following commands, after which {agent} should successfully connect to {fleet}:
+
+[source,console]
+----
+sudo systemctl enable elastic-agent 
+sudo systemctl start elastic-agent
+----
+
+====
+
+
+[[known-issue-sec8366]]
+.{fleet} setup can fail when there are more than one thousand {agent} policies
+[%collapsible]
+====
+
+*Details*
+
+When you set up {fleet} with a very high volume of {agent} policies, one thousand or more, you may encounter an error similar to the following:
+
+[source,console]
+----
+[ERROR][plugins.fleet] Unknown error happened while checking Uninstall Tokens validity: 'ResponseError: all shards failed: search_phase_execution_exception
+	Caused by:
+		too_many_nested_clauses: Query contains too many nested clauses; maxClauseCount is set to 5173
+----
+
+The exact number of {agent} policies required to cause the error depends in part on the size of the {es} cluster, but generally it can happen with volumes above approximately one thousand policies.
+
+*Impact* +
+
+Currently there is no workaround for the issue but a fix is planned to be included in the next version 8.12 release.
+
+Note that according to our <<agent-policy-scaling-recommendations,policy scaling recommendations>>, the current recommended maximum number of {agent} policies supported by {fleet} is 500.
+
+====
+
+[discrete]
+[[new-features-8.12.0]]
+=== New features
+
+The 8.12.0 release Added the following new and notable features.
+
+{fleet}::
+* Add {agent} upgrade states and display each agent's progress through the upgrade process. See <<view-upgrade-status>> for details. ({kibana-pull}167539[#167539])
+* Add support for preconfigured output secrets. ({kibana-pull}172041[#172041])
+* Add UI components to create and edit output secrets. ({kibana-pull}169429[#169429])
+* Add support for remote ES output. ({kibana-pull}169252[#169252])
+* Add the ability to specify secrets in outputs. ({kibana-pull}169221[#169221])
+* Add an integrations configs tab to display input templates. ({kibana-pull}168827[#168827])
+* Add a {kib} task to publish Agent metrics. ({kibana-pull}168435[#168435])
+
+{agent}::
+* Add a "preset" field to {es} output configurations that applies a set of configuration overrides based on a desired performance priority. {beats-pull}37259[#37259] {agent-pull}3879[#3879] {agent-issue}3797[#3797]
+* Send the current agent upgrade details to {fleet-server} as part of the check-in API's request body. {agent-pull}3528[#3528] {agent-issue}3119[#3119]
+* Add new fields for retryable upgrade steps to upgrade details metadata. {agent-pull}3845[#3845] {agent-issue}3818[#3818]
+* Improve the upgrade watcher to no longer require root access. {agent-pull}3622[#3622]
+* Enable hints autodiscovery for {agent} so that the host for a container in a Kubernetes pod no longer needs to be specified manually. {agent-pull}3575[#3575] 
+{agent-issue}1453[#1453]
+* Enable hints autodiscovery for {agent} so that a configuration can be defined through annotations for specific containers inside a pod. {agent-pull}3416[#3416] 
+{agent-issue}3161[#3161]
+* Support flattened `data_stream.*` fields in an {agent} input configuration. {agent-pull}3465[#3465] {agent-issue}3191[#3191]
+
+[discrete]
+[[enhancements-8.12.0]]
+=== Enhancements
+
+{fleet}::
+* Add support for Elasticsearch output performance presets. ({kibana-pull}172359[#172359])
+* Add a new `keep_monitoring_alive` flag to agent policies. ({kibana-pull}168865[#168865])
+* Add support for additional types for dynamic mappings. ({kibana-pull}168842[#168842])
+* Use default component templates from Elasticsearch. ({kibana-pull}163731[#163731])
+
+{agent}::
+* Use shorter timeouts for diagnostic requests unless CPU diagnostics are requested. {agent-pull}3794[#3794] {agent-issue}3197[#3197]
+* Add configuration parameters for the Kubernetes `leader_election` provider. {agent-pull}3625[#3625]
+* Remove duplicated tags that may be specified during an agent enrollment. {agent-pull}3740[#3740] {agent-issue}858[#858]
+* Include upgrade details in an agent diagnostics bundle {agent-pull}3624[#3624] and in the `elastic-agent status` command output. {agent-pull}3615[#3615] {agent-issue}3119[#3119]
+* Start and stop the monitoring server based on the monitoring configuration. {agent-pull}3584[#3584] {agent-issue}2734[#2734]
+* Copy files concurrently to reduce the time taken to install and upgrade {agent} on systems running SSDs. {agent-pull}3212[#3212]
+* Update `elastic-agent-libs` from version 0.7.2 to 0.7.3. {agent-pull}4000[#4000]
+
+[discrete]
+[[bug-fixes-8.12.0]]
+=== Bug fixes
+
+{fleet}::
+* Allow agent upgrades if patch version is higher than {kib}. ({kibana-pull}173167[#173167])
+* Fix secrets with dot-separated variable names. ({kibana-pull}173115[#173115])
+* Fix endpoint privilege management endpoints return errors. ({kibana-pull}171722[#171722])
+* Fix expiration time for immediate bulk upgrades being too short. ({kibana-pull}170879[#170879])
+* Fix incorrect overwrite of `logs-*` and `metrics-*` data views on every integration install. ({kibana-pull}170188[#170188])
+* Create intermediate objects when using dynamic mappings. ({kibana-pull}169981[#169981])
+
+{agent}::
+* Preserve build metadata in upgrade version strings. {agent-pull}3824[#3824] {agent-issue}3813[#3813]
+* Create a custom `MarshalYAML()` method to properly handle error fields in agent diagnostics. {agent-pull}3835[#3835] {agent-issue}2940[#2940]
+* Fix the {agent} ignoring the `agent.download.proxy_url` setting during a policy update. {agent-pull}3803[#3803] {agent-issue}3560[#3560]
+* Only try to download an upgrade locally if the `file://` prefix is specified for the source URI. {agent-pull}3682[#3682]
+* Fix logging calls that have missing arguments. {agent-pull}3679[#3679]
+* Update NodeJS version bundled with Heartbeat to v18.18.2. {agent-pull}3655[#3655]
+* Use a third-party library to track progress during install and uninstall operations. {agent-pull}3623[#3623] {agent-issue}3607[#3607]
+* Enable the {agent} container to run on Azure Container Instances. {agent-pull}3778[#3778] {agent-issue}3711[#3711]
+* When a scheduled upgrade expires, set the upgrade state to failed. {agent-pull}3902[#3902] {agent-issue}3817[#3817]
+* Update `elastic-agent-autodiscover` to version 0.6.6 and fix default metadata configuration. {agent-pull}3938[#3938] 
+
+// end 8.12.0 relnotes
+
+
+
+// ---------------------
+//TEMPLATE
+//Use the following text as a template. Remember to replace the version info.
+
+// begin 8.7.x relnotes
+
+//[[release-notes-8.7.x]]
+//== {fleet} and {agent} 8.7.x
+
+//Review important information about the {fleet} and {agent} 8.7.x release.
+
+//[discrete]
+//[[security-updates-8.7.x]]
+//=== Security updates
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[breaking-changes-8.7.x]]
+//=== Breaking changes
+
+//Breaking changes can prevent your application from optimal operation and
+//performance. Before you upgrade, review the breaking changes, then mitigate the
+//impact to your application.
+
+//[discrete]
+//[[breaking-PR#]]
+//.Short description
+//[%collapsible]
+//====
+//*Details* +
+//<Describe new behavior.> For more information, refer to {kibana-pull}PR[#PR].
+
+//*Impact* +
+//<Describe how users should mitigate the change.> For more information, refer to {fleet-guide}/fleet-server.html[Fleet Server].
+//====
+
+//[discrete]
+//[[known-issues-8.7.x]]
+//=== Known issues
+
+//[[known-issue-issue#]]
+//.Short description
+//[%collapsible]
+//====
+
+//*Details*
+
+//<Describe known issue.>
+
+//*Impact* +
+
+//<Describe impact or workaround.>
+
+//====
+
+//[discrete]
+//[[deprecations-8.7.x]]
+//=== Deprecations
+
+//The following functionality is deprecated in 8.7.x, and will be removed in
+//8.7.x. Deprecated functionality does not have an immediate impact on your
+//application, but we strongly recommend you make the necessary updates after you
+//upgrade to 8.7.x.
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[new-features-8.7.x]]
+//=== New features
+
+//The 8.7.x release Added the following new and notable features.
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[enhancements-8.7.x]]
+//=== Enhancements
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[bug-fixes-8.7.x]]
+//=== Bug fixes
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+// end 8.7.x relnotes

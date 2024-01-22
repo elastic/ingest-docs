@@ -23,6 +23,16 @@ Have a question? Read our <<fleet-faq,FAQ>>, or contact us in the
 Running {agent} standalone? Also refer to <<debug-standalone-agents>>.
 
 [discrete]
+[[tsdb-illegal-argument]]
+== illegal_argument_exception when TSDB is enabled
+
+When you use an {agent} integration in which TSDB (Time Series Database) is enabled, you may encounter an `illegal_argument_exception` error in the {fleet} UI.
+
+This can occur if you have a component template defined that includes a `_source` attribute, which conflicts with the `_source: syntethic` setting used when TSDB is enabled.
+
+For details about the error and how to resolve it, refer to the section `Runtime fields cannot be used in TSDB indices` in the Innovation Hub article link:https://support.elastic.dev/knowledge/view/9363b9fd[TSDB enabled integrations for {agent}].
+
+[discrete]
 [[agents-in-cloud-stuck-at-updating]]
 == {agent}s hosted on {ecloud} are stuck in `Updating` or `Offline`
 
@@ -640,7 +650,7 @@ To work around this problem, you can reset the {ecloud} agent policy with an API
 curl -u elastic:<password> --request POST \
   --url <kibana_url>/internal/fleet/reset_preconfigured_agent_policies/policy-elastic-agent-on-cloud \
   --header 'Content-Type: application/json' \
-  --header 'kbn-xsrf: xyz' \
+  --header 'kbn-xsrf: xyz'
 ----
 
 [discrete]
@@ -649,3 +659,58 @@ curl -u elastic:<password> --request POST \
 
 In versions 8.9 and above, an {agent} upgrade may fail when the upgrader can't access a PGP key required to verify the binary signature. For details and a workaround, refer to the link:https://www.elastic.co/guide/en/fleet/8.9/release-notes-8.9.0.html#known-issue-3375[PGP key download fails in an air-gapped environment] known issue in the version 8.9.0 Release Notes or to the link:https://github.com/elastic/elastic-agent/blob/main/docs/pgp-workaround.md[workaround documentation] in the elastic-agent GitHub repository.
 
+[discrete]
+[[fleet-server-integration-removed]]
+== {agents} are unable to connect after removing the {fleet-server} integration
+
+When you use {fleet}-managed {agent}, at least one {agent} needs to be running the link:https://docs.elastic.co/integrations/fleet_server[{fleet-server} integration]. In case the policy containing this integration is accidentally removed from {agent}, all other agents will not be able to be managed. However, the {agents} will continue to send data to their configured output.
+
+There are two approaches to fixing this issue, depending on whether or not the the {agent} that was running the {fleet-server} integration is still installed and healthy (but is now running another policy).
+
+To recover the {agent}:
+
+. In {kib}, go to **Fleet > Agents**, and click **Add agent**.
+
+. In the **Add agent** flyout, select an agent policy that contains the **Fleet Server** integration. On Elastic Cloud you can use the **Elastic Cloud agent policy** which includes the integration.
+
+. Follow the instructions in the flyout, and stop before running the CLI commands.
+
+. Depending on the state of the original {fleet-server} {agent}, do one of the following:
++
+* **The original {fleet-server} {agent} is still running and healthy**
++
+In this case, you only need to re-enroll the agent with {fleet}:
+
+.. Copy the `elastic-agent install` command from the {kib} UI.
+.. In the command, replace `install` with `enroll`.
+.. In the directory where {agent} is running (for example `/opt/Elastic/Agent/` on Linux), run the command as `root`. 
++
+For example, if {kib} gives you the command:
++
+[source,sh]
+----
+sudo ./elastic-agent install --url=https://fleet-server:8220 --enrollment-token=bXktc3VwZXItc2VjcmV0LWVucm9sbWVudC10b2tlbg==
+----
++
+Instead run:
++
+[source,sh]
+----
+sudo ./elastic-agent enroll --url=https://fleet-server:8220 --enrollment-token=bXktc3VwZXItc2VjcmV0LWVucm9sbWVudC10b2tlbg==
+----
+
+* **The original {fleet-server} {agent} is no longer installed**
++
+In this case, you need to install the agent again:
+
+.. Copy the commands from the {kib} UI. The commands don't need to be changed.
+.. Run the commands in order. The first three commands will download a new {agent} install package, expand the archive, and change directories.
++
+The final command will install {agent}. For example: 
++
+[source,sh]
+----
+sudo ./elastic-agent install --url=https://fleet-server:8220 --enrollment-token=bXktc3VwZXItc2VjcmV0LWVucm9sbWVudC10b2tlbg==
+----
+
+After running these steps your {agents} should be able to connect with {fleet} again.

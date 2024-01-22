@@ -49,7 +49,7 @@ impact to your application.
 [%collapsible]
 ====
 *Details* +
-Starting in this release, {fleet} <<data-streams-pipelines,ingest pipelines>> can be configured to process events at various levels of customization. If you have a custom pipeline already defined that matches the name of a {fleet} custom ingest pipeline, it may be unexpectedly called for other data streams in other integrations. For more information, refer to {kibana-pull}PR[#170270] and the {fleet} ingest pipelines documentation.
+Starting in this release, {fleet} <<data-streams-pipelines,ingest pipelines>> can be configured to process events at various levels of customization. If you have a custom pipeline already defined that matches the name of a {fleet} custom ingest pipeline, it may be unexpectedly called for other data streams in other integrations. For more information, refer to {kibana-pull}PR[#175254] in which the problem is being investigated, and also the {fleet} ingest pipelines documentation.
 ====
 
 [discrete]

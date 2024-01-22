@@ -137,7 +137,7 @@ a| Filters and configuration for adding extra metadata to the event. This settin
 By default all labels are included, but annotations are not.
 To change the default behavior, you can set `include_labels`, `exclude_labels`, and `include_annotations`.
 These settings are useful when storing labels and annotations that require special handling to avoid overloading the storage output.
-Wildcards are supported in these settings by using `use_regex_include: true` in case of `include_labels` and respectively set `use_regex_exclude: true` in combination with `exclude_labels`.
+Wildcards are supported in these settings by using `use_regex_include: true` in combination with `include_labels`, and respectively by setting `use_regex_exclude: true` in combination with `exclude_labels`.
 To turn off enrichment of `node` or `namespace` metadata individually, set `enabled: false`.
 * `deployment`: If the resource is `pod` and it is created from a `deployment`, the deployment name is not added by default. To enable this behavior, set `deployment: true`.
 * `cronjob`: If the resource is `pod` and it is created from a `cronjob`, the cronjob name is not added by default. To enable this behavior, set `cronjob: true`.

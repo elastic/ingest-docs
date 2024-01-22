@@ -36,6 +36,23 @@ Review important information about {fleet-server} and {agent} for the 8.12.0 rel
 * Update Go version to 1.20.12. {agent-pull}3885[#3885]
 
 [discrete]
+[[breaking-changes-8.12.0]]
+=== Breaking changes
+
+Breaking changes can prevent your application from optimal operation and
+performance. Before you upgrade, review the breaking changes, then mitigate the
+impact to your application.
+
+[discrete]
+[[breaking-170270]]
+.Possible naming collisions with {fleet} custom ingest pipelines
+[%collapsible]
+====
+*Details* +
+Starting in this release, {fleet} <<data-streams-pipelines,ingest pipelines>> can be configured to process events at various levels of customization. If you have a custom pipeline already defined that matches the name of a {fleet} custom ingest pipeline, it may be unexpectedly called for other data streams in other integrations. For more information, refer to {kibana-pull}PR[#170270] and the {fleet} ingest pipelines documentation.
+====
+
+[discrete]
 [[known-issues-8.12.0]]
 === Known issues
 

@@ -36,6 +36,23 @@ Review important information about {fleet-server} and {agent} for the 8.12.0 rel
 * Update Go version to 1.20.12. {agent-pull}3885[#3885]
 
 [discrete]
+[[breaking-changes-8.12.0]]
+=== Breaking changes
+
+Breaking changes can prevent your application from optimal operation and
+performance. Before you upgrade, review the breaking changes, then mitigate the
+impact to your application.
+
+[discrete]
+[[breaking-170270]]
+.Possible naming collisions with {fleet} custom ingest pipelines
+[%collapsible]
+====
+*Details* +
+Starting in this release, {fleet} <<data-streams-pipelines,ingest pipelines>> can be configured to process events at various levels of customization. If you have a custom pipeline already defined that matches the name of a {fleet} custom ingest pipeline, it may be unexpectedly called for other data streams in other integrations. For more information, refer to {kibana-issue}175254[#175254] in which the problem is being investigated, and also the {fleet} ingest pipelines documentation.
+====
+
+[discrete]
 [[known-issues-8.12.0]]
 === Known issues
 
@@ -96,6 +113,7 @@ The 8.12.0 release Added the following new and notable features.
 {fleet}::
 * Add {agent} upgrade states and display each agent's progress through the upgrade process. See <<view-upgrade-status>> for details. ({kibana-pull}167539[#167539])
 * Add support for preconfigured output secrets. ({kibana-pull}172041[#172041])
+* Add support for pipelines to process events at various levels of customization. ({kibana-pull}170270[#170270])
 * Add UI components to create and edit output secrets. ({kibana-pull}169429[#169429])
 * Add support for remote ES output. ({kibana-pull}169252[#169252])
 * Add the ability to specify secrets in outputs. ({kibana-pull}169221[#169221])

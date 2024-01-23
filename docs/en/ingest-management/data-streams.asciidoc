@@ -172,7 +172,7 @@ Starting in version 8.4, all default ingest pipelines call a non-existent and no
 If left uncreated, this pipeline has no effect on your data. However, if added to a data stream and customized,
 this pipeline can be used for custom data processing, adding fields, sanitizing data, and more.
 
-Staring in version 8.12, ingest pipelines can be configured to process events at various levels of customization.
+Starting in version 8.12, ingest pipelines can be configured to process events at various levels of customization.
 
 `global@custom`::
 Apply processing to all events
@@ -260,6 +260,18 @@ PUT _ingest/pipeline/metrics-system.cpu@custom
 
 Custom pipelines can directly contain processors or you can use the pipeline processor to call other pipelines that can be shared across multiple data streams or integrations.
 These pipelines will persist across all version upgrades.
+
+[[data-streams-pipelines-warning]]
+[WARNING]
+====
+If you have a custom pipeline defined that matches the naming scheme used for any {fleet} custom ingest pipelines, this can produce unintended results. For example, if you have a pipeline named like one of the following:
+
+* `global@custom`
+* `traces@custom`
+* `traces-apm@custom`
+
+The pipeline may be unexpectedly called for other data streams in other integrations. To avoid this problem, avoid the naming schemes defined above when naming your custom pipelines.
+====
 
 See <<data-streams-pipeline-tutorial>> to get started.
 

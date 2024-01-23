@@ -279,7 +279,7 @@ If you have a custom pipeline defined that matches the naming scheme used for an
 
 The pipeline may be unexpectedly called for other data streams in other integrations. To avoid this problem, avoid the naming schemes defined above when naming your custom pipelines.
 
-Refer to the breaking change in the 8.12.0 Release Notes for more detail.
+Refer to the breaking change in the 8.12.0 Release Notes for more detail and workaround options.
 ====
 
 See <<data-streams-pipeline-tutorial>> to get started.

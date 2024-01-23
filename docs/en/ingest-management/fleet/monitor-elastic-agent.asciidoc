@@ -286,6 +286,8 @@ After the output is created, you can update an {agent} policy to use the new rem
 
 The remote {es} cluster is now configured.
 
+As a final step before using the remote {es} output, you need to make sure that for any integrations that have been <<add-integration-to-policy,added to your {agent} policy>>, the integration assets have been installed on the remote {es} cluster. Refer to <<install-uninstall-integration-assets,Install and uninstall {agent} integration assets>> for the steps to add integration assets.
+
 [discrete]
 [[fleet-alerting]]
 = Enable alerts and ML jobs based on {fleet} and {agent} status

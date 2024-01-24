@@ -196,7 +196,7 @@ The `elastic_agent` integration is subject to the same type of breaking change a
 * `logs-elastic_agent.packetbeat`
 * `logs-elastic_agent.pf_elastic_collector`
 * `logs-elastic_agent.pf_elastic_symbolizer`
-* `logs-elastic_agent.pf_host_agent``
+* `logs-elastic_agent.pf_host_agent`
 
 The behavior is similar to what's described for APM above: pipelines such as `logs-elastic_agent.filebeat` will include a `pipeline` processor that calls `logs-elastic_agent@custom`. If you have custom processing logic defined in a `logs-elastic_agent@custom` ingest pipeline, it will be called by all of the pipelines listed above.
 

@@ -49,7 +49,160 @@ impact to your application.
 [%collapsible]
 ====
 *Details* +
-Starting in this release, {fleet} <<data-streams-pipelines,ingest pipelines>> can be configured to process events at various levels of customization. If you have a custom pipeline already defined that matches the name of a {fleet} custom ingest pipeline, it may be unexpectedly called for other data streams in other integrations. For more information, refer to {kibana-issue}175254[#175254] in which the problem is being investigated, and also the {fleet} ingest pipelines documentation.
+Starting in this release, {fleet} <<data-streams-pipelines,ingest pipelines>> can be configured to process events at various levels of customization. If you have a custom pipeline already defined that matches the name of a {fleet} custom ingest pipeline, it may be unexpectedly called for other data streams in other integrations. For details and investigation about the issue refer to {kibana-issue}175254[#175254]. A fix is planned for delivery in the next 8.12 minor release.
+
+**Affected ingest pipelines**
+
+**APM**
+
+* `traces-apm`
+* `traces-apm.rum`
+* `traces-apm.sampled``
+
+For APM, if you had previously <<data-streams-pipelines,defined an ingest pipeline>> of the form `traces-apm@custom` to customize the ingestion of documents ingested to the `traces-apm` data stream, then by nature of the new `@custom` hooks introduced in issue {kibana-issue}168019[#168019], the `traces-apm@custom` pipeline will be called as a pipeline processor in both the `traces-apm.rum` and `traces-apm.sampled` ingest pipelines. See the following for a comparison of the relevant `processors` blocks for each of these pipeline before and after upgrading to 8.12.0:
+
+[source,json]
+----
+// traces-apm-8.x.x
+{
+	"pipeline": {
+		"name": "traces-apm@custom",
+		"ignore_missing_pipeline": true
+	}
+}
+
+// traces-apm-8.12.0
+{
+	"pipeline": {
+		"name": "global@custom",
+		"ignore_missing_pipeline": true
+	}
+},
+{
+	"pipeline": {
+		"name": "traces@custom",
+		"ignore_missing_pipeline": true
+	}
+},
+{
+	"pipeline": {
+		"name": "traces-apm@custom",
+		"ignore_missing_pipeline": true
+	}
+},
+{
+	"pipeline": {
+		"name": "traces-apm@custom", <--- Duplicate pipeline entry
+		"ignore_missing_pipeline": true
+	}
+}
+----
+
+[source,json]
+----
+// traces-apm.rum-8.x.x
+{
+	"pipeline": {
+		"name": "traces-apm.rum@custom",
+		"ignore_missing_pipeline": true
+	}
+}
+
+// traces-apm.rum-8.12.0
+{
+	"pipeline": {
+		"name": "global@custom",
+		"ignore_missing_pipeline": true
+	}
+},
+{
+	"pipeline": {
+		"name": "traces@custom",
+		"ignore_missing_pipeline": true
+	}
+},
+{
+	"pipeline": {
+		"name": "traces-apm@custom", <--- Collides with `traces-apm@custom` that may be preexisting
+		"ignore_missing_pipeline": true
+	}
+},
+{
+	"pipeline": {
+		"name": "traces-apm.rum@custom",
+		"ignore_missing_pipeline": true
+	}
+}
+----
+
+[source,json]
+----
+
+// traces-apm.sampled-8.x.x
+{
+	"pipeline": {
+		"name": "traces-apm.rum@custom",
+		"ignore_missing_pipeline": true
+	}
+}
+
+// traces-apm.sampled-8.12.0
+{
+	"pipeline": {
+		"name": "global@custom",
+		"ignore_missing_pipeline": true
+	}
+},
+{
+	"pipeline": {
+		"name": "traces@custom",
+		"ignore_missing_pipeline": true
+	}
+},
+{
+	"pipeline": {
+		"name": "traces-apm@custom", <--- Collides with `traces-apm@custom` that may be preexisting
+		"ignore_missing_pipeline": true
+	}
+},
+{
+	"pipeline": {
+		"name": "traces-apm.sampled@custom",
+		"ignore_missing_pipeline": true
+	}
+}
+----
+
+The immediate workaround to avoid this unwanted behavior is to edit both the `traces-apm.rum` and `traces-apm.sampled` ingest pipelines to no longer include the `traces-apm@custom` pipeline processor.
+
+**Please note that this is a temporary workaround, and this change will be undone if the APM integration is upgraded or reinstalled.**
+
+**{agent}**
+
+The `elastic_agent` integration is subject to the same type of breaking change as described for APM, above. The following ingest pipelines are impacted:
+
+* `logs-elastic_agent`
+* `logs-elastic_agent.apm_server`
+* `logs-elastic_agent.auditbeat`
+* `logs-elastic_agent.cloud_defend`
+* `logs-elastic_agent.cloudbeat`
+* `logs-elastic_agent.endpoint_security`
+* `logs-elastic_agent.filebeat`
+* `logs-elastic_agent.filebeat_input`
+* `logs-elastic_agent.fleet_server`
+* `logs-elastic_agent.heartbeat`
+* `logs-elastic_agent.metricbeat`
+* `logs-elastic_agent.osquerybeat`
+* `logs-elastic_agent.packetbeat`
+* `logs-elastic_agent.pf_elastic_collector`
+* `logs-elastic_agent.pf_elastic_symbolizer`
+* `logs-elastic_agent.pf_host_agent`
+
+The behavior is similar to what's described for APM above: pipelines such as `logs-elastic_agent.filebeat` will include a `pipeline` processor that calls `logs-elastic_agent@custom`. If you have custom processing logic defined in a `logs-elastic_agent@custom` ingest pipeline, it will be called by all of the pipelines listed above.
+
+The workaround is the same: remove the `logs-elastic_agent@custom` pipeline processor from all of the ingest pipelines listed above.
+
+
 ====
 
 [discrete]

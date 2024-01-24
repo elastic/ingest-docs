@@ -90,6 +90,7 @@ The **Add new output** UI opens.
 * <<es-output-settings>>
 * <<ls-output-settings>>
 * <<kafka-output-settings>>
+* <<remote-elasticsearch-output>>
 
 . Click **Save and apply settings**.
 

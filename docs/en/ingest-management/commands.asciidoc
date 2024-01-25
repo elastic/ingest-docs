@@ -152,11 +152,17 @@ elastic-agent enroll --url <string>
                      [--certificate-authorities <string>]
                      [--elastic-agent-cert <string>]
                      [--elastic-agent-cert-key <string>]
+                     [--daemon-timeout <duration>]
                      [--delay-enroll]
                      [--force]
-                     [--non-interactive]
+                     [--header <strings>]
                      [--help]
                      [--insecure ]
+                     [--non-interactive]
+                     [--proxy-disabled]
+                     [--proxy-header <strings>]
+                     [--proxy-url <string>]
+                     [--staging <string>]
                      [--tag <string>]
                      [global-flags]
 ----
@@ -174,6 +180,7 @@ elastic-agent enroll --fleet-server-es <string>
                      [--certificate-authorities <string>]
                      [--elastic-agent-cert <string>]
                      [--elastic-agent-cert-key <string>]
+                     [--daemon-timeout <duration>]
                      [--delay-enroll]
                      [--fleet-server-cert <string>] <1>
                      [--fleet-server-cert-key <string>]
@@ -188,9 +195,15 @@ elastic-agent enroll --fleet-server-es <string>
                      [--fleet-server-insecure-http]
                      [--fleet-server-policy <string>]
                      [--fleet-server-port <uint16>]
+                     [--fleet-server-timeout <duration>]
                      [--force]
-                     [--non-interactive]
+                     [--header <strings>]
                      [--help]
+                     [--non-interactive]
+                     [--proxy-disabled]
+                     [--proxy-header <strings>]
+                     [--proxy-url <string>]
+                     [--staging <string>]
                      [--tag <string>]
                      [--url <string>] <3>
                      [global-flags]
@@ -216,7 +229,7 @@ verification.
 `--certificate-authorities <string>`::
 Comma-separated list of root certificates used for server verification.
 
-`--daemon-timeout`<duration>`::
+`--daemon-timeout <duration>`::
 Timeout waiting for {agent} daemon.
 
 `--delay-enroll`::
@@ -310,7 +323,7 @@ This flag is helpful when using automation software or scripted deployments.
 NOTE: If the {agent} is already installed on the host, using `--force` may
 result in unpredictable behavior with duplicate {agent}s appearing in {fleet}.
 
-`--header`<strings>`::
+`--header <strings>`::
 Headers used in communication with elasticsearch.
 
 `--help`::
@@ -328,6 +341,11 @@ verified. The content is encrypted, but the certificate is not verified.
 --
 +
 We strongly recommend that you use a secure connection.
+
+`--non-interactive`::
+Install {agent} in a non-interactive mode. This flag is helpful when
+using automation software or scripted deployments. If {agent} is
+already installed on the host, the installation will terminate.
 
 `--proxy-disabled`::
 Disable proxy support including environment variables.
@@ -534,13 +552,20 @@ elastic-agent install --url <string>
                       [--base-path <string>]
                       [--ca-sha256 <string>]
                       [--certificate-authorities <string>]
+                      [--daemon-timeout <duration>]
+                      [--delay-enroll]
                       [--elastic-agent-cert <string>]
                       [--elastic-agent-cert-key <string>]
                       [--delay-enroll]
                       [--force]
-                      [--non-interactive]
+                      [--header <strings>]
                       [--help]
                       [--insecure ]
+                      [--non-interactive]
+                      [--proxy-disabled]
+                      [--proxy-header <strings>]
+                      [--proxy-url <string>]
+                      [--staging <string>]
                       [--tag <string>]
                       [global-flags]
 ----
@@ -557,6 +582,8 @@ elastic-agent install --fleet-server-es <string>
                       [--base-path <string>]
                       [--ca-sha256 <string>]
                       [--certificate-authorities <string>]
+                      [--daemon-timeout <duration>]
+                      [--delay-enroll]
                       [--elastic-agent-cert <string>]
                       [--elastic-agent-cert-key <string>]
                       [--delay-enroll]
@@ -568,16 +595,22 @@ elastic-agent install --fleet-server-es <string>
                       [--fleet-server-es-ca-trusted-fingerprint <string>] <2>
                       [--fleet-server-es-cert <string>]
                       [--fleet-server-es-cert-key <string>]
+                      [--fleet-server-es-insecure]
                       [--fleet-server-host <string>]
                       [--fleet-server-insecure-http]
                       [--fleet-server-policy <string>]
                       [--fleet-server-port <uint16>]
+                      [--fleet-server-timeout <duration>]
                       [--force]
-                      [--non-interactive]
+                      [--header <strings>]
                       [--help]
+                      [--non-interactive]
+                      [--proxy-disabled]
+                      [--proxy-header <strings>]
+                      [--proxy-url <string>]
+                      [--staging <string>]
                       [--tag <string>]
                       [--url <string>] <3>
-                      [--fleet-server-es-insecure]
                       [global-flags]
 ----
 <1> If no `fleet-server-cert*` flags are specified, {agent} auto-generates a
@@ -607,7 +640,7 @@ verification.
 `--certificate-authorities <string>`::
 Comma-separated list of root certificates used for server verification.
 
-`--daemon-timeout`<duration>`::
+`--daemon-timeout <duration>`::
 Timeout waiting for {agent} daemon.
 
 `--delay-enroll::
@@ -704,7 +737,7 @@ This flag is helpful when using automation software or scripted deployments.
 NOTE: If the {agent} is already installed on the host, using `--force` may
 result in unpredictable behavior with duplicate {agent}s appearing in {fleet}.
 
-`--header`<strings>`::
+`--header <strings>`::
 Headers used in communication with elasticsearch.
 
 `--help`::

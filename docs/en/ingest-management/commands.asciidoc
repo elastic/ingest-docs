@@ -224,11 +224,9 @@ Delays enrollment to occur on first start of the {agent} service. This setting
 is useful when you don't want the {agent} to enroll until the next reboot or manual start of the service, for
 example, when you're preparing an image that includes {agent}.
 
-// NOT IN COMMAND OUTPUT
 `--elastic-agent-cert`::
 Certificate to use as the client certificate for the {agent}'s connections to {fleet-server}.
 
-// NOT IN COMMAND OUTPUT
 `--elastic-agent-cert-key`::
 Private key to use as for the {agent}'s connections to {fleet-server}.
 
@@ -245,9 +243,8 @@ Private key to use for exposed {fleet-server} HTTPS endpoint.
 `--fleet-server-cert-key-passphrase <string>`::
 Path to passphrase file for decrypting {fleet-server}'s private key if an encrypted private key is used.
 
-// NOT IN COMMAND OUTPUT
 `--fleet-server-client-auth <string>`::
-One of `none`, `optional`, or `required`. Defaults to `none`. {fleet-server}'s `client_authenticatio` option
+One of `none`, `optional`, or `required`. Defaults to `none`. {fleet-server}'s `client_authentication` option
 for client mTLS connections. If `optional`, or `required` is specified, client certificates are verified
 using CAs specified in the `--certificate-authorities` flag.
 
@@ -263,11 +260,9 @@ The SHA-256 fingerprint (hash) of the certificate authority used to self-sign {e
 This fingerprint will be used to verify self-signed certificates presented by {fleet-server} and any inputs started by {agent} for communication.
 This flag is required when using self-signed certificates with {es}.
 
-// NOT IN COMMAND OUTPUT
 `--fleet-server-es-cert`::
 The path to the client certificate that {fleet-server} will use when connecting to {es}.
 
-// NOT IN COMMAND OUTPUT
 `--fleet-server-es-cert-key`::
 The path to the private key that {fleet-server} will use when connecting to {es}.
 
@@ -618,11 +613,9 @@ Timeout waiting for {agent} daemon.
 `--delay-enroll::
 Delays enrollment to occur on first start of the {agent} service.
 
-// NOT IN COMMAND OUTPUT
 `--elastic-agent-cert`::
 Certificate to use as the client certificate for the {agent}'s connections to {fleet-server}.
 
-// NOT IN COMMAND OUTPUT
 `--elastic-agent-cert-key`::
 Private key to use as for the {agent}'s connections to {fleet-server}.
 
@@ -644,7 +637,6 @@ Private key to use for exposed {fleet-server} HTTPS endpoint.
 `--fleet-server-cert-key-passphrase <string>`::
 Path to passphrase file for decrypting {fleet-server}'s private key if an encrypted private key is used.
 
-// NOT IN COMMAND OUTPUT
 `--fleet-server-client-auth <string>`::
 One of `none`, `optional`, or `required`. Defaults to `none`. {fleet-server}'s `client_authentication` option
 for client mTLS connections. If `optional`, or `required` is specified, client certificates are verified
@@ -662,11 +654,9 @@ The SHA-256 fingerprint (hash) of the certificate authority used to self-sign {e
 This fingerprint will be used to verify self-signed certificates presented by {fleet-server} and any inputs started by {agent} for communication.
 This flag is required when using self-signed certificates with {es}.
 
-// NOT IN COMMAND OUTPUT
 `--fleet-server-es-cert`::
 The path to the client certificate that {fleet-server} will use when connecting to {es}.
 
-// NOT IN COMMAND OUTPUT
 `--fleet-server-es-cert-key`::
 The path to the private key that {fleet-server} will use when connecting to {es}.
 
@@ -747,7 +737,7 @@ Proxy headers used with CONNECT request.
 `--proxy-url <string>`::
 Configures the proxy URL.
 
-`--staging <string>::
+`--staging <string>`::
 Configures agent to download artifacts from a staging build.
 
 `--tag <strings>`::

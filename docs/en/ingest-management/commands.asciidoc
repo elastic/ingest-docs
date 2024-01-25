@@ -216,16 +216,21 @@ verification.
 `--certificate-authorities <string>`::
 Comma-separated list of root certificates used for server verification.
 
-`--elastic-agent-cert`::
-Certificate to use as the client certificate for the {agent}'s connections to {fleet-server}.
-
-`--elastic-agent-cert-key`::
-Private key to use as for the {agent}'s connections to {fleet-server}.
+`--daemon-timeout`<duration>`::
+Timeout waiting for {agent} daemon.
 
 `--delay-enroll`::
 Delays enrollment to occur on first start of the {agent} service. This setting
 is useful when you don't want the {agent} to enroll until the next reboot or manual start of the service, for
 example, when you're preparing an image that includes {agent}.
+
+// NOT IN COMMAND OUTPUT
+`--elastic-agent-cert`::
+Certificate to use as the client certificate for the {agent}'s connections to {fleet-server}.
+
+// NOT IN COMMAND OUTPUT
+`--elastic-agent-cert-key`::
+Private key to use as for the {agent}'s connections to {fleet-server}.
 
 `--enrollment-token <string>`::
 Enrollment token to use to enroll {agent} into {fleet}. You can use
@@ -240,6 +245,7 @@ Private key to use for exposed {fleet-server} HTTPS endpoint.
 `--fleet-server-cert-key-passphrase <string>`::
 Path to passphrase file for decrypting {fleet-server}'s private key if an encrypted private key is used.
 
+// NOT IN COMMAND OUTPUT
 `--fleet-server-client-auth <string>`::
 One of `none`, `optional`, or `required`. Defaults to `none`. {fleet-server}'s `client_authenticatio` option
 for client mTLS connections. If `optional`, or `required` is specified, client certificates are verified
@@ -257,9 +263,11 @@ The SHA-256 fingerprint (hash) of the certificate authority used to self-sign {e
 This fingerprint will be used to verify self-signed certificates presented by {fleet-server} and any inputs started by {agent} for communication.
 This flag is required when using self-signed certificates with {es}.
 
+// NOT IN COMMAND OUTPUT
 `--fleet-server-es-cert`::
 The path to the client certificate that {fleet-server} will use when connecting to {es}.
 
+// NOT IN COMMAND OUTPUT
 `--fleet-server-es-cert-key`::
 The path to the private key that {fleet-server} will use when connecting to {es}.
 
@@ -297,6 +305,9 @@ Mutually exclusive with `--fleet-server-service-token-path`.
 Service token file to use for communication with {es}.
 Mutually exclusive with `--fleet-server-service-token`.
 
+`--fleet-server-timeout <duration>`::
+Timeout waiting for {fleet-server} to be ready to start enrollment.
+
 `--force`::
 Force overwrite of current configuration without prompting for confirmation.
 This flag is helpful when using automation software or scripted deployments.
@@ -304,10 +315,8 @@ This flag is helpful when using automation software or scripted deployments.
 NOTE: If the {agent} is already installed on the host, using `--force` may
 result in unpredictable behavior with duplicate {agent}s appearing in {fleet}.
 
-`--non-interactive`::
-Install {agent} in a non-interactive mode. This flag is helpful when
-using automation software or scripted deployments. If {agent} is
-already installed on the host, the installation will terminate.
+`--header`<strings>`::
+Headers used in communication with elasticsearch.
 
 `--help`::
 Show help for the `enroll` command.
@@ -324,6 +333,18 @@ verified. The content is encrypted, but the certificate is not verified.
 --
 +
 We strongly recommend that you use a secure connection.
+
+`--proxy-disabled`::
+Disable proxy support including environment variables.
+
+`--proxy-header <strings>`::
+Proxy headers used with CONNECT request.
+
+`--proxy-url <string>`::
+Configures the proxy URL.
+
+`--staging <string>`::
+Configures agent to download artifacts from a staging build.
 
 `--tag <string>`::
 A comma-separated list of tags to apply to {fleet}-managed {agent}s. You can
@@ -591,9 +612,17 @@ verification.
 `--certificate-authorities <string>`::
 Comma-separated list of root certificates used for server verification.
 
+`--daemon-timeout`<duration>`::
+Timeout waiting for {agent} daemon.
+
+`--delay-enroll::
+Delays enrollment to occur on first start of the {agent} service.
+
+// NOT IN COMMAND OUTPUT
 `--elastic-agent-cert`::
 Certificate to use as the client certificate for the {agent}'s connections to {fleet-server}.
 
+// NOT IN COMMAND OUTPUT
 `--elastic-agent-cert-key`::
 Private key to use as for the {agent}'s connections to {fleet-server}.
 
@@ -615,6 +644,7 @@ Private key to use for exposed {fleet-server} HTTPS endpoint.
 `--fleet-server-cert-key-passphrase <string>`::
 Path to passphrase file for decrypting {fleet-server}'s private key if an encrypted private key is used.
 
+// NOT IN COMMAND OUTPUT
 `--fleet-server-client-auth <string>`::
 One of `none`, `optional`, or `required`. Defaults to `none`. {fleet-server}'s `client_authentication` option
 for client mTLS connections. If `optional`, or `required` is specified, client certificates are verified
@@ -632,9 +662,11 @@ The SHA-256 fingerprint (hash) of the certificate authority used to self-sign {e
 This fingerprint will be used to verify self-signed certificates presented by {fleet-server} and any inputs started by {agent} for communication.
 This flag is required when using self-signed certificates with {es}.
 
+// NOT IN COMMAND OUTPUT
 `--fleet-server-es-cert`::
 The path to the client certificate that {fleet-server} will use when connecting to {es}.
 
+// NOT IN COMMAND OUTPUT
 `--fleet-server-es-cert-key`::
 The path to the private key that {fleet-server} will use when connecting to {es}.
 
@@ -672,6 +704,9 @@ Mutually exclusive with `--fleet-server-service-token-path`.
 Service token file to use for communication with {es}.
 Mutually exclusive with `--fleet-server-service-token`.
 
+`--fleet-server-timeout <duration>`::
+Timeout waiting for {fleet-server} to be ready to start enrollment.
+
 `--force`::
 Force overwrite of current configuration without prompting for confirmation.
 This flag is helpful when using automation software or scripted deployments.
@@ -679,10 +714,8 @@ This flag is helpful when using automation software or scripted deployments.
 NOTE: If the {agent} is already installed on the host, using `--force` may
 result in unpredictable behavior with duplicate {agent}s appearing in {fleet}.
 
-`--non-interactive`::
-Install {agent} in a non-interactive mode. This flag is helpful when
-using automation software or scripted deployments. If {agent} is
-already installed on the host, the installation will terminate.
+`--header`<strings>`::
+Headers used in communication with elasticsearch.
 
 `--help`::
 Show help for the `enroll` command.
@@ -700,7 +733,24 @@ verified. The content is encrypted, but the certificate is not verified.
 +
 We strongly recommend that you use a secure connection.
 
-`--tag <string>`::
+`--non-interactive`::
+Install {agent} in a non-interactive mode. This flag is helpful when
+using automation software or scripted deployments. If {agent} is
+already installed on the host, the installation will terminate.
+
+`--proxy-disabled`::
+Disable proxy support including environment variables.
+
+`--proxy-header <strings>`::
+Proxy headers used with CONNECT request.
+
+`--proxy-url <string>`::
+Configures the proxy URL.
+
+`--staging <string>::
+Configures agent to download artifacts from a staging build.
+
+`--tag <strings>`::
 A comma-separated list of tags to apply to {fleet}-managed {agent}s. You can
 use these tags to filter the list of agents in {fleet}.
 +

@@ -114,7 +114,20 @@ include::../elastic-agent/configuration/outputs/output-shared-settings.asciidoc[
 
 // =============================================================================
 
+include::../elastic-agent/configuration/outputs/output-shared-settings.asciidoc[tag=events-setting]
+
+// =============================================================================
+
+include::../elastic-agent/configuration/outputs/output-shared-settings.asciidoc[tag=flush.min_events-setting]
+
+// =============================================================================
+
+include::../elastic-agent/configuration/outputs/output-shared-settings.asciidoc[tag=flush.timeout-setting]
+
+// =============================================================================
+
 include::../elastic-agent/configuration/outputs/output-elasticsearch.asciidoc[tag=max_retries-setting]
+
 
 // =============================================================================
 

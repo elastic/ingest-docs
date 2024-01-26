@@ -243,7 +243,7 @@ For more details see {beats-issue}37754[#37754].
 
 *Impact* +
 
-If you are using the Elasticsearch output, and your configuration uses a performance preset, switch it to `preset: latency`. If you use no preset or use `preset: custom`, then set `queue.mem.flush.timeout: 1` for your output.
+If you are using the Elasticsearch output, and your configuration uses a performance preset, switch it to `preset: latency`. If you use no preset or use `preset: custom`, then set `queue.mem.flush.timeout: 1` in your output configuration.
 
 If you are not using the Elasticsearch output, set `queue.mem.flush.timeout: 1` in your output configuration.
 

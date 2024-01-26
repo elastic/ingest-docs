@@ -247,7 +247,7 @@ If you are using the Elasticsearch output, and your configuration uses a perform
 
 If you are not using the Elasticsearch output, set `queue.mem.flush.timeout: 1` in your output configuration.
 
-To configure the output parameters for a Fleet managed agent, see <<es-output-settings-yaml-config>>. For a standalone agent, see <<elastic-agent-output-configuration>>.
+To configure the output parameters for a {fleet}-managed agent, see <<es-output-settings-yaml-config>>. For a standalone agent, see <<elastic-agent-output-configuration>>.
 
 ====
 

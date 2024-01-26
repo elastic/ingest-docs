@@ -43,6 +43,42 @@ escaping.
 
 // =============================================================================
 
+// tag::events-setting[]
+|
+[id="{type}-events-setting"]
+`events`
+
+| The number of events the queue can store. This value should be evenly divisible by `flush.min_events` to avoid sending partial batches to the output.
+
+*Default:* `3200 events`
+// end::events-setting[]
+
+// =============================================================================
+
+// tag::flush.min_events-setting[]
+|
+[id="{type}-flush.min_events-setting"]
+`flush.min_events`
+
+| The minimum number of events required for publishing. If this value is set to 0 or 1, events are available to the output immediately. If this value is greater than 1 the output must wait for the queue to accumulate this minimum number of events or for `flush.timeout`` to expire before publishing. When greater than 1 this value also defines the maximum possible batch that can be sent by the output.
+
+*Default:* `1600 events`
+// end::flush.min_events-setting[]
+
+// =============================================================================
+
+// tag::flush.timeout-setting[]
+|
+[id="{type}-flush.timeout-setting"]
+`flush.timeout`
+
+| (int) The maximum wait time for `flush.min_events` to be fulfilled. If set to 0s, events are available to the output immediately.
+
+*Default:* `10s`
+// end::flush.timeout-setting[]
+
+// =============================================================================
+
 // tag::worker-setting[]
 |
 [id="{type}-worker-setting"]

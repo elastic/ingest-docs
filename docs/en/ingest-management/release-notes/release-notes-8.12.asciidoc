@@ -230,6 +230,26 @@ sudo systemctl start elastic-agent
 
 ====
 
+[[known-issue-37754]]
+.Performance regression in AWS S3 inputs using SQS notification
+[%collapsible]
+====
+
+*Details*
+
+In 8.12 the default memory queue flush interval was raised from 1 second to 10 seconds. In many configurations this improves performance because it allows the output to batch more events per round trip, which improves efficiency. However, the SQS input has an extra bottleneck that interacts badly with the new value.
+
+For more details see {beats-issue}37754[#37754].
+
+*Impact* +
+
+If you are using the Elasticsearch output, and your configuration uses a performance preset, switch it to `preset: latency`. If you use no preset or use `preset: custom`, then set `queue.mem.flush.timeout: 1` for your output.
+
+If you are not using the Elasticsearch output, set `queue.mem.flush.timeout: 1` in your output configuration.
+
+To configure the output parameters for a Fleet managed agent, see <<es-output-settings-yaml-config>>. For a standalone agent, see <<elastic-agent-output-configuration>>.
+
+====
 
 [[known-issue-sec8366]]
 .{fleet} setup can fail when there are more than one thousand {agent} policies

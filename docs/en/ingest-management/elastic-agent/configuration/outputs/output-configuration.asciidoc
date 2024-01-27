@@ -35,7 +35,10 @@ A default output configuration is required.
 
 * <<elasticsearch-output>>
 * <<logstash-output>>
+* <<kafka-output>>
 
 include::output-elasticsearch.asciidoc[leveloffset=+1]
 
 include::output-logstash.asciidoc[leveloffset=+1]
+
+include::output-kafka.asciidoc[leveloffset=+1]

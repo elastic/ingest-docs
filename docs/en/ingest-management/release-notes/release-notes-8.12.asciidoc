@@ -59,7 +59,7 @@ However, it was discovered in {kibana-issue}175254[#175254] that the `${type-int
 * `traces-apm.rum`
 * `traces-apm.sampled`
 
-Because `traces-apm`` is a legitimate data stream defined by the APM integration (see the relevant https://github.com/elastic/integrations/blob/main/packages/apm/data_stream/traces/manifest.yml[manifest.yml] file), it incurred a collision of these custom pipeline names on version 8.12.0. For example:
+Because `traces-apm` is a legitimate data stream defined by the APM integration (see the relevant https://github.com/elastic/integrations/blob/main/packages/apm/data_stream/traces/manifest.yml[manifest.yml] file), it incurred a collision of these custom pipeline names on version 8.12.0. For example:
 
 [source,json]
 ----

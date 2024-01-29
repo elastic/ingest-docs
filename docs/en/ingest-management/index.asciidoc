@@ -141,6 +141,8 @@ include::agent-policies.asciidoc[leveloffset=+2]
 
 include::create-agent-policies-no-UI.asciidoc[leveloffset=+3]
 
+include::security/fleet-roles-and-privileges.asciidoc[leveloffset=+2]
+
 include::security/enrollment-tokens.asciidoc[leveloffset=+2]
 
 include::fleet/fleet-api-docs.asciidoc[leveloffset=+2]

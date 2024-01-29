@@ -12,8 +12,8 @@ The Kafka output sends events to Apache Kafka.
 *Compatibility:* This output can connect to Kafka version 0.8.2.0 and later.
 Older versions might work as well, but are not supported.
 
-This example configures a Kafka output called `kafka-output` in the
-`elastic-agent.yml` file, with some basic settings as described further in:
+This example configures a Kafka output called `kafka-output` in the {agent}
+`elastic-agent.yml` file, with settings as described further in:
 
 [source,yaml]
 ----

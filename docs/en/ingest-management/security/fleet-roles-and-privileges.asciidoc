@@ -40,7 +40,6 @@ To create a new role with full access to use and manage {fleet} and integrations
 [role="screenshot"]
 image::images/kibana-fleet-privileges.png[Kibana privileges flyout showing Fleet and Integrations set to All]
 
-To create a read-only user for integrations, follow the same steps as above but set the **Fleet** privileges to **None** and the Integrations privileges to **Read**.
+To create a read-only user for integrations, follow the same steps as above but set the **Fleet** privileges to **None** and the **Integrations** privileges to **Read**.
 
 Read-only access to {fleet} is not currently supported but is planned for development in a later release.
-

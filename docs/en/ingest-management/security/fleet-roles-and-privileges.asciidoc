@@ -8,7 +8,7 @@ Assigning the {kib} feature privileges `Fleet` and `Integrations` grants access 
 `all`:: Grants full read-write access.
 `read`:: Grants read-only access.
 
-The built-in `editor` role grants the following privileges, supporting full read-write access to {fleet} and integrations:
+The built-in `editor` role grants the following privileges, supporting full read-write access to {fleet} and Integrations:
 
 * {Fleet}: `All`
 * Integrations: `All`

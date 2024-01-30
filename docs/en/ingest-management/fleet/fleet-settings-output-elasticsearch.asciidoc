@@ -105,9 +105,9 @@ bulk_max_size: 1600
 worker: 1
 queue.mem.events: 3200
 queue.mem.flush.min_events: 1600
-queue.mem.flush.timeout: 10
+queue.mem.flush.timeout: 10s
 compression_level: 1
-connection_idle_timeout: 3
+connection_idle_timeout: 3s
 ----
 
 . Adjust any settings as preferred. For example, you can update the `compression_level` setting to `4`.

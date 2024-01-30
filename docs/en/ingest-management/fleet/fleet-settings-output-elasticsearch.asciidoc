@@ -89,6 +89,31 @@ output is set in the <<agent-policy,agent policy>>.
 | Choose one of the menu options to tune your {agent} performance when sending data to an {es} output. You can optimize for throughput, scale, latency, or you can choose a balanced (the default) set of performance specifications. Refer to <<es-output-settings-performance-tuning-settings,Performance tuning settings>> for details about the setting values and their potential impact on performance.
 
 You can also use the <<es-output-settings-yaml-config,Advanced YAML configuration>> field to set custom values. Note that if you adjust any of the performance settings described in the following **Advanced YAML configuration** section, the **Performance tuning** option automatically changes to `Custom` and cannot be changed.
+
+Performance tuning preset values take precedence over any settings that may be defined separately. If you want to change any setting, you need to use the `Custom` **Performance tuning** option and specify the settings in the **Advanced YAML configuration** field.
+
+For example, if you would like to use the balanced preset values except that you prefer a higher compression level, you can do so as follows:
+
+. In {fleet}, open the **Settings** tab.
+. In the **Outputs** section, select **Add output** to create a new output, or select the edit icon to edit an existing output.
+. In the **Add new output** or the **Edit output** flyout, set **Performance tuning** to `Custom`.
+. Refer to the list of <<es-output-settings-performance-tuning-settings,performance tuning preset values>>, and add the settings you prefer into the **Advanced YAML configuration** field. For the `balanced` presets, the yaml configuration would be as shown:
++
+[source,yaml]
+----
+bulk_max_size: 1600
+worker: 1
+queue.mem.events: 3200
+flush.min_events: 1600
+flush.timeout: 10
+compression_level: 1
+connection_idle_timeout: 3
+----
+
+. Adjust any settings as preferred. For example, you can update the `compression_level` setting to `4`.
+
+When you create an {agent} policy using this output, the output will use the balanced preset options except with the higher compression level, as specified.
+
 |===
 
 [[es-output-settings-yaml-config]]
@@ -178,13 +203,13 @@ include::../elastic-agent/configuration/outputs/output-shared-settings.asciidoc[
 |20
 |1
 
-|`compression`
+|`compression_level`
 |1
 |1
 |1
 |1
 
-|`idle_timeout`
+|`connection_idle_timeout`
 |3
 |15
 |1
@@ -203,7 +228,7 @@ These presets apply only to agents on version 8.12.0 or later.
 .Performance tuning: EPS data
 [cols="1,1,1,1,1,1,1"]
 |===
-|worker |bulk_max_size |queue.mem_events |flush.min_events |flush.timeout |idle_timeout |Relative EPS
+|worker |bulk_max_size |queue.mem_events |flush.min_events |flush.timeout |connection_idle_timeout |Relative EPS
 
 |1
 |1600

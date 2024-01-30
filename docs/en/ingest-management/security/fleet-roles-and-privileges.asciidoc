@@ -1,7 +1,7 @@
 [[fleet-roles-and-privileges]]
 = Required roles and privileges
 
-Beginning with {stack} version 8.1, you no longer require the built-in `elastic` superuser credentials to use {fleet} and integrations.
+Beginning with {stack} version 8.1, you no longer require the built-in `elastic` superuser credentials to use {fleet} and Integrations.
 
 Assigning the {kib} feature privileges `Fleet` and `Integrations` grants access to these features:
 
@@ -13,18 +13,18 @@ The built-in `editor` role grants the following privileges, supporting full read
 * {Fleet}: `All`
 * Integrations: `All`
 
-The built-in `viewer` role grants the following privileges, supporting read-only access to {fleet} and integrations:
+The built-in `viewer` role grants the following privileges, supporting read-only access to {fleet} and Integrations:
 
 * {Fleet}:: `None`
 * Integrations:: `Read`
 
-You can also create a new role that can be assigned to a user to grant access to {fleet} and integrations.
+You can also create a new role that can be assigned to a user to grant access to {fleet} and Integrations.
 
 [discrete]
 [[fleet-roles-and-privileges-create]]
 == Create a role for {fleet}
 
-To create a new role with full access to use and manage {fleet} and integrations:
+To create a new role with full access to use and manage {fleet} and Integrations:
 
 . In {kib}, go to **Management -> Stack Management**.
 . In the **Security** section, select **Roles**.
@@ -40,6 +40,6 @@ To create a new role with full access to use and manage {fleet} and integrations
 [role="screenshot"]
 image::images/kibana-fleet-privileges.png[Kibana privileges flyout showing Fleet and Integrations set to All]
 
-To create a read-only user for integrations, follow the same steps as above but set the **Fleet** privileges to **None** and the **Integrations** privileges to **Read**.
+To create a read-only user for Integrations, follow the same steps as above but set the **Fleet** privileges to **None** and the **Integrations** privileges to **Read**.
 
 Read-only access to {fleet} is not currently supported but is planned for development in a later release.

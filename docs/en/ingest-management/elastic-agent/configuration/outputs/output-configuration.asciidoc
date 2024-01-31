@@ -34,8 +34,11 @@ A default output configuration is required.
 {agent} currently supports these outputs:
 
 * <<elasticsearch-output>>
+* <<kafka-output>>
 * <<logstash-output>>
 
 include::output-elasticsearch.asciidoc[leveloffset=+1]
+
+include::output-kafka.asciidoc[leveloffset=+1]
 
 include::output-logstash.asciidoc[leveloffset=+1]

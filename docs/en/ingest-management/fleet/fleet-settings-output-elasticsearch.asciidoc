@@ -139,20 +139,19 @@ include::../elastic-agent/configuration/outputs/output-shared-settings.asciidoc[
 
 // =============================================================================
 
-include::../elastic-agent/configuration/outputs/output-shared-settings.asciidoc[tag=events-setting]
-
-// =============================================================================
-
-include::../elastic-agent/configuration/outputs/output-shared-settings.asciidoc[tag=flush.min_events-setting]
-
-// =============================================================================
-
-include::../elastic-agent/configuration/outputs/output-shared-settings.asciidoc[tag=flush.timeout-setting]
-
-// =============================================================================
-
 include::../elastic-agent/configuration/outputs/output-elasticsearch.asciidoc[tag=max_retries-setting]
 
+// =============================================================================
+
+include::../elastic-agent/configuration/outputs/output-shared-settings.asciidoc[tag=queue.mem.events-setting]
+
+// =============================================================================
+
+include::../elastic-agent/configuration/outputs/output-shared-settings.asciidoc[tag=queue.mem.flush.min_events-setting]
+
+// =============================================================================
+
+include::../elastic-agent/configuration/outputs/output-shared-settings.asciidoc[tag=queue.mem.flush.timeout-setting]
 
 // =============================================================================
 
@@ -191,13 +190,13 @@ include::../elastic-agent/configuration/outputs/output-shared-settings.asciidoc[
 |3200
 |4100
 
-|`flush.min_events`
+|`queue.mem.flush.min_events`
 |1600
 |1600
 |1600
 |2050
 
-|`flush.timeout`
+|`queue.mem.flush.timeout`
 |10
 |5
 |20
@@ -216,7 +215,7 @@ include::../elastic-agent/configuration/outputs/output-shared-settings.asciidoc[
 |60
 |===
 
-For descriptions of each setting, refer to <<es-output-settings-yaml-config,Advanced YAML configuration>>. For the  `queue.mem.events`, `flush.min_events` and `flush.timeout` settings, refer to the {filebeat-ref}/configuring-internal-queue.html[internal queue configuration settings] in the {filebeat} documentation.
+For descriptions of each setting, refer to <<es-output-settings-yaml-config,Advanced YAML configuration>>. For the  `queue.mem.events`, `queue.mem.flush.min_events` and `queue.mem.flush.timeout` settings, refer to the {filebeat-ref}/configuring-internal-queue.html[internal queue configuration settings] in the {filebeat} documentation.
 
 `Balanced` represents the new default setting (out of the box behaviour). Relative to `Balanced`, `Optimized for throughput` setting will improve EPS by 4 times, `Optimized for Scale` will perform on par and `Optimized for Latency` will show a 20% degredation in EPS (Events Per Second). These relative performance numbers were calculated from a performance testbed which operates in a controlled setting ingesting a large log file. 
 

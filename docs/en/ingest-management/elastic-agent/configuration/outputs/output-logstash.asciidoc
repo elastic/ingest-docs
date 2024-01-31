@@ -173,16 +173,16 @@ The memory queue waits for the output to acknowledge or drop events. If
 the queue is full, no new events can be inserted into the memory queue. Only
 after the signal from the output will the queue free up space for more events to be accepted.
 
-The memory queue is controlled by the parameters `flush.min_events` and `flush.timeout`. If
-`flush.timeout` is `0s` or `flush.min_events` is `0` or `1` then events can be sent by the output as
+The memory queue is controlled by the parameters `queue.mem.flush.min_events` and `queue.mem.flush.timeout`. If
+`queue.mem.flush.timeout` is `0s` or `queue.mem.flush.min_events` is `0` or `1` then events can be sent by the output as
 soon as they are available. If the output supports a `bulk_max_size` parameter it controls the
 maximum batch size that can be sent.
 
-If `flush.min_events` is greater than `1` and `flush.timeout` is greater than `0s`, events will only
-be sent to the output when the queue contains at least `flush.min_events` events or the
-`flush.timeout` period has expired. In this mode the maximum size batch that that can be sent by the
-output is `flush.min_events`. If the output supports a `bulk_max_size` parameter, values of
-`bulk_max_size` greater than `flush.min_events` have no effect. The value of `flush.min_events`
+If `queue.mem.flush.min_events` is greater than `1` and `queue.mem.flush.timeout` is greater than `0s`, events will only
+be sent to the output when the queue contains at least `queue.mem.flush.min_events` events or the
+`queue.mem.flush.timeout` period has expired. In this mode the maximum size batch that that can be sent by the
+output is `queue.mem.flush.min_events`. If the output supports a `bulk_max_size` parameter, values of
+`bulk_max_size` greater than `queue.mem.flush.min_events` have no effect. The value of `queue.mem.flush.min_events`
 should be evenly divisible by `bulk_max_size` to avoid sending partial batches to the output.
 
 This sample configuration forwards events to the output if 512 events are available or the oldest
@@ -190,25 +190,24 @@ available event has been waiting for 5s in the queue:
 
 [source,yaml]
 ------------------------------------------------------------------------------
-queue.mem:
-  events: 4096
-  flush.min_events: 512
-  flush.timeout: 5s
+  queue.mem.events: 4096
+  queue.mem.flush.min_events: 512
+  queue.mem.flush.timeout: 5s
 ------------------------------------------------------------------------------
 
 [cols="2*<a"]
 |===
 | Setting | Description
 
-include::output-shared-settings.asciidoc[tag=events-setting]
+include::output-shared-settings.asciidoc[tag=queue.mem.events-setting]
 
 // =============================================================================
 
-include::output-shared-settings.asciidoc[tag=flush.min_events-setting]
+include::output-shared-settings.asciidoc[tag=queue.mem.flush.min_events-setting]
 
 // =============================================================================
 
-include::output-shared-settings.asciidoc[tag=flush.timeout-setting]
+include::output-shared-settings.asciidoc[tag=queue.mem.flush.timeout-setting]
 
 // =============================================================================
 

@@ -22,9 +22,12 @@ external infrastructure management solution and
 <<install-standalone-elastic-agent,install {agent} in standalone mode>> instead.
 ****
 
-IMPORTANT: {fleet} currently requires a {kib} user with `All` privileges on
+[IMPORTANT]
+====
+{fleet} currently requires a {kib} user with `All` privileges on
 {fleet} and {integrations}. Since many Integrations assets are shared across
-spaces, users need the {kib} privileges in all spaces.
+spaces, users need the {kib} privileges in all spaces. Refer to <<fleet-roles-and-privileges>> to learn how to create a user role with the required privileges to access {fleet} and {integrations}.
+====
 
 To learn how to add {agent}s to {fleet}, refer to
 <<install-fleet-managed-elastic-agent>>.

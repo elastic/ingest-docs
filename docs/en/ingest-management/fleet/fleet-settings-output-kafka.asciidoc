@@ -511,18 +511,6 @@ output.console:
 
 // =============================================================================
 
-include::../elastic-agent/configuration/outputs/output-shared-settings.asciidoc[tag=events-setting]
-
-// =============================================================================
-
-include::../elastic-agent/configuration/outputs/output-shared-settings.asciidoc[tag=flush.min_events-setting]
-
-// =============================================================================
-
-include::../elastic-agent/configuration/outputs/output-shared-settings.asciidoc[tag=flush.timeout-setting]
-
-// =============================================================================
-
 // tag::keep_alive-setting[]
 |
 [id="{type}-keep_alive-setting"]
@@ -566,6 +554,18 @@ is false.
 
 *`retry.backoff`*:: Waiting time between retries. The default is 250ms.
 // end::metadata-setting[]
+
+// =============================================================================
+
+include::../elastic-agent/configuration/outputs/output-shared-settings.asciidoc[tag=queue.mem.events-setting]
+
+// =============================================================================
+
+include::../elastic-agent/configuration/outputs/output-shared-settings.asciidoc[tag=queue.mem.flush.min_events-setting]
+
+// =============================================================================
+
+include::../elastic-agent/configuration/outputs/output-shared-settings.asciidoc[tag=queue.mem.flush.timeout-setting]
 
 // =============================================================================
 

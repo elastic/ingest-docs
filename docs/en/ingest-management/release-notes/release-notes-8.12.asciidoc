@@ -136,12 +136,8 @@ Refer to the <<data-streams-pipelines,Ingest pipelines>> documentation for detai
 [[bug-fixes-8.12.1]]
 === Bug fixes
 
-{fleet}::
-* TBD
-
 {agent}::
-* TBD
-
+* On Windows, prevent uninstalling from within the directory where {agent} is installed. {agent-pull}4108[#4108] {agent-issue}3342[#3342]
 
 // end 8.12.1 relnotes
 

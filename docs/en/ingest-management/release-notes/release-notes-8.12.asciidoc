@@ -136,6 +136,14 @@ Refer to the <<data-streams-pipelines,Ingest pipelines>> documentation for detai
 [[bug-fixes-8.12.1]]
 === Bug fixes
 
+{fleet}::
+* Fix the display of category label on the Integration overview page. ({kibana-pull}176141[#176141])
+* Fix conflicting dynamic template mappings for intermediate objects. ({kibana-pull}175970[#175970])
+* Fix reserved keys for Elasticsearch output YAML box. ({kibana-pull}175901[#175901])
+* Prevent deletion of agent policies with inactive agents from UI. ({kibana-pull}175815[#175815])
+* Fix incorrect count of agents in bulk actions. ({kibana-pull}175318[#175318])
+* Fix a custom integrations not displaying on the Installed integrations page. ({kibana-pull}174804[#174804])
+
 {agent}::
 * On Windows, prevent uninstalling from within the directory where {agent} is installed. {agent-pull}4108[#4108] {agent-issue}3342[#3342]
 

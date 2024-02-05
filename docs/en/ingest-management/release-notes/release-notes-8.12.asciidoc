@@ -14,12 +14,140 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.12.1>>
 * <<release-notes-8.12.0>>
 
 Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.12.1 relnotes
+
+[[release-notes-8.12.1]]
+== {fleet} and {agent} 8.12.1
+
+Review important information about {fleet-server} and {agent} for the 8.12.1 release.
+
+[discrete]
+[[breaking-changes-8.12.1]]
+=== Breaking changes
+
+Breaking changes can prevent your application from optimal operation and
+performance. Before you upgrade, review the breaking changes, then mitigate the
+impact to your application.
+
+[discrete]
+[[breaking-170270-8.12.1]]
+.Naming collisions with {fleet} custom ingest pipelines
+[%collapsible]
+====
+*Summary* +
+If you were relying on an ingest pipeline of the form `${type}-${integration}@custom` introduced in version 8.12.0 (for example, `traces-apm@custom`, `logs-nginx@custom`, or `metrics-system@custom`) you need to update your pipeline's name to include an `.integration` suffix (for example, `logs-nginx.integration@custom`) to preserve your expected ingestion behavior.
+
+*Details* +
+In version 8.12.0, {fleet} added new custom ingest pipeline names for adding custom processing to integration data streams. These pipeline names used patterns as follows:
+
+* `global@custom`
+* `${type}@custom` (for example `traces@custom`)
+* `${type}-${integration}@custom` (for example `traces-apm@custom`)
+* `${type}-${integration}-${dataset}@custom` pre-existing (for example `traces-apm.rum@custom`)
+
+However, it was discovered in {kibana-issue}175254[#175254] that the `${type-integration}@custom` pattern can collide in cases where the `integration` name is _also_ a dataset name. The clearest case of these collisions was in the APM integration's data streams, for example:
+
+* `traces-apm`
+* `traces-apm.rum`
+* `traces-apm.sampled`
+
+Because `traces-apm` is a legitimate data stream defined by the APM integration (see the relevant https://github.com/elastic/integrations/blob/main/packages/apm/data_stream/traces/manifest.yml[manifest.yml] file), it incurred a collision of these custom pipeline names on version 8.12.0. For example:
+
+[source,json]
+----
+// traces-apm
+{
+  "pipeline": {
+    "name": "traces-apm@custom", // <---
+    "ignore_missing_pipeline": true
+  }
+}
+----
+
+[source,json]
+----
+// traces-apm.rum
+{
+  "pipeline": {
+    "name": "traces-apm@custom", // <---
+    "ignore_missing_pipeline": true
+  }
+},
+{
+  "pipeline": {
+    "name": "traces-apm.rum@custom",
+    "ignore_missing_pipeline": true
+  }
+}
+----
+
+Prior to version 8.12.0, the `traces-apm@custom` custom pipeline name was already supported. So, if you had already defined and were using the supported `traces-apm@custom` pipeline, and then upgraded to 8.12.0, you would observe that documents ingested to `traces-apm.rum` and `traces-apm.sampled` would also be processed by your pre-existing `traces-apm@custom` ingest pipeline. This could cause breakages and unexpected pipeline processing errors.
+
+To correct this in version 8.12.1, {fleet} now appends a suffix to the "integration level" custom ingest pipeline name. The new suffix prevents collisions between datasets and integration names moving forward. For example:
+
+[source,json]
+----
+// traces-apm
+{
+  "pipeline": {
+    "name": "traces-apm.integration@custom", // <--- Integration level pipeline
+    "ignore_missing_pipeline": true
+  }
+},
+{
+  "pipeline": {
+    "name": "traces-apm@custom", // <--- Dataset level pipeline
+    "ignore_missing_pipeline": true
+  }
+}
+----
+
+[source,json]
+----
+// traces-apm.rum
+{
+  "pipeline": {
+    "name": "traces-apm.integration@custom", // <--- Integration level pipeline
+    "ignore_missing_pipeline": true
+  }
+},
+{
+  "pipeline": {
+    "name": "traces-apm.rum@custom", // <--- Dataset level pipeline
+    "ignore_missing_pipeline": true
+  }
+}
+----
+
+So, if you are relying on an integration level custom ingest pipeline introduced in version 8.12.0, you need to update its name to include the new `.integration` suffix to preserve your existing ingestion behavior.
+
+Refer to the <<data-streams-pipelines,Ingest pipelines>> documentation for details and examples.
+====
+
+[discrete]
+[[bug-fixes-8.12.1]]
+=== Bug fixes
+
+{fleet}::
+* Fix the display of category label on the Integration overview page. ({kibana-pull}176141[#176141])
+* Fix conflicting dynamic template mappings for intermediate objects. ({kibana-pull}175970[#175970])
+* Fix reserved keys for Elasticsearch output YAML box. ({kibana-pull}175901[#175901])
+* Prevent deletion of agent policies with inactive agents from UI. ({kibana-pull}175815[#175815])
+* Fix incorrect count of agents in bulk actions. ({kibana-pull}175318[#175318])
+* Fix a custom integrations not displaying on the Installed integrations page. ({kibana-pull}174804[#174804])
+
+{agent}::
+* On Windows, prevent uninstalling from within the directory where {agent} is installed. {agent-pull}4108[#4108] {agent-issue}3342[#3342]
+
+// end 8.12.1 relnotes
 
 // begin 8.12.0 relnotes
 

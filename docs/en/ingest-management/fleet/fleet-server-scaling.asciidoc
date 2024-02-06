@@ -76,6 +76,12 @@ this setting may improve performance.
 `policy_throttle`:::
 How often a new policy is rolled out to the agents.
 
+`action_limit.interval`:::
+How quickly {fleet-server} dispatches pending actions to the agents.
+
+`action_limit.burst`:::
+Burst of actions that may be dispatched before falling back to the rate limit defined by `interval`.
+
 `checkin_limit.max`:::
 Maximum number of agents that can call the checkin API concurrently.
 

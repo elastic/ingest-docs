@@ -76,6 +76,8 @@ this setting may improve performance.
 `policy_throttle`:::
 How often a new policy is rolled out to the agents.
 
+Deprecated: Use the `action_limit` settings instead.
+
 `action_limit.interval`:::
 How quickly {fleet-server} dispatches pending actions to the agents.
 

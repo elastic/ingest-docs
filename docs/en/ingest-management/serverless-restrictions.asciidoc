@@ -14,11 +14,10 @@ If you are using {agent} with link:{serverless-docs}[{serverless-full}], note th
 * The number of {agents} that may be connected to an {serverless-full} project is limited to 10 thousand.
 * The minimum supported version of {agent} supported for use with {serverless-full} is 8.11.0.
 
-[discrete]
 [[outputs-serverless-restrictions]]
-== Outputs
+**Outputs**
 
-On {serverless-short}, you can configure new {es} outputs to use a proxy, with the restriction that the output URL is fixed. Any new {es} outputs must use the default {es} host URL.
+* On {serverless-short}, you can configure new {es} outputs to use a proxy, with the restriction that the output URL is fixed. Any new {es} outputs must use the default {es} host URL.
 
 [discrete]
 [[fleet-server-serverless-restrictions]]

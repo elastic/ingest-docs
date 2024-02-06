@@ -223,14 +223,14 @@ PUT _ingest/pipeline/logs@custom
 }
 ----
 
-`${type}-${package}`::
+`${type}-${package}.integration`::
 Apply processing to all events of a given type in an integration
 +
-For example, the following request creates a `logs-nginx@custom` pipeline that adds a new field `my-nginx-field` for all log events in the Nginx integration:
+For example, the following request creates a `logs-nginx.integration@custom` pipeline that adds a new field `my-nginx-field` for all log events in the Nginx integration:
 +
 [source,console]
 ----
-PUT _ingest/pipeline/logs-nginx@custom
+PUT _ingest/pipeline/logs-nginx.integration@custom
 {
   "processors": [
     {
@@ -243,6 +243,9 @@ PUT _ingest/pipeline/logs-nginx@custom
   ]
 }
 ----
++
+Note that `.integration` is included in the pipeline pattern to avoid possible collision with existing dataset pipelines.
+
 
 `${type}-${dataset}`::
 Apply processing to a specific dataset.

@@ -88,6 +88,22 @@ configuration.
 * <<docker-provider,Docker Provider>>
 * <<kubernetes-provider,Kubernetes Provider>>
 
+[discrete]
+[[disable-providers-by-default]]
+=== Disabling Providers By Default
+
+All registered providers are enabled by default.
+
+Disable all providers by default and only enable explicitly configured providers by setting `agent.providers.initial_default: false`.
+
+[source,yaml]
+----
+agent.providers.initial_default: false
+providers:
+  docker:
+    enabled: true
+----
+
 include::local-provider.asciidoc[leveloffset=+1]
 
 include::agent-provider.asciidoc[leveloffset=+1]

@@ -116,8 +116,10 @@ policies.
 [[create-integration-policy-api]]
 == Create integration policy
 
-To create a integration policy (also known as an package policy) and add it to an 
+To create an integration policy (also known as a package policy) and add it to an 
 existing agent policy, call `POST /api/fleet/package_policies`.
+
+TIP: You can use the {fleet} API to {security-guide}/create-defend-policy-api.html[Create and customize an {elastic-defend} policy].
 
 This cURL example creates an integration policy for Nginx and adds it to the
 agent policy created in the previous example:

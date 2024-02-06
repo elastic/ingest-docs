@@ -14,9 +14,19 @@ If you are using {agent} with link:{serverless-docs}[{serverless-full}], note th
 * The number of {agents} that may be connected to an {serverless-full} project is limited to 10 thousand.
 * The minimum supported version of {agent} supported for use with {serverless-full} is 8.11.0.
 
+[[outputs-serverless-restrictions]]
+**Outputs**
+
+* On {serverless-short}, you can configure new {es} outputs to use a proxy, with the restriction that the output URL is fixed. Any new {es} outputs must use the default {es} host URL.
+
 [discrete]
 [[fleet-server-serverless-restrictions]]
 == {fleet-server}
 
-On-premises {fleet-server} is not currently available for use in a {serverless-short} environment.
+Note the following restrictions with using {fleet-server} on {serverless-short}:
+
+* On-premises {fleet-server} is not currently available for use in a {serverless-short} environment.
 We recommend using the hosted {fleet-server} that is included and configured automatically in {serverless-short} {observability} and Security projects.
+
+* On {serverless-short}, you can configure {fleet-server} to use a proxy, with the restriction that the {fleet-server} host URL is fixed. Any new {fleet-server} hosts must use the default {fleet-server} host URL. 
+

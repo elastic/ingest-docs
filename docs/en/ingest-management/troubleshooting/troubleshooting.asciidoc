@@ -22,6 +22,43 @@ Have a question? Read our <<fleet-faq,FAQ>>, or contact us in the
 
 Running {agent} standalone? Also refer to <<debug-standalone-agents>>.
 
+
+[discrete]
+[[troubleshooting-contents]]
+== Troubleshooting contents 
+
+Find troubleshooting information for {fleet}, {fleet-server}, and {agent} in the following documentation:
+
+* <<tsdb-illegal-argument>>
+* <<agents-in-cloud-stuck-at-updating>>
+* <<fleet-server-not-in-kibana-cloud>>
+* <<fleet-setup-fails>>
+* <<fleet-errors-tls>>
+* <<fleet-app-crashes>>
+* <<agent-enrollment-certs>>
+* <<es-enrollment-certs>>
+* <<agent-enrollment-timeout>>
+* <<general-fleet-server-triage>>
+* <<trb-retrieve-agent-version>>
+* <<trb-check-agent-status>>
+* <<trb-collect-agent-diagnostics>>
+* <<not-installing-no-logs-in-terminal>>
+* <<agent-healthy-but-no-data-in-es>>
+* <<fleet-agent-stuck-on-updating>>
+* <<secondary-agent-not-connecting>>
+* <<es-apikey-failed>>
+* <<process-not-root>>
+* <<upgrading-integration-too-many-conflicts>>
+* <<agent-hangs-while-unenrolling>>
+* <<ca-cert-testing>>
+* <<endpoint-not-uninstalled-with-agent>>
+* <<endpoint-unauthorized>>
+* <<hosted-agent-offline>>
+* <<hosted-agent-8-x-upgrade-fail>>
+* <<pgp-key-download-fail>>
+* <<fleet-server-integration-removed>>
+* <<agent-oom-k8s>>
+
 [discrete]
 [[tsdb-illegal-argument]]
 == illegal_argument_exception when TSDB is enabled
@@ -264,6 +301,7 @@ to {kib} in prior releases. However, because {fleet-server} is on the edge host,
 result in additional networking setup and troubleshooting.
 
 [discrete]
+[[trb-retrieve-agent-version]]
 === Retrieve the {agent} version
 
 . If you installed the {agent}, run the following command (the example is for POSIX
@@ -286,6 +324,7 @@ how you call them. If needed, please refer to <<elastic-agent-installation>>
 for examples of how to adjust them.
 
 [discrete]
+[[trb-check-agent-status]]
 === Check the {agent} status
 
 Run the following command to view the current status of the {agent}.
@@ -312,6 +351,7 @@ IMPORTANT: The *{ecloud} agent policy* is created only in {ecloud} deployments a
 does not include the collection of logs of metrics.
 
 [discrete]
+[[trb-collect-agent-diagnostics]]
 === Collect {agent} diagnostics bundle
 
 The {agent} diagnostics bundle collects the following information:

@@ -65,7 +65,7 @@ Find troubleshooting information for {fleet}, {fleet-server}, and {agent} in the
 
 [discrete]
 [[deleted-policy-unenroll]]
-== {agent} can't be unenrolled
+== {agent} unenroll fails
 
 In {fleet}, if you delete an {agent} policy that is associated with one or more inactive enrolled agents, when the agent returns back to a `Healthy` or `Offline` state, it cannot be unenrolled. Attempting to unenroll the agent results in an `Error unenrolling agent` message, and the unenrollment fails. 
 

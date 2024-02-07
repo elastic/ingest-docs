@@ -22,10 +22,15 @@ and select an integration. You can select a category to narrow your search.
 
 . Click **Install <integration> assets** to set up the {kib} and {es} assets.
 
-There are a couple of things to note about installing integration assets:
+Note that it's currently not possible to have multiple versions of the same integration installed. When you upgrade an integration, the previous version assets are removed and replaced by the current version.
 
-* {agent} integration assets can be installed only on a single {kib} {kibana-ref}/xpack-spaces.html[space]. If you want to access assets in a different space, you can {kibana-ref}/managing-saved-objects.html#managing-saved-objects-copy-to-space[copy them]. We recommend reviewing the specific integration documentation for any space-related considerations.
-* It's currently not possible to have multiple versions of the same integration installed. When you upgrade an integration, the previous version assets are removed and replaced by the current version.
+[IMPORTANT]
+.Current limitations with integrations and {kib} spaces
+====
+{agent} integration assets can be installed only on a single {kib} {kibana-ref}/xpack-spaces.html[space]. If you want to access assets in a different space, you can {kibana-ref}/managing-saved-objects.html#managing-saved-objects-copy-to-space[copy them]. However, many integrations include markdown panels with dynamically generated links to other dashboards. When assets are copied between spaces, these links may not behave as expected and can result in a 404 `Dashboard not found` error. Refer to known issue {kibana-issue}175072[#175072] for details.
+
+These limitations and future plans for {fleet}'s integrations support in multi-space environments are currently being discussed in {kibana-issue}175831[#175831]. Feedback is very welcome. For now, we recommend reviewing the specific integration documentation for any space-related considerations.
+====
 
 [discrete]
 [[uninstall-integration-assets]]

@@ -531,8 +531,11 @@ include::output-shared-settings.asciidoc[tag=queue.mem.flush.timeout-setting]
 [[output-elasticsearch-performance-tuning-settings]]
 == Performance tuning settings
 
-Settings that may affect performance.
+Settings that may affect performance when sending data through the {es} output.
 
+Use the `preset` option to automatically configure the group of performance tuning settings to optimize for `throughput`, `scale`, `latency`, or you can select a `balanced` set of performance specifications. 
+
+The performance tuning `preset` values take precedence over any settings that may be defined separately. If you want to change any setting, set `preset` to `custom` and specify the performance tuning settings individually.
 
 [cols="2*<a"]
 |===
@@ -610,6 +613,37 @@ Set `max_retries` to a value less than 0 to retry until all events are published
 
 *Default:* `3`
 // end::max_retries-setting[]
+
+// =============================================================================
+
+// tag::preset-setting[]
+|
+[id="{type}-preset-setting"]
+`preset`
+
+| Configures the full group of <<output-elasticsearch-performance-tuning-settings,performance tuning settings>> to optimize your {agent} performance when sending data to an {es} output.
+
+Refer to <<es-output-settings-performance-tuning-settings>> for a table showing the group of values associated with any preset, and another table showing EPS (events per second) results from testing the different preset options.
+
+Performance tuning preset settings:
+
+*`balanced`*::
+Configure the default tuning setting values for "out-of-the-box" performance.
+
+*`throughput`*::
+Optimize the {es} output for throughput.
+
+*`scale`*::
+Optimize the {es} output for scale.
+
+*`latency`*::
+Optimize the {es} output to reduce latence.
+
+*`custom`*::
+Use the `custom` option to fine-tune the performance tuning settings individually.
+
+*Default:* `balanced`
+// end::preset-setting[]
 
 // =============================================================================
 

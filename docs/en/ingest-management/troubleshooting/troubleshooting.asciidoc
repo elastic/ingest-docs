@@ -29,6 +29,7 @@ Running {agent} standalone? Also refer to <<debug-standalone-agents>>.
 
 Find troubleshooting information for {fleet}, {fleet-server}, and {agent} in the following documentation:
 
+* <<deleted-policy-unenroll>>
 * <<tsdb-illegal-argument>>
 * <<agents-in-cloud-stuck-at-updating>>
 * <<fleet-server-not-in-kibana-cloud>>
@@ -58,6 +59,41 @@ Find troubleshooting information for {fleet}, {fleet-server}, and {agent} in the
 * <<pgp-key-download-fail>>
 * <<fleet-server-integration-removed>>
 * <<agent-oom-k8s>>
+
+
+
+
+[discrete]
+[[deleted-policy-unenroll]]
+== {agent} unenroll fails
+
+In {fleet}, if you delete an {agent} policy that is associated with one or more inactive enrolled agents, when the agent returns back to a `Healthy` or `Offline` state, it cannot be unenrolled. Attempting to unenroll the agent results in an `Error unenrolling agent` message, and the unenrollment fails. 
+
+To resolve this problem, you can use the <<fleet-api-docs,{kib} {fleet} APIs>> to force unenroll the agent.
+
+To uninstall a single {agent}:
+
+[source,"shell"]
+----
+POST kbn:/api/fleet/agents/<agent_id>/unenroll
+{
+  "force": true,
+  "revoke": true
+}
+----
+
+To bulk uninstall a set of {agents}:
+
+[source,"shell"]
+----
+POST kbn:/api/fleet/agents/bulk_unenroll
+{ "agents": ["<agent_id1>", "<agent-id2>"],
+  "force": true,
+  "revoke": true
+}
+----
+
+We are also updating the {fleet} UI to prevent removal of an {agent} policy that is currently associated with any inactive agents.
 
 [discrete]
 [[tsdb-illegal-argument]]

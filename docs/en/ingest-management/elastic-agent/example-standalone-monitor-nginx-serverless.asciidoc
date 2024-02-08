@@ -269,7 +269,7 @@ image::images/guide-system-metrics-dashboard.png["The System metrics host overvi
 
 Now let's view your nginx logging data.
 
-. Open the {kib} menu and go to **Management -> Integrations -> Installed integrations**.
+. Open the {kib} menu and go to **Project settings -> Integrations -> Installed integrations**.
 . Select the **Nginx** card and open the **Assets** tab.
 . Select `[Logs Nginx] Overview`. The {kib} Dashboard opens with geographical log details, response codes and errors over time, top pages, and more.
 +
@@ -278,7 +278,7 @@ image::images/guide-nginx-logs-dashboard.png["The nginx logs dashboard shows var
 +
 image::images/guide-nginx-browser-breakdown.png["Kibana Dashboard shows agent metrics are flowing into Elasticsearch."]
 
-You have now successfully set up monitoring for nginx logs using standalone {agent} and an {ecloud} deployment.
+Congratulations! You have successfully set up monitoring for nginx logs using standalone {agent} and an {serverless-full} project.
 
 [discrete]
 === What's next?

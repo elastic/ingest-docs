@@ -87,7 +87,7 @@ To bulk uninstall a set of {agents}:
 [source,"shell"]
 ----
 POST kbn:/api/fleet/agents/bulk_unenroll
-{ "agents": ["<agent_id1>", "<agent-id2>],
+{ "agents": ["<agent_id1>", "<agent-id2>"],
   "force": true,
   "revoke": true
 }

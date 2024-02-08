@@ -278,7 +278,7 @@ image::images/guide-nginx-logs-dashboard.png["The nginx logs dashboard shows var
 +
 image::images/guide-nginx-browser-breakdown.png["Kibana Dashboard shows agent metrics are flowing into Elasticsearch."]
 
-Congratulations! You have successfully set up monitoring for nginx logs using standalone {agent} and an {serverless-full} project.
+Congratulations! You have successfully set up monitoring for nginx using standalone {agent} and an {serverless-full} project.
 
 [discrete]
 === What's next?

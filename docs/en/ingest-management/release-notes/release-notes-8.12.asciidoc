@@ -133,6 +133,50 @@ Refer to the <<data-streams-pipelines,Ingest pipelines>> documentation for detai
 ====
 
 [discrete]
+[[known-issues-8.12.1]]
+=== Known issues
+
+[[known-issue-3263-8121]]
+.Agents upgraded to 8.12.0 are stuck in a non-upgradeable state
+[%collapsible]
+====
+
+*Details*
+
+An issue discovered in {fleet-server} prevents {agents} that have been upgraded to version 8.12.0 from being upgraded again, using the {fleet} UI, to version 8.12.1 or higher.
+
+*Impact* +
+
+As a workaround, we recommend you to use the {kib} {fleet} API to upgrade these agents using the `force` flag.
+
+To upgrade a single {agent}:
+
+[source,"shell"]
+----
+POST kbn:/api/fleet/agents/<agent_id>/upgrade
+{
+  "version": "8.12.1",
+  "force": true
+}
+----
+
+To bulk upgrade a set of {agents}:
+
+[source,"shell"]
+----
+POST kbn:/api/fleet/agents/bulk_upgrade
+  {
+    "agents": "agent.version:8.12.0",
+    "version": "8.12.1",
+    "force": true
+  }
+----
+
+This issue is planned to be fixed in versions 8.12.2 and 8.13.0.
+
+====
+
+[discrete]
 [[bug-fixes-8.12.1]]
 === Bug fixes
 
@@ -403,6 +447,73 @@ Currently there is no workaround for the issue but a fix is planned to be includ
 
 Note that according to our <<agent-policy-scaling-recommendations,policy scaling recommendations>>, the current recommended maximum number of {agent} policies supported by {fleet} is 500.
 
+====
+
+[[known-issue-3263-8120]]
+.Agents upgraded to 8.12.0 are stuck in a non-upgradeable state
+[%collapsible]
+====
+
+*Details*
+
+An issue discovered in {fleet-server} prevents {agents} that have been upgraded to version 8.12.0 from being upgraded again, using the {fleet} UI, to version 8.12.1 or higher.
+
+This issue is planned to be fixed in versions 8.12.2 and 8.13.0.
+
+*Impact* +
+
+As a workaround, we recommend you to use the {kib} {fleet} API to update any documents in which `upgrade_details` is either `null` or not defined. Note that these steps must be run as a superuser.
+
+[source,"shell"]
+----
+ POST _security/role/fleet_superuser
+ {
+    "indices": [
+        {
+            "names": [".fleet*",".kibana*"],
+            "privileges": ["all"],
+            "allow_restricted_indices": true
+        }
+    ]
+  }
+----
+
+[source,"shell"]
+----
+POST _security/user/fleet_superuser 
+ {
+    "password": "password",
+    "roles": ["superuser", "fleet_superuser"]
+ }
+----
+
+[source,"shell"]
+----
+curl -sk -XPOST --user fleet_superuser:password -H 'content-type:application/json' \
+  -H'x-elastic-product-origin:fleet' \
+  http://localhost:9200/.fleet-agents/_update_by_query \
+  -d '{
+  "script": {
+    "source": "ctx._source.remove(\"upgrade_details\")",
+    "lang": "painless"
+  },
+  "query": {
+    "bool": {
+        "must_not": {
+          "exists": {
+            "field": "upgrade_details"
+          }
+        }
+      }
+    }
+}'
+----
+
+[source,"shell"]
+----
+DELETE _security/user/fleet_superuser
+DELETE _security/role/fleet_superuser
+----
 ====
 
 [discrete]

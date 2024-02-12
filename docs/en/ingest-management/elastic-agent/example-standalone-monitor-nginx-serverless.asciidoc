@@ -81,7 +81,7 @@ image::images/guide-sign-up-trial.png["Start your free Elastic Cloud trial",widt
 
 . Leave the other default options and select *Create API key*.
 
-. In the *Create API key* confirmation dialog, select change the dropdown menu from `Encoded` to `Beats`. This sets the API key format for communication between {agent} (which is based on {beats}) and {es}. 
+. In the *Create API key* confirmation dialog, change the dropdown menu setting from `Encoded` to `Beats`. This sets the API key format for communication between {agent} (which is based on {beats}) and {es}. 
 
 . Copy the generated API key and store it in a safe place. You'll use it in a later step.
 

@@ -7,6 +7,7 @@ Following these steps, you'll deploy the {stack}, install a standalone {agent} o
 
 . <<nginx-guide-install-nginx,Install nginx>>.
 . <<nginx-guide-sign-up,Create an {ecloud} deployment>>.
+. <<nginx-guide-create-api-key>>.
 . <<nginx-guide-create-policy,Create an {agent} policy>>.
 . <<nginx-guide-add-integration,Add the Nginx Integration>>.
 . <<nginx-guide-configure-standalone-agent,Configure standalone {agent}>>.
@@ -65,8 +66,24 @@ image::images/guide-sign-up-trial.png["Start your free Elastic Cloud trial",widt
 . Once the deployment is ready, select *Continue*. At this point, you access {kib} and a selection of setup guides.
 
 [discrete]
+[[nginx-guide-create-api-key]]
+=== Step 3: Create an {ecloud} API key
+
+. From the {kib} menu and go to *Stack Management* -> *API keys*.
+
+. Select *Create API key*.
+
+. Give the key a name, for example `nginx example API key`.
+
+. Leave the other default options and select *Create API key*.
+
+. In the *Create API key* confirmation dialog, change the dropdown menu setting from `Encoded` to `Beats`. This sets the API key format for communication between {agent} (which is based on {beats}) and {es}. 
+
+. Copy the generated API key and store it in a safe place. You'll use it in a later step.
+
+[discrete]
 [[nginx-guide-create-policy]]
-=== Step 3: Create an {agent} policy
+=== Step 4: Create an {agent} policy
 
 {agent} is a single, unified way to add monitoring for logs, metrics, and other types of data to a host. It can also protect hosts from security threats, query data from operating systems, and more. A single agent makes it easy and fast to deploy monitoring across your infrastructure. Each agent has a single policy (a collection of input settings) that you can update to add integrations for new data sources, security protections, and more.
 
@@ -82,7 +99,7 @@ image::images/guide-create-agent-policy.png["Create agent policy UI"]
 
 [discrete]
 [[nginx-guide-add-integration]]
-=== Step 4: Add the Nginx Integration
+=== Step 5: Add the Nginx Integration
 
 Elastic integrations are a streamlined way to connect your data from popular services and platforms to the {stack}, including nginx.
 
@@ -108,7 +125,7 @@ image::images/guide-nginx-integration-added.png["Nginx Integration added confirm
 
 [discrete]
 [[nginx-guide-configure-standalone-agent]]
-=== Step 5: Configure standalone {agent}
+=== Step 6: Configure standalone {agent}
 
 Rather than opt for {fleet} to centrally manage {agent}, you'll configure an agent to run in standalone mode, so it will be managed by hand.
 
@@ -147,8 +164,23 @@ elastic-agent status
 +
 Since you're running the agent in standalone mode the `Not enrolled into Fleet` message is expected.
 . Open the `elastic-agent.yml` policy file that you saved.
-. Near the top of the file, replace `${ES_USERNAME}` with the username for the {ecloud} deployment that you created in <<nginx-guide-sign-up,Step 2>>. The default is `elastic`.
-. Similarly, replace `${ES_PASSWORD}` with your superuser password.
+. Near the top of the file, replace: 
++
+[source,yaml]
+----
+    username: '${ES_USERNAME}'
+    password: '${ES_PASSWORD}'
+----
++
+with:
++
+[source,yaml]
+----
+    api_key: '<your-api-key>'
+----
++
+where `your-api-key` is the API key that you generated in <<nginx-guide-create-api-key>>.
+
 . Find the location of the default `elastic-agent.yml` policy file that is included in your {agent} install. Install directories for each platform are described in <<installation-layout,Installation layout>>. In our example Ubuntu image the default policy file can be found in `/etc/elastic-agent/elastic-agent.yml`.
 . Replace the default policy file with the version that you downloaded and updated. For example:
 +
@@ -187,7 +219,7 @@ message: Running
 
 [discrete]
 [[nginx-guide-confirm-agent-data]]
-=== Step 6: Confirm that your {agent} data is flowing
+=== Step 7: Confirm that your {agent} data is flowing
 
 Now that {agent} is running, it's time to confirm that the agent data is flowing into {es}.
 
@@ -208,7 +240,7 @@ image::images/guide-agent-metrics-flowing.png["Kibana Dashboard shows agent metr
 
 [discrete]
 [[nginx-guide-view-system-data]]
-=== Step 7: View your system data
+=== Step 8: View your system data
 
 In the step to <<nginx-guide-create-policy,create an {agent} policy>> you chose to collect system logs and metrics, so you can access those now.
 
@@ -228,7 +260,7 @@ image::images/guide-system-metrics-dashboard.png["The System metrics host overvi
 
 [discrete]
 [[nginx-guide-view-nginx-data]]
-=== Step 8: View your nginx logging data
+=== Step 9: View your nginx logging data
 
 Now let's view your nginx logging data.
 

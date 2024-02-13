@@ -177,7 +177,9 @@ include::elastic-agent/configuration/examples/config-file-examples.asciidoc[leve
 
 include::elastic-agent/grant-access-to-elasticsearch.asciidoc[leveloffset=+2]
 
-include::elastic-agent/example-standalone-monitor-nginx.asciidoc[leveloffset=+2]
+include::elastic-agent/example-standalone-monitor-nginx-serverless.asciidoc[leveloffset=+2]
+
+include::elastic-agent/example-standalone-monitor-nginx-ess.asciidoc[leveloffset=+2]
 
 include::elastic-agent/debug-standalone-elastic-agent.asciidoc[leveloffset=+2]
 

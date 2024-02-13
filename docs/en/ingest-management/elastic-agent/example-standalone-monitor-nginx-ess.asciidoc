@@ -1,22 +1,22 @@
 [[example-standalone-monitor-nginx]]
-= Example: Use standalone {agent} to monitor nginx ({ess} version))
+= Example: Use standalone {agent} with {ess} to monitor nginx
 
 This guide walks you through a simple monitoring scenario so you can learn the basics of setting up standalone {agent}, using it to work with {ess} and an Elastic integration. 
 
 Following these steps, you'll deploy the {stack}, install a standalone {agent} on a host to monitor an nginx web server instance, and access visualizations based on the collected logs.
 
-. <<nginx-guide-install-nginx,Install nginx>>.
-. <<nginx-guide-sign-up,Create an {ecloud} deployment>>.
-. <<nginx-guide-create-api-key>>.
-. <<nginx-guide-create-policy,Create an {agent} policy>>.
-. <<nginx-guide-add-integration,Add the Nginx Integration>>.
-. <<nginx-guide-configure-standalone-agent,Configure standalone {agent}>>.
-. <<nginx-guide-confirm-agent-data,Confirm that your {agent} data is flowing>>.
-. <<nginx-guide-view-system-data,View your system data>>.
-. <<nginx-guide-view-nginx-data,View your nginx logging data>>.
+. <<nginx-guide-install-nginx-ess,Install nginx>>.
+. <<nginx-guide-sign-up-ess,Create an {ecloud} deployment>>.
+. <<nginx-guide-create-api-key-ess,Create an {ecloud} API key.>>
+. <<nginx-guide-create-policy-ess,Create an {agent} policy>>.
+. <<nginx-guide-add-integration-ess,Add the Nginx Integration>>.
+. <<nginx-guide-configure-standalone-agent-ess,Configure standalone {agent}>>.
+. <<nginx-guide-confirm-agent-data-ess,Confirm that your {agent} data is flowing>>.
+. <<nginx-guide-view-system-data-ess,View your system data>>.
+. <<nginx-guide-view-nginx-data-ess,View your nginx logging data>>.
 
 [discrete]
-[[nginx-guide-prereqs]]
+[[nginx-guide-prereqs-ess]]
 === Prerequisites
 
 To get started, you need:
@@ -25,7 +25,7 @@ To get started, you need:
 . A Linux host machine on which you'll install an nginx web server. The commands in this guide use an Ubuntu image but any Linux distribution should be fine.
 
 [discrete]
-[[nginx-guide-install-nginx]]
+[[nginx-guide-install-nginx-ess]]
 === Step 1: Install nginx
 
 To start, we'll set up a basic link:https://docs.nginx.com/nginx/admin-guide/web-server/[nginx web server].
@@ -43,12 +43,12 @@ sudo apt install nginx
 image::images/guide-nginx-welcome.png["Browser window showing Welcome to nginx!"]
 
 [discrete]
-[[nginx-guide-sign-up]]
+[[nginx-guide-sign-up-ess]]
 === Step 2: Create an {ecloud} deployment
 
 NOTE: If you've already signed up for a trial deployment you can skip this step.
 
-Now that your web server is running, let's get set up to monitor it in {ecloud}. An {ecloud} deployment offers you all of the features of the {stack} as a hosted service. To test drive your first deployment, sign up for a free {ecloud} trial:
+Now that your web server is running, let's get set up to monitor it in {ecloud}. An {ecloud} {ess} deployment offers you all of the features of the {stack} as a hosted service. To test drive your first deployment, sign up for a free {ecloud} trial:
 
 . Go to our link:https://cloud.elastic.co/registration?elektra=guide-welcome-cta[{ecloud} Trial] page.
 
@@ -66,7 +66,7 @@ image::images/guide-sign-up-trial.png["Start your free Elastic Cloud trial",widt
 . Once the deployment is ready, select *Continue*. At this point, you access {kib} and a selection of setup guides.
 
 [discrete]
-[[nginx-guide-create-api-key]]
+[[nginx-guide-create-api-key-ess]]
 === Step 3: Create an {ecloud} API key
 
 . From the {kib} menu and go to *Stack Management* -> *API keys*.
@@ -82,7 +82,7 @@ image::images/guide-sign-up-trial.png["Start your free Elastic Cloud trial",widt
 . Copy the generated API key and store it in a safe place. You'll use it in a later step.
 
 [discrete]
-[[nginx-guide-create-policy]]
+[[nginx-guide-create-policy-ess]]
 === Step 4: Create an {agent} policy
 
 {agent} is a single, unified way to add monitoring for logs, metrics, and other types of data to a host. It can also protect hosts from security threats, query data from operating systems, and more. A single agent makes it easy and fast to deploy monitoring across your infrastructure. Each agent has a single policy (a collection of input settings) that you can update to add integrations for new data sources, security protections, and more.
@@ -98,7 +98,7 @@ image::images/guide-agent-policies.png["Agent policies tab in Fleet"]
 image::images/guide-create-agent-policy.png["Create agent policy UI"]
 
 [discrete]
-[[nginx-guide-add-integration]]
+[[nginx-guide-add-integration-ess]]
 === Step 5: Add the Nginx Integration
 
 Elastic integrations are a streamlined way to connect your data from popular services and platforms to the {stack}, including nginx.
@@ -124,7 +124,7 @@ image::images/guide-add-nginx-integration.png["Add Nginx Integration UI"]
 image::images/guide-nginx-integration-added.png["Nginx Integration added confirmation UI with Add {agent} later selected."]
 
 [discrete]
-[[nginx-guide-configure-standalone-agent]]
+[[nginx-guide-configure-standalone-agent-ess]]
 === Step 6: Configure standalone {agent}
 
 Rather than opt for {fleet} to centrally manage {agent}, you'll configure an agent to run in standalone mode, so it will be managed by hand.
@@ -179,7 +179,7 @@ with:
     api_key: '<your-api-key>'
 ----
 +
-where `your-api-key` is the API key that you generated in <<nginx-guide-create-api-key>>.
+where `your-api-key` is the API key that you generated in <<nginx-guide-create-api-key-ess>>.
 
 . Find the location of the default `elastic-agent.yml` policy file that is included in your {agent} install. Install directories for each platform are described in <<installation-layout,Installation layout>>. In our example Ubuntu image the default policy file can be found in `/etc/elastic-agent/elastic-agent.yml`.
 . Replace the default policy file with the version that you downloaded and updated. For example:
@@ -218,7 +218,7 @@ message: Running
 ----
 
 [discrete]
-[[nginx-guide-confirm-agent-data]]
+[[nginx-guide-confirm-agent-data-ess]]
 === Step 7: Confirm that your {agent} data is flowing
 
 Now that {agent} is running, it's time to confirm that the agent data is flowing into {es}.
@@ -239,10 +239,10 @@ like the agent logs, the agent metrics should be flowing into {es} and visible i
 image::images/guide-agent-metrics-flowing.png["Kibana Dashboard shows agent metrics are flowing into Elasticsearch."]
 
 [discrete]
-[[nginx-guide-view-system-data]]
+[[nginx-guide-view-system-data-ess]]
 === Step 8: View your system data
 
-In the step to <<nginx-guide-create-policy,create an {agent} policy>> you chose to collect system logs and metrics, so you can access those now.
+In the step to <<nginx-guide-create-policy-ess,create an {agent} policy>> you chose to collect system logs and metrics, so you can access those now.
 
 . View your system logs.
 .. Open the {kib} menu and go to **Management -> Integrations -> Installed integrations**.
@@ -259,7 +259,7 @@ In the step to <<nginx-guide-create-policy,create an {agent} policy>> you chose 
 image::images/guide-system-metrics-dashboard.png["The System metrics host overview showing CPU usage, memory usage, and other visualizations"]
 
 [discrete]
-[[nginx-guide-view-nginx-data]]
+[[nginx-guide-view-nginx-data-ess]]
 === Step 9: View your nginx logging data
 
 Now let's view your nginx logging data.

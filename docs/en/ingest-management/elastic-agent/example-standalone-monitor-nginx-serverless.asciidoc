@@ -1,5 +1,5 @@
 [[example-standalone-monitor-nginx-serverless]]
-= Example: Use standalone {agent} to monitor nginx ({serverless-full} version)
+= Example: Use standalone {agent} with {serverless-full} to monitor nginx
 
 This guide walks you through a simple monitoring scenario so you can learn the basics of setting up standalone {agent}, using it to work with {serverless-full} and an Elastic integration. 
 
@@ -48,7 +48,7 @@ image::images/guide-nginx-welcome.png["Browser window showing Welcome to nginx!"
 
 NOTE: If you've already signed up for a trial deployment you can skip this step.
 
-Now that your web server is running, let's get set up to monitor it in {ecloud}. An {ecloud} project offers you all of the features of the {stack} as a hosted service. To test drive your first deployment, sign up for a free {ecloud} trial:
+Now that your web server is running, let's get set up to monitor it in {ecloud}. An {ecloud} {serverless-short} project offers you all of the features of the {stack} as a hosted service. To test drive your first deployment, sign up for a free {ecloud} trial:
 
 . Go to our link:https://cloud.elastic.co/registration?elektra=guide-welcome-cta[{ecloud} Trial] page.
 
@@ -81,7 +81,7 @@ image::images/guide-sign-up-trial.png["Start your free Elastic Cloud trial",widt
 
 . Leave the other default options and select *Create API key*.
 
-. In the *Create API key* confirmation dialog, change the dropdown menu setting from `Encoded` to `Beats`. This sets the API key format for communication between {agent} (which is based on {beats}) and {es}. 
+. In the *Create API key* confirmation dialog, change the dropdown menu setting from `Encoded` to `Beats`. This sets the API key to the format used for communication between {agent} and {es}. 
 
 . Copy the generated API key and store it in a safe place. You'll use it in a later step.
 

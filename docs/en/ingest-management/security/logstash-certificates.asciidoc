@@ -124,11 +124,11 @@ adjust it as needed.
 input {
   elastic_agent {
     port => 5044
-    ssl => true
+    ssl_enabled => true
     ssl_certificate_authorities => ["/path/to/ca.crt"]
     ssl_certificate => "/path/to/logstash.crt"
     ssl_key => "/path/to/logstash.pkcs8.key"
-    ssl_verify_mode => "force_peer"
+    ssl_client_authentication => "required"
   }
 }
 
@@ -153,11 +153,11 @@ Self-managed {es} cluster example:
 input {
   elastic_agent {
     port => 5044
-    ssl => true
+    ssl_enabled => true
     ssl_certificate_authorities => ["/path/to/ca.crt"]
     ssl_certificate => "/path/to/logstash.crt"
     ssl_key => "/path/to/logstash.pkcs8.key"
-    ssl_verify_mode => "force_peer"
+    ssl_client_authentication => "required"
   }
 }
 

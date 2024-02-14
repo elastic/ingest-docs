@@ -32,10 +32,13 @@ cluster privilege can create API keys.
 For security reasons, we recommend using a unique API key per {agent}. You
 can create as many API keys per user as necessary.
 
+If you are using link:{serverless-docs}[{serverless-full}], API key authentication is required.
+
 To create an API key for {agent}:
 
-. In {kib}, navigate to *{stack-manage-app} > API keys* and click
-*Create API key*.
+. In an {ecloud} or premises environment, in {kib} navigate to *{stack-manage-app} > API keys* and click *Create API key*.
++
+In a {serverless-short} environment, in {kib} navigate to *Project settings* > *Management* > *API keys* and click *Create API key*.
 
 . Enter a name for your API key and select *Restrict privileges*. In the role
 descriptors box, copy and paste the following JSON. This example creates an
@@ -97,7 +100,7 @@ outputs:
     api_key: _Nj4oH0aWZVGqM7MGop8:349p_U1ERHyIc4Nm8_AYkw <1>
 [...]
 ----
-<1> The format of this key is `<id>.<key>`. Base64 encoded API keys are not
+<1> The format of this key is `<id>:<key>`. Base64 encoded API keys are not
 currently supported in this configuration.
  
 For more information about creating API keys in {kib}, see
@@ -108,11 +111,11 @@ For more information about creating API keys in {kib}, see
 == Create a standalone agent role
 
 Although it's recommended that you use an API key instead of a username and
-password to access {es}, you can create a role with the required privileges,
+password to access {es} (and an API key is required in a {serverless} environment), you can create a role with the required privileges,
 assign it to a user, and specify the user's credentials in the
 `elastic-agent.yml` file.
 
-. In {kib}, go to *{stack-manage-app} > Roles*.
+. In {kib}, for a go to *{stack-manage-app} > Roles*.
 
 . Click *Create role* and enter a name for the role.
 

@@ -5,8 +5,8 @@ You can define autodiscover conditions in each input to allow {agent} to automat
 
 IMPORTANT: Condition definintion is supported both in *{agent} by {fleet}* and in *standalone* scenarios.
 
-Read more information for variables and conditions in input configurations in <<dynamic-input-configuration>>
-You can find available variables of autodiscovery in <<kubernetes-provider>>  
+For more information about variables and conditions in input configurations, refer to <<dynamic-input-configuration>>.
+You can find available variables of autodiscovery in <<kubernetes-provider>>.
 
 
 == Example: Target Pods by label

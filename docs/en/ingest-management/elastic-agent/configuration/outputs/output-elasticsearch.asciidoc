@@ -26,7 +26,7 @@ outputs:
     password: changeme
 ----
 
-This example is similar to the previous one, except that it uses
+This example is similar to the previous one, except that it uses the recommended
 <<output-elasticsearch-apikey-authentication-settings,token-based (API key) authentication>>:
 
 [source,yaml]
@@ -207,6 +207,8 @@ This user needs the privileges required to publish events to {es}.
 //To create a user like this, refer to <<privileges-to-publish-events>>.
 // end::username-setting[]
 
+Note that in an link:{serverless-docs}[{serverless-full}] environment you need to use <<output-elasticsearch-apikey-authentication-settings,token-based (API key) authentication>>.
+
 // =============================================================================
 
 |===
@@ -234,7 +236,7 @@ outputs:
 
 | (string) Instead of using a username and password, you can use {kibana-ref}/api-keys.html[API keys] to
 secure communication with {es}. The value must be the ID of the API key and the
-API key joined by a colon: `id:api_key`.
+API key joined by a colon: `id:api_key`. Token-based authentication is required in an link:{serverless-docs}[{serverless-full}] environment.
 // end::api_key-setting[]
 
 // =============================================================================

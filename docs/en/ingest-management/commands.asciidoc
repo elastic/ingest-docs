@@ -158,7 +158,6 @@ elastic-agent enroll --url <string>
                      [--header <strings>]
                      [--help]
                      [--insecure ]
-                     [--non-interactive]
                      [--proxy-disabled]
                      [--proxy-header <strings>]
                      [--proxy-url <string>]

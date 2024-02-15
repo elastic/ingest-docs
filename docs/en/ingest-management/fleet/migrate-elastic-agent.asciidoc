@@ -123,8 +123,7 @@ On your target cluster, certain settings from the original {ecloud} {agent} poli
 
 To reset the {ecloud} {agent} policy:
 
-. Open {kib} and navigate to *Management -> Dev Tools*.
-. Choose one of the API requests below and submit it through the console.
+. Choose one of the API requests below and submit it through a terminal window.
 ** If you're using {kib} version 8.11 or higher, run:
 +
 [source,shell]
@@ -148,6 +147,17 @@ curl --request POST \
 ----
 +
 After running the command, your {ecloud} agent policy settings should all be updated appropriately.
+
+[NOTE]
+====
+After running the command, a warning message may appear in {fleet} indicating that {fleet-server} is not healthy. As well, the {agent} associated with the {ecloud} agent policy may disappear from the list of agents. To remedy this, you can restart {integrations-server}:
+
+. From the {kib} menu, select *Manage this deployment*.
+. In the deployment menu, select *Integrations Server*.
+. On the *Integrations Server* page, select *Force Restart*.
+
+After the restart, {integrations-server} will enroll a new {agent} for the {ecloud} agent policy and {fleet-server} should return to a healthy state.
+====
 
 [discrete]
 [[migrate-elastic-agent-confirm-policy]]

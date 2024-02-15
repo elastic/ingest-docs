@@ -152,7 +152,6 @@ elastic-agent enroll --url <string>
                      [--certificate-authorities <string>]
                      [--delay-enroll]
                      [--force]
-                     [--non-interactive]
                      [--help]
                      [--insecure ]
                      [--tag <string>]

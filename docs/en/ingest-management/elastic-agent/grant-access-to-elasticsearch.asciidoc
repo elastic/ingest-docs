@@ -40,9 +40,9 @@ To create an API key for {agent}:
 +
 In a {serverless-short} environment, in {kib} navigate to *Project settings* > *Management* > *API keys* and click *Create API key*.
 
-. Enter a name for your API key and select *Restrict privileges*. In the role
-descriptors box, copy and paste the following JSON. This example creates an
-API key with privileges for ingesting logs, metrics, traces, and synthetics:
+. Enter a name for your API key and select *Restrict privileges* (in a {serverless-short} environment, *Control security privileges*).
+
+. In the role descriptors box, copy and paste the following JSON. This example creates an API key with privileges for ingesting logs, metrics, traces, and synthetics:
 +
 [source,json]
 ----

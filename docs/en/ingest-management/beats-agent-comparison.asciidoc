@@ -162,7 +162,7 @@ configuration experience.
 
 |{filebeat-ref}/configuring-internal-queue.html[Internal queues]
 |{fleet}-managed {agent} and Standalone {agent} both support configuration of the internal memory
-queues by an end user. 
+queues by an end user. Neither support configuration of the internal disk queues by an end user.
 
 |{filebeat-ref}/elasticsearch-output.html#_loadbalance[Load balance output hosts]
 |Within the {fleet} UI, you can add YAML settings to configure multiple hosts

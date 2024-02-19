@@ -3,7 +3,7 @@
 
 You can define autodiscover conditions in each input to allow {agent} to automatically identify Pods and start monitoring them using predefined integrations. Refer to <<elastic-agent-input-configuration>> to get an idea.
 
-IMPORTANT: Condition definintion is supported both in *{agent} managed by {fleet}* and in *standalone* scenarios.
+IMPORTANT: Condition definition is supported both in *{agent} managed by {fleet}* and in *standalone* scenarios.
 
 For more information about variables and conditions in input configurations, refer to <<dynamic-input-configuration>>.
 You can find available variables of autodiscovery in <<kubernetes-provider>>.

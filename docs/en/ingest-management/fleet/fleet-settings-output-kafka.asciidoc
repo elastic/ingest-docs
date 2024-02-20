@@ -186,54 +186,7 @@ The number of partitions created is set automatically by the Kafka broker based 
 [discrete]
 == Topics settings
 
-Use these options to dynamically set the Kafka topic for each {agent} event.
-
-[cols="2*<a"]
-|===
-
-|
-[id="kafka-output-topics-default"]
-**Default topic**
-
-| Set the default topic to use. Click **Add topic processor** to specify additional processors to set topics based on event contents.
-
-// =============================================================================
-
-|
-[id="kafka-output-topics-processors"]
-**Processors**
-
-| For each processor provide a condition, the event value to check against, and the resulting Kafka topic.
-
-Refer to <<processor-conditions,conditions>> in the {agent} processor syntax for condition descriptions. Currently the `equals`, `contains`, and `regexp` conditions are available.
-
-Events that don't match against any defined processor are set to the default topic.
-
-Processors are applied in the order that they appear, from top to bottom.
-
-The value field must be specified in a `[key]: value` format with both the key and value being strings. For example, `host.port: 2000` or `message: Test`.
-
-NOTE: Quotation marks are included in the match string. That is, they should be specified in the key or value only if it's expected for them to be included in the events being matched against. So, `message: "error"` will match against the literal string `"error"`, including the quotations marks, and not against the unquoted `error`. This applies to both single (') and double (") quotation marks.
-
-As an example for setting up your processors, you might want to route log events based on severity. To do so, you can specify a default topic for all events not matched by other processors:
-
-* `%{[fields.log_topic]}`.
-
-Then, create a processor to route critical events:
-
-* Condition: `Contains`
-* Value: `message: “CRITICAL”`  
-* Topic: `critical-%{[agent.version]}`
-
-And create another processor to route error events:
-
-* Condition: `Contains`
-* Value: `message: “ERR”`
-* Topic: `error-%{[agent.version]}`
-
-All non-critical and non-error events will then route to the default `%{[fields.log_topic]}` topic.
-
-|===
+Use that option to set the Kafka topic.
 
 [discrete]
 == Header settings

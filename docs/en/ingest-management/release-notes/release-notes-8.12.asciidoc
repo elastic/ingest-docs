@@ -31,14 +31,6 @@ Also see:
 Review important information about {fleet-server} and {agent} for the 8.12.2 release.
 
 [discrete]
-[[enhancements-8.12.2]]
-=== Enhancements
-
-
-
-
-
-[discrete]
 [[bug-fixes-8.12.2]]
 === Bug fixes
 

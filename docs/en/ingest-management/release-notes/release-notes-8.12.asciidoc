@@ -44,7 +44,7 @@ Review important information about {fleet-server} and {agent} for the 8.12.2 rel
 {agent}::
 * On Windows, make sure the {agent} service is stopped before uninstalling. {agent-pull}4224[#4224] {agent-issue}4164[#4164]
 
-* Fix an issue where {agent} was not using the download settings when downloading the artifact signature file. {agent-pull}4270[#4270] {agent-issue}4237[#4237]
+* Fix {agent} download settings like proxy_url not being respected when download upgrade signature artifact signature files. {agent-pull}4270[#4270] {agent-issue}4237[#4237]
 
 // end 8.12.2 relnotes
 

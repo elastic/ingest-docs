@@ -41,6 +41,9 @@ Review important information about {fleet-server} and {agent} for the 8.12.2 rel
 * Fix categories labels in integration overview. ({kibana-pull}176141[#176141])
 * Fix the ability to delete agent policies with inactive agents from UI, the inactive agents need to be unenrolled first. ({kibana-pull}175815[#175815])
 
+{fleet-server}::
+* Fix a bug where agents were stuck in a non-upgradeable state after upgrade. This resolves the <<known-issue-3263-8121,known issue>> that affected versions 8.12.0 and 8.12.1. {fleet-server-pull}3264[#3264] {fleet-server-issue}3263[#3263] 
+
 {agent}::
 * On Windows, make sure the {agent} service is stopped before uninstalling. {agent-pull}4224[#4224] {agent-issue}4164[#4164]
 

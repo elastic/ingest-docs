@@ -7,7 +7,11 @@ is not described here, please review the open issues in the following GitHub rep
 
 TEST1: This investigation guide uses https://www.elastic.co/guide/en/security/current/osquery-placeholder-fields.html[placeholder fields] to dynamically pass alert data into Osquery queries.
 
-TEST2:  This investigation guide uses {security-guide}/osquery-placeholder-fields.html[placeholder fields] to dynamically pass alert data into Osquery queries.
+TEST2: This investigation guide uses link:https://www.elastic.co/guide/en/security/current/osquery-placeholder-fields.html[placeholder fields] to dynamically pass alert data into Osquery queries.
+
+TEST3:  This investigation guide uses {security-guide}/osquery-placeholder-fields.html[placeholder fields] to dynamically pass alert data into Osquery queries.
+
+TEST3:  This investigation guide uses {security-guide}/osquery-placeholder-fields.html[placeholder fields] to dynamically pass alert data into Osquery queries.
 
 
 [options,header]

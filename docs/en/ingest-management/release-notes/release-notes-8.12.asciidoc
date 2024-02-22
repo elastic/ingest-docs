@@ -14,6 +14,7 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.12.2>>
 * <<release-notes-8.12.1>>
 * <<release-notes-8.12.0>>
 
@@ -21,6 +22,34 @@ Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.12.2 relnotes
+
+[[release-notes-8.12.2]]
+== {fleet} and {agent} 8.12.2
+
+Review important information about {fleet-server} and {agent} for the 8.12.2 release.
+
+[discrete]
+[[bug-fixes-8.12.2]]
+=== Bug fixes
+
+{fleet}::
+* Fix a popover about inactive agents not being dismissible. ({kibana-pull}176929[#176929])
+* Fix logstash output being link:https://www.rfc-editor.org/rfc/rfc952[RFC-952] compliant. ({kibana-pull}176298[#176298])
+* Fix assets being unintentionally moved to the default space during Fleet setup. ({kibana-pull}176173[#176173])
+* Fix categories labels in integration overview. ({kibana-pull}176141[#176141])
+* Fix the ability to delete agent policies with inactive agents from UI, the inactive agents need to be unenrolled first. ({kibana-pull}175815[#175815])
+
+{fleet-server}::
+* Fix a bug where agents were stuck in a non-upgradeable state after upgrade. This resolves the <<known-issue-3263-8121,known issue>> that affected versions 8.12.0 and 8.12.1. {fleet-server-pull}3264[#3264] {fleet-server-issue}3263[#3263] 
+
+{agent}::
+* On Windows, make sure the {agent} service is stopped before uninstalling. {agent-pull}4224[#4224] {agent-issue}4164[#4164]
+
+* Fix {agent} download settings like proxy_url not being respected when download upgrade signature artifact signature files. {agent-pull}4270[#4270] {agent-issue}4237[#4237]
+
+// end 8.12.2 relnotes
 
 // begin 8.12.1 relnotes
 

@@ -4,6 +4,22 @@
 We have collected the most common known problems and listed them here. If your problem
 is not described here, please review the open issues in the following GitHub repositories:
 
+[source, markdown]
+----------------------------------
+I am a humble markdown codeblock.
+
+TEST 1 - Here is a URL in mid-sentence:
+This investigation guide uses https://www.elastic.co/guide/en/security/current/osquery-placeholder-fields.html to dynamically pass alert data into Osquery queries.
+
+TEST 2 - Here is a URL with no following text:
+This investigation guide uses https://www.elastic.co/guide/en/security/current/es-ui-overview.html
+
+TEST 3 - Here is a URL demarkated by single quotes:
+This investigation guide uses 'https://www.elastic.co/guide/en/security/current/security-assistant.html'
+
+----------------------------------
+
+
 [options,header]
 |===
 | Repository | To review or report issues about

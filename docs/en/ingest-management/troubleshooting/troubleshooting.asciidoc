@@ -12,6 +12,21 @@ TEST2: This investigation guide uses link:https://www.elastic.co/guide/en/securi
 TEST3:  This investigation guide uses {security-guide}/osquery-placeholder-fields.html[placeholder fields] to dynamically pass alert data into Osquery queries.
 
 
+[source, markdown]
+----------------------------------
+
+I am a humble markdown codeblock.
+Remember to eat your leafy greens.
+
+TEST4: This investigation guide uses https://www.elastic.co/guide/en/security/current/osquery-placeholder-fields.html[placeholder fields] to dynamically pass alert data into Osquery queries.
+
+TEST5: This investigation guide uses link:https://www.elastic.co/guide/en/security/current/osquery-placeholder-fields.html[placeholder fields] to dynamically pass alert data into Osquery queries.
+
+TEST6:  This investigation guide uses {security-guide}/osquery-placeholder-fields.html[placeholder fields] to dynamically pass alert data into Osquery queries.
+
+----------------------------------
+
+
 
 [options,header]
 |===

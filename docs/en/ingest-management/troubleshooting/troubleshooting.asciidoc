@@ -5,11 +5,11 @@ We have collected the most common known problems and listed them here. If your p
 is not described here, please review the open issues in the following GitHub repositories:
 
 
-TEST1: This investigation guide uses https://www.elastic.co/guide/en/security/current/osquery-placeholder-fields.html[placeholder fields] to dynamically pass alert data into Osquery queries.
+TEST1: This investigation guide uses https://www.elastic.co/guide/en/security/current/osquery-placeholder-fields.html[1 placeholder fields] to dynamically pass alert data into Osquery queries.
 
-TEST2: This investigation guide uses link:https://www.elastic.co/guide/en/security/current/osquery-placeholder-fields.html[placeholder fields] to dynamically pass alert data into Osquery queries.
+TEST2: This investigation guide uses link:https://www.elastic.co/guide/en/security/current/osquery-placeholder-fields.html[2 placeholder fields] to dynamically pass alert data into Osquery queries.
 
-TEST3:  This investigation guide uses {security-guide}/osquery-placeholder-fields.html[placeholder fields] to dynamically pass alert data into Osquery queries.
+TEST3:  This investigation guide uses {security-guide}/osquery-placeholder-fields.html[3 placeholder fields] to dynamically pass alert data into Osquery queries.
 
 
 [source, markdown]
@@ -18,11 +18,11 @@ TEST3:  This investigation guide uses {security-guide}/osquery-placeholder-field
 I am a humble markdown codeblock.
 Remember to eat your leafy greens.
 
-TEST4: This investigation guide uses https://www.elastic.co/guide/en/security/current/osquery-placeholder-fields.html[placeholder fields] to dynamically pass alert data into Osquery queries.
+TEST4: This investigation guide uses https://www.elastic.co/guide/en/security/current/osquery-placeholder-fields.html[4 placeholder fields] to dynamically pass alert data into Osquery queries.
 
-TEST5: This investigation guide uses link:https://www.elastic.co/guide/en/security/current/osquery-placeholder-fields.html[placeholder fields] to dynamically pass alert data into Osquery queries.
+TEST5: This investigation guide uses link:https://www.elastic.co/guide/en/security/current/osquery-placeholder-fields.html[5 placeholder fields] to dynamically pass alert data into Osquery queries.
 
-TEST6:  This investigation guide uses {security-guide}/osquery-placeholder-fields.html[placeholder fields] to dynamically pass alert data into Osquery queries.
+TEST6:  This investigation guide uses {security-guide}/osquery-placeholder-fields.html[6 placeholder fields] to dynamically pass alert data into Osquery queries.
 
 ----------------------------------
 

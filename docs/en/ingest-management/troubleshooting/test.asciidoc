@@ -48,10 +48,12 @@ Elastic Defend Integration Setup
 Elastic Defend is integrated into the Elastic Agent using Fleet. Upon configuration, the integration allows the Elastic Agent to monitor events on your host and send data to the Elastic Security app.
 
 Prerequisite Requirements:
+
 - Fleet is required for Elastic Defend.
 - To configure Fleet Server refer to the https://www.elastic.co/guide/en/fleet/current/fleet-server.html[documentation]
 
 The following steps should be executed in order to add the Elastic Defend integration on a Linux System:
+
 - Go to the Kibana home page and click "Add integrations".
 - In the query bar, search for "Elastic Defend" and select the integration to see more details about it.
 - Click "Add Elastic Defend".

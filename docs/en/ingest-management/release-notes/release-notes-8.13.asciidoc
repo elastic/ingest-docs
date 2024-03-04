@@ -1,0 +1,199 @@
+// Use these for links to issue and pulls.
+:kibana-issue: https://github.com/elastic/kibana/issues/
+:kibana-pull: https://github.com/elastic/kibana/pull/
+:beats-issue: https://github.com/elastic/beats/issues/
+:beats-pull: https://github.com/elastic/beats/pull/
+:agent-libs-pull: https://github.com/elastic/elastic-agent-libs/pull/
+:agent-issue: https://github.com/elastic/elastic-agent/issues/
+:agent-pull: https://github.com/elastic/elastic-agent/pull/
+:fleet-server-issue: https://github.com/elastic/fleet-server/issues/
+:fleet-server-pull: https://github.com/elastic/fleet-server/pull/
+
+[[release-notes]]
+= Release notes
+
+This section summarizes the changes in each release.
+
+* <<release-notes-8.13.0>>
+
+Also see:
+
+* {kibana-ref}/release-notes.html[{kib} release notes]
+* {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.13.0 relnotes
+
+[[release-notes-8.13.0]]
+== {fleet} and {agent} 8.13.0
+
+Review important information about {fleet-server} and {agent} for the 8.13.0 release.
+
+[discrete]
+[[security-updates-8.13.0]]
+=== Security updates
+
+{agent}::
+* Update Go version to 1.21.7. {agent-pull}4221[#4221]
+
+//[discrete]
+//[[breaking-changes-8.13.0]]
+//=== Breaking changes
+
+//Breaking changes can prevent your application from optimal operation and
+//performance. Before you upgrade, review the breaking changes, then mitigate the
+//impact to your application.
+
+//[discrete]
+//[[known-issues-8.13.0]]
+//=== Known issues
+
+[discrete]
+[[new-features-8.13.0]]
+=== New features
+
+The 8.13.0 release added the following new and notable features.
+
+{fleet}::
+
+{agent}::
+* Log a summary of each policy configuration change received from {fleet}. {agent-pull}4050[#4050] {agent-issue}3406[#3406]
+* Add the full version number to the installation directory name. {agent-pull}4193[#4193] {agent-issue}2579[#2579]
+* Make more selective the Pod autodiscovery upon node and namespace update events. {agent-pull}4226[#4226] {beats-issue}37338[#37338]
+* Add the new ETW input mapping to the Filebeat specification so that it's available in {agent}. {agent-pull}4037[#4037] {beats-pull}36915[#36915]
+* Add the new WebSocket input mapping to the Filebeat specification so that it's available in {agent}. {agent-pull}4242[#4242] {beats-pull}37774[#37774]
+* Create the `.installed` marker earlier on in the install process, allowing the use of `elastic-agent uninstall` to cleanup if the install fails. {agent-pull}4172[#4172] {agent-issue}4051[#4051]
+
+[discrete]
+[[enhancements-8.13.0]]
+=== Enhancements
+
+{fleet}::
+
+{agent}::
+* Move the control socket path to always be inside of the top level of the {agent} installation directory. {agent-pull}3909[#3909] {agent-issue}3840[#3840]
+* Add mTLS flags to {agent} install and enroll commands to enable use of certificates for communication in on-prem proxy setups. {agent-pull}4007[#4007]
+* Improve error handling by adding error descriptors to the `inspect` command and config methods. {agent-pull}4074[#4074]
+* Add an `agent.providers.initial_default` configuration flag to disable providers by default. {agent-pull}4166[#4166] {agent-issue}4145[#4145]
+
+[discrete]
+[[bug-fixes-8.13.0]]
+=== Bug fixes
+
+{fleet}::
+
+{agent}::
+* Fix component control protocol to allow checkin to be chunked across multiple messages. {agent-pull}3884[#3884] {agent-issue}2460[#2460]
+* Fix the creation of directories when unpacking tar.gz packages. {agent-pull}4100[#4100] {agent-issue}4093[#4093]
+* Set a timeout of 1 minute for the FQDN lookup function. {agent-pull}4147[#4147]
+* Increase timeout for file removal during {agent} uninstall. {agent-pull}4310[#4310] {agent-issue}4164[#4164]
+
+// end 8.13.0 relnotes
+
+// ---------------------
+//TEMPLATE
+//Use the following text as a template. Remember to replace the version info.
+
+// begin 8.7.x relnotes
+
+//[[release-notes-8.7.x]]
+//== {fleet} and {agent} 8.7.x
+
+//Review important information about the {fleet} and {agent} 8.7.x release.
+
+//[discrete]
+//[[security-updates-8.7.x]]
+//=== Security updates
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[breaking-changes-8.7.x]]
+//=== Breaking changes
+
+//Breaking changes can prevent your application from optimal operation and
+//performance. Before you upgrade, review the breaking changes, then mitigate the
+//impact to your application.
+
+//[discrete]
+//[[breaking-PR#]]
+//.Short description
+//[%collapsible]
+//====
+//*Details* +
+//<Describe new behavior.> For more information, refer to {kibana-pull}PR[#PR].
+
+//*Impact* +
+//<Describe how users should mitigate the change.> For more information, refer to {fleet-guide}/fleet-server.html[Fleet Server].
+//====
+
+//[discrete]
+//[[known-issues-8.7.x]]
+//=== Known issues
+
+//[[known-issue-issue#]]
+//.Short description
+//[%collapsible]
+//====
+
+//*Details*
+
+//<Describe known issue.>
+
+//*Impact* +
+
+//<Describe impact or workaround.>
+
+//====
+
+//[discrete]
+//[[deprecations-8.7.x]]
+//=== Deprecations
+
+//The following functionality is deprecated in 8.7.x, and will be removed in
+//8.7.x. Deprecated functionality does not have an immediate impact on your
+//application, but we strongly recommend you make the necessary updates after you
+//upgrade to 8.7.x.
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[new-features-8.7.x]]
+//=== New features
+
+//The 8.7.x release Added the following new and notable features.
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[enhancements-8.7.x]]
+//=== Enhancements
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[bug-fixes-8.7.x]]
+//=== Bug fixes
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+// end 8.7.x relnotes

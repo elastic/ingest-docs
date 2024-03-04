@@ -55,6 +55,12 @@ The 8.13.0 release added the following new and notable features.
 
 {fleet}::
 
+{fleet-server}::
+* Add support for storing output secrets in a new `secrets` block. {fleet-server-pull}3061[3061] {fleet-server-issue}2966[2966]
+* Add support for the remote {es} output type in {fleet-server}. {fleet-server-pull}3051[3051]
+* Report the health state of remote {es} outputs to the `logs-fleet_server.output_health-default` data stream. {fleet-server-pull}3127[3127] {fleet-server-issue}3116[3116]
+* Add a `policy_debounce_time` configuration to add a forced delay to the policy index monitor when it successfully gathers new documents. {fleet-server-pull}3234[3234]
+
 {agent}::
 * Log a summary of each policy configuration change received from {fleet}. {agent-pull}4050[#4050] {agent-issue}3406[#3406]
 * Add the full version number to the installation directory name. {agent-pull}4193[#4193] {agent-issue}2579[#2579]
@@ -69,6 +75,17 @@ The 8.13.0 release added the following new and notable features.
 
 {fleet}::
 
+
+{fleet-server}::
+* Relax version checks in snapshot builds to support automated testing during minor release updates. {fleet-server-pull}3039[3039] {fleet-server-issue}2960[2960]
+* Add top level keys for policy definition into {fleet-server} OpenAPI specification. {fleet-server-pull}3048[3048]
+* Define the `action.data` and `ack` event schemas. {fleet-server-pull}3060[3060]
+* Add additional transaction labels with {es} error details to requests. {fleet-server-pull}3124[3124] {fleet-server-issue}3098[3098]
+* Calls with unauthorized API keys now return a `401` error. {fleet-server-pull}3135[3135] {fleet-server-issue}2861[2861]
+* Use the Shutdown method with a timeout to gracefully halt HTTP servers. {fleet-server-pull}3165[3165] {fleet-server-issue}2902[2902]
+* Replace the policy and action limiters with a unified checkin limiter. {fleet-server-pull}3255[3255] {fleet-server-issue}2254[3254]
+* Change the response code for {es} call failures to `503`. {fleet-server-pull}3235[3235] {fleet-server-issue}2852[2852]
+
 {agent}::
 * Move the control socket path to always be inside of the top level of the {agent} installation directory. {agent-pull}3909[#3909] {agent-issue}3840[#3840]
 * Add mTLS flags to {agent} install and enroll commands to enable use of certificates for communication in on-prem proxy setups. {agent-pull}4007[#4007]
@@ -80,6 +97,13 @@ The 8.13.0 release added the following new and notable features.
 === Bug fixes
 
 {fleet}::
+
+{fleet-server}::
+* Add missing `Elastic-Api-Version` and `X-Request-Id` headers to the {fleet-server} OpenAPI specification. {fleet-server-pull}3044[3044]
+* Replace all secret references in input objects. {fleet-server-pull}3086[3086] {fleet-server-issue}3083[3083]
+* Deprecate the redundant `fleet.agent.logging.level` attribute. {fleet-server-pull}3195[3195] {fleet-server-issue}3126[3126]
+* Add validation to make sure that status and message are present in the checkin API request body.  {fleet-server-pull}3233[3233] {fleet-server-issue}2420[2420]
+* Fix a bug where agents were stuck in non-upgradeable state after an upgrade. {fleet-server-pull}3264[3264] {fleet-server-issue}3263[3263]
 
 {agent}::
 * Fix component control protocol to allow checkin to be chunked across multiple messages. {agent-pull}3884[#3884] {agent-issue}2460[#2460]

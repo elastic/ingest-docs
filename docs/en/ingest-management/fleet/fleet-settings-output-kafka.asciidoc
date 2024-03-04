@@ -7,8 +7,6 @@ Specify these settings to send data over a secure connection to Kafka. In the {f
 
 preview::[]
 
-TIP: Kafka output is currently not supported on {agents} using the {elastic-defend} integration.
-
 [discrete]
 == General settings
 

@@ -3,7 +3,7 @@
 
 In certain cases it can be useful to enable custom settings that are not available in {fleet}, and that override the default behavior for {agent}. Examples include limiting the amount of CPU consumed by an agent, configuring the agent download timeout, and overriding the default port used for monitoring.
 
-WARNING: Use these custom settings with caution as it is intended for special cases. We do not test all possible combinations of settings which will be passed down to the components of {agent}, so it is possible that certain custom configurations can result in breakages.
+WARNING: Use these custom settings with caution as they are intended for special cases. We do not test all possible combinations of settings which will be passed down to the components of {agent}, so it is possible that certain custom configurations can result in breakages.
 
 * <<limit-cpu-usage>>
 * <<configure-agent-download-timeout>>
@@ -41,7 +41,7 @@ PUT kbn:/api/fleet/agent_policies/<policy-id>
 [[configure-agent-download-timeout]]
 == Configure the agent download timeout
 
-You can configure the the amount of time that {agent} waits for an upgrade package download to complete.
+You can configure the the amount of time that {agent} waits for an upgrade package download to complete. This is useful in the case of a slow or intermittent network connection.
 
 [source,shell]
 --
@@ -58,7 +58,6 @@ PUT kbn:/api/fleet/agent_policies/24292680-158e-11ee-b8ce-f39328f70950
     }
 }
 --
-
 
 [discrete]
 [[override-default-monitoring-port]]

@@ -45,17 +45,17 @@ You can configure the the amount of time that {agent} waits for an upgrade packa
 
 [source,shell]
 --
-PUT kbn:/api/fleet/agent_policies/24292680-158e-11ee-b8ce-f39328f70950
+PUT kbn:/api/fleet/agent_policies/<policy-id>
 {
-   "name": "Test policy",
-    "namespace": "default",
-    "overrides": {
-         "agent": {
-              "download": {
-                "timeout": "120s"
-              }
-            }
+  "name": "Test policy",
+  "namespace": "default",
+  "overrides": {
+    "agent": {
+      "download": {
+        "timeout": "120s"
+      }
     }
+  }
 }
 --
 
@@ -67,12 +67,12 @@ You can override the default port that {agent} uses to send monitoring data. It'
 
 [source,shell]
 --
-PUT kbn:/api/fleet/agent_policies/eba679f0-c76e-11ee-9794-919aa176783b
+PUT kbn:/api/fleet/agent_policies/<policy-id>
 {
-   "name": "Agent policy 1",
-   "namespace": "default",
-   "overrides": {
-       "agent.monitoring.http.port": 6792
-   }
+  "name": "Agent policy 1",
+  "namespace": "default",
+  "overrides": {
+    "agent.monitoring.http.port": 6792
+  }
 }
 --

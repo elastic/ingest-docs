@@ -80,29 +80,4 @@ During upgrades, double the disk space is required to store the new {agent} bina
 |===
 Adding integrations will increase the memory used by the agent and its processes.
 
-[discrete]
-=== Limiting CPU usage
 
-If you need to limit the amount of CPU consumption you can use the `agent.limits.go_max_procs` configuration option. This parameter limits the number of operating system threads that can be executing Go code simultaneously in each Go process. The `agent.limits.go_max_procs` option accepts an integer value not less than `0`, which is the default value that stands for "all available CPUs".
-
-The `agent.limits.go_max_procs` limit applies independently to the agent and each underlying Go process that it supervises. For example, if {agent} is configured to supervise two {beats} with `agent.limits.go_max_procs: 2` in the policy, then the total CPU limit is six, where each of the three processes (one {agent} and two {Beats}) may execute independently on two CPUs.
-
-This setting is similar to the {beats} {filebeat-ref}/configuration-general-options.html#_max_procs[`max_procs`] setting. For more detail, refer to the link:https://pkg.go.dev/runtime#GOMAXPROCS[GOMAXPROCS] function in the Go runtime documentation.
-
-To enable `agent.limits.go_max_procs`, run a <<fleet-api-docs,{fleet} API>> request from the {kib} {kibana-ref}/console-kibana.html[Dev Tools console] to override your current {agent} policy and add the `go_max_procs` parameter. For example, to limit Go processes supervised by {agent} to two operating system threads each, run:
-
-[source,shell]
---
-PUT kbn:/api/fleet/agent_policies/<policy-id>
-{
-  "name": "<policy-name>",
-  "namespace": "default",
-  "overrides": {
-    "agent": {
-      "limits": {
-        "go_max_procs": 2
-      }
-    }
-  }
-}
---

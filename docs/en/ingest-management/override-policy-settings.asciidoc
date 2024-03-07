@@ -1,0 +1,78 @@
+[[enable-custom-policy-settings]]
+= Enable custom settings in an agent policy
+
+In certain cases it can be useful to enable custom settings that are not available in {fleet}, and that override the default behavior for {agent}. Examples include limiting the amount of CPU consumed by an agent, configuring the agent download timeout, and overriding the default port used for monitoring.
+
+WARNING: Use these custom settings with caution as they are intended for special cases. We do not test all possible combinations of settings which will be passed down to the components of {agent}, so it is possible that certain custom configurations can result in breakages.
+
+* <<limit-cpu-usage>>
+* <<configure-agent-download-timeout>>
+* <<override-default-monitoring-port>>
+
+[discrete]
+[[limit-cpu-usage]]
+== Limit CPU usage
+
+If you need to limit the amount of CPU consumption you can use the `agent.limits.go_max_procs` configuration option. This parameter limits the number of operating system threads that can be executing Go code simultaneously in each Go process. The `agent.limits.go_max_procs` option accepts an integer value not less than `0`, which is the default value that stands for "all available CPUs".
+
+The `agent.limits.go_max_procs` limit applies independently to the agent and each underlying Go process that it supervises. For example, if {agent} is configured to supervise two {beats} with `agent.limits.go_max_procs: 2` in the policy, then the total CPU limit is six, where each of the three processes (one {agent} and two {Beats}) may execute independently on two CPUs.
+
+This setting is similar to the {beats} {filebeat-ref}/configuration-general-options.html#_max_procs[`max_procs`] setting. For more detail, refer to the link:https://pkg.go.dev/runtime#GOMAXPROCS[GOMAXPROCS] function in the Go runtime documentation.
+
+To enable `agent.limits.go_max_procs`, run a <<fleet-api-docs,{fleet} API>> request from the {kib} {kibana-ref}/console-kibana.html[Dev Tools console] to override your current {agent} policy and add the `go_max_procs` parameter. For example, to limit Go processes supervised by {agent} to two operating system threads each, run:
+
+[source,shell]
+--
+PUT kbn:/api/fleet/agent_policies/<policy-id>
+{
+  "name": "<policy-name>",
+  "namespace": "default",
+  "overrides": {
+    "agent": {
+      "limits": {
+        "go_max_procs": 2
+      }
+    }
+  }
+}
+--
+
+[discrete]
+[[configure-agent-download-timeout]]
+== Configure the agent download timeout
+
+You can configure the the amount of time that {agent} waits for an upgrade package download to complete. This is useful in the case of a slow or intermittent network connection.
+
+[source,shell]
+--
+PUT kbn:/api/fleet/agent_policies/<policy-id>
+{
+  "name": "Test policy",
+  "namespace": "default",
+  "overrides": {
+    "agent": {
+      "download": {
+        "timeout": "120s"
+      }
+    }
+  }
+}
+--
+
+[discrete]
+[[override-default-monitoring-port]]
+== Override the default monitoring port
+
+You can override the default port that {agent} uses to send monitoring data. It's useful to be able to adjust this setting if you have an application running on the machine on which the agent is deployed, and that is using the same port.
+
+[source,shell]
+--
+PUT kbn:/api/fleet/agent_policies/<policy-id>
+{
+  "name": "Agent policy 1",
+  "namespace": "default",
+  "overrides": {
+    "agent.monitoring.http.port": 6792
+  }
+}
+--

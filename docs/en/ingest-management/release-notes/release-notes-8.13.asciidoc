@@ -104,6 +104,7 @@ The 8.13.0 release added the following new and notable features.
 * Deprecate the redundant `fleet.agent.logging.level` attribute. {fleet-server-pull}3195[3195] {fleet-server-issue}3126[3126]
 * Add validation to make sure that status and message are present in the checkin API request body.  {fleet-server-pull}3233[3233] {fleet-server-issue}2420[2420]
 * Fix a bug where agents were stuck in non-upgradeable state after an upgrade. {fleet-server-pull}3264[3264] {fleet-server-issue}3263[3263]
+* Fix chunked file delivery so that files are delivered in order.  {fleet-server-pull}3283[#3283]
 
 {agent}::
 * Fix component control protocol to allow checkin to be chunked across multiple messages. {agent-pull}3884[#3884] {agent-issue}2460[#2460]

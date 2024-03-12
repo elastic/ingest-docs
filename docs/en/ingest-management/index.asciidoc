@@ -209,6 +209,8 @@ include::integrations/view-integration-assets.asciidoc[leveloffset=+2]
 
 include::integrations/upgrade-integration.asciidoc[leveloffset=+2]
 
+include::integrations/managed-integrations-content.asciidoc[leveloffset=+2]
+
 include::data-streams.asciidoc[leveloffset=+2]
 
 include::processors/processors.asciidoc[leveloffset=+1]

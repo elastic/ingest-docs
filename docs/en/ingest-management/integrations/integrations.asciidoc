@@ -61,3 +61,4 @@ The *Integrations* app in {kib} needs access to the public {package-registry} to
 discover integrations. If your deployment has network restrictions, you can
 {fleet-guide}/air-gapped.html#air-gapped-diy-epr[deploy your own self-managed {package-registry}].
 ====
+

@@ -1,0 +1,18 @@
+[[managed-integrations-content]]
+= Managed integrations content
+
+++++
+<titleabbrev>Managed integrations content</titleabbrev>
+++++
+
+Most integration content installed by {fleet} isn’t editable. This content is tagged with a **Managed** badge in the {kib} UI. Managed content itself cannot be edited or deleted, however managed visualizations, dashboards, and saved searches can be cloned.   
+
+[role="screenshot"]
+image::images/system-managed.png[An image of the new managed badge.]
+
+The cloned content is unlinked with the original reference configurations, so becomes independent from the original managed content. For example, with a cloned dashboard, the cloned panels become entirely self-contained copy without any dependencies on the original configuration. Clones can be customized and modified without accidentally affecting the original.
+
+[NOTE]
+====
+The cloned managed content retains the managed badge, but is independent from the original. 
+====

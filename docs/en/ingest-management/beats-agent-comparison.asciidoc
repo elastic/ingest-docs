@@ -1,3 +1,6 @@
+:y: image:images/green-check.svg[yes]
+:n: image:images/red-x.svg[no]
+
 [[beats-agent-comparison]]
 = {beats} and {agent} capabilities
 

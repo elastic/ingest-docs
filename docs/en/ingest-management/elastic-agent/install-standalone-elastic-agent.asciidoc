@@ -1,5 +1,5 @@
 [[install-standalone-elastic-agent]]
-= Install standalone {agent}s (advanced users)
+= Install standalone {agent}s
 
 To run an {agent} in standalone mode, install the agent and manually configure
 the agent locally on the system where it’s installed. You are responsible for
@@ -26,7 +26,7 @@ To install and run {agent} standalone:
 --
 // tag::install-elastic-agent[]
 
-include::{tab-widgets}/download-widget.asciidoc[]
+include::{ingest-docs-root}/docs/en/ingest-management/tab-widgets/download-widget.asciidoc[]
 
 // end::install-elastic-agent[]
 --
@@ -76,7 +76,7 @@ packages include a service unit for Linux systems with
 systemd, so just enable then start the service.
 +
 --
-include::{tab-widgets}/run-standalone-widget.asciidoc[]
+include::{ingest-docs-root}/docs/en/ingest-management/tab-widgets/run-standalone-widget.asciidoc[]
 --
 
 Refer to <<installation-layout>> for the location of installed {agent} files.

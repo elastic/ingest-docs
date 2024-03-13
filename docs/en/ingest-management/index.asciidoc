@@ -2,9 +2,6 @@ include::{docs-root}/shared/versions/stack/{source_branch}.asciidoc[]
 include::{docs-root}/shared/attributes.asciidoc[]
 
 :doctype: book
-:fleet-repo-dir: {ingest-docs-root}/docs/en/ingest-management
-:tab-widgets: {fleet-repo-dir}/tab-widgets
-:code-path: {tab-widgets}/code
 
 = {fleet} and {agent} Guide
 

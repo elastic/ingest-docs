@@ -1,8 +1,6 @@
 [[elastic-agent-simplified-input-configuration]]
 = Simplified log ingestion
 
-include::{fleet-repo-dir}/standalone-note.asciidoc[]
-
 There is a simplified option for ingesting log files with {agent}.
 The simplest input configuration to ingest the file
 `/var/log/my-application/log-file.log` is:

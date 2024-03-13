@@ -35,6 +35,22 @@ Docker images.
 
 For a detailed view of the {agent} upgrade process and the interactions between {fleet}, {agent}, and {es}, refer to the link:https://github.com/elastic/elastic-agent/blob/main/docs/upgrades.md[Communications amongst components] diagram in the `elastic-agent` GitHub repository.
 
+[discrete]
+[[upgrade-agent-restrictions]]
+== Restrictions
+
+Note the following restrictions with upgrading an {agent}:
+
+* {agent} cannot be upgraded to a version higher than the highest currently installed version of {fleet-server}.
+* To be upgradeable, {agent} must not be running inside a container.
+* To be upgradeable in a Linux environment, {agent} must be running as a service. The Linux Tar install instructions for {agent} provided in {fleet} include the commands to run it as a service. {agent} RPM and DEB system packages cannot be upgraded through {fleet}.
+
+These restrictions apply whether you are upgrading {agents} individually or in bulk. In the event that an upgrade isn't eligible, {fleet} generates a warning message when you attempt the upgrade.
+
+[discrete]
+[[upgrade-agent]]
+== Upgrading {agent}
+
 To upgrade your {agent}s, go to *Management > {fleet} > Agents* in {kib}. You
 can perform the following upgrade-related actions:
 
@@ -61,7 +77,6 @@ can perform the following upgrade-related actions:
 |Do a bulk restart of the upgrade process for a set of agents.
 
 |===
-
 
 [discrete]
 [[upgrade-an-agent]]

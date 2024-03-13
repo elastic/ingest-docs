@@ -649,7 +649,7 @@ When you uninstall {agent}, all the programs managed by {agent}, such as
 To remove {elastic-endpoint}, run the following commands:
 
 --
-include::{tab-widgets}/remove-endpoint-files/widget.asciidoc[]
+include::{ingest-docs-root}/docs/en/ingest-management/tab-widgets/remove-endpoint-files/widget.asciidoc[]
 
 --
 

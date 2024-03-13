@@ -10,7 +10,7 @@ it will no longer send data to {es}.
 If you've stopped the {agent} service and want to restart it, use the commands
 that work with your system:
 
-include::{tab-widgets}/start-widget.asciidoc[]
+include::{ingest-docs-root}/docs/en/ingest-management/tab-widgets/start-widget.asciidoc[]
 
 [discrete]
 [[stop-elastic-agent-service]]
@@ -19,4 +19,4 @@ include::{tab-widgets}/start-widget.asciidoc[]
 To stop {agent} and its related executables, stop the {agent} service. Use the
 commands that work with your system:
 
-include::{tab-widgets}/stop-widget.asciidoc[]
+include::{ingest-docs-root}/docs/en/ingest-management/tab-widgets/stop-widget.asciidoc[]

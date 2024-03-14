@@ -219,15 +219,15 @@ As an example for setting up your processors, you might want to route log events
 
 Then, create a processor to route critical events:
 
-* Condition: `Contains`
-* Value: `message: “CRITICAL”`  
-* Topic: `critical-%{[agent.version]}`
+* Condition:`Contains`
+* Value:`message: “CRITICAL”`  
+* Topic:`critical-%{[agent.version]}`
 
 And create another processor to route error events:
 
-* Condition: `Contains`
-* Value: `message: “ERR”`
-* Topic: `error-%{[agent.version]}`
+* Condition:`Contains`
+* Value:`message: “ERR”`
+* Topic:`error-%{[agent.version]}`
 
 All non-critical and non-error events will then route to the default `%{[fields.log_topic]}` topic.
 

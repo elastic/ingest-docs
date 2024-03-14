@@ -1020,7 +1020,7 @@ Be sure to run the `uninstall` command from the directory where {agent} is insta
 
 --
 
-include::{tab-widgets}/uninstall-widget.asciidoc[]
+include::{ingest-docs-root}/docs/en/ingest-management/tab-widgets/uninstall-widget.asciidoc[]
 
 --
 

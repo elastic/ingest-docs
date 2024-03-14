@@ -1,3 +1,6 @@
+:y: image:images/green-check.svg[yes]
+:n: image:images/red-x.svg[no]
+
 [[agent-policy]]
 = {agent} policies
 
@@ -5,10 +8,10 @@
 <titleabbrev>Policies</titleabbrev>
 ++++
 
-A {policy} is a collection of inputs and settings that defines the data to be collected
-by an {agent}. Each {agent} can only be enrolled in a single {policy}.
+A policy is a collection of inputs and settings that defines the data to be collected
+by an {agent}. Each {agent} can only be enrolled in a single policy.
 
-Within an {agent} {policy} is a set of individual integration policies.
+Within an {agent} policy is a set of individual integration policies.
 These integration policies define the settings for each input type.
 The available settings in an integration depend on the version of
 the integration in use.
@@ -29,7 +32,7 @@ in the {fleet} UI.
 * Maintain flexibility in large-scale deployments by quickly testing changes before rolling them out.
 * Provide a way to group and manage larger swaths of your infrastructure landscape.
 
-For example, it might make sense to create a {policy} per operating system type:
+For example, it might make sense to create a policy per operating system type:
 Windows, macOS, and Linux hosts.
 Or, organize policies by functional groupings of how the hosts are
 used: IT email servers, Linux servers, user work-stations, etc.
@@ -137,7 +140,7 @@ Click the name of the policy you want to add an integration to.
 NOTE: Integration policy names must be globally unique across all agent
 policies.
 
-. Save the integration policy as part of the larger {agent} {policy}:
+. Save the integration policy as part of the larger {agent} policy:
 +
 --
 * To use the UI, click **Save and continue**.
@@ -145,10 +148,10 @@ policies.
 request.
 --
 
-{fleet} distributes this new {policy} to all {agent}s that are enrolled in the
-{agent} {policy}.
+{fleet} distributes this new policy to all {agent}s that are enrolled in the
+{agent} policy.
 
-After the {policy} has finished applying, the selected integration will be running on the host
+After the policy has finished applying, the selected integration will be running on the host
 and communicating with the {agent}.
 
 [discrete]
@@ -193,7 +196,7 @@ Open the **Actions** menu and select **Edit integration** or **Delete integratio
 Editing or deleting an integration is permanent and cannot be undone.
 If you make a mistake, you can always re-configure or re-add an integration.
 
-Any saved changes are immediately distributed and applied to all {agent}s enrolled in the given {policy}.
+Any saved changes are immediately distributed and applied to all {agent}s enrolled in the given policy.
 
 To update any secret values in an integration policy, refer to <<agent-policy-secret-values>>.
 

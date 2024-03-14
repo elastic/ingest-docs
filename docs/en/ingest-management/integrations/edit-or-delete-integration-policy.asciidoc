@@ -20,4 +20,4 @@ Editing or deleting an integration is permanent and cannot be undone.
 If you make a mistake, you can always re-configure or re-add an integration.
 
 Any saved changes are immediately distributed and applied to all {agent}s
-enrolled in the given {policy}.
+enrolled in the given policy.

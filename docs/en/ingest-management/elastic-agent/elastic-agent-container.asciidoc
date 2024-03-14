@@ -19,6 +19,7 @@ This command allows environment variables to configure all properties, and runs 
 +
 --
 include::{observability-docs-root}/docs/en/shared/spin-up-the-stack/widget.asciidoc[]
+
 --
 
 [discrete]
@@ -92,7 +93,7 @@ docker run --rm docker.elastic.co/beats/elastic-agent:{version} elastic-agent co
 [discrete]
 == Step 4: Run the {agent} image
 
-include::{tab-widgets}/run-agent-image/widget.asciidoc[]
+include::{ingest-docs-root}/docs/en/ingest-management/tab-widgets/run-agent-image/widget.asciidoc[]
 
 [discrete]
 == Step 5: View your data in {kib}

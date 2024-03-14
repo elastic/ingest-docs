@@ -67,8 +67,8 @@ Based on our tests we advise to configure only the `limit` section of the `resou
 ------------------------------------------------
 resources:
     limits:
-      cpu: "1000m"
-      memory: "200Mi"
+      cpu: "1500m"
+      memory: "800Mi"
 ------------------------------------------------
 
 

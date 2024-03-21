@@ -10,9 +10,11 @@ Most integration content installed by {fleet} isn’t editable. This content is 
 [role="screenshot"]
 image::images/system-managed.png[An image of the new managed badge.]
 
-The cloned content is unlinked with the original reference configurations, so becomes independent from the original managed content. For example, with a cloned dashboard, the cloned panels become entirely self-contained copy without any dependencies on the original configuration. Clones can be customized and modified without accidentally affecting the original.
+With dashboards the cloned content is unlinked with the original reference configurations, so becomes independent from the original managed content. For example, with a cloned dashboard, the cloned panels become entirely self-contained copy without any dependencies on the original configuration. Clones can be customized and modified without accidentally affecting the original.
 
 [NOTE]
 ====
 The cloned managed content retains the managed badge, but is independent from the original. 
 ====
+
+With managed content relating to specific visualization editor such as Lens, TSVB, and Maps, the clones retain the original reference configurations. To clone the visualization, view it in the editor then becoming to make edits. Once finished editing you are prompted to save the edits as a new visualization. The same applies to editing any saved searches in a managed visualization.  

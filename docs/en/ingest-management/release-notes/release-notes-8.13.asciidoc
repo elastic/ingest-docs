@@ -68,6 +68,9 @@ The 8.13.0 release added the following new and notable features.
 * Add the new ETW input mapping to the Filebeat specification so that it's available in {agent}. {agent-pull}4037[#4037] {beats-pull}36915[#36915]
 * Add the new WebSocket input mapping to the Filebeat specification so that it's available in {agent}. {agent-pull}4242[#4242] {beats-pull}37774[#37774]
 * Create the `.installed` marker earlier on in the install process, allowing the use of `elastic-agent uninstall` to cleanup if the install fails. {agent-pull}4172[#4172] {agent-issue}4051[#4051]
+* Add a postrm script to {agent} DEB and RPM packages. {agent-pull}4334[#4334] {agent-issue}3784[#3784] {agent-issue}4267[#4267]
+* Kubernetes secrets provider has been improved to update a Kubernetes secret  when the secret value changes. {agent-pull}4371[#4371] {agent-issue}4168[#4168]
+* Upgrade link:https://github.com/elastic/elastic-agent-system-metrics[elastic-agent-system-metrics] to version 0.9.2. {agent-pull}4383[#4383]
 
 [discrete]
 [[enhancements-8.13.0]]
@@ -91,6 +94,7 @@ The 8.13.0 release added the following new and notable features.
 * Add mTLS flags to {agent} install and enroll commands to enable use of certificates for communication in on-prem proxy setups. {agent-pull}4007[#4007]
 * Improve error handling by adding error descriptors to the `inspect` command and config methods. {agent-pull}4074[#4074]
 * Add an `agent.providers.initial_default` configuration flag to disable providers by default. {agent-pull}4166[#4166] {agent-issue}4145[#4145]
+* Add environment variable bindings so that {fleet-server} and {agents} started in container mode can specify mTLS variables. {agent-pull}4261[#4261]
 
 [discrete]
 [[bug-fixes-8.13.0]]
@@ -104,7 +108,8 @@ The 8.13.0 release added the following new and notable features.
 * Deprecate the redundant `fleet.agent.logging.level` attribute. {fleet-server-pull}3195[3195] {fleet-server-issue}3126[3126]
 * Add validation to make sure that status and message are present in the checkin API request body.  {fleet-server-pull}3233[3233] {fleet-server-issue}2420[2420]
 * Fix a bug where agents were stuck in non-upgradeable state after an upgrade. {fleet-server-pull}3264[3264] {fleet-server-issue}3263[3263]
-* Fix chunked file delivery so that files are delivered in order.  {fleet-server-pull}3283[#3283]
+* Fix chunked file delivery so that files are delivered in order. {fleet-server-pull}3283[#3283]
+* Fix a bug where the self monitor stops output health reporting if the output configuration is not acknowledged by agents. {fleet-server-pull}3335[#3335] {fleet-server-issue}3334[3334]
 
 {agent}::
 * Fix component control protocol to allow checkin to be chunked across multiple messages. {agent-pull}3884[#3884] {agent-issue}2460[#2460]

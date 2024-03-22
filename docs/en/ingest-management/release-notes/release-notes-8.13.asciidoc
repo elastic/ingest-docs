@@ -107,7 +107,7 @@ The 8.13.0 release added the following new and notable features.
 * Adds making datastream rollover lazy ({kibana-pull}176565[#176565]).
 * Stops creating  the `{type}-{datastet}@custom` component template during package installation ({kibana-pull}175469[#175469]).
 * Adds the `xpack.fleet.isAirGapped` flag ({kibana-pull}174214[#174214]).
-* Adds a warning when download upgrade is failing ({kibana-pull}173844[#173844]).
+* Add a warning when downloading the new version in an agent upgrade is failing ({kibana-pull}173844[#173844]).
 * Adds a message explaining why an agent is not upgradeable ({kibana-pull}173253[#173253]).
 * Makes logs-* and metrics-* data views available across all spaces ({kibana-pull}172991[#172991]).
 * Adds flag for pre-release to templates/inputs endpoint ({kibana-pull}174471[#174471]).

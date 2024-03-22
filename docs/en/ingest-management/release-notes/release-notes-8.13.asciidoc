@@ -162,7 +162,7 @@ The 8.13.0 release added the following new and notable features.
 * Fix a bug where the self monitor stops output health reporting if the output configuration is not acknowledged by agents. {fleet-server-pull}3335[#3335] {fleet-server-issue}3334[3334]
 
 {agent}::
-* Fix component control protocol to allow checkin to be chunked across multiple messages. {agent-pull}3884[#3884] {agent-issue}2460[#2460]
+* Fix component control protocol to allow checkin to be chunked across multiple messages. Fixes errors related to the gRPC max message size being exceeded. {agent-pull}3884[#3884] {agent-issue}2460[#2460]
 * Fix the creation of directories when unpacking tar.gz packages. {agent-pull}4100[#4100] {agent-issue}4093[#4093]
 * Set a timeout of 1 minute for the FQDN lookup function. {agent-pull}4147[#4147]
 * Increase timeout for file removal during {agent} uninstall. {agent-pull}4310[#4310] {agent-issue}4164[#4164]

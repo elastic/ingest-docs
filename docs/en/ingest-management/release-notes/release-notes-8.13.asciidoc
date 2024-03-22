@@ -33,7 +33,7 @@ Review important information about {fleet-server} and {agent} for the 8.13.0 rel
 === Security updates
 
 {agent}::
-* Update Go version to 1.21.7. {agent-pull}4221[#4221]
+* Update Go version to 1.21.8. {agent-pull}4221[#4221]
 
 [discrete]
 [[breaking-changes-8.13.0]]

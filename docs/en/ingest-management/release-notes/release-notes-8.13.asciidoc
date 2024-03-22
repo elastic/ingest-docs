@@ -90,7 +90,7 @@ The 8.13.0 release added the following new and notable features.
 {agent}::
 * Log a summary of each policy configuration change received from {fleet}. {agent-pull}4050[#4050] {agent-issue}3406[#3406]
 * Add the full version number to the installation directory name. {agent-pull}4193[#4193] {agent-issue}2579[#2579]
-* Make more selective the Pod autodiscovery upon node and namespace update events. {agent-pull}4226[#4226] {beats-issue}37338[#37338]
+* Ignore Kubernetes node and namespace update events that do not change pod metadata. {agent-pull}4226[#4226] {beats-issue}37338[#37338]
 * Add the new ETW input mapping to the Filebeat specification so that it's available in {agent}. {agent-pull}4037[#4037] {beats-pull}36915[#36915]
 * Add the new WebSocket input mapping to the Filebeat specification so that it's available in {agent}. {agent-pull}4242[#4242] {beats-pull}37774[#37774]
 * Create the `.installed` marker earlier on in the install process, allowing the use of `elastic-agent uninstall` to cleanup if the install fails. {agent-pull}4172[#4172] {agent-issue}4051[#4051]

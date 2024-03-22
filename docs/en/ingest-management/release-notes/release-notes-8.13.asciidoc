@@ -35,13 +35,37 @@ Review important information about {fleet-server} and {agent} for the 8.13.0 rel
 {agent}::
 * Update Go version to 1.21.7. {agent-pull}4221[#4221]
 
-//[discrete]
-//[[breaking-changes-8.13.0]]
-//=== Breaking changes
+[discrete]
+[[breaking-changes-8.13.0]]
+=== Breaking changes
 
-//Breaking changes can prevent your application from optimal operation and
-//performance. Before you upgrade, review the breaking changes, then mitigate the
-//impact to your application.
+Breaking changes can prevent your application from optimal operation and
+performance. Before you upgrade, review the breaking changes, then mitigate the
+impact to your application.
+
+// copied from Kibana release notes: https://github.com/elastic/kibana/pull/179216
+[discrete]
+[[breaking-176879]]
+.Removes conditional topics for Kafka outputs
+[%collapsible]
+====
+*Details* +
+The Kafka output no longer supports conditional topics. For more information, refer to ({kibana-pull}176879[#176879]).
+====
+
+// copied from Kibana release notes: https://github.com/elastic/kibana/pull/179216
+[discrete]
+[[breaking-176443]]
+.Most Fleet installed integrations are now read-only and labelled with a *Managed* tag in the Kibana UI 
+[%collapsible]
+====
+*Details* +
+Integration content installed by {fleet} is no longer editable. This content is tagged with *Managed* in the {kib} UI, and is Elastic managed. This content cannot be edited or deleted, however managed visualizations, dashboards, and saved searches can be cloned. The clones can be customized.
+When cloning a dashboard the cloned panels become entirely independent copies that are unlinked from the original configurations and dependencies. 
+Managed content relating to specific visualization editors such as Lens, TSVB, and Maps, the clones retain the original reference configurations. The same applies to editing any saved searches in a managed visualization.
+For more information, refer to ({kibana-pull}172393[#172393]).
+====
+
 
 //[discrete]
 //[[known-issues-8.13.0]]
@@ -54,6 +78,8 @@ Review important information about {fleet-server} and {agent} for the 8.13.0 rel
 The 8.13.0 release added the following new and notable features.
 
 {fleet}::
+* Adds reference to `ecs@mappings` for each index template ({kibana-pull}174855[#174855]).
+* Adds support for the `subobjects` setting on the object type mapping ({kibana-pull}171826[#171826]).
 
 {fleet-server}::
 * Add support for storing output secrets in a new `secrets` block. {fleet-server-pull}3061[3061] {fleet-server-issue}2966[2966]
@@ -77,7 +103,16 @@ The 8.13.0 release added the following new and notable features.
 === Enhancements
 
 {fleet}::
-
+* Adds `skipRateLimitCheck` flag to the Upgrade API and Bulk_upgrade API ({kibana-pull}176923[#176923]).
+* Adds making datastream rollover lazy ({kibana-pull}176565[#176565]).
+* Stops creating  the `{type}-{datastet}@custom` component template during package installation ({kibana-pull}175469[#175469]).
+* Adds the `xpack.fleet.isAirGapped` flag ({kibana-pull}174214[#174214]).
+* Adds a warning when download upgrade is failing ({kibana-pull}173844[#173844]).
+* Adds a message explaining why an agent is not upgradeable ({kibana-pull}173253[#173253]).
+* Makes logs-* and metrics-* data views available across all spaces ({kibana-pull}172991[#172991]).
+* Adds flag for pre-release to templates/inputs endpoint ({kibana-pull}174471[#174471]).
+* Adds concurrency control to Fleet data stream API handler ({kibana-pull}174087[#174087]).
+* Adds a handlebar helper to percent encode a given string ({kibana-pull}173119[#173119]).
 
 {fleet-server}::
 * Relax version checks in snapshot builds to support automated testing during minor release updates. {fleet-server-pull}3039[3039] {fleet-server-issue}2960[2960]
@@ -101,6 +136,21 @@ The 8.13.0 release added the following new and notable features.
 === Bug fixes
 
 {fleet}::
+* Fixes a bug where secret values were not deleted on output type change ({kibana-pull}178964[#178964]).
+* Fixes formatting for some integrations on the overview page ({kibana-pull}178937[#178937]).
+* Fixes the name of {es} output workers configuration key ({kibana-pull}178329[#178329]).
+* Fixes clean up of the `.fleet-policies` entries when deleting an agent policy. ({kibana-pull}178276[#178276]).
+* Fixes only showing remote {es} output health status if later than last updated time ({kibana-pull}177685[#177685]).
+* Fixes status summary when `showUpgradeable` is selected ({kibana-pull}177618[#177618]).
+* Fixes issue of agent sometimes not getting inputs using a new agent policy with system integration ({kibana-pull}177594[#177594]).
+* Fixes the activity flyout keeping the scroll state on rerender ({kibana-pull}177029[#177029]).
+* Fixes inactive popover tour not resetting ({kibana-pull}176929[#176929]).
+* Fixes `isPackageVersionOrLaterInstalled` to check for installed package ({kibana-pull}176532[#176532]).
+* Removes pre-release exception for Synthetics package ({kibana-pull}176249[#176249]).
+* Fixes output validation when creating package policy ({kibana-pull}175985[#175985]).
+* Fixes allowing an agent to upgrade to a newer patch version than fleet-server ({kibana-pull}175775[#175775]).
+* Fixes asset creation during custom integration installation ({kibana-pull}174869[#174869]).
+* Fixes cascading agent policy's namespace to package policies ({kibana-pull}174776[#174776]).
 
 {fleet-server}::
 * Add missing `Elastic-Api-Version` and `X-Request-Id` headers to the {fleet-server} OpenAPI specification. {fleet-server-pull}3044[3044]

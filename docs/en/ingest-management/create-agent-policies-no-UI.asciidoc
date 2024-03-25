@@ -49,7 +49,7 @@ xpack.fleet.agentPolicies:
           name: fleet_server
 ----
           
-The following example creates an agent policy for general use:
+The following example creates an agent policy for general use, and customizes the `period` setting for the `system.core` data stream. You can find all available inputs and variables in the **Integrations** app in {kib}.
 
 [source,yaml]
 ----
@@ -66,10 +66,22 @@ xpack.fleet.agentPolicies:
       - logs
       - metrics
     package_policies:
-      - name: system-1
-        id: default-system
-        package:
+      - package:
           name: system
+        name: System Integration 1
+        id: preconfigured-system-1
+        inputs:
+          system-system/metrics:
+            enabled: true
+            vars:
+              '[system.hostfs]': home/test
+            streams:
+              '[system.core]':
+                enabled: true
+                vars:
+                  period: 20s
+          system-winlog:
+            enabled: false
 ----
 
 For more information about preconfiguration settings, refer to the

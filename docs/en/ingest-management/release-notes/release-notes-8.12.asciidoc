@@ -43,6 +43,7 @@ Review important information about {fleet-server} and {agent} for the 8.12.2 rel
 
 {fleet-server}::
 * Fix a bug where agents were stuck in a non-upgradeable state after upgrade. This resolves the <<known-issue-3263-8121,known issue>> that affected versions 8.12.0 and 8.12.1. {fleet-server-pull}3264[#3264] {fleet-server-issue}3263[#3263] 
+* Fix chunked file delivery so that files are delivered in order.  {fleet-server-pull}3283[#3283]
 
 {agent}::
 * On Windows, make sure the {agent} service is stopped before uninstalling. {agent-pull}4224[#4224] {agent-issue}4164[#4164]

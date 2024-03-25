@@ -50,7 +50,7 @@ impact to your application.
 [%collapsible]
 ====
 *Details* +
-The Kafka output no longer supports conditional topics. For more information, refer to ({kibana-pull}176879[#176879]).
+The Kafka output no longer supports conditional topics while the final syntax is evaluated ahead of Kafka output GA. For more information, refer to ({kibana-pull}176879[#176879]).
 ====
 
 // copied from Kibana release notes: https://github.com/elastic/kibana/pull/179216

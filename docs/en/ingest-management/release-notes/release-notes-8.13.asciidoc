@@ -66,6 +66,17 @@ Managed content relating to specific visualization editors such as Lens, TSVB, a
 For more information, refer to ({kibana-pull}172393[#172393]).
 ====
 
+// copied from Beats release notes: https://github.com/elastic/beats/pull/37795
+[discrete]
+[[breaking-37795]]
+.The behavior of `queue.mem.flush.min_events` has been simplified.
+[%collapsible]
+====
+*Details* +
+The behavior of `queue.mem.flush.min_events` has been simplified. It now serves as a simple maximum on the size of all event batches. There are no longer performance implications in its relationship to `bulk_max_size`.
+
+For more information, refer to ({beats-pull}37795[#37795]).
+====
 
 //[discrete]
 //[[known-issues-8.13.0]]
@@ -97,6 +108,7 @@ The 8.13.0 release added the following new and notable features.
 * Add a postrm script to {agent} DEB and RPM packages. {agent-pull}4334[#4334] {agent-issue}3784[#3784] {agent-issue}4267[#4267]
 * Kubernetes secrets provider has been improved to update a Kubernetes secret  when the secret value changes. {agent-pull}4371[#4371] {agent-issue}4168[#4168]
 * Upgrade link:https://github.com/elastic/elastic-agent-system-metrics[elastic-agent-system-metrics] to version 0.9.2. {agent-pull}4383[#4383]
+* Allow users to configure number of output workers (for outputs that support workers) with either `worker` or `workers`. {beats-pull}38257[38257]
 
 [discrete]
 [[enhancements-8.13.0]]

@@ -1,0 +1,41 @@
+[[configuring-kubernetes-metadata]]
+= Configuring kubernetes metadata enrichment on {agent} managed by {fleet}
+
+When the elastic-agent's policy includes kubernetes integration which configures the collection of kubernetes related metrics
+and container logs the mechanisms used for the metadata enrichment are:
+a. kubernetes provider for log collection
+b. kubernetes metadata enrichers for metrics
+
+In case the elastic-agent's policy does not include kubernetes integration, but {agent} runs inside a kubernetes
+environment the kubernetes metadata are collected by the https://www.elastic.co/guide/en/beats/metricbeat/current/add-kubernetes-metadata.html[add_kubernetes_metadata processor]. The processor is configurable when {agent} is managed by {fleet}.
+
+[discrete]
+== Kubernetes Logs
+
+When it comes to container logs collection, the kubernetes autodiscover provider is used. It watches for pod resources
+in the cluster and associates each container log file under the log path provided with a pod's container object.
+That way when a log file is parsed and an event is ready to be published to ES, the internal mechanism knows to which actual
+container this log file belongs to. The link is achieved through the container's ID which is part of the log file name.
+The kubernetes autodiscover provider has already collected all the metadata for that container, leveraging pod, namespace and node watchers. Thus the events are enriched with the relevant metadata.
+
+In order to configure the metadata collection, the kubernetes provider needs to be configured. 
+All the available configuration options of Kubernetes provider can be found in https://www.elastic.co/guide/en/fleet/current/kubernetes-provider.html[here].
+
+The Kubernetes provider can be configured following the steps in <<advanced-kubernetes-managed-by-fleet>>.
+
+[discrete]
+== Kubernetes metrics
+
+Metrics collection triggers metricbeat with kubernetes module and related metricsets enabled under the hood.
+The kubernetes metricsets use the so called kubernetes metadata enrichers mechanism. What this does is that the different metricsets share a set of resource watchers. Those watchers(pod, node, namespace, deployment, daemonset etc.) are responsible for watching for all the different resources creation, update and deletion by subscribing to kubernetes watch API. 
+So they keep in an up to date shared store all the resource informations and metadata. Whenever metrics are collected by the different sources (kubelet, kube-state-metrics), before they get published to ES as events, they get enriched with needed metadata.
+
+The metadata enrichment can be configured by editing the kubernetes integration.
+It can be disabled by switching off the `Add Metadata` toggle in every metricset. Exrta resource metadata like 
+node, namespace labels and annotations, as well as deployment and cronjob information can be configured per metricset.
+
+image::images/kubernetes_metadata.png[metadata configuration]
+
+[discrete]
+== Note
+Although the add_kubernetes_metadata processor is by default enabled when using elastic-agent, it is skipped whenever kubernetes integration is detected.

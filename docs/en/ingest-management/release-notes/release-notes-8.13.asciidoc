@@ -34,14 +34,14 @@ Review important information about {fleet-server} and {agent} for the 8.13.1 rel
 === Enhancements
 
 {fleet}::
-* Feature/default fields ({kibana-pull}178020[#178020]).
+* Remove `index.query.default_field` setting from managed component template settings. ({kibana-pull}178020[#178020])
 
 [discrete]
 [[bug-fixes-8.13.1]]
 === Bug fixes
 
 {fleet}::
-* Use index exists check in fleet-metrics-task ({kibana-pull}179404[#179404]).
+* Use index exists check in fleet-metrics-task. ({kibana-pull}179404[#179404])
 
 // end 8.13.1 relnotes
 

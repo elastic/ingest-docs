@@ -104,7 +104,7 @@ and configures the {agent} running on the {fleet-server} host to launch a
 
 To create a {fleet-server} policy:
 
-. Open {fleet} and go to the **Agent policies** tab.
+. In {fleet}, open the **Agent policies** tab.
 
 . Click on the **Create agent policy** button, then:
 .. Provide a meaningful name for the policy that will help you identify this {fleet-server} (or cluster) in the future.

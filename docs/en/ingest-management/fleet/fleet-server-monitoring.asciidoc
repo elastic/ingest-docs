@@ -13,7 +13,7 @@ new agent policy or use the existing Default {fleet-server} agent policy.
 
 To monitor {fleet-server}:
 
-. In {fleet}, go to the **Agent Policies** tab.
+. In {fleet}, open the **Agent policies** tab.
 
 . Click the {fleet-server} policy name to edit the policy.
 

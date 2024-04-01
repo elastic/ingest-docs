@@ -258,8 +258,7 @@ You must define processors in each integration policy where they are required.
 
 To add processors to an integration policy:
 
-. In {kib}, go to *{fleet} > Agent policies*, and click the policy name to view
-its integration policies.
+. In {fleet}, open the *Agent policies* tab and click the policy name to view its integration policies.
 
 . Click the name of the integration policy to edit it.
 

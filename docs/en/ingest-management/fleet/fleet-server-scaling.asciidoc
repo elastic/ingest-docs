@@ -27,7 +27,7 @@ image::images/fleet-server-hosted-container.png[{fleet-server} hosted agent]
 
 Next modify the {fleet-server} configuration by editing the agent policy:
 
-. In {kib}, go to **Management > {fleet} > Agent Policies**. Click the name of
+. In {fleet}, go to the **Agent Policies** tab. Click the name of
 the **{ecloud} agent policy** to edit the policy.
 
 . Open the **Actions** menu next to the {fleet-server} integration and click

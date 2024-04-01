@@ -23,7 +23,7 @@ TIP: In larger deployments, you should test integration upgrades on a sample
 [[upgrade-integration-to-latest-version]]
 == Upgrade an integration to the latest version
 
-. In {kib}, go to *Management > Integrations > Installed integrations*. Search
+. In {kib}, go to the **Integrations** page and open the **Installed integrations** tab. Search
 for and select the integration you want to upgrade. Notice there is a warning
 icon next to the version number to indicate a new version is available.
 
@@ -74,7 +74,7 @@ upgrade, your integration policies will not be upgraded, and you'll need to
 
 To keep integration policies up to data automatically:
 
-. In {kib}, go to *Management > Integrations > Installed Integrations*. Search for
+. In {kib}, go to the **Integrations** page and open the **Installed integrations** tab. Search for
 and select the integration you want to configure.
 
 . Click *Settings* and make sure

@@ -418,7 +418,7 @@ elastic-agent diagnostics
 An agent can gather and upload diagnostics if it is online in a `Healthy` or `Unhealthy` state. The diagnostics are sent to {fleet-server} which in turn adds it into {es}. Therefore, this works even with {agents} that are not using the {es} output.
 To download the diagnostics bundle for local viewing:
 
-. In {kib}, go to **Management -> {fleet} -> Agents**.
+. In {fleet}, open the **Agents** tab.
 
 . In the **Host** column, click the agent's name.
 
@@ -745,7 +745,7 @@ There are two approaches to fixing this issue, depending on whether or not the t
 
 To recover the {agent}:
 
-. In {kib}, go to **Fleet > Agents**, and click **Add agent**.
+. In {fleet}, open the **Agents** tab and click **Add agent**.
 
 . In the **Add agent** flyout, select an agent policy that contains the **Fleet Server** integration. On Elastic Cloud you can use the **Elastic Cloud agent policy** which includes the integration.
 

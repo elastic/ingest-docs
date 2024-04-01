@@ -9,7 +9,7 @@ A remote {es} cluster supports the same <<es-output-settings,output settings>> a
 
 To configure a remote {es} cluster for your {agent} data:
 
-. In {kib}, go to **Management -> {fleet} -> Settings**.
+. In {fleet}, open the **Settings** tab.
 
 . In the **Outputs** section, select **Add output**.
 
@@ -47,7 +47,7 @@ NOTE: To prevent unauthorized access the {es} Service Token is stored as a secre
 
 After the output is created, you can update an {agent} policy to use the new remote {es} cluster:
 
-. In {kib}, go to **Management -> {fleet} -> Agent policies**.
+. In {fleet}, open the **Agent policies** tab.
 
 . Click the agent policy to edit it, then click **Settings**.
 

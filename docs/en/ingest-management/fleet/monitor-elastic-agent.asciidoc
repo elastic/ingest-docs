@@ -68,7 +68,7 @@ using {kibana-ref}/kuery-query.html[{kib} Query Language]. For example, enter
 
 In {fleet}, you can access the detailed status of an individual agent and the integrations that are associated with it through the agent policy.
 
-. In {kib}, go to **Management -> {fleet} -> Agents**.
+. In {fleet}, open the **Agents** tab.
 
 . In the **Host** column, click the agent's name.
 
@@ -103,7 +103,7 @@ When {fleet} reports an agent status like `Offline` or `Unhealthy`, you might
 want to view the agent logs to diagnose potential causes. If agent monitoring
 is configured to collect logs (the default), you can view agent logs in {fleet}.
 
-. In {kib}, go to **Management -> {fleet} -> Agents**.
+. In {fleet}, open the **Agents** tab.
 
 . In the **Host** column, click the agent's name.
 
@@ -165,7 +165,7 @@ logs informational messages, warnings, errors, and critical errors.
 An agent can gather and upload diagnostics if it is online in a `Healthy` or `Unhealthy` state.
 To download the diagnostics bundle for local viewing:
 
-. In {kib}, go to **Management -> {fleet} -> Agents**.
+. In {fleet}, open the **Agents** tab.
 
 . In the **Host** column, click the agent's name.
 
@@ -191,7 +191,7 @@ help you identify problems and make decisions about scaling your deployment.
 
 To view agent metrics:
 
-. In {kib}, go to **Management -> {fleet} -> Agents**.
+. In {fleet}, open the **Agents** tab.
 
 . In the **Host** column, click the agent's name.
 
@@ -214,7 +214,7 @@ your needs.
 Agent monitoring is turned on by default in the agent policy. To change agent
 monitoring settings for all agents enrolled in a specific agent policy:
 
-. In {kib}, go to **Management -> {fleet} -> Agent policies**.
+. In {fleet}, open the **Agent policies** tab.
 
 . Click the agent policy to edit it, then click **Settings**.
 

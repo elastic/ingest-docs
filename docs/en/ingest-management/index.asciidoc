@@ -47,6 +47,8 @@ include::elastic-agent/running-on-kubernetes-managed-by-fleet.asciidoc[leveloffs
 
 include::elastic-agent/advanced-kubernetes-managed-by-fleet.asciidoc[leveloffset=+3]
 
+include::elastic-agent/configuring-kubernetes-metadata.asciidoc[leveloffset=+3]
+
 include::elastic-agent/running-on-gke-managed-by-fleet.asciidoc[leveloffset=+3]
 
 include::elastic-agent/running-on-eks-managed-by-fleet.asciidoc[leveloffset=+3]
@@ -210,5 +212,3 @@ include::elastic-agent/install-fleet-managed-agent.asciidoc[leveloffset=+2]
 include::fleet/apis.asciidoc[]
 
 include::redirects.asciidoc[]
-
-include::elastic-agent/configuring-kubernetes-metadata.asciidoc[leveloffset=+3]

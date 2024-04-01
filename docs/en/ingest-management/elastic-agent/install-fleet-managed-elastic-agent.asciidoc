@@ -128,7 +128,7 @@ location of installed {agent} files.
 automatically if the system is rebooted.
 
 
-To confirm that {agent} is installed and running, in {fleet}, open the **Agents** tab.
+To confirm that {agent} is installed and running, open the **Agents** tab in {fleet}.
 
 [role="screenshot"]
 image::images/kibana-fleet-agents.png[{fleet} showing enrolled agents]

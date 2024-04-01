@@ -46,8 +46,9 @@ You can also use matching patterns to give users access to data when creating us
 By default the namespace defined for an {agent} policy is propagated to all integrations in that policy. if you'd like to define a more granular namespace for a policy:
 
 . In {kib}, go to **Management -> Integrations**.
+. On the **Installed integrations** tab, select the integration that you'd like to update.
 . Open the **Integration policies** tab.
-. From the **Actions** menu next to the integration that you'd like to update, select *Edit integration*.
+. From the **Actions** menu next to the integration, select *Edit integration*.
 . Open the advanced options and update the **Namespace** field. Data streams from the integration will now use the specified namespace rather than the default namespace inherited from the {agent} policy.
 
 The naming scheme separates each components with a `-` character:

@@ -210,3 +210,5 @@ include::elastic-agent/install-fleet-managed-agent.asciidoc[leveloffset=+2]
 include::fleet/apis.asciidoc[]
 
 include::redirects.asciidoc[]
+
+include::elastic-agent/configuring-kubernetes-metadata.asciidoc[leveloffset=+3]

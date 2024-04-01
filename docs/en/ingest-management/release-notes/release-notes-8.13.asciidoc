@@ -14,12 +14,36 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.13.1>>
 * <<release-notes-8.13.0>>
 
 Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.13.1 relnotes
+
+[[release-notes-8.13.1]]
+== {fleet} and {agent} 8.13.1
+
+Review important information about {fleet-server} and {agent} for the 8.13.1 release.
+
+[discrete]
+[[enhancements-8.13.1]]
+=== Enhancements
+
+{fleet}::
+* Remove `index.query.default_field` setting from managed component template settings. ({kibana-pull}178020[#178020])
+
+[discrete]
+[[bug-fixes-8.13.1]]
+=== Bug fixes
+
+{fleet}::
+* Use index exists check in fleet-metrics-task. ({kibana-pull}179404[#179404])
+
+// end 8.13.1 relnotes
 
 // begin 8.13.0 relnotes
 

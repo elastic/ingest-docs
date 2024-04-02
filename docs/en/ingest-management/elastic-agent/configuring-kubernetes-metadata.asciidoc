@@ -26,7 +26,7 @@ All the available configuration options of Kubernetes provider can be found in h
 
 In more details:
 
-* For **Standalone {agent}**
+* For **Standalone {agent} configuration:**
 Follow information of `add_resource_metadata` parameter of <<kubernetes-provider>>
 
 [source,yaml]

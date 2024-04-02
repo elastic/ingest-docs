@@ -58,7 +58,7 @@ data:
         #cronjob: false
 ------------------------------------------------
 
-* For **Managed {agent}**:
+* For **Managed {agent} configuration**:
 
 The Kubernetes provider can be configured following the steps in <<advanced-kubernetes-managed-by-fleet>>.
 

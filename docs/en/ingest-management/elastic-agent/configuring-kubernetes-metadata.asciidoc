@@ -22,7 +22,7 @@ container this log file belongs to. The linkage is established by the container'
 The Kubernetes autodiscover provider has already collected all the metadata for that container, leveraging pod, namespace and node watchers. Thus the events are enriched with the relevant metadata.
 
 In order to configure the metadata collection, the Kubernetes provider needs to be configured. 
-All the available configuration options of Kubernetes provider can be found in https://www.elastic.co/guide/en/fleet/current/kubernetes-provider.html[here].
+All the available configuration options of **Kubernetes provider** can be found in https://www.elastic.co/guide/en/fleet/current/kubernetes-provider.html[here].
 
 In more details:
 

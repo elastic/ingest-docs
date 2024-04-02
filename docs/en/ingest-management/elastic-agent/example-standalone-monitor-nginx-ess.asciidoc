@@ -129,7 +129,7 @@ image::images/guide-nginx-integration-added.png["Nginx Integration added confirm
 
 Rather than opt for {fleet} to centrally manage {agent}, you'll configure an agent to run in standalone mode, so it will be managed by hand.
 
-. Open the {kib} menu and go to **{fleet} -> Agents** and click **Add agent**.
+. In {fleet}, open the **Agents** tab and click **Add agent**.
 . For the **What type of host are you adding?** step, select `nginx-policy` from the drop-down menu if it's not already selected.
 . For the **Enroll in {fleet}?** step, select **Run standalone**.
 +

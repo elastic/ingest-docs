@@ -8,7 +8,7 @@
 Policies consist of one or more integrations. To add a new integration to a
 policy:
 
-. In {kib}, go to **Management -> Integrations**.
+. In {kib}, go to the **Integrations** page.
 +
 Notice that the Integrations page shows {agent} integrations along with other
 types, such as {beats}.

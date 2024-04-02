@@ -103,10 +103,8 @@ The following table illustrates the {fleet} user actions available to different 
 
 To manage your {agent}s and the data they collect, create a new policy:
 
-. In {kib}, go to **Management -> {fleet}**.
-
-. In {fleet}, click **Agent policies -> Create agent policy**.
-Name your policy. All other fields are optional and can be modified later.
+In {fleet}, open the **Agent policies** tab and click **Create agent policy**.
+. Name your policy. All other fields are optional and can be modified later.
 By default, each policy enables the _system_ integration, which collects system information and metrics.
 +
 [role="screenshot"]

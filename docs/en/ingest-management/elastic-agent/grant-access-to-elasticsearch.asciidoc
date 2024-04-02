@@ -115,7 +115,7 @@ password to access {es} (and an API key is required in a {serverless} environmen
 assign it to a user, and specify the user's credentials in the
 `elastic-agent.yml` file.
 
-. In {kib}, for a go to *{stack-manage-app} > Roles*.
+. In {kib}, go to *{stack-manage-app} > Roles*.
 
 . Click *Create role* and enter a name for the role.
 

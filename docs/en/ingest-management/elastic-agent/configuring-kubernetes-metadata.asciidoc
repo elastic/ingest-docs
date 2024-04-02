@@ -73,7 +73,7 @@ The metadata enrichment can be configured by editing the Kubernetes integration.
 **Only in metrics collection**, metadata enrichement can be disabled by switching off the `Add Metadata` toggle in every dataset. Exrta resource metadata like 
 node, namespace labels and annotations, as well as deployment and cronjob information can be configured per dataset.
 
-- For **Managed {agent}**:
+- For **Managed {agent} configuration**:
 
 image::images/kubernetes_metadata.png[metadata configuration]
 

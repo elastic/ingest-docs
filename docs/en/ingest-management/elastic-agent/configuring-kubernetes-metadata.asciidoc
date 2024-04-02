@@ -80,7 +80,7 @@ image::images/kubernetes_metadata.png[metadata configuration]
 NOTE: add_resource_metadata block needs to be configured to all datasets that are enabled
 
 
-- For **Standalone {agent}**:
+- For **Standalone {agent} configuration**:
 
 [source,yaml]
 .Elastic Agent Standalone manifest sample

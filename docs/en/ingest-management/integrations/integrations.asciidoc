@@ -7,7 +7,7 @@
 
 ****
 Integrations are available for a wide array of popular services and platforms. To
-see the full list of available integrations, go to *Management > Integrations*
+see the full list of available integrations, go to the *Integrations* page
 in {kib}, or visit {integrations-docs}[Elastic Integrations].
 
 {agent} integrations provide a simple, unified way to collect data from popular

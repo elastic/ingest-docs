@@ -21,7 +21,7 @@ These steps describe how to set up {fleet} components to use a proxy.
 
 . **Globally add proxy server details to {fleet}.**
 
-.. In {kib}, navigate to the **Fleet** page and go to the **Settings** tab.
+.. In {fleet}, open the **Settings** tab.
 .. Select **Add proxy**. The **Add proxy** or **Edit proxy** flyout opens.
 +
 image::images/elastic-agent-proxy-edit-proxy.png[Screen capture of the Edit Proxy UI in Fleet]
@@ -34,7 +34,7 @@ image::images/elastic-agent-proxy-edit-proxy.png[Screen capture of the Edit Prox
 +
 If the control plane traffic to/from the Fleet Server needs to also go through the proxy server, the proxy created needs to also be added to the definition of that Fleet Server.
 
-.. In {kib}, navigate to the **Fleet** page and go to the **Settings** tab.
+.. In {fleet}, open the **Settings** tab.
 .. In the list of **Fleet Server Hosts**, choose a host and select the edit button to configure it.
 .. In the **Proxy** section dropdown list, select the proxy that you configured.
 +
@@ -52,7 +52,7 @@ Any invalid changes to the {fleet-server} definition that may cause connectivity
 +
 Similarly, if the data plane traffic to an output is to traverse via a proxy, that proxy definition would need to be added to the output defined in the Fleet.
 
-.. In {kib}, navigate to the **Fleet** page and go to the **Settings** tab.
+.. In {fleet}, open the **Settings** tab.
 .. In the list of **Outputs**, choose an output and select the edit button to configure it.
 .. In the **Proxy** section dropdown list, select the proxy that you configured.
 +
@@ -72,7 +72,7 @@ beta[]
 +
 Likewise, if the download traffic to or from the artifact registry needs to go through the proxy server, that proxy definition also needs to be added to the agent binary source defined in {Fleet}.
 
-.. In {kib}, navigate to the **Fleet** page and go to the **Settings** tab.
+.. In {fleet}, open the **Settings** tab.
 .. In the **Agent Binary Download** list, choose an agent binary source and select the edit button to configure it.
 .. In the **Proxy** section dropdown list, select the proxy that you configured.
 +

@@ -15,7 +15,7 @@ index templates.
 [[install-integration-assets]]
 == Install integration assets
 
-. In {kib}, go to **Management > Integrations > Browse integrations**. Search for
+. In {kib}, go to the **Integrations** page and open the **Browse integrations** tab. Search for
 and select an integration. You can select a category to narrow your search.
 
 . Click the **Settings** tab.
@@ -45,7 +45,7 @@ by the integration.
 +
 Any {agent}s enrolled in the policy will stop using the deleted integration.
 
-. In {kib}, go to **Management > Integrations > Installed integrations**. Search for
+. In {kib}, go to the **Integrations** page and open the **Installed integrations** tab. Search for
 and select an integration.
 
 . Click the **Settings** tab.
@@ -68,7 +68,7 @@ installation or upgrade.
 
 To reinstall integration assets:
 
-. In {kib}, go to **Management > Integrations > Installed integrations**. Search for
+. In {kib}, go to the **Integrations** page and open the **Installed integrations** tab. Search for
 and select an integration.
 
 . Click the **Settings** tab.

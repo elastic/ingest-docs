@@ -30,7 +30,7 @@ In more details:
 Follow information of `add_resource_metadata` parameter of <<kubernetes-provider>>
 
 [source,yaml]
-.Example how to configure kubernetes metadata enrichment
+.Example on how to configure kubernetes metadata enrichment
 ------------------------------------------------
 apiVersion: v1
 kind: ConfigMap
@@ -74,6 +74,7 @@ The metadata enrichment can be configured by editing the Kubernetes integration.
 node, namespace labels and annotations, as well as deployment and cronjob information can be configured per dataset.
 
 - For **Managed {agent}**:
+
 image::images/kubernetes_metadata.png[metadata configuration]
 
 NOTE: add_resource_metadata block needs to be configured to all datasets that are enabled

@@ -27,6 +27,7 @@ All the available configuration options of **Kubernetes provider** can be found 
 In more details:
 
 * For **Standalone {agent} configuration:**
+
 Follow information of `add_resource_metadata` parameter of <<kubernetes-provider>>
 
 [source,yaml]
@@ -58,7 +59,7 @@ data:
         #cronjob: false
 ------------------------------------------------
 
-* For **Managed {agent} configuration**:
+* **Managed {agent} configuration**:
 
 The Kubernetes provider can be configured following the steps in <<advanced-kubernetes-managed-by-fleet>>.
 
@@ -73,7 +74,7 @@ The metadata enrichment can be configured by editing the Kubernetes integration.
 **Only in metrics collection**, metadata enrichement can be disabled by switching off the `Add Metadata` toggle in every dataset. Exrta resource metadata like 
 node, namespace labels and annotations, as well as deployment and cronjob information can be configured per dataset.
 
-- For **Managed {agent} configuration**:
+- **Managed {agent} configuration**:
 
 image::images/kubernetes_metadata.png[metadata configuration]
 

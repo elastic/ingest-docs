@@ -257,7 +257,7 @@ Make sure you have a plan or automation in place to update your artifact
 registry when new versions of {agent} are available.
 ====
 . Add the agent binary download location to {fleet} settings:
-.. In {kib}, go to **{fleet} -> Settings**.
+.. Open **{fleet} -> Settings**.
 .. Under **Agent Binary Download**, click **Add agent binary source** to add
 the location of your artifact registry. For more detail about these settings,
 refer to <<fleet-agent-binary-download-settings>>. If you want all {agent}s

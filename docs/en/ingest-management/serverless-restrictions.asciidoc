@@ -19,6 +19,17 @@ If you are using {agent} with link:{serverless-docs}[{serverless-full}], note th
 
 * On {serverless-short}, you can configure new {es} outputs to use a proxy, with the restriction that the output URL is fixed. Any new {es} outputs must use the default {es} host URL.
 
+
+[discrete]
+[[fleet-serverless-restrictions]]
+== {fleet}
+
+The path to get to the {fleet} application in {kib} differs across projects:
+
+* In {ess} deployments, navigate to **Management > Fleet**.
+* In {serverless-short} {observability} projects, navigate to **Project settings > Fleet**.
+* In {serverless-short} Security projects, navigate to **Assets > Fleet**.
+
 [discrete]
 [[fleet-server-serverless-restrictions]]
 == {fleet-server}

@@ -120,7 +120,7 @@ of agents you plan to support in your deployment.
 // tag::add-fleet-server-host[]
 To add a {fleet-server} host:
 
-. In {kib}, go to *Management* -> *{fleet}* -> *Settings*.
+. In {fleet}, open the *Settings* tab.
 For more information about these settings, see
 {fleet-guide}/fleet-settings.html[{fleet} settings].
 
@@ -160,8 +160,7 @@ The policy configures the agent to operate in a special mode to serve as a {flee
 
 To add a {fleet-server}:
 
-. In {kib}, go to *Management* -> *{fleet}*
-. Click the **Agents** tab if it isn't already selected.
+. In {fleet}, open the **Agents** tab.
 . Click *Add {fleet-server}*.
 . This opens in-product instructions to add a {fleet-server} using 
 one of two options: *Quick Start* or *Advanced*.

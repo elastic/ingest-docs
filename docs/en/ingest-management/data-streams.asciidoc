@@ -45,7 +45,7 @@ You can also use matching patterns to give users access to data when creating us
 +
 By default the namespace defined for an {agent} policy is propagated to all integrations in that policy. if you'd like to define a more granular namespace for a policy:
 
-. In {kib}, go to **Management -> Integrations**.
+. In {kib}, go to **Integrations**.
 . On the **Installed integrations** tab, select the integration that you'd like to update.
 . Open the **Integration policies** tab.
 . From the **Actions** menu next to the integration, select *Edit integration*.

@@ -104,7 +104,7 @@ and configures the {agent} running on the {fleet-server} host to launch a
 
 To create a {fleet-server} policy:
 
-. In {kib}, navigate to the **{fleet}** page and go to the **Agent policies** tab.
+. In {fleet}, open the **Agent policies** tab.
 
 . Click on the **Create agent policy** button, then:
 .. Provide a meaningful name for the policy that will help you identify this {fleet-server} (or cluster) in the future.
@@ -136,8 +136,7 @@ The policy configures the agent to operate in a special mode to serve as a {flee
 
 To add a {fleet-server}:
 
-. In {kib}, go to *Management* -> *{fleet}*
-. Click the **Agents** tab.
+. In {fleet}, open the **Agents** tab.
 . Click *Add {fleet-server}*.
 
 . This will open in-product instructions for adding a {fleet-server} using 

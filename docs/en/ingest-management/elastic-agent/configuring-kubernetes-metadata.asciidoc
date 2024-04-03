@@ -9,8 +9,8 @@ When the {agent}'s policy includes the https://docs.elastic.co/en/integrations/k
 * <<kubernetes-provider>> for log collection
 * Kubernetes metadata enrichers for metrics
 
-In case the {agent}'s policy does not include Kubernetes integration, but {agent} runs inside a Kubernetes
-environment the Kubernetes metadata are collected by the <<add_kubernetes_metadata-processor>>. The processor is configurable when {agent} is managed by {fleet}.
+In case the {agent}'s policy does not include the Kubernetes integration, but {agent} runs inside a Kubernetes
+environment, the Kubernetes metadata are collected by the <<add_kubernetes_metadata-processor>>. The processor is configurable when {agent} is managed by {fleet}.
 
 
 [discrete]

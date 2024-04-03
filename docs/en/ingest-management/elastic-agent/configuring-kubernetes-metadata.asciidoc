@@ -31,7 +31,7 @@ In more details:
 Follow information of `add_resource_metadata` parameter of <<kubernetes-provider>>
 
 [source,yaml]
-.Example on how to configure kubernetes metadata enrichment
+.Example of how to configure kubernetes metadata enrichment
 ------------------------------------------------
 apiVersion: v1
 kind: ConfigMap

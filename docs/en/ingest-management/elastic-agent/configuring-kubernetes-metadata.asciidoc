@@ -17,9 +17,9 @@ environment the Kubernetes metadata are collected by the <<add_kubernetes_metada
 
 When it comes to container logs collection, the <<kubernetes-provider>> is used. It monitors for pod resources
 in the cluster and associates each container log file with a corresponding pod's container object.
-That way, when a log file is parsed and an event is ready to be published to ES, the internal mechanism knows to which actual
-container this log file belongs to. The linkage is established by the container's ID, which forms an integral part of the filename for the log.
-The Kubernetes autodiscover provider has already collected all the metadata for that container, leveraging pod, namespace and node watchers. Thus the events are enriched with the relevant metadata.
+That way, when a log file is parsed and an event is ready to be published to {es}, the internal mechanism knows to which actual
+container this log file belongs. The linkage is established by the container's ID, which forms an integral part of the filename for the log.
+The Kubernetes autodiscover provider has already collected all the metadata for that container, leveraging pod, namespace and node watchers. Thus, the events are enriched with the relevant metadata.
 
 In order to configure the metadata collection, the Kubernetes provider needs to be configured. 
 All the available configuration options of **Kubernetes provider** can be found in https://www.elastic.co/guide/en/fleet/current/kubernetes-provider.html[here].

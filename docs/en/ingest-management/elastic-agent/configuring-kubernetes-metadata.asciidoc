@@ -71,7 +71,7 @@ Specifically, the different datasets share a set of resource watchers. Those wat
 So, they keep an up-to-date shared cache store of all the resources' information and metadata. Whenever metrics are collected by the different sources (kubelet, kube-state-metrics), before they get published to {es} as events, they are enriched with needed metadata.
 
 The metadata enrichment can be configured by editing the Kubernetes integration.
-**Only in metrics collection**, metadata enrichement can be disabled by switching off the `Add Metadata` toggle in every dataset. Exrta resource metadata like 
+**Only in metrics collection**, metadata enrichment can be disabled by switching off the `Add Metadata` toggle in every dataset. Extra resource metadata such as 
 node, namespace labels and annotations, as well as deployment and cronjob information can be configured per dataset.
 
 - **Managed {agent} configuration**:

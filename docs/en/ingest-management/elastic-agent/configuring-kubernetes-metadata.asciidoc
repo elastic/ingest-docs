@@ -116,4 +116,4 @@ The `add_resource_metadata` block configures the watcher's enrichment functional
 
 [discrete]
 == Note
-Although the add_kubernetes_metadata processor is by default enabled when using elastic-agent, it is skipped whenever Kubernetes integration is detected.
+Although the `add_kubernetes_metadata` processor is by default enabled when using elastic-agent, it is skipped whenever Kubernetes integration is detected.

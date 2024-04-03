@@ -67,8 +67,8 @@ The Kubernetes provider can be configured following the steps in <<advanced-kube
 == Kubernetes metrics
 
 The {agent} metrics collection implements metadata enrichment based on watchers, a mechanism used to continuously monitor Kubernetes resources for changes and updates. 
-In more details, the different datasets share a set of resource watchers. Those watchers(pod, node, namespace, deployment, daemonset etc.) are responsible for watching for all different resource events (creation, update and deletion) by subscribing to Kubernetes watch API. This enables real-time synchronization of application state with the state of the Kubernetes cluster.
-So they keep an up-to-date shared cache store of all the resources' informations and metadata. Whenever metrics are collected by the different sources (kubelet, kube-state-metrics), before they get published to {es} as events, they get enriched with needed metadata.
+Specifically, the different datasets share a set of resource watchers. Those watchers (pod, node, namespace, deployment, daemonset etc.) are responsible for watching for all different resource events (creation, update and deletion) by subscribing to the Kubernetes watch API. This enables real-time synchronization of application state with the state of the Kubernetes cluster.
+So, they keep an up-to-date shared cache store of all the resources' information and metadata. Whenever metrics are collected by the different sources (kubelet, kube-state-metrics), before they get published to {es} as events, they are enriched with needed metadata.
 
 The metadata enrichment can be configured by editing the Kubernetes integration.
 **Only in metrics collection**, metadata enrichement can be disabled by switching off the `Add Metadata` toggle in every dataset. Exrta resource metadata like 

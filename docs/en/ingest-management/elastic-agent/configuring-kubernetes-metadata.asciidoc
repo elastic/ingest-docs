@@ -112,7 +112,7 @@ NOTE: add_resource_metadata block needs to be configured to all datasets that ar
                 #deployment: false
                 #cronjob: false
 ------------------------------------------------
-The `add_resource_metadata` block configures the watchers enrichment functionality. See <<kubernetes-provider>> for full description of add_resource_metadata. Same configuration parameters apply.
+The `add_resource_metadata` block configures the watcher's enrichment functionality. See <<kubernetes-provider>> for full description of add_resource_metadata. Same configuration parameters apply.
 
 [discrete]
 == Note

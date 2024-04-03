@@ -1,24 +1,42 @@
 [[fleet-roles-and-privileges]]
-= Required roles and privileges
+= Roles and privileges
 
-Beginning with {stack} version 8.1, you no longer require the built-in `elastic` superuser credentials to use {fleet} and Integrations.
+Beginning with {stack} version 8.14, you can take much more granular control over the level of access that different users have to features managed by {fleet}. This is very useful when you have users within your organization who use {fleet} for different purposes, and for whom read or write privileges should be limited accordingly.
 
-Assigning the {kib} feature privileges `Fleet` and `Integrations` grants access to these features:
+For both `Fleet` and `Integrations` as a whole, privileges can be set to:
 
 `all`:: Grants full read-write access.
 `read`:: Grants read-only access.
+`none`:: No access is granted.
 
+You can take advantage of these available privilege settings by:
+
+* <<fleet-roles-and-privileges-built-in,Using an {es} built-in role>>
+* <<fleet-roles-and-privileges-create,Creating a new role>>
+* <<fleet-roles-and-privileges-sub-features,Customize sub-feature privileges for {fleet}>>
+
+[discrete]
+[[fleet-roles-and-privileges-built-in]]
+== Built-in roles
+
+{es} comes with built-in roles that include default privileges.
+
+`editor`::
 The built-in `editor` role grants the following privileges, supporting full read-write access to {fleet} and Integrations:
 
-* {Fleet}: `All`
-* Integrations: `All`
+* {Fleet}: `all`
+* Integrations: `all`
 
+`viewer`::
 The built-in `viewer` role grants the following privileges, supporting read-only access to {fleet} and Integrations:
 
-* {Fleet}:: `None`
-* Integrations:: `Read`
+* {Fleet}: `none`  // IS THIS TRUE, OR IS IT NOW "READ"?
+* Integrations: `read`
 
-You can also create a new role that can be assigned to a user to grant access to {fleet} and Integrations.
+You can also <<fleet-roles-and-privileges-create,create a new role>> that can be assigned to a user to grant more specific levels of access to {fleet} and Integrations.
+
+
+
 
 [discrete]
 [[fleet-roles-and-privileges-create]]
@@ -40,6 +58,95 @@ To create a new role with full access to use and manage {fleet} and Integrations
 [role="screenshot"]
 image::images/kibana-fleet-privileges.png[Kibana privileges flyout showing Fleet and Integrations set to All]
 
-To create a read-only user for Integrations, follow the same steps as above but set the **Fleet** privileges to **None** and the **Integrations** privileges to **Read**.
+To create a read-only user for {fleet} and Integrations, follow the same steps as above but set both **Fleet** and **Integrations** privileges to **Read**.
 
-Read-only access to {fleet} is not currently supported but is planned for development in a later release.
+You can also <<fleet-roles-and-privileges-sub-features,customize access to {fleet} features>>.
+
+Once a new role has been created, you can edit it any time from the **Roles** page.
+
+[discrete]
+[[fleet-roles-and-privileges-sub-features]]
+== Customize sub-feature privileges for {fleet}
+
+When you create or edit a role, you can fine-tune the access level assigned to it for different features managed by {fleet}.
+
+.Feature access levels in {fleet}
+[cols="1,1,1"]
+|===
+|Component |`read`` privilege |`all` privilege
+
+|**Agents**
+|View-only access to {agents}, including the ability to:
+
+* View the list of all {agents}
+
+* View the status of all agents
+
+* Download agent diagnostic packages
+
+|Full access to manage {agents}, including the ability to:
+
+* <<upgrade-elastic-agent,Perform upgrades>>
+
+* <<monitor-elastic-agent,Configure monitoring>>
+
+* <<migrate-elastic-agent,Migrate agents to a new cluster>>
+
+* <<unenroll-elastic-agent,Unenroll agents from {fleet}>>
+
+* <<set-inactivity-timeout,Set the inactivity timeout>>
+
+* <<fleet-enrollment-tokens,Create and revoke enrollment tokens>>
+
+|**Agent policies**
+
+| View-only access, including:
+
+* Agent policies and settings
+
+* The integrations associated with a policy
+
+|Full access to manage agent policies, including the ability to:
+
+* <<create-a-policy,Create a policy>>
+
+* <<add-integration,Add an integration to a policy>>
+
+* <<apply-a-policy,Apply a policy>>
+
+* <<policy-edit-or-delete,Edit or delete an integration>>
+
+* <<copy-policy,Copy a policy>>
+
+* <<policy-main-settings,Edit or delete a policy>>
+
+* <<change-policy-output,Change the output of a policy>>
+
+|**Fleet settings**
+
+| View-only access, including:
+
+* Configured {fleet} hosts
+
+* {fleet} output settings
+
+* The location to download agent binaries
+
+|Full access to manage {fleet} settings, including:
+
+* <<fleet-server-hosts-setting,Editing hosts>>
+
+* <<output-settings,Adding or editing outputs>>
+
+* <<fleet-agent-binary-download-settings,Update the location for downloading agent binaries>>
+
+|===
+
+
+
+
+
+
+
+
+

@@ -2,7 +2,7 @@
 = Configuring Kubernetes metadata enrichment on {agent}
 
 Kubernetes https://www.elastic.co/guide/en/observability/current/monitor-kubernetes.html#beats-metadata[metadata] refer to contextual information extracted from Kubernetes resources. Metadata information enrich metrics and logs
-collected from a Kubernetes cluster, enabling deeper insights in Kubernetes environments.
+collected from a Kubernetes cluster, enabling deeper insights into Kubernetes environments.
 
 When the elastic-agent's policy includes https://docs.elastic.co/en/integrations/kubernetes[{k8s} Integration] which configures the collection of Kubernetes related metrics and container logs, the mechanisms used for the metadata enrichment are:
 * <<kubernetes-provider>> for log collection

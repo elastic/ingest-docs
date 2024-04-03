@@ -4,11 +4,12 @@
 Kubernetes https://www.elastic.co/guide/en/observability/current/monitor-kubernetes.html#beats-metadata[metadata] refer to contextual information extracted from Kubernetes resources. Metadata information enrich metrics and logs
 collected from a Kubernetes cluster, enabling deeper insights into Kubernetes environments.
 
-When the elastic-agent's policy includes https://docs.elastic.co/en/integrations/kubernetes[{k8s} Integration] which configures the collection of Kubernetes related metrics and container logs, the mechanisms used for the metadata enrichment are:
+When the {agent}'s policy includes https://docs.elastic.co/en/integrations/kubernetes[{k8s} Integration] which configures the collection of Kubernetes related metrics and container logs, the mechanisms used for the metadata enrichment are:
+
 * <<kubernetes-provider>> for log collection
 * Kubernetes metadata enrichers for metrics
 
-In case the elastic-agent's policy does not include Kubernetes integration, but {agent} runs inside a Kubernetes
+In case the {agent}'s policy does not include Kubernetes integration, but {agent} runs inside a Kubernetes
 environment the Kubernetes metadata are collected by the <<add_kubernetes_metadata-processor>>. The processor is configurable when {agent} is managed by {fleet}.
 
 
@@ -23,8 +24,6 @@ The Kubernetes autodiscover provider has already collected all the metadata for 
 
 In order to configure the metadata collection, the Kubernetes provider needs to be configured. 
 All the available configuration options of the **Kubernetes provider** can be found in the https://www.elastic.co/guide/en/fleet/current/kubernetes-provider.html[Kubernetes Provider] documentation.
-
-In more details:
 
 * For **Standalone {agent} configuration:**
 

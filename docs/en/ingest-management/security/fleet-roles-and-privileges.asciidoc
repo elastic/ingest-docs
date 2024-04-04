@@ -1,18 +1,21 @@
 [[fleet-roles-and-privileges]]
 = Roles and privileges
 
-Beginning with {stack} version 8.14, you can take much more granular control over the level of access that different users have to features managed by {fleet}. This is very useful when you have users within your organization who use {fleet} for different purposes, and for whom read or write privileges should be limited accordingly.
+Beginning with {stack} version 8.14, you can take much more granular control over the level of access that users have to features managed by {fleet}. This is useful when people in your organization access {fleet} for different purposes, and for whom you'd like to fine-tune the set of features that can be viewed and actions that can be performed.
 
-For both `Fleet` and `Integrations` as a whole, privileges can be set to:
+For both `Fleet` and `Integrations`, privileges can be set to:
 
 `all`:: Grants full read-write access.
 `read`:: Grants read-only access.
 `none`:: No access is granted.
 
-You can take advantage of these available privilege settings by:
+Take advantage of these privileges by:
 
 * <<fleet-roles-and-privileges-built-in,Using an {es} built-in role>>
 * <<fleet-roles-and-privileges-create,Creating a new role>>
+
+For more granular access control, select a custom set of privileges for individual {fleet} features:
+
 * <<fleet-roles-and-privileges-sub-features,Customize sub-feature privileges for {fleet}>>
 
 [discrete]
@@ -36,13 +39,11 @@ The built-in `viewer` role grants the following privileges, supporting read-only
 You can also <<fleet-roles-and-privileges-create,create a new role>> that can be assigned to a user to grant more specific levels of access to {fleet} and Integrations.
 
 
-
-
 [discrete]
 [[fleet-roles-and-privileges-create]]
 == Create a role for {fleet}
 
-To create a new role with full access to use and manage {fleet} and Integrations:
+To create a new role with access to {fleet} and Integrations:
 
 . In {kib}, go to **Management -> Stack Management**.
 . In the **Security** section, select **Roles**.
@@ -52,15 +53,16 @@ To create a new role with full access to use and manage {fleet} and Integrations
 . In the {kib} section, select **Add Kibana privilege**.
 . In the **Spaces** menu, select *** All Spaces**. Since many Integrations assets are shared across spaces, the users needs the {kib} privileges in all spaces.
 . Expand the **Management** section.
-. Set **Fleet** privileges to **All**.
-. Set **Integrations** privileges to **All**.
+. Choose the access level that you'd like the role to have with respect to {fleet} and integrations:
 
+.. To grant the role full access to use and manage {fleet} and integrations, set **Fleet** privileges to **All** and **Integrations** privileges to **All**.
++
 [role="screenshot"]
-image::images/kibana-fleet-privileges.png[Kibana privileges flyout showing Fleet and Integrations set to All]
+image::images/kibana-fleet-privileges-all.png[Kibana privileges flyout showing Fleet and Integrations set to All]
++
+.. To create a read-only user for {fleet} and Integrations, set both **Fleet** and **Integrations** privileges to **Read**.
 
-To create a read-only user for {fleet} and Integrations, follow the same steps as above but set both **Fleet** and **Integrations** privileges to **Read**.
-
-You can also <<fleet-roles-and-privileges-sub-features,customize access to {fleet} features>>.
+.. You can also expand the **Fleet** menu to define more specialized access to {fleet} by feature. This limits or enables access to the {fleet} UI for the role, based on your selections. Refer  <<fleet-roles-and-privileges-sub-features,customize access to {fleet} features>> for details.
 
 Once a new role has been created, you can edit it any time from the **Roles** page.
 
@@ -68,15 +70,63 @@ Once a new role has been created, you can edit it any time from the **Roles** pa
 [[fleet-roles-and-privileges-sub-features]]
 == Customize sub-feature privileges for {fleet}
 
-When you create or edit a role, you can fine-tune the access level assigned to it for different features managed by {fleet}.
+When you <<fleet-roles-and-privileges-create,create or edit a role>>, you can fine-tune the access level that it has for different features in {fleet}. The {fleet} UI varies depending on the privileges granted to the role.
 
-.Feature access levels in {fleet}
+[discrete]
+[[fleet-roles-and-privileges-sub-features-example1]]
+=== Example 1: Read access for {agents}
+
+Set `Read` access privileges for {agents} only:
+
+* Agents: `Read`
+* Agent policies: `None`
+* Settings: `None`
+
+The {fleet} UI shows only the **Agents** and **Data streams** tabs. The **Enrollment tokens**, **Uninstall tokens**, and **Settings** columns are hidden. 
+
+The set of actions available for an agent are limited to viewing the agent, and requesting a diagnostics bundle.
+
+[role="screenshot"]
+image::images/kibana-fleet-privileges-agents-view.png[Fleet UI showing only the Agents and Data streams tabs]
+
+Change the agents access to `All` to enable the role to perform the <<manage-agents,full set of available actions>> on {agents}.
+
+[discrete]
+[[fleet-roles-and-privileges-sub-features-example2]]
+=== Example 2: Read access for all {fleet} features
+
+Set `Read` access privileges for {agents}, agent policies, and {fleet} settings:
+
+* Agents: `Read`
+* Agent policies: `Read`
+* Settings: `Read`
+
+The {fleet} UI shows the **Agents**, **Agent policies**, **Data streams**, and **Settings** tabs. The The **Enrollment tokens** and **Uninstall tokens** tabs are hidden.
+
+The set of actions available for an agent are limited to viewing the agent, and requesting a diagnostics bundle.
+
+Agent policies can be viewed but a new policy cannot be created.
+
+[role="screenshot"]
+image::images/kibana-fleet-privileges-all-view.png[Fleet UI showing four tabs available]
+
+{fleet} settings can be viewed but are non-editable.
+
+[role="screenshot"]
+image::images/kibana-fleet-privileges-view-settings.png[Fleet UI showing settings are non-editable]
+
+[discrete]
+[[fleet-roles-and-privileges-sub-features-table]]
+== {fleet} privileges and available actions
+
+The following table shows the set of actions available when the `read` or `all` privilege is set for each {fleet} feature.
+
 [cols="1,1,1"]
 |===
-|Component |`read`` privilege |`all` privilege
+|Component |`read` privilege |`all` privilege
 
-|**Agents**
-|View-only access to {agents}, including the ability to:
+|Agents
+|View-only access to {agents}, including:
 
 * View the list of all {agents}
 
@@ -84,7 +134,7 @@ When you create or edit a role, you can fine-tune the access level assigned to i
 
 * Download agent diagnostic packages
 
-|Full access to manage {agents}, including the ability to:
+|Full access to manage {agents}, including:
 
 * <<upgrade-elastic-agent,Perform upgrades>>
 
@@ -98,7 +148,7 @@ When you create or edit a role, you can fine-tune the access level assigned to i
 
 * <<fleet-enrollment-tokens,Create and revoke enrollment tokens>>
 
-|**Agent policies**
+|Agent policies
 
 | View-only access, including:
 
@@ -106,7 +156,7 @@ When you create or edit a role, you can fine-tune the access level assigned to i
 
 * The integrations associated with a policy
 
-|Full access to manage agent policies, including the ability to:
+|Full access to manage agent policies, including:
 
 * <<create-a-policy,Create a policy>>
 
@@ -122,7 +172,7 @@ When you create or edit a role, you can fine-tune the access level assigned to i
 
 * <<change-policy-output,Change the output of a policy>>
 
-|**Fleet settings**
+|Fleet settings
 
 | View-only access, including:
 
@@ -141,6 +191,7 @@ When you create or edit a role, you can fine-tune the access level assigned to i
 * <<fleet-agent-binary-download-settings,Update the location for downloading agent binaries>>
 
 |===
+
 
 
 

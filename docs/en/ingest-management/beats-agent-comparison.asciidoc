@@ -91,8 +91,13 @@ NOTE: {elastic-defend} and APM Server have a different output matrix.
 
 |Kafka
 |{y}
-|{y} (beta)
-|{y} (beta)
+|{y} 
+|{y}
+
+|Remote {es}
+|{y}
+|{y}
+|{y}
 
 |Redis
 |{y}

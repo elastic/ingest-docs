@@ -14,6 +14,8 @@ To learn how to run {agent}s in a containerized environment, see:
 
 ** <<advanced-kubernetes-managed-by-fleet>>
 
+** <<configuring-kubernetes-metadata>>
+
 ** <<running-on-gke-managed-by-fleet>>
 
 ** <<running-on-eks-managed-by-fleet>>

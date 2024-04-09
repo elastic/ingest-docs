@@ -75,7 +75,7 @@ Also see:
 [%collapsible]
 ====
 *Details*
-An issue discovered in {fleet-server} that causes Fleet Server to fail to bootstrap with self-signed certificates. This is due to an update in beats dependencies where the certificate validation was completely rewritten.
+An issue has been discovered in {fleet-server} that causes it to fail to bootstrap with self-signed certificates. This is due to an update in {beats} dependencies where the certificate validation was completely rewritten.
 
 This issue is planned to be fixed in version 7.17.21.
 ====

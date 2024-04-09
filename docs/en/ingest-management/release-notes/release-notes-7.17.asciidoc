@@ -71,7 +71,7 @@ Also see:
 === Known issues
 
 [[known-issue-3435]]
-.Fail to bootstrap Fleet Server with self-signed certificates, impacting ESS and self-managed clusters.
+.Fail to bootstrap {fleet-server} with self-signed certificates, impacting {ess} and self-managed clusters.
 [%collapsible]
 ====
 *Details*

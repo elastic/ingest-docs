@@ -76,6 +76,7 @@ Also see:
 ====
 *Details*
 An issue has been discovered in {fleet-server} that causes it to fail to bootstrap with self-signed certificates. This is due to an update in {beats} dependencies where the certificate validation was completely rewritten.
+The issue also prevents bootstrapping {fleet-server} in ESS.
 
 This issue is planned to be fixed in version 7.17.21.
 ====

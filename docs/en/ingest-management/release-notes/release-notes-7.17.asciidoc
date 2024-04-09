@@ -14,6 +14,8 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-7.17.20>>
+
 * <<release-notes-7.17.19>>
 
 * <<release-notes-7.17.18>>
@@ -58,6 +60,28 @@ Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 7.17.20 relnotes
+
+[[release-notes-7.17.20]]
+== {fleet} and {agent} 7.17.20
+
+[discrete]
+[[known-issues-7.17.20]]
+=== Known issues
+
+[[known-issue-3435]]
+.Fail to bootstrap {fleet-server} with self-signed certificates, impacting {ess} and self-managed clusters.
+[%collapsible]
+====
+*Details*
+An issue has been discovered in {fleet-server} that causes it to fail to bootstrap with self-signed certificates. This is due to an update in {beats} dependencies where the certificate validation was completely rewritten.
+The issue also prevents bootstrapping {fleet-server} in {ess}.
+
+This issue is planned to be fixed in version 7.17.21. We recommend that if you're using {fleet-server} you wait until the next version to upgrade.
+====
+
+// end 7.17.20 relnotes
 
 // begin 7.17.19 relnotes
 

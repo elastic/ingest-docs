@@ -26,7 +26,7 @@ To view the overall status of your {fleet}-managed agents, in {kib}, go to
 **Management -> {fleet} -> Agents**.
 
 [role="screenshot"]
-image::images/agent-status.png[Agents tab showing status of each {agent}]
+image::images/kibana-fleet-agents.png[Agents tab showing status of each {agent}]
 
 {agent}s can have the following statuses:
 

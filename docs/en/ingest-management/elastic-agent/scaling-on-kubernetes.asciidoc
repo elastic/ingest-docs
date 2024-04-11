@@ -183,7 +183,7 @@ If {agent} is configured as managed, in {kib} you can observe under **Fleet>Agen
 
 --
 [role="screenshot"]
-image::images/agent-status1.png[{agent} Status]
+image::images/kibana-fleet-agents.png[{agent} Status]
 --
 
 Additionally you can verify the process status with following commands:

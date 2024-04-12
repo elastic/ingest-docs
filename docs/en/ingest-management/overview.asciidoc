@@ -22,6 +22,8 @@ To learn about installation options, refer to <<elastic-agent-installation>>.
 
 IMPORTANT: Using {fleet} and {agent} with link:{serverless-docs}[{serverless-full}]? Please note these <<fleet-agent-serverless-restrictions,restrictions>>.
 
+TIP: Looking for a general guide that explores all of your options for ingesting data? Check out {cloud}/ec-cloud-ingest-data.html[Adding data to Elasticsearch].
+
 [discrete]
 [[unified-integrations]]
 == {integrations}

@@ -31,6 +31,25 @@ Also see:
 Review important information about {fleet-server} and {agent} for the 8.13.2 release.
 
 [discrete]
+[[known-issues-8.13.2]]
+=== Known issues
+
+[[known-issue-241-8.13.2]]
+.Beats MSI binaries do not support directories with a trailing slash
+[%collapsible]
+====
+
+*Details*
+
+Due to changes introduced to support customizing an MSI install folder (see link:https://github.com/elastic/elastic-stack-installers/pull/209[#209]), Beats MSI binaries, which currently are in beta, will not properly handle directories that end in a slash. This defect may affect many deployments using the {beats} MSI binaries.
+
+*Impact* +
+
+This issue has been link:https://github.com/elastic/elastic-stack-installers/pull/264[resolved] in version 8.14.0 and later releases. We recommend users of {beats} MSI to upgrade to 8.14 when that release becomes available.
+
+====
+
+[discrete]
 [[bug-fixes-8.13.2]]
 === Bug fixes
 
@@ -47,6 +66,25 @@ Review important information about {fleet-server} and {agent} for the 8.13.2 rel
 == {fleet} and {agent} 8.13.1
 
 Review important information about {fleet-server} and {agent} for the 8.13.1 release.
+
+[discrete]
+[[known-issues-8.13.1]]
+=== Known issues
+
+[[known-issue-241-8.13.1]]
+.Beats MSI binaries do not support directories with a trailing slash
+[%collapsible]
+====
+
+*Details*
+
+Due to changes introduced to support customizing an MSI install folder (see link:https://github.com/elastic/elastic-stack-installers/pull/209[#209]), Beats MSI binaries, which currently are in beta, will not properly handle directories that end in a slash. This defect may affect many deployments using the {beats} MSI binaries.
+
+*Impact* +
+
+This issue has been link:https://github.com/elastic/elastic-stack-installers/pull/264[resolved] in version 8.14.0 and later releases. We recommend users of {beats} MSI to upgrade to 8.14 when that release becomes available.
+
+====
 
 [discrete]
 [[enhancements-8.13.1]]
@@ -121,9 +159,24 @@ The behavior of `queue.mem.flush.min_events` has been simplified. It now serves 
 For more information, refer to ({beats-pull}37795[#37795]).
 ====
 
-//[discrete]
-//[[known-issues-8.13.0]]
-//=== Known issues
+[discrete]
+[[known-issues-8.13.0]]
+=== Known issues
+
+[[known-issue-241-8.13.0]]
+.Beats MSI binaries do not support directories with a trailing slash
+[%collapsible]
+====
+
+*Details*
+
+Due to changes introduced to support customizing an MSI install folder (see link:https://github.com/elastic/elastic-stack-installers/pull/209[#209]), Beats MSI binaries, which currently are in beta, will not properly handle directories that end in a slash. This defect may affect many deployments using the {beats} MSI binaries.
+
+*Impact* +
+
+This issue has been link:https://github.com/elastic/elastic-stack-installers/pull/264[resolved] in version 8.14.0 and later releases. We recommend users of {beats} MSI to upgrade to 8.14 when that release becomes available.
+
+====
 
 [discrete]
 [[new-features-8.13.0]]

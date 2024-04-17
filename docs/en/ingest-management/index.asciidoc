@@ -31,6 +31,8 @@ include::fleet/fleet-server-secrets.asciidoc[leveloffset=+2]
 
 include::fleet/fleet-server-monitoring.asciidoc[leveloffset=+2]
 
+include::fleet/fleet-server-multiple-hosts.asciidoc[leveloffset=+2]
+
 include::elastic-agent/install-elastic-agent.asciidoc[leveloffset=+1]
 
 include::elastic-agent/install-fleet-managed-elastic-agent.asciidoc[leveloffset=+2]

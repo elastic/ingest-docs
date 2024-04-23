@@ -56,6 +56,6 @@ Starting in version 8.13, it's also possible to override the default installatio
 
 [source,shell]
 ----
-msiexec /i "<full path to msi file>" INSTALLDIR="<path of custom folder>"
+elastic-agent-<VERSION>-windows-x86_64.msi INSTALLARGS="--url=<URL> --enrollment-token=<TOKEN>" INSTALLDIR="<path of custom folder>"
 ----
 

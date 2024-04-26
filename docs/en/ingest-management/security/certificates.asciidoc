@@ -91,6 +91,13 @@ traffic between {agent}s and {fleet-server}.
 needs to expose a {fleet-server} certificate so other {agent}s can connect to it
 securely.
 
+[IMPORTANT]
+====
+Certificate files used by {agent} must be on the local file system of the host where 
+{agent} is running. Using certificates from a network share is not supported and can 
+cause {agent} to fail to start.
+====
+
 For the steps in this section, imagine you have the following files:
 
 [cols=2*]

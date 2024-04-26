@@ -14,6 +14,7 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.13.3>>
 * <<release-notes-8.13.2>>
 * <<release-notes-8.13.1>>
 * <<release-notes-8.13.0>>
@@ -22,6 +23,33 @@ Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.13.3 relnotes
+
+[[release-notes-8.13.3]]
+== {fleet} and {agent} 8.13.3
+
+Review important information about {fleet-server} and {agent} for the 8.13.3 release.
+
+[discrete]
+[[security-updates-8.13.3]]
+=== Security updates
+
+{agent}::
+* Update Go version to 1.21.9. {agent-pull}4508[#4508]
+
+[discrete]
+[[bug-fixes-8.13.3]]
+=== Bug fixes
+
+//{fleet}::
+//
+
+{agent}::
+* Reduce false positives in logging an API switch request from {fleet-server}. {agent-pull}4481[#4481] {agent-issue}4477[#4477]
+* Fix failing upgrade command when the connection to an {agent} is disconnected. {agent-pull}4519[#4519] {agent-issue}3890[#3890s]
+
+// end 8.13.3 relnotes
 
 // begin 8.13.2 relnotes
 

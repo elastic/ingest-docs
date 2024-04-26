@@ -95,7 +95,7 @@ securely.
 ====
 Certificate files used by {agent} must be on the local file system of the host where 
 {agent} is running. Using certificates from a network share is not supported and can 
-cause {agent} failing to start.
+cause {agent} to fail to start.
 ====
 
 For the steps in this section, imagine you have the following files:

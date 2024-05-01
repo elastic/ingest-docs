@@ -48,7 +48,7 @@ Review important information about {fleet-server} and {agent} for the 8.13.3 rel
 * Fix KQL/kuery for getting {fleet-server} agent count. ({kibana-pull}180650[#180650])
 
 {agent}::
-* Reduce false positives in logging an API switch request from {fleet-server}. {agent-pull}4481[#4481] {agent-issue}4477[#4477]
+* Fix unconditionally logging all 400 HTTP responses from {fleet-server} as API compatibility errors. {agent-pull}4481[#4481] {agent-issue}4477[#4477]
 * Fix failing upgrade command when the connection to an {agent} is disconnected. {agent-pull}4519[#4519] {agent-issue}3890[#3890s]
 
 // end 8.13.3 relnotes

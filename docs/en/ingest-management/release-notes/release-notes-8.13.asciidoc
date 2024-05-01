@@ -14,6 +14,7 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.13.3>>
 * <<release-notes-8.13.2>>
 * <<release-notes-8.13.1>>
 * <<release-notes-8.13.0>>
@@ -22,6 +23,36 @@ Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.13.3 relnotes
+
+[[release-notes-8.13.3]]
+== {fleet} and {agent} 8.13.3
+
+Review important information about {fleet-server} and {agent} for the 8.13.3 release.
+
+[discrete]
+[[security-updates-8.13.3]]
+=== Security updates
+
+{agent}::
+* Update Go version to 1.21.9. {agent-pull}4508[#4508]
+
+[discrete]
+[[bug-fixes-8.13.3]]
+=== Bug fixes
+
+{fleet}::
+* Fix managed agent policy preconfiguration update. ({kibana-pull}181624[#181624])
+* Use lowercase dataset name in template and pipeline names. ({kibana-pull}180887[#180887])
+* Fix KQL/kuery for getting {fleet-server} agent count. ({kibana-pull}180650[#180650])
+
+{agent}::
+* Fix unconditionally logging all 400 HTTP responses from {fleet-server} as API compatibility errors. {agent-pull}4481[#4481] {agent-issue}4477[#4477]
+* Allow the `elastic-agent upgrade` command to succeed when the agent restarts before it has completely acknowledged the upgrade. {agent-pull}4519[#4519] {agent-issue}3890[#3890s]
+* Only allow installing Elastic Defend on Windows kernels newer than 6, that is, Windows 10 /
+Server 2016 and newer.
+// end 8.13.3 relnotes
 
 // begin 8.13.2 relnotes
 

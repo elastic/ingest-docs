@@ -14,6 +14,8 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-7.17.21>>
+
 * <<release-notes-7.17.20>>
 
 * <<release-notes-7.17.19>>
@@ -60,6 +62,15 @@ Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 7.17.21 relnotes
+
+[[release-notes-7.17.21]]
+== {fleet} and {agent} 7.17.21
+
+The <<known-issue-3435,known issue>> introduced in version 7.17.20, that was causing {fleet-server} to fail to bootstrap with self-signed certificates, is resolved in this release. {fleet-server-pull}13473[#3473]  
+
+// end 7.17.21 relnotes
 
 // begin 7.17.20 relnotes
 

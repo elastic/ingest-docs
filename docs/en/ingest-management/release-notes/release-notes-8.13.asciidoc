@@ -49,7 +49,7 @@ Review important information about {fleet-server} and {agent} for the 8.13.3 rel
 
 {agent}::
 * Fix unconditionally logging all 400 HTTP responses from {fleet-server} as API compatibility errors. {agent-pull}4481[#4481] {agent-issue}4477[#4477]
-* Fix failing upgrade command when the connection to an {agent} is disconnected. {agent-pull}4519[#4519] {agent-issue}3890[#3890s]
+* Allow the `elastic-agent upgrade` command to succeed when the agent restarts before it has completely acknowledged the upgrade. {agent-pull}4519[#4519] {agent-issue}3890[#3890s]
 
 // end 8.13.3 relnotes
 

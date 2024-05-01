@@ -42,8 +42,10 @@ Review important information about {fleet-server} and {agent} for the 8.13.3 rel
 [[bug-fixes-8.13.3]]
 === Bug fixes
 
-//{fleet}::
-//
+{fleet}::
+* Fix managed agent policy preconfiguration update. ({kibana-pull}181624[#181624])
+* Use lowercase dataset name in template and pipeline names. ({kibana-pull}180887[#180887])
+* Fix KQL/kuery for getting {fleet-server} agent count. ({kibana-pull}180650[#180650])
 
 {agent}::
 * Reduce false positives in logging an API switch request from {fleet-server}. {agent-pull}4481[#4481] {agent-issue}4477[#4477]

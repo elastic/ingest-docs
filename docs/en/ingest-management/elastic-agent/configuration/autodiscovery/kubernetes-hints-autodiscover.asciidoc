@@ -175,41 +175,29 @@ providers:
     hints.enabled: true
 ----
 
-Then ensure that the proper volumes and volumeMounts are specified by uncommenting the appropriate sections in the {agent} manifest:
-
-[source,yaml]
-----
-volumeMounts:
-- name: external-inputs
-  mountPath: /etc/elastic-agent/inputs.d
-...
-volumes:
-- name: external-inputs
-  emptyDir: {}
-...
-----
-
-An init container is also required to download the hints templates.
-The init container is already defined, so uncomment the respective section:
+Then ensure that an init container is specified by uncommenting the respective sections in the {agent} manifest.
+An init container is required to download the hints templates.
 
 ["source", "yaml", subs="attributes"]
 ----
 initContainers:
 - name: k8s-templates-downloader
-  image: busybox:1.28
-  command: ['sh']
+  image: docker.elastic.co/beats/elastic-agent:{branch}
+  command: ['bash']
   args:
     - -c
     - >-
-      mkdir -p /etc/elastic-agent/inputs.d &&
-      wget -O - https://github.com/elastic/elastic-agent/archive/{branch}.tar.gz | tar xz -C /etc/elastic-agent/inputs.d --strip=5 "elastic-agent-{branch}/deploy/kubernetes/elastic-agent-standalone/templates.d"
+      mkdir -p /usr/share/elastic-agent/state/inputs.d &&
+      curl -sL https://github.com/elastic/elastic-agent/archive/{branch}.tar.gz | tar xz -C /usr/share/elastic-agent/state/inputs.d --strip=5 "elastic-agent-{branch}/deploy/kubernetes/elastic-agent-standalone/templates.d"
+  securityContext:
+    runAsUser: 0
   volumeMounts:
-    - name: external-inputs
-      mountPath: /etc/elastic-agent/inputs.d
+    - name: elastic-agent-state
+      mountPath: /usr/share/elastic-agent/state
 ----
 
 
-NOTE: The {agent} can load multiple configuration files from `{path.config}/inputs.d`  and finally produce a unified one (refer to <<elastic-agent-configuration>>). Users have the ability to manually mount their own templates under `/etc/elastic-agent/inputs.d` *if they want to skip enabling initContainers section*.
+NOTE: The {agent} can load multiple configuration files from `{path.config}/inputs.d`  and finally produce a unified one (refer to <<elastic-agent-configuration>>). Users have the ability to manually mount their own templates under `/usr/share/elastic-agent/state/inputs.d` *if they want to skip enabling initContainers section*.
 
 
 [discrete]
@@ -251,7 +239,7 @@ NOTE: All assets (dashboards, ingest pipelines, and so on) related to the Redis 
 The log collection for Kubernetes autodiscovered pods can be supported by using  https://github.com/elastic/elastic-agent/tree/main/deploy/kubernetes/elastic-agent-standalone/templates.d/container_logs.yml[container_logs.yml template]. Elastic Agent needs to emit a container_logs mapping so as to start collecting logs for all the discovered containers *even if no annotations are present in the containers*. 
 
 1. Follow steps described above to enable Hints Autodiscover
-2. Make sure that relevant `container_logs.yml` template will be mounted under /etc/elastic-agent/inputs.d/ folder of Elastic Agent
+2. Make sure that relevant `container_logs.yml` template will be mounted under /usr/share/elastic-agent/state/inputs.d/ folder of Elastic Agent
 3. Deploy Elastic Agent Manifest
 4. Elastic Agent should be able to discover all containers inside kuernetes cluster and to collect available logs.
 
@@ -438,5 +426,5 @@ tail -f /etc/elastic-agent/data/logs/default/filebeat-*.ndjson
 +
 ["source", "sh", subs="attributes"]
 ------------------------------------------------
-cat f /etc/elastic-agent/inputs.d/redis.yml
+cat f /usr/share/elastic-agent/state/inputs.d/redis.yml
 ------------------------------------------------

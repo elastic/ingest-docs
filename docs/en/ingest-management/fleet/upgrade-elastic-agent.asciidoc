@@ -41,7 +41,7 @@ For a detailed view of the {agent} upgrade process and the interactions between 
 
 Note the following restrictions with upgrading an {agent}:
 
-* {agent} cannot be upgraded to a version higher than the highest currently installed version of {fleet-server}. When you update a set of {agents} that are currently at the same version, you should upgrade the agent that is acting as {fleet-server} (that has a {fleet-server} policy) first.
+* {agent} cannot be upgraded to a version higher than the highest currently installed version of {fleet-server}. When you update a set of {agents} that are currently at the same version, you should first upgrade any agents that are acting as {fleet-server} (that is, agents that have a {fleet-server} policy associated with them).
 * To be upgradeable, {agent} must not be running inside a container.
 * To be upgradeable in a Linux environment, {agent} must be running as a service. The Linux Tar install instructions for {agent} provided in {fleet} include the commands to run it as a service. {agent} RPM and DEB system packages cannot be upgraded through {fleet}.
 

@@ -201,6 +201,13 @@ For more information, refer to ({beats-pull}37795[#37795]).
 ====
 
 [discrete]
+[[notable-changes-8.13.0]]
+=== Notable changes
+
+{fleet}::
+* Adds reference to `ecs@mappings` for each index template ({kibana-pull}174855[#174855]).
+
+[discrete]
 [[known-issues-8.13.0]]
 === Known issues
 
@@ -226,7 +233,6 @@ This issue has been link:https://github.com/elastic/elastic-stack-installers/pul
 The 8.13.0 release added the following new and notable features.
 
 {fleet}::
-* Adds reference to `ecs@mappings` for each index template ({kibana-pull}174855[#174855]).
 * Adds support for the `subobjects` setting on the object type mapping ({kibana-pull}171826[#171826]).
 
 {fleet-server}::

@@ -201,6 +201,20 @@ For more information, refer to ({beats-pull}37795[#37795]).
 ====
 
 [discrete]
+[[notable-changes-8.13.0]]
+=== Notable changes
+
+The following are notable, non-breaking updates to be aware of:
+
+* Changes to features that are in Technical Preview.
+* Changes to log formats.
+* Changes to non-public APIs.
+* Behaviour changes that repair critical bugs.
+
+{fleet}::
+* Adds reference to `ecs@mappings` for each index template ({kibana-pull}174855[#174855]).
+
+[discrete]
 [[known-issues-8.13.0]]
 === Known issues
 
@@ -226,7 +240,6 @@ This issue has been link:https://github.com/elastic/elastic-stack-installers/pul
 The 8.13.0 release added the following new and notable features.
 
 {fleet}::
-* Adds reference to `ecs@mappings` for each index template ({kibana-pull}174855[#174855]).
 * Adds support for the `subobjects` setting on the object type mapping ({kibana-pull}171826[#171826]).
 
 {fleet-server}::
@@ -358,6 +371,23 @@ The 8.13.0 release added the following new and notable features.
 //*Impact* +
 //<Describe how users should mitigate the change.> For more information, refer to {fleet-guide}/fleet-server.html[Fleet Server].
 //====
+
+//[discrete]
+//[[notable-changes-8.13.0]]
+//=== Notable changes
+
+//The following are notable, non-breaking updates to be aware of:
+
+//* Changes to features that are in Technical Preview.
+//* Changes to log formats.
+//* Changes to non-public APIs.
+//* Behaviour changes that repair critical bugs.
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
 
 //[discrete]
 //[[known-issues-8.7.x]]

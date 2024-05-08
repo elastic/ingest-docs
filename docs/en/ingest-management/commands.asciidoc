@@ -555,7 +555,6 @@ elastic-agent install --url <string>
                       [--delay-enroll]
                       [--elastic-agent-cert <string>]
                       [--elastic-agent-cert-key <string>]
-                      [--delay-enroll]
                       [--force]
                       [--header <strings>]
                       [--help]
@@ -585,7 +584,6 @@ elastic-agent install --fleet-server-es <string>
                       [--delay-enroll]
                       [--elastic-agent-cert <string>]
                       [--elastic-agent-cert-key <string>]
-                      [--delay-enroll]
                       [--fleet-server-cert <string>] <1>
                       [--fleet-server-cert-key <string>]
                       [--fleet-server-cert-key-passphrase <string>]

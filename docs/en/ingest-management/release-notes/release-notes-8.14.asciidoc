@@ -1,0 +1,238 @@
+// Use these for links to issue and pulls.
+:kibana-issue: https://github.com/elastic/kibana/issues/
+:kibana-pull: https://github.com/elastic/kibana/pull/
+:beats-issue: https://github.com/elastic/beats/issues/
+:beats-pull: https://github.com/elastic/beats/pull/
+:agent-libs-pull: https://github.com/elastic/elastic-agent-libs/pull/
+:agent-issue: https://github.com/elastic/elastic-agent/issues/
+:agent-pull: https://github.com/elastic/elastic-agent/pull/
+:fleet-server-issue: https://github.com/elastic/fleet-server/issues/
+:fleet-server-pull: https://github.com/elastic/fleet-server/pull/
+
+[[release-notes]]
+= Release notes
+
+This section summarizes the changes in each release.
+
+* <<release-notes-8.14.0>>
+
+Also see:
+
+* {kibana-ref}/release-notes.html[{kib} release notes]
+* {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.14.0 relnotes
+
+[[release-notes-8.14.0]]
+== {fleet} and {agent} 8.14.0
+
+Review important information about {fleet-server} and {agent} for the 8.14.0 release.
+
+//[discrete]
+//[[security-updates-8.14.0]]
+//=== Security updates
+
+//{agent}::
+//* Update Go version to 1.21.8. {agent-pull}4221[#4221]
+
+//[discrete]
+//[[breaking-changes-8.14.0]]
+//=== Breaking changes
+
+//Breaking changes can prevent your application from optimal operation and
+//performance. Before you upgrade, review the breaking changes, then mitigate the
+//impact to your application.
+
+//[discrete]
+//[[notable-changes-8.14.0]]
+//=== Notable changes
+
+//The following are notable, non-breaking updates to be aware of:
+
+//* Changes to features that are in Technical Preview.
+//* Changes to log formats.
+//* Changes to non-public APIs.
+//* Behaviour changes that repair critical bugs.
+
+//{fleet}::
+//* Adds reference to `ecs@mappings` for each index template ({kibana-pull}174855[#174855]).
+
+//[discrete]
+//[[known-issues-8.13.0]]
+//=== Known issues
+
+//[discrete]
+//[[new-features-8.14.0]]
+//=== New features
+
+The 8.14.0 release added the following new and notable features.
+
+//{fleet}::
+//* Adds support for the `subobjects` setting on the object type mapping ({kibana-pull}171826[#171826]).
+
+//{fleet-server}::
+//* Add support for storing output secrets in a new `secrets` block. {fleet-server-pull}3061[3061] {fleet-server-issue}2966[2966]
+
+//{agent}::
+//* Log a summary of each policy configuration change received from {fleet}. {agent-pull}4050[#4050] {agent-issue}3406[#3406]
+
+[discrete]
+[[enhancements-8.14.0]]
+=== Enhancements
+
+{fleet}::
+
+{fleet-server}::
+* When running in `agent` mode, {fleet-server} will use the APMConfig settings of the expected input if it's set over the settings in `inputs[0].server.instrumentation`. This should make it easier for managing agents to inject APM configuration data. {fleet-server-pull}3277[3277] {fleet-server-issue}2868[2868]
+* Allow specification in the {fleet-server} settings for whether or not a diagnostics bundle should contain additional CPU metrics. {fleet-server-pull}3333[3333] {agent-issue}3491[3491]
+* Allow {fleet} to set the trace level for logging. {fleet-server-pull}3350[3350]
+
+
+
+{agent}::
+//* Move the control socket path to always be inside of the top level of the {agent} installation directory. {agent-pull}3909[#3909] {agent-issue}3840[#3840]
+
+[discrete]
+[[bug-fixes-8.14.0]]
+=== Bug fixes
+
+//{fleet}::
+//* Fixes a bug where secret values were not deleted on output type change ({kibana-pull}178964[#178964]).
+
+{fleet-server}::
+* Respond with a `429` error, instead of a misleading `401 unauthorized response`, when an Elasticsearch API key authentication returns a `429` error. {fleet-server-pull}3278[#3278]
+* Add an `unhealthy_reason` value (`input`/`output`/`other`) to {fleet-server} metrics published regularly in agent documents. {agent-pull}3338[#3338]
+* Update endpoints to return `400` status code instead of `500` for bad requests. {fleet-server-pull}3407[#3407] {fleet-server-issue}3110[3110]
+
+{agent}::
+//* Fix component control protocol to allow checkin to be chunked across multiple messages. Fixes errors related to the gRPC max message size being exceeded. {agent-pull}3884[#3884] {agent-issue}
+
+// end 8.14.0 relnotes
+
+
+
+// ---------------------
+//TEMPLATE
+//Use the following text as a template. Remember to replace the version info.
+
+// begin 8.7.x relnotes
+
+//[[release-notes-8.7.x]]
+//== {fleet} and {agent} 8.7.x
+
+//Review important information about the {fleet} and {agent} 8.7.x release.
+
+//[discrete]
+//[[security-updates-8.7.x]]
+//=== Security updates
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[breaking-changes-8.7.x]]
+//=== Breaking changes
+
+//Breaking changes can prevent your application from optimal operation and
+//performance. Before you upgrade, review the breaking changes, then mitigate the
+//impact to your application.
+
+//[discrete]
+//[[breaking-PR#]]
+//.Short description
+//[%collapsible]
+//====
+//*Details* +
+//<Describe new behavior.> For more information, refer to {kibana-pull}PR[#PR].
+
+//*Impact* +
+//<Describe how users should mitigate the change.> For more information, refer to {fleet-guide}/fleet-server.html[Fleet Server].
+//====
+
+//[discrete]
+//[[notable-changes-8.13.0]]
+//=== Notable changes
+
+//The following are notable, non-breaking updates to be aware of:
+
+//* Changes to features that are in Technical Preview.
+//* Changes to log formats.
+//* Changes to non-public APIs.
+//* Behaviour changes that repair critical bugs.
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[known-issues-8.7.x]]
+//=== Known issues
+
+//[[known-issue-issue#]]
+//.Short description
+//[%collapsible]
+//====
+
+//*Details*
+
+//<Describe known issue.>
+
+//*Impact* +
+
+//<Describe impact or workaround.>
+
+//====
+
+//[discrete]
+//[[deprecations-8.7.x]]
+//=== Deprecations
+
+//The following functionality is deprecated in 8.7.x, and will be removed in
+//8.7.x. Deprecated functionality does not have an immediate impact on your
+//application, but we strongly recommend you make the necessary updates after you
+//upgrade to 8.7.x.
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[new-features-8.7.x]]
+//=== New features
+
+//The 8.7.x release Added the following new and notable features.
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[enhancements-8.7.x]]
+//=== Enhancements
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[bug-fixes-8.7.x]]
+//=== Bug fixes
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+// end 8.7.x relnotes

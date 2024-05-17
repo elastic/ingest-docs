@@ -353,9 +353,10 @@ Select the name of the policy you want to edit.
 
 . Click the **Settings** tab and scroll to **Advanced settings**.
 
-. Set **Agent HTTP monitoring** setting to enabled, and then specify a host and port for the monitoring data output.
+//. Set **Agent HTTP monitoring** setting to enabled, and then specify a host and port for the monitoring data output.
+. Specify a host and port for the monitoring data output.
 
-. Enable **buffer.enabled** if you'd like {agent} and {beats} to collect metrics into an in-memory buffer and expose these through a `/buffer` endpoint. This data can be useful for debugging or if the {agent} has issues communicating with {es}. Enabling this option may slightly increase process memory usage.
+//. Enable **buffer.enabled** if you'd like {agent} and {beats} to collect metrics into an in-memory buffer and expose these through a `/buffer` endpoint. This data can be useful for debugging or if the {agent} has issues communicating with {es}. Enabling this option may slightly increase process memory usage.
 
 [discrete]
 [[agent-policy-log-level]]

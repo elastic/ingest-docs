@@ -372,6 +372,13 @@ Select the name of the policy you want to edit.
 
 . Save your changes. 
 
+You can also set the log level for an individual agent:
+
+. In {fleet}, click **Agents**.
+Under the **Host** header, select the {agent} you want to edit.
+
+. On the **Logs** tab, set the **Agent logging level** and apply your changes. Or, you can choose to reset the agent to use the logging level specified in the agent policy.
+
 [discrete]
 [[agent-policy-scale]]
 == Policy scaling recommendations

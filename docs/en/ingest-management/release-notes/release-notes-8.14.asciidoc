@@ -45,7 +45,13 @@ Review important information about {fleet-server} and {agent} for the 8.14.0 rel
 
 The 8.14.0 release added the following new and notable features.
 
-//{fleet}::
+{fleet}::
+* Adds subfeatures privileges for {fleet}, {agents}, agent policies, and settings, this feature is in technical preview. ({kibana-pull}179889[#179889]).
+* Implements state machine behavior for package install. ({kibana-pull}178657[#178657])
+* Lowers the default `total_fields` limit to 1000 from 10k. ({kibana-pull}178398[#178398])
+* Avoids subobject and scalar mapping conflicts by setting `subobjects: false` on custom integrations. ({kibana-pull}178397[#178397])
+* Adds functionality to `default_fields` field, so a query can run against all fields in the mapping. ({kibana-pull}178020[#178020])
+* Relaxes delete restrictions for managed content installed by {fleet}. ({kibana-pull}179113[#179113])
 
 {agent}::
 * The Kubernetes secrets provider has been improved to update a Kubernetes secret  when the secret value changes. {agent-pull}4371[#4371] {agent-issue}4168[#4168]
@@ -56,7 +62,14 @@ The 8.14.0 release added the following new and notable features.
 [[enhancements-8.14.0]]
 === Enhancements
 
-//{fleet}::
+{fleet}::
+* Adds support for dimension mappings in dynamic templates. ({kibana-pull}180023[#180023])
+* Adds CPU metrics to request diagnostics. ({kibana-pull}179819[#179819])
+* Adds Settings Framework API and UI. ({kibana-pull}179795[#179795])
+* Adds an Elastic Defend advanced policy option for pruning capability arrays. ({kibana-pull}179766[#179766])
+* Adds {agent} activity flyout enhancements. ({kibana-pull}179161[#179161])
+* Adds unhealthy reason (input/output/other) to agent metrics. ({kibana-pull}178605[#178605])
+* Adds a warning which is displayed when trying to upgrade agent to version > max {fleet-server} version. ({kibana-pull}178079[#178079])
 
 {fleet-server}::
 * When running in `agent` mode, {fleet-server} will use the APMConfig settings of the expected input if it's set over the settings in `inputs[0].server.instrumentation`. This should make it easier for managing agents to inject APM configuration data. {fleet-server-pull}3277[3277] {fleet-server-issue}2868[2868]
@@ -64,10 +77,10 @@ The 8.14.0 release added the following new and notable features.
 * Allow {fleet} to set the trace level for logging. {fleet-server-pull}3350[3350]
 
 {agent}::
-* Change the behavior of the monitoring beats so they also monitor and report metrics on themselves. {agent-pull}4326[#4326] {agent-issue}4082[#4082]
+* Change the behavior of the monitoring {beats} so they also monitor and report metrics on themselves. {agent-pull}4326[#4326] {agent-issue}4082[#4082]
 * Add the optional CPU profile collection to the {fleet} diagnostics action handler. {agent-pull}4394[#4394] {agent-issue}3491[#3491]
 * Enable `--unprivileged` on Mac OS, allowing {agent} to run as an unprivileged user. {agent-pull}4362[#4362] {agent-issue}3867[#3867]
-* Make `enroll` command more stable by handling temporary server errors. {agent-pull}4523[#4523] {agent-issue}4513[#4513]
+* Make the `enroll` command more stable by handling temporary server errors. {agent-pull}4523[#4523] {agent-issue}4513[#4513]
 * Reduce the overall download and on-disk size of {agent}. {agent-pull}4516[#4516] {agent-issue}3364[#3364]
 * Remove `cloud-defend` from Linux `.tar.gz` archives; it now appears only in Docker images where it is required. {agent-pull}4584[#4584]
 * Reduce {agent} logs by default by dropping "Non-zero metrics..." logs before ingestion into {es}. {agent-pull}4633[#4633] {agent-issue}4252[#4252]
@@ -76,19 +89,30 @@ The 8.14.0 release added the following new and notable features.
 [[bug-fixes-8.14.0]]
 === Bug fixes
 
-//{fleet}::
+{fleet}::
+* Adds validation to dataset field in input packages to disallow special characters. ({kibana-pull}182925[#182925])
+* Fixes rollback input package install on failure. ({kibana-pull}182665[#182665])
+* Fixes cloudflare template error. ({kibana-pull}182645[#182645])
+* Fixes displaying `Config` and `API reference` tabs if they are not needed. ({kibana-pull}182518[#182518])
+* Fixes allowing fleet-server agent upgrade to newer than {fleet-server}. ({kibana-pull}181575[#181575])
+* Fixes flattened inputs in the configuration tab. ({kibana-pull}181155[#181155])
+* Adds callout when editing an output about plain text secrets being re-saved to secret storage. ({kibana-pull}180334[#180334])
+* Removes unnecessary field definitions for custom integrations. ({kibana-pull}178293[#178293])
+* Fixes secrets UI inputs in forms when secrets storage is disabled server side. ({kibana-pull}178045[#178045])
+* Fixes not being able to preview or download files with special characters. ({kibana-pull}176822[#176822])
+* Fixes KQL validation being applied in search boxes. ({kibana-pull}176806[#176806])
 
 {fleet-server}::
 * Respond with a `429` error, instead of a misleading `401 unauthorized response`, when an Elasticsearch API key authentication returns a `429` error. {fleet-server-pull}3278[#3278]
 * Add an `unhealthy_reason` value (`input`/`output`/`other`) to {fleet-server} metrics published regularly in agent documents. {agent-pull}3338[#3338]
-* Update endpoints to return `400` status code instead of `500` for bad requests. {fleet-server-pull}3407[#3407] {fleet-server-issue}3110[3110]
+* Update endpoints to return a `400` status code instead of `500` for bad requests. {fleet-server-pull}3407[#3407] {fleet-server-issue}3110[3110]
 
 {agent}::
 * Use `IgnoreCommas` in default configuration options to prevent breakages during the configuration set up process. {agent-pull}4436[#4436]
 * Reduce false positives in logging an API switch request from {fleet-server}. {agent-pull}4481[#4481] {agent-issue}4477[#4477]
-* Fix failing upgrade command when gRPC server interrupts connection. {agent-pull}4519[#4519] {agent-issue}3890[#3890]
-* Fix issue where the `kubernetes_leaderelection` provider would not try to reacquire the lease once lost. {agent-pull}4542[#4542] {agent-issue}4543[#4543]
-* Always select the more recent watcher during {agent} upgrade/downgrade process. {agent-pull}4491[#4491] {agent-issue}4072[#4072]
+* Fix failing upgrade command when the gRPC server connection is interrupted. {agent-pull}4519[#4519] {agent-issue}3890[#3890]
+* Fix an issue where the `kubernetes_leaderelection` provider would not try to reacquire the lease once lost. {agent-pull}4542[#4542] {agent-issue}4543[#4543]
+* Always select the more recent watcher during the {agent} upgrade/downgrade process. {agent-pull}4491[#4491] {agent-issue}4072[#4072]
 * Disable collection of the {beats} `state` metricset for {agent} self-monitoring components. {agent-pull}4579[#4579] {agent-issue}4153[#4153]
 
 // end 8.14.0 relnotes

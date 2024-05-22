@@ -108,7 +108,7 @@ The 8.14.0 release added the following new and notable features.
 * Update endpoints to return a `400` status code instead of `500` for bad requests. {fleet-server-pull}3407[#3407] {fleet-server-issue}3110[3110]
 
 {agent}::
-* Use `IgnoreCommas` in default configuration options to prevent breakages during the configuration set up process. {agent-pull}4436[#4436]
+* Use `IgnoreCommas` in default configuration options to correct parse functions used as part of variable substitutions. {agent-pull}4436[#4436]
 * Reduce false positives in logging an API switch request from {fleet-server}. {agent-pull}4481[#4481] {agent-issue}4477[#4477]
 * Fix failing upgrade command when the gRPC server connection is interrupted. {agent-pull}4519[#4519] {agent-issue}3890[#3890]
 * Fix an issue where the `kubernetes_leaderelection` provider would not try to reacquire the lease once lost. {agent-pull}4542[#4542] {agent-issue}4543[#4543]

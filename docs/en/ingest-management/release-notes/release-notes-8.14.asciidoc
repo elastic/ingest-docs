@@ -77,7 +77,7 @@ The 8.14.0 release added the following new and notable features.
 * Allow {fleet} to set the trace level for logging. {fleet-server-pull}3350[3350]
 
 {agent}::
-* Change the behavior of the monitoring {beats} so they also monitor and report metrics on themselves. {agent-pull}4326[#4326] {agent-issue}4082[#4082]
+* The CPU and memory usage of the internal monitoring {beats} is now included in the agent CPU and memory usage calculations in {fleet}. {agent-pull}4326[#4326] {agent-issue}4082[#4082]
 * Add the optional CPU profile collection to the {fleet} diagnostics action handler. {agent-pull}4394[#4394] {agent-issue}3491[#3491]
 * Enable `--unprivileged` on Mac OS, allowing {agent} to run as an unprivileged user. {agent-pull}4362[#4362] {agent-issue}3867[#3867]
 * Make the `enroll` command more stable by handling temporary server errors. {agent-pull}4523[#4523] {agent-issue}4513[#4513]

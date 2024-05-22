@@ -109,7 +109,7 @@ The 8.14.0 release added the following new and notable features.
 
 {agent}::
 * Use `IgnoreCommas` in default configuration options to correct parse functions used as part of variable substitutions. {agent-pull}4436[#4436]
-* Reduce false positives in logging an API switch request from {fleet-server}. {agent-pull}4481[#4481] {agent-issue}4477[#4477]
+* Stop logging all `400` errors as {fleet-server} API incompatibility errors. {agent-pull}4481[#4481] {agent-issue}4477[#4477]
 * Fix failing upgrade command when the gRPC server connection is interrupted. {agent-pull}4519[#4519] {agent-issue}3890[#3890]
 * Fix an issue where the `kubernetes_leaderelection` provider would not try to reacquire the lease once lost. {agent-pull}4542[#4542] {agent-issue}4543[#4543]
 * Always select the more recent watcher during the {agent} upgrade/downgrade process. {agent-pull}4491[#4491] {agent-issue}4072[#4072]

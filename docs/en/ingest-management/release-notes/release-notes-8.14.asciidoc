@@ -113,7 +113,7 @@ The 8.14.0 release added the following new and notable features.
 * Fix failing upgrade command when the gRPC server connection is interrupted. {agent-pull}4519[#4519] {agent-issue}3890[#3890]
 * Fix an issue where the `kubernetes_leaderelection` provider would not try to reacquire the lease once lost. {agent-pull}4542[#4542] {agent-issue}4543[#4543]
 * Always select the more recent watcher during the {agent} upgrade/downgrade process. {agent-pull}4491[#4491] {agent-issue}4072[#4072]
-* Disable collection of the {beats} `state` metricset for {agent} self-monitoring components. {agent-pull}4579[#4579] {agent-issue}4153[#4153]
+* Reduce the disk usage of {agent} self-monitoring metrics shipped to {fleet} by 13% by dropping the {beats} `state` metricset. {agent-pull}4579[#4579] {agent-issue}4153[#4153]
 
 // end 8.14.0 relnotes
 

@@ -83,7 +83,7 @@ The 8.14.0 release added the following new and notable features.
 * Make the `enroll` command more stable by handling temporary server errors. {agent-pull}4523[#4523] {agent-issue}4513[#4513]
 * Reduce the overall download and on-disk size of {agent}. {agent-pull}4516[#4516] {agent-issue}3364[#3364]
 * Remove `cloud-defend` from Linux `.tar.gz` archives; it now appears only in Docker images where it is required. {agent-pull}4584[#4584]
-* Reduce {agent} logs by default by dropping "Non-zero metrics..." logs before ingestion into {es}. {agent-pull}4633[#4633] {agent-issue}4252[#4252]
+* Reduce the disk usage of {agent} self-monitoring logs shipped to {fleet} by 16% by dropping "Non-zero metrics..." logs automatically. {agent-pull}4633[#4633] {agent-issue}4252[#4252]
 
 [discrete]
 [[bug-fixes-8.14.0]]

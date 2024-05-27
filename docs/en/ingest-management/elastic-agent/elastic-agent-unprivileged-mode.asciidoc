@@ -1,0 +1,47 @@
+[[elastic-agent-unprivileged]]
+= Run {agent} without administrative privileges
+
+Beginning with {stack} version 8.15, {agent} is no longer required to be installed by a user with superuser privileges. You can now run agents in an `unprivileged` mode that does not require `root` or `admin` access. Being able to run agents without full administrative privileges is often a requirement in organizations where this kind of access is very limited.
+
+In general, agents installed without full privileges will perform and behave exactly as those installed by a superuser. There are certain integrations and datastreams that are not available, however. If an integration requires root access, this is <<unprivileged-integrations,indicated on the integration main page>>.
+
+You can also <<unprivileged-change-mode,change the privilege mode>> of an {agent} after it has been installed.
+
+Refer to <<unprivileged-prerequisites>> and <<unprivileged-running>> for the requirements and steps associated with running an agent in `unprivileged` model.
+
+* <<unprivileged-prerequisites>>
+* <<unprivileged-running>>
+* <<unprivileged-integrations>>
+* <<unprivileged-view-mode>>
+* <<unprivileged-change-mode>>
+
+
+[discrete]
+[[unprivileged-prerequisites]]
+== Prerequisites
+
+TBD
+
+[discrete]
+[[unprivileged-running]]
+== Running {agent} in `unprivileged` mode
+
+TBD
+
+[discrete]
+[[unprivileged-integrations]]
+== Using Elastic integrations
+
+TBD
+
+[discrete]
+[[unprivileged-view-mode]]
+== Viewing an {agent} privilege mode
+
+TBD
+
+[discrete]
+[[unprivileged-change-mode]]
+== Changing an {agent} privilege mode
+
+TBD

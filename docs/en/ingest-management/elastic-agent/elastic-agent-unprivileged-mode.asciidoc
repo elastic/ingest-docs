@@ -118,6 +118,6 @@ image::images/root-integration-and-unprivileged-agents.png[Agent policy tab show
 
 [discrete]
 [[unprivileged-change-mode]]
-== Changing an {agent} privilege mode
+== Changing an {agent}'s privilege mode
 
 TBD

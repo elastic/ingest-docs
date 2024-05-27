@@ -1,44 +1,125 @@
 [[elastic-agent-unprivileged]]
-= Run {agent} without administrative privileges
+= Run {agent} without root privileges
 
-Beginning with {stack} version 8.15, {agent} is no longer required to be installed by a user with superuser privileges. You can now run agents in an `unprivileged` mode that does not require `root` or `admin` access. Being able to run agents without full administrative privileges is often a requirement in organizations where this kind of access is very limited.
+Beginning with {stack} version 8.15, {agent} is no longer required to be installed by a user with superuser privileges. You can now run agents in an `unprivileged` mode that does not require `root` or `admin` access. Being able to run agents without full administrative privileges is often a requirement in organizations where this kind of access is often limited.
 
-In general, agents installed without full privileges will perform and behave exactly as those installed by a superuser. There are certain integrations and datastreams that are not available, however. If an integration requires root access, this is <<unprivileged-integrations,indicated on the integration main page>>.
+In general, agents installed without full administrative privileges will perform and behave exactly as those installed by a superuser. There are certain integrations and datastreams that are not available, however. If an integration requires root access, this is <<unprivileged-integrations,indicated on the integration main page>>.
+
+// Add mention of the System integration data streams...
 
 You can also <<unprivileged-change-mode,change the privilege mode>> of an {agent} after it has been installed.
 
-Refer to <<unprivileged-prerequisites>> and <<unprivileged-running>> for the requirements and steps associated with running an agent in `unprivileged` model.
+Refer to <<unprivileged-command-behaviors>> and <<unprivileged-running>> for the requirements and steps associated with running an agent in `unprivileged` model.
 
-* <<unprivileged-prerequisites>>
+
 * <<unprivileged-running>>
+* <<unprivileged-command-behaviors>>
 * <<unprivileged-integrations>>
 * <<unprivileged-view-mode>>
 * <<unprivileged-change-mode>>
 
-
-[discrete]
-[[unprivileged-prerequisites]]
-== Prerequisites
-
-TBD
-
 [discrete]
 [[unprivileged-running]]
-== Running {agent} in `unprivileged` mode
+== Run {agent} in `unprivileged` mode
 
 TBD
+
+[discrete]
+[[unprivileged-command-behaviors]]
+== {agent} command behaviors in unprivileged mode
+
+The following tables show, for different operating systems, the impact on {agent} commands when the agent is <<unprivileged-running,run in unpriviledged mode>>.
+
+
+
+.macOS
+[options,header]
+|===
+|Command |Behavior in unprivileged mode |Error message
+
+|<<elastic-agent-inspect-command,`inspect` command>>
+|Returns only...
+|`Exmaple error message...`
+
+|<<elastic-agent-status-command,`status` command>>
+|Returns only...
+|`Example error message...`
+|===
+
+.Linux
+[options,header]
+|===
+|Command |Behavior in unprivileged mode |Error message
+
+|<<elastic-agent-inspect-command,`inspect` command>>
+|Returns only...
+|`Exmaple error message...`
+
+|<<elastic-agent-status-command,`status` command>>
+|Returns only...
+|`Example error message...`
+|===
+
+.Windows
+[options,header]
+|===
+|Command |Behavior in unprivileged mode |Error message
+
+|<<elastic-agent-inspect-command,`inspect` command>>
+|Returns only...
+|`Exmaple error message...`
+
+|<<elastic-agent-status-command,`status` command>>
+|Returns only...
+|`Example error message...`
+|===
+
+
+
+
+
+
+
 
 [discrete]
 [[unprivileged-integrations]]
 == Using Elastic integrations
 
-TBD
+If an integration requires {agent} to have root privileges, this is indicated at the top of the page for that integration in {kib}:
+
+[role="screenshot"]
+image::images/integration-root-requirement.png[Elastic Defend integration page showing root requirement]
+
+A warning is displayed in {kib} if you try to add an integration that requires root privileges to an {agent} policy that has agents enrolled in unprivileged mode
+
+Examples of integrations that require {agent} to have administrative privileges are:
+
+* link:https://docs.elastic.co/en/integrations/endpoint[{elastic-defend}]
+* link:https://docs.elastic.co/integrations/auditd_manager[Auditd Manager]
+* link:https://docs.elastic.co/integrations/fim[File Integrity Monitoring]
+* link:https://docs.elastic.co/integrations/network_traffic[Network Packet Capture]
+* link:https://docs.elastic.co/integrations/system_audit[System Audit]
+* link:https://docs.elastic.co/integrations/profiler_agent[Universal Profiling Agent]
 
 [discrete]
 [[unprivileged-view-mode]]
 == Viewing an {agent} privilege mode
 
-TBD
+For any {agent} policy you can view the number of agents that are currently running in privileged or unprivileged mode:
+
+. In {fleet}, open the **Agent policies** tab.
+
+. Click the agent policy to view the policy details.
+
+The number of agents enrolled with the policy is shown. Hover over the link to view the number of privileged and unpriviled agents.
+
+[role="screenshot"]
+image::images/privileged-and-unprivileged-agents.png[Agent policy tab showing 1 unprivileged agent and 0 privileged enrolled agents]
+
+In the event that the {agent} policy has integrations installed that require root privileges, but there are agents running without root privileges, this is shown in the tooltip.
+
+[role="screenshot"]
+image::images/root-integration-and-unprivileged-agents.png[Agent policy tab showing 1 unprivileged agent and 0 privileged enrolled agents]
 
 [discrete]
 [[unprivileged-change-mode]]

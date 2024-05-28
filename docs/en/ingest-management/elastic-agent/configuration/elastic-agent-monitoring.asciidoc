@@ -39,8 +39,8 @@ collected. If neither setting is specified, monitoring is turned off. Set
 `use_output` to specify the output to which monitoring events are sent.
 
 Setting `agent.monitoring.enabled` to `true` also enables a `/liveness` endpoint to be 
-available where that same server is configured to be exposed. By default, the endpoint 
-returns a `200 OK` status as long {agent}'s internal main loop is responsive and can 
+available where that server is configured to be exposed. By default, the endpoint 
+returns a `200` OK status as long as {agent}'s internal main loop is responsive and can 
 process configuration changes. It can be configured to also monitor the component states 
 to return an error if anything is degraded or failed.
 

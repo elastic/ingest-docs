@@ -115,6 +115,10 @@ The following table illustrates the {fleet} user actions available to different 
 |<<agent-policy-log-level>>
 |{y}
 |{n}
+
+|<<agent-policy-host-name-format>>
+|{y}
+|{n}
 |===
 
 See also the <<agent-policy-scale,recommended scaling options>> for an {agent} policy.
@@ -379,6 +383,37 @@ You can also set the log level for an individual agent:
 Under the **Host** header, select the {agent} you want to edit.
 
 . On the **Logs** tab, set the **Agent logging level** and apply your changes. Or, you can choose to reset the agent to use the logging level specified in the agent policy.
+
+
+
+
+
+
+
+
+
+
+
+[discrete]
+[[agent-policy-host-name-format]]
+== Set the {agent} host name format
+
+The **Host name format** setting controls the format of information provided about the current host through the <<host-provider,host.name>> key, in events produced by {agent}.
+
+. In {fleet}, click **Agent policies**.
+Select the name of the policy you want to edit.
+
+. Click the **Settings** tab and scroll to **Advanced settings**.
+
+. Set the **Host name format**:
+
+** **Hostname**: Information about the current host is in a non-fully-qualified format (`somehost`, rather than `somehost.example.com`). This is the default reporting format.
+
+** **Fully Qualified Domain Name (FQDN)**: Information about the current host is in FQDN format (`somehost.example.com` rather than `somehost`). This helps you to distinguish between hosts on different domains that have similar names. The fully qualified hostname allows each host to be more easily identified when viewed in {kib}, for example.
+
+. Save your changes.
+
+
 
 [discrete]
 [[agent-policy-scale]]

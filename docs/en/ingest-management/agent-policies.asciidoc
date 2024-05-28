@@ -92,6 +92,10 @@ The following table illustrates the {fleet} user actions available to different 
 |{y}
 |{n}
 
+|<<change-policy-enable-agent-monitoring,Enable agent monitoring>>
+|{y}
+|{n}
+
 |<<change-policy-output,Change the output of a policy>>
 |{y}
 |{n}
@@ -250,6 +254,26 @@ Click the name of the policy you want to edit or delete.
 Alternatively, click **Delete policy** to delete the policy.
 Existing data is not deleted.
 Any agents assigned to a policy must be unenrolled or assigned to a different policy before a policy can be deleted.
+
+
+[discrete]
+[[change-policy-enable-agent-monitoring,Enable agent monitoring]]
+== Enable agent monitoring
+
+Use this setting to collect monitoring logs and metrics from {agent}. All monitoring data will be written to the specified **Default namespace**.
+
+. In {fleet}, click **Agent policies**.
+Select the name of the policy you want to edit.
+
+. Click the **Settings** tab and scroll to **Enable agent monitorings**.
+
+. Select whether to collect agent logs, agent metrics, or both, from the {agents} that use the policy.
+
+When this setting is enabled:
+
+* An {agent} integration is created automatically.
+* A `/liveness` endpoint is enabled and available where the server is configured to be exposed. By default, the endpoint 
+returns a `200` OK status as long as {agent}'s internal main loop is responsive and can process configuration changes. It can be configured to also monitor the component states to return an error if anything is degraded or failed.
 
 [discrete]
 [[change-policy-output]]

@@ -82,9 +82,9 @@ The 8.14.0 release added the following new and notable features.
 * Enable `--unprivileged` on Mac OS, allowing {agent} to run as an unprivileged user. {agent-pull}4362[#4362] {agent-issue}3867[#3867]
 * Make the `enroll` command more stable by handling temporary server errors. {agent-pull}4523[#4523] {agent-issue}4513[#4513]
 * Reduce the overall download and on-disk size of {agent}. {agent-pull}4516[#4516] {agent-issue}3364[#3364]
-** Linux: -44% reduction from 1.8G to 1.0G compared to 8.13.4 when extracted
-** Windows: -43% reduction from 893M to 505M compared to 8.13.4 when extracted
-** MacOS: -45% reduction from 1G to 542M compared to 8.13.4 when extracted
+** Linux: -43% reduction from 1800MB to 1018MB compared to 8.13.4 when extracted
+** MacOS: -44% reduction from 1100MB to 619MB compared to 8.13.4 when extracted
+** Windows: -43% reduction from 891MB to 504MB compared to 8.13.4 when extracted
 * Remove `cloud-defend` from Linux `.tar.gz` archives; it now appears only in Docker images where it is required. {agent-pull}4584[#4584]
 * Reduce the disk usage of {agent} self-monitoring logs shipped to {fleet} by 16% by dropping "Non-zero metrics..." logs automatically. {agent-pull}4633[#4633] {agent-issue}4252[#4252]
 

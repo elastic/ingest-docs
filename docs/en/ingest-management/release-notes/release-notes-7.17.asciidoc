@@ -70,7 +70,14 @@ Also see:
 [[release-notes-7.17.22]]
 == {fleet} and {agent} 7.17.22
 
-There are no bug fixes for {fleet} or {agent} in this release.
+Review important information about the {fleet} and {agent} 7.17.22 release.
+
+[discrete]
+[[security-updates-7.17.22]]
+=== Security updates
+
+{fleet-server}::
+* Update {fleet-server} Go version to 1.21.10. {fleet-server-pull}3533[#3533]
 
 // end 7.17.22 relnotes
 

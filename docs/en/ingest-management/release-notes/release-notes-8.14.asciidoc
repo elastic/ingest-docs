@@ -70,7 +70,7 @@ The 8.14.0 release added the following new and notable features.
 ** A "review errors" button now appears above the agent listing table when new activity events are loaded that include errors. Clicking the button will open the activity flyout with these errors shown.
 ** Agent activity now supports pagination. Click the "show more" button at the bottom of the list to load additional activity events.
 ** Agent activity from a given date can now be loaded by clicking the "Go to date" button and selecting a date. 
-* Adds unhealthy reason (input/output/other) to agent metrics. ({kibana-pull}178605[#178605])
+* Surface `unhealthy_reason` in agent metrics that indicates which component (input/output/other) is causing an agent to be considered unhealthy. ({kibana-pull}178605[#178605])
 * Adds a warning which is displayed when trying to upgrade agent to version > max {fleet-server} version. ({kibana-pull}178079[#178079])
 
 {fleet-server}::

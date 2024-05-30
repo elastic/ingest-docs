@@ -47,7 +47,7 @@ The 8.14.0 release added the following new and notable features.
 
 {fleet}::
 * (Technical preview) Kibana administrators can now assign granular subfeature privileges for {fleet}, {agents}, agent policies, and settings to user roles. ({kibana-pull}179889[#179889]).
-* Lowers the default `total_fields` limit to 1000 from 10k. ({kibana-pull}178398[#178398])
+* The `index.mapping.total_fields.limit` field on integration index templates is now set to 1000 by default instead of 10000. If an integration data stream includes more than 500 fields, the limit will be increased to 10000. ({kibana-pull}178398[#178398])
 * `index_template.mappings.subobjects: false` is now the default for custom integration data streams to avoid subobject and scalar mapping conflicts. ({kibana-pull}178397[#178397])
 * Fleet no longer sets `index.query.default_field` on integration component templates, favoring the Elasticsearch default value of `index.query.default_field: *`. This allows queries without a field specified to be run against all integration fields by default. ({kibana-pull}178020[#178020])
 * Relaxes delete restrictions for managed content installed by {fleet}. ({kibana-pull}179113[#179113])

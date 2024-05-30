@@ -95,7 +95,7 @@ The 8.14.0 release added the following new and notable features.
 === Bug fixes
 
 {fleet}::
-* Adds validation to dataset field in input packages to disallow special characters. ({kibana-pull}182925[#182925])
+* Add validation to dataset field in input packages to disallow special characters. ({kibana-pull}182925[#182925])
 * Fixes rollback input package install on failure. ({kibana-pull}182665[#182665])
 * Fixes cloudflare template error. ({kibana-pull}182645[#182645])
 * Fixes displaying `Config` and `API reference` tabs if they are not needed. ({kibana-pull}182518[#182518])

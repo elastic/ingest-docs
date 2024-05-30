@@ -65,7 +65,7 @@ The 8.14.0 release added the following new and notable features.
 * Add `time_series_dimension: true` to dynamic field mappings defined in integrations with `dimension: true`. ({kibana-pull}180023[#180023])
 * Allow additional CPU metrics to be collected when requesting diagnostics from an agent. ({kibana-pull}179819[#179819])
 * Add new "advanced settings" section to agent policy settings page sourced from configuration. ({kibana-pull}179795[#179795])
-* Adds an Elastic Defend advanced policy option for pruning capability arrays. ({kibana-pull}179766[#179766])
+* Add an Elastic Defend advanced policy option for pruning capability arrays. ({kibana-pull}179766[#179766])
 * Adds {agent} activity flyout enhancements. ({kibana-pull}179161[#179161])
 * Adds unhealthy reason (input/output/other) to agent metrics. ({kibana-pull}178605[#178605])
 * Adds a warning which is displayed when trying to upgrade agent to version > max {fleet-server} version. ({kibana-pull}178079[#178079])

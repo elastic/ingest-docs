@@ -100,7 +100,7 @@ The 8.14.0 release added the following new and notable features.
 * Fix cloudflare template error. ({kibana-pull}182645[#182645])
 * Fix displaying `Config` and `API reference` tabs if they are not needed. ({kibana-pull}182518[#182518])
 * Allow upgrading an agent to a newer version when that agent is also a {fleet-server}. ({kibana-pull}181575[#181575])
-* Fixes flattened inputs in the configuration tab. ({kibana-pull}181155[#181155])
+* Fix flattened inputs in the configuration tab. ({kibana-pull}181155[#181155])
 * Add callout when editing an output about plain text secrets being re-saved to secret storage. ({kibana-pull}180334[#180334])
 * Remove unnecessary field definitions for custom integrations. ({kibana-pull}178293[#178293])
 * Fix secrets UI inputs in forms when secrets storage is disabled server side. ({kibana-pull}178045[#178045])

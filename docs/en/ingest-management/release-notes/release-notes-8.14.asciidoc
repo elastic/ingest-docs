@@ -62,7 +62,7 @@ The 8.14.0 release added the following new and notable features.
 === Enhancements
 
 {fleet}::
-* Adds support for dimension mappings in dynamic templates. ({kibana-pull}180023[#180023])
+* Add `time_series_dimension: true` to dynamic field mappings defined in integrations with `dimension: true`. ({kibana-pull}180023[#180023])
 * Adds CPU metrics to request diagnostics. ({kibana-pull}179819[#179819])
 * Adds Settings Framework API and UI. ({kibana-pull}179795[#179795])
 * Adds an Elastic Defend advanced policy option for pruning capability arrays. ({kibana-pull}179766[#179766])

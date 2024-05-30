@@ -47,7 +47,6 @@ The 8.14.0 release added the following new and notable features.
 
 {fleet}::
 * (Technical preview) Kibana administrators can now assign granular subfeature privileges for {fleet}, {agents}, agent policies, and settings to user roles. ({kibana-pull}179889[#179889]).
-* Implements state machine behavior for package install. ({kibana-pull}178657[#178657])
 * Lowers the default `total_fields` limit to 1000 from 10k. ({kibana-pull}178398[#178398])
 * Avoids subobject and scalar mapping conflicts by setting `subobjects: false` on custom integrations. ({kibana-pull}178397[#178397])
 * Adds functionality to `default_fields` field, so a query can run against all fields in the mapping. ({kibana-pull}178020[#178020])

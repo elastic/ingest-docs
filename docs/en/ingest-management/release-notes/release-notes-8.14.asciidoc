@@ -50,7 +50,7 @@ The 8.14.0 release added the following new and notable features.
 * The `index.mapping.total_fields.limit` field on integration index templates is now set to 1000 by default instead of 10000. If an integration data stream includes more than 500 fields, the limit will be increased to 10000. ({kibana-pull}178398[#178398])
 * `index_template.mappings.subobjects: false` is now the default for custom integration data streams to avoid subobject and scalar mapping conflicts. ({kibana-pull}178397[#178397])
 * Fleet no longer sets `index.query.default_field` on integration component templates, favoring the Elasticsearch default value of `index.query.default_field: *`. This allows queries without a field specified to be run against all integration fields by default. ({kibana-pull}178020[#178020])
-* Relaxes delete restrictions for managed content installed by {fleet}. ({kibana-pull}179113[#179113])
+* Allow managed content installed by {fleet} to be deleted. Note: this content will be recreated when an integration is upgraded or reinstalled. ({kibana-pull}179113[#179113])
 
 {agent}::
 * The Kubernetes secrets provider has been improved to update a Kubernetes secret  when the secret value changes. {agent-pull}4371[#4371] {agent-issue}4168[#4168]

@@ -102,7 +102,7 @@ The 8.14.0 release added the following new and notable features.
 * Remove unnecessary field definitions for custom integrations. ({kibana-pull}178293[#178293])
 * Fix secrets UI inputs in forms when secrets storage is disabled server side. ({kibana-pull}178045[#178045])
 * Fixes not being able to preview or download files with special characters. ({kibana-pull}176822[#176822])
-* Fixes KQL validation being applied in search boxes. ({kibana-pull}176806[#176806])
+* Fix overly strict KQL validation being applied in search boxes. ({kibana-pull}176806[#176806])
 
 {fleet-server}::
 * Respond with a `429` error, instead of a misleading `401 unauthorized response`, when an Elasticsearch API key authentication returns a `429` error. {fleet-server-pull}3278[#3278]

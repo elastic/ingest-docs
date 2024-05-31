@@ -65,6 +65,12 @@ include::elastic-agent/configuration/env/container-envs.asciidoc[leveloffset=+3]
 
 include::elastic-agent/install-agent-msi.asciidoc[leveloffset=+2]
 
+include::elastic-agent/running-otel-agent.asciidoc[leveloffset=+2]
+
+include::elastic-agent/running-otel-agent-quickstart.asciidoc[leveloffset=+3]
+
+include::elastic-agent/running-otel-agent-configuration.asciidoc[leveloffset=+3]
+
 include::elastic-agent/installation-layout.asciidoc[leveloffset=+2]
 
 include::fleet/air-gapped.asciidoc[leveloffset=+2]

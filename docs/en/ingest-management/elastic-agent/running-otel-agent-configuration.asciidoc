@@ -1,0 +1,51 @@
+[[running-otel-agent-configuration]]
+= {agent} OTel configuration
+
+preview::[]
+
+When running in `otel` mode, {agent} supports a standard OTel Collector configuration. 
+
+You can provide the OTel configuration to {agent} using any of the following four schemes:
+
+* `file` - The configuration is read from a file.
+* `env` - The configuration is read from an environment variable.
+* `yaml` - The configuration is read from a standard YAML-formatted file.
+* `http` - The configuration is read from an HTTP URL.
+
+To help you get started, when you download an {agent} install package, the package comes with a sample OTel configuration file, `otel.yml` located in the package base directory.
+
+[source,shell]
+----
+receivers: <1>
+  filelog:
+    include: [ /var/log/system.log ]
+    start_at: beginning
+
+processors: <2>
+  resource:
+    attributes:
+    - key: service.name
+      action: insert
+      value: elastic-otel-test
+
+exporters: <3>
+  debug:
+    verbosity: detailed
+    sampling_initial: 10000
+    sampling_thereafter: 10000
+
+service: <4>
+  pipelines:
+    logs:
+      receivers: [filelog]
+      processors: [resource]
+      exporters:
+        - debug
+----
+
+<1> link:https://opentelemetry.io/docs/collector/configuration/#receivers[Receivers] collect telemetry from one or more sources.
+<2> link:https://opentelemetry.io/docs/collector/configuration/#processors[Processors] take the data collected by receivers and modify or transform it before sending it to the exporters.
+<3> link:https://opentelemetry.io/docs/collector/configuration/#exporters[Exporters] send data to one or more backends or destinations.
+<4> The link:https://opentelemetry.io/docs/collector/configuration/#connectors[Service] The section is used to configure what components are enabled in the Collector based on the configuration found in the receivers, processors, exporters, and extensions sections. If a component is configured, but not defined within the service section, then it's not enabled.
+
+For full details about setting up this file, refer to link:https://opentelemetry.io/docs/collector/configuration/[Configuration] in the OpenTelemetry documentation.

@@ -1,0 +1,20 @@
+[[running-otel-agent]]
+= Running {agent} as an OTel Collector
+
+preview::[]
+
+The link:https://opentelemetry.io/docs/collector/[OpenTelemetry Collector] is a vendor-neutral way to receive, process, and export telemetry data. {agent} includes an embedded OTel Collector, enabling you to instrument your applications and infrastructure once, and send data to multiple vendors and backends. 
+
+When you run {agent} in `otel` mode it supports the standard OTel Collector configuration format that defines a set of receivers, processors, exporters, and connectors. Logs, metrics, and traces can be ingested using OpenTelemetry data formats.
+
+[discrete]
+== Run {agent} in OTel mode
+
+To run the agent in OTel mode, specify the `otel` parameter and 
+
+
+To learn more refer to:
+
+* <<running-otel-agent-quickstart>>
+* <<running-otel-agent-configuration>>
+

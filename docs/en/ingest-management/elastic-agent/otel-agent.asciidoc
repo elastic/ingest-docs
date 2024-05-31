@@ -1,0 +1,145 @@
+[[otel-agent]]
+= Run {agent} as an OTel Collector
+
+preview::[]
+
+The link:https://opentelemetry.io/docs/collector/[OpenTelemetry Collector] is a vendor-neutral way to receive, process, and export telemetry data. {agent} includes an embedded OTel Collector, enabling you to instrument your applications and infrastructure once, and send data to multiple vendors and backends. 
+
+When you run {agent} in `otel` mode it supports the standard OTel Collector configuration format that defines a set of receivers, processors, exporters, and connectors. Logs, metrics, and traces can be ingested using OpenTelemetry data formats.
+
+The following steps will help you to get set up quickly using {agent} as an OTel Collector. Note that all steps are run with `sudo` as it's generally recommended to run {agent} with administrative privileges.
+
+[discrete]
+== Run {agent} in OTel mode
+
+For simplicity, these steps demonstrate OTel mode using standalone {agent}. The install steps for {fleet}-managed {agent} are very similar. Refer to the <<elastic-agent-installation,Install {agents}>> section for the full set of requirements and steps for any install scenario.
+
+. On your host, download and extract the {agent} installation package. 
++
+--
+// tag::install-elastic-agent[]
+
+include::{ingest-docs-root}/docs/en/ingest-management/tab-widgets/download-widget.asciidoc[]
+
+// end::install-elastic-agent[]
+--
++
+The commands shown are for AMD platforms, but ARM packages are also available.
+Refer to the {agent} https://www.elastic.co/downloads/elastic-agent[downloads page]
+for the full list of available packages.
+
+. Change into the agent package directory and run {agent} with the `otel` subcommand and the `-h` option to view the command syntax and available parameters:
++
+[source,shell]
+--
+cd <agent-package-name>
+sudo ./elastic-agent otel -h
+--
++
+TIP: You can also refer to the <<elastic-agent-otel-command,{agent} OTel>> command documentation for the full command syntax.
+
+. View or update the OTel configuration file.
++
+A basic OTel configuration file named `otel.yml` is included in the {agent} package. You can view or update it using any text editor.
++
+[source,yaml]
+--
+receivers:
+  filelog:
+    include: [ /var/log/system.log ]
+    start_at: beginning
+
+processors:
+  resource:
+    attributes:
+    - key: service.name
+      action: insert
+      value: elastic-otel-test
+
+exporters:
+  debug:
+    verbosity: detailed
+    sampling_initial: 10000
+    sampling_thereafter: 10000
+
+service:
+  pipelines:
+    logs:
+      receivers: [filelog]
+      processors: [resource]
+      exporters:
+        - debug%
+--
++
+By default, the default OTel configuration sets {agent} to:
+
+* Read the contents of `/var/log/system.log`.
+* Run a processor to insert `elastic-otel-test` into the output.
+* Send the data with a `detailed` level of verbosity.
++
+Refer to <<otel-agent-configuration>> to learn more about setting up this file.
+
+. [Optional] Override a setting in the OTel configuration
++
+You can use the `set` flag to manually override any setting defined in the OTel configuration file. For example, run the following command to change the default verbosity setting from `detailed` to `normal`.
++
+[source,shell]
+----
+sudo ./elastic-agent otel --config otel.yml --set "exporters::debug::verbosity=normal"
+----
+
+. Validate the configuration
++
+To validate the OTel configuration for your {agent}, run the `otel` command with the `validate` option and the path to the config file:
++
+[source,shell]
+--
+sudo ./elastic-agent otel validate --config otel.yml
+--
++
+If no error is returned, the configuration file is determined to be valid.
+
+. Run {agent}
++
+Now, run {agent} with OTel mode configured:
++
+[source,shell]
+--
+sudo ./elastic-agent otel --config otel.yml
+--
++
+You should see a response indicating that {agent} has started successfully in OTel mode:
++
+[source,shell]
+--
+Starting in otel mode
+2024-05-31T12:39:43.047-0400	info	service@v0.94.1/telemetry.go:59	Setting up own telemetry...
+2024-05-31T12:39:43.049-0400	info	service@v0.94.1/telemetry.go:104	Serving metrics	{"address": ":8888", "level": "Basic"}
+2024-05-31T12:39:43.052-0400	info	exporter@v0.94.1/exporter.go:275	Development component. May change in the future.	{"kind": "exporter", "data_type": "logs", "name": "debug"}
+2024-05-31T12:39:43.055-0400	info	service@v0.94.1/service.go:140	Starting ./elastic-agent...	{"Version": "8.13.4", "NumCPU": 10}
+2024-05-31T12:39:43.055-0400	info	extensions/extensions.go:34	Starting extensions...
+2024-05-31T12:39:43.056-0400	info	adapter/receiver.go:45	Starting stanza receiver	{"kind": "receiver", "name": "filelog", "data_type": "logs"}
+2024-05-31T12:39:43.057-0400	info	service@v0.94.1/service.go:166	Everything is ready. Begin running and processing data.
+2024-05-31T12:39:43.057-0400	warn	localhostgate/featuregate.go:63	The default endpoints for all servers in components will change to use localhost instead of 0.0.0.0 in a future version. Use the feature gate to preview the new default.	{"feature gate ID": "component.UseLocalHostAsDefaultHost"}
+2024-05-31T12:39:43.261-0400	info	fileconsumer/file.go:261	Started watching file	{"kind": "receiver", "name": "filelog", "data_type": "logs", "component": "fileconsumer", "path": "/var/log/system.log"}
+--
+
+. Check the {agent} status
++
+Finally, confirm that {agent} is running as expected. Open a second terminal shell and run the `status` command.
++
+[source,shell]
+--
+sudo ./elastic-agent status
+--
++
+The returned status indicates that {agent} is healthy and not enrolled in {fleet} (which is expected because in this example we're using standalone {agent}).
++
+[source,shell]
+--
+┌─ fleet
+│  └─ status: (STOPPED) Not enrolled into Fleet
+└─ elastic-agent
+   └─ status: (HEALTHY) Running
+--
+

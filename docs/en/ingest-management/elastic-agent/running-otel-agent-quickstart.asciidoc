@@ -1,6 +1,0 @@
-[[running-otel-agent-quickstart]]
-= {agent} OTel configuration
-
-preview::[]
-
-quick start

@@ -1,4 +1,4 @@
-[[running-otel-agent-configuration]]
+[[otel-agent-configuration]]
 = {agent} OTel configuration
 
 preview::[]

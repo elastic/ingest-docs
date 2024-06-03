@@ -38,11 +38,10 @@ To enable monitoring, set `agent.monitoring.enabled` to `true`. Also set the
 collected. If neither setting is specified, monitoring is turned off. Set
 `use_output` to specify the output to which monitoring events are sent.
 
-Setting `agent.monitoring.enabled` to `true` also enables a `/liveness` endpoint to be 
-available where that server is configured to be exposed. By default, the endpoint 
+Setting `agent.monitoring.enabled` to `true` also exposes a `/liveness` endpoint. By default, the endpoint 
 returns a `200` OK status as long as {agent}'s internal main loop is responsive and can 
 process configuration changes. It can be configured to also monitor the component states 
-to return an error if anything is degraded or failed.
+and return an error if anything is degraded or has failed.
 
 The `agent.monitoring.pprof.enabled` option controls whether the {agent} and {beats} expose the
 `/debug/pprof/` endpoints with the monitoring endpoints. It is set to `false`

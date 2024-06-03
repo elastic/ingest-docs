@@ -7,10 +7,11 @@ When running in `otel` mode, {agent} supports a standard OTel Collector configur
 
 You can provide the OTel configuration to {agent} using any of the following four schemes:
 
-* `file` - The configuration is read from a file.
-* `env` - The configuration is read from an environment variable.
-* `yaml` - The configuration is read from a standard YAML-formatted file.
-* `http` - The configuration is read from an HTTP URL.
+* `file` - The configuration is read from a file. For example, `file:path/to/config.yaml`.
+* `env` - The configuration is read from an environment variable. For example, `env:MY_CONFIG_IN_AN_ENVVAR`.
+* `yaml` - The configuration is read from a standard YAML-formatted file. For example, `yaml:exporters::debug::verbosity: detailed`.
+* `http` - The configuration is read from an HTTP URL. For example, `http://www.example.com`.
+// Perhaps we can improve these examples to make them more clear. I'm not sure I understand what the configuration would look like when passed as a URL, for example.
 
 To help you get started, when you download an {agent} install package, the package comes with a sample OTel configuration file, `otel.yml` located in the package base directory.
 

@@ -216,11 +216,17 @@ sudo ./elastic-agent install \
    --url=https://192.0.2.1:8220 \
    --fleet-server-es=https://192.0.2.0:9200 \
    --fleet-server-service-token=AAEBAWVsYXm0aWMvZmxlZXQtc2XydmVyL3Rva2VuLTE2MjM4OTAztDU1OTQ6dllfVW1mYnFTVjJwTC2ZQ0EtVnVZQQ \
+   --fleet-server-policy=fleet-server-policy \
    --fleet-server-es-ca=/path/to/elasticsearch-ca.crt \
    --certificate-authorities=/path/to/ca.crt \
    --fleet-server-cert=/path/to/fleet-server.crt \
    --fleet-server-cert-key=/path/to/fleet-server.key \
-   --fleet-server-port=8220
+   --fleet-server-port=8220 \
+   --elastic-agent-cert=/tmp/fleet-server.crt \
+   --elastic-agent-cert-key=/tmp/fleet-server.key \
+   --fleet-server-es-cert=/tmp/fleet-server.crt \
+   --fleet-server-es-cert-key=/tmp/fleet-server.key \
+   --fleet-server-client-auth=required
 ----
 
 Where:
@@ -231,6 +237,8 @@ Where:
 {es} URL
 `fleet-server-service-token`::
 Service token to use to communicate with {es}.
+`fleet-server-policy`::
+The specific policy that {fleet-server} will use.
 `fleet-server-es-ca`::
 CA certificate that the current {fleet-server} uses to connect to {es}.
 `certificate-authorities`::
@@ -243,6 +251,17 @@ to the other {agents}
 `fleet-server-cert-key`::
 Private key to use to expose this {fleet-server} HTTPS endpoint 
 to the other {agents}
+
+`elastic-agent-cert`::
+The certificate to use as the client certificate for {agent}'s connections to {fleet-server}.
+`elastic-agent-cert-key`::
+The path to the private key to use as for {agent}'s connections to {fleet-server}.
+`fleet-server-es-cert`::
+The path to the client certificate that {fleet-server} will use when connecting to {es}.
+`fleet-server-es-cert-key`::
+The path to the private key that {fleet-server} will use when connecting to {es}.
+`fleet-server-client-auth`::
+One of `none`, `optional`, or `required`. Defaults to `none`. {fleet-server}'s client_authentication option for client mTLS connections. If `optional` or `required` is specified, client certificates are verified using CAs specified in the `--certificate-authorities` flag.
 
 Note that additionally an optional passphrase for the private key may be specified with:
 

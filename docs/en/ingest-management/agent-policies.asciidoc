@@ -269,11 +269,7 @@ Select the name of the policy you want to edit.
 
 . Select whether to collect agent logs, agent metrics, or both, from the {agents} that use the policy.
 
-When this setting is enabled:
-
-* An {agent} integration is created automatically.
-* A `/liveness` endpoint is enabled and available where the server is configured to be exposed. By default, the endpoint 
-returns a `200` OK status as long as {agent}'s internal main loop is responsive and can process configuration changes. It can be configured to also monitor the component states to return an error if anything is degraded or failed.
+When this setting is enabled an {agent} integration is created automatically.
 
 [discrete]
 [[change-policy-output]]

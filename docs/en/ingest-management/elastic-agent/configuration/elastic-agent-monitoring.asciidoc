@@ -38,7 +38,7 @@ To enable monitoring, set `agent.monitoring.enabled` to `true`. Also set the
 collected. If neither setting is specified, monitoring is turned off. Set
 `use_output` to specify the output to which monitoring events are sent.
 
-You can also add the setting `agent.monitoring.enabled.http: true` to expose a `/liveness` endpoint.
+You can also add the setting `agent.monitoring.http.enabled: true` to expose a `/liveness` endpoint.
 By default, the endpoint returns a `200` OK status as long as {agent}'s internal main loop is responsive and can process configuration changes.
 It can be configured to also monitor the component states and return an error if anything is degraded or has failed.
 

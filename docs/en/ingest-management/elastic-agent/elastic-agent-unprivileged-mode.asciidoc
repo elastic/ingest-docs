@@ -120,4 +120,6 @@ image::images/root-integration-and-unprivileged-agents.png[Agent policy tab show
 [[unprivileged-change-mode]]
 == Changing an {agent}'s privilege mode
 
+If an agent doesn't have the right level of privilege to read a data source, you can adjust the agent's privileges by adding the user running {agent} to the user group that has privileges to read the data source.
+
 TBD

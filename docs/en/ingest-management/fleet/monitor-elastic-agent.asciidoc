@@ -18,6 +18,8 @@ Agent monitoring is turned on by default in the agent policy unless you
 turn it off. Want to turn off agent monitoring to stop collecting logs and
 metrics? See <<change-agent-monitoring>>.
 
+For more detail about how agents communicate their status to {fleet}, refer to <<agent-health-status,{agent} health status>>.
+
 [discrete]
 [[view-agent-status]]
 = View agent status overview

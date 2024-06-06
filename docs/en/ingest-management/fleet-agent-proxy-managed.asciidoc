@@ -68,8 +68,6 @@ If agents are unable to reach the configured proxy server, they will not be able
 +
 . **Attach the proxy to the agent download source**
 +
-beta[]
-+
 Likewise, if the download traffic to or from the artifact registry needs to go through the proxy server, that proxy definition also needs to be added to the agent binary source defined in {Fleet}.
 
 .. In {fleet}, open the **Settings** tab.

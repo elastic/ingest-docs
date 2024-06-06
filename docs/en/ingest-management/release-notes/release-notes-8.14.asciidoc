@@ -74,9 +74,9 @@ The 8.14.0 release added the following new and notable features.
 * Add a warning which is displayed when trying to upgrade agent to version > max {fleet-server} version. ({kibana-pull}178079[#178079])
 
 {fleet-server}::
-* When running in `agent` mode, {fleet-server} will use the APMConfig settings of the expected input if it's set over the settings in `inputs[0].server.instrumentation`. This should make it easier for managed agents to inject APM configuration data. {fleet-server-pull}3277[3277] {fleet-server-issue}2868[2868]
-* Allow specification in the {fleet-server} settings for whether or not a diagnostics bundle should contain additional CPU metrics. {fleet-server-pull}3333[3333] {agent-issue}3491[3491]
-* Allow {fleet} to set the trace level for logging. {fleet-server-pull}3350[3350]
+* When running in `agent` mode, {fleet-server} will use the APMConfig settings of the expected input if it's set over the settings in `inputs[0].server.instrumentation`. This should make it easier for managed agents to inject APM configuration data. {fleet-server-pull}3277[#3277] {fleet-server-issue}2868[#2868]
+* Allow specification in the {fleet-server} settings for whether or not a diagnostics bundle should contain additional CPU metrics. {fleet-server-pull}3333[#3333] {agent-issue}3491[#3491]
+* Allow {fleet} to set the trace level for logging. {fleet-server-pull}3350[#3350]
 
 {agent}::
 * The CPU and memory usage of the internal monitoring {beats} is now included in the agent CPU and memory usage calculations in {fleet}. {agent-pull}4326[#4326] {agent-issue}4082[#4082]

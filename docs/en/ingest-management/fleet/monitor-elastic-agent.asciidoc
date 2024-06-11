@@ -18,6 +18,9 @@ Agent monitoring is turned on by default in the agent policy unless you
 turn it off. Want to turn off agent monitoring to stop collecting logs and
 metrics? See <<change-agent-monitoring>>.
 
+Want to receive an alert when your {agent} health status changes?
+Refer to <<fleet-alerting>> and our <<fleet-alerting-example,alerting example>>.
+
 For more detail about how agents communicate their status to {fleet}, refer to <<agent-health-status,{agent} health status>>.
 
 [discrete]
@@ -290,21 +293,31 @@ You can set up an alert to notify you when one or more {agent}s goes offline:
 
 . In {kib}, navigate to **Management > Stack Management > Rules**.
 . Click **Create rule**.
-. Select **Elasticsearch query** as a rule type.
+. Select **Elasticsearch query** as the rule type.
 . Choose a name for the rule, for example `Elastic Agent status`.
 . Select **KQL or Lucene** as the query type.
 . Select `DATA VIEW metrics-*` as the data view.
-. Define your query, for example:
+. Define your query, for example: `fleet.agents.offline >= 1`.
+. Set the alert group, threshold, and time window. For example:
 ** WHEN: `count()`
 ** OVER: `all documents`
-** IS ABOVE: `1`
-** FOR THE LAST `15 minutes`
+** IS ABOVE: `0`
+** FOR THE LAST `5 minutes`
++
+This will generate an alert when one or more agents are reported by the `fleet.agents.offline` field over the last five minutes to be offline.
 . Set the number of documents to send, for example:
 ** SIZE: 100
-. Set **Check every** to the interval at which you'd like to run the query, for example, 1 minute.
-. Select an action to occur when the rule conditions are met. For example, you can set the alert to send an email, specify:
+. Set **Check every** to the frequency at which the rule condition should be evaluated. The default setting is one minute.
+. Select an action to occur when the rule conditions are met. For example, to set the alert to send an email when an alert occurs, select the Email connector type and specify:
 ** Email connector: `Elastic-Cloud-SMPT`
-** Action frequency: `For each alert` `On status changes`
+** Action frequency: `For each alert` and `On check intervals`
 ** Run when: `Query matched`.
 ** To: <the recipient email address>
 ** Subject: <the email subject line>.
+. Click **Save**.
+
+The new rule will be enabled and an email will be sent when the alert conditions are met.
+
+From the **Rules** page you can select the rule you created to enable or disable it, and to view the rule details including a list of active alerts and an alert history.
+
+image::images/elastic-agent-status-rule.png[A screen capture showing the details for the new Elastic Agent status rule]

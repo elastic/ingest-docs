@@ -40,6 +40,10 @@ Having a different log file for raw events also prevents event data
 from drowning out the regular log files. Use
 `agent.logging.event_data` to configure the events logger.
 
+The events log file is not collected by the {agent} monitoring.
+If the events log files are needed, they can be collected with
+the diagnostics or directly copied from the host running {agent}.
+
 [cols="2*<a"]
 |===
 | *Setting* | *Description*

@@ -311,12 +311,12 @@ This will generate an alert when one or more agents are reported by the `fleet.a
 . Select an action to occur when the rule conditions are met. For example, to set the alert to send an email when an alert occurs, select the Email connector type and specify:
 ** Email connector: `Elastic-Cloud-SMPT`
 ** Action frequency: `For each alert` and `On check intervals`
-** Run when: `Query matched`.
+** Run when: `Query matched`
 ** To: <the recipient email address>
-** Subject: <the email subject line>.
+** Subject: <the email subject line>
 . Click **Save**.
 
-The new rule will be enabled and an email will be sent when the alert conditions are met.
+The new rule will be enabled and an email will be sent to the specified recipient when the alert conditions are met.
 
 From the **Rules** page you can select the rule you created to enable or disable it, and to view the rule details including a list of active alerts and an alert history.
 

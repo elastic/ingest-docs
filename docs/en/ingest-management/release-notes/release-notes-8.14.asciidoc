@@ -27,7 +27,7 @@ Also see:
 [[release-notes-8.14.1]]
 == {fleet} and {agent} 8.14.1
 
-Review important information about {fleet-server} and {agent} for the 8.14.0 release.
+Review important information about {fleet-server} and {agent} for the 8.14.1 release.
 
 [discrete]
 [[security-updates-8.14.1]]
@@ -45,7 +45,6 @@ The 8.14.1 release added the following new and notable features.
 {agent}::
 * For users of {agent} running as an OpenTelemetry Collector, the link:https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/elasticsearchexporter[`elasticsearchexporter`] and the link:https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/filterprocessor[`filterprocessor`] are now available to configure in agent pipelines. {agent-pull}4707[#4707] {agent-pull}4708[#4708]
 
-
 [discrete]
 [[enhancements-8.14.1]]
 === Enhancements
@@ -53,6 +52,13 @@ The 8.14.1 release added the following new and notable features.
 {agent}::
 * The more reliable snapshot API is now used in place of the artifact API for snapshot downloads, for both {agent} upgrades to a snapshot and for artifact fetching used in testing. {agent-pull}4693[#4693] {agent-issue}4458[#4458]
 * The {agent} diagnostics bundle now contains an `agent-info.yaml` file, which provides information on the running agent, including its agent ID, whether or not it's a snapshot, any headers, and if it's running in `unprivileged` mode. {agent-pull}4725[#4725] {agent-issue}4439[#4439]
+
+[discrete]
+[[bug-fixes-8.14.1]]
+=== Bug fixes
+
+{fleet}::
+* Fix the `Restart upgrade` modal submit button disabled condition. {kibana-pull}184586[#184586]
 
 // end 8.14.1 relnotes
 

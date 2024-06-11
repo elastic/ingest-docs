@@ -1,0 +1,23 @@
+// All known issues for the 8.x release should be listed here in descending order from oldest to newest.
+// In addition to the docs build, the contents of this file are reproduced in the Upgrade Elastic Agent 
+// section of the Kibana UI.
+
+
+// tag::known-issue-8.14.0-001[]
+
+[[known-issue-8.14.0-0001]]
+.Beats MSI binaries do not support directories with a trailing slash
+[%collapsible]
+====
+
+*Details*
+
+Due to changes introduced to support customizing an MSI install folder (see link:https://github.com/elastic/elastic-stack-installers/pull/209[#209]), Beats MSI binaries, which currently are in beta, will not properly handle directories that end in a slash. This defect may affect many deployments using the {beats} MSI binaries.
+
+*Impact* +
+
+This issue has been link:https://github.com/elastic/elastic-stack-installers/pull/264[resolved] in version 8.14.0 and later releases. We recommend users of {beats} MSI to upgrade to 8.14 when that release becomes available.
+
+====
+
+// end::known-issue-8.14.0-001[]

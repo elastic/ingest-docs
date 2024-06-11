@@ -29,6 +29,12 @@ Also see:
 Review important information about {fleet-server} and {agent} for the 8.14.0 release.
 
 [discrete]
+[[known-issues-8.14.0]]
+=== Known issues
+
+include::../release-notes/known-issues-8.x.asciidoc[tag=known-issue-8.14.0-001]
+
+[discrete]
 [[security-updates-8.14.0]]
 === Security updates
 

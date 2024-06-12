@@ -60,6 +60,10 @@ The 8.14.1 release added the following new and notable features.
 {fleet}::
 * Fix the `Restart upgrade` modal submit button disabled condition. {kibana-pull}184586[#184586]
 
+{agent}::
+* Make {agent} delayed enrollment try indefinitely until the agent is able to enroll successfully into {fleet}. {agent-pull}4727[#4727] {agent-issue}4716[#4716]
+* Fix delayed enrollment to work in unprivileged mode on Windows. {agent-pull}4779[#4779] {agent-issue}4678[#4678]
+
 // end 8.14.1 relnotes
 
 // begin 8.14.0 relnotes

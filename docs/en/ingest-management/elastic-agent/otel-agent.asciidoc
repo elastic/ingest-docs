@@ -9,6 +9,10 @@ When you run {agent} in `otel` mode it supports the standard OTel Collector conf
 
 The following steps will help you to get set up quickly using {agent} as an OTel Collector. Note that all steps are run with `sudo` as it's generally recommended to run {agent} with administrative privileges.
 
+For the full command syntax for running {agent} in `otel` mode, refer to <<elastic-agent-otel-command>> in the command reference.
+
+For a list of components included in the Elastic Distribution for OpenTelemetry Collector, refer to <<otel-agent-components>>.
+
 [discrete]
 == Run {agent} in OTel mode
 

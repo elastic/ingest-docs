@@ -10,8 +10,14 @@ You can provide the OTel configuration to {agent} using any of the following fou
 * `file` - The configuration is read from a file. For example, `file:path/to/config.yaml`.
 * `env` - The configuration is read from an environment variable. For example, `env:MY_CONFIG_IN_AN_ENVVAR`.
 * `yaml` - The configuration is read from a standard YAML-formatted file. For example, `yaml:exporters::debug::verbosity: detailed`.
-* `http` - The configuration is read from an HTTP URL. For example, `http://www.example.com`.
-// Perhaps we can improve these examples to make them more clear. I'm not sure I understand what the configuration would look like when passed as a URL, for example.
+* `http` - The configuration is read from an HTTP URL. For example, `http://www.example.com/config.yaml`.
+
+For example, the following runs {agent} in `otel` mode, passing the OTel configuration as an HTTP URL:
+
+[source,shell]
+----
+./elastic-agent otel --config=http://localhost:8000/config.yaml
+----
 
 To help you get started, when you download an {agent} install package, the package comes with a sample OTel configuration file, `otel.yml` located in the package base directory.
 
@@ -47,6 +53,6 @@ service: <4>
 <1> link:https://opentelemetry.io/docs/collector/configuration/#receivers[Receivers] collect telemetry from one or more sources.
 <2> link:https://opentelemetry.io/docs/collector/configuration/#processors[Processors] take the data collected by receivers and modify or transform it before sending it to the exporters.
 <3> link:https://opentelemetry.io/docs/collector/configuration/#exporters[Exporters] send data to one or more backends or destinations.
-<4> The link:https://opentelemetry.io/docs/collector/configuration/#connectors[Service] The section is used to configure what components are enabled in the Collector based on the configuration found in the receivers, processors, exporters, and extensions sections. If a component is configured, but not defined within the service section, then it's not enabled.
+<4> The link:https://opentelemetry.io/docs/collector/configuration/#connectors[Service] section is used to configure what components are enabled in the Collector based on the configuration found in the receivers, processors, exporters, and extensions sections. If a component is configured, but not defined within the service section, then it's not enabled.
 
 For full details about setting up this file, refer to link:https://opentelemetry.io/docs/collector/configuration/[Configuration] in the OpenTelemetry documentation.

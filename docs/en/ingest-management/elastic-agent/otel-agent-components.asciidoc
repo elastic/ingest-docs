@@ -1,0 +1,64 @@
+[[otel-agent-components]]
+= {agent} OTel components
+
+preview::[]
+
+The following components are included in the Elastic Distribution for OpenTelemetry Collector.
+
+[discrete]
+
+
+.Receivers
+|===
+|Component |Version
+
+|`filelogreceiver`
+|v0.97.0
+
+|`otlpreceiver`
+|v0.97.0
+
+|===
+
+.Exporters
+|===
+|Component |Version
+
+|`elasticsearchexporter`
+|v0.97.0
+
+|`fileexporter`
+|v0.97.0
+
+|`debugexporter`
+|v0.97.0
+
+|`otlpexporter`
+|v0.97.0
+
+|===
+
+
+.Processors
+|===
+|Component |Version
+
+|`attributesprocessor`
+|v0.97.0
+
+|`filterprocessor`
+|v0.97.0
+
+|`resourceprocessor`
+|v0.97.0
+
+|`transformprocessor`
+|v0.97.0
+
+|`batchprocessor`
+|v0.97.0
+
+|`memorylimiterprocessor`
+|v0.97.0
+
+|===

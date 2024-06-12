@@ -856,16 +856,18 @@ elastic-agent otel [flags]
 elastic-agent otel [command]
 ----
 
+NOTE: You can also run the `otelcol` command, which calls `elastic-agent otel` and passes any arguments to it.
+
 [discrete]
 === Available commands
 
-`--validate`::
+`validate`::
 Validates the OpenTelemetry collector configuration without running the collector.
 
 [discrete]
 === Flags
 
-`--config --config=file:/path/to/first --config=file:path/to/second`::
+`--config=file:/path/to/first --config=file:path/to/second`::
 Locations to the config file(s). Note that only a single location can be set per flag entry, for example `--config=file:/path/to/first --config=file:path/to/second`.
 
 `--feature-gates flag`::
@@ -874,8 +876,8 @@ Comma-delimited list of feature gate identifiers. Prefix with `-` to disable the
 `-h, --help`::
 Get help for the `otel` sub-command. Use `elastic-agent otel [command] --help` for more information about a command.
 
-`--set stringArray`::
-Set an arbitrary component config property. The component has to be defined in the configuration file and the flag has a higher precedence. Array configuration properties are overridden and maps are joined. For example, `--set=processors.batch.timeout=2s`.
+`--set string`::
+Set an arbitrary component config property. The component has to be defined in the configuration file and the flag has a higher precedence. Array configuration properties are overridden and maps are joined. For example, `--set=processors::batch::timeout=2s`.
 
 [discrete]
 === Examples

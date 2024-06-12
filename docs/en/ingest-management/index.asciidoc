@@ -3,6 +3,7 @@ include::{docs-root}/shared/attributes.asciidoc[]
 
 :doctype: book
 
+
 = {fleet} and {agent} Guide
 
 include::overview.asciidoc[leveloffset=+1]
@@ -66,6 +67,8 @@ include::elastic-agent/configuration/env/container-envs.asciidoc[leveloffset=+3]
 include::elastic-agent/otel-agent.asciidoc[leveloffset=+2]
 
 include::elastic-agent/otel-agent-configuration.asciidoc[leveloffset=+3]
+
+include::elastic-agent/otel-agent-components.asciidoc[leveloffset=+3]
 
 include::elastic-agent/install-agent-msi.asciidoc[leveloffset=+2]
 

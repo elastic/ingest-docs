@@ -58,7 +58,7 @@ The 8.14.1 release added the following new and notable features.
 === Bug fixes
 
 {fleet}::
-* Fix the `Restart upgrade` modal submit button disabled condition. {kibana-pull}184586[#184586]
+* The "restart upgrade" button for single agent upgrades is now enabled as expected when the upgrade has been pending for over 2 hours. {kibana-pull}184586[#184586]
 
 {agent}::
 * Make {agent} delayed enrollment try indefinitely until the agent is able to enroll successfully into {fleet}. {agent-pull}4727[#4727] {agent-issue}4716[#4716]

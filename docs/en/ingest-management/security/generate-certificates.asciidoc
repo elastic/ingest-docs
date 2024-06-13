@@ -8,4 +8,5 @@
 Some connections may require you to generate certificates and configure SSL/TLS.
 
 * <<secure-connections>>
+* <<mutual-tls>>
 * <<secure-logstash-connections>>

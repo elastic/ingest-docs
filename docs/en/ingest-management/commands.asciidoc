@@ -856,7 +856,7 @@ elastic-agent otel [flags]
 elastic-agent otel [command]
 ----
 
-NOTE: You can also run the `otelcol` command, which calls `elastic-agent otel` and passes any arguments to it.
+NOTE: You can also run the `./otelcol` command, which calls `./elastic-agent otel` and passes any arguments to it.
 
 [discrete]
 === Available commands

@@ -7,7 +7,7 @@ The link:https://opentelemetry.io/docs/collector/[OpenTelemetry Collector] is a 
 
 When you run {agent} in `otel` mode it supports the standard OTel Collector configuration format that defines a set of receivers, processors, exporters, and connectors. Logs, metrics, and traces can be ingested using OpenTelemetry data formats.
 
-The following steps will help you to get set up quickly using {agent} as an OTel Collector. Note that all steps are run with `sudo` as it's generally recommended to run {agent} with administrative privileges.
+The following steps will help you to get set up quickly using {agent} as an OTel Collector.
 
 For the full command syntax for running {agent} in `otel` mode, refer to <<elastic-agent-otel-command>> in the command reference.
 
@@ -37,7 +37,7 @@ for the full list of available packages.
 [source,shell]
 --
 cd <agent-package-name>
-sudo ./elastic-agent otel -h
+./elastic-agent otel -h
 --
 +
 TIP: You can also refer to the <<elastic-agent-otel-command,{agent} OTel>> command documentation for the full command syntax.
@@ -89,8 +89,10 @@ You can use the `set` flag to manually override any setting defined in the OTel 
 +
 [source,shell]
 ----
-sudo ./elastic-agent otel --config otel.yml --set "exporters::debug::verbosity=normal"
+./elastic-agent otel --config otel.yml --set "exporters::debug::verbosity=normal"
 ----
+
+NOTE: You can also run the `./otelcol` command, which calls `./elastic-agent otel` and passes any arguments to it.
 
 . Validate the configuration
 +
@@ -98,7 +100,7 @@ To validate the OTel configuration for your {agent}, run the `otel` command with
 +
 [source,shell]
 --
-sudo ./elastic-agent otel validate --config otel.yml
+./elastic-agent otel validate --config otel.yml
 --
 +
 If no error is returned, the configuration file is determined to be valid.
@@ -109,7 +111,7 @@ Now, run {agent} with OTel mode configured:
 +
 [source,shell]
 --
-sudo ./elastic-agent otel --config otel.yml
+./elastic-agent otel --config otel.yml
 --
 +
 You should see a response indicating that {agent} has started successfully in OTel mode:
@@ -134,7 +136,7 @@ Finally, confirm that {agent} is running as expected. Open a second terminal she
 +
 [source,shell]
 --
-sudo ./elastic-agent status
+./elastic-agent status --output full
 --
 +
 The returned status indicates that {agent} is healthy and not enrolled in {fleet} (which is expected because in this example we're using standalone {agent}).
@@ -144,6 +146,10 @@ The returned status indicates that {agent} is healthy and not enrolled in {fleet
 ┌─ fleet
 │  └─ status: (STOPPED) Not enrolled into Fleet
 └─ elastic-agent
-   └─ status: (HEALTHY) Running
+   ├─ status: (HEALTHY) Running
+   └─ info
+      ├─ id:
+      ├─ version: 8.14.0
+      └─ commit: d0bce03b68012224ac1bab4ca20ba36060d135a3
 --
 

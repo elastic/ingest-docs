@@ -9,7 +9,7 @@ In general, agents running without full administrative privileges will perform a
 
 You can also <<unprivileged-change-mode,change the privilege mode>> of an {agent} after it has been installed.
 
-Refer to <<unprivileged-command-behaviors>> and <<unprivileged-running>> for the requirements and steps associated with running an agent in `unprivileged` model.
+Refer to <<unprivileged-command-behaviors>> and <<unprivileged-running>> for the requirements and steps associated with running an agent without full `root` or `admin` superuser privileges.
 
 * <<unprivileged-running>>
 * <<unprivileged-command-behaviors>>
@@ -21,7 +21,15 @@ Refer to <<unprivileged-command-behaviors>> and <<unprivileged-running>> for the
 [[unprivileged-running]]
 == Run {agent} in `unprivileged` mode
 
-TBD
+To run {agent} without administrative privileges you use exactly the same commands that you use for {agent} otherwise, with one exception. When you run the <<elastic-agent-install-command,`elastic-agent install`>> command, add the `--unprivileged` flag. For example:
+
+[source,shell]
+----
+elastic-agent install \
+  --url=https://cedd4e0e21e240b4s2bbbebdf1d6d52f.fleet.eu-west-1.aws.cld.elstc.co:443 \
+  --enrollment-token=NEFmVllaa0JLRXhKebVKVTR5TTI6N2JaVlJpSGpScmV0ZUVnZVlRUExFQQ== \
+  --unprivileged
+----
 
 [discrete]
 [[unprivileged-command-behaviors]]
@@ -120,6 +128,15 @@ image::images/root-integration-and-unprivileged-agents.png[Agent policy tab show
 [[unprivileged-change-mode]]
 == Changing an {agent}'s privilege mode
 
-If an agent doesn't have the right level of privilege to read a data source, you can adjust the agent's privileges by adding the user running {agent} to the user group that has privileges to read the data source.
+If an agent doesn't have the right level of privilege to read a data source, you can adjust the agent's privileges by adding `elastic-agent-user` to the user group that has privileges to read the data source.
 
-TBD
+As background, when you run {agent} in `unprivileged` mode, one user and one group are created on the host. The same names are used for all operating systems:
+
+* `elastic-agent-user`: The user that is created and that the {agent} service runs as.
+* `elastic-agent`: The group that is created. Any user in this group has access to control and communicate over the control protocol to the {agent} daemon.
+
+For example:
+
+. When you install {agent} with the `--unprivileged` setting, the `elastic-agent-user` user and the `elastic-agent` group are created automatically.
+. If you then want your user `myuser` to be able to run an {agent} command such as `elastic-agent status`, add the `myuser` user to the `elastic-agent` group.
+. Then, once added to the group, the `elastic-agent status` command will work. Prior to that, user `myuser` running the command will result in a permission error that indicates a problem communicating with the control socket.

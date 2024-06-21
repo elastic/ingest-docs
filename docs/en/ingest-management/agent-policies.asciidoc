@@ -116,6 +116,10 @@ The following table illustrates the {fleet} user actions available to different 
 |{y}
 |{n}
 
+|<<agent-binary-download-settings>>
+|{y}
+|{n}
+
 |<<agent-policy-host-name-format>>
 |{y}
 |{n}
@@ -384,15 +388,27 @@ Under the **Host** header, select the {agent} you want to edit.
 
 . On the **Logs** tab, set the **Agent logging level** and apply your changes. Or, you can choose to reset the agent to use the logging level specified in the agent policy.
 
+[discrete]
+[[agent-binary-download-settings]]
+== Change the {agent} binary download location
 
+{agent}s must be able to access the {artifact-registry} to download
+binaries during upgrades. By default {agent}s download artifacts from the
+artifact registry at `https://artifacts.elastic.co/downloads/`.
 
+For {agent}s that cannot access the internet, you can specify agent binary
+download settings, and then configure agents to download their artifacts from
+the alternate location. For more information about running {agent}s in a
+restricted environment, refer to <<air-gapped>>.
 
+To change the binary download location:
 
+. In {fleet}, click **Agent policies**.
+Select the name of the policy you want to edit.
 
+. Click the **Settings** tab and scroll to **Agent binary download**.
 
-
-
-
+. Specify the address where you are hosting the artifacts repository or select the default to use the location specified in the {fleet} <<fleet-agent-binary-download-settings,agent binary download settings>>.
 
 [discrete]
 [[agent-policy-host-name-format]]
@@ -403,9 +419,9 @@ The **Host name format** setting controls the format of information provided abo
 . In {fleet}, click **Agent policies**.
 Select the name of the policy you want to edit.
 
-. Click the **Settings** tab and scroll to **Advanced settings**.
+. Click the **Settings** tab and scroll to **Host name format**.
 
-. Set the **Host name format**:
+. Select one of the following:
 
 ** **Hostname**: Information about the current host is in a non-fully-qualified format (`somehost`, rather than `somehost.example.com`). This is the default reporting format.
 
@@ -413,7 +429,14 @@ Select the name of the policy you want to edit.
 
 . Save your changes.
 
+NOTE: FQDN reporting is not currently supported in APM.
 
+For FQDN reporting to work as expected, the hostname of the current host must either:
+
+* Have a CNAME entry defined in DNS.
+* Have one of its corresponding IP addresses respond successfully to a reverse DNS lookup.
+
+If neither pre-requisite is satisfied, `host.name` continues to report the hostname of the current host in a non-fully-qualified format.
 
 [discrete]
 [[agent-policy-scale]]

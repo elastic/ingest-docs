@@ -119,6 +119,8 @@ include::fleet/migrate-elastic-agent.asciidoc[leveloffset=+3]
 
 include::fleet/monitor-elastic-agent.asciidoc[leveloffset=+3]
 
+include::fleet/agent-health-status.asciidoc[leveloffset=+3]
+
 include::fleet/filter-agent-list-by-tags.asciidoc[leveloffset=+3]
 
 include::agent-policies.asciidoc[leveloffset=+2]
@@ -209,7 +211,7 @@ include::troubleshooting/troubleshooting.asciidoc[leveloffset=+2]
 
 include::troubleshooting/faq.asciidoc[leveloffset=+2]
 
-include::release-notes/release-notes-8.13.asciidoc[leveloffset=+1]
+include::release-notes/release-notes-8.14.asciidoc[leveloffset=+1]
 
 include::elastic-agent/install-fleet-managed-agent.asciidoc[leveloffset=+2]
 

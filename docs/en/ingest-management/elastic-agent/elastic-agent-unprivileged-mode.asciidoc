@@ -36,50 +36,89 @@ Doing so may result in <<agent-sudo-error,an error>> due to the agent not having
 
 [discrete]
 [[unprivileged-command-behaviors]]
-== {agent} command behaviors in unprivileged mode
+== Agent and dashboard behaviors in unprivileged mode
 
-The following tables show, for different operating systems, the impact on {agent} commands when the agent is <<unprivileged-running,running in unpriviledged mode>>.
+In addition to the <<unprivileged-integrations,integrations that are not available>> when {agent} is run in unpriviledged mode, certain data streams are also not available. The following tables show, for different operating systems, the impact when the agent does not have full administrative privileges. In most cases the limitations can be mediated by granting permissions for a user or group to the files indicated.
 
 .macOS
 [options,header]
 |===
-|Command |Behavior in unprivileged mode |Error message
+|Action |Behavior in unprivileged mode |Resolution
 
-|<<elastic-agent-inspect-command,`inspect` command>>
-|Returns only...
-|`Exmaple error message...`
+|Run {agent} with the System integration
+|Log file error: `Unexpected file opening error: Failed opening /var/log/system.log: open /var/log/system.log: permission denied`.
+|Give read permission to the `elastic-agent` group for the `/var/log/system.log` file to fix this error.
 
-|<<elastic-agent-status-command,`status` command>>
-|Returns only...
-|`Example error message...`
+|Run {agent} with the System integration
+|On the `[Logs System] Syslog` dashboard, the `Syslog events by hostname`, `Syslog hostnames and processes` and `Syslog logs` visualizations are are missing data.
+|Give read permission to the `elastic-agent` group for the `/var/log/system.log` file to fix the missing visualizations.
+
+|Run {agent} with the System integration
+|On the `[Metrics System] Host overview` dashboard, only the processes ran by the `elastic-agent-user` user are shown in the CPU and memory usage lists.
+|Give read permission to the `elastic-agent` group for the `/var/log/system.log` file to fix the missing visualizations.
+
+|Run {agent} and access the {agent} dashboards
+|On the `[Elastic Agent] Agents info` dashboard, visualizations including `Most Active Agents` and `Integrations per Agent` are missing data.
+|Give read permission to the `elastic-agent` group for the `/var/log/system.log` file to fix the missing visualizations.
+
+|Run {agent} and access the {agent} dashboards
+|On the `[Elastic Agent] Integrations` dashboard, visualizations including `Integration Errors Table`, `Events per integration` and `Integration Errors` are missing data.
+|Give read permission to the `elastic-agent` group for the `/var/log/system.log` file to fix the missing visualizations.
+
 |===
 
 .Linux
 [options,header]
 |===
-|Command |Behavior in unprivileged mode |Error message
+|Action |Behavior in unprivileged mode |Resolution
 
-|<<elastic-agent-inspect-command,`inspect` command>>
-|Returns only...
-|`Exmaple error message...`
+|Run {agent} with the System integration
+|Log file error: `[elastic_agent.filebeat][error] Harvester could not be started on new file: /var/log/auth.log.1, Err: error setting up harvester: Harvester setup failed. Unexpected file opening error: Failed opening /var/log/auth.log.1: open /var/log/auth.log.1: permission denied`
+|Give read permission to the `elastic-agent` group for the `/var/log/syslog` and `/var/log/auth.log` files to fix this error.
 
-|<<elastic-agent-status-command,`status` command>>
-|Returns only...
-|`Example error message...`
+|Run {agent} with the System integration
+|Log file error: `[elastic_agent.metricbeat][error] error getting filesystem usage for /run/user/1000/gvfs: error in Statfs syscall: permission denied`
+|This error occurs because the `elastic-agent-user` does not have read access to files in the `/run/user/1000/` directory.
+// It'd be nice if we can expand on this, even if just to say why that read access can't be given.
+
+|Run {agent} with the System integration
+|On the `[Logs System] Syslog` dashboard, the `Syslog events by hostname`, `Syslog hostnames and processes` and `Syslog logs` visualizations are are missing data.
+|Give read permission to the `elastic-agent` group for the `/var/log/syslog` and `/var/log/auth.log` files to fix the missing visualizations.
+
+|Run {agent} and access the {agent} dashboards
+|On the `[Elastic Agent] Agents info` dashboard, visualizations including `Most Active Agents` and `Integrations per Agent` are missing data.
+|Giving read permission to the `elastic-agent` group for the `/var/log/system.log` file will partially fix the visualizations, but errors may still occur because the `elastic-agent-user` does not have read access to files in the `/run/user/1000/` directory.
+// It'd be nice if we can expand on this, even if just to say why that read access can't be given.
+
+|Run {agent} and access the {agent} dashboards
+|On the `[Elastic Agent] Integrations` dashboard, visualizations including `Integration Errors Table`, `Events per integration` and `Integration Errors` are missing data.
+|Give read permission to the `elastic-agent` group for the `/var/log/system.log` file to fix the missing visualizations.
+
 |===
 
 .Windows
 [options,header]
 |===
-|Command |Behavior in unprivileged mode |Error message
+|Action |Behavior in unprivileged mode |Resolution
 
-|<<elastic-agent-inspect-command,`inspect` command>>
-|Returns only...
-|`Exmaple error message...`
+|Run {agent} with the System integration
+|Log file error: `failed to open Windows Event Log channel "Security": Access is denied`
+|Add the `elastic-agent` user to the `Event Log Users` group to fix this error.
 
-|<<elastic-agent-status-command,`status` command>>
-|Returns only...
-|`Example error message...`
+|Run {agent} with the System integration
+|Log file error: `cannot open new key in the registry in order to enable the performance counters: Access is denied`
+|Update the permissions for the `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PartMgr` registry to fix this error.
+
+|Run {agent} with the System integration
+|Most of the System and {agent} dashboard visualizations are missing all data.
+|Add the `elastic-agent` user to the `Event Log Users` group and update the permissions for the `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PartMgr` registry to fix the missing visualizations.
+
+Note that the `elastic-user-agent` user may still not have access to all processes, so the lists in the `Top processes by CPU usage` and `Top processes by memory usage` visualizations may be incomplete. 
+
+|Run {agent} with the System integration
+|On the `[Metrics System] Host overview` dashboard, the `Disk usage` visualizations are missing data. 
+|This occurs because direct access to the disk or a volume is restricted and not available to users without administrative privileges. Refer to link:https://learn.microsoft.com/en-us/windows/win32/secbp/running-with-special-privileges[Running with Special Privileges] in the Microsoft documentation for details.
+
 |===
 
 [discrete]
@@ -142,4 +181,5 @@ For example:
 
 . When you install {agent} with the `--unprivileged` setting, the `elastic-agent-user` user and the `elastic-agent` group are created automatically.
 . If you then want your user `myuser` to be able to run an {agent} command such as `elastic-agent status`, add the `myuser` user to the `elastic-agent` group.
-. Then, once added to the group, the `elastic-agent status` command will work. Prior to that, user `myuser` running the command will result in a permission error that indicates a problem communicating with the control socket.
+. Then, once added to the group, the `elastic-agent status` command will work. Prior to that, the user `myuser` running the command will result in a permission error that indicates a problem communicating with the control socket.
+

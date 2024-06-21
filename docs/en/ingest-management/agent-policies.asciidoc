@@ -124,7 +124,7 @@ The following table illustrates the {fleet} user actions available to different 
 |{y}
 |{n}
 
-|<<agent-policy-host-name-format>>
+|<<fleet-agent-hostname-format-settings>>
 |{y}
 |{n}
 |===
@@ -431,7 +431,7 @@ Select the name of the policy you want to edit.
 . Specify the address where you are hosting the artifacts repository or select the default to use the location specified in the {fleet} <<fleet-agent-binary-download-settings,agent binary download settings>>.
 
 [discrete]
-[[agent-policy-host-name-format]]
+[[fleet-agent-hostname-format-settings]]
 == Set the {agent} host name format
 
 The **Host name format** setting controls the format of information provided about the current host through the <<host-provider,host.name>> key, in events produced by {agent}.

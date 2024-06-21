@@ -565,6 +565,7 @@ elastic-agent install --url <string>
                       [--proxy-url <string>]
                       [--staging <string>]
                       [--tag <string>]
+                      [--unprivileged]
                       [global-flags]
 ----
 
@@ -607,6 +608,7 @@ elastic-agent install --fleet-server-es <string>
                       [--proxy-url <string>]
                       [--staging <string>]
                       [--tag <string>]
+                      [--unprivileged]
                       [--url <string>] <3>
                       [global-flags]
 ----
@@ -773,6 +775,11 @@ use these tags to filter the list of agents in {fleet}.
 +
 NOTE: Currently, there is no way to remove or edit existing tags. To change the
 tags, you must unenroll the {agent}, then re-enroll it using new tags.
+
+`--unprivileged`::
+Run {agent} without full superuser privileges. 
+This option is useful in organizations that limit `root` access on Linux or macOS systems, or `admin` access on Windows systems.
+For details and limitations for running {agent} in this mode, refer to <<elastic-agent-unprivileged>>.
 
 `--url <string>`::
 {fleet-server} URL to use to enroll the {agent} into {fleet}.

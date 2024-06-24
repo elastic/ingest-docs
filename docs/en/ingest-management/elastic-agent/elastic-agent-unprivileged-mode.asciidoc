@@ -74,7 +74,7 @@ In addition to the <<unprivileged-integrations,integrations that are not availab
 
 |Run {agent} with the System integration
 |Log file error: `[elastic_agent.filebeat][error] Harvester could not be started on new file: /var/log/auth.log.1, Err: error setting up harvester: Harvester setup failed. Unexpected file opening error: Failed opening /var/log/auth.log.1: open /var/log/auth.log.1: permission denied`
-|{agent} needs to be able to read the `/var/log/syslog` and `/var/log/auth.log` files. Add the `elastic-agent-user` to the `adm` group on the host to fix the missing visualizations.
+|{agent} needs to be able to read the `/var/log/syslog` and `/var/log/auth.log` files. Add the `elastic-agent-user` user to the `adm` group on the host to fix the missing visualizations.
 
 |Run {agent} with the System integration
 |Log file error: `[elastic_agent.metricbeat][error] error getting filesystem usage for /run/user/1000/gvfs: error in Statfs syscall: permission denied`
@@ -83,7 +83,7 @@ In addition to the <<unprivileged-integrations,integrations that are not availab
 
 |Run {agent} with the System integration
 |On the `[Logs System] Syslog` dashboard, the `Syslog events by hostname`, `Syslog hostnames and processes` and `Syslog logs` visualizations are are missing data.
-|{agent} needs to be able to read the `/var/log/syslog` and `/var/log/auth.log` files. Add the `elastic-agent-user` to the `adm` group on the host to fix the missing visualizations.
+|{agent} needs to be able to read the `/var/log/syslog` and `/var/log/auth.log` files. Add the `elastic-agent-user` user to the `adm` group on the host to fix the missing visualizations.
 
 |Run {agent} and access the {agent} dashboards
 |On the `[Elastic Agent] Agents info` dashboard, visualizations including `Most Active Agents` and `Integrations per Agent` are missing data.

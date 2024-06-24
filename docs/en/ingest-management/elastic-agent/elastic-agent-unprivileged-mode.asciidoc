@@ -119,8 +119,6 @@ Note that the `elastic-agent-user` user may still not have access to all process
 |On the `[Metrics System] Host overview` dashboard, the `Disk usage` visualizations are missing data. 
 |This occurs because direct access to the disk or a volume is restricted and not available to users without administrative privileges. Refer to link:https://learn.microsoft.com/en-us/windows/win32/secbp/running-with-special-privileges[Running with Special Privileges] in the Microsoft documentation for details.
 
-Adding the `elastic-agent-user` user to the `Performance Monitor Users` group, `Event Log Readers` group, and `Performance Log Users` group should resolve the missing data in the visualations.
-
 |===
 
 [discrete]

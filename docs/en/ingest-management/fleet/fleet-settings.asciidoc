@@ -124,6 +124,7 @@ use the default location if you don't select a different agent binary source
 in the agent policy.
 
 [discrete]
+<<<<<<< HEAD
 [[fleet-agent-hostname-format-settings]]
 == Host name format settings
 
@@ -157,4 +158,10 @@ For FQDN reporting to work as expected, the hostname of the current host must ei
 If neither pre-requisite is satisfied, `host.name` continues to report the hostname of the current host in a non-fully-qualified format.
 
 |===
+=======
+[[proxy-settings]]
+== Proxies
+>>>>>>> 32c5f9ca (Move Agent policy settings docs to correct location (#1092))
 
+You can specify a proxy server to be used in {fleet-server}, {agent} outputs, or for any agent binary download sources. 
+For full details about proxy configuration refer to <<fleet-agent-proxy-support,Using a proxy server with {agent} and {fleet}>>.

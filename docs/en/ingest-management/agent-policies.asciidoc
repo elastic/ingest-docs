@@ -95,6 +95,37 @@ The following table illustrates the {fleet} user actions available to different 
 |<<change-policy-output,Change the output of a policy>>
 |{y}
 |{n}
+<<<<<<< HEAD
+=======
+
+|<<add-fleet-server-to-policy>>
+|{y}
+|{n}
+
+|<<agent-policy-secret-values>>
+|{y}
+|{n}
+
+|<<agent-policy-limit-cpu>>
+|{y}
+|{n}
+
+|<<agent-policy-http-monitoring>>
+|{y}
+|{n}
+
+|<<agent-policy-log-level>>
+|{y}
+|{n}
+
+|<<agent-binary-download-settings>>
+|{y}
+|{n}
+
+|<<fleet-agent-hostname-format-settings>>
+|{y}
+|{n}
+>>>>>>> 32c5f9ca (Move Agent policy settings docs to correct location (#1092))
 |===
 
 [discrete]
@@ -304,6 +335,114 @@ image::images/fleet-policy-hidden-secret.png[Screen capture showing a hidden sec
 . Click **Save integration**. The original secret value is overwritten in the policy.
 
 [discrete]
+<<<<<<< HEAD
+=======
+[[agent-policy-limit-cpu]]
+== Set the maximum CPU usage
+
+You can limit the amount of CPU consumed by {agent}. This parameter limits the number of operating system threads that can be executing Go code simultaneously in each Go process. You can specify an integer value not less than `0`, which is the default value that stands for "all available CPUs".
+
+This limit applies independently to the agent and each underlying Go process that it supervises. For example, if {agent} is configured to supervise two {beats} with a CPU usage limit of `2` set in the policy, then the total CPU limit is six, where each of the three processes (one {agent} and two {beats}) may execute independently on two CPUs.
+
+This setting is similar to the {beats} {filebeat-ref}/configuration-general-options.html#_max_procs[`max_procs`] setting. For more detail, refer to the link:https://pkg.go.dev/runtime#GOMAXPROCS[GOMAXPROCS] function in the Go runtime documentation.
+
+. In {fleet}, click **Agent policies**.
+Select the name of the policy you want to edit.
+
+. Click the **Settings** tab and scroll to **Advanced settings**.
+
+. Set **Limit CPU usage** as needed. For example, to limit Go processes supervised by {agent} to two operating system threads each, set this value to `2`.
+
+[discrete]
+[[agent-policy-http-monitoring]]
+== Override the default monitoring port
+
+You can override the default port that {agent} uses to send monitoring data. It's useful to be able to adjust this setting if you have an application running on the machine on which the agent is deployed, and that is using the same port.
+
+. In {fleet}, click **Agent policies**.
+Select the name of the policy you want to edit.
+
+. Click the **Settings** tab and scroll to **Advanced settings**.
+
+//. Set **Agent HTTP monitoring** setting to enabled, and then specify a host and port for the monitoring data output.
+. Specify a host and port for the monitoring data output.
+
+//. Enable **buffer.enabled** if you'd like {agent} and {beats} to collect metrics into an in-memory buffer and expose these through a `/buffer` endpoint. This data can be useful for debugging or if the {agent} has issues communicating with {es}. Enabling this option may slightly increase process memory usage.
+
+[discrete]
+[[agent-policy-log-level]]
+== Set the {agent} log level
+
+You can set the minimum log level that {agents} using the selected policy will send to the configured output. The default setting is `info`.
+
+. In {fleet}, click **Agent policies**.
+Select the name of the policy you want to edit.
+
+. Click the **Settings** tab and scroll to **Advanced settings**.
+
+. Set the **Agent logging level**.
+
+. Save your changes. 
+
+You can also set the log level for an individual agent:
+
+. In {fleet}, click **Agents**.
+Under the **Host** header, select the {agent} you want to edit.
+
+. On the **Logs** tab, set the **Agent logging level** and apply your changes. Or, you can choose to reset the agent to use the logging level specified in the agent policy.
+
+[discrete]
+[[agent-binary-download-settings]]
+== Change the {agent} binary download location
+
+{agent}s must be able to access the {artifact-registry} to download
+binaries during upgrades. By default {agent}s download artifacts from the
+artifact registry at `https://artifacts.elastic.co/downloads/`.
+
+For {agent}s that cannot access the internet, you can specify agent binary
+download settings, and then configure agents to download their artifacts from
+the alternate location. For more information about running {agent}s in a
+restricted environment, refer to <<air-gapped>>.
+
+To change the binary download location:
+
+. In {fleet}, click **Agent policies**.
+Select the name of the policy you want to edit.
+
+. Click the **Settings** tab and scroll to **Agent binary download**.
+
+. Specify the address where you are hosting the artifacts repository or select the default to use the location specified in the {fleet} <<fleet-agent-binary-download-settings,agent binary download settings>>.
+
+[discrete]
+[[fleet-agent-hostname-format-settings]]
+== Set the {agent} host name format
+
+The **Host name format** setting controls the format of information provided about the current host through the <<host-provider,host.name>> key, in events produced by {agent}.
+
+. In {fleet}, click **Agent policies**.
+Select the name of the policy you want to edit.
+
+. Click the **Settings** tab and scroll to **Host name format**.
+
+. Select one of the following:
+
+** **Hostname**: Information about the current host is in a non-fully-qualified format (`somehost`, rather than `somehost.example.com`). This is the default reporting format.
+
+** **Fully Qualified Domain Name (FQDN)**: Information about the current host is in FQDN format (`somehost.example.com` rather than `somehost`). This helps you to distinguish between hosts on different domains that have similar names. The fully qualified hostname allows each host to be more easily identified when viewed in {kib}, for example.
+
+. Save your changes.
+
+NOTE: FQDN reporting is not currently supported in APM.
+
+For FQDN reporting to work as expected, the hostname of the current host must either:
+
+* Have a CNAME entry defined in DNS.
+* Have one of its corresponding IP addresses respond successfully to a reverse DNS lookup.
+
+If neither pre-requisite is satisfied, `host.name` continues to report the hostname of the current host in a non-fully-qualified format.
+
+[discrete]
+>>>>>>> 32c5f9ca (Move Agent policy settings docs to correct location (#1092))
 [[agent-policy-scale]]
 == Policy scaling recommendations
 

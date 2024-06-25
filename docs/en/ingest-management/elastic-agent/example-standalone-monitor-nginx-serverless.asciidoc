@@ -71,7 +71,7 @@ image::images/guide-sign-up-trial.png["Start your free Elastic Cloud trial",widt
 
 [discrete]
 [[nginx-guide-create-api-key-serverless]]
-=== Step 3: Create an {ecloud} API key
+=== Step 3: Create an {es} API key
 
 . When your {serverless-short} project is ready, open the {kib} menu and go to **Project settings** -> **Management -> API keys**.
 

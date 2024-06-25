@@ -36,11 +36,11 @@ If you are using link:{serverless-docs}[{serverless-full}], API key authenticati
 
 To create an API key for {agent}:
 
-. In an {ecloud} or premises environment, in {kib} navigate to *{stack-manage-app} > API keys* and click *Create API key*.
+. In an {ecloud} or on premises environment, in {kib} navigate to *{stack-manage-app} > API keys* and click *Create API key*.
 +
 In a {serverless-short} environment, in {kib} navigate to *Project settings* > *Management* > *API keys* and click *Create API key*.
 
-. Enter a name for your API key and select *Restrict privileges* (in a {serverless-short} environment, *Control security privileges*).
+. Enter a name for your API key and select *Control security privileges*.
 
 . In the role descriptors box, copy and paste the following JSON. This example creates an API key with privileges for ingesting logs, metrics, traces, and synthetics:
 +

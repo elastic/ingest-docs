@@ -14,6 +14,7 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.14.2>>
 * <<release-notes-8.14.1>>
 * <<release-notes-8.14.0>>
 
@@ -22,12 +23,39 @@ Also see:
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
 
+// begin 8.14.2 relnotes
+
+[[release-notes-8.14.2]]
+== {fleet} and {agent} 8.14.2
+
+Review important information about the {fleet} and {agent} 8.14.2 release.
+
+[discrete]
+[[notable-changes-8.13.0]]
+=== Notable changes
+
+The following are notable, non-breaking updates to be aware of:
+
+{fleet}::
+* The `health_check` API endpoint has been updated to accept host IDs. An `id` string should be used in place of the `host` field, which is now deprecated. ({kibana-pull}185014[#185014])
+
+//[discrete]
+//[[bug-fixes-8.14.2]]
+//=== Bug fixes
+
+
+
+
+
+// end 8.14.2 relnotes
+
+
 // begin 8.14.1 relnotes
 
 [[release-notes-8.14.1]]
 == {fleet} and {agent} 8.14.1
 
-Review important information about {fleet-server} and {agent} for the 8.14.1 release.
+Review important information about the {fleet} and {agent} 8.14.1 release.
 
 [discrete]
 [[security-updates-8.14.1]]
@@ -71,7 +99,7 @@ The 8.14.1 release added the following new and notable features.
 [[release-notes-8.14.0]]
 == {fleet} and {agent} 8.14.0
 
-Review important information about {fleet-server} and {agent} for the 8.14.0 release.
+Review important information about the {fleet} and {agent} 8.14.0 release.
 
 [discrete]
 [[security-updates-8.14.0]]

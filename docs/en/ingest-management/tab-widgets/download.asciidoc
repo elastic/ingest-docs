@@ -7,8 +7,12 @@ endif::[]
 
 ifeval::["{release-state}"!="unreleased"]
 
-IMPORTANT: To simplify upgrading to future versions of {agent}, we recommended
-that you use the tarball distribution instead of the DEB distribution.
+[IMPORTANT]
+====
+* To simplify upgrading to future versions of {agent}, we recommended
+that you use the tarball distribution instead of the RPM distribution.
+* You can install {agent} in an `unprivileged` mode that does not require `root` privileges. Refer to <<elastic-agent-unprivileged>> for details.
+====
 
 ["source","sh",subs="attributes"]
 ----
@@ -28,8 +32,12 @@ endif::[]
 
 ifeval::["{release-state}"!="unreleased"]
 
-IMPORTANT: To simplify upgrading to future versions of {agent}, we recommended
+[IMPORTANT]
+====
+* To simplify upgrading to future versions of {agent}, we recommended
 that you use the tarball distribution instead of the RPM distribution.
+* You can install {agent} in an `unprivileged` mode that does not require `root` privileges. Refer to <<elastic-agent-unprivileged>> for details.
+====
 
 ["source","sh",subs="attributes"]
 ----

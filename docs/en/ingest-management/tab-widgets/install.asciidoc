@@ -2,7 +2,7 @@
 
 // tag::install-tip[]
 TIP: It's recommended to run this command as the root user because some
-integrations require root privileges to collect sensitive data. To <<elastic-agent-unprivileged,run {agent} without full administrative privileges>>, use the `--unprivileged` flag.
+integrations require root privileges to collect sensitive data. To link:https://www.elastic.co/guide/en/fleet/master/elastic-agent-unprivileged.html[run {agent} without full administrative privileges], use the `--unprivileged` flag.
 Note the limitations as described in the linked document.
 
 // end::install-tip[]

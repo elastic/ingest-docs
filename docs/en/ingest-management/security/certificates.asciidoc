@@ -5,6 +5,8 @@ If you're running a self-managed cluster, configure Transport Layer Security
 (TLS) to encrypt traffic between {agent}s, {fleet-server}, and other components
 in the {stack}.
 
+For the install settings specific to mutual TLS, as opposed to one-way TLS, refer to <<mutual-tls>>.
+
 TIP: Our {ess-product}[hosted {ess}] on {ecloud} provides secure, encrypted
 connections out of the box!
 

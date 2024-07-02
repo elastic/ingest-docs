@@ -36,11 +36,11 @@ If you are using link:{serverless-docs}[{serverless-full}], API key authenticati
 
 To create an API key for {agent}:
 
-. In an {ecloud} or premises environment, in {kib} navigate to *{stack-manage-app} > API keys* and click *Create API key*.
+. In an {ecloud} or on premises environment, in {kib} navigate to *{stack-manage-app} > API keys* and click *Create API key*.
 +
 In a {serverless-short} environment, in {kib} navigate to *Project settings* > *Management* > *API keys* and click *Create API key*.
 
-. Enter a name for your API key and select *Restrict privileges* (in a {serverless-short} environment, *Control security privileges*).
+. Enter a name for your API key and select *Control security privileges*.
 
 . In the role descriptors box, copy and paste the following JSON. This example creates an API key with privileges for ingesting logs, metrics, traces, and synthetics:
 +
@@ -111,7 +111,7 @@ For more information about creating API keys in {kib}, see
 == Create a standalone agent role
 
 Although it's recommended that you use an API key instead of a username and
-password to access {es} (and an API key is required in a {serverless} environment), you can create a role with the required privileges,
+password to access {es} (and an API key is required in a {serverless-short} environment), you can create a role with the required privileges,
 assign it to a user, and specify the user's credentials in the
 `elastic-agent.yml` file.
 

@@ -67,7 +67,7 @@ image::images/guide-sign-up-trial.png["Start your free Elastic Cloud trial",widt
 
 [discrete]
 [[nginx-guide-create-api-key-ess]]
-=== Step 3: Create an {ecloud} API key
+=== Step 3: Create an {es} API key
 
 . From the {kib} menu and go to *Stack Management* -> *API keys*.
 

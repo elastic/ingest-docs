@@ -143,7 +143,7 @@ image::images/guide-install-agent-on-host.png["Install {agent} on your host step
 +
 [NOTE] 
 ==== 
-{agent} commands need to be run as `root`. You can prefix each agent command with `sudo` or you can start a new shell as `root` by running `sudo su`. 
+It's recommended to run {agent} commands as `root`. You can prefix each agent command with `sudo` or you can start a new shell as `root` by running `sudo su`. For details about run {agent} commands without `root` access, refer to <<elastic-agent-unprivileged>>.
 ====
 +
 If you're prompted with `Elastic Agent will be installed at {installation location} and will run as a service. Do you want to continue?` answer `Yes`.

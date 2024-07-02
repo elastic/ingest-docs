@@ -821,5 +821,5 @@ For example, when you run {agent} with the `--unprivileged` flag, running the `e
 Error: error loading agent config: error loading raw config: fail to read configuration /Library/Elastic/Agent/fleet.enc for the elastic-agent: fail to decode bytes: cipher: message authentication failed
 ----
 
-To resolve this, either run {agent} without the `--unprivileged` flag so that it has administrative access, or run the {agent} commands without the `sudo` prefix.
+To resolve this, either install {agent} without the `--unprivileged` flag so that it has administrative access, or run the {agent} commands without the `sudo` prefix.
 

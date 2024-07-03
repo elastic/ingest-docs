@@ -112,6 +112,8 @@ docker run --rm --mount destination=/state -e {STATE_PATH}=/state --read-only do
 ----
 
 Where {STATE_PATH} is the path to a stateful directory to mount where {agent} application data can be stored.
+
+You can also add `type=tmpfs` to the mount parameter (`--mount type=tmpfs,destination=/state...`) to specify a temporary file storage location. This should be done with caution as it can cause data duplication, particularly for logs, when the container is restarted, as no state data is persisted.
 ====
 
 [discrete]

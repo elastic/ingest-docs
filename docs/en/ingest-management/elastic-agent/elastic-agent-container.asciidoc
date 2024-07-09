@@ -108,7 +108,7 @@ For example:
 
 [source,terminal,subs="attributes"]
 ----
-docker run --rm --mount source=$(pwd)/state,destination=/state -e {STATE_PATH}=/state --read-only docker.elastic.co/beats/elastic-agent:8.15.0 <1>
+docker run --rm --mount source=$(pwd)/state,destination=/state -e {STATE_PATH}=/state --read-only docker.elastic.co/beats/elastic-agent:{version} <1>
 ----
 
 Where {STATE_PATH} is the path to a stateful directory to mount where {agent} application data can be stored.

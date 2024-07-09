@@ -6,6 +6,8 @@ requirements needed to scale your deployment of {agent}s. To scale
 {fleet-server}, you need to modify settings in your deployment and the
 {fleet-server} agent policy.
 
+TIP: Refer to the <<agent-policy-scaling-recommendations>> section for specific recommendations about using {fleet-server} at scale.
+
 First modify your {fleet} deployment settings in {ecloud}:
 
 . Log in to {ecloud} and go to your deployment.
@@ -226,7 +228,19 @@ of these operations.
 
 [discrete]
 [[agent-policy-scaling-recommendations]]
-== Policy scaling recommendations
+== Scaling recommendations
+
+**{agent} policies**
 
 A single instance of {fleet} supports a maximum of 500 {agent} policies. If more policies are configured, UI performance might be impacted.
 
+**{agents}**
+
+When you use {fleet} to manage a large volume (10k or more) of {agents}, the check-in from each of the multiple agents triggers an {es} authentication request. To help reduce the possibility of cache eviction and to speed up propagation of {agent} policy changes and actions, we recommend setting the {ref}/security-settings.html#api-key-service-settings[API key cache size] in your {es} configuration to `max number of agents * 2`.
+
+For example, with 25,000 running {agents} you could set the cache value to `50,000`:
+
+[source,yaml]
+----
+xpack.security.authc.api_key.cache.max_keys: 50000
+----

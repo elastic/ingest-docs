@@ -14,6 +14,11 @@
 
 This section summarizes the changes in each release.
 
+<<<<<<< HEAD
+=======
+* <<release-notes-8.14.3>>
+* <<release-notes-8.14.2>>
+>>>>>>> 9956cb9a (Add Fleet & Agent 8.14.3 Release Notes (#1159))
 * <<release-notes-8.14.1>>
 * <<release-notes-8.14.0>>
 
@@ -22,6 +27,77 @@ Also see:
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
 
+<<<<<<< HEAD
+=======
+// begin 8.14.3 relnotes
+
+[[release-notes-8.14.3]]
+== {fleet} and {agent} 8.14.3
+
+Review important information about the {fleet} and {agent} 8.14.3 release.
+
+[discrete]
+[[bug-fixes-8.14.3]]
+=== Bug fixes
+
+{agent}::
+* Update the `elastic-agent install -f` command to use paths associated with the installed agent binary instead of paths associated with the agent running the install command. {agent-pull}4965[#4965] {agent-issue}4506[#4506]
+* Allow the {agent} container to work with a read-only filesystem. {agent-pull}5010[#5010]
+* Upgrade NodeJS to LTS version 18.20.3. {agent-pull}4995[#4995]
+* Fix {agent} to account for the timeout period when waiting for {fleet-server} to start. {agent-pull}5034[#5034] {agent-issue}5033[#5033]
+
+// end 8.14.3 relnotes
+
+
+// begin 8.14.2 relnotes
+
+[[release-notes-8.14.2]]
+== {fleet} and {agent} 8.14.2
+
+Review important information about the {fleet} and {agent} 8.14.2 release.
+
+[discrete]
+[[notable-changes-8.14.2]]
+=== Notable changes
+
+The following are notable, non-breaking updates to be aware of:
+
+{fleet}::
+* The `health_check` API endpoint has been updated to accept host IDs. An `id` string should be used in place of the `host` field, which is now deprecated. ({kibana-pull}185014[#185014])
+
+[discrete]
+[[new-features-8.14.2]]
+=== New features
+
+The 8.14.2 release added the following new and notable features.
+
+{agent}::
+* The following processors are now available to users running {agent} in `otel` mode:
+** link:https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/resourcedetectionprocessor[Resource Detection Processor] {agent-pull}4811[#4811]
+** link:https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.102.0/processor/k8sattributesprocessor[Kubernetes Attributes Processor] {agent-pull}4893[#4893]
+** link:https://github.com/elastic/opentelemetry-collector-components/tree/processor/elasticinframetricsprocessor/v0.1.0/processor/elasticinframetricsprocessor[Elastic Infra Metrics Processor] {agent-pull}4968[#4968]
+* An `otelcol` shortcut has been added for the `elasticc-agent otel` command. {agent-pull}4816[#4816] {agent-issue}4661[#4661]
+* An `agent.monitoring.metrics_period` setting has been added, enabling you to control the sampling period of {agent} monitoring metrics according to your needs. {agent-pull}4961[#4961]
+
+[discrete]
+[[enhancements-8.14.2]]
+=== Enhancements
+
+{agent}::
+* Add link:https://kubernetes.io/docs/reference/kubectl/generated/kubectl_kustomize/[kustomize] templates using default manifests for Kubernetes onboarding. {agent-pull}4754[#4754] {agent-issue}4657[#4657]
+* Capture early errors on Windows in the Application eventlog. {agent-pull}4846[#4846] {agent-issue}4627[#4627]
+
+[discrete]
+[[bug-fixes-8.14.2]]
+=== Bug fixes
+
+{agent}::
+* Fix an issue where the `log_writer.go` can panic in the case it logs an empty line. {agent-pull}4910[#4910] {agent-issue}4907[#4907]
+* Increase the removal timeout period to 60 seconds when uninstalling {agent}. {agent-pull}4921[#4921] {agent-issue}4164[#4164]
+
+// end 8.14.2 relnotes
+
+>>>>>>> 9956cb9a (Add Fleet & Agent 8.14.3 Release Notes (#1159))
 // begin 8.14.1 relnotes
 
 [[release-notes-8.14.1]]

@@ -11,7 +11,7 @@ ifeval::["{release-state}"!="unreleased"]
 ====
 * To simplify upgrading to future versions of {agent}, we recommended
 that you use the tarball distribution instead of the RPM distribution.
-* You can install {agent} in an `unprivileged` mode that does not require `root` privileges. Refer to <<elastic-agent-unprivileged>> for details.
+* You can install {agent} in an `unprivileged` mode that does not require `root` privileges. Refer to {fleet-guide}/elastic-agent-unprivileged.html[Run {agent} without administrative privileges] for details.
 ====
 
 ["source","sh",subs="attributes"]
@@ -36,7 +36,7 @@ ifeval::["{release-state}"!="unreleased"]
 ====
 * To simplify upgrading to future versions of {agent}, we recommended
 that you use the tarball distribution instead of the RPM distribution.
-* You can install {agent} in an `unprivileged` mode that does not require `root` privileges. Refer to <<elastic-agent-unprivileged>> for details.
+* You can install {agent} in an `unprivileged` mode that does not require `root` privileges. Refer to {fleet-guide}/elastic-agent-unprivileged.html[Run {agent} without administrative privileges] for details.
 ====
 
 ["source","sh",subs="attributes"]
@@ -95,7 +95,7 @@ ifeval::["{release-state}"!="unreleased"]
 ["source","powershell",subs="attributes"]
 ----
 # PowerShell 5.0+
-wget https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{version}-windows-x86_64.zip -OutFile elastic-agent-{version}-windows-x86_64.zip 
+wget https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{version}-windows-x86_64.zip -OutFile elastic-agent-{version}-windows-x86_64.zip
 Expand-Archive .\elastic-agent-{version}-windows-x86_64.zip
 ----
 Or manually:

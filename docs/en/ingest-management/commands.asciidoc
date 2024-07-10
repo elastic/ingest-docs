@@ -781,9 +781,9 @@ NOTE: Currently, there is no way to remove or edit existing tags. To change the
 tags, you must unenroll the {agent}, then re-enroll it using new tags.
 
 `--unprivileged`::
-Run {agent} without full superuser privileges. 
+Run {agent} without full superuser privileges.
 This option is useful in organizations that limit `root` access on Linux or macOS systems, or `admin` access on Windows systems.
-For details and limitations for running {agent} in this mode, refer to <<elastic-agent-unprivileged>>.
+For details and limitations for running {agent} in this mode, refer to {fleet-guide}/elastic-agent-unprivileged.html[Run {agent} without administrative privileges].
 
 `--url <string>`::
 {fleet-server} URL to use to enroll the {agent} into {fleet}.

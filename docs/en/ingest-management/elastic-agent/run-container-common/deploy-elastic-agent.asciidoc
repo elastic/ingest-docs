@@ -17,5 +17,9 @@ elastic-agent-fj2z9             1/1     Running   0          81m
 elastic-agent-hs4pb             1/1     Running   0          81m
 ------------------------------------------------
 
-
-
+[TIP] 
+.Running {agent} on a read-only file system
+==== 
+If you'd like to run {agent} on Kubernetes on a read-only file 
+system, you can do so by specifying the `readOnlyRootFilesystem` option.
+====

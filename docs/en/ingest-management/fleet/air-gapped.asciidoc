@@ -8,9 +8,9 @@ steps to make sure:
 content.
 * {agent}s are able to download binaries during upgrades from the {artifact-registry}.
 
-The {package-registry} must be therefore accessible from {kib} via an HTTP Proxy and/or self-hosted.
+The {package-registry} must therefore be accessible from {kib} via an HTTP Proxy and/or self-hosted.
 
-The {artifact-registry} must be therefore accessible from {kib} via an HTTP Proxy and/or self-hosted.
+The {artifact-registry} must therefore be accessible from {kib} via an HTTP Proxy and/or self-hosted.
 
 [TIP]
 ====

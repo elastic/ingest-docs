@@ -6,7 +6,11 @@ steps to make sure:
 
 * {kib} is able to reach the {package-registry} to download package metadata and
 content.
-* {agent}s are able to download binaries during upgrades.
+* {agent}s are able to download binaries during upgrades from the {artifact-registry}.
+
+The {package-registry} must be therefore accessible from {kib} via an HTTP Proxy and/or self-hosted.
+
+The {artifact-registry} must be therefore accessible from {kib} via an HTTP Proxy and/or self-hosted.
 
 [TIP]
 ====

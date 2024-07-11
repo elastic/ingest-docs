@@ -22,9 +22,9 @@ When you use standalone {agent} with integrations, the integration assets added 
 [[assets-restrictions-without-agent]]
 == Using integration assets without {agent}
 
-Using {agent} and {fleet} integration assets without {agent} is not supported.
+{fleet} integration assets are meant to work only with {agent}.
 
-For example, if you install the {integrations-docs}/redis-intro[Redis integration] to collect logs and metrics, the integration is supported only for use with {agent}. Using {ls} or {filebeat} to collect the Redis logs from a third party source (such as Kafka or AWS S3) is not supported. As well, a configuration like this could break when the integration is upgraded, which can happen automatically.
+The {fleet} integration assets are not supposed to work when sending arbitrary logs or metrics collected with other products such as {filebeat}, {metricbeat} or {ls}.
 
 [discrete]
 [[assets-restrictions-custom-integrations]]

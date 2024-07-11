@@ -1,0 +1,48 @@
+[[integrations-assets-best-practices]]
+= Best practices for integrations assets
+
+When you use integrations with {fleet} and {agent} there are some restrictions to be aware of.
+
+* <<assets-restrictions-standalone>>
+* <<assets-restrictions-without-agent>>
+* <<assets-restrictions-custom-integrations>>
+* <<assets-restrictions-copying>>
+
+[discrete]
+[[assets-restrictions-standalone]]
+== Using integration assets with standalone {agent}
+
+When you use standalone {agent} with integrations, the integration assets added to the {agent} policy must be installed on the destination {es} cluster.
+
+* If {kib} is available, the integration assets can be <<install-uninstall-integration-assets,installed through {fleet}>>.
+
+* If {kib} is not available (for instance if you have a remote cluster without a {kib} instance), then the integration assets need to be installed manually.
+
+[discrete]
+[[assets-restrictions-without-agent]]
+== Using integration assets without {agent}
+
+{fleet} integration assets are meant to work only with {agent}.
+
+The {fleet} integration assets are not supposed to work when sending arbitrary logs or metrics collected with other products such as {filebeat}, {metricbeat} or {ls}.
+
+[discrete]
+[[assets-restrictions-custom-integrations]]
+== Using {fleet} and {agent} integration assets in custom integrations
+
+While it's possible to include {fleet} and {agent} integration assets in a custom integration, this is not recommended nor supported. Assets from another integration should not be referenced directly from a custom integration.
+
+As an example scenario, one may want to ingest Redis logs from Kafka. This can be done using the {integrations-docs}/redis-intro[Redis integration], but only certain files and paths are allowed. It's technically possible to use the {integrations-docs}/kafka_log[Custom Kafka Logs integration] with a custom ingest pipeline, referencing the ingest pipeline of the Redis integration to ingest logs into the index templates of the Custom Kafka Logs integration data streams. 
+
+However, referencing assets of an integration from another custom integration is not recommended nor supported. A configuration as described above can break when the integration is upgraded, as can happen automatically.
+
+[discrete]
+[[assets-restrictions-copying]]
+== Copying {fleet} and {agent} integration assets
+
+As an alternative to referencing assets from another integration from within a custom integration, assets such as index templates and ingest pipelines can be copied so that they become standalone.
+
+This way, because the assets are not managed by another integration, there is less risk of a configuration breaking or of an integration asset being deleted when the other integration is upgraded.
+
+Note, however, that creating standalone integration assets based off of {fleet} and {agent} integrations is considered a custom configuration that is not tested nor supported. Whenever possible it's recommended to use standard integrations.
+

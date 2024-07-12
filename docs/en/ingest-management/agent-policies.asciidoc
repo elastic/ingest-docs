@@ -92,6 +92,10 @@ The following table illustrates the {fleet} user actions available to different 
 |{y}
 |{n}
 
+|<<add-custom-fields,Add custom fields>>
+|{y}
+|{n}
+
 |<<change-policy-enable-agent-monitoring,Enable agent monitoring>>
 |{y}
 |{n}
@@ -263,9 +267,30 @@ Alternatively, click **Delete policy** to delete the policy.
 Existing data is not deleted.
 Any agents assigned to a policy must be unenrolled or assigned to a different policy before a policy can be deleted.
 
+[discrete]
+[[add-custom-fields]]
+== Add custom fields
+
+Use this setting to add a custom field and value set to all data collected from the {agents} enrolled in this policy.
+
+. In {fleet}, click **Agent policies**.
+Select the name of the policy you want to edit.
+
+. Click the **Settings** tab and scroll to **Custom fields**.
+
+. Click **Add field**.
+
+Note that for a small set of inputs, adding custom tags is not supported:
+
+* `apm`
+* `cloudbeat` and all `cloudbeat/*` inputs
+* `cloud-defend`
+* `fleet-server`
+* `pf-host-agent`, `pf-elastic-symbolizer`, `pf-elastic-collector`
+
 
 [discrete]
-[[change-policy-enable-agent-monitoring,Enable agent monitoring]]
+[[change-policy-enable-agent-monitoring]]
 == Enable agent monitoring
 
 Use this setting to collect monitoring logs and metrics from {agent}. All monitoring data will be written to the specified **Default namespace**.

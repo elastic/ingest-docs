@@ -298,7 +298,8 @@ This tutorial explains how to apply a custom {ilm-init} policy to an integration
 **Goal:** Customize the {ilm-init} policy for the `system.network` data stream in the `production` namespace.
 Specifically, apply the built-in `90-days-default` {ilm-init} policy so that data is deleted after 90 days.
 
-NOTE: If you cloned an index template to customize the data retention policy on an {es} version before 8.13, you must update the cloned index template to add the `ecs@mappings` component template. Updating the index template is a required step for cloned index templates. See the "Update index template cloned before {es} 8.13" section for step-by-step instructions.
+NOTE: If you cloned an index template to customize the data retention policy on an {es} version prior to 8.13, you must update the index template in the clone to use the `ecs@mappings` component template on {es} version 8.13 or later. See <<data-streams-pipeline-update-cloned-template-before-8.13,Update index template cloned before {es} 8.13>> for the step-by-step instructions.
+
 
 [discrete]
 [[data-streams-ilm-one]]
@@ -426,9 +427,9 @@ POST /metrics-system.network-production/_rollover/
 [[data-streams-pipeline-update-cloned-template-before-8.13]]
 == Update index template cloned before {es} 8.13
 
-If you cloned an index template to customize the data retention policy on an {es} version before 8.13, you must update the cloned index template to add the `ecs@mappings` component template. 
+If you cloned an index template to customize the data retention policy on an {es} version prior to 8.13, you must update the index cloned index template to add the `ecs@mappings` component template on {es} version 8.13 or later.
 
-Here is how you can add the `ecs@mappings` component template to the cloned index template:
+To update the cloned index template:
 
 . Navigate to **{stack-manage-app}** > **Index Management** > **Index Templates**.
 . Find the index template you cloned. The index template will have the `<type>` and `<dataset>` in its name.

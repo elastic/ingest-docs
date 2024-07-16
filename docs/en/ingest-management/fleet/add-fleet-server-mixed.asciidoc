@@ -77,7 +77,7 @@ You may need to allow access to these ports. See the following table for default
 | Elastic Agent → {fleet-server} | 8220
 | Elastic Agent → {es} | 443
 | Elastic Agent → Logstash | 5044
-| Elastic Agent → {fleet} | 443
+//| Elastic Agent → {fleet} | 443
 | {fleet-server} → {fleet} | 443
 | {fleet-server} → {es} | 443
 |===

@@ -428,6 +428,8 @@ POST /metrics-system.network-production/_rollover/
 
 If you cloned an index template to customize the data retention policy on an {es} version prior to 8.13, you must update the index cloned index template adding the `ecs@mappings` component template on {es} version 8.13 or later.
 
+Here how you can update the cloned index template:
+
 . Navigate to **{stack-manage-app}** > **Index Management** > **Index Templates**.
 . Find the index template you cloned. The index template will have the `<type>` and `<dataset>` in its name.
 . Select **Manage** > **Edit**.
@@ -435,6 +437,9 @@ If you cloned an index template to customize the data retention policy on an {es
 . In the **Search component templates** field, search for `ecs@mappings`.
 . Click on the **+ (plus)** icon to add the `ecs@mappings` component template.
 . Move the `ecs@mappings` component template right below the `@package` component template.
+. Save the index template.
+
+Roll over the data stream to apply the changes.
 
 [[data-streams-pipeline-tutorial]]
 == Tutorial: Transform data with custom ingest pipelines

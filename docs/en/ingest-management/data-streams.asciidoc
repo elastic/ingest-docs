@@ -298,6 +298,8 @@ This tutorial explains how to apply a custom {ilm-init} policy to an integration
 **Goal:** Customize the {ilm-init} policy for the `system.network` data stream in the `production` namespace.
 Specifically, apply the built-in `90-days-default` {ilm-init} policy so that data is deleted after 90 days.
 
+NOTE: If you cloned an index template to customize the data retention policy on an {es} version prior to 8.13, you must update the index template in the clone to use the `ecs@mappings` component template on {es} version 8.13 or later. See "Update index template cloned before {es} 8.13" section for the step-by-step instructions.
+
 [discrete]
 [[data-streams-ilm-one]]
 == Step 1: View data streams
@@ -419,6 +421,20 @@ or force a rollover using the {ref}/indices-rollover-index.html[{es} rollover AP
 ----
 POST /metrics-system.network-production/_rollover/
 ----
+
+[discrete]
+[[data-streams-pipeline-update-cloned-template-before-8.13]]
+== Update index template cloned before {es} 8.13
+
+If you cloned an index template to customize the data retention policy on an {es} version prior to 8.13, you must update the index cloned index template adding the `ecs@mappings` component template on {es} version 8.13 or later.
+
+. Navigate to **{stack-manage-app}** > **Index Management** > **Index Templates**.
+. Find the index template you cloned. The index template will have the `<type>` and `<dataset>` in its name.
+. Select **Manage** > **Edit**.
+. Select **(2) Component templates**
+. In the **Search component templates** field, search for `ecs@mappings`.
+. Click on the **+ (plus)** icon to add the `ecs@mappings` component template.
+. Move the `ecs@mappings` component template right below the `@package` component template.
 
 [[data-streams-pipeline-tutorial]]
 == Tutorial: Transform data with custom ingest pipelines

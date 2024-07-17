@@ -99,12 +99,13 @@ If you need to run {fleet-server} as well, adjust the `docker run` command above
 
 [source,yaml]
 ----
-      - FLEET_SERVER_ENABLE=true
-      - FLEET_SERVER_ELASTICSEARCH_HOST=<elasticsearch-host>
-      - FLEET_SERVER_SERVICE_TOKEN=<service-token>
+  --env FLEET_SERVER_ENABLE=true \ <1>
+  --env FLEET_SERVER_ELASTICSEARCH_HOST=<elasticsearch-host> \ <2>
+  --env FLEET_SERVER_SERVICE_TOKEN=<service-token> <3>
 ----
-
-Refer to <<agent-environment-variables>> for all available options.
+<1> Set to `1` to bootstrap {fleet-server} on this {agent}. This automatically forces {fleet} enrollment as well.
+<2> The Elasticsearch host for Fleet Server to communicate with, for example `http://elasticsearch:9200`.
+<3> Service token to use for communication with {es} and {kib}.
 
 [TIP] 
 .Running {agent} on a read-only file system

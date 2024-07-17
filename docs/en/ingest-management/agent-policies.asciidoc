@@ -288,7 +288,7 @@ Select the name of the policy you want to edit.
 [role="screenshot"]
 image::images/agent-policy-custom-field.png[Sceen capture showing the UI to add a custom field and value]
 
-. Click **Add another field** for additional fields, or click **Save changes** when you're done.
+. Click **Add another field** for additional fields. Click **Save changes** when you're done.
 
 To edit a custom field:
 

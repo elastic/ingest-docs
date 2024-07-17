@@ -95,6 +95,17 @@ docker run --rm docker.elastic.co/beats/elastic-agent:{version} elastic-agent co
 
 include::{ingest-docs-root}/docs/en/ingest-management/tab-widgets/run-agent-image/widget.asciidoc[]
 
+If you need to run {fleet-server} as well, adjust the `docker run` command above by adding these environment variables:
+
+[source,yaml]
+----
+      - FLEET_SERVER_ENABLE=true
+      - FLEET_SERVER_ELASTICSEARCH_HOST=<elasticsearch-host>
+      - FLEET_SERVER_SERVICE_TOKEN=<service-token>
+----
+
+Refer to <<agent-environment-variables>> for all available options.
+
 [TIP] 
 .Running {agent} on a read-only file system
 ==== 

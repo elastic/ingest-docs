@@ -18,6 +18,9 @@ If you're running {es} and {kib} hosted on {cloud}/ec-getting-started.html[{ess}
 {ess} with {fleet-server} on-premise::
 When you use a hosted {ess} deployment you may still choose to run {fleet-server} on-premise. For details about this deployment model and set up instructions, refer to <<add-fleet-server-mixed,Deploy {fleet-server} on-premises and {es} on Cloud>>.
 
+{eck}::
+You can deploy {fleet}-managed {agent} in a Kubernetes environment that provides configuration and management capabilities for the full {stack}. For details, refer to {eck-ref}/k8s-elastic-agent-fleet.html[Run {fleet}-managed {agent} on ECK].
+
 Self-managed::
 For self-managed deployments, you must install and host {fleet-server} yourself. For details about this deployment model and set up instructions, refer to <<add-fleet-server-on-prem,Deploy on-premises and self-managed>>.
 

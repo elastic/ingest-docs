@@ -299,7 +299,7 @@ Select the name of the policy you want to edit.
 
 . Click the edit icon to update a field or click the delete icon to remove it.
 
-Note that for a small set of inputs, adding custom tags is not supported:
+Note that adding custom tags is not supported for a small set of inputs:
 
 * `apm`
 * `cloudbeat` and all `cloudbeat/*` inputs

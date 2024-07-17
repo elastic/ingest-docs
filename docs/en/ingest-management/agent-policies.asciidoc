@@ -271,7 +271,8 @@ Any agents assigned to a policy must be unenrolled or assigned to a different po
 [[add-custom-fields]]
 == Add custom fields
 
-Use this setting to add a custom field and value set to all data collected from the {agents} enrolled in an {agent} policy. This is useful when you want to identify or visualize all of the data from a group of agents, and possibly manipulate it downstream.
+Use this setting to add a custom field and value set to all data collected from the {agents} enrolled in an {agent} policy. 
+Custom fields are useful when you want to identify or visualize all of the data from a group of agents, and possibly manipulate the data downstream.
 
 To add a custom field:
 

@@ -212,9 +212,9 @@ token for each {fleet-server}. For other ways to generate service tokens, refer 
 `--fleet-server-port` options in the `elastic-agent install` command. Refer to the 
 {fleet-guide}/elastic-agent-cmd-options.html#elastic-agent-install-command[install command documentation]
 for details.
-* Please note that {fleet-server} will keep using the {es} host provided via `--fleet-server-host` at install
-time. The {es} hosts configured in the associated policy will be ignored by the {fleet-server} integration. We
-strongly recommend using a load balancer to avoid coupling the {fleet-server} to the provided host.
+* Please note that {fleet-server} will keep using the {es} host provided via `--fleet-server-host` at install time. 
+The {es} hosts configured in the associated policy will be ignored by the {fleet-server} integration. 
+We strongly recommend using a load balancer to avoid coupling the {fleet-server} to the provided host.
 ====
 +
 At the *Install Fleet Server to a centralized host* step, 

@@ -529,6 +529,10 @@ include::../elastic-agent/configuration/outputs/output-shared-settings.asciidoc[
 
 // =============================================================================
 
+include::../elastic-agent/configuration/outputs/output-shared-settings.asciidoc[tag=queue.mem.datatype-setting]
+
+// =============================================================================
+
 |===
 
 :type!:

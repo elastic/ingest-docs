@@ -79,6 +79,18 @@ escaping.
 
 // =============================================================================
 
+// tag::queue.mem.datatype-setting[]
+|
+[id="{type}-queue.mem.datatype-setting"]
+`queue.mem.datatype`
+
+| (string) I am a pretend setting to illustrate workflow for a typical docs update.
+
+*Default:* `true!`
+// end::queue.mem.datatype-setting[]
+
+// =============================================================================
+
 // tag::worker-setting[]
 |
 [id="{type}-worker-setting"]

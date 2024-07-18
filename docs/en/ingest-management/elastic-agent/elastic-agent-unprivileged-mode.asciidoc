@@ -31,8 +31,8 @@ elastic-agent install \
   --unprivileged
 ----
 
-IMPORTANT: On Linux systems, when you install {agent} using the `--unprivileged` flag, {agent} commands should not be run with `sudo`.
-Doing so may result in <<agent-sudo-error,an error>> due to the agent not having the required privileges.
+IMPORTANT: On Linux systems, when you install {agent} using the `--unprivileged` flag, because the agent is in unprivileged mode, all {agent} commands that you run should not be prefixed with `sudo`.
+Including `sudo` in a command may result in <<agent-sudo-error,an error>> due to the agent not having the required privileges.
 
 [discrete]
 [[unprivileged-command-behaviors]]

@@ -31,7 +31,7 @@ elastic-agent install \
   --unprivileged
 ----
 
-IMPORTANT: On Linux systems, when you install {agent} using the `--unprivileged` flag, because the agent is in unprivileged mode, all {agent} commands that you run should not be prefixed with `sudo`.
+IMPORTANT: On Linux systems, once {agent} has been installed with the `--unprivileged` flag, all {agent} commands that you run should not be prefixed with `sudo`.
 Including `sudo` in a command may result in <<agent-sudo-error,an error>> due to the agent not having the required privileges.
 
 [discrete]
@@ -149,7 +149,18 @@ Examples of integrations that require {agent} to have administrative privileges 
 [[unprivileged-view-mode]]
 == Viewing an {agent} privilege mode
 
-For any {agent} policy you can view the number of agents that are currently running in privileged or unprivileged mode:
+The **Agent details** page shows you the privilege mode for any running {agent}.
+
+To view the status of an {agent}:
+
+. In {fleet}, open the **Agents** tab.
+. Select an agent and click **View agent** in the actions menu.
+. The **Agent details** tab shows whether the agent is running in `privileged` or `unprivileged` mode.
++
+[role="screenshot"]
+image::images/agent-privilege-mode.png[Agent details tab showing the agent is running as non-root]
+
+As well, for any {agent} policy you can view the number of agents that are currently running in privileged or unprivileged mode:
 
 . In {fleet}, open the **Agent policies** tab.
 

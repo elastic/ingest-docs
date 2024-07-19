@@ -822,7 +822,7 @@ Run {agent} without full superuser privileges.
 This option is useful in organizations that limit `root` access on Linux or macOS systems, or `admin` access on Windows systems.
 For details and limitations for running {agent} in this mode, refer to {fleet-guide}/elastic-agent-unprivileged.html[Run {agent} without administrative privileges].
 
-Note that changing a running {agent} to `unprivileged` mode is prevented if the agent is currently enrolled with a policy that contains the {elastic-defend} integration.
+Note that changing to `unprivileged` mode is prevented if the agent is currently enrolled in a policy that includes an integration that requires administrative access, such as the {elastic-defend} integration.
 
 `--url <string>`::
 {fleet-server} URL to use to enroll the {agent} into {fleet}.

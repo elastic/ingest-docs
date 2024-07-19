@@ -190,7 +190,7 @@ Change mode from privileged to unprivileged:
 sudo elastic-agent unprivileged
 ----
 
-Note that this change requires {agent} to be re-enrolled, which triggers a loss of state and any associated issues, including the possibility of duplicated ingested data.
+Note that this change requires {agent} to be re-enrolled, which triggers a loss of state and any associated issues, including the possibility of duplicated ingested data. Also, changing to `unprivileged` mode is prevented if the agent is currently enrolled in a policy that includes an integration that requires administrative access, such as the {elastic-defend} integration.
 
 Change mode from unprivileged to privileged:
 

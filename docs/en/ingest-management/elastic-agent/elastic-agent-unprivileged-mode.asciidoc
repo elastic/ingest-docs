@@ -31,8 +31,8 @@ elastic-agent install \
   --unprivileged
 ----
 
-IMPORTANT: On Linux systems, when you install {agent} using the `--unprivileged` flag, {agent} commands should not be run with `sudo`.
-Doing so may result in <<agent-sudo-error,an error>> due to the agent not having the required privileges.
+IMPORTANT: On Linux systems, when you install {agent} using the `--unprivileged` flag, because the agent is in unprivileged mode, all {agent} commands that you run should not be prefixed with `sudo`.
+Including `sudo` in a command may result in <<agent-sudo-error,an error>> due to the agent not having the required privileges.
 
 [discrete]
 [[unprivileged-command-behaviors]]
@@ -169,7 +169,23 @@ image::images/root-integration-and-unprivileged-agents.png[Agent policy tab show
 [[unprivileged-change-mode]]
 == Changing an {agent}'s privilege mode
 
-If an agent doesn't have the right level of privilege to read a data source, you can adjust the agent's privileges by adding `elastic-agent-user` to the user group that has privileges to read the data source.
+For any installed {agent} you can change the mode that it's running in by running the `privileged` or `unprivileged` subcommand.
+
+Change mode from privileged to unprivileged:
+
+[source,shell]
+----
+sudo elastic-agent unprivileged
+----
+
+Change mode from unprivileged to privileged:
+
+[source,shell]
+----
+sudo elastic-agent privileged
+----
+
+When an agent is running in `unprivileged` mode, if it doesn't have the right level of privilege to read a data source, you can also adjust the agent's privileges by adding `elastic-agent-user` to the user group that has privileges to read the data source.
 
 As background, when you run {agent} in `unprivileged` mode, one user and one group are created on the host. The same names are used for all operating systems:
 
@@ -181,4 +197,3 @@ For example:
 . When you install {agent} with the `--unprivileged` setting, the `elastic-agent-user` user and the `elastic-agent` group are created automatically.
 . If you then want your user `myuser` to be able to run an {agent} command such as `elastic-agent status`, add the `myuser` user to the `elastic-agent` group.
 . Then, once added to the group, the `elastic-agent status` command will work. Prior to that, the user `myuser` running the command will result in a permission error that indicates a problem communicating with the control socket.
-

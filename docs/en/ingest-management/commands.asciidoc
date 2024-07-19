@@ -564,6 +564,7 @@ elastic-agent install --url <string>
                       [--help]
                       [--insecure ]
                       [--non-interactive]
+                      [--privileged]
                       [--proxy-disabled]
                       [--proxy-header <strings>]
                       [--proxy-url <string>]
@@ -607,6 +608,7 @@ elastic-agent install --fleet-server-es <string>
                       [--header <strings>]
                       [--help]
                       [--non-interactive]
+                      [--privileged]
                       [--proxy-disabled]
                       [--proxy-header <strings>]
                       [--proxy-url <string>]
@@ -760,6 +762,12 @@ We strongly recommend that you use a secure connection.
 Install {agent} in a non-interactive mode. This flag is helpful when
 using automation software or scripted deployments. If {agent} is
 already installed on the host, the installation will terminate.
+
+`--privileged`::
+Run {agent} with full superuser privileges.
+This is the usual, default running mode for {agent}.
+The `--privileged` option allows you to switch back to running an agent with full administrative privileges when you have been running it in `unprivileged`. 
+See the `--unprivileged` option and {fleet-guide}/elastic-agent-unprivileged.html[Run {agent} without administrative privileges] for more detail.
 
 `--proxy-disabled`::
 Disable proxy support including environment variables.

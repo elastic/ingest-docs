@@ -187,8 +187,6 @@ Change mode from unprivileged to privileged:
 sudo elastic-agent privileged
 ----
 
-equires to re-enroll and will trigger a state loss (duplicate ingestion & associated issues).
-
 When an agent is running in `unprivileged` mode, if it doesn't have the right level of privilege to read a data source, you can also adjust the agent's privileges by adding `elastic-agent-user` to the user group that has privileges to read the data source.
 
 As background, when you run {agent} in `unprivileged` mode, one user and one group are created on the host. The same names are used for all operating systems:

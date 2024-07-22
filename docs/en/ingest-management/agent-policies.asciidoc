@@ -92,6 +92,10 @@ The following table illustrates the {fleet} user actions available to different 
 |{y}
 |{n}
 
+|<<add-custom-fields,Add custom fields>>
+|{y}
+|{n}
+
 |<<change-policy-enable-agent-monitoring,Enable agent monitoring>>
 |{y}
 |{n}
@@ -263,9 +267,49 @@ Alternatively, click **Delete policy** to delete the policy.
 Existing data is not deleted.
 Any agents assigned to a policy must be unenrolled or assigned to a different policy before a policy can be deleted.
 
+[discrete]
+[[add-custom-fields]]
+== Add custom fields
+
+Use this setting to add a custom field and value set to all data collected from the {agents} enrolled in an {agent} policy. 
+Custom fields are useful when you want to identify or visualize all of the data from a group of agents, and possibly manipulate the data downstream.
+
+To add a custom field:
+
+. In {fleet}, click **Agent policies**.
+Select the name of the policy you want to edit.
+
+. Click the **Settings** tab and scroll to **Custom fields**.
+
+. Click **Add field**.
+
+. Specify a field name and value.
++
+[role="screenshot"]
+image::images/agent-policy-custom-field.png[Sceen capture showing the UI to add a custom field and value]
+
+. Click **Add another field** for additional fields. Click **Save changes** when you're done.
+
+To edit a custom field:
+
+. In {fleet}, click **Agent policies**.
+Select the name of the policy you want to edit.
+
+. Click the **Settings** tab and scroll to **Custom fields**. Any custom fields that have been configured are shown.
+
+. Click the edit icon to update a field or click the delete icon to remove it.
+
+Note that adding custom tags is not supported for a small set of inputs:
+
+* `apm`
+* `cloudbeat` and all `cloudbeat/*` inputs
+* `cloud-defend`
+* `fleet-server`
+* `pf-elastic-collector`, `pf-elastic-symbolizer`, and `pf-host-agent`
+
 
 [discrete]
-[[change-policy-enable-agent-monitoring,Enable agent monitoring]]
+[[change-policy-enable-agent-monitoring]]
 == Enable agent monitoring
 
 Use this setting to collect monitoring logs and metrics from {agent}. All monitoring data will be written to the specified **Default namespace**.

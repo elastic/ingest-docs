@@ -529,9 +529,7 @@ elastic-agent inspect components log-default
 
 Run {agent} with full superuser privileges.
 This is the usual, default running mode for {agent}.
-The `privileged` command allows you to switch back to running an agent with full administrative privileges when you have been running it in `unprivileged` mode.
-
-Changing from `unprivileged` to `privileged` mode is supported only on Linux systems. 
+The `privileged` command allows you to switch back to running an agent with full administrative privileges when you have been running it in `unprivileged` mode. 
 
 Refer to {fleet-guide}/elastic-agent-unprivileged.html[Run {agent} without administrative privileges] for more detail.
 
@@ -792,9 +790,7 @@ already installed on the host, the installation will terminate.
 `--privileged`::
 Run {agent} with full superuser privileges.
 This is the usual, default running mode for {agent}.
-The `--privileged` option allows you to switch back to running an agent with full administrative privileges when you have been running it in `unprivileged`.
-
-Changing from `unprivileged` to `privileged` mode is supported only on Linux systems. 
+The `--privileged` option allows you to switch back to running an agent with full administrative privileges when you have been running it in `unprivileged`. 
 
 See the `--unprivileged` option and {fleet-guide}/elastic-agent-unprivileged.html[Run {agent} without administrative privileges] for more detail.
 

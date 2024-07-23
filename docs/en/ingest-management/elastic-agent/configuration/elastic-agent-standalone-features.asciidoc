@@ -26,8 +26,6 @@ You can specify the following settings in the Feature Flag section of the
 Fully qualified domain name (FQDN)::
 When enabled, information provided about the current host through the <<host-provider,host.name>> key, in events produced by {agent}, is in FQDN format (`somehost.example.com` rather than `somehost`). This helps you to distinguish between hosts on different domains that have similar names. With `fqdn` enabled, the fully qualified hostname allows each host to be more easily identified when viewed in {kib}.
 +
-preview::[]
-+
 NOTE: FQDN reporting is not currently supported in APM.
 +
 For FQDN reporting to work as expected, the hostname of the current host must either:

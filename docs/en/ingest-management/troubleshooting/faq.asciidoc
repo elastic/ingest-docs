@@ -7,6 +7,21 @@ is very valuable to us.
 
 Also read <<fleet-troubleshooting>>.
 
+* <<enrolled-agent-not-showing-up>>
+* <<where-are-the-agent-logs>>
+* <<what-is-my-agent-config>>
+* <<where-is-the-data-agent-is-sending>>
+* <<i-deleted-my-agent>>
+* <<i-rebooted-my-host>>
+* <<does-agent-download-packages>>
+* <<does-agent-download-anything-from-internet>>
+* <<do-i-need-to-setup-elastic-agent>>
+* <<what-is-the-endpoint-package>>
+* <<how-are-security-to-agent-communications-secured>>
+* <<how-are-secrets-secured>>
+* <<which-es-kibana-ports-are-needed>>
+* <<how-do-i-reinstall-a-missing-dashboard-asset>>
+
 [discrete]
 [[enrolled-agent-not-showing-up]]
 == Why doesn't my enrolled agent show up in the {fleet} app?

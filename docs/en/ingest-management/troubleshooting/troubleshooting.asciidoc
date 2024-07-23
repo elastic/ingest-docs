@@ -59,8 +59,7 @@ Find troubleshooting information for {fleet}, {fleet-server}, and {agent} in the
 * <<pgp-key-download-fail>>
 * <<fleet-server-integration-removed>>
 * <<agent-oom-k8s>>
-
-
+* <<agent-sudo-error>>
 
 
 [discrete]
@@ -807,3 +806,20 @@ To detect the problem, run the `kubectl describe pod` command and check the resu
 ----
 
 To resolve the problem, allocate additional memory to the agent and then restart it.
+
+[discrete]
+[[agent-sudo-error]]
+== Error when running {agent} commands with `sudo`
+
+On Linux systems, when you install {agent} <<elastic-agent-unprivileged,without administrative privileges>>, that is, using the `--unprivileged` flag,
+{agent} commands should not be run with `sudo`. Doing so may result in an error due to the agent not having the required privileges.
+
+For example, when you run {agent} with the `--unprivileged` flag, running the `elastic-agent inspect` command will result in an error like the following:
+
+[source,sh]
+----
+Error: error loading agent config: error loading raw config: fail to read configuration /Library/Elastic/Agent/fleet.enc for the elastic-agent: fail to decode bytes: cipher: message authentication failed
+----
+
+To resolve this, either install {agent} without the `--unprivileged` flag so that it has administrative access, or run the {agent} commands without the `sudo` prefix.
+

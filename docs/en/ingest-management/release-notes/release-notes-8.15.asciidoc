@@ -60,11 +60,14 @@ The 8.15.0 release Added the following new and notable features.
 *  {agent} diagnostic bundles now provide additional TLS information for {fleet-server}. {fleet-server-pull}3587[#3587] 
 
 {agent}::
-* Support setting {agent} log level from a {fleet} policy. {agent-pull}3090[#3090] {agent-issue}2851[#2851]
+//* Support setting {agent} log level from a {fleet} policy. {agent-pull}3090[#3090] {agent-issue}2851[#2851]
+// On hold per conversation with Shaunak
 * Add commands to switch between {agent} `unprivileged` and `privileged` modes. {agent-pull}4621[#4621] {agent-issue}2790[#2790]
 * Implement reading and applying TLS configuration for a {fleet} client using the CA, certificate, and key included in a {fleet} policy. {agent-pull}4770[#4770] {agent-issue}2247[#2247] {agent-issue}2248[#2248]
 * Add {filebeat} benchmark input to {agent}. {agent-issue}4849[#4849]
 * Add a `conn` param and a `conn-skip` flag to the {agent} diagnostics command. {agent-pull}4946[#4946] {agent-issue}4880[#4880]
+* Add the ability for a variable to not be expanded and replaced in {agent} inputs. {agent-pull}5035[#5035] {agent-issue}2177[#2177]
+* Inject the `proxy_url` value into {endpoint}'s {es} output configuration, and {endpoint} or {apm}'s {fleet} configuration if the attribute is missing and either the `HTTPS_PROXY` or `HTTP_PROXY` environment variable is set. {agent-pull}5044[#5044] {agent-issue}2602[#2602]
 
 [discrete]
 [[bug-fixes-8.15.0]]
@@ -77,6 +80,8 @@ The 8.15.0 release Added the following new and notable features.
 * When {agent} starts, wait for Watcher to start before releasing resources associated with it. {agent-pull}4834[#4834] {agent-issue}2190[#2190]
 * For the Kubernetes provider, fix the namespace filter on watchers started by a pod and service eventer. {agent-pull}4975[#4975]
 * Adjust the {agent} `container` subcommand to write the `container-paths.yml` configuration into the `STATE_PATH` on startup. {agent-pull}4995[#4995]
+* Apply setting capabilities to the correct binary. {agent-pull}5070[#5070]
+* Reduce {agent} image size by setting capabilities in the builder Docker image instead of the final image.  {agent-pull}5070[#5073]
 
 // end 8.15.0 relnotes
 

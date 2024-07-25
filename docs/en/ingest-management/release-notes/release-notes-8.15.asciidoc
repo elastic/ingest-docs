@@ -45,6 +45,13 @@ The 8.15.0 release Added the following new and notable features.
 * When {fleet-server} runs in `elastic-agent` mode, it's now able to use the enrollment configuration options in `output.elasticsearch.bootstrap` from its policy, instead of overwriting the matching keys in `output.elasticsearch`. {fleet-server-pull}3506[#3506] {fleet-server-issue}3464[#3464]
 * As part of making {fleet} space aware, {fleet-server} now adds a `namespaces` property to created `.fleet-*` documents. {fleet-server-pull}3535[#3535] {fleet-server-issue}3505[#3505]
 
+{agent}::
+* Enable {agent} to monitor and report usage metrics for {elastic-endpoint}. {agent-pull}4789[#4789] {agent-issue}4083[#4083]
+* Add the AWS Asset Inventory input to Cloudbeat. {agent-pull}4804[#4804]
+* Unhide the `--unprivileged` option for the `elastic-agent install` command and mark the usage of the flag as being in a `beta` technical preview state.
+* To ensure that {agent} starts correctly when run in a container, ensure that the `statePath` set by the container command generates a Unix socket path that is smaller than 108 characters. {agent-pull}4909[#4909]
+* Enable {agent} to receive an event logger configuration through {fleet}. {agent-pull}4932[#4932] {agent-issue}4874[#4874]
+
 [discrete]
 [[enhancements-8.15.0]]
 === Enhancements
@@ -52,15 +59,24 @@ The 8.15.0 release Added the following new and notable features.
 {fleet-server}::
 *  {agent} diagnostic bundles now provide additional TLS information for {fleet-server}. {fleet-server-pull}3587[#3587] 
 
+{agent}::
+* Support setting {agent} log level from a {fleet} policy. {agent-pull}3090[#3090] {agent-issue}2851[#2851]
+* Add commands to switch between {agent} `unprivileged` and `privileged` modes. {agent-pull}4621[#4621] {agent-issue}2790[#2790]
+* Implement reading and applying TLS configuration for a {fleet} client using the CA, certificate, and key included in a {fleet} policy. {agent-pull}4770[#4770] {agent-issue}2247[#2247] {agent-issue}2248[#2248]
+* Add {filebeat} benchmark input to {agent}. {agent-issue}4849[#4849]
+* Add a `conn` param and a `conn-skip` flag to the {agent} diagnostics command. {agent-pull}4946[#4946] {agent-issue}4880[#4880]
+
 [discrete]
 [[bug-fixes-8.15.0]]
 === Bug fixes
 
 {fleet-server}::
-*  Support receiving the download rate sent by {agent} in string format.  {fleet-server-pull}3677[#3677] {fleet-server-issue}3446[#3446] 
+* Support receiving the download rate sent by {agent} in string format. {fleet-server-pull}3677[#3677] {fleet-server-issue}3446[#3446] 
 
 {agent}::
-
+* When {agent} starts, wait for Watcher to start before releasing resources associated with it. {agent-pull}4834[#4834] {agent-issue}2190[#2190]
+* For the Kubernetes provider, fix the namespace filter on watchers started by a pod and service eventer. {agent-pull}4975[#4975]
+* Adjust the {agent} `container` subcommand to write the `container-paths.yml` configuration into the `STATE_PATH` on startup. {agent-pull}4995[#4995]
 
 // end 8.15.0 relnotes
 

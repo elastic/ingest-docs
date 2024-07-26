@@ -14,6 +14,8 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-7.17.23>>
+
 * <<release-notes-7.17.22>>
 
 * <<release-notes-7.17.21>>
@@ -64,6 +66,22 @@ Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 7.17.23 relnotes
+
+[[release-notes-7.17.23]]
+== {fleet} and {agent} 7.17.23
+
+Review important information about the {fleet} and {agent} 7.17.23 release.
+
+[discrete]
+[[security-updates-7.17.23]]
+=== Security updates
+
+{fleet-server}::
+* Update {fleet-server} Go version to 1.21.11. {fleet-server-pull}3607[#3607]
+
+// end 7.17.23 relnotes
 
 // begin 7.17.22 relnotes
 

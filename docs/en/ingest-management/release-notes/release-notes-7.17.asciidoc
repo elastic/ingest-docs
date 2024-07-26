@@ -5,8 +5,8 @@
 :beats-pull: https://github.com/elastic/beats/pull/
 :agent-issue: https://github.com/elastic/elastic-agent/issues/
 :agent-pull: https://github.com/elastic/elastic-agent/pull/
-:fleet-server-issue: https://github.com/elastic/beats/issues/fleet-server/
-:fleet-server-pull: https://github.com/elastic/beats/pull/fleet-server/
+:fleet-server-issue: https://github.com/elastic/fleet-server/issues/
+:fleet-server-pull: https://github.com/elastic/fleet-server/pull/
 
 
 [[release-notes]]
@@ -104,7 +104,7 @@ Review important information about the {fleet} and {agent} 7.17.22 release.
 [[release-notes-7.17.21]]
 == {fleet} and {agent} 7.17.21
 
-The <<known-issue-3435,known issue>> introduced in version 7.17.20, that was causing {fleet-server} to fail to bootstrap with self-signed certificates, is resolved in this release. {fleet-server-pull}13473[#3473]  
+The <<known-issue-3435,known issue>> introduced in version 7.17.20, that was causing {fleet-server} to fail to bootstrap with self-signed certificates, is resolved in this release. {fleet-server-pull}3473[#3473]  
 
 // end 7.17.21 relnotes
 

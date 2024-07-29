@@ -123,6 +123,10 @@ When you create an {agent} policy using this output, the output will use the bal
 |===
 | Setting | Description
 
+include::../elastic-agent/configuration/outputs/output-elasticsearch.asciidoc[tag=allow_older_versions-setting]
+
+// =============================================================================
+
 include::../elastic-agent/configuration/outputs/output-elasticsearch.asciidoc[tag=backoff.init-setting]
 
 // =============================================================================

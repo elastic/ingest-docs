@@ -95,9 +95,12 @@ the {stack}. The {package-registry} API exposes a {kib} version constraint that
 allows for filtering packages that are compatible with a particular version.
 
 // lint ignore runtimes
-NOTE: These steps use the standard Docker CLI, but you can create a Kubernetes manifest
-based on this information.
+[NOTE]
+====
+* These steps use the standard Docker CLI, but you can create a Kubernetes manifest based on this information.
 These images can also be used with other container runtimes compatible with Docker images.
+* Currently, distribution Docker images are available only for AMD64 platforms. ARM64 images are not yet supported.
+====
 
 1. Pull the Docker image from the public Docker registry:
 +

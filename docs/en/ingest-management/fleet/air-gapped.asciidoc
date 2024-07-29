@@ -62,6 +62,18 @@ Note that:
  * `server.pgp.upstream_url` may be specified as an `http` endpoint (instead of `https`).
  * For an `https` endpoint, the CA must be trusted by {fleet-server}.
 
+As an alternative, you can use a {fleet-server} endpoint to retrieve a PGP key:
+
+[source,shell]
+----
+GET /api/agents/upgrades/{major}.{minor}.{patch}/pgp-public-key
+----
+
+Accessing the endpoint requires a valid API key and the endpoint is rate limited.
+
+The endpoint will serve a PGP key from it's cache if one exists, otherwise it will serve the contents of a PGP key found on disk at `FLEETSERVER_BINARY_DIR/elastic-agent-upgrade-keys/default.pgp`. Note that the directory can be changed through configuration.
+The key value is added to cache if it exists.
+
 [discrete]
 [[air-gapped-proxy-server]]
 == Use a proxy server to access the {package-registry}

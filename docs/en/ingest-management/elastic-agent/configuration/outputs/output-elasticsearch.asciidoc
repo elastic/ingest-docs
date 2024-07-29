@@ -51,6 +51,8 @@ category. Many of these settings have sensible defaults that allow you to run
 
 * <<output-elasticsearch-authentication-settings>>
 
+* <<output-elasticsearch-compatibility-setting>>
+
 * <<output-elasticsearch-data-parsing-settings>>
 
 * <<output-elasticsearch-http-settings>>
@@ -294,6 +296,32 @@ options. Based on this configuration, the name would be:
 `HTTP/my-elasticsearch.elastic.co@ELASTIC.CO`
 
 include::../authentication/kerberos-shared-settings.asciidoc[tag=kerberos-all-settings]
+
+[[output-elasticsearch-compatibility-setting]]
+=== Compatibility setting
+
+[cols="2*<a"]
+|===
+| Setting | Description
+
+// tag::allow_older_versions-setting[]
+|
+[id="{type}-allow_older_versions-setting"]
+`allow_older_versions`
+
+| Allow {agent} to connect and send output to an {es} instance that is running an earlier version than the agent version.
+ 
+Note that this setting does not affect {agent}'s ability to connect to {fleet-server}.
+{fleet-server} will not accept a connection from an agent at a later major or minor version.
+It will accept a connection from an agent at a later patch version.
+For example, an {agent} at version 8.14.3 can connect to a {fleet-server} on version 8.14.0, but an agent at version 8.15.0 or later is not able to connect.
+
+*Default:* `true`
+// end::allow_older_versions-setting[]
+
+// =============================================================================
+
+|===
 
 [[output-elasticsearch-data-parsing-settings]]
 === Data parsing, filtering, and manipulation settings

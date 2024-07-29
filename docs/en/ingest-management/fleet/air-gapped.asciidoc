@@ -72,7 +72,7 @@ GET /api/agents/upgrades/{major}.{minor}.{patch}/pgp-public-key
 Accessing the endpoint requires a valid API key and the endpoint is rate limited.
 
 The endpoint will serve a PGP key from it's cache if one exists, otherwise it will serve the contents of a PGP key found on disk at `FLEETSERVER_BINARY_DIR/elastic-agent-upgrade-keys/default.pgp`. Note that the directory can be changed through configuration.
-The key value is added to cache if it exists.
+The key value is added to the cache if it exists.
 
 [discrete]
 [[air-gapped-proxy-server]]

@@ -5,14 +5,16 @@
 :beats-pull: https://github.com/elastic/beats/pull/
 :agent-issue: https://github.com/elastic/elastic-agent/issues/
 :agent-pull: https://github.com/elastic/elastic-agent/pull/
-:fleet-server-issue: https://github.com/elastic/beats/issues/fleet-server/
-:fleet-server-pull: https://github.com/elastic/beats/pull/fleet-server/
+:fleet-server-issue: https://github.com/elastic/fleet-server/issues/
+:fleet-server-pull: https://github.com/elastic/fleet-server/pull/
 
 
 [[release-notes]]
 = Release notes
 
 This section summarizes the changes in each release.
+
+* <<release-notes-7.17.23>>
 
 * <<release-notes-7.17.22>>
 
@@ -65,6 +67,22 @@ Also see:
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
 
+// begin 7.17.23 relnotes
+
+[[release-notes-7.17.23]]
+== {fleet} and {agent} 7.17.23
+
+Review important information about the {fleet} and {agent} 7.17.23 release.
+
+[discrete]
+[[security-updates-7.17.23]]
+=== Security updates
+
+{fleet-server}::
+* Update {fleet-server} Go version to 1.21.11. {fleet-server-pull}3607[#3607]
+
+// end 7.17.23 relnotes
+
 // begin 7.17.22 relnotes
 
 [[release-notes-7.17.22]]
@@ -86,7 +104,7 @@ Review important information about the {fleet} and {agent} 7.17.22 release.
 [[release-notes-7.17.21]]
 == {fleet} and {agent} 7.17.21
 
-The <<known-issue-3435,known issue>> introduced in version 7.17.20, that was causing {fleet-server} to fail to bootstrap with self-signed certificates, is resolved in this release. {fleet-server-pull}13473[#3473]  
+The <<known-issue-3435,known issue>> introduced in version 7.17.20, that was causing {fleet-server} to fail to bootstrap with self-signed certificates, is resolved in this release. {fleet-server-pull}3473[#3473]  
 
 // end 7.17.21 relnotes
 

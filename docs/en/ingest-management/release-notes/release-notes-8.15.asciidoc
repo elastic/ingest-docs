@@ -81,10 +81,10 @@ The 8.15.0 release Added the following new and notable features.
 * For the Kubernetes provider, fix the namespace filter on watchers started by a pod and service eventer. {agent-pull}4975[#4975]
 * Adjust the {agent} `container` subcommand to write the `container-paths.yml` configuration into the `STATE_PATH` on startup. {agent-pull}4995[#4995]
 * Apply setting capabilities to the correct binary. {agent-pull}5070[#5070]
-* Reduce {agent} image size by setting capabilities in the builder Docker image instead of the final image.  {agent-pull}5070[#5073]
+* Reduce {agent} image size by setting capabilities in the builder Docker image instead of the final image. {agent-pull}5070[#5073]
+* Fix an issue where installation can fail on Windows systems in the case that the user doesn't have a home directory. {agent-pull}5118[#5118] {agent-issue}5019[#5019]
 
 // end 8.15.0 relnotes
-
 
 // ---------------------
 //TEMPLATE

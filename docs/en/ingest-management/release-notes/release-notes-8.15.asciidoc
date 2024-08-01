@@ -61,7 +61,7 @@ The 8.15.0 release Added the following new and notable features.
 
 {agent}::
 //* Support setting {agent} log level from a {fleet} policy. {agent-pull}3090[#3090] {agent-issue}2851[#2851]
-// On hold per conversation with Shaunak
+// On hold based on conversation with Shaunak
 * Add commands to switch between {agent} `unprivileged` and `privileged` modes. {agent-pull}4621[#4621] {agent-issue}2790[#2790]
 * Implement reading and applying TLS configuration for a {fleet} client using the CA, certificate, and key included in a {fleet} policy. {agent-pull}4770[#4770] {agent-issue}2247[#2247] {agent-issue}2248[#2248]
 * Add {filebeat} benchmark input to {agent}. {agent-issue}4849[#4849]

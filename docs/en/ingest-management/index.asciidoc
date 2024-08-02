@@ -109,8 +109,6 @@ include::fleet/fleet-settings-output-kafka.asciidoc[leveloffset=+3]
 
 include::fleet/fleet-settings-remote-elasticsearch.asciidoc[leveloffset=+3]
 
-include::fleet/fleet-integration-outputs.asciidoc[leveloffset=+3]
-
 include::fleet/fleet-settings-changing-outputs.asciidoc[leveloffset=+3]
 
 include::fleet/fleet-manage-agents.asciidoc[leveloffset=+2]
@@ -200,6 +198,8 @@ include::integrations/edit-or-delete-integration-policy.asciidoc[leveloffset=+2]
 include::integrations/install-integration-assets.asciidoc[leveloffset=+2]
 
 include::integrations/view-integration-assets.asciidoc[leveloffset=+2]
+
+include::integrations/integration-level-outputs.asciidoc[leveloffset=+2]
 
 include::integrations/upgrade-integration.asciidoc[leveloffset=+2]
 

@@ -48,13 +48,34 @@ The 8.15.0 release Added the following new and notable features.
 {agent}::
 * Enable {agent} to monitor and report usage metrics for {elastic-endpoint}. {agent-pull}4789[#4789] {agent-issue}4083[#4083]
 * Add the AWS Asset Inventory input to Cloudbeat. {agent-pull}4804[#4804]
-* Unhide the `--unprivileged` option for the `elastic-agent install` command and mark the usage of the flag as being in a `beta` technical preview state.
+* Unhide the `--unprivileged` option for the `elastic-agent install` command and mark the usage of the flag as being in a `beta` technical preview state. {agent-pull}4914[#4914]
 * To ensure that {agent} starts correctly when run in a container, ensure that the `statePath` set by the container command generates a Unix socket path that is smaller than 108 characters. {agent-pull}4909[#4909]
 * Enable {agent} to receive an event logger configuration through {fleet}. {agent-pull}4932[#4932] {agent-issue}4874[#4874]
 
 [discrete]
 [[enhancements-8.15.0]]
 === Enhancements
+
+{fleet}::
+* Use API key for standalone agent onboarding. ({kibana-pull}187133[#187133])
+* Add action for upgrading all agents on a policy. ({kibana-pull}186827[#186827])
+* Change agent policies in edit package policy page. ({kibana-pull}186084[#186084])
+* Create shared package policy. ({kibana-pull}185916[#185916])
+* Make {fleet} & Integrations layouts full width. ({kibana-pull}186056[#186056])
+* Add support for setting `add_fields` processors on all agents under an agent policy. ({kibana-pull}184693[#184693])
+* Introduce `policy_ids` in package policy SO ({kibana-pull}184636[#184636])
+* Add force flag to delete `agent_policies` API. ({kibana-pull}184419[#184419])
+* Surface option to delete diagnostics files. ({kibana-pull}183690[#183690])
+* Adds data tags to agent policy APIs. ({kibana-pull}183563[#183563])
+* Allow to reset log level for agents >= 8.15.0. ({kibana-pull}183434[#183434])
+* Add support for mappings with `store: true`. ({kibana-pull}183390[#183390])
+* Add warning if need root integrations trying to be used with unprivileged agents. ({kibana-pull}183283[#183283])
+* Add unprivileged vs privileged agent count to Fleet UI. ({kibana-pull}183077[#183077])
+* Show all integration assets on detail page. ({kibana-pull}182180[#182180])
+* Add overrides to package policies update endpoint. ({kibana-pull}181453[#181453])
+* Enable `agent.monitoring.http` settings on agent policy UI. ({kibana-pull}180922[#180922])
+* Share Modal redesign, clean up, and tests. ({kibana-pull}180406[#180406])
+* UI for the custom integration creation with AI. ({kibana-pull}186304[#186304])
 
 {fleet-server}::
 *  {agent} diagnostic bundles now provide additional TLS information for {fleet-server}. {fleet-server-pull}3587[#3587] 
@@ -72,6 +93,22 @@ The 8.15.0 release Added the following new and notable features.
 [discrete]
 [[bug-fixes-8.15.0]]
 === Bug fixes
+
+{fleet}::
+* Fix navigating back to Agent policy integration list. ({kibana-pull}189165[#189165])
+* Fix copy agent policy, missed bump revision. ({kibana-pull}188935[#188935])
+* Force field `enabled=false` on inputs that have all their streams disabled. ({kibana-pull}188919[#188919])
+* Fill in empty values for `constant_keyword` fields from existing mappings. ({kibana-pull}188145[#188145])
+* Enrollment token table may show an empty last page. ({kibana-pull}188049[#188049])
+* Separate `showInactive` from unenrolled status filter. ({kibana-pull}187960[#187960])
+* Missing policy filter in Fleet Server check to enable secrets. ({kibana-pull}187935[#187935])
+* Allow preconfigured agent policy only with name and ID. ({kibana-pull}187542[#187542])
+* Show warning callout in configs tab when an error occurs. ({kibana-pull}187487[#187487])
+* Enable rollover in custom integrations install when getting `mapper_exception` error. ({kibana-pull}186991[#186991])
+* Add concurrency limit to EPM bulk install API and fix duplicate installations. ({kibana-pull}185900[#185900])
+* Include inactive agents in agent policy agent count. ({kibana-pull}184517[#184517])
+* Fix KQL filtering. ({kibana-pull}183757[#183757])
+* Prevent concurrent runs of Fleet setup. ({kibana-pull}183636[#183636])
 
 {fleet-server}::
 * Support receiving the download rate sent by {agent} in string format. {fleet-server-pull}3677[#3677] {fleet-server-issue}3446[#3446] 

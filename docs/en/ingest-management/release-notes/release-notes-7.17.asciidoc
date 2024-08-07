@@ -81,6 +81,25 @@ Review important information about the {fleet} and {agent} 7.17.23 release.
 {fleet-server}::
 * Update {fleet-server} Go version to 1.21.11. {fleet-server-pull}3607[#3607]
 
+[discrete]
+[[known-issues-7.17.23]]
+=== Known issues
+
+[[known-issue-issue-5259]]
+.After upgrading to version 8.14 or 8.15 {agent} rolls back to 7.17.23
+[%collapsible]
+====
+
+*Details*
+
+After {agent} is upgraded from version 7.17.23 to an 8.14.x or 8.15.x version, after a period of time the agent rolls back to the original version.
+
+*Impact* +
+
+This issue appears to affect only {agent} version 7.17.23. As a workaround, avoid upgrading agents to 7.17.23. If you already have agents on that version and you plan to upgrade, consider upgrading first to a lower 8.x version as an interim, rather than upgrading directly to version 8.14 or 8.15.
+
+====
+
 // end 7.17.23 relnotes
 
 // begin 7.17.22 relnotes

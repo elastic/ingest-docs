@@ -86,17 +86,19 @@ Review important information about the {fleet} and {agent} 7.17.23 release.
 === Known issues
 
 [[known-issue-issue-5259]]
-.After upgrading to version 8.14 or 8.15 {agent} rolls back to 7.17.23
+.After upgrading to version 8.14 or 8.15 {agent} rolls back to 7.17.23.
 [%collapsible]
 ====
 
 *Details*
 
-After {agent} is upgraded from version 7.17.23 to an 8.14.x or 8.15.x version, after a period of time the agent rolls back to the original version.
+A problem has been found that after {agent} is upgraded from version 7.17.23 to an 8.14.x or 8.15.x version, after a period of time the agent rolls back to the original version.
 
 *Impact* +
 
-This issue appears to affect only {agent} version 7.17.23. As a workaround, avoid upgrading agents to 7.17.23. If you already have agents on that version and you plan to upgrade, consider upgrading first to a lower 8.x version as an interim, rather than upgrading directly to version 8.14 or 8.15.
+This issue appears to affect only {agent} version 7.17.23. As a workaround, it's recommended to avoid upgrading agents to 7.17.23.
+
+If you already have agents on that version and you plan to upgrade, consider upgrading first to a lower 8.x version as an interim, rather than upgrading directly to version 8.14 or 8.15.
 
 ====
 

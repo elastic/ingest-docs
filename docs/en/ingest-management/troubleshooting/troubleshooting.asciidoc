@@ -103,7 +103,7 @@ When you use an {agent} integration in which TSDB (Time Series Database) is enab
 
 This can occur if you have a component template defined that includes a `_source` attribute, which conflicts with the `_source: synthetic` setting used when TSDB is enabled.
 
-For details about the error and how to resolve it, refer to the section `Runtime fields cannot be used in TSDB indices` in the Innovation Hub article link:https://support.elastic.dev/knowledge/view/9363b9fd[TSDB enabled integrations for {agent}].
+For details about the error and how to resolve it, refer to the section `Runtime fields cannot be used in TSDB indices` in the Innovation Hub article link:https://support.elastic.co/knowledge/9363b9fd[TSDB enabled integrations for {agent}].
 
 [discrete]
 [[agents-in-cloud-stuck-at-updating]]

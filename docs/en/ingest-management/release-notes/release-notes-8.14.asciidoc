@@ -42,8 +42,8 @@ Review important information about the {fleet} and {agent} 8.14.3 release.
 
 {agent}::
 * Update the `elastic-agent install -f` command to use paths associated with the installed agent binary instead of paths associated with the agent running the install command. {agent-pull}4965[#4965] {agent-issue}4506[#4506]
-* Allow the {agent} container to work with a read-only filesystem. {agent-pull}5010[#5010]
-* Upgrade NodeJS to LTS version 18.20.3. {agent-pull}4995[#4995]
+* Allow the {agent} container to work with a read-only filesystem. {agent-pull}4995[#4995]
+* Upgrade NodeJS to LTS version 18.20.3. {agent-pull}5010[#5010]
 * Fix {agent} to account for the timeout period when waiting for {fleet-server} to start. {agent-pull}5034[#5034] {agent-issue}5033[#5033]
 
 // end 8.14.3 relnotes

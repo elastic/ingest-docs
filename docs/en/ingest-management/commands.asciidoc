@@ -29,12 +29,14 @@ invoking the wrong binary.
 * <<elastic-agent-inspect-command,inspect>>
 * <<elastic-agent-install-command,install>>
 * <<elastic-agent-otel-command,otel>> [technical preview]
+* <<elastic-agent-privileged-command,privileged>>
 * <<elastic-agent-restart-command,restart>>
 * <<elastic-agent-run-command,run>>
 * <<elastic-agent-status-command,status>>
 * <<elastic-agent-uninstall-command,uninstall>>
 * <<elastic-agent-upgrade-command,upgrade>>
 * <<elastic-agent-logs-command,logs>>
+* <<elastic-agent-unprivileged-command,unprivileged>>
 * <<elastic-agent-version-command,version>>
 //* <<elastic-agent-watch-command,watch>>
 
@@ -523,6 +525,28 @@ elastic-agent inspect components log-default
 ++++
 
 [discrete]
+[[elastic-agent-privileged-command]]
+== elastic-agent privileged
+
+Run {agent} with full superuser privileges.
+This is the usual, default running mode for {agent}.
+The `privileged` command allows you to switch back to running an agent with full administrative privileges when you have been running it in `unprivileged` mode. 
+
+Refer to {fleet-guide}/elastic-agent-unprivileged.html[Run {agent} without administrative privileges] for more detail.
+
+[discrete]
+=== Examples
+
+[source,shell]
+----
+elastic-agent privileged
+----
+
+++++
+<hr>
+++++
+
+[discrete]
 [[elastic-agent-install-command]]
 == elastic-agent install
 
@@ -565,6 +589,7 @@ elastic-agent install --url <string>
                       [--help]
                       [--insecure ]
                       [--non-interactive]
+                      [--privileged]
                       [--proxy-disabled]
                       [--proxy-header <strings>]
                       [--proxy-url <string>]
@@ -608,6 +633,7 @@ elastic-agent install --fleet-server-es <string>
                       [--header <strings>]
                       [--help]
                       [--non-interactive]
+                      [--privileged]
                       [--proxy-disabled]
                       [--proxy-header <strings>]
                       [--proxy-url <string>]
@@ -762,6 +788,13 @@ Install {agent} in a non-interactive mode. This flag is helpful when
 using automation software or scripted deployments. If {agent} is
 already installed on the host, the installation will terminate.
 
+`--privileged`::
+Run {agent} with full superuser privileges.
+This is the usual, default running mode for {agent}.
+The `--privileged` option allows you to switch back to running an agent with full administrative privileges when you have been running it in `unprivileged`. 
+
+See the `--unprivileged` option and {fleet-guide}/elastic-agent-unprivileged.html[Run {agent} without administrative privileges] for more detail.
+
 `--proxy-disabled`::
 Disable proxy support including environment variables.
 
@@ -785,6 +818,8 @@ tags, you must unenroll the {agent}, then re-enroll it using new tags.
 Run {agent} without full superuser privileges.
 This option is useful in organizations that limit `root` access on Linux or macOS systems, or `admin` access on Windows systems.
 For details and limitations for running {agent} in this mode, refer to {fleet-guide}/elastic-agent-unprivileged.html[Run {agent} without administrative privileges].
+
+Note that changing to `unprivileged` mode is prevented if the agent is currently enrolled in a policy that includes an integration that requires administrative access, such as the {elastic-defend} integration.
 
 `--url <string>`::
 {fleet-server} URL to use to enroll the {agent} into {fleet}.
@@ -905,6 +940,8 @@ Change the default verbosity setting in the {agent} OTel configuration from `det
 ----
 ./elastic-agent otel --config otel.yml --set "exporters::debug::verbosity=normal"
 ----
+
+=======
 
 ++++
 <hr>
@@ -1118,6 +1155,28 @@ Show help for the `uninstall` command.
 [source,shell]
 ----
 elastic-agent uninstall
+----
+
+++++
+<hr>
+++++
+
+[discrete]
+[[elastic-agent-unprivileged-command]]
+== elastic-agent unprivileged
+
+Run {agent} without full superuser privileges.
+This is useful in organizations that limit `root` access on Linux or macOS systems, or `admin` access on Windows systems.
+For details and limitations for running {agent} in this mode, refer to {fleet-guide}/elastic-agent-unprivileged.html[Run {agent} without administrative privileges].
+
+Note that changing a running {agent} to `unprivileged` mode is prevented if the agent is currently enrolled with a policy that contains the {elastic-defend} integration.
+
+[discrete]
+=== Examples
+
+[source,shell]
+----
+elastic-agent unprivileged
 ----
 
 ++++

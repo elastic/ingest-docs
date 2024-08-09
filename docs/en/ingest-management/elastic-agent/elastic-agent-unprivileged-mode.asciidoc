@@ -33,9 +33,16 @@ elastic-agent install \
   --unprivileged
 ----
 
-IMPORTANT: On Linux systems, once {agent} has been installed with the `--unprivileged` flag, all {agent} commands that you run should not be prefixed with `sudo`.
+[IMPORTANT] 
+====
+Note the following current restrictions for running {agent} in `unprivileged` mode:
+
+* On Linux systems, once {agent} has been installed with the `--unprivileged` flag, all {agent} commands that you run should not be prefixed with `sudo`.
 Including `sudo` in a command may result in <<agent-sudo-error,an error>> due to the agent not having the required privileges.
-The `sudo` option is still required for the `elastic-agent install` command.
+* The `sudo` option is still required for the `elastic-agent install` command.
+* Currently, when you run some {agent} commands as non-root, for example, `elastic-agent inspect`, you may need to prefix the command with `sudo -u elastic-agent-user elastic-agent`.
+For example, `sudo -u elastic-agent-user elastic-agent inspect`.
+====
 
 [discrete]
 [[unprivileged-command-behaviors]]

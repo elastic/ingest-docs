@@ -96,7 +96,7 @@ A problem has been found that after {agent} is upgraded from version 7.17.23 to 
 
 *Impact* +
 
-This issue appears to affect only {agent} version 7.17.23. As a workaround, it's recommended to avoid upgrading your agents to 7.17.23.
+This issue appears to affect only {agent} version 7.17.23. As a workaround, it's recommended to avoid upgrading your agents to 7.17.23 if you plan to upgrade to 8.x before 7.17.24 is released.
 
 If you already have {agent}s on that version and you plan to upgrade, when version 7.17.24 is available you can first upgrade to that version, and from there you can upgrade to an 8.x version as usual.
 

@@ -29,14 +29,14 @@ invoking the wrong binary.
 * <<elastic-agent-inspect-command,inspect>>
 * <<elastic-agent-install-command,install>>
 * <<elastic-agent-otel-command,otel>> [technical preview]
-* <<elastic-agent-privileged-command,privileged>>
+* <<elastic-agent-privileged-command,privileged>> [technical preview]
 * <<elastic-agent-restart-command,restart>>
 * <<elastic-agent-run-command,run>>
 * <<elastic-agent-status-command,status>>
 * <<elastic-agent-uninstall-command,uninstall>>
 * <<elastic-agent-upgrade-command,upgrade>>
 * <<elastic-agent-logs-command,logs>>
-* <<elastic-agent-unprivileged-command,unprivileged>>
+* <<elastic-agent-unprivileged-command,unprivileged>> [technical preview]
 * <<elastic-agent-version-command,version>>
 //* <<elastic-agent-watch-command,watch>>
 
@@ -527,6 +527,8 @@ elastic-agent inspect components log-default
 [discrete]
 [[elastic-agent-privileged-command]]
 == elastic-agent privileged
+
+preview::[]
 
 Run {agent} with full superuser privileges.
 This is the usual, default running mode for {agent}.
@@ -1163,6 +1165,8 @@ elastic-agent uninstall
 [discrete]
 [[elastic-agent-unprivileged-command]]
 == elastic-agent unprivileged
+
+preview::[]
 
 Run {agent} without full superuser privileges.
 This is useful in organizations that limit `root` access on Linux or macOS systems, or `admin` access on Windows systems.

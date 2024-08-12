@@ -156,7 +156,7 @@ If you're prompted with `Do you want to enroll this Agent into Fleet?` answer `n
 +
 . You can run the `status` command to confirm that {agent} is running.
 +
-[source,yaml]
+[source,cmd]
 ----
 elastic-agent status
 
@@ -272,8 +272,6 @@ Now let's view your nginx logging data.
 . Open the {kib} menu and go to **Project settings -> Integrations -> Installed integrations**.
 . Select the **Nginx** card and open the **Assets** tab.
 . Select `[Logs Nginx] Overview`. The {kib} Dashboard opens with geographical log details, response codes and errors over time, top pages, and more.
-+
-image::images/guide-nginx-logs-dashboard.png["The nginx logs dashboard shows various visualizations on the nginx logs."]
 . Refresh your nginx web page several times to update the logging data. You can also try accessing the nginx page from different web browsers. After a minute or so, the `Browsers breakdown` visualization shows the respective volume of requests from the different browser types.
 +
 image::images/guide-nginx-browser-breakdown.png["Kibana Dashboard shows agent metrics are flowing into Elasticsearch."]

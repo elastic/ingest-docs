@@ -21,7 +21,7 @@ This includes the case where an integration policy belongs to multiple {agent} p
 [discrete]
 == Configure the output for an integration policy
 
-To conifigure an integration-level output:
+To conifigure an integration-level output for {agent} data:
 
 . In {kib}, go to **Integrations**.
 . On the **Installed integrations** tab, select the integration that you'd like to update.
@@ -34,9 +34,9 @@ To conifigure an integration-level output:
 [discrete]
 == View the output configured for an integration
 
-To view which output is being used for an integration policy:
+To view which {agent} output is set for an integration policy:
 
-. In {fleet}, open the **Agent policiess** tab.
+. In {fleet}, open the **Agent policies** tab.
 . Select an {agent} policy.
 . On the **Integrations** tab, the **Output** column indicates the output used for each integration policy.
 If data is configured to be sent to either the global output defined in {fleet} settings or to the integration's parent {agent} policy, this is indicated in a tooltip.

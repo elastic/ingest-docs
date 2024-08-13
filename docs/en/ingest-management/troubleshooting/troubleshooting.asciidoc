@@ -402,6 +402,10 @@ Note that the diagnostics bundle is intended for debugging purposes only, its st
 IMPORTANT: {agent} attempts to automatically redact credentials and API keys when creating diagnostics. 
 Please review the contents of the archive before sharing to ensure that there are no credentials in plain text.
 
+IMPORTANT: When enabling `debug` logging level, the zip archive containing diagnostics information will also contain
+the raw events of documents sent to the output. Please review the contents of the archive before sharing to ensure
+that there is no sensible information in them.
+
 **Get the diagnostics bundle using the CLI**
 
 Run the following command to generate a zip archive containing diagnostics information that the Elastic team can use for debugging cases.

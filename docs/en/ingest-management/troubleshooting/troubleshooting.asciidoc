@@ -405,6 +405,7 @@ Please review the contents of the archive before sharing to ensure that there ar
 IMPORTANT: The zip archive containing diagnostics information will contain the raw events of documents sent to the output. By default, it will log only the failing events as `warn`.
 When enabling `debug` logging level, it will log all the events. 
 Please review the contents of the archive before sharing to ensure that there is no sensible information in them.
+
 **Get the diagnostics bundle using the CLI**
 
 Run the following command to generate a zip archive containing diagnostics information that the Elastic team can use for debugging cases.

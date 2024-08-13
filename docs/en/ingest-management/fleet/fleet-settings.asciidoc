@@ -67,6 +67,9 @@ are updated automatically.
 Add or edit output settings to specify where {agent}s send data. {agent}s
 use the default output if you don't select an output in the agent policy.
 
+TIP: If you have an `Enterprise` link:https://www.elastic.co/subscriptions[{stack} subscription],
+you can configure {agent} to
+<<integration-level-outputs,send data to different outputs for different integration policies>>.
 
 NOTE: The {ecloud} internal output is locked and cannot be edited. This
 output is used for internal routing to reduce external network charges when

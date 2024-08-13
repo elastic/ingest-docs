@@ -415,6 +415,8 @@ Run the following command to generate a zip archive containing diagnostics infor
 elastic-agent diagnostics
 ----
 
+If you want to omit the raw events from the diagnostic, add the flag `--exclude-events`.
+
 **Get the diagnostics bundle through {fleet}**
 
 {fleet} provides the ability to remotely generate and gather an {agent}'s diagnostics bundle.

@@ -402,6 +402,11 @@ Note that the diagnostics bundle is intended for debugging purposes only, its st
 IMPORTANT: {agent} attempts to automatically redact credentials and API keys when creating diagnostics. 
 Please review the contents of the archive before sharing to ensure that there are no credentials in plain text.
 
+IMPORTANT: The ZIP archive containing diagnostics information will include the raw events of documents sent to the {agent} output.
+By default, it will log only the failing events as `warn`.
+When the `debug` logging level is enabled, all events are logged.
+Please review the contents of the archive before sharing to ensure that no sensitive information is included.
+
 **Get the diagnostics bundle using the CLI**
 
 Run the following command to generate a zip archive containing diagnostics information that the Elastic team can use for debugging cases.
@@ -410,6 +415,8 @@ Run the following command to generate a zip archive containing diagnostics infor
 ----
 elastic-agent diagnostics
 ----
+
+If you want to omit the raw events from the diagnostic, add the flag `--exclude-events`.
 
 **Get the diagnostics bundle through {fleet}**
 

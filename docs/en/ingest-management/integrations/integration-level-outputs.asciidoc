@@ -21,7 +21,7 @@ This includes the case where an integration policy belongs to multiple {agent} p
 [discrete]
 == Configure the output for an integration policy
 
-To conifigure an integration-level output for {agent} data:
+To configure an integration-level output for {agent} data:
 
 . In {kib}, go to **Integrations**.
 . On the **Installed integrations** tab, select the integration that you'd like to update.

@@ -902,7 +902,6 @@ Run {agent} as an <<otel-agent,OpenTelemetry Collector>>.
 ----
 elastic-agent otel [flags]
 elastic-agent otel [command]
-kilfoyle marked this conversation as resolved.
 ----
 
 NOTE: You can also run the `./otelcol` command, which calls `./elastic-agent otel` and passes any arguments to it.

@@ -63,13 +63,26 @@ and download your standalone agent policy, see <<update-standalone-policies>>.
 [[upgrade-integration-policies-automatically]]
 == Keep integration policies up to date automatically
 
-Some integration packages, like System, are installed by default during {fleet}
-setup. These integrations are upgraded automatically when {fleet} detects that a
-new version is available. These integrations have an option to upgrade
-integration policies automatically, too. When this option is selected (the
-default), {fleet} automatically upgrades your policies behind the scenes when a
-new version of the integration is available. If there are conflicts during the
-upgrade, your integration policies will not be upgraded, and you'll need to
+Some integration packages, like System, are installed by default during {fleet} setup.
+These integrations are upgraded automatically when {fleet} detects that a new version is available. 
+
+The following integrations are installed automatically when you select certain options in the {fleet} UI.
+All of them have an option to upgrade integration policies automatically, too:
+ 
+ * {integrations-docs}/elastic_agent[Elastic Agent] - installed automatically when the default **Collect agent logs** or **Collect agent metrics** option is enabled in an {agent} policy).
+ * {integrations-docs}/fleet_server[Fleet Server] - installed automatically  when {fleet-server} is set up through the {fleet} UI.
+ * {integrations-docs}/system[System] - installed automatically when the default **Collect system logs and metrics** option is enabled in an {agent} policy).
+
+The {integrations-docs}/endpoint[Elastic Defend] integration also has an option to upgrade installation policies automatically.
+
+Note that for the following integrations, when the integration is updated automatically the integration policy is upgraded automatically as well. This behavior cannot be disabled.
+
+* {integrations-docs}/apm[Elastic APM]
+* {integrations-docs}/cloud_security_posture#cloud-security-posture-management-cspm[Cloud Security Posture Management]
+* {observability-guide}/monitor-uptime-synthetics.html[Elastic Synthetics]
+
+For integrations that support the option to auto-upgrade the integration policy, when this option is selected (the default), {fleet} automatically upgrades your policies behind the scenes when a new version of the integration is available.
+If there are conflicts during the upgrade, your integration policies will not be upgraded, and you'll need to
 <<upgrade-integration-policies-manually,upgrade integration policies manually>>.
 
 To keep integration policies up to data automatically:

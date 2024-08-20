@@ -81,7 +81,7 @@ Note that for the following integrations, when the integration is updated automa
 * {integrations-docs}/cloud_security_posture#cloud-security-posture-management-cspm[Cloud Security Posture Management]
 * {observability-guide}/monitor-uptime-synthetics.html[Elastic Synthetics]
 
-For integrations that support the option to auto-upgrade the integration policy, when this option is selected (the default), {fleet} automatically upgrades your policies behind the scenes when a new version of the integration is available.
+For integrations that support the option to auto-upgrade the integration policy, when this option is selected (the default), {fleet} automatically upgrades your policies when a new version of the integration is available.
 If there are conflicts during the upgrade, your integration policies will not be upgraded, and you'll need to
 <<upgrade-integration-policies-manually,upgrade integration policies manually>>.
 

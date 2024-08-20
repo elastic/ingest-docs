@@ -527,7 +527,8 @@ Select the name of the policy you want to edit.
 
 . Save your changes.
 
-Once an unenrollment timeout is set, any inactive agents are unenrolled automatically after the specified period of time. The unenroll task runs every ten minutes, and it will unenroll a maximum of one thousand agents at a time.
+After you set an unenrollment timeout, any inactive agents are unenrolled automatically after the specified period of time. 
+The unenroll task runs every ten minutes, and it unenrolls a maximum of one thousand agents at a time.
 
 [discrete]
 [[agent-policy-scale]]

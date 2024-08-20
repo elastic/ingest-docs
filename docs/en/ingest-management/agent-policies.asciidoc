@@ -131,6 +131,11 @@ The following table illustrates the {fleet} user actions available to different 
 |<<fleet-agent-hostname-format-settings>>
 |{y}
 |{n}
+
+|<<fleet-agent-unenrollment-timeout>>
+|{y}
+|{n}
+
 |===
 
 See also the <<agent-policy-scale,recommended scaling options>> for an {agent} policy.
@@ -501,6 +506,29 @@ For FQDN reporting to work as expected, the hostname of the current host must ei
 * Have one of its corresponding IP addresses respond successfully to a reverse DNS lookup.
 
 If neither pre-requisite is satisfied, `host.name` continues to report the hostname of the current host in a non-fully-qualified format.
+
+
+[discrete]
+[[fleet-agent-unenrollment-timeout]]
+== Set an unenrollment timeout for inactive agents
+
+You can configure a length of time after which any inactive {agent}s are automatically unenrolled and their API keys invalidated.
+This setting is useful when you have agents running in an ephemeral environment, such as Docker or {k8s}, and you want to prevent inactive agents from consuming unused API keys.
+
+
+To configure an unenrollment timeout for inactive agents:
+
+. In {fleet}, click **Agent policies**.
+Select the name of the policy you want to edit.
+
+. Click the **Settings** tab and scroll to **Inactive agent unenrollment timeout**.
+
+. Specify an unenrollment timeout period in seconds.
+
+. Save your changes.
+
+After you set an unenrollment timeout, any inactive agents are unenrolled automatically after the specified period of time. 
+The unenroll task runs every ten minutes, and it unenrolls a maximum of one thousand agents at a time.
 
 [discrete]
 [[agent-policy-scale]]

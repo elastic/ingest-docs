@@ -51,7 +51,7 @@ The Azure EventHub input fails to start on {agent} version 8.15 running on Windo
 
 *Impact* +
 
-If you're using {agent} on Windows with the Azure EventHub input we recommend not upgrading {agent} to version 8.15 and instead waiting for a later release.
+If you're using {agent} on Windows with any integration which makes use of the Azure EventHub input, we recommend not upgrading {agent} to version 8.15 and instead waiting for a later release.
 
 ====
 

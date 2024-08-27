@@ -47,7 +47,9 @@ Review important information about the {fleet} and {agent} 8.15.0 release.
 
 *Details*
 
-The Azure EventHub input fails to start on {agent} version 8.15 running on Windows. See {beats} issue link:https://github.com/elastic/beats/issues/40608[#40608] for details.
+The Azure EventHub input fails to start on {agent} version 8.15 running on Windows. 
+The {agent}s status will be reported as unhealthy.
+See {beats} issue link:https://github.com/elastic/beats/issues/40608[#40608] for details.
 
 *Impact* +
 

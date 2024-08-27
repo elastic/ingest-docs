@@ -35,6 +35,28 @@ Review important information about the {fleet} and {agent} 8.15.0 release.
 {fleet-server}::
 * Update {fleet-server} Go version to 1.22.5. {fleet-server-pull}3681[#3681]
 
+
+[discrete]
+[[known-issues-8.15.0]]
+=== Known issues
+
+[[known-issue-issue-40608]]
+.Azure EventHub input for {agent} fails to start on Windows
+[%collapsible]
+====
+
+*Details*
+
+The Azure EventHub input fails to start on {agent} version 8.15 running on Windows. 
+The {agent} status will be reported as unhealthy.
+See {beats} issue link:https://github.com/elastic/beats/issues/40608[#40608] for details.
+
+*Impact* +
+
+If you're using {agent} on Windows with any integration which makes use of the Azure EventHub input, we recommend not upgrading {agent} to version 8.15.0 and instead waiting for a later release. A fix is planned for version 8.15.1.
+
+====
+
 [discrete]
 [[new-features-8.15.0]]
 === New features

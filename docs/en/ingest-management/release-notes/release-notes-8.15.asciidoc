@@ -41,7 +41,7 @@ Review important information about the {fleet} and {agent} 8.15.0 release.
 === Known issues
 
 [[known-issue-issue-40608]]
-.Short description
+.Azure EventHub input for {agent} fails to start on Windows
 [%collapsible]
 ====
 
@@ -53,7 +53,7 @@ See {beats} issue link:https://github.com/elastic/beats/issues/40608[#40608] for
 
 *Impact* +
 
-If you're using {agent} on Windows with any integration which makes use of the Azure EventHub input, we recommend not upgrading {agent} to version 8.15 and instead waiting for a later release.
+If you're using {agent} on Windows with any integration which makes use of the Azure EventHub input, we recommend not upgrading {agent} to version 8.15.0 and instead waiting for a later release. A fix is planned for version 8.15.1.
 
 ====
 

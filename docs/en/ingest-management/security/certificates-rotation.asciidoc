@@ -188,15 +188,15 @@ elastic-agent enroll \
 [[certificates-rotation-agent-es]]
 == Expiring {es} CA, supporting incoming connections from {agent}
 
-Uses configuration information from a policy delivered by {fleet-server}, {agent} collects data and sends it to {es}.
+Using configuration information from a policy delivered by {fleet-server}, {agent} collects data and sends it to {es}.
 
 To renew an expiring CA certificate on {es} for connections from {agent}:
 
-
-. Specify the new Elasticsearch CA trusted fingerprint in the definition of the Elasticsearch output in the Fleet settings (see picture)
-.. This is the SHA-256 fingerprint (hash) of the certificate authority used to self-sign Elasticsearch certificates. This fingerprint will be used to verify self-signed certificates presented by Elasticsearch 
-.. If this certificate is present in the chain during the handshake, it will be added to the certificate_authorities list and the handshake will continue normally.
+. Go to {fleet} and open the **Settings** tab.
+. In the **Outputs** section, click the edit button for the {es} output that requires a certificate rotation.
+. In the **Elasticsearch CA trusted fingerprint** field, add the new trusted fingerprint to use. This is the SHA-256 fingerprint (hash) of the certificate authority used to self-sign {es} certificates. This fingerprint will be used to verify self-signed certificates presented by {es}.
++
+If this certificate is present in the chain during the handshake, it will be added to the `certificate_authorities` list and the handshake will continue normally.
 +
 [role="screenshot"]
 image::images/certificate-rotation-agent-es.png[Screen capture of the Edit Output UI: Elasticsearch CA trusted fingerprint]
-

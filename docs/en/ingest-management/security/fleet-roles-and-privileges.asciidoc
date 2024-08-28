@@ -1,7 +1,7 @@
 [[fleet-roles-and-privileges]]
 = Roles and privileges
 
-Beginning with {stack} version 8.14, you can take much more granular control over the level of access that users have to features in and managed by {fleet}. This is useful when people in your organization access {fleet} for different purposes, and for whom you'd like to fine-tune the components that they can view and the actions that they can perform.
+Beginning with {stack} version 8.17, you can take much more granular control over the level of access that users have to features in and managed by {fleet}. This is useful when people in your organization access {fleet} for different purposes, and for whom you'd like to fine-tune the components that they can view and the actions that they can perform.
 
 For both {fleet} and integrations privileges can be set to:
 

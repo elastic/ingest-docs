@@ -166,7 +166,7 @@ To add a new integration to one or more {agent} policies:
 
 . In {fleet}, click **Agent policies**.
 Click the name of a policy you want to add an integration to.
-. Click **Add <Integration>**.
+. Click **Add <integration>**.
 . The Integrations page shows {agent} integrations along with other types, such as {beats}. Scroll down and select **Elastic Agent only** to view only integrations that work with {agent}.
 . You can opt to install an {agent} if you haven't already, or choose **Add integration only** to proceed.
 . In Step 1 on the **Add <Integration>** page, you can select the configuration settings specific to the integration.

@@ -147,12 +147,9 @@ See also the <<agent-policy-scale,recommended scaling options>> for an {agent} p
 To manage your {agent}s and the data they collect, create a new policy:
 
 In {fleet}, open the **Agent policies** tab and click **Create agent policy**.
+
 . Name your policy. All other fields are optional and can be modified later.
 By default, each policy enables the _system_ integration, which collects system information and metrics.
-+
-[role="screenshot"]
-image::images/create-agent-policy.png[{fleet} in {kib}]
-+
 . Create the agent policy:
 * To use the UI, click **Create agent policy**.
 * To use the {fleet} API, click **Preview API request** and run the
@@ -164,36 +161,29 @@ Also see <<create-a-policy-no-ui>>.
 [[add-integration]]
 == Add an integration to a policy
 
-Policies consist of one or more integrations.
-To add a new integration to a policy:
+An {agent} policy consists of one or more integrations that are applied to the agents enrolled in that policy.
+To add a new integration to one or more {agent} policies:
 
 . In {fleet}, click **Agent policies**.
-Click the name of the policy you want to add an integration to.
+Click the name of a policy you want to add an integration to.
+. Click **Add <integration>**.
+. The Integrations page shows {agent} integrations along with other types, such as {beats}. Scroll down and select **Elastic Agent only** to view only integrations that work with {agent}.
+. You can opt to install an {agent} if you haven't already, or choose **Add integration only** to proceed.
+. In Step 1 on the **Add <integration>** page, you can select the configuration settings specific to the integration.
+. In Step 2 on the page, you have two options:
+.. If you'd like to create a new policy for your {agent}s, on the **New hosts** tab specify a name for the new agent policy and choose whether or not to collect system logs and metrics.
+Collecting logs and metrics will add the System integration to the new agent policy.
+.. If you already have an {agent} policy created, on the **Existing hosts** tab use the drop-down menu to specify one or more agent policies that you'd like to add the integration to.
+. Click **Save and continue** to confirm your settings.
 
-. Click **Add integration**.
+This action installs the integration and adds it to the {agent} policies that you specified. 
+{fleet} distributes the new integration policy to all {agent}s that are enrolled in the agent policies.
 
-. Search for and select an integration. You can select a category to narrow your search.
+You can update the settings for an installed integration at any time:
 
-. Click **Add <Integration>**.
-
-. Name the integration and add any required configuration variables.
-+
-NOTE: Integration policy names must be globally unique across all agent
-policies.
-
-. Save the integration policy as part of the larger {agent} policy:
-+
---
-* To use the UI, click **Save and continue**.
-* To use the {fleet} API, click **Preview API request** and run the
-request.
---
-
-{fleet} distributes this new policy to all {agent}s that are enrolled in the
-{agent} policy.
-
-After the policy has finished applying, the selected integration will be running on the host
-and communicating with the {agent}.
+. In {kib}, go to the **Integrations** page.
+. On the **Integration policies** tab, for the integration that you like to update open the **Actions** menu and select **Edit integration**.
+. On the **Edit <integration>** page you can update any configuration settings and also update the list of {agent} polices to which the integration is added.
 
 [discrete]
 [[apply-a-policy]]

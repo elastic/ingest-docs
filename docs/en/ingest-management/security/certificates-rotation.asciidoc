@@ -11,17 +11,13 @@ In some scenarioes you may want to rotate your configured certificate authoritie
 [[certificates-rotation-agent-fs]]
 == Rotating a {fleet-server} CA
 
-{agent} communicates with {fleet-server} to receive policies and to check for updates.
+{agent} communicates with {fleet-server} to receive policies and to check for updates. There are two methods to rotate a CA certificate on {fleet-server} for connections from {agent}. The first method requires {agent} to re-enroll with {fleet-server} one or more times. The second method avoids re-enrollment and requires overwriting the existing CA file with a new certificate.
 
-To renew an expiring CA certificate on {fleet-server}:
-
-There are two methods to renew an expiring CA certificate on {es} for connections from {fleet-server}. The first method requires {agent} to re-enroll with {fleet-server} one or more times. The second method avoids re-enrollment and requires overwriting existing CA files with a new certificate.
-
-**Option 1: To renew an expiring CA certificate on {fleet-server} with {agent} re-enrollments:**
+**Option 1: To renew an expiring CA certificate on {fleet-server} with {agent} re-enrollments**
 
 Using this method, the {agent} with an old or expiring CA configured will be re-enrolled with {fleet-server} using a new CA.
 
-. Update the elastic agent with the NEW Fleet Server CA:
+. Update the {agent} with the new {fleet-server} CA:
 +
 The {agent} should already have a CA configured. Use the <<elastic-agent-enroll-command,`elastic-agent enroll`>> command to re-enroll the agent with an updated, comma separated set of CAs to use.
 +
@@ -34,7 +30,7 @@ elastic-agent enroll \
   --certificate-authorities <original_CA, new_CA>
 ----
 +
-A new agent enrollment will cause a new agent to appear in {fleet}. This may be considered disruptive, however the old agent entry will transition to offline. A new agent enrollment is required in order for the {fleet-server} configuration to be modified to accept multiple certificate authorities.
+A new agent enrollment will cause a new agent to appear in {fleet}. This may be considered disruptive, however the old agent entry will transition to an offline state. A new agent enrollment is required in order for the {fleet-server} configuration to be modified to accept multiple certificate authorities.
 +
 At this point, all TLS connections are still relying on the original CA that was provided (`original_CA`) in order to authenticate {fleet-server} certificates.
 
@@ -48,7 +44,7 @@ elastic-agent enroll ...
   --url=<Fleet-Server-URL> \
   --enrollment-token=<enrollment-token> \
   ... \
---fleet-server-cert <new_cert> --certificate-authorities <new_CA>
+  --fleet-server-cert <new_cert> --certificate-authorities <new_CA>
 ----
 +
 This will cause the TLS connections to the {agents} to reset and will load the relevant new CA and certificates to the {fleet-server} configuration.
@@ -65,12 +61,12 @@ elastic-agent enroll ...
   --url=<Fleet-Server-URL> \
   --enrollment-token=<enrollment-token> \
   ... \
---certificate-authorities <new_CA>
+  --certificate-authorities <new_CA>
 ----
 
-**Option 2: To renew an expiring CA certificate on {es} without {agent} re-enrollments:**
+**Option 2: To renew an expiring CA certificate on {es} without {agent} re-enrollments**
 
-Option 1 results in multiple {agent} enrollments. Another option to avoid multiple enrollments is to overwrite the files with the new CA or certificate. This method uses a single file with multiple CAs that can be replaced.
+Option 1 results in multiple {agent} enrollments. Another option to avoid multiple enrollments is to overwrite the CA files with the new CA or certificate. This method uses a single file with multiple CAs that can be replaced.
 
 To use this option it is assumed that:
 
@@ -93,8 +89,8 @@ elastic-agent enroll ...
   --url=<Fleet-Server-URL> \
   --enrollment-token=<enrollment-token> \
   ... \
-  --certificate-authorities=<CA.pem>
-  --fleet-server-cert=<fleet-cert.pem>
+  --certificate-authorities=<CA.pem> \
+  --fleet-server-cert=<fleet-cert.pem> \
   --fleet-server-cert-key=<key.pem>
 ----
 
@@ -148,9 +144,11 @@ elastic-agent restart
 [[certificates-rotation-fs-es]]
 == Rotating an {es} CA for connections from {fleet-server}
 
-{fleet-server} communicates with {es} to send status information to {fleet} about {agent}s and to retrieve updated policies to ship out to all {agent}s enrolled in a given policy. The case of the {es} CA expiring occurs only when {fleet-server} is <<fleet-deployment-models,deployed on-premise>>.
 
-To renew an expiring CA certificate on {es} for connections from {fleet-server}:
+
+{fleet-server} communicates with {es} to send status information to {fleet} about {agent}s and to retrieve updated policies to ship out to all {agent}s enrolled in a given policy. If you have {fleet-server}  <<fleet-deployment-models,deployed on-premise>>, you may wish to rotate your configured CA certificate, for instance if the certificate is due to expire.
+
+To rotate a CA certificate on {es} for connections from {fleet-server}:
 
 . Update the {fleet-server} with the new {fleet-server} CA:
 +
@@ -167,7 +165,7 @@ elastic-agent enroll \
 +
 A new agent enrollment will cause two {fleet-server} agents to appear in {fleet}. This may be considered disruptive, however the old agent entry will transition to offline. A new agent enrollment is required in order for the {fleet-server} configuration to be modified to accept multiple certificate authorities.
 +
-At this point, all TLS connections are still relying on the original CA that was provided (`original_ES_CA`) in order to authenticate {es} certificates. Re-enrolling the {fleet-server} will cause the agents going through that {fleet-server} to also reset their TLS, but they will be re-established as required.
+At this point, all TLS connections are still relying on the original CA that was provided (`original_ES_CA`) in order to authenticate {es} certificates. Re-enrolling the {fleet-server} will cause the agents going through that {fleet-server} to also reset their TLS, but the connections will be re-established as required.
 
 . Rotate the certificates on {es}.
 +
@@ -190,9 +188,9 @@ elastic-agent enroll \
 
 Using configuration information from a policy delivered by {fleet-server}, {agent} collects data and sends it to {es}.
 
-To renew an expiring CA certificate on {es} for connections from {agent}:
+To rotate a CA certificate on {es} for connections from {agent}:
 
-. Go to {fleet} and open the **Settings** tab.
+. In {fleet} open the **Settings** tab.
 . In the **Outputs** section, click the edit button for the {es} output that requires a certificate rotation.
 . In the **Elasticsearch CA trusted fingerprint** field, add the new trusted fingerprint to use. This is the SHA-256 fingerprint (hash) of the certificate authority used to self-sign {es} certificates. This fingerprint will be used to verify self-signed certificates presented by {es}.
 +

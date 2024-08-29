@@ -95,6 +95,8 @@ include::security/generate-certificates.asciidoc[leveloffset=+1]
 
 include::security/certificates.asciidoc[leveloffset=+2]
 
+include::security/certificates-rotation.asciidoc[leveloffset=+2]
+
 include::security/mutual-tls.asciidoc[leveloffset=+2]
 
 include::security/logstash-certificates.asciidoc[leveloffset=+2]

@@ -1,7 +1,7 @@
 [[certificates-rotation]]
 = Rotate SSL/TLS CA certificates
 
-As part of managing secure connections between {fleet} and {agent} components, Certificate Authority (CA) certificates need to be renewed from time to time. Refer to the following steps to rotate certificates securing the following connections:
+In some scenarioes you may want to rotate your configured certificate authorities (CAs), for instance if your chosen CAs are due to expire. Refer to the following steps to rotate certificates between connected components:
 
 * <<certificates-rotation-agent-fs>>
 * <<certificates-rotation-fs-es>>
@@ -9,7 +9,7 @@ As part of managing secure connections between {fleet} and {agent} components, C
 
 [discrete]
 [[certificates-rotation-agent-fs]]
-== Expiring {fleet-server} CA, supporting connections from {agent}
+== Rotating a {fleet-server} CA
 
 {agent} communicates with {fleet-server} to receive policies and to check for updates.
 
@@ -146,7 +146,7 @@ elastic-agent restart
 
 [discrete]
 [[certificates-rotation-fs-es]]
-== Expiring {es} CA, supporting incoming connections from {fleet-server}
+== Rotating an {es} CA for connections from {fleet-server}
 
 {fleet-server} communicates with {es} to send status information to {fleet} about {agent}s and to retrieve updated policies to ship out to all {agent}s enrolled in a given policy. The case of the {es} CA expiring occurs only when {fleet-server} is <<fleet-deployment-models,deployed on-premise>>.
 
@@ -186,7 +186,7 @@ elastic-agent enroll \
 
 [discrete]
 [[certificates-rotation-agent-es]]
-== Expiring {es} CA, supporting incoming connections from {agent}
+== Rotating an {es} CA for connections from {agent}
 
 Using configuration information from a policy delivered by {fleet-server}, {agent} collects data and sends it to {es}.
 

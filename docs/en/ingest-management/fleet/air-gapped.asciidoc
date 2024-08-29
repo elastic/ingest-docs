@@ -38,14 +38,20 @@ xpack.fleet.isAirGapped: true
 
 Starting from version 8.9.0, when {agent} tries to perform an upgrade, it first verifies the binary signature with the key bundled in the agent. This process has a backup mechanism that will use the key coming from `https://artifacts.elastic.co/GPG-KEY-elastic-agent` instead of the one it already has.
 
-In an air-gapped environment, the agent won't be able to download the remote key and therefore cannot be upgraded. For versions 8.9.0 to 8.10.3, you can resolve this problem following the steps described in the associated link:https://www.elastic.co/guide/en/fleet/8.9/release-notes-8.9.0.html#known-issues-8.9.0[known issue] documentation.
-
+In an air-gapped environment, an {agent} which doesn't have access to a PGP/GPG key from `https://artifacts.elastic.co/GPG-KEY-elastic-agent` would fail to be upgraded.
+For versions 8.9.0 to 8.10.3, you can resolve this problem following the steps described in the associated link:https://www.elastic.co/guide/en/fleet/8.9/release-notes-8.9.0.html#known-issues-8.9.0[known issue] documentation.
 
 Starting in version 8.10.4, you can resolve this problem by configuring {agents} to download the PGP/GPG key from {fleet-server}.
 
+Starting in version 8.10.4, {agent} will:
+
+. Verify the binary signature with the key bundled in the agent.
+. If the verification doesn't pass, the agent will download the PGP/GPG key from `https://artifacts.elastic.co/GPG-KEY-elastic-agent` and verify it.
+. If that verification doesn't pass, the agent will download the PGP/GPG key from {fleet-server} and verify it.
+. If that verification doesn't pass, the upgrade is blocked.
+
 By default, {fleet-server} serves {agents} with the key located in `FLEETSERVER_BINARY_DIR/elastic-agent-upgrade-keys/default.pgp`.
-The key is served through the endpoint `FLEETSERVER_BINARY_DIR/elastic-agent-upgrade-keys/default.pgp`.
-Accessing the endpoint requires a valid API key and the endpoint is rate limited.
+The key is served through the {fleet-server} endpoint `GET /api/agents/upgrades/{major}.{minor}.{patch}/pgp-public-key`.
 
 If there isn't a `default.pgp` key in the `FLEETSERVER_BINARY_DIR/elastic-agent-upgrade-keys/default.pgp` directory, {fleet-server} instead will attempt to retrieve a PGP/GPG key from the URL that you can specify with the `server.pgp.upstream_url` setting.
 

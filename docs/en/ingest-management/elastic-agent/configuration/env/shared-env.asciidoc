@@ -273,20 +273,6 @@ Overrides the port defined in the policy.
 
 // =============================================================================
 
-// tag::fleet-server-insecure-http[]
-|
-[id="env-{type}-fleet-server-insecure-http"]
-`FLEET_SERVER_INSECURE_HTTP`
-
-| (bool) When `true`, exposes {fleet-server} over HTTP (insecure).
-Setting this to `true` is not recommended.
-
-*Default:* `false`
-
-// end::fleet-server-insecure-http[]
-
-// =============================================================================
-
 // tag::fleet-server-es-ca-trusted-fingerprint[]
 |
 [id="env-{type}-fleet-server-es-ca-trusted-fingerprint"]

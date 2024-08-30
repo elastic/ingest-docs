@@ -32,7 +32,8 @@ Review important information about the {fleet} and {agent} 8.15.1 release.
 [[bug-fixes-8.15.1]]
 === Bug fixes
 
-// {fleet}::
+{fleet}::
+* Remove duplicative retries from client-side requests to APIs that depend on EPR ({kibana-pull}190722[#190722]).
 
 {agent}::
 * Fix the Debian packaging to properly copy the `state.enc` and `state.yml` files to the new version of the {agent}. {agent-pull}5260[#5260] {agent-issue}5101[#5101]

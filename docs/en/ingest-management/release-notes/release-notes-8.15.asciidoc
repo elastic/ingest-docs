@@ -38,7 +38,7 @@ Review important information about the {fleet} and {agent} 8.15.1 release.
 {agent}::
 * Fix the Debian packaging to properly copy the `state.enc` and `state.yml` files to the new version of the {agent}. {agent-pull}5260[#5260] {agent-issue}5101[#5101]
 * Switch from wall clock to montonic clocks for component check-in calculation. {agent-pull}5284[#5284] {agent-issue}5277[#5277]
-* For a failed installation return a `nil` error instead of `syscall.Errno(0)` which indicates a successful operation on Windows. {agent-pull}5317[#5317] {agent-issue}4496[#4496]
+* For a failed installation, return a `nil` error instead of `syscall.Errno(0)` which indicates a successful operation on Windows. {agent-pull}5317[#5317] {agent-issue}4496[#4496]
 
 // end 8.15.1 relnotes
 

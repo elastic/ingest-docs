@@ -198,7 +198,6 @@ elastic-agent enroll --fleet-server-es <string>
                      [--fleet-server-es-cert-key <string>]
                      [--fleet-server-es-insecure]
                      [--fleet-server-host <string>]
-                     [--fleet-server-insecure-http]
                      [--fleet-server-policy <string>]
                      [--fleet-server-port <uint16>]
                      [--fleet-server-timeout <duration>]
@@ -298,12 +297,6 @@ When this flag is used the certificate verification is disabled.
 
 `--fleet-server-host <string>`::
 {fleet-server} HTTP binding host (overrides the policy).
-
-`--fleet-server-insecure-http`::
-Expose {fleet-server} over HTTP. This option is not recommended because it's
-insecure. It's useful during development and testing, but should not be used in
-production. When using this option, you should bind {fleet-server} to the
-local host (this is the default).
 
 `--fleet-server-policy <string>`::
 Used when starting a self-managed {fleet-server} to allow a specific policy to be used.
@@ -627,7 +620,6 @@ elastic-agent install --fleet-server-es <string>
                       [--fleet-server-es-cert-key <string>]
                       [--fleet-server-es-insecure]
                       [--fleet-server-host <string>]
-                      [--fleet-server-insecure-http]
                       [--fleet-server-policy <string>]
                       [--fleet-server-port <uint16>]
                       [--fleet-server-timeout <duration>]
@@ -735,12 +727,6 @@ When this flag is used the certificate verification is disabled.
 
 `--fleet-server-host <string>`::
 {fleet-server} HTTP binding host (overrides the policy).
-
-`--fleet-server-insecure-http`::
-Expose {fleet-server} over HTTP. This option is not recommended because it's
-insecure. It's useful during development and testing, but should not be used in
-production. When using this option, you should bind {fleet-server} to the
-local host (this is the default).
 
 `--fleet-server-policy <string>`::
 Used when starting a self-managed {fleet-server} to allow a specific policy to be used.

@@ -79,16 +79,16 @@ image::images/revoke-token.png[Enrollment tokens tab with Revoke token highlight
 
 . Click **Revoke enrollment token**. You can no longer use this token to enroll
 {agent}s. However, the currently enrolled agents will continue to function.
-
++
 To re-enroll your {agent}s, use an active enrollment token.
 
 Note that when an enrollment token is revoked it is not immediately deleted.
 Deletion occurs automatically after the duration specified in the {es}
 {ref}/security-settings.html#api-key-service-settings-delete-retention-period[`xpack.security.authc.api_key.delete.retention_period`] setting has expired.
-Until the enrollment token has been deleted, the token name may not be re-used when you <<create-fleet-enrollment-tokens,create an enrollment token>>.
 
-As well, until an enrollment token has been deleted:
+Until the enrollment token has been deleted:
 
-* It continues to be visible in the {fleet} UI.
-* It continues to be returned by a `GET /api/fleet/enrollment_api_keys` API request. Revoked enrollment tokens are identified as `"active": false`.
-
+* The token name may not be re-used when you <<create-fleet-enrollment-tokens,create an enrollment token>>.
+* The token continues to be visible in the {fleet} UI.
+* The token continues to be returned by a `GET /api/fleet/enrollment_api_keys` API request.
+Revoked enrollment tokens are identified as `"active": false`.

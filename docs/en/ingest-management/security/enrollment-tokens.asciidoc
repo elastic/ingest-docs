@@ -1,7 +1,7 @@
 [[fleet-enrollment-tokens]]
 = {fleet} enrollment tokens
 
-A {fleet} enrollment token (also referred to as an `enrollment API key` )
+A {fleet} enrollment token (referred to as an `enrollment API key` in the {fleet} API documentation)
 is an {es} API key that you use to enroll one or more {agent}s in {fleet}.
 The enrollment token enrolls the {agent} in a specific
 agent policy that defines the data to be collected by the agent. You can

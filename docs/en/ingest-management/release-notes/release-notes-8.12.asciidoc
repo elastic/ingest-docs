@@ -594,6 +594,22 @@ DELETE _security/role/fleet_superuser
 After running these API requests, wait at least 10 minutes, and then the agents should be upgradeable again.
 ====
 
+[[known-issue-3939]]
+.Remote {es} output does not support {elastic-defend} response actions
+[%collapsible]
+====
+
+*Details*
+
+Support for a <<remote-elasticsearch-output,remote {es} output>> was introduced in this release to enable {agents} to send integration or monitoring data to a remote {es} cluster. A bug has been found that causes {elastic-defend} response actions to stop working when a remote {es} output is configured for an agent.
+
+*Impact* +
+
+This bug is currently being investigated and is expected to be resolved in an upcoming release.
+
+====
+
+
 [discrete]
 [[new-features-8.12.0]]
 === New features

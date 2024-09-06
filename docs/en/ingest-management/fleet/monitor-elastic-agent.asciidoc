@@ -39,7 +39,7 @@ image::images/kibana-fleet-agents.png[Agents tab showing status of each {agent}]
 
 | *Healthy* | {agent}s are enrolled and checked in. There are no agent policy updates or automatic agent binary updates in progress, but the agent binary may still be out of date. {agent}s continuously check in to the {fleet-server} for required updates. 
 
-| *Unhealthy* | {agent}s have not checked in to {fleet-server}. At this point, you may need to address the situation. 
+| *Unhealthy* | {agent}s have errors or are running in a degraded state. An agent will be reported as `unhealthy` as a result of a configuration problem on the host system. For example, an {agent} may not have the correct permissions required to run an integration that has been added to the {agent} policy. In this case, you may need to investigate and address the situation.
 
 | *Updating* | {agent}s are updating the agent policy, updating the binary, or enrolling or unenrolling from {fleet}.
 

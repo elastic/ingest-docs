@@ -14,6 +14,8 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-7.17.24>>
+
 * <<release-notes-7.17.23>>
 
 * <<release-notes-7.17.22>>
@@ -66,6 +68,15 @@ Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 7.17.24 relnotes
+
+[[release-notes-7.17.24]]
+== {fleet} and {agent} 7.17.24
+
+There are no bug fixes for {fleet} or {agent} in this release.
+
+// end 7.17.24 relnotes
 
 // begin 7.17.23 relnotes
 

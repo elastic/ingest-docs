@@ -44,7 +44,7 @@ outputs:
       verification_mode: full
 ----
 
-== Kafka output and using Logstash to index data to Elasticsearch
+== Kafka output and using {ls} to index data to {es}
 
 If you are considering using {ls} to ship the data from `kafka` to {es}, please
 be aware Elastic is not currently testing this kind of setup.

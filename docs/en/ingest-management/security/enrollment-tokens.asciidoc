@@ -84,7 +84,7 @@ To re-enroll your {agent}s, use an active enrollment token.
 
 Note that when an enrollment token is revoked it is not immediately deleted.
 Deletion occurs automatically after the duration specified in the {es}
-{ref}/security-settings.html#api-key-service-settings-delete-retention-period[`xpack.security.authc.api_key.delete.retention_period`] setting has expired.
+{ref}/security-settings.html#api-key-service-settings-delete-retention-period[`xpack.security.authc.api_key.delete.retention_period`] setting has expired (see {ref}/security-api-invalidate-api-key.html[Invalidate API key API] for details).
 
 Until the enrollment token has been deleted:
 

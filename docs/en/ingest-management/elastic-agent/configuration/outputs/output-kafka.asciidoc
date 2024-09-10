@@ -52,7 +52,7 @@ be aware Elastic is not currently testing this kind of setup.
 The structure of the documents sent from {agent} to `kafka` must not be modified by {ls}.
 We suggest disabling `ecs_compatibility` on both the `kafka` input and the `json` codec.
 
-Refer to {ls} output for {agent} for more details.
+Refer to <<logstash-output,{ls} output for {agent}>> documentation for more details.
 
 [source,yaml]
 ----

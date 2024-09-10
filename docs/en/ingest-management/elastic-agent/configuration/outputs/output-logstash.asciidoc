@@ -35,8 +35,7 @@ processes received events, and then sends the events to {es}.
 The following example configures a {ls} pipeline that listens on port `5044` for
 incoming {agent} connections and routes received events to {es}.
 
-The {ls} pipeline definition below is an example. Please refer to the `Additional Logstash
-configuration required` steps when creating the {ls} output in the Fleet outputs page.
+The {ls} pipeline definition below is an example.
 
 [source,yaml]
 ----
@@ -65,7 +64,7 @@ output {
 }
 ----
 <1> The {es} server and the port (`9200`) where {es} is running.
-<2> The API Key obtained from the {ls} output creation steps in Fleet.
+<2> The API Key used by {ls} to ship data to the destination data streams.
 
 For more information about configuring {ls}, refer to
 {logstash-ref}/configuration.html[Configuring {ls}] and

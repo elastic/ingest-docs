@@ -35,7 +35,6 @@ processes received events, and then sends the events to {es}.
 The following example configures a {ls} pipeline that listens on port `5044` for
 incoming {agent} connections and routes received events to {es}.
 
-The {ls} pipeline definition below is an example.
 
 [source,yaml]
 ----

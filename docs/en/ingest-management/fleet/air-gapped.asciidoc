@@ -256,12 +256,26 @@ sub-directories that follow the same convention used by the {artifact-registry}:
 <source_uri>/<artifact_type>/<artifact_name>-<version>-<arch>-<package_type>
 ----
 +
-Where `<artifact_type>` may be `beats/elastic-agent`, `beats/filebeat`,
-`fleet-server`, `endpoint-dev`, and so on.
+Where:
++
+* `<artifact_type>` is in the format `beats/elastic-agent`, `fleet-server`, `endpoint-dev`, and so on.
+* `<artifict_name>` is om the format `elastic-agent`, `endpoint-security`, or `fleet-server` and so on.
+* `arch-package-type` is in the format `linux-x86_64`, `linux-arm64`, `windows_x86_64`, `darwin_x86_64`, or 
+darwin_aarch64`.
+* If you're using the DEB package manager:
++
+** The 64bit variant has the format `<artifact_name>-<version>-amd64.deb`.
+** The aarch64 variant has the format `<artifact_name>-<version>-arm64.deb`.
+* If you're using the RPM package manager:
++
+** The 64bit  variant has a format  `<artifact_name>-<version>-x86_64.rpm`.
+** The aarch64 variant has a format  `<artifact_name>-<version>-aarch64.rpm`.
+
 +
 [TIP]
 ====
-Make sure you have a plan or automation in place to update your artifact
+* If you're ever in doubt, visit the link:https://www.elastic.co/downloads/elastic-agent[{agent} download page] to see what URL the various binaries are downloaded from.
+* Make sure you have a plan or automation in place to update your artifact
 registry when new versions of {agent} are available.
 ====
 . Add the agent binary download location to {fleet} settings:

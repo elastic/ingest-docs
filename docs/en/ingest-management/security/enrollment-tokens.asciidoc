@@ -1,8 +1,9 @@
 [[fleet-enrollment-tokens]]
 = {fleet} enrollment tokens
 
-A {fleet} enrollment token is an {es} API key that you use to enroll one or more
-{agent}s in {fleet}. The enrollment token enrolls the {agent} in a specific
+A {fleet} enrollment token (referred to as an `enrollment API key` in the {fleet} API documentation)
+is an {es} API key that you use to enroll one or more {agent}s in {fleet}.
+The enrollment token enrolls the {agent} in a specific
 agent policy that defines the data to be collected by the agent. You can
 use the token as many times as required. It will remain valid until you revoke
 it.
@@ -38,6 +39,8 @@ To create an enrollment token:
 
 . Click  **Create enrollment token**. Name your token and select an agent policy.
 +
+Note that the token name you specify must be unique so as to avoid conflict with any existing API keys.
++
 [role="screenshot"]
 image::images/create-token.png[Enrollment tokens tab in {fleet}]
 
@@ -61,6 +64,9 @@ information, refer to <<fleet-api-docs>>.
 [[revoke-fleet-enrollment-tokens]]
 == Revoke enrollment tokens
 
+You can revoke an enrollment token that you no longer wish to use to enroll {agents} in an agent policy in {fleet}.
+Revoking an enrollment token essentially invalidates the API key used by agents to communicate with {fleet-server}.
+
 To revoke an enrollment token:
 
 . In {fleet}, click **Enrollment tokens**.
@@ -73,5 +79,16 @@ image::images/revoke-token.png[Enrollment tokens tab with Revoke token highlight
 
 . Click **Revoke enrollment token**. You can no longer use this token to enroll
 {agent}s. However, the currently enrolled agents will continue to function.
-
++
 To re-enroll your {agent}s, use an active enrollment token.
+
+Note that when an enrollment token is revoked it is not immediately deleted.
+Deletion occurs automatically after the duration specified in the {es}
+{ref}/security-settings.html#api-key-service-settings-delete-retention-period[`xpack.security.authc.api_key.delete.retention_period`] setting has expired (see {ref}/security-api-invalidate-api-key.html[Invalidate API key API] for details).
+
+Until the enrollment token has been deleted:
+
+* The token name may not be re-used when you <<create-fleet-enrollment-tokens,create an enrollment token>>.
+* The token continues to be visible in the {fleet} UI.
+* The token continues to be returned by a `GET /api/fleet/enrollment_api_keys` API request.
+Revoked enrollment tokens are identified as `"active": false`.

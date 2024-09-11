@@ -107,7 +107,7 @@ queue.mem.events: 3200
 queue.mem.flush.min_events: 1600
 queue.mem.flush.timeout: 10s
 compression_level: 1
-connection_idle_timeout: 3s
+idle_connection_timeout: 3s
 ----
 
 . Adjust any settings as preferred. For example, you can update the `compression_level` setting to `4`.
@@ -212,7 +212,7 @@ include::../elastic-agent/configuration/outputs/output-shared-settings.asciidoc[
 |1
 |1
 
-|`connection_idle_timeout`
+|`idle_connection_timeout`
 |3
 |15
 |1
@@ -231,7 +231,7 @@ These presets apply only to agents on version 8.12.0 or later.
 .Performance tuning: EPS data
 [cols="1,1,1,1,1,1,1"]
 |===
-|worker |bulk_max_size |queue.mem_events |queue.mem.flush.min_events |queue.mem.flush.timeout |connection_idle_timeout |Relative EPS
+|worker |bulk_max_size |queue.mem_events |queue.mem.flush.min_events |queue.mem.flush.timeout |idle_connection_timeout |Relative EPS
 
 |1
 |1600

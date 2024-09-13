@@ -73,12 +73,12 @@ Inside the downloaded manifest, update the Daemonset resource:
 ------------------------------------------------
 containers:
   - name: elastic-agent
-    image: docker.elastic.co/beats/elastic-agent: <ImageVersion>     
+    image: docker.elastic.co/elastic-agent/elastic-agent: <ImageVersion>     
     args: ["-c", "/etc/elastic-agent/agent.yml", "-e"]
 ------------------------------------------------
 
 Notes:: 
-The <ImageVersion> is just a placeholder for the elastic-agent image version that you will download in your manifest: eg. `image: docker.elastic.co/beats/elastic-agent: 8.11.0`
+The <ImageVersion> is just a placeholder for the elastic-agent image version that you will download in your manifest: eg. `image: docker.elastic.co/elastic-agent/elastic-agent: 8.11.0`
 Important thing is to update your manifest with args details 
 
 [source,yaml]

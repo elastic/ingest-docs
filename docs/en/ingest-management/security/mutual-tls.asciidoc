@@ -3,6 +3,8 @@
 
 Mutual Transport Layer Security (mTLS) provides a higher level of security and trust compared to one-way TLS, where only the server presents a certificate. It ensures that not only the server is who it claims to be, but the client is also authenticated. This is particularly valuable in scenarios where both parties need to establish trust and validate each other's identities, such as in secure API communication, web services, or remote authentication.
 
+For a summary of flow by which TLS is established between components using either one-way or mutual TLS, refer to <<tls-overview>>.
+
 * <<mutual-tls-overview>>
 * <<mutual-tls-on-premise>>
 * <<mutual-tls-cloud>>

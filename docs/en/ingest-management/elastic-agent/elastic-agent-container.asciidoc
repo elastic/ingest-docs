@@ -31,14 +31,14 @@ Run the `docker pull` command against the Elastic Docker registry:
 
 [source,terminal,subs="attributes"]
 ----
-docker pull docker.elastic.co/beats/elastic-agent:{version}
+docker pull docker.elastic.co/elastic-agent/elastic-agent:{version}
 ----
 
 If you want to run Synthetics tests, run the `docker pull` command to fetch the *elastic-agent-complete* image:
 
 [source,terminal,subs="attributes"]
 ----
-docker pull docker.elastic.co/beats/elastic-agent-complete:{version}
+docker pull docker.elastic.co/elastic-agent/elastic-agent-complete:{version}
 ----
 
 [discrete]
@@ -54,7 +54,7 @@ Run the following commands to verify the *elastic-agent* container image signatu
 ["source","sh",subs="attributes"]
 --------------------------------------------
 wget https://artifacts.elastic.co/cosign.pub <1>
-cosign verify --key cosign.pub docker.elastic.co/beats/elastic-agent:{version} <2>
+cosign verify --key cosign.pub docker.elastic.co/elastic-agent/elastic-agent:{version} <2>
 --------------------------------------------
 <1> Download the Elastic public key to verify container signature
 <2> Verify the container against the Elastic public key
@@ -64,14 +64,14 @@ If you're using the *elastic-agent-complete* image, run the commands as follows:
 ["source","sh",subs="attributes"]
 --------------------------------------------
 wget https://artifacts.elastic.co/cosign.pub <1>
-cosign verify --key cosign.pub docker.elastic.co/beats/elastic-agent-complete:{version} <2>
+cosign verify --key cosign.pub docker.elastic.co/elastic-agent/elastic-agent-complete:{version} <2>
 --------------------------------------------
 
 The command prints the check results and the signature payload in JSON format, for example:
 
 ["source","sh",subs="attributes"]
 --------------------------------------------
-Verification for docker.elastic.co/beats/elastic-agent-complete:{version} --
+Verification for docker.elastic.co/elastic-agent/elastic-agent-complete:{version} --
 The following checks were performed on each of these signatures:
   - The cosign claims were validated
   - Existence of the claims in the transparency log was verified offline
@@ -87,7 +87,7 @@ To see the full list, run:
 
 [source,terminal,subs="attributes"]
 ----
-docker run --rm docker.elastic.co/beats/elastic-agent:{version} elastic-agent container -h
+docker run --rm docker.elastic.co/elastic-agent/elastic-agent:{version} elastic-agent container -h
 ----
 
 [discrete]
@@ -108,7 +108,7 @@ For example:
 
 [source,terminal,subs="attributes"]
 ----
-docker run --rm --mount source=$(pwd)/state,destination=/state -e {STATE_PATH}=/state --read-only docker.elastic.co/beats/elastic-agent:{version} <1>
+docker run --rm --mount source=$(pwd)/state,destination=/state -e {STATE_PATH}=/state --read-only docker.elastic.co/elastic-agent/elastic-agent:{version} <1>
 ----
 
 Where {STATE_PATH} is the path to a stateful directory to mount where {agent} application data can be stored.
@@ -133,7 +133,7 @@ The example below shows how to enroll an {agent}:
 version: "3"
 services:
   elastic-agent:
-    image: docker.elastic.co/beats/elastic-agent:{version} <1>
+    image: docker.elastic.co/elastic-agent/elastic-agent:{version} <1>
     container_name: elastic-agent
     restart: always
     user: root # note, synthetic browser monitors require this set to `elastic-agent`

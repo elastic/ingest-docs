@@ -6,7 +6,7 @@ docker run \
   --env FLEET_ENROLL=1 \ <1>
   --env FLEET_URL=<fleet-server-host-url> \ <2>
   --env FLEET_ENROLLMENT_TOKEN=<enrollment-token> \ <3>
-  --rm docker.elastic.co/beats/elastic-agent:{version} <4>
+  --rm docker.elastic.co/elastic-agent/elastic-agent:{version} <4>
 ----
 
 <1> Set to 1 to enroll the {agent} into {fleet-server}.
@@ -29,7 +29,7 @@ docker run \
   --env FLEET_SERVER_SERVICE_TOKEN=<service-token> \ <3>
   --env FLEET_SERVER_POLICY_ID=<fleet-server-policy> \ <4>
   -p 8220:8220 \ <5>
-  --rm docker.elastic.co/beats/elastic-agent:{version} <6>
+  --rm docker.elastic.co/elastic-agent/elastic-agent:{version} <6>
 ----
 
 <1> Set to 1 to bootstrap Fleet Server on this Elastic Agent.

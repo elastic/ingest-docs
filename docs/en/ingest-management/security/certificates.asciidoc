@@ -7,6 +7,9 @@ in the {stack}.
 
 For the install settings specific to mutual TLS, as opposed to one-way TLS, refer to <<mutual-tls>>.
 
+For a summary of flow by which TLS is established between components using 
+either one-way or mutual TLS, refer to <<tls-overview>>.
+
 TIP: Our {ess-product}[hosted {ess}] on {ecloud} provides secure, encrypted
 connections out of the box!
 

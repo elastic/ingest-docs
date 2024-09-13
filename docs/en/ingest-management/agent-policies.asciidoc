@@ -184,6 +184,11 @@ You can update the settings for an installed integration at any time:
 . In {kib}, go to the **Integrations** page.
 . On the **Integration policies** tab, for the integration that you like to update open the **Actions** menu and select **Edit integration**.
 . On the **Edit <integration>** page you can update any configuration settings and also update the list of {agent} polices to which the integration is added.
++
+If you clear the **Agent policies** field, the integration will be removed from any {agent} policies to which it had been added.
++
+To identify any integrations that have been "orphaned", that is, not associated with any {agent} policies, check the **Agent polices** column on the **Integration policies** tab.
+Any integrations that are installed but not associated with an {agent} policy are as labeled as `No agent policies`.
 
 [discrete]
 [[apply-a-policy]]

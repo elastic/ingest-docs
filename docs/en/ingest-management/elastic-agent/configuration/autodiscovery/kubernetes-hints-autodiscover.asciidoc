@@ -182,7 +182,7 @@ An init container is required to download the hints templates.
 ----
 initContainers:
 - name: k8s-templates-downloader
-  image: docker.elastic.co/beats/elastic-agent:{branch}
+  image: docker.elastic.co/elastic-agent/elastic-agent:{branch}
   command: ['bash']
   args:
     - -c

@@ -99,6 +99,8 @@ include::security/certificates-rotation.asciidoc[leveloffset=+2]
 
 include::security/mutual-tls.asciidoc[leveloffset=+2]
 
+include::security/tls-overview.asciidoc[leveloffset=+2]
+
 include::security/logstash-certificates.asciidoc[leveloffset=+2]
 
 include::fleet/fleet.asciidoc[leveloffset=+1]

@@ -42,7 +42,7 @@ There are no bug fixes for {fleet} or {agent} in this release.
 ====
 *Details*
 
-Due to changes introduced to support the ecs@mappings component template (see link:https://github.com/elastic/kibana/pull/174855[elastic/kibana/pull/174855]), {fleet} no longer include ECS fields to the integrations' `index.query.default_field`. Not including ECS fields in the `index.query.default_field` setting may affect integrations that rely on fieldless queries (when no field is specified for a query).
+Due to changes introduced to support the ecs@mappings component template (see link:https://github.com/elastic/kibana/pull/174855[elastic/kibana/pull/174855]), {fleet} no longer includes ECS fields in the integrations' `index.query.default_field`. Not including ECS fields in the `index.query.default_field` setting may affect integrations that rely on fieldless queries (when no field is specified for a query).
 
 If you run a query without specifying a field, the query will not return results for ECS fields.
 

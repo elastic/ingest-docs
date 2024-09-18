@@ -78,7 +78,7 @@ If you need to run {fleet-server} as well, adjust the `docker run` command above
 - name: FLEET_SERVER_SERVICE_TOKEN
   value: "<service-token>" <3>
 ------------------------------------------------
-<1> Set to `1` to bootstrap {fleet-server} on this {agent}. This automatically forces {fleet} enrollment as well.
+<1> Set to `true` to bootstrap {fleet-server} on this {agent}. This automatically forces {fleet} enrollment as well.
 <2> The Elasticsearch host for Fleet Server to communicate with, for example `http://elasticsearch:9200`.
 <3> Service token to use for communication with {es} and {kib}.
 

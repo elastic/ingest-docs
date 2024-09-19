@@ -21,6 +21,27 @@ Also see:
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
 
+// begin 8.15.2 relnotes
+
+[[release-notes-8.15.2]]
+== {fleet} and {agent} 8.15.2
+
+Review important information about the {fleet} and {agent} 8.15.2 release.
+
+[discrete]
+[[bug-fixes-8.15.2]]
+=== Bug fixes
+
+{agent}::
+* Add the `health_check` extension to the `otel.yml` file bundled with the {agent} package, in order to prevent installation of the `open-telemetry/opentelemetry-collector` Helm chart from failing. {agent-pull}5369[#5369] {agent-issue}5092[#5092]
+* Prevent the {agent} from crashing when self unenrolling due to too many authentication failures against {fleet-server}. {agent-pull}5438[#5438] {agent-issue}5434[#5434]
+* Set the default log level when an {agent} policy is changed and a log level is not set in the policy. {agent-pull}5452[#5452] {agent-issue}5451[#5451]
+
+{fleet-server}::
+* Enable missing warnings for configuration options that have been deprecated throughout the 8.x lifecycle. {fleet-server-pull}3901[#3901]
+
+// end 8.15.2 relnotes
+
 // begin 8.15.1 relnotes
 
 [[release-notes-8.15.1]]

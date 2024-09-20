@@ -109,8 +109,9 @@ WARNING: Custom index mappings may conflict with the mappings defined by the int
 and may break the integration in {kib}. Do not change or customize any default mappings.
 
 When you install an integration, {fleet} creates two default `@custom` component templates:
-. A `@custom` component template allowing customization across all documents of a given data stream type, named following the pattern: `<data_stream_type>@custom`.
-. A `@custom` component template for each data stream, named following the pattern: `<name_of_data_stream>@custom`.
+
+* A `@custom` component template allowing customization across all documents of a given data stream type, named following the pattern: `<data_stream_type>@custom`.
+* A `@custom` component template for each data stream, named following the pattern: `<name_of_data_stream>@custom`.
 
 The `@custom` component template specific to a datastream has higher precedence over the data stream type `@custom` component template.
 

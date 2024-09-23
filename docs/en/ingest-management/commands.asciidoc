@@ -521,8 +521,6 @@ elastic-agent inspect components log-default
 [[elastic-agent-privileged-command]]
 == elastic-agent privileged
 
-preview::[]
-
 Run {agent} with full superuser privileges.
 This is the usual, default running mode for {agent}.
 The `privileged` command allows you to switch back to running an agent with full administrative privileges when you have been running it in `unprivileged` mode. 
@@ -1150,8 +1148,6 @@ elastic-agent uninstall
 [discrete]
 [[elastic-agent-unprivileged-command]]
 == elastic-agent unprivileged
-
-preview::[]
 
 Run {agent} without full superuser privileges.
 This is useful in organizations that limit `root` access on Linux or macOS systems, or `admin` access on Windows systems.

@@ -29,8 +29,19 @@ Also see:
 Review important information about the {fleet} and {agent} 8.15.2 release.
 
 [discrete]
+[[enhancements-8.15.2]]
+=== Enhancements
+
+Fleet::
+* Bump the maximum supported package spec version to 3.2. ({kibana-pull}193574[#193574])
+
+[discrete]
 [[bug-fixes-8.15.2]]
 === Bug fixes
+
+Fleet::
+* Prevent extra `agent_status` call with empty `policyId`, resulting in incorrect agent count on the `Edit Integration` page. ({kibana-pull}192549[#192549])
+* Set the correct title for the `Restart upgrade` agent modal. ({kibana-pull}192536[#192536])
 
 {agent}::
 * Add the `health_check` extension to the `otel.yml` file bundled with the {agent} package, in order to prevent installation of the `open-telemetry/opentelemetry-collector` Helm chart from failing. {agent-pull}5369[#5369] {agent-issue}5092[#5092]

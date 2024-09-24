@@ -45,6 +45,7 @@ Fleet::
 
 {agent}::
 * Add the `health_check` extension to the `otel.yml` file bundled with the {agent} package, in order to prevent installation of the `open-telemetry/opentelemetry-collector` Helm chart from failing. {agent-pull}5369[#5369] {agent-issue}5092[#5092]
+* Fix bug that prevented the {beats} {es} output from recovering from an interrupted connection. {beats-pull}40769[#40796] {beats-issue}40705[#40705]
 * Prevent the {agent} from crashing when self unenrolling due to too many authentication failures against {fleet-server}. {agent-pull}5438[#5438] {agent-issue}5434[#5434]
 * Set the default log level when an {agent} policy is changed and a log level is not set in the policy. {agent-pull}5452[#5452] {agent-issue}5451[#5451]
 

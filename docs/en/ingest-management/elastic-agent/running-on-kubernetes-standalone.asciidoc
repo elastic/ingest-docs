@@ -1,7 +1,7 @@
 [[running-on-kubernetes-standalone]]
 = Run {agent} Standalone on Kubernetes
 
-:manifest: https://raw.githubusercontent.com/elastic/elastic-agent/{bare_version}/deploy/kubernetes/elastic-agent-standalone-kubernetes.yaml
+:manifest: https://raw.githubusercontent.com/elastic/elastic-agent/v{bare_version}/deploy/kubernetes/elastic-agent-standalone-kubernetes.yaml
 :show-condition: enabled
 
 == What you need

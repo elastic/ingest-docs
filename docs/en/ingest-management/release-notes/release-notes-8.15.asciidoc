@@ -21,6 +21,39 @@ Also see:
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
 
+// begin 8.15.2 relnotes
+
+[[release-notes-8.15.2]]
+== {fleet} and {agent} 8.15.2
+
+Review important information about the {fleet} and {agent} 8.15.2 release.
+
+[discrete]
+[[enhancements-8.15.2]]
+=== Enhancements
+
+Fleet::
+* Bump the maximum supported package spec version to 3.2. ({kibana-pull}193574[#193574])
+
+[discrete]
+[[bug-fixes-8.15.2]]
+=== Bug fixes
+
+Fleet::
+* Prevent extra `agent_status` call with empty `policyId`, resulting in incorrect agent count on the `Edit Integration` page. ({kibana-pull}192549[#192549])
+* Set the correct title for the `Restart upgrade` agent modal. ({kibana-pull}192536[#192536])
+
+{agent}::
+* Add the `health_check` extension to the `otel.yml` file bundled with the {agent} package, in order to prevent installation of the `open-telemetry/opentelemetry-collector` Helm chart from failing. {agent-pull}5369[#5369] {agent-issue}5092[#5092]
+* Fix bug that prevented the {beats} {es} output from recovering from an interrupted connection. {beats-pull}40769[#40796] {beats-issue}40705[#40705]
+* Prevent the {agent} from crashing when self unenrolling due to too many authentication failures against {fleet-server}. {agent-pull}5438[#5438] {agent-issue}5434[#5434]
+* Set the default log level when an {agent} policy is changed and a log level is not set in the policy. {agent-pull}5452[#5452] {agent-issue}5451[#5451]
+
+{fleet-server}::
+* Enable missing warnings for configuration options that have been deprecated throughout the 8.x lifecycle. {fleet-server-pull}3901[#3901]
+
+// end 8.15.2 relnotes
+
 // begin 8.15.1 relnotes
 
 [[release-notes-8.15.1]]

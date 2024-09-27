@@ -117,12 +117,38 @@ contains your CA's certificate.
 [id="env-{type}-fleet-force"]
 `FLEET_FORCE`
 
-| (int) Set to `1` to force overwrite of the current configuration without prompting for confirmation.
+| (bool) Set to `true` to force overwrite of the current {agent} configuration without prompting for confirmation.
 This flag is helpful when using automation software or scripted deployments.
+
+*Default:* `false`
+
+// end::fleet-force[]
+
+// =============================================================================
+
+// tag::fleet-header[]
+|
+[id="env-{type}-fleet-header"]
+`FLEET_HEADER`
+
+| (string) Specify any headers that that {agent} should send to {fleet-server} during enrollment.
 
 *Default:* none
 
-// end::fleet-force[]
+// end::fleet-header[]
+
+// =============================================================================
+
+// tag::fleet-kibana-header[]
+|
+[id="env-{type}-fleet-kibana-header"]
+`FLEET_KIBANA_HEADER`
+
+| (string) Specify any headers that that {agent} should send when contacting {kib}.
+
+*Default:* none
+
+// end::fleet-kibana-header[]
 
 // =============================================================================
 
@@ -347,6 +373,42 @@ by {agent} for communication. This flag is required when using self-signed certi
 *Default:* `""`
 
 // end::fleet-server-es-cert-key[]
+
+// =============================================================================
+
+// tag::fleet-server-insecure-http[]
+|
+[id="env-{type}-fleet-server-insecure-http"]
+`FLEET_SERVER_INSECURE_HTTP`
+
+| (bool) When `true`, {fleet-server} is exposed over insecure or unverified HTTP.
+Setting this to `true` is not recommended.
+
+*Default:* `false`
+
+// end::fleet-server-insecure-http[]
+
+// =============================================================================
+
+// tag::fleet-daemon-timeout[]
+|
+[id="env-{type}-fleet-daemon-timeout"]
+`FLEET_DAEMON_TIMEOUT`
+
+| (duration) Set to indicate how long {fleet-server} will wait during the bootstrap process for {elastic-agent}.
+
+// end::fleet-daemon-timeout[]
+
+// =============================================================================
+
+// tag::fleet-server-timeout[]
+|
+[id="env-{type}-fleet-server-timeout"]
+`FLEET_SERVER_TIMEOUT`
+
+| (duration) Set to indicate how long {agent} will wait for {fleet-server} to check in as healthy.
+
+// end::fleet-server-timeout[]
 
 // =============================================================================
 

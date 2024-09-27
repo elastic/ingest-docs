@@ -329,7 +329,7 @@ Overrides the port defined in the policy.
 {fleet-server}'s client authentication option for client mTLS connections.
 If `optional` or `required` is specified, client certificates are verified using CAs.
 
-*Default:* none
+*Default:* `none`
 
 // end::fleet-server-client-auth[]
 

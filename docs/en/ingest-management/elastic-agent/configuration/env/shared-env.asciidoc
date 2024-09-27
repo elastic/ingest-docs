@@ -22,7 +22,7 @@ OPTIONAL INFO AND EXAMPLE
 [id="env-{type}-elastic-agent-cert"]
 `ELASTIC_AGENT_CERT`
 
-| (string) The path to the mutual TLS client certificate that that {agent} will use to connect to {fleet-server}.
+| (string) The path to the mutual TLS client certificate that {agent} will use to connect to {fleet-server}.
 
 // end::elastic-agent-cert[]
 
@@ -33,7 +33,7 @@ OPTIONAL INFO AND EXAMPLE
 [id="env-{type}-elastic-agent-cert-key"]
 `ELASTIC_AGENT_CERT_KEY`
 
-| (string) The path to the mutual TLS private key that that {agent} will use to connect to {fleet-server}.
+| (string) The path to the mutual TLS private key that {agent} will use to connect to {fleet-server}.
 
 // end::elastic-agent-cert-key[]
 
@@ -131,7 +131,7 @@ This flag is helpful when using automation software or scripted deployments.
 [id="env-{type}-fleet-header"]
 `FLEET_HEADER`
 
-| (string) Specify any headers that that {agent} should send to {fleet-server} during enrollment.
+| (string) Specify any headers that {agent} should send to {fleet-server} during enrollment.
 
 *Default:* none
 
@@ -144,7 +144,7 @@ This flag is helpful when using automation software or scripted deployments.
 [id="env-{type}-fleet-kibana-header"]
 `FLEET_KIBANA_HEADER`
 
-| (string) Specify any headers that that {agent} should send when contacting {kib}.
+| (string) Specify any headers that {agent} should send when contacting {kib}.
 
 *Default:* none
 
@@ -355,7 +355,7 @@ by {agent} for communication. This flag is required when using self-signed certi
 [id="env-{type}-fleet-server-es-cert"]
 `FLEET_SERVER_ES_CERT`
 
-| (string) The path to the mutual TLS client certificate that that {fleet-server} will use to connect to {es}.
+| (string) The path to the mutual TLS client certificate that {fleet-server} will use to connect to {es}.
 
 *Default:* `""`
 
@@ -368,7 +368,7 @@ by {agent} for communication. This flag is required when using self-signed certi
 [id="env-{type}-fleet-server-es-cert-key"]
 `FLEET_SERVER_ES_CERT_KEY`
 
-| (string) The path to the mutual TLS private key that that {fleet-server} will use to connect to {es}.
+| (string) The path to the mutual TLS private key that {fleet-server} will use to connect to {es}.
 
 *Default:* `""`
 

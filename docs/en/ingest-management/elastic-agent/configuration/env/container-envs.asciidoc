@@ -124,10 +124,6 @@ include::shared-env.asciidoc[tag=fleet-server-client-auth]
 
 include::shared-env.asciidoc[tag=fleet-server-es-ca-trusted-fingerprint]
 
-include::shared-env.asciidoc[tag=fleet-header]
-
-include::shared-env.asciidoc[tag=fleet-kibana-header]
-
 include::shared-env.asciidoc[tag=fleet-daemon-timeout]
 
 include::shared-env.asciidoc[tag=fleet-server-timeout]

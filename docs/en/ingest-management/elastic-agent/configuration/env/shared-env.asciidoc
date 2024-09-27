@@ -126,32 +126,6 @@ This flag is helpful when using automation software or scripted deployments.
 
 // =============================================================================
 
-// tag::fleet-header[]
-|
-[id="env-{type}-fleet-header"]
-`FLEET_HEADER`
-
-| (string) Specify any headers that {agent} should send to {fleet-server} during enrollment.
-
-*Default:* none
-
-// end::fleet-header[]
-
-// =============================================================================
-
-// tag::fleet-kibana-header[]
-|
-[id="env-{type}-fleet-kibana-header"]
-`FLEET_KIBANA_HEADER`
-
-| (string) Specify any headers that {agent} should send when contacting {kib}.
-
-*Default:* none
-
-// end::fleet-kibana-header[]
-
-// =============================================================================
-
 // tag::fleet-server-enable[]
 |
 [id="env-{type}-fleet-server-enable"]

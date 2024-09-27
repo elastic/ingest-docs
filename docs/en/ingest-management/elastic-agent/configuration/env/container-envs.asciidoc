@@ -90,14 +90,6 @@ At least one {fleet-server} is required in a deployment.
 |===
 | Settings | Description
 
-include::shared-env.asciidoc[tag=fleet-force]
-
-include::shared-env.asciidoc[tag=fleet-header]
-
-include::shared-env.asciidoc[tag=fleet-kibana-header]
-
-include::shared-env.asciidoc[tag=fleet-server-client-auth]
-
 include::shared-env.asciidoc[tag=fleet-server-enable]
 
 include::shared-env.asciidoc[tag=fleet-server-elasticsearch-host]
@@ -128,7 +120,13 @@ include::shared-env.asciidoc[tag=fleet-server-cert-key]
 
 include::shared-env.asciidoc[tag=fleet-server-cert-key-passphrase]
 
+include::shared-env.asciidoc[tag=fleet-server-client-auth]
+
 include::shared-env.asciidoc[tag=fleet-server-es-ca-trusted-fingerprint]
+
+include::shared-env.asciidoc[tag=fleet-header]
+
+include::shared-env.asciidoc[tag=fleet-kibana-header]
 
 include::shared-env.asciidoc[tag=fleet-daemon-timeout]
 
@@ -148,11 +146,6 @@ Settings used to enroll an {agent} into a {fleet-server}.
 [cols="2*<a"]
 |===
 | Settings | Description
-
-
-include::shared-env.asciidoc[tag=elastic-agent-cert]
-
-include::shared-env.asciidoc[tag=elastic-agent-cert-key]
 
 include::shared-env.asciidoc[tag=elastic-agent-tag]
 

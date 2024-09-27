@@ -66,8 +66,6 @@ Settings used to prepare the {fleet} plugin in {kib}.
 |===
 | Settings | Description
 
-include::shared-env.asciidoc[tag=kibana-fleet-setup]
-
 include::shared-env.asciidoc[tag=kibana-fleet-host]
 
 include::shared-env.asciidoc[tag=kibana-fleet-username]
@@ -92,11 +90,19 @@ At least one {fleet-server} is required in a deployment.
 |===
 | Settings | Description
 
+include::shared-env.asciidoc[tag=fleet-force]
+
+include::shared-env.asciidoc[tag=fleet-server-client-auth]
+
 include::shared-env.asciidoc[tag=fleet-server-enable]
 
 include::shared-env.asciidoc[tag=fleet-server-elasticsearch-host]
 
 include::shared-env.asciidoc[tag=fleet-server-elasticsearch-ca]
+
+include::shared-env.asciidoc[tag=fleet-server-es-cert]
+
+include::shared-env.asciidoc[tag=fleet-server-es-cert-key]
 
 include::shared-env.asciidoc[tag=fleet-server-service-token]
 
@@ -133,9 +139,16 @@ Settings used to enroll an {agent} into a {fleet-server}.
 |===
 | Settings | Description
 
+
+include::shared-env.asciidoc[tag=elastic-agent-cert]
+
+include::shared-env.asciidoc[tag=elastic-agent-cert-key]
+
 include::shared-env.asciidoc[tag=elastic-agent-tag]
 
 include::shared-env.asciidoc[tag=fleet-enroll]
+
+include::shared-env.asciidoc[tag=fleet-force]
 
 include::shared-env.asciidoc[tag=fleet-url]
 

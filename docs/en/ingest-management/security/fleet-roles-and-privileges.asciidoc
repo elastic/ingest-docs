@@ -153,11 +153,9 @@ The following table shows the set of actions available when the `read` or `all` 
 |Agents
 |View-only access to {agents}, including:
 
-* View the list of all {agents}
+* <<view-agent-status,View a list of all agents and their status>>
 
-* View the status of all agents
-
-* Download agent diagnostic packages
+* <<collect-agent-diagnostics,Request agent diagnostic packages>>
 
 |Full access to manage {agents}, including:
 

@@ -13,6 +13,44 @@ Before using the {ls} output, you need to make sure that for any integrations th
 
 To learn how to generate certificates, refer to <<secure-logstash-connections>>.
 
+To receive the events in {ls}, you also need to create a {ls} configuration pipeline.
+The {ls} configuration pipeline listens for incoming {agent} connections,
+processes received events, and then sends the events to {es}.
+
+The following example configures a {ls} pipeline that listens on port `5044` for
+incoming {agent} connections and routes received events to {es}.
+
+The {ls} pipeline definition below is an example. Please refer to the `Additional Logstash
+configuration required` steps when creating the {ls} output in the Fleet outputs page.
+
+[source,yaml]
+----
+input {
+  elastic_agent {
+    port => 5044
+    enrich => none # don't modify the events' schema at all
+    ssl => true
+    ssl_certificate_authorities => ["<ca_path>"]
+    ssl_certificate => "<server_cert_path>"
+    ssl_key => "<server_cert_key_in_pkcs8>"
+    ssl_verify_mode => "force_peer"
+  }
+}
+output {
+  elasticsearch {
+    hosts => ["http://localhost:9200"] <1>
+    # cloud_id => "..." 
+    data_stream => "true"
+    api_key => "<api_key>" <2>
+    data_stream => true
+    ssl => true
+    # cacert => "<elasticsearch_ca_path>"
+  }
+}
+----
+<1> The {es} server and the port (`9200`) where {es} is running.
+<2> The API Key obtained from the {ls} output creation steps in Fleet.
+
 [cols="2*<a"]
 |===
 |

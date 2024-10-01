@@ -96,7 +96,7 @@ The following table illustrates the {fleet} user actions available to different 
 |{y}
 |{n}
 
-|<<change-policy-enable-agent-monitoring,Enable agent monitoring>>
+|<<change-policy-enable-agent-monitoring,Configure agent monitoring>>
 |{y}
 |{n}
 
@@ -310,18 +310,39 @@ Note that adding custom tags is not supported for a small set of inputs:
 
 [discrete]
 [[change-policy-enable-agent-monitoring]]
-== Enable agent monitoring
+== Configure agent monitoring
 
-Use this setting to collect monitoring logs and metrics from {agent}. All monitoring data will be written to the specified **Default namespace**.
+Use these settings to collect monitoring logs and metrics from {agent}. All monitoring data will be written to the specified **Default namespace**.
 
 . In {fleet}, click **Agent policies**.
 Select the name of the policy you want to edit.
 
-. Click the **Settings** tab and scroll to **Enable agent monitorings**.
+. Click the **Settings** tab and scroll to **Agent monitoring**.
 
 . Select whether to collect agent logs, agent metrics, or both, from the {agents} that use the policy.
-
++
 When this setting is enabled an {agent} integration is created automatically.
+
+. Expand the **Advanced monitoring options** section to access <<advanced-agent-monitoring-settings,other monitoring settings>>.
+
+. Save your changes for the updated monitoring settings to take effect.
+
+[discrete]
+[[advanced-agent-monitoring-settings]]
+=== Advanced agent monitoring settings
+
+**HTTP monitoring endpoint**::
+Enabling this setting exposes a `/liveness` API endpoint that you can use to monitor {agent} health. By default, the endpoint returns a `200` OK status as long as {agent}'s internal main loop is responsive and can process configuration changes. It can be configured to also monitor the component states and return an error if anything is degraded or has failed. This endpoint can be used by Kubernetes to restart the container, for example.
++
+When you enable this setting, you need to also provide the host URL and port where the endpoint can be accessed. Using the default `localhost` is recommended.
++
+You can also enable profiling at `/debug/pprof` to control whether the {agent} exposes the `/debug/pprof/` endpoints with the monitoring endpoints. This is disabled by default. Data produced by these endpoints can be useful for debugging but present a security risk. It's recommended to leave this option disabled if the monitoring endpoint is accessible over a network.
+
+**Diagnostics rate limiting**::
+You can set a rate limit for the request diagnostics action handler. By default requests are limited to an interval of `1m` and a burst value of `1`. This setting does not affect diagnostics collected through the CLI.
+
+**Diagnostics file upload**::
+This setting configures retries for the file upload client. By default, a maximum of `10` retries are allowed with an initial duration of `1s` and a backoff duration of `1m`. The client may retry failed requests with exponential backoff.
 
 [discrete]
 [[change-policy-output]]

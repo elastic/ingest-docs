@@ -116,10 +116,6 @@ The following table illustrates the {fleet} user actions available to different 
 |{y}
 |{n}
 
-|<<agent-policy-http-monitoring>>
-|{y}
-|{n}
-
 |<<agent-policy-log-level>>
 |{y}
 |{n}
@@ -434,22 +430,6 @@ Select the name of the policy you want to edit.
 . Click the **Settings** tab and scroll to **Advanced settings**.
 
 . Set **Limit CPU usage** as needed. For example, to limit Go processes supervised by {agent} to two operating system threads each, set this value to `2`.
-
-[discrete]
-[[agent-policy-http-monitoring]]
-== Override the default monitoring port
-
-You can override the default port that {agent} uses to send monitoring data. It's useful to be able to adjust this setting if you have an application running on the machine on which the agent is deployed, and that is using the same port.
-
-. In {fleet}, click **Agent policies**.
-Select the name of the policy you want to edit.
-
-. Click the **Settings** tab and scroll to **Advanced settings**.
-
-//. Set **Agent HTTP monitoring** setting to enabled, and then specify a host and port for the monitoring data output.
-. Specify a host and port for the monitoring data output.
-
-//. Enable **buffer.enabled** if you'd like {agent} and {beats} to collect metrics into an in-memory buffer and expose these through a `/buffer` endpoint. This data can be useful for debugging or if the {agent} has issues communicating with {es}. Enabling this option may slightly increase process memory usage.
 
 [discrete]
 [[agent-policy-log-level]]

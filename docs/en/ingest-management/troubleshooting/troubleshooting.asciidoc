@@ -60,6 +60,7 @@ Find troubleshooting information for {fleet}, {fleet-server}, and {agent} in the
 * <<fleet-server-integration-removed>>
 * <<agent-oom-k8s>>
 * <<agent-sudo-error>>
+* <<agent-kubernetes-kustomize>>
 
 
 [discrete]
@@ -830,3 +831,8 @@ Error: error loading agent config: error loading raw config: fail to read config
 
 To resolve this, either install {agent} without the `--unprivileged` flag so that it has administrative access, or run the {agent} commands without the `sudo` prefix.
 
+[discrete]
+[[agent-kubernetes-kustomize]]
+== Problems installing Elastic Agent on Kubernetes through `kustomize`
+
+TBD :)

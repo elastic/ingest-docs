@@ -77,7 +77,7 @@ This command is intended for debugging purposes only. The output format and stru
 [source,shell]
 ----
 elastic-agent diagnostics [--file <string>]
-                          [-p]
+                          [--cpu-profile]
                           [--exclude-events]
                           [--help]
                           [global-flags]
@@ -92,8 +92,11 @@ Specifies the output archive name. Defaults to `elastic-agent-diagnostics-<times
 `--help`::
 Show help for the `diagnostics` command.
 
-`-p`::
+`--cpu-profile`::
 Additionally runs a 30-second CPU profile on each running component. This will generate an additional `cpu.pprof` file for each component.
+
+`--p`::
+Alias for `--cpu-profile`.
 
 `--exclude-events`::
 Exclude the events log files from the diagnostics archive.

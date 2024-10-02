@@ -226,6 +226,8 @@ monitoring settings for all agents enrolled in a specific agent policy:
 . Under **Agent monitoring**, deselect (or select) one or both of these
 settings: **Collect agent logs** and **Collect agent metrics**.
 
+. Under **Advanced monitoring options** you can configure additional settings including an HTTP monitoring endpoint, diagnostics rate limiting, and diagnostics file upload limits. Refer to <<change-policy-enable-agent-monitoring,configure agent monitoring>> for details.
+
 . Save your changes.
 
 To turn off agent monitoring when creating a new agent policy:

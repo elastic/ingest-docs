@@ -96,7 +96,7 @@ The following table illustrates the {fleet} user actions available to different 
 |{y}
 |{n}
 
-|<<change-policy-enable-agent-monitoring,Enable agent monitoring>>
+|<<change-policy-enable-agent-monitoring,Configure agent monitoring>>
 |{y}
 |{n}
 
@@ -113,10 +113,6 @@ The following table illustrates the {fleet} user actions available to different 
 |{n}
 
 |<<agent-policy-limit-cpu>>
-|{y}
-|{n}
-
-|<<agent-policy-http-monitoring>>
 |{y}
 |{n}
 
@@ -310,18 +306,62 @@ Note that adding custom tags is not supported for a small set of inputs:
 
 [discrete]
 [[change-policy-enable-agent-monitoring]]
-== Enable agent monitoring
+== Configure agent monitoring
 
-Use this setting to collect monitoring logs and metrics from {agent}. All monitoring data will be written to the specified **Default namespace**.
+Use these settings to collect monitoring logs and metrics from {agent}. All monitoring data will be written to the specified **Default namespace**.
 
 . In {fleet}, click **Agent policies**.
 Select the name of the policy you want to edit.
 
-. Click the **Settings** tab and scroll to **Enable agent monitorings**.
+. Click the **Settings** tab and scroll to **Agent monitoring**.
 
 . Select whether to collect agent logs, agent metrics, or both, from the {agents} that use the policy.
-
++
 When this setting is enabled an {agent} integration is created automatically.
+
+. Expand the **Advanced monitoring options** section to access <<advanced-agent-monitoring-settings,advanced settings>>.
+
+. Save your changes for the updated monitoring settings to take effect.
+
+[discrete]
+[[advanced-agent-monitoring-settings]]
+=== Advanced agent monitoring settings
+
+**HTTP monitoring endpoint**
+
+Enabling this setting exposes a `/liveness` API endpoint that you can use to monitor {agent} health according to the following HTTP codes:
+
+* `200`: {agent} is healthy. The endpoint returns a `200` OK status as long as {agent} is responsive and can process configuration changes.
+* `500`: A component or unit is in a failed state.
+* `503`: The agent coordinator is unresponsive.
+
+You can pass a `failon` parameter to the `/liveness` endpoint to determine what component state will result in a `500` status. For example, `curl 'localhost:6792/liveness?failon=degraded'` will return `500` if a component is in a degraded state.
+
+The possible values for `failon` are:
+
+* `degraded`: Return an error if a component is in a degraded state or failed state, or if the agent coordinator is unresponsive.
+* `failed`: Return an error if a unit is in a failed state, or if the agent coordinator is unresponsive.
+* `heartbeat`: Return an error only if the agent coordinator is unresponsive.
+
+If no `failon` parameter is provided, the default `failon` behavior is `heartbeat`.
+
+The HTTP monitoring endpoint can also be link:https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-a-liveness-http-request[used with Kubernetes], to restart the container for example.
+
+When you enable this setting, you need to provide the host URL and port where the endpoint can be accessed. Using the default `localhost` is recommended.
+
+When the HTTP monitoring endpoint is enabled you can also select to **Enable profiling at `/debug/pprof`**. This controls whether the {agent} exposes the `/debug/pprof/` endpoints together with the monitoring endpoints.
+
+The heap profiles available from `/debug/pprof/` are included in <<elastic-agent-diagnostics-command,{agent} diagnostics>> by default. CPU profiles are also included when the `--cpu-profile` option is included. For full details about the profiles exposed by `/debug/pprof/` refer to the link:https://pkg.go.dev/net/http/pprof[pprof package documentation].
+
+Profiling at `/debug/pprof` is disabled by default. Data produced by these endpoints can be useful for debugging but present a security risk. It's recommended to leave this option disabled if the monitoring endpoint is accessible over a network.
+
+**Diagnostics rate limiting**
+
+You can set a rate limit for the action handler for diagnostics requests coming from {fleet}. The setting affects only {fleet}-managed {agents}. By default, requests are limited to an interval of `1m` and a burst value of `1`. This setting does not affect diagnostics collected through the CLI.
+
+**Diagnostics file upload**
+
+This setting configures retries for the file upload client handling diagnostics requests coming from {fleet}. The setting affects only {fleet}-managed {agents}. By default, a maximum of `10` retries are allowed with an initial duration of `1s` and a backoff duration of `1m`. The client may retry failed requests with exponential backoff.
 
 [discrete]
 [[change-policy-output]]
@@ -413,22 +453,6 @@ Select the name of the policy you want to edit.
 . Click the **Settings** tab and scroll to **Advanced settings**.
 
 . Set **Limit CPU usage** as needed. For example, to limit Go processes supervised by {agent} to two operating system threads each, set this value to `2`.
-
-[discrete]
-[[agent-policy-http-monitoring]]
-== Override the default monitoring port
-
-You can override the default port that {agent} uses to send monitoring data. It's useful to be able to adjust this setting if you have an application running on the machine on which the agent is deployed, and that is using the same port.
-
-. In {fleet}, click **Agent policies**.
-Select the name of the policy you want to edit.
-
-. Click the **Settings** tab and scroll to **Advanced settings**.
-
-//. Set **Agent HTTP monitoring** setting to enabled, and then specify a host and port for the monitoring data output.
-. Specify a host and port for the monitoring data output.
-
-//. Enable **buffer.enabled** if you'd like {agent} and {beats} to collect metrics into an in-memory buffer and expose these through a `/buffer` endpoint. This data can be useful for debugging or if the {agent} has issues communicating with {es}. Enabling this option may slightly increase process memory usage.
 
 [discrete]
 [[agent-policy-log-level]]

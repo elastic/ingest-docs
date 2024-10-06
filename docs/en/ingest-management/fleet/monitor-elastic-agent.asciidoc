@@ -311,7 +311,7 @@ This will generate an alert when one or more agents are reported by the `fleet.a
 ** SIZE: 100
 . Set **Check every** to the frequency at which the rule condition should be evaluated. The default setting is one minute.
 . Select an action to occur when the rule conditions are met. For example, to set the alert to send an email when an alert occurs, select the Email connector type and specify:
-** Email connector: `Elastic-Cloud-SMPT`
+** Email connector: `Elastic-Cloud-SMTP`
 ** Action frequency: `For each alert` and `On check intervals`
 ** Run when: `Query matched`
 ** To: <the recipient email address>

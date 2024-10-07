@@ -1105,15 +1105,18 @@ to remove files.
 
 [IMPORTANT]
 ====
-Be sure to run the `uninstall` command from the directory where {agent} is installed and not from the directory where you previously ran the `install` command.
+Be sure to run the `uninstall` command from a directory outside of where {agent} is installed.
 
---
+For example, on a Windows system the install location is `C:\Program Files\Elastic\Agent`. Run the uninstall command from `C:\Program Files\Elastic` or `\tmp`, or even your default home directory:
 
-include::{ingest-docs-root}/docs/en/ingest-management/tab-widgets/uninstall-widget.asciidoc[]
-
---
+[source,shell]
+----
+C:\"Program Files"\Elastic\Agent\elastic-agent.exe uninstall
+----
 
 ====
+
+include::{ingest-docs-root}/docs/en/ingest-management/tab-widgets/uninstall-widget.asciidoc[]
 
 [discrete]
 === Synopsis

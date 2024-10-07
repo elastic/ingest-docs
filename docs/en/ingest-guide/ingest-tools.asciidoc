@@ -1,0 +1,93 @@
+[[ingest-tools]]
+== Tools for ingesting data 
+
+// Iterative messaging as our recommended strategy morphs. 
+// This section is the summary. "Here's the story _now_." 
+// Hint at upcoming changes, but do it cautiously and responsibly. 
+// Modular and co-located to make additions/updates/deprecations easier as our story matures.
+
+Elastic and others offer tools to help you get your data from the original data source into {es}.
+Some tools are best suited for certain data sources, and others are multi-purpose.  
+
+Elastic agent and Elastic integrations::
+You can install a single Elastic Agent and collect a variety of data types from a single host computer.  
+You can manage all of your agents and policies with the Fleet UI in {kib}. 
++
+Use Elastic Agent with one of hundreds of Elastic integrations to simplify collecting, transforming, and visualizing data. 
+Integrations include default ingestion rules, dashboards, and visualizations to start analyzing your data right away. 
+Check out the {integrations-docs}/all_integrations[Integration quick reference] to search for available integrations that can reduce your time to value.  
++
+Elastic Agent is the best approach for collecting timestamped data for most data sources and use cases. 
+If you want to use the features of Elastic Agent but need additional processing, consider Agent processors or Logstash.
+//ToDo: Add info on agent processors, Logstash inputs/filters/output, and Logstash integration filter. 
++ 
+**Beats.** Beats are Elastic's original lightweight data shippers, and their capabilities live on in Elastic Agent.
+When you use Elastic Agent, you're getting core Beats functionality and more added features. 
+Beats requires that you install a separate Beat for each type of data you want to collect. 
+A single Elastic Agent installed on a host can collect multiple types of data.  
++
+Best practice: Use Elastic Agent whenever possible. 
+If your data source is not yet supported by Elastic Agent, use Beats
+Check out Beats and Agent https://www.elastic.co/guide/en/fleet/current/beats-agent-comparison.html#additional-capabilities-beats-and-agent[capabilities comparison] for more info. 
+
+OpenTelemetry (OTel) collectors:: 
+link:https://opentelemetry.io/docs[OpenTelemetry] is a vendor-neutral observability framework for collecting, processing, and exporting telemetry data.
+Elastic is a member of the Cloud Native Computing Foundation (CNCF) and active contributor to the OpenTelemetry project. 
++
+In addition to supporting upstream OTel development, Elastic provides link:https://github.com/elastic/opentelemetry[Elastic Distributions of OpenTelemetry], specifically designed to work with Elastic Observability. 
+
+
+Logstash::
+{ls} is an open source data collection engine that you can use to extend Elastic integrations. 
+It supports a wide variety of data sources, and can dynamically unify data from various sources and normalize the data into destinations of your choice.
++
+{ls} can collect data using a variety of {ls} input plugins, enrich and transform the data with {ls} filter plugins, and output the data to {es} and other destinations using the {ls} output plugins.
+
+You can use Logstash to extend Elastic Agent for advanced use cases, such as data routed to multiple destinations or when you need to make your data persistent.
+
+* {ls} input for when no integration is available
+* {ls} integrations filter for advanced processing 
+
+TIP: 
+
+If an integration is available for your datasource, start with Elastic Agent + integration. 
+
+Use Logstash if there's no integration for your data source or for advanced processing:
+
+Use {ls} when: 
+
+* no integration (use Logstash input)
+* an Elastic integration exists, but you need advanced processing between the Elastic integration and {es}:
+
+Advanced use cases solved by {ls}:
+
+* {ls} for [data enrichment]https://www.elastic.co/guide/en/ingest/current/ls-enrich.html before sending data to {es}
+* [{ls} Persistent Queue (PQ) for buffering]https://www.elastic.co/guide/en/ingest/current/lspq.html
+* [{ls} as a proxy]https://www.elastic.co/guide/en/ingest/current/ls-networkbridge.html when there are network restrictions that prevent connections between Elastic Agent and {es}
+* [{ls} for routing data to multiple {es} clusters and additional destinations]https://www.elastic.co/guide/en/ingest/current/ls-multi.html
+* data persistence 
+
+
+Language clients:: 
+Use an Elastic language client to send **application data**, such as from NodeJS or Python, directly to {es}.
+//ToDo: Figure out trademark considerations.
+
+APIs::
+Use the {es} document APIs to index **documents** directly into {es}.
+
+File uploader::
+Use the {kib} file uploader to index **single files** into {es}.
+This tool can be helpful for testing with small numbers of files. 
+
+Web crawler::
+Use the Elastic web crawler to index **web page content**.
+
+Connectors::
+Use connectors to index **data from third-party sources**, such as Amazon S3, GMail, Outlook, and Salesforce.
+//ToDo: Figure out trademark considerations. 
+
+Elasticsearch ingest pipelines::
+Should we discuss native ingest pipelines?
+
+Elastic serverless forwarder::
+The Elastic Serverless Forwarder is an Amazon Web Services (AWS) Lambda function that ships logs from your AWS environment to {es}.

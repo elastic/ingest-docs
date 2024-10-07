@@ -1,0 +1,44 @@
+[[ingest-for-solutions]]
+== Ingesting data for Elastic solutions
+
+
+
+[discrete]
+[[ingest-for-obs]]
+=== Observability
+Monitor and gain insights
+
+* Logs
+* Metrics
+* Application traces
+
+Add links to targeted ingest resources in Observability docs
+
+[discrete]
+[[ingest-for-security]]
+=== Security 
+Detect and respond to threats
+
+* Logs
+* Metrics
+* SIEM
+* Endpoint
+* Files
+
+
+
+https://www.elastic.co/guide/en/security/current/ingest-data.html[Ingest data into Elastic Security]:
+
+* Elastic Agent + integrations (spotlight Defend integration)
+* Beats
+* Elastic Agent from Splunk
+* Third-party collectors + ECS
+
+
+[discrete]
+[[ingest-for-search]]
+== Search 
+
+* https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html[Adding data with APIs]
+* https://www.elastic.co/guide/en/fleet/current/beats-agent-comparison.html#additional-capabilities-beats-and-agent[Elasticsearch ingest pipelines]
+

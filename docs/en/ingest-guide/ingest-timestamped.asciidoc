@@ -1,0 +1,33 @@
+[[intro-timeseries]]
+== Ingesting timeseries data 
+
+Timestamped data: 
+The preferred way to index timestamped data is to use Elastic Agent. Elastic Agent is a single, unified way to add monitoring for logs, metrics, and other types of data to a host. It can also protect hosts from security threats, query data from operating systems, and forward data from remote services or hardware. Each Elastic Agent based integration includes default ingestion rules, dashboards, and visualizations to start analyzing your data right away. Fleet Management enables you to centrally manage all of your deployed Elastic Agents from Kibana.
+
+If no Elastic Agent integration is available for your data source, use Beats to collect your data. Beats are data shippers designed to collect and ship a particular type of data from a server. You install a separate Beat for each type of data to collect. Modules that provide default configurations, Elasticsearch ingest pipeline definitions, and Kibana dashboards are available for some Beats, such as Filebeat and Metricbeat. No Fleet management capabilities are provided for Beats.
+
+If neither Elastic Agent or Beats supports your data source, use Logstash. Logstash is an open source data collection engine with real-time pipelining capabilities that supports a wide variety of data sources. You might also use Logstash to persist incoming data to ensure data is not lost if there’s an ingestion spike, or if you need to send the data to multiple destinations.
+
+---> Basic diagram 
+
+[discrete]
+=== Basic use case: Integrations to ES
+
+Reiterate Integrations as basic ingest use case
+
+ToDo: evaluate terminology (basic???)
+
+
+[discrete]
+=== Advanced use case: Integration to Logstash to ES
+
+Highlight logstash-filter-elastic_agent capabilities
+
+
+[discrete]
+=== Other advanced use cases (from decision tree)
+
+* Agent + Agent processors???
+* Agent + Runtime fields???
+
+

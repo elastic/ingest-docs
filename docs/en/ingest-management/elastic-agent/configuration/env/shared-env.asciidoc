@@ -17,6 +17,28 @@ OPTIONAL INFO AND EXAMPLE
 
 // =============================================================================
 
+// tag::elastic-agent-cert[]
+|
+[id="env-{type}-elastic-agent-cert"]
+`ELASTIC_AGENT_CERT`
+
+| (string) The path to the mutual TLS client certificate that {agent} will use to connect to {fleet-server}.
+
+// end::elastic-agent-cert[]
+
+// =============================================================================
+
+// tag::elastic-agent-cert-key[]
+|
+[id="env-{type}-elastic-agent-cert-key"]
+`ELASTIC_AGENT_CERT_KEY`
+
+| (string) The path to the mutual TLS private key that {agent} will use to connect to {fleet-server}.
+
+// end::elastic-agent-cert-key[]
+
+// =============================================================================
+
 // tag::elastic-agent-tag[]
 |
 [id="env-{type}-elastic-agent-tag"]
@@ -26,21 +48,6 @@ OPTIONAL INFO AND EXAMPLE
 You can use these tags to filter the list of agents in {fleet}.
 
 // end::elastic-agent-tag[]
-
-// =============================================================================
-
-// tag::kibana-fleet-setup[]
-|
-[id="env-{type}-kibana-fleet-setup"]
-`KIBANA_FLEET_SETUP`
-
-| (int) Set to `1` to enable {fleet} setup.
-Enabling {fleet} is required before {fleet-server} will start.
-When this action is not performed, a user must manually log in to {kib} and visit the {fleet} page to enable setup.
-
-*Default:* none
-
-// end::kibana-fleet-setup[]
 
 // =============================================================================
 
@@ -102,6 +109,20 @@ contains your CA's certificate.
 *Default:* `""`
 
 // end::kibana-fleet-ca[]
+
+// =============================================================================
+
+// tag::fleet-force[]
+|
+[id="env-{type}-fleet-force"]
+`FLEET_FORCE`
+
+| (bool) Set to `true` to force overwrite of the current {agent} configuration without prompting for confirmation.
+This flag is helpful when using automation software or scripted deployments.
+
+*Default:* `false`
+
+// end::fleet-force[]
 
 // =============================================================================
 
@@ -273,6 +294,21 @@ Overrides the port defined in the policy.
 
 // =============================================================================
 
+// tag::fleet-server-client-auth[]
+|
+[id="env-{type}-fleet-server-client-auth"]
+`FLEET_SERVER_CLIENT_AUTH`
+
+| (string) One of `none`, `optional`, or `required`.
+{fleet-server}'s client authentication option for client mTLS connections.
+If `optional` or `required` is specified, client certificates are verified using CAs.
+
+*Default:* `none`
+
+// end::fleet-server-client-auth[]
+
+// =============================================================================
+
 // tag::fleet-server-es-ca-trusted-fingerprint[]
 |
 [id="env-{type}-fleet-server-es-ca-trusted-fingerprint"]
@@ -285,6 +321,68 @@ by {agent} for communication. This flag is required when using self-signed certi
 *Default:* `""`
 
 // end::fleet-server-es-ca-trusted-fingerprint[]
+
+// =============================================================================
+
+// tag::fleet-server-es-cert[]
+|
+[id="env-{type}-fleet-server-es-cert"]
+`FLEET_SERVER_ES_CERT`
+
+| (string) The path to the mutual TLS client certificate that {fleet-server} will use to connect to {es}.
+
+*Default:* `""`
+
+// end::fleet-server-es-cert[]
+
+// =============================================================================
+
+// tag::fleet-server-es-cert-key[]
+|
+[id="env-{type}-fleet-server-es-cert-key"]
+`FLEET_SERVER_ES_CERT_KEY`
+
+| (string) The path to the mutual TLS private key that {fleet-server} will use to connect to {es}.
+
+*Default:* `""`
+
+// end::fleet-server-es-cert-key[]
+
+// =============================================================================
+
+// tag::fleet-server-insecure-http[]
+|
+[id="env-{type}-fleet-server-insecure-http"]
+`FLEET_SERVER_INSECURE_HTTP`
+
+| (bool) When `true`, {fleet-server} is exposed over insecure or unverified HTTP.
+Setting this to `true` is not recommended.
+
+*Default:* `false`
+
+// end::fleet-server-insecure-http[]
+
+// =============================================================================
+
+// tag::fleet-daemon-timeout[]
+|
+[id="env-{type}-fleet-daemon-timeout"]
+`FLEET_DAEMON_TIMEOUT`
+
+| (duration) Set to indicate how long {fleet-server} will wait during the bootstrap process for {elastic-agent}.
+
+// end::fleet-daemon-timeout[]
+
+// =============================================================================
+
+// tag::fleet-server-timeout[]
+|
+[id="env-{type}-fleet-server-timeout"]
+`FLEET_SERVER_TIMEOUT`
+
+| (duration) Set to indicate how long {agent} will wait for {fleet-server} to check in as healthy.
+
+// end::fleet-server-timeout[]
 
 // =============================================================================
 

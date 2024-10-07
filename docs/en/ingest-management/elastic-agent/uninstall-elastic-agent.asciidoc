@@ -9,7 +9,7 @@ To uninstall {agent}, run the `uninstall` command from the directory where
 
 [IMPORTANT]
 ====
-Be sure to run the `uninstall` command from the directory outside where {agent} is installed.
+Be sure to run the `uninstall` command from a directory outside of where {agent} is installed.
 
 For example, on a Windows system the install location is `C:\Program Files\Elastic\Agent`. Run the uninstall command from `C:\Program Files\Elastic` or `\tmp`, or even your default home directory:
 

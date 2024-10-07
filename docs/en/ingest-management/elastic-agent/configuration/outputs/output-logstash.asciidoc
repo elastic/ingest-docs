@@ -32,8 +32,9 @@ To receive the events in {ls}, you also need to create a {ls} configuration pipe
 The {ls} configuration pipeline listens for incoming {agent} connections,
 processes received events, and then sends the events to {es}.
 
-The following example configures a {ls} pipeline that listens on port `5044` for
-incoming {agent} connections and routes received events to {es}:
+The following {ls} pipeline definition example configures a pipeline that listens on port `5044` for
+incoming {agent} connections and routes received events to {es}.
+
 
 [source,yaml]
 ----
@@ -41,19 +42,28 @@ input {
   elastic_agent {
     port => 5044
     enrich => none # don't modify the events' schema at all
-    # or minimal change, add only ssl and source metadata
-    # enrich => [ssl_peer_metadata, source_metadata]
+    ssl => true
+    ssl_certificate_authorities => ["<ca_path>"]
+    ssl_certificate => "<server_cert_path>"
+    ssl_key => "<server_cert_key_in_pkcs8>"
+    ssl_verify_mode => "force_peer"
   }
 }
 
 output {
   elasticsearch {
     hosts => ["http://localhost:9200"] <1>
+    # cloud_id => "..." 
     data_stream => "true"
+    api_key => "<api_key>" <2>
+    data_stream => true
+    ssl => true
+    # cacert => "<elasticsearch_ca_path>"
   }
 }
 ----
 <1> The {es} server and the port (`9200`) where {es} is running.
+<2> The API Key used by {ls} to ship data to the destination data streams.
 
 For more information about configuring {ls}, refer to
 {logstash-ref}/configuration.html[Configuring {ls}] and

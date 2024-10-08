@@ -18,10 +18,10 @@ Integrations include default ingestion rules, dashboards, and visualizations to 
 Check out the {integrations-docs}/all_integrations[Integration quick reference] to search for available integrations that can reduce your time to value.  
 +
 Elastic Agent is the best approach for collecting timestamped data for most data sources and use cases. 
-If you want to use the features of Elastic Agent but need additional processing, consider Agent processors or Logstash.
+If you want to use the features of Elastic Agent but need additional processing, consider adding Agent processors or Logstash.
 //ToDo: Add info on agent processors, Logstash inputs/filters/output, and Logstash integration filter. 
 + 
-**Beats.** Beats are Elastic's original lightweight data shippers, and their capabilities live on in Elastic Agent.
+**Beats.** Beats are the original Elastic lightweight data shippers, and their capabilities live on in Elastic Agent.
 When you use Elastic Agent, you're getting core Beats functionality and more added features. 
 Beats requires that you install a separate Beat for each type of data you want to collect. 
 A single Elastic Agent installed on a host can collect multiple types of data.  
@@ -36,40 +36,35 @@ Elastic is a member of the Cloud Native Computing Foundation (CNCF) and active c
 +
 In addition to supporting upstream OTel development, Elastic provides link:https://github.com/elastic/opentelemetry[Elastic Distributions of OpenTelemetry], specifically designed to work with Elastic Observability. 
 
-
-Logstash::
-{ls} is an open source data collection engine that you can use to extend Elastic integrations. 
-It supports a wide variety of data sources, and can dynamically unify data from various sources and normalize the data into destinations of your choice.
+Logstash:: 
+{ls} is a versatile open source data ETL (extract, transform, load) engine that can expand your ingest capabilities.
+{ls} can _collect data_ from a wide variety of data sources with {ls} link:{logstash-ref}/input-plugins.html[input
+plugins], _enrich and transform_ the data with {ls} link:{logstash-ref}/filter-plugins.html[filter plugins], and _output_ the
+data to {es} and other destinations with the {ls} link:{logstash-ref}/output-plugins.html[output plugins].
+Many users never need to use {ls}, but it's there if you need it. 
 +
-{ls} can collect data using a variety of {ls} input plugins, enrich and transform the data with {ls} filter plugins, and output the data to {es} and other destinations using the {ls} output plugins.
+One of the most common {ls} use cases is link:{logstash-ref}/ea-integrations.html[extending Elastic integrations].
+You can take advantage of the extensive, built-in capabilities of Elastic Integrations, and
+then use {ls} for additional data processing before sending the data on to {es}. 
++
+{ls} can help with advanced use cases such as the need for additional
+link:https://www.elastic.co/guide/en/ingest/current/ls-enrich.html[data
+enrichment],  
+link:https://www.elastic.co/guide/en/ingest/current/lspq.html[persistence or
+buffering],
+link:https://www.elastic.co/guide/en/ingest/current/ls-networkbridge.html[proxying]
+to bridge network connections, or the ability to route data to
+link:https://www.elastic.co/guide/en/ingest/current/ls-multi.html[multiple
+destinations].
 
-You can use Logstash to extend Elastic Agent for advanced use cases, such as data routed to multiple destinations or when you need to make your data persistent.
-
-* {ls} input for when no integration is available
-* {ls} integrations filter for advanced processing 
-
-TIP: 
-
-If an integration is available for your datasource, start with Elastic Agent + integration. 
-
-Use Logstash if there's no integration for your data source or for advanced processing:
-
-Use {ls} when: 
-
-* no integration (use Logstash input)
-* an Elastic integration exists, but you need advanced processing between the Elastic integration and {es}:
-
-Advanced use cases solved by {ls}:
-
-* {ls} for [data enrichment]https://www.elastic.co/guide/en/ingest/current/ls-enrich.html before sending data to {es}
-* [{ls} Persistent Queue (PQ) for buffering]https://www.elastic.co/guide/en/ingest/current/lspq.html
-* [{ls} as a proxy]https://www.elastic.co/guide/en/ingest/current/ls-networkbridge.html when there are network restrictions that prevent connections between Elastic Agent and {es}
-* [{ls} for routing data to multiple {es} clusters and additional destinations]https://www.elastic.co/guide/en/ingest/current/ls-multi.html
-* data persistence 
-
+Elasticsearch ingest pipelines::
+{es} link:{ref}/ingest.html[ingest pipelines] let you complete common transformations on your data before the data is indexed. 
+//ToDo: Explain when to use
 
 Language clients:: 
-Use an Elastic language client to send **application data**, such as from NodeJS or Python, directly to {es}.
+link:https://www.elastic.co/guide/en/elasticsearch/client/index.html[Elastic
+language clients] help you send **application data**, such as from NodeJS or Python,
+directly to {es} for search and analysis. 
 //ToDo: Figure out trademark considerations.
 
 APIs::
@@ -86,8 +81,19 @@ Connectors::
 Use connectors to index **data from third-party sources**, such as Amazon S3, GMail, Outlook, and Salesforce.
 //ToDo: Figure out trademark considerations. 
 
-Elasticsearch ingest pipelines::
-Should we discuss native ingest pipelines?
-
 Elastic serverless forwarder::
 The Elastic Serverless Forwarder is an Amazon Web Services (AWS) Lambda function that ships logs from your AWS environment to {es}.
+
+[discrete]
+[[ingest-addl-proc]]
+== Tools for additional processing
+
+* link:[Agent processors] for sanitizing or enriching raw data at the source
+* {es} link:{ref}/[ingest pipelines] for enriching incoming data 
+// ToDo: Decide if ingest pipelines should be included for additional processing. 
+// Decision tree lists ECS-ifying or normalizing field data, but that should be handled by Agent.
+// Does that leave enriching data as the only enrichment use case?
+// Does the Logstash elastic_integration filter remove that one, also?
+* {es} link:{ref}/runtime.html[runtime fields]
+* {ls} link:[elastic_integration filter]
+* {ls} link:[filter plugins]

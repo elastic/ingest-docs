@@ -8,7 +8,12 @@ Q: What's the best option for ingesting data?
 Q: What's the role of Logstash `filter-elastic-integration`? 
 
 
-// Temporary parking lot to capture outstanding questions and notes.
+
+.WORK IN PROGRESS
+****
+Temporary parking lot to capture outstanding questions and notes.
+****
+
 
 
 Also cover (here or in general outline): 

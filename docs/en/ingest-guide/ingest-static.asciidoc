@@ -3,6 +3,13 @@
 
 Describe general content (non-timestamped)and give examples. 
 
+.WORK IN PROGRESS
+****
+Progressive disclosure: Start with basic use cases and work up to advanced processing
+
+Possibly repurpose and use ingest decision tree with Beats removed? 
+****
+
 [discrete]
 === Basic use cases
 

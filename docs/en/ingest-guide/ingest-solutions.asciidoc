@@ -1,7 +1,10 @@
 [[ingest-for-solutions]]
 == Ingesting data for Elastic solutions
 
-
+.WORK IN PROGRESS
+****
+For MVP: Add descriptions and links to existing solutions content. 
+****
 
 [discrete]
 [[ingest-for-obs]]

@@ -51,7 +51,7 @@ structure of the documents sent from {agent} to `kafka` must not be modified by 
 We suggest disabling `ecs_compatibility` on both the `kafka` input and the `json` codec in order
 to make sure the input doesn't edit the fields and their contents.
 
-The data streams setup by the integrations expect to receive events having the same structure and
+The data streams set up by the integrations expect to receive events having the same structure and
 field names as they were sent directly from an {agent}.
 
 Refer to <<logstash-output,{ls} output for {agent}>> documentation for more details.

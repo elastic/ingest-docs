@@ -1,0 +1,30 @@
+[[install-on-kubernetes-using-helm]]
+= Install {agent} on Kubernetes using Helm
+
+Starting with {stack} version 8.16, a Helm chart is available for installing {agent} in a Kubernetes environment. Using a Helm chart to install and manage your agents offers a number of advantages:
+
+* Simplified deployment - The installation and configuration processes are streamlined, requiring fewer steps and reduced manual effort.
+* Availability in marketplaces - The helm chart allows for easy installation in a managed Kubernetes service such as EKS.
+* Easy ugrades and rollbacks - The helm chart enables easier lifecycle management, both easy upgrades to newer versions and quick rollbacks when needed.
+
+Features of the Helm-based {agent} install include:
+
+* Support for both standalone and {fleet}-managed {agent}
+* For standalone agents, a built-in Kubernetes policy to simplify Kubernetes monitoring configuration (for {fleet}-managed agents, the Kubernetes integration is configured through the agent policy)
+* For standaone agents, support for custom integrations (for {fleet}-managed agents, integrations configured through {fleet})
+* Support for connections to {es} outputs using with authentication using either a username and password, an API key, or a secret stored inside of your agent configuration.
+* Easy switching between privileged (`root`) and unprivileged {agent} deployments
+* Support for {stack} deployments on {eck}
+
+IMPORTANT: Currently, for version 8.16, the {agent} Helm chart is available from inside the elastic/elastic-agent GitHub repo. It's planned to soon make the {agent} Helm chart available from the Elastic Helm repository.
+
+//Eventually we'll add something like "You can add the {agent} Helm chart to your Helm repository list by running the following command:"
+// command...
+
+For the steps to install and upgrade {agent} using Helm, see the following walk-through examples:
+
+* <<example-kubernetes-standalone-agent-helm>>
+* <<example-kubernetes-fleet-managed-agent-helm>>
+
+
+

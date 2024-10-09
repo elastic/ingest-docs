@@ -1,7 +1,13 @@
 [[example-kubernetes-fleet-managed-agent-helm]]
 = Example: Install {fleet}-managed {agent} on Kubernetes using Helm
 
-This example demonstrates how to install {fleet}-managed {agent} on a Kubernetes system using a Helm chart, in order to gather Kubernetes metrics and send them to an {es} cluster in an {ecloud} deployment.
+preview::[]
+
+This example demonstrates how to install {fleet}-managed {agent} on a Kubernetes system using a Helm chart, gather Kubernetes metrics and send them to an {es} cluster in {ecloud}, and then view visualizations of those metrics in {kib}.
+
+For an overview of the {agent} Helm chart and its benefits, refer to <<install-on-kubernetes-using-helm>>.
+
+This guide will take you through the following steps:
 
 * <<agent-fleet-managed-helm-example-install-agent>>
 * <<agent-fleet-managed-helm-example-install-integration>>
@@ -15,9 +21,8 @@ This example demonstrates how to install {fleet}-managed {agent} on a Kubernetes
 To get started, you need:
 
 * A local install of the link:https://helm.sh/[Helm] Kubernetes package manager.
-* An {ess} deployment on version 8.16 or higher.
-* An {es} API key. Refer to <<create-api-key-standalone-agent,Create API keys for standalone agents>> for the steps to create a new API key.
-* An active Kubernetes cluster. For this example we're using a local Kubernetes test environment using Kind.
+* An link:{ess-trial}[{ecloud}] hosted {es} cluster on version 8.16 or higher.
+* An active Kubernetes cluster.
 * A local clone of the link:https://github.com/elastic/elastic-agent[elastic/elastic-agent] GitHub repository.
 
 [discrete]
@@ -26,24 +31,28 @@ To get started, you need:
 
 . Open your {ecloud} deployment, and from the navigation menu select **Fleet**.
 . From the **Agents** tab, select **Add agent**.
-. In the **Add agent** UI, specify a policy name and select **Create policy**. Leave the **Collect system logs and metrics** selected.
+. In the **Add agent** UI, specify a policy name and select **Create policy**. Leave the **Collect system logs and metrics** option selected.
 . Scroll down in the **Add agent** flyout to the **Install Elastic Agent on your host** section.
 . Select the **Linux TAR** tab and copy the values for `url` and `enrollment-token`. You'll use these when you run the `helm install` command.
 . Open a terminal shell and change into a directory in your local clone of the `elastic-agent` repo.
-. Copy the command below. Before running it you'll need to make a couple of changes.
+. Copy the following command. Before running it you'll need to make a couple of changes.
 +
 [source,sh]
 ----
-helm install demo ./deploy/helm/elastic-agent --set agent.fleet.enabled=true --set agent.fleet.url=<Fleet-URL> --set agent.fleet.token=<Fleet-token> --set agent.fleet.preset=perNode
+helm install demo ./deploy/helm/elastic-agent \
+--set agent.fleet.enabled=true \
+--set agent.fleet.url=<Fleet-URL> \
+--set agent.fleet.token=<Fleet-token> \
+--set agent.fleet.preset=perNode
 ----
 +
-The command has the following properties:
+Note that the command has the following properties:
 
 * `helm install` runs the Helm CLI install tool.
 * `demo` gives a name to the installed chart. You can choose any name.
-* `./deploy/helm/elastic-agent` is a local path to the Helm chart (once the Helm chart has been published, this path can be to a public URL).
-* `--set agent.fleet.enabled=true` enables {fleet}-managed {agent} by overriding the default setting `agent.fleet.enabled` in the {agent} link:https://github.com/elastic/elastic-agent/blob/main/deploy/helm/elastic-agent/values.yaml[values.yaml] file, changing it to `true`.
-* `--set agent.fleet.url=<Fleet-URL>` sets the address where {agent} will connect to {fleet} in your {ecloud} deployment over port 443 (again, overriding the setting as defined in the {agent} link:https://github.com/elastic/elastic-agent/blob/main/deploy/helm/elastic-agent/values.yaml[values.yaml] file).
+* `./deploy/helm/elastic-agent` is a local path to the Helm chart to install (in time it's planned to have a public URL for the chart).
+* `--set agent.fleet.enabled=true` enables {fleet}-managed {agent}. The CLI parameter overrides the default `false` value for `agent.fleet.enabled` in the {agent} link:https://github.com/elastic/elastic-agent/blob/main/deploy/helm/elastic-agent/values.yaml[values.yaml] file.
+* `--set agent.fleet.url=<Fleet-URL>` sets the address where {agent} will connect to {fleet} in your {ecloud} deployment, over port 443 (again, overriding the value set by default in the {agent} link:https://github.com/elastic/elastic-agent/blob/main/deploy/helm/elastic-agent/values.yaml[values.yaml] file).
 * `--set agent.fleet.token=<Fleet-token>` sets the enrollment token that {agent} uses to authenticate with {fleet}.
 * `--set agent.fleet.preset=perNode` enables Kubernetes metrics on `per node` basis. You can alternatively set cluster wide metrics (`clusterWide`) or kube-state-metrics (`ksmSharded`).
 +
@@ -51,19 +60,23 @@ The command has the following properties:
 TIP: For a full list of all available YAML settings and descriptions, refer to the link:https://github.com/elastic/elastic-agent/tree/main/deploy/helm/elastic-agent[{agent} Helm Chart Readme].
 --
 . Update the command to replace:
-.. `<Fleet-URL>` with the value for `url` that you copied earlier.
-.. `<Fleet-token>` with value for `enrollment-token` that you copied earlier.
+.. `<Fleet-URL>` with the URL that you copied earlier.
+.. `<Fleet-token>` with the enrollment token that you copied earlier.
 +
 After your updates, the command should look something like this:
 +
 [source,sh]
 ----
-helm install demo ./deploy/helm/elastic-agent --set agent.fleet.enabled=true --set agent.fleet.url=https://256575858845283f9eea4b2d5265d2b4.fleet.us-central1.gcp.foundit.no:443 --set agent.fleet.token=eSVvFDUvSUNPFldFdhhZNFwvS5g6XHMxY3y0PFEWB1eFF1YedUQ1NWFXwr== --set agent.fleet.preset=perNode
+helm install demo ./deploy/helm/elastic-agent \
+--set agent.fleet.enabled=true \
+--set agent.fleet.url=https://256575858845283fxxxxxxxd5265d2b4.fleet.us-central1.gcp.foundit.no:443 \
+--set agent.fleet.token=eSVvFDUvSUNPFldFdhhZNFwvS5xxxxxxxxxxxxFEWB1eFF1YedUQ1NWFXwr== \
+--set agent.fleet.preset=perNode
 ----
 
 . Run the command.
 +
-The command output should confirm that three {agents} have been installed as well as the Kubernetes integration:
+The command output should confirm that {agent} has been installed:
 +
 [source,sh]
 ----
@@ -73,7 +86,7 @@ Installed agent:
 ...
 ----
 
-. Run the `kubectl get pods -n default` command to confirm that the {agent} pods are running:
+. Run the `kubectl get pods -n default` command to confirm that the {agent} pod is running:
 +
 [source,sh]
 ----
@@ -81,7 +94,7 @@ NAME                       READY   STATUS    RESTARTS      AGE
 agent-pernode-demo-86mst   1/1     Running   0          12s
 ----
 
-. In the **Add agent** flyout, wait a check for confirmation that {agent} has successfully enrolled with {fleet} and that data is flowing (you may need to wait for a minute or so):
+. In the **Add agent** flyout, wait a minute or so for confirmation that {agent} has successfully enrolled with {fleet} and that data is flowing:
 +
 [role="screenshot"]
 image::images/helm-example-nodes-enrollment-confirmation.png[Screen capture of Add Agent UI showing that the agent has enrolled in Fleet]
@@ -90,7 +103,7 @@ image::images/helm-example-nodes-enrollment-confirmation.png[Screen capture of A
 
 . Select the agent to view its details.
 
-. On the **Agent details** tab, on the **Integrations** pane, expand `system-1` to confirm that logs and metrics are incoming. You can click either the `Logs` or `Metrics` links to view details.
+. On the **Agent details** tab, on the **Integrations** pane, expand `system-1` to confirm that logs and metrics are incoming. You can click either the `Logs` or `Metrics` link to view details.
 +
 [role="screenshot"]
 image::images/helm-example-nodes-logs-and-metrics.png[Screen capture of the Logs and Metrics view on the Integrations pane]
@@ -106,7 +119,8 @@ Now that you've {agent} and data is flowing, you can set up the Kubernetes integ
 . Run a search for `Kubernetes` and then select the Kubernetes integration card.
 . On the Kubernetes integration page, click **Add Kubernetes** to add the integration to your {agent} policy.
 . Scroll to the bottom of **Add Kubernetes integration** page. Under **Where to add this integration?** select the **Existing hosts** tab. On the **Agent policies** menu, select the agent policy that you created previously in the <<agent-fleet-managed-helm-example-install-agent>> steps.
-. For this example, you can leave all of the other integration settings at their default values.
++
+You can leave all of the other integration settings at their default values.
 . Click **Save and continue**. When prompted, select to **Add Elastic Agent later** since you've already added it using Helm.
 . On the Kubernetes integration page, open the **Assets** tab and select the **[Metrics Kubernetes] Pods** dashboard.
 +
@@ -114,6 +128,8 @@ On the dashboard, you can view the status of your Kubernetes pods, including met
 +
 [role="screenshot"]
 image::images/helm-example-fleet-metrics-dashboard.png[Screen capture of the Metrics Kubernetes pods dashboard]
+
+You've successfully installed {agent} using Helm, and your Kubernetes metrics data is available for viewing in {kib}.
 
 [discrete]
 [[agent-fleet-managed-helm-example-tidy-up]]
@@ -134,9 +150,3 @@ release "demo" uninstalled
 ----
 
 As a reminder, for full details about using the {agent} Helm chart refer to the link:https://github.com/elastic/elastic-agent/tree/main/deploy/helm/elastic-agent[{agent} Helm Chart Readme].
-
-
-
-
-
-

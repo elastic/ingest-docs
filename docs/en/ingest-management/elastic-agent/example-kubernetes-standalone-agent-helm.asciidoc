@@ -1,7 +1,13 @@
 [[example-kubernetes-standalone-agent-helm]]
 = Example: Install standalone {agent} on Kubernetes using Helm
 
-This example demonstrates how to install standalone {agent} on a Kubernetes system using a Helm chart, in order to gather Kubernetes metrics and send them to an {es} cluster in an {ecloud} deployment.
+preview::[]
+
+This example demonstrates how to install standalone {agent} on a Kubernetes system using a Helm chart, gather Kubernetes metrics and send them to an {es} cluster in {ecloud}, and then view visualizations of those metrics in {kib}.
+
+For an overview of the {agent} Helm chart and its benefits, refer to <<install-on-kubernetes-using-helm>>.
+
+This guide will take you through the following steps:
 
 * <<agent-standalone-helm-example-install>>
 * <<agent-standalone-helm-example-upgrade>>
@@ -15,9 +21,9 @@ This example demonstrates how to install standalone {agent} on a Kubernetes syst
 To get started, you need:
 
 * A local install of the link:https://helm.sh/[Helm] Kubernetes package manager.
-* An {ess} deployment on version 8.16 or higher.
-* An {es} API key. Refer to <<create-api-key-standalone-agent,Create API keys for standalone agents>> for the steps to create a new API key.
-* An active Kubernetes cluster. For this example we're using a local Kubernetes test environment using Kind.
+* An link:{ess-trial}[{ecloud}] hosted {es} cluster on version 8.16 or higher.
+* An <<create-api-key-standalone-agent,{es} API key>>.
+* An active Kubernetes cluster.
 * A local clone of the link:https://github.com/elastic/elastic-agent[elastic/elastic-agent] GitHub repository.
 
 [discrete]
@@ -27,22 +33,26 @@ To get started, you need:
 . Open your {ecloud} deployment, and from the navigation menu select **Manage this deployment**.
 . In the **Applications** section, copy the {es} endpoint and make a note of the endpoint value.
 . Open a terminal shell and change into a directory in your local clone of the `elastic-agent` repo.
-. Copy the command below. Before running it you'll need to make a couple of changes.
+. Copy the following command. Before running it you'll need to make a couple of changes.
 +
 [source,sh]
 ----
-helm install demo ./deploy/helm/elastic-agent --set kubernetes.enabled=true --set outputs.default.type=ESPlainAuthAPI --set outputs.default.url=<ES-endpoint>:443 --set outputs.default.api_key="API_KEY"
+helm install demo ./deploy/helm/elastic-agent \
+--set kubernetes.enabled=true \
+--set outputs.default.type=ESPlainAuthAPI \
+--set outputs.default.url=<ES-endpoint>:443 \
+--set outputs.default.api_key="API_KEY"
 ----
 +
-The command has the following properties:
+Note that the command has the following properties:
 
 * `helm install` runs the Helm CLI install tool.
 * `demo` gives a name to the installed chart. You can choose any name.
-* `./deploy/helm/elastic-agent` is a local path to the Helm chart (once the Helm chart has been published, this path can be to a public URL).
-* `--set kubernetes.enabled=true` enables the Kubernetes integration by overriding the default setting `kubernetes.enabled` in the {agent} link:https://github.com/elastic/elastic-agent/blob/main/deploy/helm/elastic-agent/values.yaml[values.yaml] file, changing it to `true`.
-* `--set outputs.default.type=ESPlainAuthAPI` sets the authentication method (again, as defined in the {agent} link:https://github.com/elastic/elastic-agent/blob/main/deploy/helm/elastic-agent/values.yaml[values.yaml] file) for the {es} output to require an API key.
-* `--set outputs.default.url=<ES-endpoint>:443` sets the address of your {ecloud} deployment for where {agent} will send its output over port 443.
-* `--set outputs.default.api_key="API_KEY` sets the API key that {agent} will use to authenticate with your {es} cluster.
+* `./deploy/helm/elastic-agent` is a local path to the Helm chart to install (in time it's planned to have a public URL for the chart).
+* `--set kubernetes.enabled=true` enables the Kubernetes integration. The CLI parameter overrides the default `false` value for `kubernetes.enabled` in the {agent} link:https://github.com/elastic/elastic-agent/blob/main/deploy/helm/elastic-agent/values.yaml[values.yaml] file.
+* `--set outputs.default.type=ESPlainAuthAPI` sets the authentication method for the {es} output to require an API key (again, overriding the value set by default in the {agent} link:https://github.com/elastic/elastic-agent/blob/main/deploy/helm/elastic-agent/values.yaml[values.yaml] file).
+* `--set outputs.default.url=<ES-endpoint>:443` sets the address of your {ecloud} deployment, where {agent} will send its output over port 443.
+* `--set outputs.default.api_key="API_KEY"` sets the API key that {agent} will use to authenticate with your {es} cluster.
 +
 --
 TIP: For a full list of all available YAML settings and descriptions, refer to the link:https://github.com/elastic/elastic-agent/tree/main/deploy/helm/elastic-agent[{agent} Helm Chart Readme].
@@ -55,7 +65,11 @@ After your updates, the command should look something like this:
 +
 [source,sh]
 ----
-helm install demo ./deploy/helm/elastic-agent --set kubernetes.enabled=true --set outputs.default.type=ESPlainAuthAPI --set outputs.default.url=https://demo.es.us-central1.gcp.foundit.no:443 --set outputs.default.api_key="A6ecaHNTJUFFcJI6esf4:5HJPLFSeBvwPS4KwSBeVEs"
+helm install demo ./deploy/helm/elastic-agent \
+--set kubernetes.enabled=true \
+--set outputs.default.type=ESPlainAuthAPI \
+--set outputs.default.url=https://demo.es.us-central1.gcp.foundit.no:443 \
+--set outputs.default.api_key="A6ecaHNTJUFFcJI6esf4:5HJPxxxxxxxPS4KwSBeVEs"
 ----
 
 . Run the command.
@@ -95,7 +109,7 @@ On the dashboard, you can view the status of your Kubernetes nodes, including me
 [role="screenshot"]
 image::images/helm-example-nodes-metrics-dashboard.png[Screen capture of the Metrics Kubernetes nodes dashboard]
 
-. On the Kubernetes integration page, open the **Assets** tab and select the **[Metrics Kubernetes] Pods** dashboard. As with the nodes dashboard, on this dashbaord you can view the status of your Kubernetes pods, including various metrics on memory, CPU, and network throughput.
+. On the Kubernetes integration page, open the **Assets** tab and select the **[Metrics Kubernetes] Pods** dashboard. As with the nodes dashboard, on this dashboard you can view the status of your Kubernetes pods, including various metrics on memory, CPU, and network throughput.
 +
 [role="screenshot"]
 image::images/helm-example-pods-metrics-dashboard.png[Screen capture of the Metrics Kubernetes pods dashboard]
@@ -112,21 +126,30 @@ In the previous install example, three {agent} nodes were installed. One of thes
 +
 [source,sh]
 ----
-helm install demo ./deploy/helm/elastic-agent --set kubernetes.enabled=true --set outputs.default.type=ESPlainAuthAPI --set outputs.default.url=<ES-endpoint>:443 --set outputs.default.api_key="API_KEY"
+helm install demo ./deploy/helm/elastic-agent \
+--set kubernetes.enabled=true \
+--set outputs.default.type=ESPlainAuthAPI \
+--set outputs.default.url=<ES-endpoint>:443 \
+--set outputs.default.api_key="API_KEY"
 ----
 
 . Update the command as follows:
 .. Change `install` to upgrade.
-.. Add a parameter `--set kubernetes.state.enabled=false`. This will override and disable the default setting `kubernetes.state` in the {agent} link:https://github.com/elastic/elastic-agent/blob/main/deploy/helm/elastic-agent/values.yaml[values.yaml] file.
+.. Add a parameter `--set kubernetes.state.enabled=false`. This will override the default `true` value for the setting `kubernetes.state` in the {agent} link:https://github.com/elastic/elastic-agent/blob/main/deploy/helm/elastic-agent/values.yaml[values.yaml] file.
 +
 [source,sh]
 ----
-helm upgrade demo ./deploy/helm/elastic-agent --set kubernetes.enabled=true --set kubernetes.state.enabled=false --set outputs.default.type=ESPlainAuthAPI --set outputs.default.url=<ES-endpoint>:443 --set outputs.default.api_key="API_KEY"
+helm upgrade demo ./deploy/helm/elastic-agent \
+--set kubernetes.enabled=true \
+--set kubernetes.state.enabled=false \
+--set outputs.default.type=ESPlainAuthAPI \
+--set outputs.default.url=<ES-endpoint>:443 \
+--set outputs.default.api_key="API_KEY"
 ----
 
 . Run the command.
 +
-The command output should confirm that now only two {agents} are installed together with the the Kubernetes integration:
+The command output should confirm that now only two {agents} are installed together with the Kubernetes integration:
 +
 [source,sh]
 ----
@@ -140,9 +163,7 @@ Installed integrations:
 ...
 ----
 
-You've upgraded your configuration to run only two {agents}, without the kube-state-metrics service.
-
-You can similarly upgrade your agent to change other settings defined in the in the {agent} link:https://github.com/elastic/elastic-agent/blob/main/deploy/helm/elastic-agent/values.yaml[values.yaml] file.
+You've upgraded your configuration to run only two {agents}, without the kube-state-metrics service. You can similarly upgrade your agent to change other settings defined in the in the {agent} link:https://github.com/elastic/elastic-agent/blob/main/deploy/helm/elastic-agent/values.yaml[values.yaml] file.
 
 [discrete]
 [[agent-standalone-helm-example-change-mode]]
@@ -159,7 +180,7 @@ agent-clusterwide-demo-77c65f6c7b-trdms   1/1     Running   0          5m18s
 agent-pernode-demo-c7d75                  1/1     Running   0          5m18s
 ----
 
-. Now, Run the `kubectl exec` command to enter one of the running {agents}, substituting the correct pod name returned from the previous command. For example:
+. Now, run the `kubectl exec` command to enter one of the running {agents}, substituting the correct pod name returned from the previous command. For example:
 +
 [source,sh]
 ----
@@ -198,11 +219,17 @@ elastic+          10  0.2  1.3 2555252 132804 ?      Sl   21:04   0:13 elastic-a
 
 . Run `exit` to leave the {agent} pod.
 
-. Run the `helm upgrade` command again, this time adding the parameter `--set agent.unprivileged=true` to override the default `false` value for that setting.
+. Run the `helm upgrade` command again, this time adding the parameter `--set agent.unprivileged=false` to override the default `true` value for that setting.
 +
 [source,sh]
 ----
-helm upgrade demo ./deploy/helm/elastic-agent --set kubernetes.enabled=true --set kubernetes.state.enabled=false --set outputs.default.type=ESPlainAuthAPI --set outputs.default.url=<ES-endpoint>:443 --set outputs.default.api_key="API_KEY" --set agent.unprivileged=false
+helm upgrade demo ./deploy/helm/elastic-agent \
+--set kubernetes.enabled=true \
+--set kubernetes.state.enabled=false \
+--set outputs.default.type=ESPlainAuthAPI \
+--set outputs.default.url=<ES-endpoint>:443 \
+--set outputs.default.api_key="API_KEY" \
+--set agent.unprivileged=false
 ----
 
 . Run the `kubectl get pods -n default` command to view the running {agent} pods:
@@ -211,7 +238,7 @@ helm upgrade demo ./deploy/helm/elastic-agent --set kubernetes.enabled=true --se
 ----
 NAME                                      READY   STATUS    RESTARTS   AGE
 agent-clusterwide-demo-77c65f6c7b-trdms   1/1     Running   0          5m18s
-agent-pernode-demo-c7d75                  1/1     Running   0          5m18s
+agent-pernode-demo-s6s7z                  1/1     Running   0          5m18s
 ----
 
 . Re-run the `kubectl exec` command to enter one of the running {agents}, substituting the correct pod name. For example:
@@ -239,7 +266,7 @@ root     149  0.0  0.0   5480  2376 pts/0    R+   23:13   0:00 ps aux
 
 . Run `exit` to leave the {agent} pod.
 
-You've upgraded the {agent} privileges to run as `root`. To change the settings back, you can re-run the `helm upgrade` command with `--set agent.unprivileged=false` to return to the default `unprivileged` mode.
+You've upgraded the {agent} privileges to run as `root`. To change the settings back, you can re-run the `helm upgrade` command with `--set agent.unprivileged=true` to return to the default `unprivileged` mode.
 
 
 [discrete]

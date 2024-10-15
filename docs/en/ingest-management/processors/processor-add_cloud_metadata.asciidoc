@@ -60,7 +60,7 @@ include::processors.asciidoc[tag=processor-limitations]
 |
 a| List of provider names to use. If `providers` is not configured,
 all providers that do not access a remote endpoint are enabled by default.
-The list of providers may alternatively be configured with the environment variable BEATS_ADD_CLOUD_METADATA_PROVIDERS,
+The list of providers may alternatively be configured with the environment variable `BEATS_ADD_CLOUD_METADATA_PROVIDERS`,
 by setting it to a comma-separated list of provider names.
 
 The list of supported provider names includes:

@@ -139,7 +139,7 @@ For full details about proxy configuration refer to <<fleet-agent-proxy-support,
 
 After an {agent} has been unenrolled in {fleet}, a number of documents about the agent are retained just in case the agent needs to be recovered at some point. You can choose to have all data related to an unenrolled agent deleted automatically.
 
-Note that this option is enabled only if the `xpack.fleet.enableDeleteUnenrolledAgents` setting is not already set to `false` in the {kibana-ref}/[{kib} settings file].
+Note that this option can also be enabled by adding the `xpack.fleet.enableDeleteUnenrolledAgents: true` setting to the {kibana-ref}/[{kib} settings file].
 
 To enable automatic deletion of unenrolled agents:
 

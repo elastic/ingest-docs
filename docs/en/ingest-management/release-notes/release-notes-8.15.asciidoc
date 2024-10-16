@@ -14,12 +14,48 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.15.3>>
+* <<release-notes-8.15.2>>
+* <<release-notes-8.15.1>>
 * <<release-notes-8.15.0>>
 
 Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.15.3 relnotes
+
+[[release-notes-8.15.3]]
+== {fleet} and {agent} 8.15.3
+
+Review important information about the {fleet} and {agent} 8.15.3 release.
+
+[discrete]
+[[security-updates-8.15.3]]
+=== Security updates
+
+{agent}::
+* Update Go version to 1.22.8. {agent-pull}5718[#5718]
+
+[discrete]
+[[enhancements-8.15.3]]
+
+=== Enhancements
+
+{agent}::
+* Adjust the default memory requests and limits for {agent} when it runs in a Kubernetes cluster. {agent-pull}5614[#5614] {agent-issue}5613[#5613] {agent-issue}4729[#4729]
+* Use a metadata watcher for ReplicaSets in the K8s provider to collect only the name and OwnerReferences, which are used to connect Pods to Deployments and DaemonSets. {agent-pull}5699[#5699] {agent-issue}5623[#5623]
+
+[discrete]
+[[bug-fixes-8.15.3]]
+=== Bug fixes
+
+{agent}::
+* Add `pprof` endpoints to the monitoring server if they're enabled in the {agent} configuration. {agent-pull}5562[#5562]
+* Stop the `elastic-agent inspect` command from printing the output configuration twice. {agent-pull}5692[#5692] {agent-issue}4471[#4471]
+
+// end 8.15.3 relnotes
 
 // begin 8.15.2 relnotes
 

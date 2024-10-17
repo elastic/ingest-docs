@@ -45,6 +45,12 @@ include::elastic-agent/elastic-agent-container.asciidoc[leveloffset=+3]
 
 include::elastic-agent/running-on-kubernetes-managed-by-fleet.asciidoc[leveloffset=+3]
 
+include::elastic-agent/install-on-kubernetes-using-helm.asciidoc[leveloffset=+3]
+
+include::elastic-agent/example-kubernetes-standalone-agent-helm.asciidoc[leveloffset=+3]
+
+include::elastic-agent/example-kubernetes-fleet-managed-agent-helm.asciidoc[leveloffset=+3]
+
 include::elastic-agent/advanced-kubernetes-managed-by-fleet.asciidoc[leveloffset=+3]
 
 include::elastic-agent/configuring-kubernetes-metadata.asciidoc[leveloffset=+3]

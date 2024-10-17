@@ -1,0 +1,18 @@
+include::{docs-root}/shared/versions/stack/{source_branch}.asciidoc[]
+include::{docs-root}/shared/attributes.asciidoc[]
+
+:doctype: book
+
+[[ingest-guide]]
+= Elastic Ingest Guide
+
+include::ingest-intro.asciidoc[]
+include::ingest-tools.asciidoc[]
+include::ingest-static.asciidoc[]
+include::ingest-timestamped.asciidoc[]
+include::ingest-solutions.asciidoc[]
+include::ingest-faq.asciidoc[]
+
+//include:: Prereqs (for using data after ingest)
+//include:: Migration for ingest
+//include:: Troubleshooting

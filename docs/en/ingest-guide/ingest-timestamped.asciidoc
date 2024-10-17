@@ -1,0 +1,104 @@
+[[intro-timeseries]]
+== Ingesting timeseries data 
+
+.WORK IN PROGRESS
+****
+Progressive disclosure: Start with basic use cases and work up to advanced processing
+
+Possibly repurpose and use ingest decision tree with Beats removed? 
+****
+
+Timestamped data: 
+The preferred way to index timestamped data is to use Elastic Agent. Elastic Agent is a single, unified way to add monitoring for logs, metrics, and other types of data to a host. It can also protect hosts from security threats, query data from operating systems, and forward data from remote services or hardware. Each Elastic Agent based integration includes default ingestion rules, dashboards, and visualizations to start analyzing your data right away. Fleet Management enables you to centrally manage all of your deployed Elastic Agents from Kibana.
+
+If no Elastic Agent integration is available for your data source, use Beats to collect your data. Beats are data shippers designed to collect and ship a particular type of data from a server. You install a separate Beat for each type of data to collect. Modules that provide default configurations, Elasticsearch ingest pipeline definitions, and Kibana dashboards are available for some Beats, such as Filebeat and Metricbeat. No Fleet management capabilities are provided for Beats.
+
+If neither Elastic Agent or Beats supports your data source, use Logstash. Logstash is an open source data collection engine with real-time pipelining capabilities that supports a wide variety of data sources. You might also use Logstash to persist incoming data to ensure data is not lost if there’s an ingestion spike, or if you need to send the data to multiple destinations.
+
+---> Basic diagram 
+
+[discrete]
+=== Basic use case: Integrations to ES
+
+Reiterate Integrations as basic ingest use case
+
+ToDo: evaluate terminology (basic???)
+
+
+[discrete]
+=== Advanced use case: Integration to Logstash to ES
+
+Highlight logstash-filter-elastic_agent capabilities
+
+
+[discrete]
+=== Other advanced use cases (from decision tree)
+
+* Agent + Agent processors???
+* Agent + Runtime fields???
+
+
+
+// CONTENT LIFTED FROM former `TOOLS`  topic
+
+
+[discrete]
+=== Elastic agent and Elastic integrations  
+The best choice for ingesting data is the _simplest option_ that _meets your needs_ and _satisfies your use case_.
+For many popular ingest scenarios, the best option is Elastic agent and Elastic integrations.
+
+* Elastic agent installed on the endpoints where you want to collect data. 
+Elastic Agent collects the data from one or more endpoints, and forwards the data to the service or location where is used. 
+* An Elastic integration to receive that data from agents 
+
+TIP: Start here!  
+Elastic Agent for data collection paired with Elastic integrations is the best ingest option for most use cases.  
+
+
+[discrete]
+=== OTel 
+Coming on strong.  Where are we now, and cautiously explain where we're going in the near term.  
+
+Open Telemetry is a leader for collecting Observability data
+
+Elastic is a supporting member. 
+We're contributing to the OTel project, and are using elastic/opentelemetry for specialized development not applicable to upstream. 
+
+* https://www.elastic.co/guide/en/observability/current/apm-open-telemetry.html
+
+Contributing to upstream and doing our on for work specific to Elastic 
+* https://github.com/open-telemetry/opentelemetry-collector-contrib
+* https://github.com/elastic/opentelemetry
+
+[discrete]
+=== Logstash
+
+{ls} is an open source data collection engine with real-time pipelining capabilities. 
+It supports a wide variety of data sources, and can dynamically unify data from disparate sources and normalize the data into destinations of your choice.
+
+{ls} can collect data using a variety of {ls} input plugins, enrich and transform the data with {ls} filter plugins, and output the data to {es} and other destinations using the {ls} output plugins.
+
+You can use Logstash to extend Beats for advanced use cases, such as data routed to multiple destinations or when you need to make your data persistent.
+
+* {ls} input for when no integration is available
+* {ls} integrations filter for advanced processing 
+
+TIP: 
+
+If an integration is available for your datasource, start with Elastic Agent + integration. 
+
+Use Logstash if there's no integration for your data source or for advanced processing:
+
+Use {ls} when: 
+
+* no integration (use Logstash input)
+* an Elastic integration exists, but you need advanced processing between the Elastic integration and {es}:
+
+Advanced use cases solved by {ls}:
+
+* {ls} for https://www.elastic.co/guide/en/ingest/current/ls-enrich.html[data enrichment] before sending data to {es}
+* https://www.elastic.co/guide/en/ingest/current/lspq.html[{ls} Persistent Queue (PQ) for buffering]
+* https://www.elastic.co/guide/en/ingest/current/ls-networkbridge.html[{ls} as a proxy] when there are network restrictions that prevent connections between Elastic Agent and {es}
+* https://www.elastic.co/guide/en/ingest/current/ls-multi.html[{ls} for routing data to multiple {es} clusters and additional destinations]
+* https://www.elastic.co/guide/en/ingest/current/agent-proxy.html[{ls} as a proxy]
+

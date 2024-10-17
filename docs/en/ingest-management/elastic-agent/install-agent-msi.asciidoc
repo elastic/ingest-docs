@@ -47,7 +47,7 @@ Installing using an MSI package has the following behaviors:
 [discrete]
 == Upgrading
 
-Upgrades are not supported and are prevented by the MSI itself. Instead, all of your {agent} upgrades can be managed in {fleet}.
+The {agent} version can be upgraded via {fleet}, but the registered MSI version will display the initially installed version. Attempts to upgrade outside of {fleet} via the MSI will require an uninstall and reinstall procedure to upgrade. 
 
 [discrete]
 == Installing in a custom location

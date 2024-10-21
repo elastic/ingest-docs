@@ -3,7 +3,7 @@
 
 .WORK IN PROGRESS
 ****
-For MVP: Add descriptions and links to existing solutions content. 
+For MVP: Add descriptions and links to existing solutions content with focus on tutorials where appropriate. 
 ****
 
 [discrete]

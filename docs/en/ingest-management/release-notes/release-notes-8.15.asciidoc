@@ -52,7 +52,7 @@ Memory usage may be higher than in previous releases depending on the throughput
 
 - The worst memory increase is for low-throughput configs with large queues.
 - For users whose queues were already sized proportionate to their throughput, memory use is increased but only marginally.
-- User that are affected can mitigate it by lowering their queue size.
+- Affected users can mitigate the higher memory usage by lowering their queue size.
 
 ====
 
@@ -110,7 +110,7 @@ Memory usage may be higher than in previous releases depending on the throughput
 
 - The worst memory increase is for low-throughput configs with large queues.
 - For users whose queues were already sized proportionate to their throughput, memory use is increased but only marginally.
-- User that are affected can mitigate it by lowering their queue size.
+- Affected users can mitigate the higher memory usage by lowering their queue size.
 
 ====
 
@@ -219,7 +219,7 @@ Memory usage may be higher than in previous releases depending on the throughput
 
 - The worst memory increase is for low-throughput configs with large queues.
 - For users whose queues were already sized proportionate to their throughput, memory use is increased but only marginally.
-- User that are affected can mitigate it by lowering their queue size.
+- Affected users can mitigate the higher memory usage by lowering their queue size.
 
 ====
 
@@ -278,7 +278,7 @@ Memory usage may be higher than in previous releases depending on the throughput
 
 - The worst memory increase is for low-throughput configs with large queues.
 - For users whose queues were already sized proportionate to their throughput, memory use is increased but only marginally.
-- User that are affected can mitigate it by lowering their queue size.
+- Affected users can mitigate the higher memory usage by lowering their queue size.
 
 ====
 

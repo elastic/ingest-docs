@@ -1,5 +1,5 @@
 [[integrations-assets-best-practices]]
-= Best practices for integrations assets
+= Best practices for integration assets
 
 When you use integrations with {fleet} and {agent} there are some restrictions to be aware of.
 

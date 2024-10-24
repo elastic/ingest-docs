@@ -8,7 +8,12 @@ Specify these settings to send data over a secure connection to Kafka. In the {f
 == Kafka output and using {ls} to index data to {es}
 
 If you are considering using {ls} to ship the data from `kafka` to {es}, please
-be aware Elastic is not currently testing this kind of setup.
+be aware the structure of the documents sent from {agent} to `kafka` must not be modified by {ls}.
+We suggest disabling `ecs_compatibility` on both the `kafka` input and the `json` codec in order
+to make sure the input doesn't edit the fields and their contents.
+
+The data streams setup by the integrations expect to receive events having the same structure and
+field names as they were sent directly from an {agent}.
 
 The structure of the documents sent from {agent} to `kafka` must not be modified by {ls}.
 We suggest disabling `ecs_compatibility` on both the `kafka` input and the `json` codec.
@@ -214,7 +219,18 @@ Use this option to set the Kafka topic for each {agent} event.
 [id="kafka-output-topics-default"]
 **Default topic**
 
-| Set a default topic to use for events sent by {agent} to the Kafka output, for example `elastic-agent`.
+| Set a default topic to use for events sent by {agent} to the Kafka output.
+
+You can set a static topic, for example `elastic-agent`, or you can choose to set a topic dynamically based on an {ecs-ref}/ecs-reference.html[Elastic Common Scheme (ECS)] field. Available fields include:
+
+* `data_stream_type`
+* `data_stream.dataset`
+* `data_stream.namespace`
+* `@timestamp`
+* `event-dataset`
+
+You can also set a custom field. This is useful if you're using the <<add_fields-processor,`add_fields` processor>> as part of your {agent} input.
+Otherwise, setting a custom field is not recommended.
 
 |===
 

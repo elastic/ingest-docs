@@ -32,6 +32,27 @@ Also see:
 
 There are no bug fixes for {fleet} or {agent} in this release.
 
+[discrete]
+[[known-issues-8.13.4]]
+=== Known issues
+
+[[known-issue-174855-8.13.4]]
+.ECS fields are not included to the `index.query.default_field` in {agent} integrations
+[%collapsible]
+====
+*Details*
+
+Due to changes introduced to support the ecs@mappings component template (see link:https://github.com/elastic/kibana/pull/174855[elastic/kibana/pull/174855]), {fleet} no longer includes ECS fields in the integrations' `index.query.default_field`. Not including ECS fields in the `index.query.default_field` setting may affect integrations that rely on fieldless queries (when no field is specified for a query).
+
+If you run a query without specifying a field, the query will not return results for ECS fields.
+
+*Impact* +
+
+In version 8.14.0 and later, {fleet} sets `index.query.default_field` to `*`, so agentless queries will work as expected. We recommend users of {fleet} upgrade to 8.14 when that release becomes available.
+
+If you are running 8.13.x and unable to upgrade to 8.14.0, you can follow the workarounds described in the link:https://support.elastic.co/knowledge/bbdbeb57.
+====
+
 // end 8.13.4 relnotes
 
 // begin 8.13.3 relnotes
@@ -47,6 +68,27 @@ Review important information about {fleet-server} and {agent} for the 8.13.3 rel
 
 {agent}::
 * Update Go version to 1.21.9. {agent-pull}4508[#4508]
+
+[discrete]
+[[known-issues-8.13.3]]
+=== Known issues
+
+[[known-issue-174855-8.13.3]]
+.ECS fields are not included to the `index.query.default_field` in {agent} integrations
+[%collapsible]
+====
+*Details*
+
+Due to changes introduced to support the ecs@mappings component template (see link:https://github.com/elastic/kibana/pull/174855[elastic/kibana/pull/174855]), {fleet} no longer includes ECS fields in the integrations' `index.query.default_field`. Not including ECS fields in the `index.query.default_field` setting may affect integrations that rely on fieldless queries (when no field is specified for a query).
+
+If you run a query without specifying a field, the query will not return results for ECS fields.
+
+*Impact* +
+
+In version 8.14.0 and later, {fleet} sets `index.query.default_field` to `*`, so agentless queries will work as expected. We recommend users of {fleet} upgrade to 8.14 when that release becomes available.
+
+If you are running 8.13.x and unable to upgrade to 8.14.0, you can follow the workarounds described in the link:https://support.elastic.co/knowledge/bbdbeb57.
+====
 
 [discrete]
 [[bug-fixes-8.13.3]]
@@ -90,6 +132,23 @@ This issue has been link:https://github.com/elastic/elastic-stack-installers/pul
 
 ====
 
+[[known-issue-174855-8.13.2]]
+.ECS fields are not included to the `index.query.default_field` in {agent} integrations
+[%collapsible]
+====
+*Details*
+
+Due to changes introduced to support the ecs@mappings component template (see link:https://github.com/elastic/kibana/pull/174855[elastic/kibana/pull/174855]), {fleet} no longer includes ECS fields in the integrations' `index.query.default_field`. Not including ECS fields in the `index.query.default_field` setting may affect integrations that rely on fieldless queries (when no field is specified for a query).
+
+If you run a query without specifying a field, the query will not return results for ECS fields.
+
+*Impact* +
+
+In version 8.14.0 and later, {fleet} sets `index.query.default_field` to `*`, so agentless queries will work as expected. We recommend users of {fleet} upgrade to 8.14 when that release becomes available.
+
+If you are running 8.13.x and unable to upgrade to 8.14.0, you can follow the workarounds described in the link:https://support.elastic.co/knowledge/bbdbeb57.
+====
+
 [discrete]
 [[bug-fixes-8.13.2]]
 === Bug fixes
@@ -125,6 +184,23 @@ Due to changes introduced to support customizing an MSI install folder (see link
 
 This issue has been link:https://github.com/elastic/elastic-stack-installers/pull/264[resolved] in version 8.14.0 and later releases. We recommend users of {beats} MSI to upgrade to 8.14 when that release becomes available.
 
+====
+
+[[known-issue-174855-8.13.1]]
+.ECS fields are not included to the `index.query.default_field` in {agent} integrations
+[%collapsible]
+====
+*Details*
+
+Due to changes introduced to support the ecs@mappings component template (see link:https://github.com/elastic/kibana/pull/174855[elastic/kibana/pull/174855]), {fleet} no longer includes ECS fields in the integrations' `index.query.default_field`. Not including ECS fields in the `index.query.default_field` setting may affect integrations that rely on fieldless queries (when no field is specified for a query).
+
+If you run a query without specifying a field, the query will not return results for ECS fields.
+
+*Impact* +
+
+In version 8.14.0 and later, {fleet} sets `index.query.default_field` to `*`, so agentless queries will work as expected. We recommend users of {fleet} upgrade to 8.14 when that release becomes available.
+
+If you are running 8.13.x and unable to upgrade to 8.14.0, you can follow the workarounds described in the link:https://support.elastic.co/knowledge/bbdbeb57.
 ====
 
 [discrete]
@@ -231,6 +307,23 @@ Due to changes introduced to support customizing an MSI install folder (see link
 
 This issue has been link:https://github.com/elastic/elastic-stack-installers/pull/264[resolved] in version 8.14.0 and later releases. We recommend users of {beats} MSI to upgrade to 8.14 when that release becomes available.
 
+====
+
+[[known-issue-174855-8.13.0]]
+.ECS fields are not included to the `index.query.default_field` in {agent} integrations
+[%collapsible]
+====
+*Details*
+
+Due to changes introduced to support the ecs@mappings component template (see link:https://github.com/elastic/kibana/pull/174855[elastic/kibana/pull/174855]), {fleet} no longer includes ECS fields in the integrations' `index.query.default_field`. Not including ECS fields in the `index.query.default_field` setting may affect integrations that rely on fieldless queries (when no field is specified for a query).
+
+If you run a query without specifying a field, the query will not return results for ECS fields.
+
+*Impact* +
+
+In version 8.14.0 and later, {fleet} sets `index.query.default_field` to `*`, so agentless queries will work as expected. We recommend users of {fleet} upgrade to 8.14 when that release becomes available.
+
+If you are running 8.13.x and unable to upgrade to 8.14.0, you can follow the workarounds described in the link:https://support.elastic.co/knowledge/bbdbeb57.
 ====
 
 [discrete]

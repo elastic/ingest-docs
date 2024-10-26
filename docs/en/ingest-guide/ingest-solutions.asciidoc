@@ -15,7 +15,12 @@ Monitor and gain insights
 * Metrics
 * Application traces
 
-Add links to targeted ingest resources in Observability docs
+Add links to targeted ingest resources in Observability docs.
+
+* Logs and metrics: Use system integration: https://www.elastic.co/guide/en/observability/current/logs-metrics-get-started.html#add-system-integration
+* Traces and APM: https://www.elastic.co/guide/en/observability/current/logs-metrics-get-started.html#add-system-integration 
+  * Is this integration listed in https://www.elastic.co/docs/current/integrations
+
 
 [discrete]
 [[ingest-for-security]]

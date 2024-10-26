@@ -23,20 +23,17 @@ The best choice for ingesting data is the _simplest option_ that _meets your nee
 
 **General content**. Choose the ingest tool that aligns with your data source.  
 
-* To index **documents** directly into {es}, use the {es} document APIs.
-* To send **application data** directly to {es}, use an Elastic language client. 
-* To index **web page content**, use the Elastic web crawler.
-* To sync **data from third-party sources**, use connectors. 
-* To index **single files** for testing, use the Kibana file uploader.
+* To index **documents** directly into {es}, use the {es} link:{ref}/docs.html[document APIs].
+* To send **application data** directly to {es}, use an link:https://www.elastic.co/guide/en/elasticsearch/client/index.html[{es}
+language clients]. 
+* To index **web page content**, use the Elastic link:https://www.elastic.co/web-crawler[web crawler].
+* To sync **data from third-party sources**, use link:{ref}/es-connectors.html[connectors]. 
+* To index **single files** for testing, use the {kib} link:{kibana-ref}/connect-to-elasticsearch.html#upload-data-kibana[file uploader].
 
-If you would like to play around before you add your own data, try using our {kibana-ref}/connect-to-elasticsearch.html#_add_sample_data[sample data].
+If you would like to test things out before you add your own data, try using our {kibana-ref}/connect-to-elasticsearch.html#_add_sample_data[sample data].
 
 **Timestamped data**. Start with {fleet-guide}[Elastic Agent] and one of the hundreds of {integrations-docs}[Elastic integrations] that are available.  
 Integrations are available for many popular platforms and services, and are a good place to start. 
 Check out the {integrations-docs}/all_integrations[Integration quick reference] to search for available integrations. 
-If you don't find an integration for your data source, or if you need additional processing, we still have you covered. 
+If you don't find an integration for your data source, or if you need <<ingest-addl-proc,additional processing>>, we still have you covered. 
 ****
-
-
-
-

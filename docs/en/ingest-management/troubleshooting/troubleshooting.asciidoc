@@ -879,7 +879,7 @@ Possible issues:
 
 If the installation is correct and all resources are deployed, but data is not flowing as expected (e.g., you don't see any data on the *[Metrics Kubernetes] Cluster Overview* dashboard), check the following items:
 
-. Check resources status and ensure they are all `Running`
+. Check resources status and ensure they are all in a `Running` state:
 +
 [source,sh]
 ----

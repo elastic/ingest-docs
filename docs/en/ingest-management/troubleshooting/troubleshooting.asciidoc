@@ -857,7 +857,7 @@ The previous command generates a local file named `elastic_agent_installation_co
 
 * RBAC objects (`ServiceAccounts`, `Roles`, etc.)
 
-* `ConfigMaps` and `Secrets` for {agent} configuration.
+* `ConfigMaps` and `Secrets` for {agent} configuration
 
 * {agent} Standalone deployed as a `DaemonSet`
 

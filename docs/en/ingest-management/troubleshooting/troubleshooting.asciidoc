@@ -877,7 +877,7 @@ Possible issues:
 [[agent-kustomize-after]]
 === Failures occurring within specific components after installation
 
-If the installation is correct, all resources are deployed, but data is not flowing as expected (for example you don't see anything on *[Metrics Kubernetes] Cluster Overview* dashboard), check the following items:
+If the installation is correct and all resources are deployed, but data is not flowing as expected (e.g., you don't see any data on the *[Metrics Kubernetes] Cluster Overview* dashboard), check the following items:
 
 . Check resources status and ensure they are all `Running`
 +

@@ -935,7 +935,7 @@ One way to check if `state_*` metrics are being delivered to Elasticsearch is to
 kubectl logs -n kube-system elastic-agent-xxxx | grep "Non-zero metrics" | grep "state_"
 ----
 +
-If the previous command returns something like `"state_pod":{"events":213,"success":213}` for all `state_*` metricsets, it means the metrics are being delivered.
+If the previous command returns `"state_pod":{"events":213,"success":213}` or similar for all `state_*` metricsets, it means the metrics are being delivered.
 +
 . As a last resort, if you believe none of the Pods is acting as a leader, you can try deleting the `lease` to generate a new one:
 +

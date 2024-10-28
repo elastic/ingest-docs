@@ -894,7 +894,7 @@ kubectl get pods -n kube-system | grep kube-state-metrics
 kubectl describe -n kube-system <name_of_elastic_agent_pod>
 ----
 
-. Check logs of elastic-agents and kube-state-metrics, and look for errors:
+. Check the logs of elastic-agents and kube-state-metrics, and look for errors:
 +
 [source,sh]
 ----

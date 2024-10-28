@@ -946,7 +946,7 @@ kubectl delete lease -n kube-system elastic-agent-cluster-leader
 kubectl get lease -n kube-system elastic-agent-cluster-leader
 ----
 
-* Performance problems
+* Performance problems:
 +
 Monitor the CPU and Memory usage of the agents Pods and adjust the manifest requests and limits as needed. Refer to <<scaling-on-kubernetes>> for more details about the needed resources.
 

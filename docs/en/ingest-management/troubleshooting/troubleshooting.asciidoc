@@ -948,7 +948,7 @@ kubectl get lease -n kube-system elastic-agent-cluster-leader
 
 * Performance problems
 +
-Monitor the CPU and Memory usage of the agents Pods and adjust the manifest requests and limits when needed. Refer to <<scaling-on-kubernetes>> documentation for extra details about the needed resources.
+Monitor the CPU and Memory usage of the agents Pods and adjust the manifest requests and limits as needed. Refer to <<scaling-on-kubernetes>> for more details about the needed resources.
 
 Extra resources for {agent} on Kubernetes troubleshooting and information:
 

@@ -833,7 +833,7 @@ To resolve this, either install {agent} without the `--unprivileged` flag so tha
 
 [discrete]
 [[agent-kubernetes-kustomize]]
-== Troubleshoot {agent} Installation on Kubernetes, with Kustomize
+== Troubleshoot {agent} installation on Kubernetes, with Kustomize
 
 Potential issues during {agent} installation on Kubernetes can be categorized into two main areas:
 

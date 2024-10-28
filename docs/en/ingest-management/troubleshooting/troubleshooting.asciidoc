@@ -846,7 +846,7 @@ Potential issues during {agent} installation on Kubernetes can be categorized in
 
 When troubleshooting installations performed with https://github.com/kubernetes-sigs/kustomize[Kustomize], it's good practice to inspect the output of the rendered manifest. To do this, take the installation command provided by Kibana Onboarding and replace the final part, `| kubectl apply -f-`, with a redirection to a local file. This allows for easier analysis of the rendered output.
 
-For example, the following command, originally provided by Kibana for an {agent} Standalone installation, has been modified to redirect the output for troubleshooting purposes:
+For example, the following command, originally provided by {kib} for an {agent} Standalone installation, has been modified to redirect the output for troubleshooting purposes:
 
 [source,sh]
 ----

@@ -855,7 +855,7 @@ kubectl kustomize https://github.com/elastic/elastic-agent/deploy/kubernetes/ela
 
 The previous command generates a local file named `elastic_agent_installation_complete_manifest.yaml`, which you can use for further analysis. It contains the complete set of resources required for the {agent} installation, including:
 
-* RBAC objects (`ServiceAccounts`, `Roles`, etc. )
+* RBAC objects (`ServiceAccounts`, `Roles`, etc.)
 
 * `ConfigMaps` and `Secrets` for {agent} configuration.
 

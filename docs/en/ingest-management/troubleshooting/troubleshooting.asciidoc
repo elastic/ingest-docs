@@ -853,7 +853,7 @@ For example, the following command, originally provided by Kibana for an {agent}
 kubectl kustomize https://github.com/elastic/elastic-agent/deploy/kubernetes/elastic-agent-kustomize/default/elastic-agent-standalone\?ref\=v8.15.3 | sed -e 's/JUFQSV9LRVkl/ZDAyNnZaSUJ3eWIwSUlCT0duRGs6Q1JfYmJoVFRUQktoN2dXTkd0FNMtdw==/g' -e "s/%ES_HOST%/https:\/\/7a912e8674a34086eacd0e3d615e6048.us-west2.gcp.elastic-cloud.com:443/g" -e "s/%ONBOARDING_ID%/db687358-2c1f-4ec9-86e0-8f1baa4912ed/g" -e "s/\(docker.elastic.co\/beats\/elastic-agent:\).*$/\18.15.3/g" -e "/{CA_TRUSTED}/c\ " > elastic_agent_installation_complete_manifest.yaml
 ----
 
-The previous generates a local file named `elastic_agent_installation_complete_manifest.yaml`, which you can use for further analysis. It contains the complete set of resources required for the {agent} installation, including:
+The previous command generates a local file named `elastic_agent_installation_complete_manifest.yaml`, which you can use for further analysis. It contains the complete set of resources required for the {agent} installation, including:
 
 * RBAC objects (`ServiceAccounts`, `Roles`, etc. )
 

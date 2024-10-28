@@ -887,7 +887,7 @@ kubectl get pods -n kube-system | grep elastic
 kubectl get pods -n kube-system | grep kube-state-metrics
 ----
 
-. Describe the Pods in case they are in `Pending` state:
+. Describe the Pods if they are in a `Pending` state:
 +
 [source,sh]
 ----

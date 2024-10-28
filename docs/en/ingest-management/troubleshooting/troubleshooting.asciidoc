@@ -863,7 +863,7 @@ The previous command generates a local file named `elastic_agent_installation_co
 
 * https://github.com/kubernetes/kube-state-metrics[Kube-state-metrics] deployed as a `Deployment`
 
-The content of this file is equivalent to the one obtained when following the "<<running-on-kubernetes-standalone>>" document, with the exception of `kube-state-metrics`, which is not included in the other method.
+The content of this file is equivalent to what you'd obtain by following the <<running-on-kubernetes-standalone>> steps, with the exception that `kube-state-metrics` is not included in the standalone method.
 
 Possible issues:
 

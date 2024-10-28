@@ -909,9 +909,9 @@ kubectl logs -n kube-system <name_of_kube-state-metrics_pod>
 
 Possible issues:
 
-* Connectivity, authorization, or authentication issues when connecting to Elasticsearch:
+* Connectivity, authorization, or authentication issues when connecting to {es}:
 +
-Ensure the API Key and Elasticsearch destination endpoint used during the installation is correct and is reachable from within the Pods.
+Ensure the API Key and {es} destination endpoint used during the installation is correct and is reachable from within the Pods.
 +
 In an already installed system, the API Key is stored in a `Secret` named `elastic-agent-creds-<hash>`, and the endpoint is configured in the `ConfigMap` `elastic-agent-configs-<hash>`.
 

@@ -871,7 +871,7 @@ Possible issues:
 
 * Some Kubernetes security mechanisms (like https://kubernetes.io/docs/concepts/security/pod-security-standards/[Pod Security Standards]) could make part of the manifest to be rejected, as `hostNetwork` access and `hostPath` volumes are required.
 
-* If you already have an installation of `kube-state-metrics`, it could make part of the manifest installation to fail or to update your existing resources wihtout notice.
+* If you already have an installation of `kube-state-metrics`, it could cause part of the manifest installation to fail or to update your existing resources without notice.
 
 [discrete]
 [[agent-kustomize-after]]

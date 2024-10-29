@@ -23,8 +23,8 @@ Also see:
 
 // begin 8.16.0 relnotes
 
-[[release-notes-8.15.0]]
-== {fleet} and {agent} 8.15.0
+[[release-notes-8.16.0]]
+== {fleet} and {agent} 8.16.0
 
 Review important information about the {fleet} and {agent} 8.16.0 release.
 
@@ -45,9 +45,13 @@ The 8.16.0 release Added the following new and notable features.
 * Add `/api/fleet/agents/:id/audit/unenroll` API that an {agent} or Endpoint process may use to enable accurate status reporting in the {fleet} UI. {fleet-server-pull}3818[#3818] {agent-issue}484[#484]
 * Add a `secret_paths` attribute to the policy data sent to agents. This attribute is a list of keys that {fleet-server} has replaced with a reference to a secret value. {fleet-server-pull}3908[#3908] {fleet-server-issue}3657[#3657] 
 
-
 {agent}::
-
+* Uninstalling a {fleet}-managed {agent} instance will now do a best-effort attempt to notify {fleet-server} of the agent removal so the agent status appears correctly in the {fleet} UI (related to {fleet-server-pull}3818[#3818] above). {agent-pull}5302[#5302] {agent-issue}484[#484]
+* Remove support for the experimental shippers feature. Removal is non-breaking since the feature was experimental only. {agent-pull}5308[#5308] {agent-issue}4547[#4547]
+* Add the GCP Asset Inventory input to Cloudbeat. {agent-pull}5422[#5422]
+* Add support for passphrase protected mTLS client certificate key during install/enroll. {agent-pull}5494[#5494] {agent-issue}5489[#5489]
+* Elastic Defend now accepts a passphrase protected client certificate key for mTLS. {agent-pull}5542[#5542] {agent-issue}5490[#5490]
+* Add a Kustomize template to enable hints-based autodiscovery by default when deploying standalone {agent} in a Kubernetes cluster. This also removes `root` privileges from the init container. {agent-pull}5643[#5643]
 
 [discrete]
 [[enhancements-8.16.0]]
@@ -60,7 +64,12 @@ The 8.16.0 release Added the following new and notable features.
 * Enable warnings for configuration options that have been deprecated throughout the 8.x lifecycle. {fleet-server-pull}3901[#3901]
 
 {agent}::
-
+* Re-enable support for Elastic Defend on Windows Server 2012 and 2012 R2. {agent-pull}5429[#5429]
+* Include the correct Elastic License 2.0 file in build artifacts and packages. {agent-pull}5464[#5464]
+* Add the `pprofextension` to the {agent} OTel collector.  {agent-pull}5556[#5556]
+* Update the base container image from Ubuntu 20.04 to Ubuntu 24.04. {agent-pull}5644[#5644] {agent-issue}5501[#5501]
+* Redact values from the `elastic-agent inspect` command output for any keys in the `secret_paths` array. {agent-pull}5621[#5621]
+* Redact secret paths in files written in {agent} diagnostics bundles. {agent-pull}5745[#5745]
 
 [discrete]
 [[bug-fixes-8.16.0]]
@@ -73,7 +82,9 @@ The 8.16.0 release Added the following new and notable features.
 * Fix the error handling when {fleet-server} attempts to authenticate with {es}. {fleet-server-pull}3935[#3935] {fleet-server-issue}3929[#3929]
 
 {agent}::
-
+* Fix {agent} crashing when self unenrolling due to too many authentication failures against {fleet-server}. {agent-pull}5438[#5438] {agent-issue}5434[#5434]
+* Set the default log level on policy change, when policy does not have a log level
+* Change the deprecated `maintainer` label in Dockerfile to use the `org.opencontainers.image.authors` label instead. {agent-pull}5527[#5527]
 
 // end 8.16.0 relnotes
 

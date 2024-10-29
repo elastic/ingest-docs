@@ -30,10 +30,16 @@ language clients].
 * To sync **data from third-party sources**, use link:{ref}/es-connectors.html[connectors]. 
 * To index **single files** for testing, use the {kib} link:{kibana-ref}/connect-to-elasticsearch.html#upload-data-kibana[file uploader].
 
-If you would like to test things out before you add your own data, try using our {kibana-ref}/connect-to-elasticsearch.html#_add_sample_data[sample data].
+If you would like to try things out before you add your own data, try using our {kibana-ref}/connect-to-elasticsearch.html#_add_sample_data[sample data].
 
-**Timestamped data**. Start with {fleet-guide}[Elastic Agent] and one of the hundreds of {integrations-docs}[Elastic integrations] that are available.  
-Integrations are available for many popular platforms and services, and are a good place to start. 
-Check out the {integrations-docs}/all_integrations[Integration quick reference] to search for available integrations. 
-If you don't find an integration for your data source, or if you need <<ingest-addl-proc,additional processing>>, we still have you covered. 
+**Timestamped data**. Start with {fleet-guide}[Elastic Agent] and one of the
+hundreds of {integrations-docs}[Elastic integrations] that are available.  
+Integrations are available for many popular platforms and services, and are a
+good place to start for ingesting data into Elastic solutions--Observability,
+Security, and Search--or your own search application.
+
+Check out the {integrations-docs}/all_integrations[Integration quick reference]
+to search for available integrations. 
+If you don't find an integration for your data source or if you need
+<<ingest-addl-proc,additional processing>> to extend the integration, we still have you covered. 
 ****

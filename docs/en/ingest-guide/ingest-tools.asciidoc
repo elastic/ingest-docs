@@ -20,12 +20,12 @@ Check out the {integrations-docs}/all_integrations[Integration quick reference] 
 {agent} is the best option for collecting timestamped data for most data sources and use cases. 
 If your data requires additional processing before going to {es}, you can use {agent} with link:{fleet-guide}/elastic-agent-processor-configuration.html[{agent} processors] or link:{logstash-ref}[{ls}] 
 + 
-Ready to try link:{fleet-guide}[Elastic Agent]? Check out the link:{fleet-guide}/elastic-agent-installation.html[installation instructions].
+Ready to try link:{fleet-guide}[{agent}]? Check out the link:{fleet-guide}/elastic-agent-installation.html[installation instructions].
 +
-**Beats.** link:{beats-ref}/beats-reference.html}[Beats] are the original Elastic lightweight data shippers, and their capabilities live on in Elastic Agent.
+**Beats.** link:{beats-ref}/beats-reference.html[Beats] are the original Elastic lightweight data shippers, and their capabilities live on in Elastic Agent.
 When you use Elastic Agent, you're getting core Beats functionality and more added features. 
 Beats require that you install a separate Beat for each type of data you want to collect. 
-A single Elastic Agent installed on a host can collect multiple types of data.  
+A single Elastic Agent installed on a host can collect and transport multiple types of data.  
 +
 **Best practice:** Use link:{fleet-guide}[Elastic Agent] whenever possible. 
 If your data source is not yet supported by Elastic Agent, use Beats. 

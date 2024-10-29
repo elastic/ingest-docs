@@ -14,11 +14,17 @@ A single link:{fleet-guide}[{agent}] can collect multiple types of data when it 
 You can use standalone {agent}s and manage them locally on the systems where they are installed, or you can manage all of your agents and policies with the link:{fleet-guide}/manage-agents-in-fleet.html[Fleet UI in {kib}].
 +
 Use {agent} with one of hundreds of link:{integrations-docs}[Elastic integrations] to simplify collecting, transforming, and visualizing data. 
-Integrations include default ingestion rules, dashboards, and visualizations to start analyzing your data right away. 
+Integrations include default ingestion rules, dashboards, and visualizations to help you start analyzing your data right away. 
 Check out the {integrations-docs}/all_integrations[Integration quick reference] to search for available integrations that can reduce your time to value.  
 +
-{agent} is the best option for collecting timestamped data for most data sources and use cases. 
-If your data requires additional processing before going to {es}, you can use {agent} with link:{fleet-guide}/elastic-agent-processor-configuration.html[{agent} processors] or link:{logstash-ref}[{ls}] 
+
+{agent} is the best option for collecting timestamped data for most data sources
+and use cases. 
+If your data requires additional processing before going to {es}, you can use
+link:{fleet-guide}/elastic-agent-processor-configuration.html[{agent}
+processors], link:{logstash-ref}[{ls}], or additional processing features in
+{es}. 
+Check out <<ingest-addl-proc,additional processing>> to see options. 
 + 
 Ready to try link:{fleet-guide}[{agent}]? Check out the link:{fleet-guide}/elastic-agent-installation.html[installation instructions].
 +
@@ -49,14 +55,14 @@ Most users never need to use {ls}, but it's available if you need it for:
 +
 * **Data collection** (if an Elastic integration isn't available). 
 {agent} and Elastic {integrations-docs}/all_integrations[integrations] provide many features out-of-the-box, so be sure to search or browse integrations for your data source. 
-If you don't find an Elastic integration for your data source, check {ls} for an {logstash-ref}/input-plugins.html[input plugin]. 
+If you don't find an Elastic integration for your data source, check {ls} for an {logstash-ref}/input-plugins.html[input plugin] for your data source. 
 * **Additional processing.** One of the most common {ls} use cases is link:{logstash-ref}/ea-integrations.html[extending Elastic integrations].
 You can take advantage of the extensive, built-in capabilities of Elastic Agent and Elastic Integrations, and
 then use {ls} for additional data processing before sending the data on to {es}. 
 * **Advanced use cases.** {ls} can help with advanced use cases, such as when you need
 link:{ingest-guide}/lspq.html[persistence or buffering],
 additional link:{ingest-guide}/ls-enrich.html[data enrichment],  
-link:{ingest-guide}/ls-networkbridge.html[proxying] to bridge network connections, or the ability to route data to
+link:{ingest-guide}/ls-networkbridge.html[proxying] as a way to bridge network connections, or the ability to route data to
 link:{ingest-guide}/ls-multi.html[multiple destinations].
 
 Language clients:: 
@@ -86,22 +92,20 @@ The link:https://www.elastic.co/guide/en/esf/current/aws-elastic-serverless-forw
 [[ingest-addl-proc]]
 == Tools and features for additional processing
 You can start with {agent} and Elastic {integrations-docs}[integrations], and still
-take advantage of additional processing options if you need them: 
+take advantage of additional processing options if you need them.
+You can use:  
 
-* link:{fleet-guide}/elastic-agent-processor-configuration.html[{agent} processors] for sanitizing or enriching raw data at the source.
-  Use {agent} processors if you need to control what data is sent across the wire, or need to enrich the raw data with information available on the host.
-* {es} link:{ref}/[ingest pipelines] for enriching incoming data or normalizing field data before the data is indexed.
+* link:{fleet-guide}/elastic-agent-processor-configuration.html[{agent} processors] to sanitize or enrich raw data at the source.
+  Use {agent} processors if you need to control what data is sent across the wire, or if you need to enrich the raw data with information available on the host.
+* {es} link:{ref}/[ingest pipelines] to enrich incoming data or normalize field data before the data is indexed.
   {es} ingest pipelines enable you to manipulate the data as it comes in. 
   This approach helps you avoid adding processing overhead to the hosts from which you're collecting data.
 
-* {es} link:{ref}/runtime.html[runtime fields] for defining or altering the schema at query time.
+* {es} link:{ref}/runtime.html[runtime fields] to define or alter the schema at query time.
   You can use runtime fields at query time to start working with your data without needing to understand how it is structured,
   add fields to existing documents without reindexing your data,
   override the value returned from an indexed field, and/or
   define fields for a specific use without modifying the underlying schema.
 
-* {ls} `elastic_integration filter` for link:{logstash-ref}/ea-integrations.html[extending Elastic integrations], and other {ls} link:[filter plugins] for transforming data before it goes to {es}.
+* {ls} `elastic_integration filter` to link:{logstash-ref}/ea-integrations.html[extend Elastic integrations], and other {ls} link:{logstash-ref}/filter-plugins.html[filter plugins] to transform data before it goes to {es}.
   
-
-
-

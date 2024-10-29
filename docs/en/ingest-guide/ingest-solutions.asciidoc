@@ -3,7 +3,7 @@
 
 Elastic solutions--Security, Observability, and Search--are loaded with features
 and functionality to help you get value and insights from your data.
-{fleet-guide}[Elastic Agent] and {integrations-docs}[Elastic integrations] can help.
+{fleet-guide}[Elastic Agent] and {integrations-docs}[Elastic integrations] can help, and are the best place to start. 
 
 When you use integrations with solutions, you have an integrated experience that offers
 easier implementation and decreases the time it takes to get insights and value from your data.  
@@ -22,7 +22,6 @@ with Elastic solutions:
 
 NOTE: {serverless-docs}[Elastic serverless] makes using solutions even easier. 
 Sign up for a link:{serverless-docs}/general/sign-up-trial[free trial], and check it out. 
-
 
 
 [discrete]
@@ -47,7 +46,10 @@ The solution gives you more pre-built components to get you up and running quick
 [[ingest-for-obs]]
 === Ingesting data for Observability
 
-With link:https://www.elastic.co/observability[Elastic Observability], you can monitor and gain insights into logs, metrics, and application traces. 
+With link:https://www.elastic.co/observability[Elastic Observability], you can
+monitor and gain insights into logs, metrics, and application traces. 
+The resources and guides in this section illustrate how to ingest data and use
+it with the Observability solution. 
 
 **Resources**
 
@@ -70,7 +72,10 @@ With link:https://www.elastic.co/observability[Elastic Observability], you can m
 [[ingest-for-security]]
 === Ingesting data for Security 
 
-You can detect and respond to threats when you use link:https://www.elastic.co/security[Elastic Security] to analyze and take action on your data. 
+You can detect and respond to threats when you use
+link:https://www.elastic.co/security[Elastic Security] to analyze and take
+action on your data.
+The resources and guides in this section illustrate how to ingest data and use it with the Security solution.  
 
 **Resources**
 
@@ -88,8 +93,8 @@ You can detect and respond to threats when you use link:https://www.elastic.co/s
 [[ingest-for-custom]]
 === Ingesting data for your own custom search solution
 
-Elastic solutions can give you a head start for common use cases, but you are not limited.
-You can still do your own thing with a custom solution designed by you.
+Elastic solutions can give you a head start for common use cases, but you are not at all limited.
+You can still do your own thing with a custom solution designed by _you_.
 
 Bring your ideas and use {es} and the {stack} to store, search, and visualize your data.
 

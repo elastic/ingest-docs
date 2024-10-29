@@ -928,7 +928,7 @@ kubectl get lease -n kube-system elastic-agent-cluster-leader
 +
 . Check the logs of that Pod to see if there are errors when connecting to `kube-state-metrics` and if the `state_*` metrics are being sent.
 +
-One way to check if `state_*` metrics are being delivered to Elasticsearch is to inspect log lines with the `"Non-zero metrics in the last 30s"` message and check the values of the "state_*" metricsets within the line, with something like:
+One way to check if `state_*` metrics are being delivered to {es} is to inspect log lines with the `"Non-zero metrics in the last 30s"` message and check the values of the "state_*" metricsets within the line, with something like:
 +
 [source,sh]
 ----

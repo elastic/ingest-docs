@@ -915,7 +915,7 @@ Ensure the API Key and {es} destination endpoint used during the installation is
 +
 In an already installed system, the API Key is stored in a `Secret` named `elastic-agent-creds-<hash>`, and the endpoint is configured in the `ConfigMap` `elastic-agent-configs-<hash>`.
 
-* Only missing cluster-level metrics (provided by `kube-state-metrics`):
+* Missing cluster-level metrics (provided by `kube-state-metrics`):
 +
 These metrics (`state_*`) are retrieved by one of the Pods acting as `leader` (as described in <<running-on-kubernetes-standalone>>), so in order to troubleshoot that situation:
 +

@@ -308,8 +308,6 @@ Specifically, apply the built-in `90-days-default` {ilm-init} policy so that dat
 
 NOTE: If you cloned an index template to customize the data retention policy on an {es} version prior to 8.13, you must update the index template in the clone to use the `ecs@mappings` component template on {es} version 8.13 or later. See <<data-streams-pipeline-update-cloned-template-before-8.13,Update index template cloned before {es} 8.13>> for the step-by-step instructions.
 
-NOTE: 
-
 [discrete]
 [[data-streams-ilm-one]]
 == Step 1: View data streams
@@ -374,7 +372,16 @@ Now that you've created a component template,
 you need to create an index template to apply the changes to the correct data stream.
 The easiest way to do this is to duplicate and modify the integration's existing index template.
 
-WARNING: When duplicating the index template, do not change or remove any managed properties. This may result in problems when upgrading. Cloning the index template of an integration package involves some risk as any changes made to the original index template when it is upgraded will not be propagated to the cloned version.
+[WARNING] 
+====
+Please note the following:
+
+* When duplicating the index template, do not change or remove any managed properties. This may result in problems when upgrading. Cloning the index template of an integration package involves some risk as any changes made to the original index template when it is upgraded will not be propagated to the cloned version.
+
+* These steps assume that you want to have a namespace specific ILM policy, which requires index template cloning. Cloning the index template of an integration package involves some risk because any changes made to the original index template as part of package upgrades are not propagated to the cloned version. See <<assets-restrictions-cloning-index-template>> for details.
++
+If you want to change the ILM Policy, the number of shards, or other settings for the datastreams of one or more integrations, but **the changes do not need to be specific to a given namespace**, it's strongly recommended to use the `<package>@custom` component template so as to avoid the problems mentioned above. See the <<data-streams-ilm,ILM>> section for details.
+====
 
 . Navigate to **{stack-manage-app}** > **Index Management** > **Index Templates**.
 . Find the index template you want to clone. The index template will have the `<type>` and `<dataset>` in its name,

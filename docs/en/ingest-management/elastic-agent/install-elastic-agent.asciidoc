@@ -78,7 +78,8 @@ Using our lab environment as an example, we can observe the following resource c
 [discrete]
 === CPU and RSS memory size
 
-// lint ignore 4 vCPU 16.0 GiB We tested in AWS m7i.xlarge instance type that has 4 vCPUs, 16.0 GiB of memory and up to 12.5 Gibps of bandwidth. Ingesting a single log file, running with the throughput preset with self-monitoring enabled.
+// lint ignore 4 vCPU 16.0 GiB
+We tested in AWS m7i.xlarge instance type that has 4 vCPUs, 16.0 GiB of memory and up to 12.5 Gibps of bandwidth. Ingesting a single log file, running with the throughput preset with self-monitoring enabled.
 |===
 | **CPU** | ~40% total, including all monitoring processes
 | **RSS memory size** | ~310 MB, including all processes

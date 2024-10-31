@@ -81,7 +81,9 @@ Using our lab environment as an example, we can observe the following resource c
 // lint ignore 4 vCPU 16.0 GiB We tested in AWS m7i.xlarge instance type that has 4 vCPUs, 16.0 GiB of memory and up to 12.5 Gibps of bandwidth. Ingesting a single log file, running with the throughput preset with self-monitoring enabled.
 |===
 | **CPU** | ~40% total, including all monitoring processes
-| **RSS memory size** | ~310 MB
+| **RSS memory size** | ~310 MB, including all processes
+| **Write network throughput** | ~3.4 MB/s
+| **Read network throughput** | ~40 KB/s
 |===
 
 Adding integrations will increase the memory used by the agent and its processes.

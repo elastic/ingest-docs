@@ -1,7 +1,7 @@
 [[elastic-agent-installation]]
 = Install {agent}s
 
-[IMPORTANT] 
+[IMPORTANT]
 .Restrictions
 ====
 Note the following restrictions when installing {agent} on your system:
@@ -12,7 +12,7 @@ run the commands described here. After the {agent} service is installed and runn
 make sure you run these commands without prepending them with `./` to avoid
 invoking the wrong binary.
 * Running {agent} commands using the Windows PowerShell ISE is not supported.
-* See also the <<elastic-agent-installation-minimum-requirements,minimum requirements>> described on this page. 
+* See also the <<elastic-agent-installation-minimum-requirements,minimum requirements>> described on this page.
 ====
 
 You have a few options for installing and managing an {agent}:
@@ -57,9 +57,9 @@ Refer to:
 * {eck-ref}/k8s-elastic-agent.html[Run {agent} on ECK] -- for {eck} users
 --
 
-[IMPORTANT] 
+[IMPORTANT]
 .Restrictions in {serverless-short}
-==== 
+====
 If you are using {agent} with link:{serverless-docs}[{serverless-full}], note these differences from use with {ess} and self-managed {es}:
 
 * The number of {agents} that may be connected to an {serverless-full} project is limited to 10 thousand.
@@ -68,21 +68,22 @@ If you are using {agent} with link:{serverless-docs}[{serverless-full}], note th
 
 [discrete]
 [[elastic-agent-installation-minimum-requirements]]
-== Minimum requirements  
+== Resource requirements
 
-The following are the minimum system requirements for installing {agent}.
+The {agent} resources consumption is influenced by the number of integration and the environment its been running on.
+
+Using our lab environment as an example, we can observe the following resource consumption:
+
 // lint ignore mem
 [discrete]
 === CPU and RSS memory size
 
-// lint ignore 2vcpu 1gb
-Minimum requirements have been determined by running the {agent} on a GCP `e2-micro` instance (2vCPU/1GB).
-The {agent} used the default policy, running the system integration and self-monitoring.
+// lint ignore 4 vCPU 16.0 GiB We tested in AWS m7i.xlarge instance type that has 4 vCPUs, 16.0 GiB of memory and up to 12.5 Gibps of bandwidth. Ingesting a single log file, running with the throughput preset with self-monitoring enabled.
+|===
+| **CPU** | ~40% total, including all monitoring processes
+| **RSS memory size** | ~310 MB
+|===
 
-|===
-| **CPU** | Under 2% total, including all monitoring processes
-| **RSS memory size** | 400 MB
-|===
 Adding integrations will increase the memory used by the agent and its processes.
 
 [discrete]

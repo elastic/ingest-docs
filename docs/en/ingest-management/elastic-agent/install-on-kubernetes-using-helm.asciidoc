@@ -21,4 +21,4 @@ For detailed install steps, try one of our walk-through examples:
 
 NOTE: The {agent} Helm chart is currently available from inside the link:https://github.com/elastic/elastic-agent[elastic/elastic-agent] GitHub repo. It's planned to soon make the chart available from the Elastic Helm repository.
 
-You can also find details about the Helm chart, including all available YAML settings and descriptions, in the link:https://github.com/elastic/elastic-agent/tree/main/deploy/helm/elastic-agent[{agent} Helm Chart Readme].
+You can also find details about the Helm chart, including all available YAML settings and descriptions, in the link:https://github.com/elastic/elastic-agent/tree/main/deploy/helm/elastic-agent[{agent} Helm Chart Readme]. Several link:https://github.com/elastic/elastic-agent/tree/main/deploy/helm/elastic-agent/examples[examples] are available if you'd like to explore other use cases.

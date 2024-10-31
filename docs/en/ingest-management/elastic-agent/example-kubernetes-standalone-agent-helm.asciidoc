@@ -24,7 +24,7 @@ To get started, you need:
 * An link:{ess-trial}[{ecloud}] hosted {es} cluster on version 8.16 or higher.
 * An <<create-api-key-standalone-agent,{es} API key>>.
 * An active Kubernetes cluster.
-* A local clone of the link:https://github.com/elastic/elastic-agent[elastic/elastic-agent] GitHub repository.
+* A local clone of the link:https://github.com/elastic/elastic-agent/tree/8.16[elastic/elastic-agent] GitHub repository. Make sure to use the `8.16` branch to ensure that {agent} has full compatibility with the Helm chart.
 
 [discrete]
 [[agent-standalone-helm-example-install]]

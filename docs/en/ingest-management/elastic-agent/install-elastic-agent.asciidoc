@@ -83,8 +83,8 @@ Out testing was performed on AWS m7i.large instance type that has 2 vCPUs, 8.0 G
 [options,header]
 |===
 |Resource | Throughput | Scale
-| **CPU*** | ~80% total | ~20%
-| **RSS memory size*** | ~310 MB | ~220 MB
+| **CPU*** | ~70% total | ~20%
+| **RSS memory size*** | ~280 MB | ~220 MB
 | **Write network throughput** | ~3.6 MB/s | 990 KB/s
 | **Read network throughput** | ~40 KB/s | ~2.4 KB/s
 |===

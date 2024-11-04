@@ -147,6 +147,8 @@ include::shared-env.asciidoc[tag=elastic-agent-cert]
 
 include::shared-env.asciidoc[tag=elastic-agent-cert-key]
 
+include::shared-env.asciidoc[tag=elastic-agent-cert-key-passphrase]
+
 include::shared-env.asciidoc[tag=elastic-agent-tag]
 
 include::shared-env.asciidoc[tag=fleet-enroll]

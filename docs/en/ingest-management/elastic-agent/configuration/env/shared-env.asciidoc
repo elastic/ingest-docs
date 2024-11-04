@@ -37,6 +37,18 @@ OPTIONAL INFO AND EXAMPLE
 
 // end::elastic-agent-cert-key[]
 
+// tag::elastic-agent-cert-key-passphrase[]
+|
+[id="env-{type}-elastic-agent-cert-key-passphrase"]
+`ELASTIC_AGENT_CERT_KEY_PASSPHRASE`
+
+| (string) The path to the file that contains the passphrase for the mutual TLS private key that {agent} will use to connect to {fleet-server}. 
+The file must only contain the characters of the passphrase, no newline or extra non-printing characters.
+
+This option is only used if the `--elastic-agent-cert-key` is encrypted and requires a passphrase to use.
+
+// end::elastic-agent-cert-key-passphrase[]
+
 // =============================================================================
 
 // tag::elastic-agent-tag[]

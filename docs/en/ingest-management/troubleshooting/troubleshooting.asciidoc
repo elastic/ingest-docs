@@ -919,7 +919,7 @@ In an already installed system, the API Key is stored in a `Secret` named `elast
 +
 These metrics (`state_*`) are retrieved by one of the Pods acting as `leader` (as described in <<running-on-kubernetes-standalone>>), so in order to troubleshoot that situation:
 +
-. Determine which Pod owns the leadership `lease` in the cluster, with:
+. Determine which Pod owns the [leadership](https://www.elastic.co/guide/en/fleet/current/kubernetes_leaderelection-provider.html#:~:text=Provides%20the%20option%20to%20enable,Elastic%20Agent%20holds%20the%20leadership.) `lease` in the cluster, with:
 +
 [source,sh]
 ----

@@ -72,6 +72,9 @@ During {agent} installation on premise use the following options:
 
 |`--elastic-agent-cert-key`
 |{agent} certificate key to present to {fleet-server}
+
+|`--elastic-agent-cert-key-passphrase`
+|The path to the file that contains the passphrase for the mutual TLS private key that {agent} will use to connect to {fleet-server}
 |===
 
 [discrete]
@@ -183,6 +186,9 @@ During {agent} installation on premise use the following options:
 
 |`--elastic-agent-cert-key`
 |{agent}'s private certificate key used to decrypt the certificate
+
+|`--elastic-agent-cert-key-passphrase`
+|The path to the file that contains the passphrase for the mutual TLS private key that {agent} will use to connect to {fleet-server}
 |===
 
 [discrete]
@@ -213,6 +219,9 @@ During {agent} installation on premise use the following options, similar to <<m
 
 |`--elastic-agent-cert-key`
 |{agent}'s private certificate key used to decrypt the certificate
+
+|`--elastic-agent-cert-key-passphrase`
+|The path to the file that contains the passphrase for the mutual TLS private key that {agent} will use to connect to {fleet-server}
 |===
 
 [discrete]

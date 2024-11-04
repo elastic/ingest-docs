@@ -89,6 +89,7 @@ The 8.16.0 release Added the following new and notable features.
 * Update the base container image from Ubuntu 20.04 to Ubuntu 24.04. {agent-pull}5644[#5644] {agent-issue}5501[#5501]
 * Redact values from the `elastic-agent inspect` command output for any keys in the `secret_paths` array. {agent-pull}5621[#5621]
 * Redact secret paths in files written in {agent} diagnostics bundles. {agent-pull}5745[#5745]
+* Update the versions of OpenTelemetry Collector components from v0.111.0/v1.17.0 to v0.112.0/v1.18.0. {agent-pull}5838[#5838]
 
 [discrete]
 [[bug-fixes-8.16.0]]
@@ -101,6 +102,7 @@ The 8.16.0 release Added the following new and notable features.
 
 {fleet-server}::
 * Fix the error handling when {fleet-server} attempts to authenticate with {es}. {fleet-server-pull}3935[#3935] {fleet-server-issue}3929[#3929]
+* Fix an issue that caused {fleet-server} to report a `500` error on {agent} check-in because the agent has upgrade details but the referenced action ID is not found. {fleet-server-pull}3991[#3991]
 
 {agent}::
 * Fix {agent} crashing when self unenrolling due to too many authentication failures against {fleet-server}. {agent-pull}5438[#5438] {agent-issue}5434[#5434]

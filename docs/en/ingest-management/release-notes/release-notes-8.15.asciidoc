@@ -30,27 +30,7 @@ Also see:
 [[release-notes-8.15.4]]
 == {fleet} and {agent} 8.15.4
 
-Review important information about the {fleet} and {agent} 8.15.4 release.
-
-[discrete]
-[[security-updates-8.15.4]]
-=== Security updates
-
-{agent}::
-//* Update Go version to 1.22.8. {agent-pull}5718[#5718]
-
-[discrete]
-[[enhancements-8.15.4]]
-
-=== Enhancements
-
-{agent}::
-
-[discrete]
-[[bug-fixes-8.15.4]]
-=== Bug fixes
-
-{agent}::
+There are no bug fixes for {fleet}, {fleet-server}, or {agent} in this release.
 
 // end 8.15.4 relnotes
 

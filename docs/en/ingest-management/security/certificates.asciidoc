@@ -231,7 +231,7 @@ sudo ./elastic-agent install \
    --fleet-server-port=8220 \
    --elastic-agent-cert=/tmp/fleet-server.crt \
    --elastic-agent-cert-key=/tmp/fleet-server.key \
-   --elastic-agent-cert-key-passphrase=/tmp/fleet-server ???? \
+   --elastic-agent-cert-key-passphrase=/tmp/fleet-server/passphrase-file \
    --fleet-server-es-cert=/tmp/fleet-server.crt \
    --fleet-server-es-cert-key=/tmp/fleet-server.key \
    --fleet-server-client-auth=required

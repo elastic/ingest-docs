@@ -4,7 +4,10 @@
 The {agent} installation includes an `elastic-agent.reference.yml` file that
 describes all the settings available in a standalone configuration.
 
-This file is included here for your convenience.
+To ensure that you're accessing the latest version, refer to the original link:https://github.com/elastic/elastic-agent/blob/main/elastic-agent.reference.yml[`elastic-agent.reference.yml` file] in the `elastic/elastic-agent` repository.
+A copy is included here for your convenience.
+
+Each section of the file and available settings are also described in <<structure-config-file,Structure of a config file>>.
 
 [source,yaml]
 ----

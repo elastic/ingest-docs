@@ -72,6 +72,8 @@ using {kibana-ref}/kuery-query.html[{kib} Query Language]. For example, enter
 
 You can also sort the list of agents by host, last activity time, or version, by clicking on the table headings for those fields. 
 
+To perform a bulk action on more than 10,000 agents, you can select the **Select everything on all pages** button.
+
 [discrete]
 [[view-agent-details]]
 = View details for an agent

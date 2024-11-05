@@ -59,7 +59,7 @@ The 8.16.0 release Added the following new and notable features.
 {agent}::
 * Uninstalling a {fleet}-managed {agent} instance will now do a best-effort attempt to notify {fleet-server} of the agent removal so the agent status appears correctly in the {fleet} UI (related to {fleet-server-pull}3818[#3818] above). {agent-pull}5302[#5302] {agent-issue}484[#484]
 * Introduce a Helm Chart for deploying {agent} in Kubernetes. {agent-pull}5331[#5331] {agent-issue}3847[#3847]
-* Remove support for the experimental shippers feature. Removal is non-breaking since the feature was experimental only. {agent-pull}5308[#5308] {agent-issue}4547[#4547]
+* Remove support for the experimental shippers feature. {agent-pull}5308[#5308] {agent-issue}4547[#4547]
 * Add the GCP Asset Inventory input to Cloudbeat. {agent-pull}5422[#5422]
 * Add support for passphrase protected mTLS client certificate key during install/enroll. {agent-pull}5494[#5494] {agent-issue}5489[#5489]
 * Elastic Defend now accepts a passphrase protected client certificate key for mTLS. {agent-pull}5542[#5542] {agent-issue}5490[#5490]

@@ -89,7 +89,7 @@ We tested using an AWS `m7i.xlarge` instance type with 4 vCPUs, 16.0 GB of memor
 | **Read network throughput** | ~40 KB/s | ~2.4 KB/s
 |===
 
-\* including all monitoring processes
+^*^ including all monitoring processes
 
 Adding integrations will increase the memory used by the agent and its processes.
 

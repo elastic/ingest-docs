@@ -44,10 +44,13 @@ The 8.16.0 release Added the following new and notable features.
 {fleet}::
 * Support content packages in UI. {kibana-pull}195831[#195831]
 * Advanced agent monitoring options UI for HTTP endpoint and diagnostics. {kibana-pull}193361[#193361]
-* Add option to have Kafka dynamic topics in outputs. {kibana-pull}192720[#192720]
+* Create a task that periodically unenrolls inactive agents. Once an {agent} transitions to an `inactive` state and after a configurable timeout has expired, the agent will be unenrolled. {kibana-pull}189861[#189861]
+* Add option to have Kafka dynamic topics in outputs. This allows the Kafka output to write to a topic which is dynamically set in an event field. {kibana-pull}192720[#192720]
 * Add support for GeoIP processor databases in Ingest Pipelines. {kibana-pull}190830[#190830]
 * Add agentless UX creation flow. {kibana-pull}189932[#189932]
-* Enable feature flag for reusable integration policies. {kibana-pull}187153[#187153]
+* Enable feature flag for reusable integration policies. This feature allows you to create integrations policies that can be shared with multiple {agent} policies, thereby reducing the number of integrations policies that you need to actively manage. {kibana-pull}187153[#187153]
+* Support integration-level outputs. This feature enables you to send integration data to a specific output, over-writing the output defined in the {agent} Policy. {kibana-pull}189125[#189125]
+
 
 {fleet-server}::
 * Add `/api/fleet/agents/:id/audit/unenroll` API that an {agent} or Endpoint process may use to enable accurate status reporting in the {fleet} UI. {fleet-server-pull}3818[#3818] {agent-issue}484[#484]
@@ -55,6 +58,7 @@ The 8.16.0 release Added the following new and notable features.
 
 {agent}::
 * Uninstalling a {fleet}-managed {agent} instance will now do a best-effort attempt to notify {fleet-server} of the agent removal so the agent status appears correctly in the {fleet} UI (related to {fleet-server-pull}3818[#3818] above). {agent-pull}5302[#5302] {agent-issue}484[#484]
+* Introduce a Helm Chart for deploying {agent} in Kubernetes. {agent-pull}5331[#5331] {agent-issue}3847[#3847]
 * Remove support for the experimental shippers feature. Removal is non-breaking since the feature was experimental only. {agent-pull}5308[#5308] {agent-issue}4547[#4547]
 * Add the GCP Asset Inventory input to Cloudbeat. {agent-pull}5422[#5422]
 * Add support for passphrase protected mTLS client certificate key during install/enroll. {agent-pull}5494[#5494] {agent-issue}5489[#5489]
@@ -74,9 +78,7 @@ The 8.16.0 release Added the following new and notable features.
 * Support integration policies without agent policy references (aka orphaned integration policies). {kibana-pull}190649[#190649]
 * Chang the UX of the Edit Integration Policy page to update agent policies. {kibana-pull}190583[#190583]
 * Allow `traces` to be added to the `monitoring_enabled` array in Agent policies. {kibana-pull}189908[#189908]
-* Create a task that periodically unenrolls inactive agents. {kibana-pull}189861[#189861]
 * Add setup technology selector to the Add Integration page. {kibana-pull}189612[#189612]
-* Support integration-level outputs. {kibana-pull}189125[#189125]
 
 {fleet-server}::
 * Alter the checkin API to remove attributes set by the audit or unenroll API (follow-up to {fleet-server-pull}3818[#3818] above). {fleet-server-pull}3827[#3827] {agent-issue}484[#484]

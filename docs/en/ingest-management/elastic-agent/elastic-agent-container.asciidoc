@@ -3,6 +3,8 @@
 
 You can run {agent} inside a container -- either with {fleet-server} or standalone. Docker images for all versions of {agent} are available from the https://www.docker.elastic.co/r/elastic-agent/elastic-agent[Elastic Docker registry]. If you are running in Kubernetes, refer to {eck-ref}/k8s-elastic-agent.html[run {agent} on ECK].
 
+Note that running {elastic-agent} in a container is supported only in Linux environments. For this reason we don't currently provide {agent} container images for Windows.
+
 Considerations:
 
 * When {agent} runs inside a container, it cannot be upgraded through {fleet} as it expects that the container itself is upgraded.

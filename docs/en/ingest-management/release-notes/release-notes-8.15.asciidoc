@@ -14,6 +14,9 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.15.3>>
+* <<release-notes-8.15.2>>
+* <<release-notes-8.15.1>>
 * <<release-notes-8.15.0>>
 
 Also see:
@@ -21,12 +24,95 @@ Also see:
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
 
+// begin 8.15.3 relnotes
+
+[[release-notes-8.15.3]]
+== {fleet} and {agent} 8.15.3
+
+Review important information about the {fleet} and {agent} 8.15.3 release.
+
+[discrete]
+[[known-issues-8.15.3]]
+=== Known issues
+
+[[known-issue-issue-41355-8.15.3]]
+.The memory usage of {beats} based integrations is not correctly limited by the number of events actively in the memory queue, but rather the maximum size of the memory queue regardless of usage.
+[%collapsible]
+====
+
+*Details*
+
+In 8.15, events in the memory queue are not freed when they are acknowledged (as intended), but only when they are overwritten by later events in the queue buffer. This means for example if a configuration has a queue size of 5000, but the input data is low-volume and only 100 events are active at once, then the queue will gradually store more events until reaching 5000 in memory at once, then start replacing those with new events.
+
+See {beats} issue link:https://github.com/elastic/beats/issues/40705[#40705].
+
+*Impact* +
+
+Memory usage may be higher than in previous releases depending on the throughput of {agent}. A fix is planned for 8.15.4.
+
+- The worst memory increase is for low-throughput configs with large queues.
+- For users whose queues were already sized proportionate to their throughput, memory use is increased but only marginally.
+- Affected users can mitigate the higher memory usage by lowering their queue size.
+
+====
+
+[discrete]
+[[security-updates-8.15.3]]
+=== Security updates
+
+{agent}::
+* Update Go version to 1.22.8. {agent-pull}5718[#5718]
+
+[discrete]
+[[enhancements-8.15.3]]
+
+=== Enhancements
+
+{agent}::
+* Adjust the default memory requests and limits for {agent} when it runs in a Kubernetes cluster. {agent-pull}5614[#5614] {agent-issue}5613[#5613] {agent-issue}4729[#4729]
+* Use a metadata watcher for ReplicaSets in the K8s provider to collect only the name and OwnerReferences, which are used to connect Pods to Deployments and DaemonSets. {agent-pull}5699[#5699] {agent-issue}5623[#5623]
+
+[discrete]
+[[bug-fixes-8.15.3]]
+=== Bug fixes
+
+{agent}::
+* Add `pprof` endpoints to the monitoring server if they're enabled in the {agent} configuration. {agent-pull}5562[#5562]
+* Stop the `elastic-agent inspect` command from printing the output configuration twice. {agent-pull}5692[#5692] {agent-issue}4471[#4471]
+
+// end 8.15.3 relnotes
+
 // begin 8.15.2 relnotes
 
 [[release-notes-8.15.2]]
 == {fleet} and {agent} 8.15.2
 
 Review important information about the {fleet} and {agent} 8.15.2 release.
+
+[discrete]
+[[known-issues-8.15.2]]
+=== Known issues
+
+[[known-issue-issue-41355-8.15.2]]
+.The memory usage of {beats} based integrations is not correctly limited by the number of events actively in the memory queue, but rather the maximum size of the memory queue regardless of usage.
+[%collapsible]
+====
+
+*Details*
+
+In 8.15, events in the memory queue are not freed when they are acknowledged (as intended), but only when they are overwritten by later events in the queue buffer. This means for example if a configuration has a queue size of 5000, but the input data is low-volume and only 100 events are active at once, then the queue will gradually store more events until reaching 5000 in memory at once, then start replacing those with new events.
+
+See {beats} issue link:https://github.com/elastic/beats/issues/40705[#40705].
+
+*Impact* +
+
+Memory usage may be higher than in previous releases depending on the throughput of {agent}. A fix is planned for 8.15.4.
+
+- The worst memory increase is for low-throughput configs with large queues.
+- For users whose queues were already sized proportionate to their throughput, memory use is increased but only marginally.
+- Affected users can mitigate the higher memory usage by lowering their queue size.
+
+====
 
 [discrete]
 [[enhancements-8.15.2]]
@@ -116,6 +202,27 @@ same package versions.
 
 ====
 
+[[known-issue-issue-41355-8.15.1]]
+.The memory usage of {beats} based integrations is not correctly limited by the number of events actively in the memory queue, but rather the maximum size of the memory queue regardless of usage.
+[%collapsible]
+====
+
+*Details*
+
+In 8.15, events in the memory queue are not freed when they are acknowledged (as intended), but only when they are overwritten by later events in the queue buffer. This means for example if a configuration has a queue size of 5000, but the input data is low-volume and only 100 events are active at once, then the queue will gradually store more events until reaching 5000 in memory at once, then start replacing those with new events.
+
+See {beats} issue link:https://github.com/elastic/beats/issues/40705[#40705].
+
+*Impact* +
+
+Memory usage may be higher than in previous releases depending on the throughput of {agent}. A fix is planned for 8.15.4.
+
+- The worst memory increase is for low-throughput configs with large queues.
+- For users whose queues were already sized proportionate to their throughput, memory use is increased but only marginally.
+- Affected users can mitigate the higher memory usage by lowering their queue size.
+
+====
+
 // end 8.15.1 relnotes
 
 // begin 8.15.0 relnotes
@@ -151,6 +258,27 @@ See {beats} issue link:https://github.com/elastic/beats/issues/40608[#40608] for
 *Impact* +
 
 If you're using {agent} on Windows with any integration which makes use of the Azure EventHub input, we recommend not upgrading {agent} to version 8.15.0 and instead waiting for a later release. A fix is planned for version 8.15.1.
+
+====
+
+[[known-issue-issue-41355]]
+.The memory usage of {beats} based integrations is not correctly limited by the number of events actively in the memory queue, but rather the maximum size of the memory queue regardless of usage.
+[%collapsible]
+====
+
+*Details*
+
+In 8.15, events in the memory queue are not freed when they are acknowledged (as intended), but only when they are overwritten by later events in the queue buffer. This means for example if a configuration has a queue size of 5000, but the input data is low-volume and only 100 events are active at once, then the queue will gradually store more events until reaching 5000 in memory at once, then start replacing those with new events.
+
+See {beats} issue link:https://github.com/elastic/beats/issues/40705[#40705].
+
+*Impact* +
+
+Memory usage may be higher than in previous releases depending on the throughput of {agent}. A fix is planned for 8.15.4.
+
+- The worst memory increase is for low-throughput configs with large queues.
+- For users whose queues were already sized proportionate to their throughput, memory use is increased but only marginally.
+- Affected users can mitigate the higher memory usage by lowering their queue size.
 
 ====
 

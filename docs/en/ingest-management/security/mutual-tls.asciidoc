@@ -48,6 +48,8 @@ When mTLS is required, the secure setup between {agent}, {fleet}, and {fleet-ser
 .. If the {agent} policy contains mTLS configuration settings, those settings will take precedence over those used during enrollment: This includes both the mTLS settings used for connectivity between {agent} and {fleet-server} (and the {fleet} application in {kib}, for {fleet}-managed {agent}), and the settings used between {agent} and it's specified output.
 .. If the {agent} policy does not contain any TLS, mTLS, or proxy configuration settings, these settings will remain as they were specified when {agent} enrolled. Note that the initial TLS, mTLS, or proxy configuration settings can not be removed through the {agent} policy; they can only be updated.
 
+IMPORTANT: When you run {agent} with the {elastic-defend} integration, the link:https://en.wikipedia.org/wiki/X.509[TLS certificates] used to connect to {fleet-server} and {es} need to be generated using link:https://en.wikipedia.org/wiki/RSA_(cryptosystem)[RSA]. For a full list of available algorithms to use when configuring TLS or mTLS, see <<elastic-agent-ssl-configuration,Configure SSL/TLS for standalone {agents}>>. These settings are available for both standalone and {fleet}-managed {agent}.
+
 [discrete]
 [[mutual-tls-on-premise]]
 == On-premise deployments

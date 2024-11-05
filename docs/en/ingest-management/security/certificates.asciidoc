@@ -37,6 +37,8 @@ openssl pkcs12 -in path.p12 -out private.key -nocerts -nodes
 Key passwords are not currently supported.
 ====
 
+IMPORTANT: When you run {agent} with the {elastic-defend} integration, the link:https://en.wikipedia.org/wiki/X.509[TLS certificates] used to connect to {fleet-server} and {es} need to be generated using link:https://en.wikipedia.org/wiki/RSA_(cryptosystem)[RSA]. For a full list of available algorithms to use when configuring TLS or mTLS, see <<elastic-agent-ssl-configuration,Configure SSL/TLS for standalone {agents}>>. These settings are available for both standalone and {fleet}-managed {agent}.
+
 [discrete]
 [[generate-fleet-server-certs]]
 == Generate a custom certificate and private key for {fleet-server}

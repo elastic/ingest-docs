@@ -164,6 +164,7 @@ elastic-agent enroll --url <string>
                      [--delay-enroll]
                      [--elastic-agent-cert <string>]
                      [--elastic-agent-cert-key <string>]
+                     [--elastic-agent-cert-key-passphrase <string>]
                      [--force]
                      [--header <strings>]
                      [--help]
@@ -191,6 +192,7 @@ elastic-agent enroll --fleet-server-es <string>
                      [--delay-enroll]
                      [--elastic-agent-cert <string>]
                      [--elastic-agent-cert-key <string>]
+                     [--elastic-agent-cert-key-passphrase <string>]
                      [--fleet-server-cert <string>] <1>
                      [--fleet-server-cert-key <string>]
                      [--fleet-server-cert-key-passphrase <string>]
@@ -250,6 +252,12 @@ Certificate to use as the client certificate for the {agent}'s connections to {f
 
 `--elastic-agent-cert-key`::
 Private key to use as for the {agent}'s connections to {fleet-server}.
+
+`--elastic-agent-cert-key-passphrase`::
+The path to the file that contains the passphrase for the mutual TLS private key that {agent} will use to connect to {fleet-server}.
+The file must only contain the characters of the passphrase, no newline or extra non-printing characters.
++
+This option is only used if the `--elastic-agent-cert-key` is encrypted and requires a passphrase to use.
 
 `--enrollment-token <string>`::
 Enrollment token to use to enroll {agent} into {fleet}. You can use
@@ -580,6 +588,7 @@ elastic-agent install --url <string>
                       [--delay-enroll]
                       [--elastic-agent-cert <string>]
                       [--elastic-agent-cert-key <string>]
+                      [--elastic-agent-cert-key-passphrase <string>]
                       [--force]
                       [--header <strings>]
                       [--help]
@@ -611,6 +620,7 @@ elastic-agent install --fleet-server-es <string>
                       [--delay-enroll]
                       [--elastic-agent-cert <string>]
                       [--elastic-agent-cert-key <string>]
+                      [--elastic-agent-cert-key-passphrase <string>]
                       [--fleet-server-cert <string>] <1>
                       [--fleet-server-cert-key <string>]
                       [--fleet-server-cert-key-passphrase <string>]
@@ -678,6 +688,12 @@ Certificate to use as the client certificate for the {agent}'s connections to {f
 
 `--elastic-agent-cert-key`::
 Private key to use as for the {agent}'s connections to {fleet-server}.
+
+`--elastic-agent-cert-key-passphrase`::
+The path to the file that contains the passphrase for the mutual TLS private key that {agent} will use to connect to {fleet-server}.
+The file must only contain the characters of the passphrase, no newline or extra non-printing characters.
++
+This option is only used if the `--elastic-agent-cert-key` is encrypted and requires a passphrase to use.
 
 `--enrollment-token <string>`::
 Enrollment token to use to enroll {agent} into {fleet}. You can use

@@ -79,7 +79,8 @@ Using our lab environment as an example, we can observe the following resource c
 === CPU and RSS memory size
 
 // lint ignore 2 vCPU 16.0 GiB
-We tested using an AWS `m7i.xlarge` instance type with 4 vCPUs, 16.0 GB of memory, and up to 12.5 Gbps of bandwidth. The tests ingested a single log file using both the throughput and scale preset with self monitoring enabled. These tests are representative of use cases that attempt to ingest data as fast as possible. This does not represent the resource overhead when using {integrations-docs}/endpoint[{elastic-defend}].
+We tested using an AWS `m7i.xlarge` instance type with 4 vCPUs, 16.0 GB of memory, and up to 12.5 Gbps of bandwidth. The tests ingested a single log file using both the <<output-elasticsearch-performance-tuning-settings,throughput and scale preset>> with self monitoring enabled.
+These tests are representative of use cases that attempt to ingest data as fast as possible. This does not represent the resource overhead when using {integrations-docs}/endpoint[{elastic-defend}].
 [options,header]
 |===
 |Resource | Throughput | Scale

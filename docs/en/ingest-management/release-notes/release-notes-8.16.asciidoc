@@ -47,7 +47,6 @@ The 8.16.0 release Added the following new and notable features.
 * Create a task that periodically unenrolls inactive agents. Once an {agent} transitions to an `inactive` state and after a configurable timeout has expired, the agent will be unenrolled. {kibana-pull}189861[#189861]
 * Add option to have Kafka dynamic topics in outputs. This allows the Kafka output to write to a topic which is dynamically set in an event field. {kibana-pull}192720[#192720]
 * Add support for GeoIP processor databases in Ingest Pipelines. {kibana-pull}190830[#190830]
-* Add agentless UX creation flow. {kibana-pull}189932[#189932]
 * Enable feature flag for reusable integration policies. This feature allows you to create integrations policies that can be shared with multiple {agent} policies, thereby reducing the number of integrations policies that you need to actively manage. {kibana-pull}187153[#187153]
 * Support integration-level outputs. This feature enables you to send integration data to a specific output, over-writing the output defined in the {agent} Policy. {kibana-pull}189125[#189125]
 

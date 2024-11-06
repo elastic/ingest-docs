@@ -1,13 +1,13 @@
 [[example-kubernetes-fleet-managed-agent-helm]]
-= Example: Install {fleet}-managed {agent} on Kubernetes using Helm
+= Example: Install {fleet}-managed {agent} on {k8s} using Helm
 
 preview::[]
 
-This example demonstrates how to install {fleet}-managed {agent} on a Kubernetes system using a Helm chart, gather Kubernetes metrics and send them to an {es} cluster in {ecloud}, and then view visualizations of those metrics in {kib}.
+This example demonstrates how to install {fleet}-managed {agent} on a {k8s} system using a Helm chart, gather {k8s} metrics and send them to an {es} cluster in {ecloud}, and then view visualizations of those metrics in {kib}.
 
 For an overview of the {agent} Helm chart and its benefits, refer to <<install-on-kubernetes-using-helm>>.
 
-This guide will take you through the following steps:
+This guide takes you through these steps:
 
 * <<agent-fleet-managed-helm-example-install-agent>>
 * <<agent-fleet-managed-helm-example-install-integration>>
@@ -20,9 +20,9 @@ This guide will take you through the following steps:
 
 To get started, you need:
 
-* A local install of the link:https://helm.sh/[Helm] Kubernetes package manager.
+* A local install of the link:https://helm.sh/[Helm] {k8s} package manager.
 * An link:{ess-trial}[{ecloud}] hosted {es} cluster on version 8.16 or higher.
-* An active Kubernetes cluster.
+* An active {k8s} cluster.
 * A local clone of the link:https://github.com/elastic/elastic-agent/tree/8.16[elastic/elastic-agent] GitHub repository. Make sure to use the `8.16` branch to ensure that {agent} has full compatibility with the Helm chart.
 
 [discrete]
@@ -35,7 +35,7 @@ To get started, you need:
 . Scroll down in the **Add agent** flyout to the **Install Elastic Agent on your host** section.
 . Select the **Linux TAR** tab and copy the values for `url` and `enrollment-token`. You'll use these when you run the `helm install` command.
 . Open a terminal shell and change into a directory in your local clone of the `elastic-agent` repo.
-. Copy the following command. Before running it you'll need to make a couple of changes.
+. Copy this command.
 +
 [source,sh]
 ----
@@ -46,7 +46,7 @@ helm install demo ./deploy/helm/elastic-agent \
 --set agent.fleet.preset=perNode
 ----
 +
-Note that the command has the following properties:
+Note that the command has these properties:
 
 * `helm install` runs the Helm CLI install tool.
 * `demo` gives a name to the installed chart. You can choose any name.
@@ -54,7 +54,7 @@ Note that the command has the following properties:
 * `--set agent.fleet.enabled=true` enables {fleet}-managed {agent}. The CLI parameter overrides the default `false` value for `agent.fleet.enabled` in the {agent} link:https://github.com/elastic/elastic-agent/blob/main/deploy/helm/elastic-agent/values.yaml[values.yaml] file.
 * `--set agent.fleet.url=<Fleet-URL>` sets the address where {agent} will connect to {fleet} in your {ecloud} deployment, over port 443 (again, overriding the value set by default in the {agent} link:https://github.com/elastic/elastic-agent/blob/main/deploy/helm/elastic-agent/values.yaml[values.yaml] file).
 * `--set agent.fleet.token=<Fleet-token>` sets the enrollment token that {agent} uses to authenticate with {fleet}.
-* `--set agent.fleet.preset=perNode` enables Kubernetes metrics on `per node` basis. You can alternatively set cluster wide metrics (`clusterWide`) or kube-state-metrics (`ksmSharded`).
+* `--set agent.fleet.preset=perNode` enables {k8s} metrics on `per node` basis. You can alternatively set cluster wide metrics (`clusterWide`) or kube-state-metrics (`ksmSharded`).
 +
 --
 TIP: For a full list of all available YAML settings and descriptions, refer to the link:https://github.com/elastic/elastic-agent/tree/main/deploy/helm/elastic-agent[{agent} Helm Chart Readme].
@@ -113,29 +113,29 @@ image::images/helm-example-nodes-logs-and-metrics.png[Screen capture of the Logs
 [[agent-fleet-managed-helm-example-install-integration]]
 === Install the Kubernetes integration
 
-Now that you've {agent} and data is flowing, you can set up the Kubernetes integration.
+Now that you've {agent} and data is flowing, you can set up the {k8s} integration.
 
 . In your {ecloud} deployment, from the {kib} menu open the **Integrations** page.
-. Run a search for `Kubernetes` and then select the Kubernetes integration card.
-. On the Kubernetes integration page, click **Add Kubernetes** to add the integration to your {agent} policy.
+. Run a search for `Kubernetes` and then select the {k8s} integration card.
+. On the {k8s} integration page, click **Add Kubernetes** to add the integration to your {agent} policy.
 . Scroll to the bottom of **Add Kubernetes integration** page. Under **Where to add this integration?** select the **Existing hosts** tab. On the **Agent policies** menu, select the agent policy that you created previously in the <<agent-fleet-managed-helm-example-install-agent>> steps.
 +
 You can leave all of the other integration settings at their default values.
 . Click **Save and continue**. When prompted, select to **Add Elastic Agent later** since you've already added it using Helm.
-. On the Kubernetes integration page, open the **Assets** tab and select the **[Metrics Kubernetes] Pods** dashboard.
+. On the {k8s} integration page, open the **Assets** tab and select the **[Metrics Kubernetes] Pods** dashboard.
 +
-On the dashboard, you can view the status of your Kubernetes pods, including metrics on memory usage, CPU usage, and network throughput.
+On the dashboard, you can view the status of your {k8s} pods, including metrics on memory usage, CPU usage, and network throughput.
 +
 [role="screenshot"]
 image::images/helm-example-fleet-metrics-dashboard.png[Screen capture of the Metrics Kubernetes pods dashboard]
 
-You've successfully installed {agent} using Helm, and your Kubernetes metrics data is available for viewing in {kib}.
+You've successfully installed {agent} using Helm, and your {k8s} metrics data is available for viewing in {kib}.
 
 [discrete]
 [[agent-fleet-managed-helm-example-tidy-up]]
 === Tidy up
 
-After you've run through this example, to uninstall {agent} simply run the `helm uninstall` command.
+After you've run through this example, run the `helm uninstall` command to uninstall {agent}.
 
 [source,sh]
 ----

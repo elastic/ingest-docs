@@ -7,7 +7,7 @@ This example demonstrates how to install standalone {agent} on a Kubernetes syst
 
 For an overview of the {agent} Helm chart and its benefits, refer to <<install-on-kubernetes-using-helm>>.
 
-This guide will take you through the following steps:
+This guide takes you through these steps:
 
 * <<agent-standalone-helm-example-install>>
 * <<agent-standalone-helm-example-upgrade>>
@@ -20,10 +20,10 @@ This guide will take you through the following steps:
 
 To get started, you need:
 
-* A local install of the link:https://helm.sh/[Helm] Kubernetes package manager.
+* A local install of the link:https://helm.sh/[Helm] {k8s} package manager.
 * An link:{ess-trial}[{ecloud}] hosted {es} cluster on version 8.16 or higher.
 * An <<create-api-key-standalone-agent,{es} API key>>.
-* An active Kubernetes cluster.
+* An active {k8s} cluster.
 * A local clone of the link:https://github.com/elastic/elastic-agent/tree/8.16[elastic/elastic-agent] GitHub repository. Make sure to use the `8.16` branch to ensure that {agent} has full compatibility with the Helm chart.
 
 [discrete]
@@ -33,7 +33,7 @@ To get started, you need:
 . Open your {ecloud} deployment, and from the navigation menu select **Manage this deployment**.
 . In the **Applications** section, copy the {es} endpoint and make a note of the endpoint value.
 . Open a terminal shell and change into a directory in your local clone of the `elastic-agent` repo.
-. Copy the following command. Before running it you'll need to make a couple of changes.
+. llowCopy this command.
 +
 [source,sh]
 ----
@@ -44,12 +44,12 @@ helm install demo ./deploy/helm/elastic-agent \
 --set outputs.default.api_key="API_KEY"
 ----
 +
-Note that the command has the following properties:
+Note that the command has these properties:
 
 * `helm install` runs the Helm CLI install tool.
 * `demo` gives a name to the installed chart. You can choose any name.
 * `./deploy/helm/elastic-agent` is a local path to the Helm chart to install (in time it's planned to have a public URL for the chart).
-* `--set kubernetes.enabled=true` enables the Kubernetes integration. The CLI parameter overrides the default `false` value for `kubernetes.enabled` in the {agent} link:https://github.com/elastic/elastic-agent/blob/main/deploy/helm/elastic-agent/values.yaml[values.yaml] file.
+* `--set kubernetes.enabled=true` enables the {k8s} integration. The CLI parameter overrides the default `false` value for `kubernetes.enabled` in the {agent} link:https://github.com/elastic/elastic-agent/blob/main/deploy/helm/elastic-agent/values.yaml[values.yaml] file.
 * `--set outputs.default.type=ESPlainAuthAPI` sets the authentication method for the {es} output to require an API key (again, overriding the value set by default in the {agent} link:https://github.com/elastic/elastic-agent/blob/main/deploy/helm/elastic-agent/values.yaml[values.yaml] file).
 * `--set outputs.default.url=<ES-endpoint>:443` sets the address of your {ecloud} deployment, where {agent} will send its output over port 443.
 * `--set outputs.default.api_key="API_KEY"` sets the API key that {agent} will use to authenticate with your {es} cluster.
@@ -74,7 +74,7 @@ helm install demo ./deploy/helm/elastic-agent \
 
 . Run the command.
 +
-The command output should confirm that three {agents} have been installed as well as the Kubernetes integration:
+The command output should confirm that three {agents} have been installed as well as the {k8s} integration:
 +
 [source,sh]
 ----
@@ -100,16 +100,16 @@ agent-pernode-demo-c7d75                  1/1     Running   0          5m18s
 ----
 
 . In your {ecloud} deployment, from the {kib} menu open the **Integrations** page.
-. Run a search for `Kubernetes` and then select the Kubernetes integration card.
-. On the Kubernetes integration page, select **Install Kubernetes assets**. This installs the dashboards, {es} indexes, and other assets used to monitor your Kubernetes cluster.
-. On the Kubernetes integration page, open the **Assets** tab and select the **[Metrics Kubernetes] Nodes** dashboard.
+. Run a search for `Kubernetes` and then select the {k8s} integration card.
+. On the {k8s} integration page, select **Install Kubernetes assets**. This installs the dashboards, {es} indexes, and other assets used to monitor your {k8s} cluster.
+. On the {k8s} integration page, open the **Assets** tab and select the **[Metrics Kubernetes] Nodes** dashboard.
 +
-On the dashboard, you can view the status of your Kubernetes nodes, including metrics on memory, CPU, and filesystem usage, network throughput, and more.
+On the dashboard, you can view the status of your {k8s} nodes, including metrics on memory, CPU, and filesystem usage, network throughput, and more.
 +
 [role="screenshot"]
 image::images/helm-example-nodes-metrics-dashboard.png[Screen capture of the Metrics Kubernetes nodes dashboard]
 
-. On the Kubernetes integration page, open the **Assets** tab and select the **[Metrics Kubernetes] Pods** dashboard. As with the nodes dashboard, on this dashboard you can view the status of your Kubernetes pods, including various metrics on memory, CPU, and network throughput.
+. On the {k8s} integration page, open the **Assets** tab and select the **[Metrics Kubernetes] Pods** dashboard. As with the nodes dashboard, on this dashboard you can view the status of your {k8s} pods, including various metrics on memory, CPU, and network throughput.
 +
 [role="screenshot"]
 image::images/helm-example-pods-metrics-dashboard.png[Screen capture of the Metrics Kubernetes pods dashboard]
@@ -149,7 +149,7 @@ helm upgrade demo ./deploy/helm/elastic-agent \
 
 . Run the command.
 +
-The command output should confirm that now only two {agents} are installed together with the Kubernetes integration:
+The command output should confirm that now only two {agents} are installed together with the {k8s} integration:
 +
 [source,sh]
 ----
@@ -273,7 +273,7 @@ You've upgraded the {agent} privileges to run as `root`. To change the settings 
 [[agent-standalone-helm-example-tidy-up]]
 === Tidy up
 
-After you've run through this example, to uninstall {agent} simply run the `helm uninstall` command.
+After you've run through this example, run the `helm uninstall` command to uninstall {agent}.
 
 [source,sh]
 ----

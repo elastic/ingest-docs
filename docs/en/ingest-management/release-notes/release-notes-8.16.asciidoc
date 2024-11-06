@@ -42,7 +42,7 @@ Review important information about the {fleet} and {agent} 8.16.0 release.
 The 8.16.0 release Added the following new and notable features.
 
 {fleet}::
-* Support content packages in UI. {kibana-pull}195831[#195831]
+* Add support for content-only packages in integrations UI. {kibana-pull}195831[#195831]
 * Advanced agent monitoring options UI for HTTP endpoint and diagnostics. {kibana-pull}193361[#193361]
 * Create a task that periodically unenrolls inactive agents. Once an {agent} transitions to an `inactive` state and after a configurable timeout has expired, the agent will be unenrolled. {kibana-pull}189861[#189861]
 * Add option to have Kafka dynamic topics in outputs. This allows the Kafka output to write to a topic which is dynamically set in an event field. {kibana-pull}192720[#192720]

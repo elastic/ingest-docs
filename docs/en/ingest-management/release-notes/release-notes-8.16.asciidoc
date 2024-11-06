@@ -76,7 +76,6 @@ The 8.16.0 release Added the following new and notable features.
 * Add format parameter to `agent_policies` APIs. {kibana-pull}191811[#191811]
 * Add toggles for `agent.monitoring.http.enabled` and `agent.monitoring.http.buffer.enabled` to agent policy advanced settings. {kibana-pull}190984[#190984]
 * Support integration policies without agent policy references (aka orphaned integration policies). {kibana-pull}190649[#190649]
-* Chang the UX of the Edit Integration Policy page to update agent policies. {kibana-pull}190583[#190583]
 * Allow `traces` to be added to the `monitoring_enabled` array in Agent policies. {kibana-pull}189908[#189908]
 * Add setup technology selector to the Add Integration page. {kibana-pull}189612[#189612]
 

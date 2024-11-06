@@ -36,6 +36,17 @@ Review important information about the {fleet} and {agent} 8.16.0 release.
 * Update {fleet-server} Go version to 1.23.1. {fleet-server-pull}3924[#3924]
 
 [discrete]
+[[breaking-changes-8.16.0]]
+=== Breaking changes
+
+Breaking changes can prevent your application from optimal operation and
+performance. Before you upgrade, review the breaking changes, then mitigate the
+impact to your application.
+
+{agent}::
+* When using the System integration, uppercase characters in the `host.hostname` are being converted to lowercase in {agent} output. This can possibly result in duplicated host entries appearing in {kib}. {beats-issue}39993[#39993]
+
+[discrete]
 [[new-features-8.16.0]]
 === New features
 

@@ -44,7 +44,7 @@ performance. Before you upgrade, review the breaking changes, then mitigate the
 impact to your application.
 
 {agent}::
-* When using the System integration, uppercase characters in the `host.hostname` are being converted to lowercase in {agent} output. This can possibly result in duplicated host entries appearing in {kib}. {beats-issue}39993[#39993]
+* When using the System integration, uppercase characters in the `host.hostname` are being converted to lowercase in {agent} output. This can possibly result in duplicated host entries appearing in {kib}. {beats-issue}39993[#3993]
 
 [discrete]
 [[new-features-8.16.0]]

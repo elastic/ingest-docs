@@ -60,6 +60,7 @@ Find troubleshooting information for {fleet}, {fleet-server}, and {agent} in the
 * <<fleet-server-integration-removed>>
 * <<agent-oom-k8s>>
 * <<agent-sudo-error>>
+* <<agent-kubernetes-kustomize>>
 
 
 [discrete]
@@ -830,3 +831,135 @@ Error: error loading agent config: error loading raw config: fail to read config
 
 To resolve this, either install {agent} without the `--unprivileged` flag so that it has administrative access, or run the {agent} commands without the `sudo` prefix.
 
+[discrete]
+[[agent-kubernetes-kustomize]]
+== Troubleshoot {agent} installation on Kubernetes, with Kustomize
+
+Potential issues during {agent} installation on Kubernetes can be categorized into two main areas:
+
+. <<agent-kustomize-manifest>>.
+. <<agent-kustomize-after>>.
+
+[discrete]
+[[agent-kustomize-manifest]]
+=== Problems related to the creation of objects within the manifest
+
+When troubleshooting installations performed with https://github.com/kubernetes-sigs/kustomize[Kustomize], it's good practice to inspect the output of the rendered manifest. To do this, take the installation command provided by Kibana Onboarding and replace the final part, `| kubectl apply -f-`, with a redirection to a local file. This allows for easier analysis of the rendered output.
+
+For example, the following command, originally provided by {kib} for an {agent} Standalone installation, has been modified to redirect the output for troubleshooting purposes:
+
+[source,sh]
+----
+kubectl kustomize https://github.com/elastic/elastic-agent/deploy/kubernetes/elastic-agent-kustomize/default/elastic-agent-standalone\?ref\=v8.15.3 | sed -e 's/JUFQSV9LRVkl/ZDAyNnZaSUJ3eWIwSUlCT0duRGs6Q1JfYmJoVFRUQktoN2dXTkd0FNMtdw==/g' -e "s/%ES_HOST%/https:\/\/7a912e8674a34086eacd0e3d615e6048.us-west2.gcp.elastic-cloud.com:443/g" -e "s/%ONBOARDING_ID%/db687358-2c1f-4ec9-86e0-8f1baa4912ed/g" -e "s/\(docker.elastic.co\/beats\/elastic-agent:\).*$/\18.15.3/g" -e "/{CA_TRUSTED}/c\ " > elastic_agent_installation_complete_manifest.yaml
+----
+
+The previous command generates a local file named `elastic_agent_installation_complete_manifest.yaml`, which you can use for further analysis. It contains the complete set of resources required for the {agent} installation, including:
+
+* RBAC objects (`ServiceAccounts`, `Roles`, etc.)
+
+* `ConfigMaps` and `Secrets` for {agent} configuration
+
+* {agent} Standalone deployed as a `DaemonSet`
+
+* https://github.com/kubernetes/kube-state-metrics[Kube-state-metrics] deployed as a `Deployment`
+
+The content of this file is equivalent to what you'd obtain by following the <<running-on-kubernetes-standalone>> steps, with the exception that `kube-state-metrics` is not included in the standalone method.
+
+**Possible issues**
+
+* If your user doesn't have *cluster-admin* privileges, the RBAC resources creation might fail.
+
+* Some Kubernetes security mechanisms (like https://kubernetes.io/docs/concepts/security/pod-security-standards/[Pod Security Standards]) could cause part of the manifest to be rejected, as `hostNetwork` access and `hostPath` volumes are required.
+
+* If you already have an installation of `kube-state-metrics`, it could cause part of the manifest installation to fail or to update your existing resources without notice.
+
+[discrete]
+[[agent-kustomize-after]]
+=== Failures occurring within specific components after installation
+
+If the installation is correct and all resources are deployed, but data is not flowing as expected (for example, you don't see any data on the *[Metrics Kubernetes] Cluster Overview* dashboard), check the following items:
+
+. Check resources status and ensure they are all in a `Running` state:
++
+[source,sh]
+----
+kubectl get pods -n kube-system | grep elastic
+kubectl get pods -n kube-system | grep kube-state-metrics
+----
++
+[NOTE]
+====
+The default configuration assumes that both `kube-state-metrics` and the {agent} `DaemonSet` are deployed in the **same namespace** for communication purposes. If you change the namespace of any of the components, the agent configuration will need further policy updates.
+====
+
+. Describe the Pods if they are in a `Pending` state:
++
+[source,sh]
+----
+kubectl describe -n kube-system <name_of_elastic_agent_pod>
+----
+
+. Check the logs of elastic-agents and kube-state-metrics, and look for errors or warnings:
++
+[source,sh]
+----
+kubectl logs -n kube-system <name_of_elastic_agent_pod> 
+kubectl logs -n kube-system <name_of_elastic_agent_pod> | grep -i error
+kubectl logs -n kube-system <name_of_elastic_agent_pod> | grep -i warn
+----
++
+[source,sh]
+----
+kubectl logs -n kube-system <name_of_kube-state-metrics_pod> 
+----
+
+**Possible issues**
+
+* Connectivity, authorization, or authentication issues when connecting to {es}:
++
+Ensure the API Key and {es} destination endpoint used during the installation is correct and is reachable from within the Pods.
++
+In an already installed system, the API Key is stored in a `Secret` named `elastic-agent-creds-<hash>`, and the endpoint is configured in the `ConfigMap` `elastic-agent-configs-<hash>`.
+
+* Missing cluster-level metrics (provided by `kube-state-metrics`):
++
+As described in <<running-on-kubernetes-standalone>>, the {agent} Pod acting as `leader` is responsible for retrieving cluster-level metrics from `kube-state-metrics` and delivering them to {ref}/data-streams.html[data streams] prefixed as `metrics-kubernetes.state_<resource>`. In order to troubleshoot a situation where these metrics are not appearing:
++
+. Determine which Pod owns the <<kubernetes_leaderelection-provider, leadership>> `lease` in the cluster, with:
++
+[source,sh]
+----
+kubectl get lease -n kube-system elastic-agent-cluster-leader
+----
++
+. Check the logs of that Pod to see if there are errors when connecting to `kube-state-metrics` and if the `state_*` metrics are being sent to {es}.
++
+One way to check if `state_*` metrics are being delivered to {es} is to inspect log lines with the `"Non-zero metrics in the last 30s"` message and check the values of the `state_*` metrics within the line, with something like:
++
+[source,sh]
+----
+kubectl logs -n kube-system elastic-agent-xxxx | grep "Non-zero metrics" | grep "state_"
+----
++
+If the previous command returns `"state_pod":{"events":213,"success":213}` or similar for all `state_*` metrics, it means the metrics are being delivered.
++
+. As a last resort, if you believe none of the Pods is acting as a leader, you can try deleting the `lease` to generate a new one:
++
+[source,sh]
+----
+kubectl delete lease -n kube-system elastic-agent-cluster-leader
+# wait a few seconds and check for the lease again
+kubectl get lease -n kube-system elastic-agent-cluster-leader
+----
+
+* Performance problems:
++
+Monitor the CPU and Memory usage of the agents Pods and adjust the manifest requests and limits as needed. Refer to <<scaling-on-kubernetes>> for more details about the needed resources.
+
+Extra resources for {agent} on Kubernetes troubleshooting and information:
+
+* <<agent-oom-k8s>>.
+
+* https://github.com/elastic/elastic-agent/tree/main/deploy/kubernetes/elastic-agent-kustomize/default[{agent} Kustomize Templates] documentation and resources.
+
+* Other examples and manifests to deploy https://github.com/elastic/elastic-agent/tree/main/deploy/kubernetes[{agent} on Kubernetes].

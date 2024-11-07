@@ -19,7 +19,7 @@ If you're running {es} and {kib} hosted on {cloud}/ec-getting-started.html[{ess}
 When you use a hosted {ess} deployment you may still choose to run {fleet-server} on-premise. For details about this deployment model and set up instructions, refer to <<add-fleet-server-mixed,Deploy {fleet-server} on-premises and {es} on Cloud>>.
 
 Docker and Kubernetes::
-You can deploy {fleet}-managed {agent} in Docker or on Kubernetes. Refer to <<elastic-agent-container,Run {agent} in a container>> or  <<running-on-kubernetes-managed-by-fleet,Run {agent} on Kubernetes managed by {fleet}>> for all of the configuration instructions. Details for configuring {fleet-server} are included with the {agent} install steps.
+You can deploy {fleet}-managed {agent} in Docker or on Kubernetes. Refer to <<elastic-agent-container,Run {agent} in a container>> or  <<running-on-kubernetes-managed-by-fleet,Run {agent} on Kubernetes managed by {fleet}>> for all of the configuration instructions. For a Kubernetes install we also have a <<install-on-kubernetes-using-helm,Helm chart>> available to simplify the installation. Details for configuring {fleet-server} are included with the {agent} install steps.
 
 {eck}::
 You can deploy {fleet}-managed {agent} in an {ecloud} Kubernetes environment that provides configuration and management capabilities for the full {stack}. For details, refer to {eck-ref}/k8s-elastic-agent-fleet.html[Run {fleet}-managed {agent} on ECK].

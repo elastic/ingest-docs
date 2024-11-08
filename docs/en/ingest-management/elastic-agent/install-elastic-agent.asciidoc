@@ -84,7 +84,7 @@ These tests are representative of use cases that attempt to ingest data as fast 
 [options,header]
 |===
 | **Resource** | **Throughput** | **Scale**
-| **CPU*** | ~67% total | ~20%
+| **CPU*** | ~67% | ~20%
 | **RSS memory size*** | ~280 MB | ~220 MB
 | **Write network throughput** | ~3.5 MB/s | 480 KB/s
 |===

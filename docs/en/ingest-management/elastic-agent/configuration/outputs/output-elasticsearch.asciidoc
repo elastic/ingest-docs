@@ -104,6 +104,7 @@ outputs:
 `https://10.45.3.1:9230/elasticsearch`.
 // end::hosts-setting[]
 
+Note that Elasticsearch Nodes on link:{serverless-docs}[{serverless-full}] environment are exposed on port 443.
 // =============================================================================
 
 // tag::protocol-setting[]

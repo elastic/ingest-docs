@@ -30,7 +30,11 @@ Also see:
 [[release-notes-8.15.4]]
 == {fleet} and {agent} 8.15.4
 
-There are no bug fixes for {fleet}, {fleet-server}, or {agent} in this release.
+[discrete]
+[[bug-fixes-8.15.4]]
+=== Bug fixes
+{agent}::
+* Improve upgrade experience by assuming that {agent} is installed, allowing to use proper control socket path to communicate with running {agent}. {agent-pull}5879[#5879]
 
 // end 8.15.4 relnotes
 

@@ -1,0 +1,248 @@
+// Use these for links to issue and pulls.
+:kibana-issue: https://github.com/elastic/kibana/issues/
+:kibana-pull: https://github.com/elastic/kibana/pull/
+:beats-issue: https://github.com/elastic/beats/issues/
+:beats-pull: https://github.com/elastic/beats/pull/
+:agent-libs-pull: https://github.com/elastic/elastic-agent-libs/pull/
+:agent-issue: https://github.com/elastic/elastic-agent/issues/
+:agent-pull: https://github.com/elastic/elastic-agent/pull/
+:fleet-server-issue: https://github.com/elastic/fleet-server/issues/
+:fleet-server-pull: https://github.com/elastic/fleet-server/pull/
+
+[[release-notes]]
+= Release notes
+
+This section summarizes the changes in each release.
+
+* <<release-notes-8.16.0>>
+
+Also see:
+
+* {kibana-ref}/release-notes.html[{kib} release notes]
+* {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.16.0 relnotes
+
+[[release-notes-8.16.0]]
+== {fleet} and {agent} 8.16.0
+
+Review important information about the {fleet} and {agent} 8.16.0 release.
+
+[discrete]
+[[security-updates-8.16.0]]
+=== Security updates
+
+{fleet-server}::
+* Update {fleet-server} Go version to 1.23.1. {fleet-server-pull}3924[#3924]
+
+[discrete]
+[[breaking-changes-8.16.0]]
+=== Breaking changes
+
+Breaking changes can prevent your application from optimal operation and
+performance. Before you upgrade, review the breaking changes, then mitigate the
+impact to your application.
+
+{agent}::
+* When using the System integration, uppercase characters in the `host.hostname` are being converted to lowercase in {agent} output. This can possibly result in duplicated host entries appearing in {kib}. {beats-issue}39993[#3993]
+
+[discrete]
+[[new-features-8.16.0]]
+=== New features
+
+The 8.16.0 release Added the following new and notable features.
+
+{fleet}::
+* Add support for content-only packages in integrations UI. {kibana-pull}195831[#195831]
+* Add advanced agent monitoring options for HTTP endpoint and diagnostics. {kibana-pull}193361[#193361]
+* Add support for periodic unenrollment of inactive agents. Once an {agent} transitions to an `inactive` state and after a configurable timeout has expired, the agent will be unenrolled. {kibana-pull}189861[#189861]
+* Add support for dynamic topics to the Kafka output. This allows the Kafka output to write to a topic which is dynamically set in an event field. {kibana-pull}192720[#192720]
+* Add support for GeoIP processor databases in Ingest Pipelines. {kibana-pull}190830[#190830]
+* Add support for reusable/shareable integration policies. This feature allows you to create integrations policies that can be shared with multiple {agent} policies, thereby reducing the number of integrations policies that you need to actively manage. {kibana-pull}187153[#187153]
+* Add support for integration-level outputs. This feature enables you to send integration data to a specific output, overwriting the output defined in the {agent} Policy. {kibana-pull}189125[#189125]
+
+
+{fleet-server}::
+* Add `/api/fleet/agents/:id/audit/unenroll` API that an {agent} or Endpoint process may use to report that an agent was uninstalled or unenrolled to {fleet}. {fleet-server-pull}3818[#3818] {agent-issue}484[#484]
+* Add a `secret_paths` attribute to the policy data sent to agents. This attribute is a list of keys that {fleet-server} has replaced with a reference to a secret value. {fleet-server-pull}3908[#3908] {fleet-server-issue}3657[#3657] 
+
+{agent}::
+* Uninstalling a {fleet}-managed {agent} instance will now do a best-effort attempt to notify {fleet-server} of the agent removal so the agent status appears correctly in the {fleet} UI (related to {fleet-server-pull}3818[#3818] above). {agent-pull}5302[#5302] {agent-issue}484[#484]
+* Introduce a Helm Chart for deploying {agent} in Kubernetes. {agent-pull}5331[#5331] {agent-issue}3847[#3847]
+* Remove support for the experimental shippers feature. {agent-pull}5308[#5308] {agent-issue}4547[#4547]
+* Add the GCP Asset Inventory input to Cloudbeat. {agent-pull}5422[#5422]
+* Add support for passphrase protected mTLS client certificate key during install/enroll. {agent-pull}5494[#5494] {agent-issue}5489[#5489]
+* Elastic Defend now accepts a passphrase protected client certificate key for mTLS. {agent-pull}5542[#5542] {agent-issue}5490[#5490]
+* Add a Kustomize template to enable hints-based autodiscovery by default when deploying standalone {agent} in a Kubernetes cluster. This also removes `root` privileges from the init container. {agent-pull}5643[#5643]
+
+[discrete]
+[[enhancements-8.16.0]]
+=== Enhancements
+
+{fleet}::
+* Update maximum supported package version. {kibana-pull}196551[#196551]
+* Add additional columns to {agent} Logs UI. {kibana-pull}192262[#192262]
+* Show `+build` versions for {agent} upgrades. {kibana-pull}192171[#192171]
+* Add format parameter to `agent_policies` APIs. {kibana-pull}191811[#191811]
+* Add toggles for `agent.monitoring.http.enabled` and `agent.monitoring.http.buffer.enabled` to agent policy advanced settings. {kibana-pull}190984[#190984]
+* Support integration policies without agent policy references (aka orphaned integration policies). {kibana-pull}190649[#190649]
+* Allow `traces` to be added to the `monitoring_enabled` array in Agent policies. {kibana-pull}189908[#189908]
+* Add setup technology selector to the Add Integration page. {kibana-pull}189612[#189612]
+
+{fleet-server}::
+* Alter the checkin API to remove attributes set by the audit or unenroll API (follow-up to {fleet-server-pull}3818[#3818] above). {fleet-server-pull}3827[#3827] {agent-issue}484[#484]
+* Enable warnings for configuration options that have been deprecated throughout the 8.x lifecycle. {fleet-server-pull}3901[#3901]
+
+{agent}::
+* Re-enable support for Elastic Defend on Windows Server 2012 and 2012 R2. {agent-pull}5429[#5429]
+* Include the correct Elastic License 2.0 file in build artifacts and packages. {agent-pull}5464[#5464]
+* Add the `pprofextension` to the {agent} OTel collector.  {agent-pull}5556[#5556]
+* Update the base container image from Ubuntu 20.04 to Ubuntu 24.04. {agent-pull}5644[#5644] {agent-issue}5501[#5501]
+* Redact values from the `elastic-agent inspect` command output for any keys in the `secret_paths` array. {agent-pull}5621[#5621]
+* Redact secret paths in files written in {agent} diagnostics bundles. {agent-pull}5745[#5745]
+* Update the versions of OpenTelemetry Collector components from v0.111.0/v1.17.0 to v0.112.0/v1.18.0. {agent-pull}5838[#5838]
+
+[discrete]
+[[bug-fixes-8.16.0]]
+=== Bug fixes
+
+{fleet}::
+* Revert "Fix client-side validation for agent policy timeout fields". {kibana-pull}194338[#194338]
+* Add proxy arguments to install snippets. {kibana-pull}193922[#193922]
+* Rollover if dimension mappings changed in dynamic templates. {kibana-pull}192098[#192098]
+
+{fleet-server}::
+* Fix the error handling when {fleet-server} attempts to authenticate with {es}. {fleet-server-pull}3935[#3935] {fleet-server-issue}3929[#3929]
+* Fix an issue that caused {fleet-server} to report a `500` error on {agent} check-in because the agent has upgrade details but the referenced action ID is not found. {fleet-server-pull}3991[#3991]
+
+{agent}::
+* Fix {agent} crashing when self unenrolling due to too many authentication failures against {fleet-server}. {agent-pull}5438[#5438] {agent-issue}5434[#5434]
+* Change the deprecated `maintainer` label in Dockerfile to use the `org.opencontainers.image.authors` label instead. {agent-pull}5527[#5527]
+
+// end 8.16.0 relnotes
+
+// ---------------------
+//TEMPLATE
+//Use the following text as a template. Remember to replace the version info.
+
+// begin 8.7.x relnotes
+
+//[[release-notes-8.7.x]]
+//== {fleet} and {agent} 8.7.x
+
+//Review important information about the {fleet} and {agent} 8.7.x release.
+
+//[discrete]
+//[[security-updates-8.7.x]]
+//=== Security updates
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[breaking-changes-8.7.x]]
+//=== Breaking changes
+
+//Breaking changes can prevent your application from optimal operation and
+//performance. Before you upgrade, review the breaking changes, then mitigate the
+//impact to your application.
+
+//[discrete]
+//[[breaking-PR#]]
+//.Short description
+//[%collapsible]
+//====
+//*Details* +
+//<Describe new behavior.> For more information, refer to {kibana-pull}PR[#PR].
+
+//*Impact* +
+//<Describe how users should mitigate the change.> For more information, refer to {fleet-guide}/fleet-server.html[Fleet Server].
+//====
+
+//[discrete]
+//[[notable-changes-8.13.0]]
+//=== Notable changes
+
+//The following are notable, non-breaking updates to be aware of:
+
+//* Changes to features that are in Technical Preview.
+//* Changes to log formats.
+//* Changes to non-public APIs.
+//* Behaviour changes that repair critical bugs.
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[known-issues-8.7.x]]
+//=== Known issues
+
+//[[known-issue-issue#]]
+//.Short description
+//[%collapsible]
+//====
+
+//*Details*
+
+//<Describe known issue.>
+
+//*Impact* +
+
+//<Describe impact or workaround.>
+
+//====
+
+//[discrete]
+//[[deprecations-8.7.x]]
+//=== Deprecations
+
+//The following functionality is deprecated in 8.7.x, and will be removed in
+//8.7.x. Deprecated functionality does not have an immediate impact on your
+//application, but we strongly recommend you make the necessary updates after you
+//upgrade to 8.7.x.
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[new-features-8.7.x]]
+//=== New features
+
+//The 8.7.x release Added the following new and notable features.
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[enhancements-8.7.x]]
+//=== Enhancements
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[bug-fixes-8.7.x]]
+//=== Bug fixes
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+// end 8.7.x relnotes

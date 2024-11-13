@@ -33,6 +33,7 @@ Also see:
 [discrete]
 [[bug-fixes-8.15.4]]
 === Bug fixes
+
 {agent}::
 * Improve upgrade experience by assuming that {agent} is installed, allowing to use proper control socket path to communicate with running {agent}. {agent-pull}5879[#5879]
 

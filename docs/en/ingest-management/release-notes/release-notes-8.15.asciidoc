@@ -14,6 +14,7 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.15.4>>
 * <<release-notes-8.15.3>>
 * <<release-notes-8.15.2>>
 * <<release-notes-8.15.1>>
@@ -23,6 +24,20 @@ Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.15.4 relnotes
+
+[[release-notes-8.15.4]]
+== {fleet} and {agent} 8.15.4
+
+[discrete]
+[[bug-fixes-8.15.4]]
+=== Bug fixes
+
+{agent}::
+* Improve upgrade experience by assuming that {agent} is installed, allowing to use proper control socket path to communicate with running {agent}. {agent-pull}5879[#5879]
+
+// end 8.15.4 relnotes
 
 // begin 8.15.3 relnotes
 

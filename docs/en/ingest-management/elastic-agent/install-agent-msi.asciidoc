@@ -47,7 +47,7 @@ Installing using an MSI package has the following behaviors:
 [discrete]
 == Upgrading
 
-The {agent} version can be upgraded via {fleet}, but the registered MSI version will display the initially installed version (this shortcoming will be addressed in future releases). Attempts to upgrade outside of {fleet} via the MSI will require an uninstall and reinstall procedure to upgrade . Also note that this MSI implementation relies on the tar {agent} binary to upgrade the installation. Therefore if the {agent} is installed in an air-gap environment, the user must ensure that the tar image is available before an upgrade request has been issued. 
+The {agent} version can be upgraded via {fleet}, but the registered MSI version will display the initially installed version (this shortcoming will be addressed in future releases). Attempts to upgrade outside of {fleet} via the MSI will require an uninstall and reinstall procedure to upgrade. Also note that this MSI implementation relies on the tar {agent} binary to upgrade the installation. Therefore if the {agent} is installed in an air-gapped environment, you must ensure that the tar image is available before an upgrade request is issued. 
 
 [discrete]
 == Installing in a custom location

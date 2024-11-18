@@ -14,6 +14,7 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.15.4>>
 * <<release-notes-8.15.3>>
 * <<release-notes-8.15.2>>
 * <<release-notes-8.15.1>>
@@ -23,6 +24,20 @@ Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.15.4 relnotes
+
+[[release-notes-8.15.4]]
+== {fleet} and {agent} 8.15.4
+
+[discrete]
+[[bug-fixes-8.15.4]]
+=== Bug fixes
+
+{agent}::
+* Improve upgrade experience by assuming that {agent} is installed, allowing to use proper control socket path to communicate with running {agent}. {agent-pull}5879[#5879]
+
+// end 8.15.4 relnotes
 
 // begin 8.15.3 relnotes
 
@@ -44,7 +59,7 @@ Review important information about the {fleet} and {agent} 8.15.3 release.
 
 In 8.15, events in the memory queue are not freed when they are acknowledged (as intended), but only when they are overwritten by later events in the queue buffer. This means for example if a configuration has a queue size of 5000, but the input data is low-volume and only 100 events are active at once, then the queue will gradually store more events until reaching 5000 in memory at once, then start replacing those with new events.
 
-See {beats} issue link:https://github.com/elastic/beats/issues/40705[#40705].
+See {beats} issue link:https://github.com/elastic/beats/issues/41355[#41355].
 
 *Impact* +
 
@@ -102,7 +117,7 @@ Review important information about the {fleet} and {agent} 8.15.2 release.
 
 In 8.15, events in the memory queue are not freed when they are acknowledged (as intended), but only when they are overwritten by later events in the queue buffer. This means for example if a configuration has a queue size of 5000, but the input data is low-volume and only 100 events are active at once, then the queue will gradually store more events until reaching 5000 in memory at once, then start replacing those with new events.
 
-See {beats} issue link:https://github.com/elastic/beats/issues/40705[#40705].
+See {beats} issue link:https://github.com/elastic/beats/issues/41355[#41355].
 
 *Impact* +
 
@@ -211,7 +226,7 @@ same package versions.
 
 In 8.15, events in the memory queue are not freed when they are acknowledged (as intended), but only when they are overwritten by later events in the queue buffer. This means for example if a configuration has a queue size of 5000, but the input data is low-volume and only 100 events are active at once, then the queue will gradually store more events until reaching 5000 in memory at once, then start replacing those with new events.
 
-See {beats} issue link:https://github.com/elastic/beats/issues/40705[#40705].
+See {beats} issue link:https://github.com/elastic/beats/issues/41355[#41355].
 
 *Impact* +
 
@@ -270,7 +285,7 @@ If you're using {agent} on Windows with any integration which makes use of the A
 
 In 8.15, events in the memory queue are not freed when they are acknowledged (as intended), but only when they are overwritten by later events in the queue buffer. This means for example if a configuration has a queue size of 5000, but the input data is low-volume and only 100 events are active at once, then the queue will gradually store more events until reaching 5000 in memory at once, then start replacing those with new events.
 
-See {beats} issue link:https://github.com/elastic/beats/issues/40705[#40705].
+See {beats} issue link:https://github.com/elastic/beats/issues/41355[#41355].
 
 *Impact* +
 

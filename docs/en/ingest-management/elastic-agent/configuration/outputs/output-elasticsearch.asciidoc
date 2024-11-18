@@ -102,6 +102,8 @@ outputs:
 <1> In this example, the {es} nodes are available at
 `https://10.45.3.2:9220/elasticsearch` and
 `https://10.45.3.1:9230/elasticsearch`.
+
+Note that Elasticsearch Nodes in the link:{serverless-docs}[{serverless-full}] environment are exposed on port 443.
 // end::hosts-setting[]
 
 // =============================================================================

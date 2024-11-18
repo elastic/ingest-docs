@@ -47,6 +47,27 @@ impact to your application.
 * When using the System integration, uppercase characters in the `host.hostname` are being converted to lowercase in {agent} output. This can possibly result in duplicated host entries appearing in {kib}. {beats-issue}39993[#3993]
 
 [discrete]
+[[known-issues-8.16.0]]
+=== Known issues
+
+[[known-issue-191661]]
+.{fleet} UI listing shows "No agent found"
+[%collapsible]
+====
+
+*Details*
+
+In the {fleet} UI in {kib}, the listing {agents} might show "No agent found" with a toast message "Error fetching agents" or "Agent policy ... not found".
+
+This error can happen if the {agents} being searched and listed in the UI are using an {agent} policy which doesn't exist.
+
+*Impact* +
+
+To resolve this issue, upgrade your {stack} to verion 8.16.1 in which the problem is fixed.
+
+====
+
+[discrete]
 [[new-features-8.16.0]]
 === New features
 

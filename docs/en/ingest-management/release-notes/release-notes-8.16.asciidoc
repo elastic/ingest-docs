@@ -63,7 +63,7 @@ This error can happen if the {agents} being searched and listed in the UI are us
 
 *Impact* +
 
-To resolve this issue, upgrade your {stack} to verion 8.16.1 in which the problem is fixed.
+As a workaround for the issue, you can upgrade your {stack} to verion 8.16.1. The issue has been resolved by {kibana} link:https://github.com/elastic/kibana/pull/199325[#199325]. 
 
 ====
 
@@ -109,7 +109,12 @@ This problem occurs when {agent} notifies {fleet} to audit the uninstall process
 
 *Impact* +
 
-TBD
+This issue prevents {agent} from being uninstalled on Windows systems.
+
+As a workaround you can...
+
+//* Upgrade your {stack}?
+//* Force uninstall the agent using a command?
 
 ====
 

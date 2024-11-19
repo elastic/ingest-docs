@@ -74,7 +74,7 @@ As a workaround for the issue, you can upgrade your {stack} to verion 8.16.1. Th
 
 *Details*
 
-{agent} sometimes throws an exception when uninstalling on Microsoft Windows systems.
+{fleet}-managed {agent} sometimes throws an exception when uninstalling on Microsoft Windows systems.
 
 For example:
 

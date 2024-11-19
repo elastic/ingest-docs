@@ -29,6 +29,130 @@ Also see:
 Review important information about the {fleet} and {agent} 8.16.0 release.
 
 [discrete]
+[[known-issues-8.16.0]]
+=== Known issues
+
+[[known-issue-issue-5952-8.16.0]]
+.elastic-agent managed by fleet might throw an exception when uninstalling on Microsoft Windows systems.
+[%collapsible]
+====
+
+*Details*
+
+elastic-agent managed by fleet might throw an exception when uninstalling on Microsoft Windows systems.
+
+Sample:
+
+```
+C:\>"C:\Program Files\Elastic\Agent\elastic-agent.exe" uninstall
+Elastic Agent will be uninstalled from your system at C:\Program Files\Elastic\Agent. Do you want to continue? [Y/n]:y
+[====] Attempting to notify Fleet of uninstall  [37s] unexpected fault address 0x18000473ef1
+fatal error: fault
+[signal 0xc0000005 code=0x1 addr=0x18000473ef1 pc=0x9f3004]
+goroutine 1 gp=0xc00007c000 m=5 mp=0xc000116008 [running]:
+runtime.throw({0x207a4ba?, 0xa2d986?})
+        runtime/panic.go:1023 +0x65 fp=0xc000067588 sp=0xc000067558 pc=0xcf8c5
+runtime.sigpanic()
+        runtime/signal_windows.go:414 +0xd0 fp=0xc0000675d0 sp=0xc000067588 pc=0xe6a10
+(...)
+        github.com/elastic/elastic-agent/internal/pkg/agent/errors/generators.go:23
+github.com/elastic/elastic-agent/internal/pkg/fleetapi.(*AuditUnenrollCmd).Execute(0xc00073f998, {0x4, 0x23cf148}, 0x0)
+        github.com/elastic/elastic-agent/internal/pkg/fleetapi/audit_unenroll_cmd.go:74 +0x324 fp=0xc000067738 sp=0xc0000675d0 pc=0x9f3004
+runtime: g 1: unexpected return pc for github.com/elastic/elastic-agent/internal/pkg/fleetapi.(*AuditUnenrollCmd).Execute called from 0xc0006817a0
+stack: frame={sp:0xc0000675d0, fp:0xc000067738} stack=[0xc000064000,0xc000068000)
+0x000000c0000674d0:  0x000000c000067508  0x00000000000d14af <runtime.gwrite+0x00000000000000ef>
+0x000000c0000674e0:  0x00000000023c9c90  0x0000000000000001
+0x000000c0000674f0:  0x0000000000000001  0x000000c00006756b
+0x000000c000067500:  0x00000000001074b7 <runtime.systemstack+0x0000000000000037>  0x000000c000067548
+0x000000c000067510:  0x00000000000cfd05 <runtime.fatalthrow+0x0000000000000065>  0x000000c000067528
+0x000000c000067520:  0x000000c00007c000  0x00000000000cfd40 <runtime.fatalthrow.func1+0x0000000000000000>
+0x000000c000067530:  0x000000c00007c000  0x00000000000cf8c5 <runtime.throw+0x0000000000000065>
+0x000000c000067540:  0x000000c000067558  0x000000c000067578
+0x000000c000067550:  0x00000000000cf8c5 <runtime.throw+0x0000000000000065>  0x000000c000067560
+0x000000c000067560:  0x00000000000cf8e0 <runtime.throw.func1+0x0000000000000000>  0x000000000207a4ba
+0x000000c000067570:  0x0000000000000005  0x000000c0000675c0
+0x000000c000067580:  0x00000000000e6a10 <runtime.sigpanic+0x00000000000000d0>  0x000000000207a4ba
+0x000000c000067590:  0x0000000000a2d986 <github.com/elastic/elastic-agent/internal/pkg/agent/install.backoffWithContext+0x00000000000000a6>  0x0000018000473ef1
+0x000000c0000675a0:  0x000000c00007c000  0x00000002540be400
+0x000000c0000675b0:  0x00000000023e9840  0x000000c0004c1d40
+0x000000c0000675c0:  0x000000c000067800  0x00000000009f3004 <github.com/elastic/elastic-agent/internal/pkg/fleetapi.(*AuditUnenrollCmd).Execute+0x0000000000000324>
+0x000000c0000675d0: <0x0000000000a2acfa <github.com/elastic/elastic-agent/internal/pkg/agent/install.notifyFleetAuditUninstall+0x000000000000039a>  0x00000000023f8d28
+0x000000c0000675e0:  0x000000c00011c050  0x00000000023cf148
+0x000000c0000675f0:  0x0000000000000000  0x00000000023cf148
+0x000000c000067600:  0x0000000000000000  0x000000c00073f9b0
+0x000000c000067610:  0x000000000000000e  0x000000c00052fbd0
+0x000000c000067620:  0x0000000000000001  0x0000000000000001
+0x000000c000067630:  0x000000c0007d0460  0x0000008bb2c97000
+0x000000c000067640:  0x0000000000000000  0x0000000000000000
+0x000000c000067650:  0x0000000000000000  0x0000000000000000
+0x000000c000067660:  0x0000000000000000  0x000000c000453b80
+0x000000c000067670:  0x0000000000000036  0x0100000000000000
+0x000000c000067680:  0x00000000023e9840  0x0000000000000000
+0x000000c000067690:  0x000000000000002a  0x0000000000000028
+0x000000c0000676a0:  0x000000c00051a378  0x0000000edebedcf7
+0x000000c0000676b0:  0x000000000576fb74  0x00000000023f8d28
+0x000000c0000676c0:  0x0000000000000000  0x0000000000000000
+0x000000c0000676d0:  0x000000000576fb74  0x0000000edebedcf7
+0x000000c0000676e0:  0x0000000000000000  0x0000000000000000
+0x000000c0000676f0:  0x000000c000357e90  0x000000c00000d480
+0x000000c000067700:  0x0000000000000000  0x00000000023cf170
+0x000000c000067710:  0x000000c00011c050  0x00000000023e05e0
+0x000000c000067720:  0x000000c0001d54a0  0x00000000023d81e0
+0x000000c000067730:  0x000000c0006817a0 >0x000000c00073f998
+0x000000c000067740:  0x0000000000000004  0x00000000023cf148
+0x000000c000067750:  0x0000000000000000  0x00000000023cf148
+0x000000c000067760:  0x0000000000000000  0x000000c00073f9b0
+0x000000c000067770:  0x000000000000000e  0x000000c00052fbd0
+0x000000c000067780:  0x0000000000000001  0x0000000000000001
+0x000000c000067790:  0x000000c0007d0460  0x0000008bb2c97000
+0x000000c0000677a0:  0x0000000000000000  0x0000000000000000
+0x000000c0000677b0:  0x0000000000000000  0x0000000000000000
+0x000000c0000677c0:  0x00000000009ddb3f <github.com/schollz/progressbar/v3.(*ProgressBar).Describe+0x00000000000000ff>  0x000000c00038a780
+0x000000c0000677d0:  0x000000c0003572f0  0x00000000037eb440
+0x000000c0000677e0:  0x00000000009ddb80 <github.com/schollz/progressbar/v3.(*ProgressBar).Describe.deferwrap1+0x0000000000000000>  0x000000c00038a958
+0x000000c0000677f0:  0x000000c00010a1f9  0x000000c0002dced0
+0x000000c000067800:  0x000000c000067958  0x0000000000a2a593 <github.com/elastic/elastic-agent/internal/pkg/agent/install.Uninstall+0x00000000000006b3>
+0x000000c000067810:  0x00000000023f8c80  0x0000000003874900
+0x000000c000067820:  0x000000c000522b00  0x000000c00038a780
+0x000000c000067830:  0x000000c00052f150
+goroutine 2 gp=0xc00007c700 m=nil [force gc (idle)]:
+runtime.gopark(0x0?, 0x0?, 0x0?, 0x0?, 0x0?)
+        runtime/proc.go:402 +0xce fp=0xc000081fa8 sp=0xc000081f88 pc=0xd260e
+runtime.goparkunlock(...)
+        runtime/proc.go:408
+runtime.forcegchelper()
+        runtime/proc.go:326 +0xb8 fp=0xc000081fe0 sp=0xc000081fa8 pc=0xd2478
+runtime.goexit({})
+        runtime/asm_amd64.s:1695 +0x1 fp=0xc000081fe8 sp=0xc000081fe0 pc=0x109481
+created by runtime.init.6 in goroutine 1
+        runtime/proc.go:314 +0x1a
+goroutine 3 gp=0xc00007ca80 m=nil [GC sweep wait]:
+runtime.gopark(0x1?, 0x0?, 0x0?, 0x0?, 0x0?)
+        runtime/proc.go:402 +0xce fp=0xc000083f80 sp=0xc000083f60 pc=0xd260e
+runtime.goparkunlock(...)
+        runtime/proc.go:408
+runtime.bgsweep(0xc00008a000)
+        runtime/mgcsweep.go:318 +0xdf fp=0xc000083fc8 sp=0xc000083f80 pc=0xba93f
+runtime.gcenable.gowrap1()
+        runtime/mgc.go:203 +0x25 fp=0xc000083fe0 sp=0xc000083fc8 pc=0xaf1e5
+runtime.goexit({})
+        runtime/asm_amd64.s:1695 +0x1 fp=0xc000083fe8 sp=0xc000083fe0 pc=0x109481
+created by runtime.gcenable in goroutine 1
+        runtime/mgc.go:203 +0x66
+...
+```
+
+See {elastic-agent} issue link:https://github.com/elastic/elastic-agent/issues/5952[#5952].
+
+*Cause* +
+
+The problem occurs when Elastic Agent notifies Fleet to audit the uninstall.
+
+
+
+====
+
+[discrete]
 [[security-updates-8.16.0]]
 === Security updates
 

@@ -14,12 +14,29 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.16.1>>
 * <<release-notes-8.16.0>>
 
 Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.16.0 relnotes
+
+[[release-notes-8.16.1]]
+== {fleet} and {agent} 8.16.1
+
+[discrete]
+[[bug-fixes-8.16.1]]
+=== Bug fixes
+
+{agent}::
+* During an {agent} upgrade, resolve paths to a proper value assuming that the upgrading agent is installed. {agent-pull}5879[#5879] {agent-issue}5872[#5872]
+* Trim spaces in the user input accepted by the cli.confirm function. This allows users to enter spaces around the `yes/no` inputs in CLI confirmation prompts. {agent-pull}5909[#5909]
+* Skip calling the `notifyFleetAuditUninstall` function to notify {fleet} on Windows during {agent} uninstall, to significantly reduce likelihood of an exception being thrown. {agent-pull}6065[#6065] {agent-issue}5952[#5952]
+
+// end 8.16.1 relnotes
 
 // begin 8.16.0 relnotes
 

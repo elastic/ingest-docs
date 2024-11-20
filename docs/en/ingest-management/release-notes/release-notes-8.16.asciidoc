@@ -28,7 +28,7 @@ Also see:
 == {fleet} and {agent} 8.16.1
 
 [discrete]
-[[bug-fixes-8.16.0]]
+[[bug-fixes-8.16.1]]
 === Bug fixes
 
 {agent}::

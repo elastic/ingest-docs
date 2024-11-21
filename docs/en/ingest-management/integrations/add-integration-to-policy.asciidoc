@@ -6,6 +6,8 @@
 ++++
 
 An <<agent-policy,{agent} policy>> consists of one or more integrations that are applied to the agents enrolled in that policy.
+When you add an integration, the policy created for that integration can be shared with multiple {agent} policies. This reduces the number of integrations policies that you need to actively manage.
+
 To add a new integration to one or more {agent} policies:
 
 . In {kib}, go to the **Integrations** page.

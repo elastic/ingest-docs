@@ -1,0 +1,192 @@
+// Use these for links to issue and pulls.
+:kibana-issue: https://github.com/elastic/kibana/issues/
+:kibana-pull: https://github.com/elastic/kibana/pull/
+:beats-issue: https://github.com/elastic/beats/issues/
+:beats-pull: https://github.com/elastic/beats/pull/
+:agent-libs-pull: https://github.com/elastic/elastic-agent-libs/pull/
+:agent-issue: https://github.com/elastic/elastic-agent/issues/
+:agent-pull: https://github.com/elastic/elastic-agent/pull/
+:fleet-server-issue: https://github.com/elastic/fleet-server/issues/
+:fleet-server-pull: https://github.com/elastic/fleet-server/pull/
+
+[[release-notes]]
+= Release notes
+
+This section summarizes the changes in each release.
+
+* <<release-notes-8.17.0>>
+
+Also see:
+
+* {kibana-ref}/release-notes.html[{kib} release notes]
+* {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.17.0 relnotes
+
+[[release-notes-8.17.0]]
+== {fleet} and {agent} 8.17.0
+
+Review important information about the {fleet} and {agent} 8.17.0 release.
+
+[discrete]
+[[breaking-changes-8.7.x]]
+=== Breaking changes
+
+Breaking changes can prevent your application from optimal operation and
+performance. Before you upgrade, review the breaking changes, then mitigate the
+impact to your application.
+
+{agent}::
+* Install images for {agent} on Debian 10 systems are no longer being made available. Debian 11 is now supported instead. {agent-pull}5847[#5847]
+
+[discrete]
+[[enhancements-8.17.0]]
+=== Enhancements
+
+{fleet-server}::
+* Update `elastic-agent-libs` to version `0.14.0`. {fleet-server-pull}4042[#4042]
+
+{agent}::
+* Enable persistence in the configuration provided with our OTel Collector distribution. {agent-pull}5549[#5549]
+* Add Filebeat as a receiver for {agent} running in OTel mode. {agent-pull}5833[#5833]
+* Restricts using the CLI to upgrade {fleet}-managed {agents}. With this implementation, upgrading a {fleet}-managed agent using the CLI is supported only if the agent is running in privileged mode and the user provides a `force` flag. {agent-pull}5864[#5864] {agent-issue}4890[#4890]
+
+[discrete]
+[[bug-fixes-8.17.0]]
+=== Bug fixes
+
+//{fleet}::
+
+
+{fleet-server}::
+* Update `elastic-agent-libs` to version `0.14.0`.
+
+//{agent}::
+
+// end 8.17.0 relnotes
+
+// ---------------------
+//TEMPLATE
+//Use the following text as a template. Remember to replace the version info.
+
+// begin 8.7.x relnotes
+
+//[[release-notes-8.7.x]]
+//== {fleet} and {agent} 8.7.x
+
+//Review important information about the {fleet} and {agent} 8.7.x release.
+
+//[discrete]
+//[[security-updates-8.7.x]]
+//=== Security updates
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[breaking-changes-8.7.x]]
+//=== Breaking changes
+
+//Breaking changes can prevent your application from optimal operation and
+//performance. Before you upgrade, review the breaking changes, then mitigate the
+//impact to your application.
+
+//[discrete]
+//[[breaking-PR#]]
+//.Short description
+//[%collapsible]
+//====
+//*Details* +
+//<Describe new behavior.> For more information, refer to {kibana-pull}PR[#PR].
+
+//*Impact* +
+//<Describe how users should mitigate the change.> For more information, refer to {fleet-guide}/fleet-server.html[Fleet Server].
+//====
+
+//[discrete]
+//[[notable-changes-8.13.0]]
+//=== Notable changes
+
+//The following are notable, non-breaking updates to be aware of:
+
+//* Changes to features that are in Technical Preview.
+//* Changes to log formats.
+//* Changes to non-public APIs.
+//* Behaviour changes that repair critical bugs.
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[known-issues-8.7.x]]
+//=== Known issues
+
+//[[known-issue-issue#]]
+//.Short description
+//[%collapsible]
+//====
+
+//*Details*
+
+//<Describe known issue.>
+
+//*Impact* +
+
+//<Describe impact or workaround.>
+
+//====
+
+//[discrete]
+//[[deprecations-8.7.x]]
+//=== Deprecations
+
+//The following functionality is deprecated in 8.7.x, and will be removed in
+//8.7.x. Deprecated functionality does not have an immediate impact on your
+//application, but we strongly recommend you make the necessary updates after you
+//upgrade to 8.7.x.
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[new-features-8.7.x]]
+//=== New features
+
+//The 8.7.x release Added the following new and notable features.
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[enhancements-8.7.x]]
+//=== Enhancements
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[bug-fixes-8.7.x]]
+//=== Bug fixes
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+// end 8.7.x relnotes

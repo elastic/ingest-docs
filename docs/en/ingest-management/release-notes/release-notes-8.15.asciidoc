@@ -14,6 +14,7 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.15.5>>
 * <<release-notes-8.15.4>>
 * <<release-notes-8.15.3>>
 * <<release-notes-8.15.2>>
@@ -24,6 +25,20 @@ Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.15.5 relnotes
+
+[[release-notes-8.15.5]]
+== {fleet} and {agent} 8.15.5
+
+[discrete]
+[[enhancements-8.15.5]]
+=== Enhancements
+
+{agent}::
+* Emit Pod data only for running Pods in the Kubernetes provider. {agent-pull}6011[#6011] {agent-issue}5835[#5835] {agent-issue}5991[#5991]
+
+// end 8.15.5 relnotes
 
 // begin 8.15.4 relnotes
 

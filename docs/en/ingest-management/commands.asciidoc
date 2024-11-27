@@ -1191,7 +1191,7 @@ For details and limitations for running {agent} in this mode, refer to {fleet-gu
 
 Note that changing a running {agent} to `unprivileged` mode is prevented if the agent is currently enrolled with a policy that contains the {elastic-defend} integration.
 
-[technical preview] To run {agent} without superuser privileges as a pre-existing user or group, for instance under an Active Directory account, add the `--user` and `--password` parameters.
+[technical preview] To run {agent} without superuser privileges as a pre-existing user or group, for instance under an Active Directory account, add either a `--user` or `--group` parameter together with a `--password` parameter.
 
 [discrete]
 === Examples

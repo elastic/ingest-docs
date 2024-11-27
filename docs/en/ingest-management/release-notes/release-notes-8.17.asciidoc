@@ -54,19 +54,6 @@ impact to your application.
 * Emit Pod data only for Pods that are running in the Kubernetes provider. {agent-pull}6011[#6011] {agent-issue}5835[#5835] {agent-issue}5991[#5991] 
 * Remove {endpoint-sec} from Linux container images. {endpoint-sec} cannot run in containers since it has a systemd dependency. {agent-pull}6016[#6016] {agent-issue}5495[#5495]
 
-[discrete]
-[[bug-fixes-8.17.0]]
-=== Bug fixes
-
-//{fleet}::
-
-
-{fleet-server}::
-* Update `elastic-agent-libs` to version `0.14.0`.
-
-//{agent}::
-* 
-
 // end 8.17.0 relnotes
 
 // ---------------------

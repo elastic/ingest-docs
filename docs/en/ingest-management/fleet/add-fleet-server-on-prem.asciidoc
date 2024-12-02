@@ -165,7 +165,7 @@ To add a {fleet-server}:
 . This opens in-product instructions to add a {fleet-server} using 
 one of two options: *Quick Start* or *Advanced*.
 * Use *Quick Start* if you want {fleet} to generate a
-{fleet-server} policy and enrollment token for you. The {fleet-server} policy
+{fleet-server} policy and a service token for you. The {fleet-server} policy
 will include a {fleet-server} integration plus a system integration for
 monitoring {agent}. This option generates self-signed certificates and is 
 *not* recommended for production use cases.

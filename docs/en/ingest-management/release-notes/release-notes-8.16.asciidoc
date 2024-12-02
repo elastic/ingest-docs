@@ -109,9 +109,7 @@ This problem occurs when {agent} notifies {fleet} to audit the uninstall process
 
 *Impact* +
 
-This issue prevents {agent} from being uninstalled on Windows systems.
-
-We're currently investigating the issue and will update this page when a workaround becomes available.
+As a workaround, we recommend trying again to uninstall the agent.
 
 ====
 

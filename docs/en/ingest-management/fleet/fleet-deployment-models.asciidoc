@@ -1,5 +1,5 @@
 [[fleet-deployment-models]]
-= Deployment models
+= {fleet} Deployment models
 
 There are various models for setting up {agents} to work with {es}.
 The recommended approach is to use {fleet}, a web-based UI in Kibana, to centrally manage all of your {agents} and their policies.

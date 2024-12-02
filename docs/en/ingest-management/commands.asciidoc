@@ -28,7 +28,7 @@ invoking the wrong binary.
 * <<elastic-agent-help-command,help>>
 * <<elastic-agent-inspect-command,inspect>>
 * <<elastic-agent-install-command,install>>
-* <<elastic-agent-otel-command,otel>> [technical preview]
+* <<elastic-agent-otel-command,otel>> preview:[]
 * <<elastic-agent-privileged-command,privileged>>
 * <<elastic-agent-restart-command,restart>>
 * <<elastic-agent-run-command,run>>
@@ -826,7 +826,7 @@ For details and limitations for running {agent} in this mode, refer to {fleet-gu
 +
 Note that changing to `unprivileged` mode is prevented if the agent is currently enrolled in a policy that includes an integration that requires administrative access, such as the {elastic-defend} integration.
 +
-[technical preview] To run {agent} without superuser privileges as a pre-existing user or group, for instance under an Active Directory account, you can specify the user or group, and the password to use.
+preview:[] To run {agent} without superuser privileges as a pre-existing user or group, for instance under an Active Directory account, you can specify the user or group, and the password to use.
 +
 For example:
 +
@@ -1191,7 +1191,7 @@ For details and limitations for running {agent} in this mode, refer to {fleet-gu
 
 Note that changing a running {agent} to `unprivileged` mode is prevented if the agent is currently enrolled with a policy that contains the {elastic-defend} integration.
 
-[technical preview] To run {agent} without superuser privileges as a pre-existing user or group, for instance under an Active Directory account, add either a `--user` or `--group` parameter together with a `--password` parameter.
+preview:[] To run {agent} without superuser privileges as a pre-existing user or group, for instance under an Active Directory account, add either a `--user` or `--group` parameter together with a `--password` parameter.
 
 [discrete]
 === Examples
@@ -1203,14 +1203,14 @@ Run {agent} without administrative privileges:
 elastic-agent unprivileged
 ----
 
-Run {agent} without administrative privileges, as a pre-existing user: [technical preview]
+preview:[] Run {agent} without administrative privileges, as a pre-existing user:
 
 [source,shell]
 ----
 elastic-agent unprivileged --user="my.pathl\username" --password="mypassword"
 ----
 
-Run {agent} without administrative privileges, as a pre-existing group: [technical preview]
+preview:[] Run {agent} without administrative privileges, as a pre-existing group:
 
 [source,shell]
 ----

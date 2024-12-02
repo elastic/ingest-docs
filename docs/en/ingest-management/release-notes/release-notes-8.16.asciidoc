@@ -111,10 +111,7 @@ This problem occurs when {agent} notifies {fleet} to audit the uninstall process
 
 This issue prevents {agent} from being uninstalled on Windows systems.
 
-As a workaround you can...
-
-//* Upgrade your {stack}?
-//* Force uninstall the agent using a command?
+We're currently investigating the issue and will update this page when a workaround becomes available.
 
 ====
 

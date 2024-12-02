@@ -63,7 +63,7 @@ This error can happen if the {agents} being searched and listed in the UI are us
 
 *Impact* +
 
-As a workaround for the issue, you can upgrade your {stack} to verion 8.16.1. The issue has been resolved by {kibana} link:https://github.com/elastic/kibana/pull/199325[#199325]. 
+As a workaround for the issue, you can upgrade your {stack} to verion 8.16.1. The issue has been resolved by {kib} link:https://github.com/elastic/kibana/pull/199325[#199325]. 
 
 ====
 

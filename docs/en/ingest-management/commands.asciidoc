@@ -36,7 +36,7 @@ invoking the wrong binary.
 * <<elastic-agent-uninstall-command,uninstall>>
 * <<elastic-agent-upgrade-command,upgrade>>
 * <<elastic-agent-logs-command,logs>>
-* <<elastic-agent-unprivileged-command,unprivileged>> [technical preview]
+* <<elastic-agent-unprivileged-command,unprivileged>>
 * <<elastic-agent-version-command,version>>
 //* <<elastic-agent-watch-command,watch>>
 
@@ -823,7 +823,7 @@ tags, you must unenroll the {agent}, then re-enroll it using new tags.
 Run {agent} without full superuser privileges.
 This option is useful in organizations that limit `root` access on Linux or macOS systems, or `admin` access on Windows systems.
 For details and limitations for running {agent} in this mode, refer to {fleet-guide}/elastic-agent-unprivileged.html[Run {agent} without administrative privileges].
-
++
 Note that changing to `unprivileged` mode is prevented if the agent is currently enrolled in a policy that includes an integration that requires administrative access, such as the {elastic-defend} integration.
 +
 preview:[] To run {agent} without superuser privileges as a pre-existing user or group, for instance under an Active Directory account, you can specify the user or group, and the password to use.
@@ -1195,6 +1195,8 @@ preview:[] To run {agent} without superuser privileges as a pre-existing user or
 
 [discrete]
 === Examples
+
+Run {agent} without administrative privileges:
 
 [source,shell]
 ----

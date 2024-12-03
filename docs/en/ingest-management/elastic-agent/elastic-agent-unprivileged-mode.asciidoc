@@ -16,6 +16,7 @@ Refer to <<unprivileged-command-behaviors>> and <<unprivileged-running>> for the
 * <<unprivileged-integrations>>
 * <<unprivileged-view-mode>>
 * <<unprivileged-change-mode>>
+* <<unprivileged-preexisting-user>>
 
 [discrete]
 [[unprivileged-running]]
@@ -227,3 +228,41 @@ For example:
 . When you install {agent} with the `--unprivileged` setting, the `elastic-agent-user` user and the `elastic-agent` group are created automatically.
 . If you then want your user `myuser` to be able to run an {agent} command such as `elastic-agent status`, add the `myuser` user to the `elastic-agent` group.
 . Then, once added to the group, the `elastic-agent status` command will work. Prior to that, the user `myuser` running the command will result in a permission error that indicates a problem communicating with the control socket.
+
+[discrete]
+[[unprivileged-preexisting-user]]
+== Using `unprivileged` mode with a pre-existing user and group
+
+preview::[]
+
+In certain cases you may want to install {agent} in `unprivileged` mode, with the agent running as a pre-existing user or as part of a pre-existing group.
+For example, on a Windows system you may have a service account in Active Directory and you'd like {agent} to run under that account.
+
+To install {agent} in `unprivileged` mode as a specific user, add the `--user` and `--password` parameters to the install command:
+
+[source,shell]
+----
+elastic-agent install --unprivileged  --user="my.path\username" --password="mypassword"
+----
+
+To install {agent} in `unprivileged` mode as part of a specific group, add the `--group` and `--password` parameters to the install command:
+
+[source,shell]
+----
+elastic-agent install --unprivileged  --group="my.path\groupname" --password="mypassword"
+----
+
+Alternatively, if you have {agent} already installed with administrative privileges, you can change the agent to use `unprivileged` mode and to run as a specific user or in a specific group.
+For example:
+
+[source,shell]
+----
+elastic-agent unprivileged --user="my.path\username" --password="mypassword"
+----
+
+[source,shell]
+----
+elastic-agent unprivileged --group="my.path\groupname" --password="mypassword"
+----
+
+

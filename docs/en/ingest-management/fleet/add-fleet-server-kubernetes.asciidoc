@@ -1,0 +1,187 @@
+[[add-fleet-server-kubernetes]]
+= Deploy Fleet Server on Kubernetes
+
+To use {fleet} for central management, a <<fleet-server,{fleet-server}>> must
+be running and accessible to your hosts.
+
+You can deploy {fleet-server} on Kubernetes and manage it yourself.
+In this <<fleet-deployment-models,deployment model>>, you are responsible for high-availability,
+fault-tolerance, and lifecycle management of {fleet-server}.
+
+To deploy a self-managed {fleet-server}, you need to: 
+
+* Satisfy  <<add-fleet-server-kubernetes-compatibility,compatibility requirements>> and <<add-fleet-server-kubernetes-prereq,prerequisites>>.
+* <<add-fleet-server-kubernetes-add-server,Add a {fleet-server}>> by deploying an {agent} and enrolling it in an agent policy containing the {fleet-server} integration.
+
+[discrete]
+[[add-fleet-server-kubernetes-compatibility]]
+= Compatibility
+
+{fleet-server} is compatible with the following Elastic products:
+
+* {stack} 7.13 or later.
+** For version compatibility: {es} >= {fleet-server} >= {agent} (except for
+bugfix releases)
+** {kib} should be on the same minor version as {es}.
+
+* {ece} 2.9 or later
++
+--
+** Requires additional wildcard domains and certificates (which normally only
+cover `*.cname`, not `*.*.cname`). This enables us to provide the URL for
+{fleet-server} of `https://.fleet.`.
+** The deployment template must contain an {integrations-server} node.
+--
++
+For more information about hosting {fleet-server} on {ece}, refer to
+{ece-ref}/ece-manage-integrations-server.html[Manage your {integrations-server}].
+
+[discrete]
+[[add-fleet-server-kubernetes-prereq]]
+= Prerequisites
+
+Before deploying, you need to:
+
+* Plan the SSL setup, server certificates, {fleet-server} URL, and CAs.
+* Ensure components have access to the ports needed for communication.
+
+[discrete]
+[[add-fleet-server-kubernetes-cert-prereq]]
+== SSL certificates considerations
+
+This section shows the minimum requirements in terms of Transport Layer Security (TLS) certificates for the {fleet-server}, assuming no `mutual TLS` (mTLS) is needed. Refer to https://LINK[mTLS setup] if needed. The traffic flows described in this section support mTLS.
+
+There are two main and differentiated traffic flows affecting the {fleet-server}:
+
+* *{agent} -> {fleet-server}* traffic flow:
++
+In this flow the {fleet-server} acts as the server and the {agent} acts as the client, therefore the {fleet-server} requires an SSL certificate and key, and the {agent} needs to trust the CA certificate used to sign the certificate.
++
+If your organization already uses the {stack}, you may already have a CA certificate that could be used to generate the new cert for the {fleet-server}. If you do not have a CA certificate, you can read more
+about generating one in <<secure-connections>>.
++
+Ensure you also add any of the {fleet-server} `FQDN`, `hostname`, or `ip address` that will be used by {agent}s to access the {fleet-server} in the server certificate as an `x.509 Subject Alternative Name (SAN)`. On Kubernetes this will depend on the method used to expose the {fleet-server} and your specific environment.
++
+NOTE: The {fleet-server} certificate is not required when testing and iterating using the *Quick start* option, but should always be used for *production* deployments.
+
+* *{fleet-server} -> {es} output* traffic flow: 
++
+The {fleet-server} acts as the client and {es} acts as the HTTPS server. The {fleet-server} needs to trust the CA certificate used to sign the {es} certificate. If your {es} is using certificates signed by a corporate CA or by multiple intermediate CAs you will need to use them during the {fleet-server} setup.
++
+NOTE: If your {es} cluster is on Elastic Cloud or if it uses a certificate signed by a public and known CA you won't need the {es} CA during the setup.
+
+In summary, you need:
+
+* A `server certificate` and `key`, configured for the `{fleet-server} URL`, used to encrypt traffic between the {fleet-server}s and the {agent}s. The CA used to sign this certificate will be needed by the {agent}s, not by the {fleet-server} itself.
+
+* The CA certificate (or certificates) used in the certificate chain of your {es} cluster, except if you are sure your {es} certificate is fully trusted publicly.
+
+[discrete]
+[[default-port-assignments-kubernetes]]
+== Default port assignments
+
+When {es} or {fleet-server} are deployed, components communicate over well-defined, pre-allocated ports.
+You may need to allow access to these ports. Refer to the following table for default port assignments:
+
+|===
+| Component communication | Default port
+
+| Elastic Agent → {fleet-server} | 8220
+| Elastic Agent → {es} | 9200
+| Elastic Agent → Logstash | 5044
+| Elastic Agent → {kib} ({fleet}) | 5601
+| {fleet-server} → {kib} ({fleet}) | 5601
+| {fleet-server} → {es} | 9200
+|===
+
+{fleet-server} default port is `8220`, but on Kubernetes you will create a `service` to expose the {fleet-server} deployment. Because of that you will be able to use any other port (for example `443`) without the need of changing the listening port of the {fleet-server}.
+
+[discrete]
+[[add-fleet-server-kubernetes-add-server]]
+= Add {fleet-server}
+
+The procedure of installing {fleet-server} on Kubernetes is very similar to the procedures described in <<add-fleet-server-on-prem>> and <<add-fleet-server-mixed>> guides.
+
+*Preparations*:
+
+. Open Fleet -> Settings and ensure the Elasticsearch output that will be used by the {fleet-server} is correctly configured, paying special attention to the following:
+** The `hosts` field includes a valid URL that will be reachable by the {fleet-server} Pod.
+** When using certificates signed by corporate CAs or by intermediate CAs not publicly trusted, ensure to add the trust information in the *Elasticsearch CA trusted fingerprint* field or in the advanced configuration section through https://elastic.co/guide/en/fleet/current/secure-connections.html#_encrypt_traffic_between_elastic_agents_fleet_server_and_elasticsearch[ssl.certificate_authorities] setting.
++
+[IMPORTANT]
+====
+This validation step is critical. The {es} host URL and SSL trust has to be added here and in the environment variables provided to the {fleet-server} in a later step. It's a common mistake to ignore the output settings believing that the environment variables will prevail, when the environment variables are only used during the boostrap of the {fleet-server}.
+====
+
+. Create a new Fleet Policy for the Fleet Server:
++
+** Do *not* select the option *collect system logs and metrics*. This option would add the `system integration` to the policy, and considering the {fleet-server} will run as a Kubernetes Pod without any visibility to the Kubernetes node, there won't be any real system to monitor.
+** Select the **output** that the {fleet-server} needs to use to contact {es}. This should be the output that was verified in the previous step.
+** If desired, add an **inactive agent unenrollment timeout** to automatically unenroll and invalidate API Keys after being inactive. This is useful on Kubernetes environments as the `Pods` are ephemeral.
+
+. Add `Fleet Server` integration to the created policy, and configure it with your desired values. Do not add any host at this stage.
+
+*Fleet Server installation*:
+
+. Open the created policy, which now includes the `Fleet Server` integration, and select *Actions* -> *Add Fleet Server*.
++
+* The policy should already be selected.
+* Choose between *Quick start* and *Production* modes:
+** If you select *Quick start*, the {fleet-server} generates a `self-signed` SSL certificate, and subsequent agents should be enrolled using the `--insecure` flag.
+** If you select *Production*, you provide a certificate and key to the {fleet-server} during the deployment. Subsequent agents will need to trust the certificate's CA.
+* Add the *Fleet Server Host* URL:
+** This will be the URL used by the clients (Elastic Agents) to connect to the {fleet-server}. In *Production* mode, the {fleet-server} certificate must include the URL in its x509 SAN extension.
+** On Kubernetes environments this should be the name of the service configured for the {fleet-server}.
+** When using custom certificates it's important that the certificates are signed for this specific name.
+** You can add multiple URLs here: This is useful on Kubernetes as the {fleet-server} might be reachable internally through one URL and externally through a different URL.
+* Click on **generate a service token**: This step is critical as we will need it when deploying our {fleet-server}.
+
+. Adapt one of the following manifests to your needs:
++
+** *Quickstart* manifest template:
++
+** *Production* manifest template:
++
+The difference of this manifest with the previous is the usage of a custom certificate and key for HTTPS incoming connections.
+
+. Deploy the manifest to create the {fleet-server}
+
+. Expose the {fleet-server} to your clients via the `URL` that was configured previously: This might include the creation of a Kubernetes `service`, `ingress`, or similar.
+
+. Check the {fleet-server} for errors and confirm in {kib} that the {fleet-server} appears as `Connected` and `Healthy`.
+
+
+[discrete]
+[[add-fleet-server-kubernetes-troubleshoot]]
+= Troubleshooting
+
+[discrete]
+[[add-fleet-server-kubernetes-troubleshoot-common]]
+== Common Problems
+
+* {fleet-server} trying to access {es} at `localhost:9200` even if `FLEET_SERVER_ELASTICSEARCH_HOST` environment variable was properly set:
++
+This occurs when the `output` of the policy associated to the {fleet-server} is not correctly configured.
+
+* SSL trust issues even if `ELASTICSEARCH_CA` environment variable was properly set during deployment:
++
+This occurs when the `output` of the policy associated to the {fleet-server} is not correctly configured. Add the *ca trusted fingerprint*.
+
+[discrete]
+[[add-fleet-server-kubernetes-troubleshoot-other]]
+== Other issues
+
+If you're unable to add a {fleet}-managed agent, click the **Agents** tab
+and confirm that the agent running {fleet-server} is healthy.
+
+
+[discrete]
+[[add-fleet-server-kubernetes-next]]
+= Next steps
+
+Now you're ready to add {agent}s to your host systems.
+To learn how, see <<install-fleet-managed-elastic-agent>>.
+
+If want to add {agent}s also running on Kubernetes, refer to http://localhost:8000/guide/running-on-kubernetes-managed-by-fleet.html[Run Elastic Agent on Kubernetes managed by Fleet].
+
+Remember to use `--insecure` flag if the *quick start* mode was used, or to provide to the {agent}s the CA certificate associated to the {fleet-server} cert if *production* mode was used.

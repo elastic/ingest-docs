@@ -28,13 +28,8 @@ invoking the wrong binary.
 * <<elastic-agent-help-command,help>>
 * <<elastic-agent-inspect-command,inspect>>
 * <<elastic-agent-install-command,install>>
-<<<<<<< HEAD
-* <<elastic-agent-otel-command,otel>> [technical preview]
-* <<elastic-agent-privileged-command,privileged>> [technical preview]
-=======
 * <<elastic-agent-otel-command,otel>> preview:[]
 * <<elastic-agent-privileged-command,privileged>>
->>>>>>> b5ea7614 (Use correct technical preview tags (#1514))
 * <<elastic-agent-restart-command,restart>>
 * <<elastic-agent-run-command,run>>
 * <<elastic-agent-status-command,status>>
@@ -830,8 +825,6 @@ This option is useful in organizations that limit `root` access on Linux or macO
 For details and limitations for running {agent} in this mode, refer to {fleet-guide}/elastic-agent-unprivileged.html[Run {agent} without administrative privileges].
 
 Note that changing to `unprivileged` mode is prevented if the agent is currently enrolled in a policy that includes an integration that requires administrative access, such as the {elastic-defend} integration.
-<<<<<<< HEAD
-=======
 +
 preview:[] To run {agent} without superuser privileges as a pre-existing user or group, for instance under an Active Directory account, you can specify the user or group, and the password to use.
 +
@@ -846,7 +839,6 @@ elastic-agent install --unprivileged  --user="my.path\username" --password="mypa
 ----
 elastic-agent install --unprivileged  --group="my.path\groupname" --password="mypassword"
 ----
->>>>>>> b5ea7614 (Use correct technical preview tags (#1514))
 
 `--url <string>`::
 {fleet-server} URL to use to enroll the {agent} into {fleet}.
@@ -1199,11 +1191,8 @@ For details and limitations for running {agent} in this mode, refer to {fleet-gu
 
 Note that changing a running {agent} to `unprivileged` mode is prevented if the agent is currently enrolled with a policy that contains the {elastic-defend} integration.
 
-<<<<<<< HEAD
-=======
 preview:[] To run {agent} without superuser privileges as a pre-existing user or group, for instance under an Active Directory account, add either a `--user` or `--group` parameter together with a `--password` parameter.
 
->>>>>>> b5ea7614 (Use correct technical preview tags (#1514))
 [discrete]
 === Examples
 
@@ -1212,8 +1201,6 @@ preview:[] To run {agent} without superuser privileges as a pre-existing user or
 elastic-agent unprivileged
 ----
 
-<<<<<<< HEAD
-=======
 preview:[] Run {agent} without administrative privileges, as a pre-existing user:
 
 [source,shell]
@@ -1228,7 +1215,6 @@ preview:[] Run {agent} without administrative privileges, as a pre-existing grou
 elastic-agent unprivileged --group="my.pathl\groupname" --password="mypassword"
 ----
 
->>>>>>> b5ea7614 (Use correct technical preview tags (#1514))
 ++++
 <hr>
 ++++

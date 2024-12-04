@@ -1,0 +1,46 @@
+[[config-file-example-multiple-outputs]]
+= Config file example: Configure different outputs for each input
+
+++++
+<titleabbrev>Configure different outputs for each input</titleabbrev>
+++++
+
+The following example shows a minimal configuration to assign different outputs for each input. Here, the {es} output is the default, and a secondary {ls} output is defined. Two filestream inputs are configured, each using a different output.
+
+["source","yaml"]
+----
+outputs: <1>
+  default:
+    type: elasticsearch <2>
+    hosts:
+      - '{elasticsearch-host-url}' <3>
+    api_key: "my_api_key" <4>
+  "unique-output-identifier": <5>
+    type:  logstash <6>
+    hosts: 
+      - '{logstash-host-url}' <7>
+inputs: <8>
+  - type: filestream <9>
+    id: "insert a unique identifier here" <10>
+    use_output: 'default' <11>
+    paths: <12>
+      - /var/log/my-application/log-file.log
+  - type: filestream <9>
+    id: "insert a unique identifier here" <10>
+    use_output: "unique-output-identifier" <11>
+    paths: <12>
+      - /var/log/my-application/another-log-file.log
+----
+
+<1> For available output settings, refer to <<elastic-agent-output-configuration,Configure outputs for standalone {agents}>>.
+<2> For settings specific to the {es} output, refer to <<elasticsearch-output,Configure the {es} output>>.
+<3> The URL of the {es} cluster where output should be sent, including the port number. For example `https://12345ab6789cd12345ab6789cd.us-central1.gcp.cloud.es.io:443`.
+<4> An <<create-api-key-standalone-agent,API key>> used to authenticate with the {es} cluster.
+<5> A unique name for the output. The name should also be referenced by the `use-output` setting for the input that will use this output.
+<6> For settings specific to the {ls} output, refer to <<logstash-output,{ls} output>>.
+<7> The URL of the {ls} instance where output should be sent, including the port number. For example `127.0.0.1:5044`.
+<8> For available input settings, refer to <<elastic-agent-input-configuration,Configure inputs for standalone {agents}>>.
+<9> For available input types, refer to <<elastic-agent-inputs-list>>.
+<10> A user-defined ID to uniquely identify each input stream.
+<11> The unique identifier of the output where data from this input should be sent. This should match an ID specified in the `outputs` section of the configuration.
+<12> Path to the log files to be monitored.

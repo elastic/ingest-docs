@@ -30,8 +30,8 @@ By default, {agent}s require internet access to perform binary upgrades from
 {agent}s to download binaries from it. For more information, refer to
 <<air-gapped>>.
 
-NOTE: The upgrade feature is not supported for upgrading DEB/RPM packages or
-Docker images.
+NOTE: The upgrade feature is not supported for upgrading DEB/RPM packages or Docker images. 
+Refer to <<upgrade-system-packages>> to upgrade a DEB or RPM package manually. 
 
 For a detailed view of the {agent} upgrade process and the interactions between {fleet}, {agent}, and {es}, refer to the link:https://github.com/elastic/elastic-agent/blob/main/docs/upgrades.md[Communications amongst components] diagram in the `elastic-agent` GitHub repository.
 
@@ -262,3 +262,52 @@ To force selected agents to upgrade immediately when the upgrade is
 triggered, select **Immediately**. Avoid using this setting for batches of more
 than 10 agents.
 . Restart the upgrades.
+
+[discrete]
+[[upgrade-system-packages]]
+== Upgrade RPM and DEB system packages
+
+If you have installed and enrolled {agent} using either a DEB (for a Debian-based Linux distribution) or RPM (for a RedHat-based Linux distribution) install package, the upgrade cannot be managed by {fleet}.
+Instead, you can perform the upgrade using these steps.
+
+For installation steps refer to <<install-fleet-managed-elastic-agent>>.
+
+[discrete]
+=== Upgrade a DEB {agent} installation:
+
+. Download the {agent} Debian install package for the release that you want to upgrade to:
++
+[source,terminal,subs="attributes"]
+----
+curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{version}-amd64.deb
+----
+
+. Upgrade {agent} to the target release:
++
+[source,terminal,subs="attributes"]
+----
+sudo dpkg -i elastic-agent-{version}-amd64.deb
+----
+
+. Confirm in {fleet} that the agent has been upgraded to the target version.
+Note that the **Upgrade agent** option in the **Actions** menu next to the agent will be disabled since [fleet]-managed upgrades are not supported for this package type.
+
+[discrete]
+=== Upgrade an RPM {agent} installation:
+
+. Download the {agent} RPM install package for the release that you want to upgrade to:
++
+[source,terminal,subs="attributes"]
+----
+curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{version}-x86_64.rpm
+----
+
+. Upgrade {agent} to the target release:
++
+[source,terminal,subs="attributes"]
+----
+sudo rpm -U elastic-agent-{version}-x86_64.rpm
+----
+
+. Confirm in {fleet} that the agent has been upgraded to the target version.
+Note that the **Upgrade agent** option in the **Actions** menu next to the agent will be disabled since [fleet]-managed upgrades are not supported for this package type.

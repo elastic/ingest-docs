@@ -1,0 +1,172 @@
+// tag::quickstart-secret[]
+[source, shell]
+------------------------------------------------------------
+kubectl create secret generic fleet-server-certs \
+  --from-file=es-ca.crt=<PATH_TO_ES_CA_CERT_FILE> <1>
+------------------------------------------------------------
+<1> Substitute `<PATH_TO_ES_CA_CERT_FILE>` with your local file containing the {es} CA(s).
++
+If you prefer to obtain a `yaml manifest` of the Secret to create, append `--dry-run=client -o=yaml` to the command and save the output to a file.
+// end::quickstart-secret[]
+
+// ***************************************************
+// ***************************************************
+
+// tag::production-secret[]
+[source, shell]
+------------------------------------------------------------
+kubectl create secret generic fleet-server-certs \
+  --from-file=es-ca.crt=<PATH_TO_ES_CA_CERT_FILE> \ <1>
+  --from-file=fleet-server.crt=<PATH_TO_FLEET_SERVER_CERT> \ <2>
+  --from-file=fleet-server.key=<PATH_TO_FLEET_SERVER_CERT_KEY> <3>
+------------------------------------------------------------
+<1> Substitute `<PATH_TO_ES_CA_CERT_FILE>` with your local file containing the {es} CA(s).
+<2> Substitute `<PATH_TO_FLEET_SERVER_CERT>` with your local file containing the server TLS certificate for the {fleet-server}.
+<3> Substitute `PATH_TO_FLEET_SERVER_CERT_KEY` with your local file containing the server TLS key for the {fleet-server}.
++
+If you prefer to obtain a `yaml manifest` of the Secret to create, append `--dry-run=client -o=yaml` to the command and save the output to a file.
+// end::production-secret[]
+
+// ***************************************************
+// ***************************************************
+
+// tag::quickstart-deployment[]
+[source, yaml]
+------------------------------------------------------------
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fleet-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fleet-server
+  template:
+    metadata:
+      labels:
+        app: fleet-server
+    spec:
+      automountServiceAccountToken: false <1>
+      containers:
+      - name: elastic-agent
+        image: docker.elastic.co/beats/elastic-agent:{version}
+        env:
+          - name: FLEET_SERVER_ENABLE <2>
+            value: "true"
+          - name: FLEET_SERVER_ELASTICSEARCH_HOST
+            valueFrom:
+              secretKeyRef:
+                name: fleet-server-config
+                key: elastic_endpoint
+          - name: FLEET_SERVER_SERVICE_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: fleet-server-config
+                key: elastic_service_token
+          - name: FLEET_SERVER_POLICY_ID
+            valueFrom:
+              secretKeyRef:
+                name: fleet-server-config
+                key: fleet_policy_id
+          - name: ELASTICSEARCH_CA
+            value: /mnt/certs/es-ca.crt
+        ports:
+        - containerPort: 8220
+          protocol: TCP
+        resources: {} <3>
+        volumeMounts:
+        - name: certs
+          mountPath: /mnt/certs
+          readOnly: true
+      volumes:
+      - name: certs
+        secret:
+          defaultMode: 420
+          optional: false
+          secretName: fleet-server-certs
+------------------------------------------------------------
+<1> Keep `automountServiceAccountToken` set to `false` to disable the <<kubernetes-provider>>
+<2> Keep `FLEET_SERVER_ENABLE` set to `true`
+<3> Consider configuring requests and limits as a best practice
+// +
+// Manifest highlights:
+// +
+// * `automountServiceAccountToken: false`: used to disable the Kubernetes provider of the {fleet-server}.
+// * Feel free to adapt the `name` of the Deployment or the Pod template and selector `labels`.
+// * `resources`: Adapt them to your needs.
+// +
+// [NOTE]
+// ====
+// You can use `FLEET_SERVER_POLICY_ID` instead of `FLEET_SERVER_POLICY_NAME`, and `FLEET_SERVER_ELASTICSEARCH_CA_TRUSTED_FINGERPRINT` instead of `ELASTICSEARCH_CA` if preferred.
+// If you opt for `FLEET_SERVER_POLICY_ID`, provide the ID of the policy instead of the name, and if you opt for `FLEET_SERVER_ELASTICSEARCH_CA_TRUSTED_FINGERPRINT` provide the SHA-256 fingerprint of the {es} CA certificate instead of the entire certificate in PEM format.
+// ====
+// end::quickstart-deployment[]
+
+// ***************************************************
+// ***************************************************
+
+// tag::production-deployment[]
+[source, yaml]
+------------------------------------------------------------
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fleet-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fleet-server
+  template:
+    metadata:
+      labels:
+        app: fleet-server
+    spec:
+      automountServiceAccountToken: false <1>
+      containers:
+      - name: elastic-agent
+        image: docker.elastic.co/beats/elastic-agent:{version}
+        env:
+          - name: FLEET_SERVER_ENABLE <2>
+            value: "true"
+          - name: FLEET_SERVER_ELASTICSEARCH_HOST
+            valueFrom:
+              secretKeyRef:
+                name: fleet-server-config
+                key: elastic_endpoint
+          - name: FLEET_SERVER_SERVICE_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: fleet-server-config
+                key: elastic_service_token
+          - name: FLEET_SERVER_POLICY_ID
+            valueFrom:
+              secretKeyRef:
+                name: fleet-server-config
+                key: fleet_policy_id
+          - name: ELASTICSEARCH_CA
+            value: /mnt/certs/es-ca.crt
+          - name: FLEET_SERVER_CERT
+            value: /mnt/certs/fleet-server.crt
+          - name: FLEET_SERVER_KEY
+            value: /mnt/certs/fleet-server.key
+        ports:
+        - containerPort: 8220
+          protocol: TCP
+        resources: {} <3>
+        volumeMounts:
+        - name: certs
+          mountPath: /mnt/certs
+          readOnly: true
+      volumes:
+      - name: certs
+        secret:
+          defaultMode: 420
+          optional: false
+          secretName: fleet-server-certs
+------------------------------------------------------------
+<1> Keep `automountServiceAccountToken` set to `false` to disable the <<kubernetes-provider>>
+<2> Keep `FLEET_SERVER_ENABLE` set to `true`
+<3> Consider configuring requests and limits as a best practice
+// end::production-deployment[]

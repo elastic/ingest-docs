@@ -30,7 +30,7 @@ bugfix releases)
 
 Before deploying, you need to:
 
-* Plan the SSL setup, server certificates, {fleet-server} URL, and certificate authorities (CAs).
+* Plan the SSL setup, server certificates, <<fleet-server-hosts-setting>>, and certificate authorities (CAs).
 * Ensure components have access to the ports needed for communication.
 
 [discrete]
@@ -48,7 +48,7 @@ In this flow the {fleet-server} acts as the server and the {agent} acts as the c
 If your organization already uses the {stack}, you may already have a CA certificate that could be used to generate the new cert for the {fleet-server}. If you do not have a CA certificate, you can read more
 about generating a CA and a server certificate for the {fleet-server} in <<generate-fleet-server-certs>>.
 +
-You also need to know and plan in advance the `URL` (or `URLS`) that the {agent} clients will use to access the {fleet-server}, because the *hostname* part of the URL needs to be included in the server certificate as an `x.509 Subject Alternative Name (SAN)`. If you plan to make your {fleet-server} accessible in multiple *hostnames*, add all of them to the server certificate.
+You also need to know and plan in advance the <<fleet-server-hosts-setting, hostname / URL>> that the {agent} clients will use to access the {fleet-server}, because the *hostname* part of the URL needs to be included in the server certificate as an `x.509 Subject Alternative Name (SAN)`. If you plan to make your {fleet-server} accessible through multiple *hostnames* or *FQDNS*, add all of them to the server certificate.
 +
 NOTE: The {fleet-server} certificate is not required when installing the server using the *Quick start* mode, but should always be used for *production* deployments. In *Quick start* mode, the {fleet-server} uses a self-signed certificate and the {agent}s have to be enrolled with the `--insecure` option.
 
@@ -136,9 +136,9 @@ At this point you can apply {fleet-server} configuration settings per <<fleet-se
 ** If you select *Quick start*, the {fleet-server} generates a `self-signed` SSL certificate, and subsequent agents should be enrolled using the `--insecure` flag.
 ** If you select *Production*, you provide a certificate and key to the {fleet-server} during the deployment, and subsequent agents will need to trust the certificate's CA.
 * Add your *Fleet Server Host* information:
-** This will be the URL used by the clients ({agent}s) to connect to the {fleet-server}. In *Production* mode, the {fleet-server} certificate must include the hostname part of the URL in its x509 SAN extension.
-** On Kubernetes environments this should be the name of the service configured for the {fleet-server}.
-** You can add multiple URLs here: This is useful on Kubernetes if the {fleet-server} is reachable internally through one URL and externally through a different URL.
+** This will be the URL used by the clients ({agent}s) to connect to the {fleet-server}. In *Production* mode, the {fleet-server} certificate must include the hostname part of the URL as an `x509 SAN`.
+** On Kubernetes environments this should be the name of the `Kubernetes service` that exposes the {fleet-server}.
+** This setting is not really used by the {fleet-server} itself, so don't worry much about it at this stage because you will be able to change it later on under *Fleet -> Settings*.
 * Select **generate service token** to create the token for the {fleet-server}.
 * From *Install Fleet Server to a centralized host -> Linux*, take note of the values of the following settings that will be needed for the {fleet-server} installation:
 ** Service token(under `--fleet-server-service-token` parameter).
@@ -318,6 +318,8 @@ The URL(s) that the clients would use to access the {fleet-server} in this examp
 +
 * For clients within the Kubernetes cluster: `https://fleet-server.<namespace>.svc:8220`
 * For external clients: access through whatever FQDN added on the DNS server or to the public IP of the `LoadBalancer`.
++
+** TBD (clarify this) You can add multiple Fleet Server Hosts: This is useful on Kubernetes if the {fleet-server} is reachable internally through one URL and externally through a different URL. You should have then different policies for internal and external agents, each of them using a different FLeet Server Host URL.
 +
 Remember that in *Production* mode, the *hostnames* used to access the {fleet-server} must be part of the server certificate as `x.509 Subject Alternative Names`.
 

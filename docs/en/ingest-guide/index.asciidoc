@@ -8,6 +8,7 @@ include::{docs-root}/shared/attributes.asciidoc[]
 
 include::ingest-intro.asciidoc[]
 include::ingest-tools.asciidoc[]
+include::ingest-additional-proc.asciidoc[]
 //include::ingest-static.asciidoc[]
 //include::ingest-timestamped.asciidoc[]
 include::ingest-solutions.asciidoc[]

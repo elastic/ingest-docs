@@ -14,14 +14,14 @@ reshape your data before it goes to {es}.
 You can ingest:
 
 * **General content** (data without timestamps), such as HTML pages, catalogs, and files 
-* **Timestamped (time series) data**, such as logs, metrics, and traces for Search, Security, Observability, or your own solution 
+* **Timestamped (time series) data**, such as logs, metrics, and traces for Elastic Security, Observability, Search solutions, or for your own custom solutions 
 
-[ingest-best-approach]
-.What's the best approach for ingesting data? 
-**** 
-The best choice for ingesting data is the _simplest option_ that _meets your needs_ and _satisfies your use case_.
+[discrete]
+[[ingest-general]]
+=== Ingesting general content
 
-**Best practice for general content**. Choose the ingest tool that aligns with your data source.  
+Elastic offer tools designed to ingest specific types of general content. 
+The content type determines the best ingest option.
 
 * To index **documents** directly into {es}, use the {es} link:{ref}/docs.html[document APIs].
 * To send **application data** directly to {es}, use an link:https://www.elastic.co/guide/en/elasticsearch/client/index.html[{es}
@@ -32,10 +32,18 @@ language client].
 
 If you would like to try things out before you add your own data, try using our {kibana-ref}/connect-to-elasticsearch.html#_add_sample_data[sample data].
 
-**Best practice for timestamped data**. Start with Elastic Agent and an Elastic integration.
+[discrete]
+[[ingest-timestamped]]
+=== Ingesting time-stamped data
 
 
- Usually, the _simplest option_ for ingesting timestamped data is {agent} paired with an Elastic integration.
+
+[ingest-best-timestamped]
+.What's the best approach for ingesting time-stamped data? 
+**** 
+The best approach for ingesting data is the _simplest option_ that _meets your needs_ and _satisfies your use case_.
+
+In most cases, the _simplest option_ for ingesting timestamped data is using {agent} paired with an Elastic integration.
 
 * Install {fleet-guide}[Elastic Agent] on the computer(s) from which you want to collect data.
 * Add the {integrations-docs}[Elastic integration] for the data source to your deployment.
@@ -49,5 +57,4 @@ to search for available integrations.
 If you don't find an integration for your data source or if you need
 additional processing to extend the integration, we still have you covered.
 Check out <<ingest-addl-proc,additional processing>> for a sneak peek.
- 
 ****

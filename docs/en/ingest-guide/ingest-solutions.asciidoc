@@ -15,7 +15,7 @@ To use {fleet-guide}[Elastic Agent] and {integrations-docs}[Elastic integrations
 with Elastic solutions: 
 
 1. Create an link:https://www.elastic.co/cloud[{ecloud}] deployment for your solution.
-   If you don't have a {ecloud} account, you can sign up for a link:https://cloud.elastic.co/registration[free trial] get started.  
+   If you don't have an {ecloud} account, you can sign up for a link:https://cloud.elastic.co/registration[free trial] to get started.  
 2. Add the {integrations-docs}[Elastic integration] for your data source to the deployment. 
 3. link:{fleet-guide}/elastic-agent-installation.html[Install {agent}] on the systems whose data you want to collect.
 ****
@@ -51,12 +51,8 @@ monitor and gain insights into logs, metrics, and application traces.
 The resources and guides in this section illustrate how to ingest data and use
 it with the Observability solution. 
 
-**Resources**
 
-* link:{fleet-guide}/elastic-agent-installation.html[Install {agent}]
-* link:https://www.elastic.co/integrations/data-integrations?solution=observability[Elastic Observability integrations]
-
-**Guides for popular Observability use case**
+**Guides for popular Observability use cases**
 
 * link:{estc-welcome}/getting-started-observability.html[Monitor applications and systems with Elastic Observability]
 * link:https://www.elastic.co/guide/en/observability/current/logs-metrics-get-started.html[Get started with logs and metrics]
@@ -67,6 +63,10 @@ it with the Observability solution.
 ** link:{serverless-docs}/observability/quickstarts/monitor-hosts-with-elastic-agent[Monitor hosts with {agent} ({serverless-short})]
 ** link:{serverless-docs}/observability/quickstarts/k8s-logs-metrics[Monitor your K8s cluster with {agent} ({serverless-short})]
 
+**Resources**
+
+* link:{fleet-guide}/elastic-agent-installation.html[Install {agent}]
+* link:https://www.elastic.co/integrations/data-integrations?solution=observability[Elastic Observability integrations]
 
 [discrete]
 [[ingest-for-security]]
@@ -77,16 +77,16 @@ link:https://www.elastic.co/security[Elastic Security] to analyze and take
 action on your data.
 The resources and guides in this section illustrate how to ingest data and use it with the Security solution.  
 
+**Guides for popular Security use cases**
+
+* link:https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-siem-security.html[Use Elastic Security for SIEM]
+* link:https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-endpoint-security.html[Protect hosts with endpoint threat intelligence from Elastic Security]
+
 **Resources**
 
 * link:{fleet-guide}/elastic-agent-installation.html[Install {agent}]
 * link:https://www.elastic.co/integrations/data-integrations?solution=search[Elastic Security integrations]
 * link:{security-guide}/es-overview.html[Elastic Security documentation] 
-
-**Guides for popular Security use case**
-
-* link:https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-siem-security.html[Use Elastic Security for SIEM]
-* link:https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-endpoint-security.html[Protect hosts with endpoint threat intelligence from Elastic Security]
 
 
 [discrete]
@@ -106,6 +106,5 @@ Bring your ideas and use {es} and the {stack} to store, search, and visualize yo
 ** link:https://www.elastic.co/guide/en/elasticsearch/client/index.html[{es} language clients] 
 ** link:https://www.elastic.co/web-crawler[Elastic web crawler]
 ** link:{ref}/es-connectors.html[Elastic connectors] 
-
 * link:{estc-welcome}/getting-started-general-purpose.html[Tutorial: Get started with vector search and generative AI]
 

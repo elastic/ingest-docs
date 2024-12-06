@@ -1,22 +1,33 @@
 [[ingest-tools]]
-== Tools for ingesting data 
+== Tools for ingesting time-series data 
+
+
+Elastic and others offer tools to help you get your data from the original data source into {es}.
+Some tools are designed for particular data sources, and others are multi-purpose. 
 
 // Iterative messaging as our recommended strategy morphs. 
 // This section is the summary. "Here's the story _now_." 
 // Hint at upcoming changes, but do it cautiously and responsibly. 
 // Modular and co-located to make additions/updates/deprecations easier as our story matures.
 
-Elastic and others offer tools to help you get your data from the original data source into {es}.
-Some tools are designed for particular data sources, and others are multi-purpose.  
 
-{agent} and Elastic integrations::
+In this section, we'll help you determine which option is best for you.
+
+* <<ingest-ea>>
+* <<ingest-beats>>
+* <<ingest-otel>>
+* <<ingest-logstash>>
+
+[discrete]
+[[ingest-ea]]
+=== {agent} and Elastic integrations
+
 A single link:{fleet-guide}[{agent}] can collect multiple types of data when it is link:{fleet-guide}/elastic-agent-installation.html[installed] on a host computer.  
 You can use standalone {agent}s and manage them locally on the systems where they are installed, or you can manage all of your agents and policies with the link:{fleet-guide}/manage-agents-in-fleet.html[Fleet UI in {kib}].
-+
+
 Use {agent} with one of hundreds of link:{integrations-docs}[Elastic integrations] to simplify collecting, transforming, and visualizing data. 
 Integrations include default ingestion rules, dashboards, and visualizations to help you start analyzing your data right away. 
 Check out the {integrations-docs}/all_integrations[Integration quick reference] to search for available integrations that can reduce your time to value.  
-+
 
 {agent} is the best option for collecting timestamped data for most data sources
 and use cases. 
@@ -25,34 +36,46 @@ link:{fleet-guide}/elastic-agent-processor-configuration.html[{agent}
 processors], link:{logstash-ref}[{ls}], or additional processing features in
 {es}. 
 Check out <<ingest-addl-proc,additional processing>> to see options. 
-+ 
+
 Ready to try link:{fleet-guide}[{agent}]? Check out the link:{fleet-guide}/elastic-agent-installation.html[installation instructions].
-+
-**Beats.** link:{beats-ref}/beats-reference.html[Beats] are the original Elastic lightweight data shippers, and their capabilities live on in Elastic Agent.
-When you use Elastic Agent, you're getting core Beats functionality and more added features. 
+
+[discrete]
+[[ingest-beats]]
+=== {beats}
+
+link:{beats-ref}/beats-reference.html[Beats] are the original Elastic lightweight data shippers, and their capabilities live on in Elastic Agent.
+When you use Elastic Agent, you're getting core Beats functionality, but with more added features. 
+
+
 Beats require that you install a separate Beat for each type of data you want to collect. 
 A single Elastic Agent installed on a host can collect and transport multiple types of data.  
-+
-**Best practice:** Use link:{fleet-guide}[Elastic Agent] whenever possible. 
-If your data source is not yet supported by Elastic Agent, use Beats. 
-Check out {beats} and {agent} link:{fleet-guide}/beats-agent-comparison.html#additional-capabilities-beats-and-agent[comparison] for more info.
+
+**Best practice:** Use link:{fleet-guide}[{agent}] whenever possible. 
+If your data source is not yet supported by {agent}, use {beats}. 
+Check out the {beats} and {agent} link:{fleet-guide}/beats-agent-comparison.html#additional-capabilities-beats-and-agent[comparison] for more info.
 When you are ready to upgrade, check out link:{fleet-guide}/migrate-beats-to-agent.html[Migrate from {beats} to {agent}].
 
-OpenTelemetry (OTel) collectors:: 
+[discrete]
+[[ingest-otel]]
+=== OpenTelemetry (OTel) collectors
+
 link:https://opentelemetry.io/docs[OpenTelemetry] is a vendor-neutral observability framework for collecting, processing, and exporting telemetry data.
 Elastic is a member of the Cloud Native Computing Foundation (CNCF) and active contributor to the OpenTelemetry project. 
-+
+
 In addition to supporting upstream OTel development, Elastic provides link:https://github.com/elastic/opentelemetry[Elastic Distributions of OpenTelemetry], specifically designed to work with Elastic Observability.
 We're also expanding link:{fleet-guide}[{agent}] to use OTel collection. 
 
-Logstash:: 
+[discrete]
+[[ingest-logstash]]
+=== Logstash
+
 link:{logstash-ref}[{ls}] is a versatile open source data ETL (extract, transform, load) engine that can expand your ingest capabilities.
 {ls} can _collect data_ from a wide variety of data sources with {ls} link:{logstash-ref}/input-plugins.html[input
 plugins], _enrich and transform_ the data with {ls} link:{logstash-ref}/filter-plugins.html[filter plugins], and _output_ the
 data to {es} and other destinations with the {ls} link:{logstash-ref}/output-plugins.html[output plugins].
-+
-Most users never need to use {ls}, but it's available if you need it for: 
-+
+
+Many users never need to use {ls}, but it's available if you need it for: 
+
 * **Data collection** (if an Elastic integration isn't available). 
 {agent} and Elastic {integrations-docs}/all_integrations[integrations] provide many features out-of-the-box, so be sure to search or browse integrations for your data source. 
 If you don't find an Elastic integration for your data source, check {ls} for an {logstash-ref}/input-plugins.html[input plugin] for your data source. 
@@ -64,48 +87,3 @@ link:{ingest-guide}/lspq.html[persistence or buffering],
 additional link:{ingest-guide}/ls-enrich.html[data enrichment],  
 link:{ingest-guide}/ls-networkbridge.html[proxying] as a way to bridge network connections, or the ability to route data to
 link:{ingest-guide}/ls-multi.html[multiple destinations].
-
-Language clients:: 
-link:https://www.elastic.co/guide/en/elasticsearch/client/index.html[Elastic
-language clients] help you send **application data**, such as from NodeJS or Python,
-directly to {es} for search and analysis. 
-//ToDo: Figure out trademark considerations.
-
-APIs::
-Use the {es} link:{ref}/docs.html[document APIs] to index **documents** directly into {es}.
-
-File uploader::
-Use the {kib} link:{kibana-ref}/connect-to-elasticsearch.html#upload-data-kibana[file uploader] to index **single files** into {es}.
-This tool can be helpful for testing with small numbers of files. 
-
-Web crawler::
-Use the Elastic link:https://www.elastic.co/web-crawler[web crawler] to index **web page content**.
-
-Connectors::
-Use link:{ref}/es-connectors.html[connectors] to index **data from third-party sources**, such as Amazon S3, GMail, Outlook, and Salesforce.
-//ToDo: Figure out trademark considerations. 
-
-Elastic serverless forwarder::
-The link:https://www.elastic.co/guide/en/esf/current/aws-elastic-serverless-forwarder.html[Elastic Serverless Forwarder] is an Amazon Web Services (AWS) Lambda function that ships logs from your AWS environment to {es}.
-
-[discrete]
-[[ingest-addl-proc]]
-== Tools and features for additional processing
-You can start with {agent} and Elastic {integrations-docs}[integrations], and still
-take advantage of additional processing options if you need them.
-You can use:  
-
-* link:{fleet-guide}/elastic-agent-processor-configuration.html[{agent} processors] to sanitize or enrich raw data at the source.
-  Use {agent} processors if you need to control what data is sent across the wire, or if you need to enrich the raw data with information available on the host.
-* {es} link:{ref}/[ingest pipelines] to enrich incoming data or normalize field data before the data is indexed.
-  {es} ingest pipelines enable you to manipulate the data as it comes in. 
-  This approach helps you avoid adding processing overhead to the hosts from which you're collecting data.
-
-* {es} link:{ref}/runtime.html[runtime fields] to define or alter the schema at query time.
-  You can use runtime fields at query time to start working with your data without needing to understand how it is structured,
-  add fields to existing documents without reindexing your data,
-  override the value returned from an indexed field, and/or
-  define fields for a specific use without modifying the underlying schema.
-
-* {ls} `elastic_integration filter` to link:{logstash-ref}/ea-integrations.html[extend Elastic integrations], and other {ls} link:{logstash-ref}/filter-plugins.html[filter plugins] to transform data before it goes to {es}.
-  

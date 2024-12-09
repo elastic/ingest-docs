@@ -1,4 +1,6 @@
 // tag::quickstart-secret[]
+The following command assumes you have the {es} CA file available in a local file.
++
 [source, shell]
 ------------------------------------------------------------
 kubectl create secret generic fleet-server-certs \
@@ -13,6 +15,8 @@ If you prefer to obtain a `yaml manifest` of the Secret to create, append `--dry
 // ***************************************************
 
 // tag::production-secret[]
+The following command assumes you have the {es} CA file, the {fleet-server} certificate, and the {fleet-server} key available in local files.
++
 [source, shell]
 ------------------------------------------------------------
 kubectl create secret generic fleet-server-certs \

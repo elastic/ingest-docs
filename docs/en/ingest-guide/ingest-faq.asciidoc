@@ -1,0 +1,77 @@
+[[ingest-faq]]
+== Frequently Asked Questions
+
+Q: What Elastic products and tools are available for ingesting data into Elasticsearch. 
+
+Q: What's the best option for ingesting data?
+
+Q: What's the role of Logstash `filter-elastic-integration`? 
+
+
+
+.WORK IN PROGRESS
+****
+Temporary parking lot to capture outstanding questions and notes.
+****
+
+
+
+Also cover (here or in general outline): 
+
+- https://www.elastic.co/guide/en/kibana/master/connect-to-elasticsearch.html#_add_sample_data[Sample data]
+- OTel
+- Beats
+- Use case: GeoIP
+- Airgapped
+- Place for table, also adding use case + products (Exp: Logstash for multi-tenant)
+- Role of LS in general content use cases 
+
+
+
+[discrete]
+=== Questions to answer:
+
+* Messaging for data sources that don't have an integration 
+    - We're deemphasizing beats in preparation for deprecation
+    - We're not quite there with OTel yet
+    * How should we handle this in the near term? 
+        Probably doesn't make sense to either ignore or jump them straight to Logstash
+
+* Should we mention Fleet and Stand-alone agent? 
+** If so, when, where, and how? 
+* How does this relate to Ingest Architectures
+* Enrichment for general content
+
+* How to message current vs. desired state. 
+    Especially Beats and OTel. 
+* HOW TO MESSAGE OTel - Current state. Future state. 
+* Consistent use of terminology vs. matching users' vocabulary (keywords)
+
+[discrete]
+==== Random
+
+* DocsV3 - need for a sheltered space to develop new content
+** Related: https://github.com/elastic/docsmobile/issues/708         
+** Need a place to incubate a new doc (previews, links, etc.) 
+** Refine messaging in private
+
+
+[discrete]
+=== Other resources to use, reference, reconcile
+
+* Timeseries decision tree (needs updates)
+* PM's video
+** Needs an update. (We might relocate content before updating.) 
+* PM's product table
+** Needs an update.(We might relocate content before updating.) 
+** Focuses on Agent over integrations.
+** Same link text resolves to different locations. 
+** Proposal: Harvest the good and possibly repurpose the table format. 
+* Ingest Reference architectures
+* Linkable content such as beats? Solutions ingest resources? 
+
+* https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-guides.html[Starting with the Elastic Platform and Solutions]
+* https://www.elastic.co/guide/en/observability/current/observability-get-started.html[Get started with Elastic Observability]
+* https://www.elastic.co/guide/en/security/current/ingest-data.html[Ingest data into Elastic Security]
+* 
+

@@ -48,7 +48,7 @@ The solution gives you more pre-built components to get you up and running quick
 
 With link:https://www.elastic.co/observability[Elastic Observability], you can
 monitor and gain insights into logs, metrics, and application traces. 
-The resources and guides in this section illustrate how to ingest data and use
+The guides and resources in this section illustrate how to ingest data and use
 it with the Observability solution. 
 
 
@@ -75,7 +75,7 @@ it with the Observability solution.
 You can detect and respond to threats when you use
 link:https://www.elastic.co/security[Elastic Security] to analyze and take
 action on your data.
-The resources and guides in this section illustrate how to ingest data and use it with the Security solution.  
+The guides and resources in this section illustrate how to ingest data and use it with the Security solution.  
 
 **Guides for popular Security use cases**
 

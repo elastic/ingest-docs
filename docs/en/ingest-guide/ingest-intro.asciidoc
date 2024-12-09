@@ -36,8 +36,6 @@ If you would like to try things out before you add your own data, try using our 
 [[ingest-timestamped]]
 === Ingesting time-stamped data
 
-
-
 [ingest-best-timestamped]
 .What's the best approach for ingesting time-stamped data? 
 **** 

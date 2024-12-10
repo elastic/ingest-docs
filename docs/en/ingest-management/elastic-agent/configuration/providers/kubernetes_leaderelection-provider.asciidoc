@@ -12,7 +12,7 @@ It can automatically reach the API if it's running in an InCluster environment (
 [source,yaml]
 ----
 providers.kubernetes_leaderelection:
-  #enabled: true
+  #enabled: false
   #kube_config: /Users/elastic-agent/.kube/config
   #kube_client_options:
   #  qps: 5
@@ -23,8 +23,8 @@ providers.kubernetes_leaderelection:
   #leader_renewdeadline: 10
 ----
 
-`enabled`:: (Optional) Defaults to true. To explicitly disable the LeaderElection provider,
-set `enabled: false`.
+`enabled`:: (Optional) Defaults to false. To explicitly enable the LeaderElection provider,
+set `enabled: true`.
 `kube_config`:: (Optional) Use the given config file as configuration for the Kubernetes
 client. If `kube_config` is not set, `KUBECONFIG` environment variable will be
 checked and will fall back to InCluster if it's not present.

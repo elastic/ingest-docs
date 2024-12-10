@@ -1165,7 +1165,7 @@ Uninstall {agent} and do not prompt for confirmation. This flag is helpful
 when using automation software or scripted deployments.
 
 `--skip-fleet-audit`::
-Skip auditing with the fleet server.
+Skip auditing with the {fleet-server}.
 
 `--help`::
 Show help for the `uninstall` command.

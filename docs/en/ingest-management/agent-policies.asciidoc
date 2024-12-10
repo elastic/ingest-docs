@@ -305,7 +305,7 @@ Note that adding custom tags is not supported for a small set of inputs:
 * `cloud-defend`
 * `fleet-server`
 * `pf-elastic-collector`, `pf-elastic-symbolizer`, and `pf-host-agent`
-* `endpoint` inputs. Instead, utilize the advanced settings(*.advanced.document_enrichment.fields) of the Elastic Defend Integration.
+* `endpoint` inputs. Instead, use the advanced settings (`*.advanced.document_enrichment.fields`) of the {elastic-defend} Integration.
 
 
 [discrete]

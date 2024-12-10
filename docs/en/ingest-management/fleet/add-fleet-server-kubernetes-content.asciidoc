@@ -42,7 +42,7 @@ kind: Deployment
 metadata:
   name: fleet-server
 spec:
-  replicas: 1
+  replicas: 1 <1>
   selector:
     matchLabels:
       app: fleet-server
@@ -51,12 +51,12 @@ spec:
       labels:
         app: fleet-server
     spec:
-      automountServiceAccountToken: false <1>
+      automountServiceAccountToken: false <2>
       containers:
       - name: elastic-agent
         image: docker.elastic.co/beats/elastic-agent:{version}
         env:
-          - name: FLEET_SERVER_ENABLE <2>
+          - name: FLEET_SERVER_ENABLE
             value: "true"
           - name: FLEET_SERVER_ELASTICSEARCH_HOST
             valueFrom:
@@ -90,9 +90,9 @@ spec:
           optional: false
           secretName: fleet-server-certs
 ------------------------------------------------------------
-<1> Keep `automountServiceAccountToken` set to `false` to disable the <<kubernetes-provider>>
-<2> Keep `FLEET_SERVER_ENABLE` set to `true`
-<3> Consider configuring requests and limits as a best practice
+<1> You can add replicas to scale the {fleet-server} horizontally.
+<2> Keep `automountServiceAccountToken` set to `false` to disable the <<kubernetes-provider>>.
+<3> Consider configuring requests and limits always as a best practice. Refer to <<fleet-server-scalability>> for more information about resources utilization of the {fleet-server}.
 // +
 // Manifest highlights:
 // +
@@ -118,7 +118,7 @@ kind: Deployment
 metadata:
   name: fleet-server
 spec:
-  replicas: 1
+  replicas: 1 <1>
   selector:
     matchLabels:
       app: fleet-server
@@ -127,12 +127,12 @@ spec:
       labels:
         app: fleet-server
     spec:
-      automountServiceAccountToken: false <1>
+      automountServiceAccountToken: false <2>
       containers:
       - name: elastic-agent
         image: docker.elastic.co/beats/elastic-agent:{version}
         env:
-          - name: FLEET_SERVER_ENABLE <2>
+          - name: FLEET_SERVER_ENABLE
             value: "true"
           - name: FLEET_SERVER_ELASTICSEARCH_HOST
             valueFrom:
@@ -170,7 +170,7 @@ spec:
           optional: false
           secretName: fleet-server-certs
 ------------------------------------------------------------
-<1> Keep `automountServiceAccountToken` set to `false` to disable the <<kubernetes-provider>>
-<2> Keep `FLEET_SERVER_ENABLE` set to `true`
-<3> Consider configuring requests and limits as a best practice
+<1> You can add replicas to scale the {fleet-server} horizontally.
+<2> Keep `automountServiceAccountToken` set to `false` to disable the <<kubernetes-provider>>.
+<3> Consider configuring requests and limits always as a best practice. Refer to <<fleet-server-scalability>> for more information about resources utilization of the {fleet-server}.
 // end::production-deployment[]

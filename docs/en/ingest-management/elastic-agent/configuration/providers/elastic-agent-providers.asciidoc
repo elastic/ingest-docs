@@ -35,8 +35,10 @@ providers:
       - item: key2
 ----
 
-Explicitly disable a provider by setting `enabled: false`. All providers
-are prefixed without name collisions. The name of the provider is in the key in the configuration.
+Providers are disabled by default.
+Explicitly enable a provider by setting `enabled: true`.
+All providers are prefixed without name collisions.
+The name of the provider is in the key in the configuration.
 
 [source,yaml]
 ----
@@ -89,19 +91,19 @@ configuration.
 * <<kubernetes-provider,Kubernetes Provider>>
 
 [discrete]
-[[disable-providers-by-default]]
-=== Disabling Providers By Default
+[[enable-providers-by-default]]
+=== Enabling providers By default
 
-All registered providers are enabled by default.
+All registered providers are disabled by default.
 
-Disable all providers by default and only enable explicitly configured providers by setting `agent.providers.initial_default: false`.
+Enable all providers by default and only disable explicitly configured providers by setting `agent.providers.initial_default: true`.
 
 [source,yaml]
 ----
-agent.providers.initial_default: false
+agent.providers.initial_default: true
 providers:
   docker:
-    enabled: true
+    enabled: false
 ----
 
 include::local-provider.asciidoc[leveloffset=+1]

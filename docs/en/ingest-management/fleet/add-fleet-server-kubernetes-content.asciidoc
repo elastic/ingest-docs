@@ -35,7 +35,7 @@ If you prefer to obtain a `yaml manifest` of the Secret to create, append `--dry
 // ***************************************************
 
 // tag::quickstart-deployment[]
-[source, yaml]
+["source","yaml",subs="attributes"]
 ------------------------------------------------------------
 apiVersion: apps/v1
 kind: Deployment

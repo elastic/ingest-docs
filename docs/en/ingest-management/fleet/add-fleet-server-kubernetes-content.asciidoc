@@ -111,7 +111,7 @@ spec:
 // ***************************************************
 
 // tag::production-deployment[]
-[source, yaml]
+["source","yaml",subs="attributes"]
 ------------------------------------------------------------
 apiVersion: apps/v1
 kind: Deployment

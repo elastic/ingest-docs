@@ -37,7 +37,7 @@ performance. Before you upgrade, review the breaking changes, then mitigate the
 impact to your application.
 
 {agent}::
-* Install images for {agent} on Debian 10 systems are no longer being made available. Debian 11 is now supported instead. {agent-pull}5847[#5847]
+* {agent} is now compiled using Debian 11 and linked against glibc 2.31 instead of 2.19. Drops support for Debian 10. {agent-pull}5847[#5847]
 
 [discrete]
 [[new-features-8.17.0]]

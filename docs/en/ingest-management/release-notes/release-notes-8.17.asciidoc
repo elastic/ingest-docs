@@ -1,0 +1,216 @@
+// Use these for links to issue and pulls.
+:kibana-issue: https://github.com/elastic/kibana/issues/
+:kibana-pull: https://github.com/elastic/kibana/pull/
+:beats-issue: https://github.com/elastic/beats/issues/
+:beats-pull: https://github.com/elastic/beats/pull/
+:agent-libs-pull: https://github.com/elastic/elastic-agent-libs/pull/
+:agent-issue: https://github.com/elastic/elastic-agent/issues/
+:agent-pull: https://github.com/elastic/elastic-agent/pull/
+:fleet-server-issue: https://github.com/elastic/fleet-server/issues/
+:fleet-server-pull: https://github.com/elastic/fleet-server/pull/
+
+[[release-notes]]
+= Release notes
+
+This section summarizes the changes in each release.
+
+* <<release-notes-8.17.0>>
+
+Also see:
+
+* {kibana-ref}/release-notes.html[{kib} release notes]
+* {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.17.0 relnotes
+
+[[release-notes-8.17.0]]
+== {fleet} and {agent} 8.17.0
+
+Review important information about the {fleet} and {agent} 8.17.0 release.
+
+[discrete]
+[[breaking-changes-8.17.0]]
+=== Breaking changes
+
+Breaking changes can prevent your application from optimal operation and
+performance. Before you upgrade, review the breaking changes, then mitigate the
+impact to your application.
+
+{agent}::
+* {agent} is now compiled using Debian 11 and linked against glibc 2.31 instead of 2.19. Drops support for Debian 10. {agent-pull}5847[#5847]
+
+[discrete]
+[[new-features-8.17.0]]
+=== New features
+
+The 8.17.0 release Added the following new and notable features.
+
+{fleet}::
+* Expose advanced file logging configuration in the UI. {kibana-pull}200274[#200274]
+
+{agent}::
+* Add support for running as a pre-existing user when installing in unprivileged mode, with technical preview support for pre-existing Windows Active Directory users. {agent-pull}5988[#5988] {agent-issue}4585[#4585]
+* Add a new custom link:https://github.com/elastic/integrations/tree/main/packages/filestream)[Filestream logs integration]. This will enable migration from the custom log integration which is based on a log input that is planned for deprecation. https://github.com/elastic/integrations/pull/11332[#11332]. 
+
+[discrete]
+[[enhancements-8.17.0]]
+=== Enhancements
+
+{fleet}::
+* Filter the integrations/packages list shown in the UI depending on the `policy_templates_behavior` field. {kibana-pull}200605[#200605]
+* Add a `<type>@custom` component template to integrations index template's `composed_of` array. {kibana-pull}192731[#192731]
+
+{fleet-server}::
+* Update `elastic-agent-libs` to version `0.14.0`. {fleet-server-pull}4042[#4042]
+
+{agent}::
+* Enable persistence in the configuration provided with our OTel Collector distribution. {agent-pull}5549[#5549]
+* Restrict using the CLI to upgrade for {fleet}-managed {agents}. {agent-pull}5864[#5864] {agent-issue}4890[#4890]
+* Add `os_family`, `os_platform` and `os_version` to the {agent} host provider, enabling differentiating Linux distributions. This is required to support Debian 12 and other distributions that are moving away from traditional log files in favour of Journald. {agent-pull}5941[#5941] https://github.com/elastic/integrations/issues/10797[10797] https://github.com/elastic/integrations/pull/11618[11618]
+* Emit Pod data only for Pods that are running in the Kubernetes provider. {agent-pull}6011[#6011] {agent-issue}5835[#5835] {agent-issue}5991[#5991] 
+* Remove {endpoint-sec} from Linux container images. {endpoint-sec} cannot run in containers since it has a systemd dependency. {agent-pull}6016[#6016] {agent-issue}5495[#5495]
+* Update OTel components to v0.114.0. {agent-pull}6113[#6113]
+* Redact common secrets like API keys and passwords in the output from `elastic-agent inspect` command. {agent-pull}6224[#6224]
+
+[discrete]
+[[bug-fixes-8.17.0]]
+=== Bug fixes
+
+{fleet}::
+* Allow creation of an integration policy with no agent policies. {kibana-pull}201051[#201051]
+
+{fleet-server}::
+* Fix `server.address` field which was appearing empty in HTTP request logs. {fleet-server-pull}4142[#4142]
+* Remove a race condition that may occur when remote ES outputs are used. {fleet-server-pull}4171[#4171] {fleet-server-pull}4170[#4170]
+
+{agent}::
+* Make redaction of common keys in diagnostics case insensitive. {agent-pull}6109[#6109]
+
+
+// end 8.17.0 relnotes
+
+// ---------------------
+//TEMPLATE
+//Use the following text as a template. Remember to replace the version info.
+
+// begin 8.7.x relnotes
+
+//[[release-notes-8.7.x]]
+//== {fleet} and {agent} 8.7.x
+
+//Review important information about the {fleet} and {agent} 8.7.x release.
+
+//[discrete]
+//[[security-updates-8.7.x]]
+//=== Security updates
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[breaking-changes-8.7.x]]
+//=== Breaking changes
+
+//Breaking changes can prevent your application from optimal operation and
+//performance. Before you upgrade, review the breaking changes, then mitigate the
+//impact to your application.
+
+//[discrete]
+//[[breaking-PR#]]
+//.Short description
+//[%collapsible]
+//====
+//*Details* +
+//<Describe new behavior.> For more information, refer to {kibana-pull}PR[#PR].
+
+//*Impact* +
+//<Describe how users should mitigate the change.> For more information, refer to {fleet-guide}/fleet-server.html[Fleet Server].
+//====
+
+//[discrete]
+//[[notable-changes-8.13.0]]
+//=== Notable changes
+
+//The following are notable, non-breaking updates to be aware of:
+
+//* Changes to features that are in Technical Preview.
+//* Changes to log formats.
+//* Changes to non-public APIs.
+//* Behaviour changes that repair critical bugs.
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[known-issues-8.7.x]]
+//=== Known issues
+
+//[[known-issue-issue#]]
+//.Short description
+//[%collapsible]
+//====
+
+//*Details*
+
+//<Describe known issue.>
+
+//*Impact* +
+
+//<Describe impact or workaround.>
+
+//====
+
+//[discrete]
+//[[deprecations-8.7.x]]
+//=== Deprecations
+
+//The following functionality is deprecated in 8.7.x, and will be removed in
+//8.7.x. Deprecated functionality does not have an immediate impact on your
+//application, but we strongly recommend you make the necessary updates after you
+//upgrade to 8.7.x.
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[new-features-8.7.x]]
+//=== New features
+
+//The 8.7.x release Added the following new and notable features.
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[enhancements-8.7.x]]
+//=== Enhancements
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[bug-fixes-8.7.x]]
+//=== Bug fixes
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+// end 8.7.x relnotes

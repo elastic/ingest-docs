@@ -29,7 +29,7 @@ Also see:
 Review important information about the {fleet} and {agent} 8.17.0 release.
 
 [discrete]
-[[breaking-changes-8.7.x]]
+[[breaking-changes-8.17.0]]
 === Breaking changes
 
 Breaking changes can prevent your application from optimal operation and
@@ -40,8 +40,25 @@ impact to your application.
 * Install images for {agent} on Debian 10 systems are no longer being made available. Debian 11 is now supported instead. {agent-pull}5847[#5847]
 
 [discrete]
+[[new-features-8.17.0]]
+=== New features
+
+The 8.17.0 release Added the following new and notable features.
+
+{fleet}::
+* Expose advanced file logging configuration in the UI. {kibana-pull}200274[#200274]
+
+{agent}::
+* Add support for pre-existing Active Directory user for unprivileged mode. {agent-pull}5988[#5988] {agent-issue}4585[#4585]
+* Add support for the Filestream integration. This will enable migration from the custom log integration which is based on a log input that is planned for deprecation. https://github.com/elastic/integrations/pull/11332[#11332]
+
+[discrete]
 [[enhancements-8.17.0]]
 === Enhancements
+
+{fleet}::
+* Filter the integrations/packages list shown in the UI depending on the `policy_templates_behavior` field. {kibana-pull}200605[#200605]
+* Add a `<type>@custom` component template to integrations index template's `composed_of` array. {kibana-pull}192731[#192731]
 
 {fleet-server}::
 * Update `elastic-agent-libs` to version `0.14.0`. {fleet-server-pull}4042[#4042]
@@ -53,6 +70,24 @@ impact to your application.
 * Add `os_family`, `os_platform` and `os_version` to the {agent} host provider, enabling differentiating Linux distributions. This is required to support Debian 12 and other distributions that are moving away from traditional log files in favour of Journald. {agent-pull}5941[#5941] https://github.com/elastic/integrations/issues/10797[10797] https://github.com/elastic/integrations/pull/11618[11618]
 * Emit Pod data only for Pods that are running in the Kubernetes provider. {agent-pull}6011[#6011] {agent-issue}5835[#5835] {agent-issue}5991[#5991] 
 * Remove {endpoint-sec} from Linux container images. {endpoint-sec} cannot run in containers since it has a systemd dependency. {agent-pull}6016[#6016] {agent-issue}5495[#5495]
+* Update the outdated Kubernetes composable provider README. {agent-pull}5990[#5990]
+* Update OTel components to v0.114.0. {agent-pull}6113[#6113]
+* Redact common secrets like API keys and passwords in the output from `elastic-agent inspect` command. {agent-pull}6224[#6224]
+
+[discrete]
+[[bug-fixes-8.17.0]]
+=== Bug fixes
+
+{fleet}::
+* Allow creation of an integration policy with no agent policies. {kibana-pull}201051[#201051]
+
+{fleet-server}::
+* Fix `server.address` field which was appearing empty in HTTP request logs. {fleet-server-pull}4142[#4142]
+* Remove a race condition that may occur when remote ES outputs are used. {fleet-server-pull}4171[#4171] {fleet-server-pull}4170[#4170]
+
+{agent}::
+* Make redaction of common keys in diagnostics case insensitive. {agent-pull}6109[#6109]
+
 
 // end 8.17.0 relnotes
 

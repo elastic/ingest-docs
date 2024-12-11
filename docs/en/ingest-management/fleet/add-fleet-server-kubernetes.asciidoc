@@ -345,14 +345,14 @@ The following shows an example to expose the {fleet-server} with a `LoadBalancer
 +
 [source, shell]
 ------------------------------------------------------------
-kubectl expose deployment fleet-server --type LoadBalancer --port 443 --target-port 8220
+kubectl expose deployment fleet-server --name fleet-svc --type LoadBalancer --port 443 --target-port 8220
 ------------------------------------------------------------
 +
-The previous example creates a service named `fleet-server`, listening on port `443` and forwarding the traffic to the `fleet-server` deployment's Pods on port `8220`. The listening `--port` of the service can be customized, but the `--target-port` must remain on the default port (`8220`), because it's the port used by the {fleet-server} application.
+The previous example creates a service named `fleet-svc`, listening on port `443` and forwarding the traffic to the `fleet-server` deployment's Pods on port `8220`. The listening `--port` of the service can be customized, but the `--target-port` must remain on the default port (`8220`), because it's the port used by the {fleet-server} application.
 +
 The URL(s) that the clients would use to access the {fleet-server} in this example could be:
 +
-* For {agent}s within the Kubernetes cluster: `https://fleet-server.<namespace>.svc`.
+* For {agent}s within the Kubernetes cluster: `https://fleet-svc.<namespace>.svc`.
 * For external {agent}s: access through whatever FQDN added on the DNS server pointing to the public IP of the `LoadBalancer`.
 +
 If your environment requires the {fleet-server} to be reachable through multiple hostnames / URLs, you can create multiple *Fleet Server Hosts* in *Fleet → Setting*, and create different policies for different groups of agents.

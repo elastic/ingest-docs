@@ -83,7 +83,7 @@ You also need to know and plan in advance the <<fleet-server-hosts-setting, host
 
 [discrete]
 [[add-fleet-server-kubernetes-cert-outbound]]
-=== {fleet-server} → {es} output outbound traffic flow
+=== [{fleet-server} → {es} output] outbound traffic flow
 
 In this flow the {fleet-server} acts as the client and {es} acts as the HTTPS server. For the communication to succeed, the {fleet-server} needs to trust the CA certificate used to sign the {es} certificate. If your {es} uses certificates signed by a corporate CA or multiple intermediate CAs you will need to use them during the {fleet-server} setup.
 

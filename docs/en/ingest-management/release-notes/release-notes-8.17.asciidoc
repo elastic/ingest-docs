@@ -65,7 +65,6 @@ The 8.17.0 release Added the following new and notable features.
 
 {agent}::
 * Enable persistence in the configuration provided with our OTel Collector distribution. {agent-pull}5549[#5549]
-* Add Filebeat as a receiver for {agent} running in OTel mode. {agent-pull}5833[#5833]
 * Restrict using the CLI to upgrade {fleet}-managed {agents}. With this implementation, upgrading a {fleet}-managed agent using the CLI is supported only if the agent is running in privileged mode and the user provides a `force` flag. {agent-pull}5864[#5864] {agent-issue}4890[#4890]
 * Add `os_family`, `os_platform` and `os_version` to the {agent} host provider, enabling differentiating Linux distributions. This is required to support Debian 12 and other distributions that are moving away from traditional log files in favour of Journald. {agent-pull}5941[#5941] https://github.com/elastic/integrations/issues/10797[10797] https://github.com/elastic/integrations/pull/11618[11618]
 * Emit Pod data only for Pods that are running in the Kubernetes provider. {agent-pull}6011[#6011] {agent-issue}5835[#5835] {agent-issue}5991[#5991] 

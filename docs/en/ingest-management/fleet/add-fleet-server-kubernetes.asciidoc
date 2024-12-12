@@ -205,7 +205,7 @@ Adapt and change the suggested manifests and deployment strategy to your needs, 
 
 * Scheduling configuration, such as `affinity rules` or `tolerations`, if needed in your environment.
 * CPU and memory resources configuration.
-* Replicas for the Deployment (defaults to 1).
+* Replicas for the Deployment (defaults to `1`).
 * Namespace.
 * Use an {es} CA fingerprint instead of a CA file.
 

@@ -371,9 +371,9 @@ Remember that in *Production* mode, the *hostnames* used to access the {fleet-se
 +
 This occurs when the `output` of the policy associated to the {fleet-server} is not correctly configured.
 
-* TLS certificate trust issues even when `ELASTICSEARCH_CA` environment variable is properly set during deployment:
+* TLS certificate trust issues occur even when the `ELASTICSEARCH_CA` environment variable is properly set during deployment.
 +
-This occurs when the `output` of the policy associated to the {fleet-server} is not correctly configured. Add the *CA certificate* or *CA trusted fingerprint* to the {es} output associated to the {fleet-server} policy.
+This problem occurs when the `output` of the policy associated to the {fleet-server} is not correctly configured. Add the *CA certificate* or *CA trusted fingerprint* to the {es} output associated to the {fleet-server} policy.
 
 [discrete]
 [[add-fleet-server-kubernetes-troubleshoot-other]]

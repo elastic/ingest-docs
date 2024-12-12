@@ -335,7 +335,7 @@ kubectl logs fleet-server-xxxxx
 +
 It could take a while until the {fleet-server} fully starts. If you left the {kib} browser window opened during <<add-fleet-server-kubernetes-preparations>> it will show *Connected* in case everything goes well.
 +
-Do not continue with the next steps if the {fleet-server} is not completely up and healthy and appears in Fleet UI.
+Do not continue with the next steps if the {fleet-server} is not completely up and healthy, and appearing in {fleet} UI.
 
 . Expose the {fleet-server} to {agent}s through the *Fleet Server Host*:
 +

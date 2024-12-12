@@ -53,7 +53,7 @@ bugfix releases)
 [[add-fleet-server-kubernetes-prereq]]
 = Prerequisites
 
-Before deploying the {fleet-server}, you need to:
+Before deploying {fleet-server}, you need to:
 
 * Prepare the SSL/TLS configuration, server certificate, <<fleet-server-hosts-setting>>, and needed Certificate Authorities (CAs).
 * Ensure components have access to the ports needed for communication.

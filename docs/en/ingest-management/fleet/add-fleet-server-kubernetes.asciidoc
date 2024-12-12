@@ -389,4 +389,4 @@ and confirm that the agent running {fleet-server} is healthy.
 Now you're ready to add {agent}s to your host systems.
 To learn how, see <<install-fleet-managed-elastic-agent>>, or <<running-on-kubernetes-managed-by-fleet>> if your {agent}s will also run on Kubernetes.
 
-When connecting {agent}s to this {fleet-server}, remember to use `--insecure` flag if the *quick start* mode was used, or to provide to the {agent}s the CA certificate associated to the {fleet-server} certificate if *production* mode was used.
+When you connect {agent}s to {fleet-server}, remember to use the `--insecure` flag if the *quick start* mode was used, or to provide to the {agent}s the CA certificate associated to the {fleet-server} certificate if *production* mode was used.

@@ -29,7 +29,7 @@ To deploy a {fleet-server} on Kubernetes and register it into Fleet you will nee
 ** When a private or intermediate Certificate Authority (CA) is used to sign the {es} certificate, the *{es} CA file* or the *CA fingerprint*, configured also in the {es} output associated to the policy.
 * For incoming connections:
 ** A *TLS/SSL certificate and key* for the {fleet-server} HTTPS endpoint, used to encrypt the traffic from the {agent}s. This certificate has to be valid for the *{fleet-server} Host URL* that {agent}s use when connecting to the {fleet-server}.
-* Extra TLS/SSL certificates and configuration parameters in case of requiring <<mutual-tls,mutual TLS>> (not covered on this document).
+* Extra TLS/SSL certificates and configuration parameters in case of requiring <<mutual-tls,mutual TLS>> (not covered in this document).
 
 This document walks you through the complete setup process, organized into the following sections:
 

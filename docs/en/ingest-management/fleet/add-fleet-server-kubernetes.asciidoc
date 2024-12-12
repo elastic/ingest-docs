@@ -333,7 +333,7 @@ Ensure the `Deployment` and all referenced `Secrets` are created in the same `Na
 kubectl logs fleet-server-xxxxx
 ------------------------------------------------------------
 +
-It could take a while until the {fleet-server} fully starts. If you left the {kib} browser window opened during <<add-fleet-server-kubernetes-preparations>> it will show *Connected* in case everything goes well.
+It can take a couple of minutes for {fleet-server} to fully start. If you left the {kib} browser window open during <<add-fleet-server-kubernetes-preparations>> it will show *Connected* when everything has gone well.
 +
 Do not continue with the next steps if the {fleet-server} is not completely up and healthy, and appearing in {fleet} UI.
 

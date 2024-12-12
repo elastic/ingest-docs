@@ -177,7 +177,7 @@ At this point you can configure the integration settings per <<fleet-server-scal
 ** Fleet policy ID (under `--fleet-server-policy` parameter).
 ** {es} URL (under `--fleet-server-es` parameter).
 
-. Keep {kib} browser window opened and continue with the <<add-fleet-server-kubernetes-install>>.
+. Keep the {kib} browser window open and continue with the <<add-fleet-server-kubernetes-install>>.
 +
 When the {fleet-server} installation has succeeded, the *Confirm Connection* UI will show a *Connected* status.
 

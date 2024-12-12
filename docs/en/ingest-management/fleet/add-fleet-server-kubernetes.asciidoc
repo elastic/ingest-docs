@@ -159,7 +159,7 @@ If the URL that {fleet-server} will use to access {es} is different from the {es
 ** Select *Add Fleet Server* to add the integration to the policy.
 +
 At this point you can configure the integration settings per <<fleet-server-scalability>>.
-** When done, select on *Save and continue*. Do not add any {agent} at this stage.
+** When done, select *Save and continue*. Do not add an {agent} at this stage.
 
 . Open the configured policy, which now includes the {fleet-server} integration, and select *Actions* → *Add Fleet Server*. In the next dialog:
 +

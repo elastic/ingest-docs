@@ -367,9 +367,9 @@ Remember that in *Production* mode, the *hostnames* used to access the {fleet-se
 [[add-fleet-server-kubernetes-troubleshoot-common]]
 == Common Problems
 
-* {fleet-server} trying to access {es} at `localhost:9200` even if `FLEET_SERVER_ELASTICSEARCH_HOST` environment variable was properly set:
+* {fleet-server} is trying to access {es} at `localhost:9200` even though the `FLEET_SERVER_ELASTICSEARCH_HOST` environment variable is properly set.
 +
-This occurs when the `output` of the policy associated to the {fleet-server} is not correctly configured.
+This problem occurs when the `output` of the policy associated to the {fleet-server} is not correctly configured.
 
 * TLS certificate trust issues occur even when the `ELASTICSEARCH_CA` environment variable is properly set during deployment.
 +

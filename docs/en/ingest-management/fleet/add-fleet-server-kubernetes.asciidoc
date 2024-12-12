@@ -170,7 +170,7 @@ At this point you can configure the integration settings per <<fleet-server-scal
 * Add your *Fleet Server Host* information:
 ** This will be the URL used by the clients ({agent}s) to connect to the {fleet-server}. In *Production* mode, the {fleet-server} certificate must include the hostname part of the URL as an `x509 SAN`.
 ** On Kubernetes environments this could be the name of the `Kubernetes service` or reverse proxy that exposes the {fleet-server} Pods.
-** This setting is not really used by the {fleet-server} itself, so don't worry much about it at this stage because you will be able to change it later on under *Fleet → Settings*.
+** This setting is not used by the {fleet-server} itself, so don't worry about it at this stage because you will be able to change it later on under *Fleet → Settings*.
 * Select **generate service token** to create a token for the {fleet-server}.
 * From *Install Fleet Server to a centralized host → Linux*, take note of the values of the following settings that will be needed for the {fleet-server} installation:
 ** Service token(under `--fleet-server-service-token` parameter).

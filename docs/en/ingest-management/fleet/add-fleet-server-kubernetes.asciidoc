@@ -179,7 +179,7 @@ At this point you can configure the integration settings per <<fleet-server-scal
 
 . Keep {kib} browser window opened and continue with the <<add-fleet-server-kubernetes-install>>.
 +
-When {fleet-server} installation succeeds, the *Confirm Connection* dialog will show *Connected*.
+When the {fleet-server} installation has succeeded, the *Confirm Connection* UI will show a *Connected* status.
 
 [discrete]
 [[add-fleet-server-kubernetes-install]]

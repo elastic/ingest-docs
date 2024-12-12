@@ -143,7 +143,7 @@ Also note that the `service token` required by the {fleet-server} is different f
 ====
 This validation step is critical. The {es} host URL and CA information has to be added *in both the {es} output and the environment variables* provided to the {fleet-server} in a later step. It's a common mistake to ignore the output settings believing that the environment variables will prevail, when the environment variables are only used during the bootstrap of the {fleet-server}.
 
-Consider the creation of a dedicated *{es} output* for the {fleet-server} if the URL needed by the {fleet-server} to reach {es} differs from the URL needed by other clients.
+If the URL that {fleet-server} will use to access {es} is different from the {es} URL used by other clients, you may want to create a dedicated *{es} output* for {fleet-server}.
 ====
 
 . From *Fleet → Agent Policies*, select *Create agent policy* to create a policy for the {fleet-server}:

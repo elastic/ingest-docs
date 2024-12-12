@@ -203,9 +203,9 @@ If you followed the <<add-fleet-server-kubernetes-cert-prereq>> and <<add-fleet-
 
 The suggested deployment method for the {fleet-server} consists of:
 
-* A basic Kubernetes `Deployment` manifest that relies on two `Secrets` for its configuration.
-* A `Secret` named `fleet-server-config` with the values for different environment variables.
-* A `Secret` named `fleet-server-certs` with the certificate files and the {es} CA file needed for the installation.
+* A basic Kubernetes `Deployment` manifest that relies on two `Secrets` for its configuration:
+** A `Secret` named `fleet-server-config` with the values for different environment variables.
+** A `Secret` named `fleet-server-certs` with the certificate files and the {es} CA file needed for the installation.
 
 Adapt and change the suggested manifests and deployment strategy to your needs, ensuring you feed the {fleet-server} with the needed configuration and certificates. For example, you can customize:
 
@@ -214,6 +214,7 @@ Adapt and change the suggested manifests and deployment strategy to your needs, 
 * Replicas for the Deployment (defaults to `1`).
 * Namespace.
 * Use an {es} CA fingerprint instead of a CA file.
+* Configure other <<agent-environment-variables>>.
 
 [discrete]
 [[add-fleet-server-kubernetes-install-steps]]

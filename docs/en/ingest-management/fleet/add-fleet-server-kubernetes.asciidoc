@@ -223,7 +223,7 @@ kubectl create secret generic fleet-server-config \
 --from-literal=fleet_policy_id='YOUR_POLICY_ID' <3>
 ------------------------------------------------------------
 <1> The URL of your {es} host. For example `'https://monitoring-es-http.default.svc:9200'`.
-<2> The service token provided by {kib} in Fleet UI.
+<2> The service token provided by {kib} in the Fleet UI.
 <3> The ID of the created policy. For example `'dee949ac-403c-4c83-a489-0122281e4253'`.
 +
 If you prefer to obtain a *yaml manifest* of the Secret to create, append `--dry-run=client -o=yaml` to the command and save the output to a file.

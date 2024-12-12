@@ -70,7 +70,7 @@ There are two main and differentiated traffic flows associated with the {fleet-s
 [[add-fleet-server-kubernetes-cert-inbound]]
 === [{agent} → {fleet-server}] inbound traffic flow
 
-In this flow the {fleet-server} acts as the server and the {agent} acts as the client, therefore the {fleet-server} requires a TLS certificate and key, and the {agent} will need to trust the CA certificate used to sign the {fleet-server} certificate.
+In this flow {fleet-server} acts as the server and {agent} acts as the client. Therefore, {fleet-server} requires a TLS certificate and key, and {agent} will need to trust the CA certificate used to sign the {fleet-server} certificate.
 
 [NOTE]
 ====

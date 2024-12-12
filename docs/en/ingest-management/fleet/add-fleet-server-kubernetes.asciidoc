@@ -35,12 +35,14 @@ This document walks you through the complete setup process, organized into the f
 
 * <<add-fleet-server-kubernetes-compatibility,Compatibility requirements>>
 * <<add-fleet-server-kubernetes-cert-prereq>>
-* <<add-fleet-server-kubernetes-preparations>>
+* <<add-fleet-server-kubernetes-add-server, {fleet} preparations>>
 * <<add-fleet-server-kubernetes-install>>
+* <<add-fleet-server-kubernetes-troubleshoot>>
+* <<add-fleet-server-kubernetes-next>>
 
 [discrete]
 [[add-fleet-server-kubernetes-compatibility]]
-= Compatibility
+== Compatibility
 
 {fleet-server} is compatible with the following Elastic products:
 
@@ -51,7 +53,7 @@ bugfix releases)
 
 [discrete]
 [[add-fleet-server-kubernetes-prereq]]
-= Prerequisites
+== Prerequisites
 
 Before deploying {fleet-server}, you need to:
 
@@ -60,7 +62,7 @@ Before deploying {fleet-server}, you need to:
 
 [discrete]
 [[add-fleet-server-kubernetes-cert-prereq]]
-== {fleet-server} and SSL/TLS certificates considerations
+=== {fleet-server} and SSL/TLS certificates considerations
 
 This section shows the minimum requirements in terms of Transport Layer Security (TLS) certificates for the {fleet-server}, assuming no mutual TLS (mTLS) is needed. Refer to <<tls-overview>> and <<mutual-tls>> for more information about the configuration needs of both approaches.
 
@@ -68,7 +70,7 @@ There are two main and differentiated traffic flows associated with the {fleet-s
 
 [discrete]
 [[add-fleet-server-kubernetes-cert-inbound]]
-=== [{agent} → {fleet-server}] inbound traffic flow
+==== [{agent} → {fleet-server}] inbound traffic flow
 
 In this flow {fleet-server} acts as the server and {agent} acts as the client. Therefore, {fleet-server} requires a TLS certificate and key, and {agent} will need to trust the CA certificate used to sign the {fleet-server} certificate.
 
@@ -83,7 +85,7 @@ You also need to know and plan in advance the <<fleet-server-hosts-setting, host
 
 [discrete]
 [[add-fleet-server-kubernetes-cert-outbound]]
-=== [{fleet-server} → {es} output] outbound traffic flow
+==== [{fleet-server} → {es} output] outbound traffic flow
 
 In this flow, {fleet-server} acts as the client and {es} acts as the HTTPS server. For the communication to succeed, {fleet-server} needs to trust the CA certificate used to sign the {es} certificate. If your {es} cluster uses certificates signed by a corporate CA or multiple intermediate CAs you will need to use them during the {fleet-server} setup.
 
@@ -100,7 +102,7 @@ In summary, you need:
 
 [discrete]
 [[default-port-assignments-kubernetes]]
-== Default port assignments
+=== Default port assignments
 
 When {es} or {fleet-server} are deployed, components communicate over well-defined, pre-allocated ports.
 You may need to allow access to these ports. Refer to the following table for default port assignments:
@@ -119,13 +121,13 @@ In Kubernetes environments, you can adapt these ports without modifying the list
 
 [discrete]
 [[add-fleet-server-kubernetes-add-server]]
-= Add {fleet-server}
+== Add {fleet-server}
 
 A {fleet-server} is an {agent} that is enrolled in a {fleet-server} policy. The policy configures the agent to operate in a special mode to serve as a Fleet Server in your deployment.
 
 [discrete]
 [[add-fleet-server-kubernetes-preparations]]
-== Fleet preparations
+=== Fleet preparations
 
 [TIP]
 ====
@@ -183,7 +185,11 @@ When the {fleet-server} installation has succeeded, the *Confirm Connection* UI 
 
 [discrete]
 [[add-fleet-server-kubernetes-install]]
-== Fleet Server installation
+=== Fleet Server installation
+
+[discrete]
+[[add-fleet-server-kubernetes-install-overview]]
+==== Installation overview
 
 To deploy {fleet-server} on Kubernetes and enroll it into {fleet} you need the following details:
 
@@ -211,7 +217,7 @@ Adapt and change the suggested manifests and deployment strategy to your needs, 
 
 [discrete]
 [[add-fleet-server-kubernetes-install-steps]]
-=== Installation Steps
+==== Installation Steps
 
 . Create the `Secret` for the {fleet-server} configuration:
 +
@@ -361,11 +367,11 @@ Remember that in *Production* mode, the *hostnames* used to access the {fleet-se
 
 [discrete]
 [[add-fleet-server-kubernetes-troubleshoot]]
-= Troubleshooting
+== Troubleshoot {fleet-server}
 
 [discrete]
 [[add-fleet-server-kubernetes-troubleshoot-common]]
-== Common Problems
+=== Common Problems
 
 The following issues may occur when {fleet-server} settings are missing or configured incorrectly:
 
@@ -379,14 +385,14 @@ This problem occurs when the `output` of the policy associated to the {fleet-ser
 
 [discrete]
 [[add-fleet-server-kubernetes-troubleshoot-other]]
-== Other issues
+=== Other issues
 
 If you're unable to add a {fleet}-managed agent, click the **Agents** tab
 and confirm that the agent running {fleet-server} is healthy.
 
 [discrete]
 [[add-fleet-server-kubernetes-next]]
-= Next steps
+== Next steps
 
 Now you're ready to add {agent}s to your host systems.
 To learn how, refer to <<install-fleet-managed-elastic-agent>>, or <<running-on-kubernetes-managed-by-fleet>> if your {agent}s will also run on Kubernetes.

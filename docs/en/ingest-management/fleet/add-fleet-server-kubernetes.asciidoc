@@ -146,7 +146,7 @@ This validation step is critical. The {es} host URL and CA information has to be
 If the URL that {fleet-server} will use to access {es} is different from the {es} URL used by other clients, you may want to create a dedicated *{es} output* for {fleet-server}.
 ====
 
-. From *Fleet → Agent Policies*, select *Create agent policy* to create a policy for the {fleet-server}:
+. Go to *Fleet → Agent Policies* and select *Create agent policy* to create a policy for the {fleet-server}:
 +
 ** Set a *name* to the policy, for example `Fleet Server Policy Kubernetes`
 ** Do *not* select the option *collect system logs and metrics*. This option would add the `system integration` to the policy, and considering the {fleet-server} will run as a Kubernetes Pod without any visibility to the Kubernetes node, there won't be any real system to monitor.

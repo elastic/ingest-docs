@@ -339,7 +339,7 @@ Do not continue with the next steps if the {fleet-server} is not completely up a
 
 . Expose the {fleet-server} to {agent}s through the *Fleet Server Host*:
 +
-This may include the creation of a Kubernetes `service`, an `ingress` resource, or create DNS registers for FQDNs resolution. There are multiple ways to expose applications in Kubernetes.
+This may include the creation of a Kubernetes `service`, an `ingress` resource, or DNS registers for FQDNs resolution. There are multiple ways to expose applications in Kubernetes.
 +
 The following example exposes the {fleet-server} with a `LoadBalancer` service, which will make the {fleet-server} available for both internal and external clients. Consider creating a `ClusterIP` instead of a `LoadBalancer` service if you only need to expose the {fleet-server} to {agent}s running in the same Kubernetes cluster.
 +

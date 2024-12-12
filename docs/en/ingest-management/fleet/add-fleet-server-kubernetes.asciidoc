@@ -137,7 +137,7 @@ Also note that the `service token` required by the {fleet-server} is different f
 . In {kib}, open *Fleet → Settings* and ensure the *Elasticsearch output* that will be used by the {fleet-server} policy is correctly configured, paying special attention to:
 +
 ** The *hosts* field includes a valid URL that will be reachable by the {fleet-server} Pod.
-** If your {es} cluster uses certificates signed by private or intermediate CAs not publicly trusted, ensure to add the trust information in the *Elasticsearch CA trusted fingerprint* field or in the *advanced configuration* section through `ssl.certificate_authorities` setting. For more details refer to https://elastic.co/guide/en/fleet/current/secure-connections.html#_encrypt_traffic_between_elastic_agents_fleet_server_and_elasticsearch[Secure Connections] documentation.
+** If your {es} cluster uses certificates signed by private or intermediate CAs not publicly trusted, you have added the trust information in the *Elasticsearch CA trusted fingerprint* field or in the *advanced configuration* section through the `ssl.certificate_authorities` setting. For details, refer to the https://elastic.co/guide/en/fleet/current/secure-connections.html#_encrypt_traffic_between_elastic_agents_fleet_server_and_elasticsearch[Secure Connections] documentation.
 +
 [IMPORTANT]
 ====

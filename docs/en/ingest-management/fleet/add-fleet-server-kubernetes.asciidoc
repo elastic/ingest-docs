@@ -151,7 +151,7 @@ If the URL that {fleet-server} will use to access {es} is different from the {es
 ** Set a *name* to the policy, for example `Fleet Server Policy Kubernetes`
 ** Do *not* select the option *collect system logs and metrics*. This option would add the `system integration` to the policy, and considering the {fleet-server} will run as a Kubernetes Pod without any visibility to the Kubernetes node, there won't be any real system to monitor.
 ** Select the **output** that the {fleet-server} needs to use to contact {es}. This should be the output that you verified in the previous step.
-** If desired, add an **inactive agent unenrollment timeout** to automatically unenroll and invalidate API Keys after being inactive. This is useful on Kubernetes environments as the {fleet-server} Pods are ephemeral, and after restarts new {agent}s will appear in Fleet UI.
+** Optionally, you can add an **inactive agent unenrollment timeout** to automatically unenroll and invalidate API keys after they become inactive. This is useful on Kubernetes environments as the {fleet-server} Pods are ephemeral, and after restarts new {agent}s will appear in Fleet UI.
 
 . Open the created policy, and from the *Integrations* tab select *Add integration*:
 +

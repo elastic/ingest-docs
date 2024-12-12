@@ -185,7 +185,7 @@ When {fleet-server} installation succeeds, the *Confirm Connection* dialog will 
 [[add-fleet-server-kubernetes-install]]
 == Fleet Server installation
 
-To deploy {fleet-server} on Kubernetes and register it into Fleet you need the following details:
+To deploy {fleet-server} on Kubernetes and enroll it into {fleet} you need the following details:
 
 * *Policy ID* of the Fleet policy configured with the {fleet-server} integration.
 * *Service token*, that you can generate following the <<add-fleet-server-kubernetes-preparations>> or manually using the {ref}/service-tokens-command.html[{es}-service-tokens command].

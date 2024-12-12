@@ -89,7 +89,7 @@ In this flow, {fleet-server} acts as the client and {es} acts as the HTTPS serve
 
 [NOTE]
 ====
-If your {es} cluster is on Elastic Cloud or if it uses a certificate signed by a public and known CA you won't need the {es} CA during the setup.
+If your {es} cluster is on Elastic Cloud or if it uses a certificate signed by a public and known CA, you won't need the {es} CA during the setup.
 ====
 
 In summary, you need:

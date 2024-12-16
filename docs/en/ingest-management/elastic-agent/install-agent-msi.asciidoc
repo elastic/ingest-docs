@@ -12,6 +12,7 @@ The MSI package installer must be run by an administrator account. The installer
 
 . Run the installer. The command varies slightly depending on whether you're using the default Windows command prompt or PowerShell.
 +
+====
 ** Using the default command prompt:
 +
 [source,shell]
@@ -25,11 +26,11 @@ elastic-agent-<VERSION>-windows-x86_64.msi INSTALLARGS="--url=<URL> --enrollment
 ----
 ./elastic-agent-<VERSION>-windows-x86_64.msi --% INSTALLARGS="--url=<URL> --enrollment-token=<TOKEN>"
 ----
+====
 +
 Where:
 
 * `VERSION` is the {stack} version you're installing, indicated in the MSI package name. For example, `8.13.2`.
-* `URL` is the {fleet-server} URL used to enroll the {agent} into {fleet}. You can find this on the {fleet} *Settings* tab in {kib}.
 * `TOKEN` is the authentication token used to enroll the {agent} into {fleet}. You can find this on the {fleet} *Enrollment tokens* tab.
 
 +

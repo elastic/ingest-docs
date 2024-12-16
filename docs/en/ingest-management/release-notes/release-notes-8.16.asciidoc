@@ -34,7 +34,7 @@ Review important information about the {fleet} and {agent} 8.16.2 release.
 [[enhancements-8.16.2]]
 === Enhancements
 
-In this release we've introduced an image based on the hardened link:https://github.com/wolfi-dev/[Wolfi] image to provide secure containers to our self-managed customers, help with compliance regulations, and improve our supply chain security posture. Wolfi-based images require Docker version 20.10.10 or higher.
+In this release we've introduced an image based on the hardened link:https://github.com/wolfi-dev/[Wolfi] image to provide additional security to our self-managed customers, and improve our supply chain security posture. Wolfi-based images require Docker version 20.10.10 or higher.
 
 {agent}::
 * Perform check for an external package manager only at startup. {agent-pull}6178[#6178] {agent-issue}5835[#5835] {agent-issue}5991[#5991]

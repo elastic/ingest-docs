@@ -50,7 +50,7 @@ The 8.17.0 release Added the following new and notable features.
 
 {agent}::
 * Add support for running as a pre-existing user when installing in unprivileged mode, with technical preview support for pre-existing Windows Active Directory users. {agent-pull}5988[#5988] {agent-issue}4585[#4585]
-* Add a new custom link:https://github.com/elastic/integrations/tree/main/packages/filestream)[Filestream logs integration]. This will enable migration from the custom log integration which is based on a log input that is planned for deprecation. https://github.com/elastic/integrations/pull/11332[#11332]. 
+* Add a new custom link:https://github.com/elastic/integrations/tree/main/packages/filestream[Filestream logs integration]. This will enable migration from the custom log integration which is based on a log input that is planned for deprecation. https://github.com/elastic/integrations/pull/11332[#11332]. 
 
 [discrete]
 [[enhancements-8.17.0]]

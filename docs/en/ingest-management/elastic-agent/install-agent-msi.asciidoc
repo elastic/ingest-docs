@@ -10,12 +10,23 @@ The MSI package installer must be run by an administrator account. The installer
 
 . Download the latest Elastic Agent MSI binary from the link:https://www.elastic.co/downloads/elastic-agent[{agent} download page].
 
-. Run the installer:
+. Run the installer. The command varies slightly depending on whether you're using the default Windows command prompt or PowerShell.
++
+====
+** Using the default command prompt:
 +
 [source,shell]
 ----
 elastic-agent-<VERSION>-windows-x86_64.msi INSTALLARGS="--url=<URL> --enrollment-token=<TOKEN>"
 ----
++
+** Using PowerShell:
++
+[source,shell]
+----
+./elastic-agent-<VERSION>-windows-x86_64.msi --% INSTALLARGS="--url=<URL> --enrollment-token=<TOKEN>"
+----
+====
 +
 Where:
 

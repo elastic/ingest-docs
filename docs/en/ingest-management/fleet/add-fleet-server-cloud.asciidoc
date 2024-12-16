@@ -30,8 +30,7 @@ image::images/fleet-server-cloud-deployment.png[{fleet-server} Cloud deployment 
 {fleet-server} is compatible with the following Elastic products:
 
 * {stack} 7.13 or later.
-** For version compatibility: {es} >= {fleet-server} >= {agent} (except for
-bugfix releases)
+** For version compatibility, {es} must be at the same or a later version than {fleet-server}, and {fleet-server} needs to be at the same or a later version than {agent} (not including patch releases).
 ** {kib} should be on the same minor version as {es}.
 
 * {ece} 2.10 or later

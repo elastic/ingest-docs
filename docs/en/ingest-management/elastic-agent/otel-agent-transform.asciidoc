@@ -9,7 +9,7 @@ To transform {agent} to an OTel Collector:
 
 . Some instruction.
 
-. Some other instruction. Run the 'elastic-agent -transform-otel` command:
+. Some other instruction. Run the `elastic-agent -transform-otel` command:
 +
 [source,shell]
 ----

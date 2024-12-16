@@ -10,9 +10,9 @@ The MSI package installer must be run by an administrator account. The installer
 
 . Download the latest Elastic Agent MSI binary from the link:https://www.elastic.co/downloads/elastic-agent[{agent} download page].
 
-. Run the installer. The command varies slightly depending on whether you're using Bash or PowerShell.
+. Run the installer. The command varies slightly depending on whether you're using the default Windows command prompt or PowerShell.
 +
-** Using Bash:
+** Using the default command prompt:
 +
 [source,shell]
 ----

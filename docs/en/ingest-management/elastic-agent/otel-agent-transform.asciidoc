@@ -1,0 +1,20 @@
+[[otel-agent-transform]]
+== Transform an installed {agent} to run as an OTel Collector
+
+preview::[]
+
+If you have a currently installed {agent}, you change it to run as an <<otel-agent,OTel Collector>>.
+
+To transform {agent} to an OTel Collector:
+
+. Some instruction.
+
+. Some other instruction. Run the `elastic-agent -transform-otel` command:
++
+[source,shell]
+----
+elastic-agent -switch-me-to-otel-please
+----
+
+
+

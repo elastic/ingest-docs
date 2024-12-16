@@ -1,0 +1,7 @@
+[[otel-agent-transform]]
+= Transform an installed {agent} to run as an OTel Collector
+
+preview::[]
+
+If you have a currently installed {agent}, you can follow these steps to run it as an <<otel-agent,OTel Collector>>.
+

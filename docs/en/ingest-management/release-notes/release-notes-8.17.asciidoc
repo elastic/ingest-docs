@@ -40,6 +40,34 @@ impact to your application.
 * {agent} is now compiled using Debian 11 and linked against glibc 2.31 instead of 2.19. Drops support for Debian 10. {agent-pull}5847[#5847]
 
 [discrete]
+[[known-issues-8.17.0]]
+=== Known Issues
+
+[discrete]
+[[known-issue-6213-8-17-0]]
+.An {agent} with the Defend integration may report an Orphaned status and will not be able to be issued an upgrade action through {fleet}.
+[%collapsible]
+====
+*Details* +
+A known issue in the {agent} may prevent it from being targetted with an upgrade action for a future release.
+This may occur if the Defend integration is used and the agent is stopped on a running instance for too long.
+An agent may be stopped as part of an upgrade process.
+
+*Impact* +
+A bug fix is present in the 8.17.1 release of {fleet} that will prevent this from occuring.
+
+If you have agents that are affected, the workaround is as follows:
+[source,shell]
+----
+# Get a Token to issue an update_by_query request:
+curl -XPOST --user elastic:${SUPERUSER_PASS} -H 'x-elastic-product-origin:fleet' -H'content-type:application/json' "https://${ELASTICSEARCH_HOST}/_security/service/elastic/fleet-server/credential/token/fix-unenrolled"
+
+# Issue an update_by_query request that targets effected agents:
+curl -XPOST -H 'Authorization: Bearer ${TOKEN}' -H 'x-elastic-product-origin:fleet' -H 'content-type:application/json' "https://${ELASTICSEARCH_HOST}/.fleet-agents/_update_by_query" -d '{"query": {"bool": {"must": [{ "exists": { "field": "unenrolled_at" } }],"must_not": [{ "term": { "active": "false" } }]}},"script": {"source": "ctx._source.unenrolled_at = null;","lang": "painless"}}'
+----
+====
+
+[discrete]
 [[new-features-8.17.0]]
 === New features
 
@@ -50,7 +78,7 @@ The 8.17.0 release Added the following new and notable features.
 
 {agent}::
 * Add support for running as a pre-existing user when installing in unprivileged mode, with technical preview support for pre-existing Windows Active Directory users. {agent-pull}5988[#5988] {agent-issue}4585[#4585]
-* Add a new custom link:https://github.com/elastic/integrations/tree/main/packages/filestream[Filestream logs integration]. This will enable migration from the custom log integration which is based on a log input that is planned for deprecation. https://github.com/elastic/integrations/pull/11332[#11332]. 
+* Add a new custom link:https://github.com/elastic/integrations/tree/main/packages/filestream[Filestream logs integration]. This will enable migration from the custom log integration which is based on a log input that is planned for deprecation. https://github.com/elastic/integrations/pull/11332[#11332].
 
 [discrete]
 [[enhancements-8.17.0]]
@@ -67,7 +95,7 @@ The 8.17.0 release Added the following new and notable features.
 * Enable persistence in the configuration provided with our OTel Collector distribution. {agent-pull}5549[#5549]
 * Restrict using the CLI to upgrade for {fleet}-managed {agents}. {agent-pull}5864[#5864] {agent-issue}4890[#4890]
 * Add `os_family`, `os_platform` and `os_version` to the {agent} host provider, enabling differentiating Linux distributions. This is required to support Debian 12 and other distributions that are moving away from traditional log files in favour of Journald. {agent-pull}5941[#5941] https://github.com/elastic/integrations/issues/10797[10797] https://github.com/elastic/integrations/pull/11618[11618]
-* Emit Pod data only for Pods that are running in the Kubernetes provider. {agent-pull}6011[#6011] {agent-issue}5835[#5835] {agent-issue}5991[#5991] 
+* Emit Pod data only for Pods that are running in the Kubernetes provider. {agent-pull}6011[#6011] {agent-issue}5835[#5835] {agent-issue}5991[#5991]
 * Remove {endpoint-sec} from Linux container images. {endpoint-sec} cannot run in containers since it has a systemd dependency. {agent-pull}6016[#6016] {agent-issue}5495[#5495]
 * Update OTel components to v0.114.0. {agent-pull}6113[#6113]
 * Redact common secrets like API keys and passwords in the output from `elastic-agent inspect` command. {agent-pull}6224[#6224]

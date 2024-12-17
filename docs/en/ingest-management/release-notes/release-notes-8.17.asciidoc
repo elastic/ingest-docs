@@ -56,7 +56,7 @@ An agent may be stopped as part of an upgrade process.
 *Impact* +
 A bug fix is present in the 8.17.1 release of {fleet} that will prevent this from occuring.
 
-If you have agents that are effected, the work around is as follows:
+If you have agents that are affected, the workaround is as follows:
 [source,shell]
 ----
 # Get a Token to issue an update_by_query request:

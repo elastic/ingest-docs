@@ -3,44 +3,45 @@
 
 preview::[]
 
-If you have a currently installed standalone {agent}, it can be configured to run as an <<otel-agent,OTel Collector>>.
+If you have a currently installed standalone {agent}, it can be configured to run as an <<otel-agent,OTel Collector>>. This allows you to run {agent} both as a service and in an OTel Collector mode.
 
-This will allow to run Elastic Agent as a service running Otel Collector with a given configuration.
+In order to configure an installed standalone {agent} to run as an OTel Collector, it's enough to include a valid <<otel-agent,OTel Collector>> configuration in the `elastic-agent.yml` file, as shown in the following example.
 
-In order to configure an installed standalone {agent} to run as an OTel Collector it's enough to include a valid <<otel-agent,OTel Collector>> configuration in `elastic-agent.yml`.
+=== Example: configure {agent} to ingest host logs and metrics into Elasticsearch using the OTel Collector
 
+**Prerequisites**
 
-=== Example: configure {agent} to ingest host logs and metrics into Elasticsearch using Otel Collector
+You'll need the following:
 
-Prerequisites:
-
-. A suitable API Key is available for authenticating on Elasticsearch
+. A suitable <<create-api-key-standalone-agent,{es} API key>> for authenticating on Elasticsearch
 . An installed standalone {agent}
-. A valid OTel Collector configuration, in this example we are going to use an included OTel sample configuration in `otel_samples/platformlogs_hostmetrics.yml`
-link:https://github.com/elastic/elastic-agent/blob/main/internal/pkg/otel/samples/linux/platformlogs_hostmetrics.yml[Linux example]
-link:https://github.com/elastic/elastic-agent/blob/main/internal/pkg/otel/samples/darwin/platformlogs_hostmetrics.yml[MacOS example]
+. A valid OTel Collector configuration. In this example we'll use the OTel sample configuration included in the {agent} repository: `otel_samples/platformlogs_hostmetrics.yml`.
+** link:https://github.com/elastic/elastic-agent/blob/main/internal/pkg/otel/samples/linux/platformlogs_hostmetrics.yml[Linux version]
+** link:https://github.com/elastic/elastic-agent/blob/main/internal/pkg/otel/samples/darwin/platformlogs_hostmetrics.yml[MacOS version]
 
-Steps:
+**Steps**
 
-. Create a directory where Otel Collector can save its state (in this example we use `<{agent} install directory>/data/otelcol`)
-. Open `<{agent} install directory>/otel_samples/platformlogs_hostmetrics.yml` with your favourite editor
-. Set environment details to be used by OTel Collector
-* [Option 1] Define environment variables for the {agent} service:
-** `ELASTIC_ENDPOINT`: URL of Elasticsearch instance where data is going to be ingested
-** `ELASTIC_API_KEY`: API Key for Elasticsearch authentication
-** `STORAGE_DIR`: directory where Otel Collector can persist its state
-* [Option 2] Replace the environment variable references in the sample configuration with the corresponding values
-** `${env:ELASTIC_ENDPOINT}`: URL of Elasticsearch instance where data is going to be ingested
-** `${env:ELASTIC_API_KEY}`: API Key for Elasticsearch authentication
-** `${env:STORAGE_DIR}`: directory where Otel Collector can persist its state
-. Save the opened OTel configuration as `elastic-agent.yml`, overwriting the default configuration of the installed agent
-. Verify that the new configuration is correctly applied by agent running a `status` command:
+To change a running standalone {agent} to run as an OTel Collector:
+
+. Create a directory where the OTel Collector can save its state. In this example we use `<{agent} install directory>/data/otelcol`.
+. Open the `<{agent} install directory>/otel_samples/platformlogs_hostmetrics.yml` file for editing.
+. Set environment details to be used by OTel Collector:
+* **Option 1:** Define environment variables for the {agent} service:
+** `ELASTIC_ENDPOINT`: The URL of the {es} instance where data will be sent
+** `ELASTIC_API_KEY`: The API Key to use to authenticate with {es}
+** `STORAGE_DIR`: The directory where the OTel Collector can persist its state
+* **Option 2:** Replace the environment variable references in the sample configuration with the corresponding values:
+** `${env:ELASTIC_ENDPOINT}`:The URL of the {es} instance where data will be sent
+** `${env:ELASTIC_API_KEY}`: The API Key to use to authenticate with {es}
+** `${env:STORAGE_DIR}`: The directory where the OTel Collector can persist its state
+. Save the opened OTel configuration as `elastic-agent.yml`, overwriting the default configuration of the installed agent.
+. Run the `elastic-agent status` command to verify that the new configuration has been correctly applied:
 +
 [source,shell]
 ----
 elastic-agent status
 ----
-Otel Collector running configuration should appear under `elastic-agent` key (note the `extensions` and `pipeline` keys)
+The OTel Collector running configuration should appear under `elastic-agent` key (note the `extensions` and `pipeline` keys):
 +
 [source,shell]
 ----
@@ -77,4 +78,4 @@ Otel Collector running configuration should appear under `elastic-agent` key (no
 ----
 +
 . Congratulations! Host logs and metrics are now being collected and ingested by the {agent} service running an OTel Collector instance.
-For further details about OpenTelemetry collector components supported by Elastic Agent, refer to link:https://github.com/elastic/elastic-agent/tree/main/internal/pkg/otel#components[Elastic Distribution for OpenTelemetry Collector README]
+For further details about OpenTelemetry collector components supported by {agent}, refer to the link:https://github.com/elastic/elastic-agent/tree/main/internal/pkg/otel#components[Elastic Distribution for OpenTelemetry Collector README].

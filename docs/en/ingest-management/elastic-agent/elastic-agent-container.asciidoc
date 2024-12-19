@@ -36,11 +36,25 @@ Run the `docker pull` command against the Elastic Docker registry:
 docker pull docker.elastic.co/elastic-agent/elastic-agent:{version}
 ----
 
+Alternately, you can use the hardened link:https://wolfi.dev/[Wolfi] image. Using Wolfi images requires Docker version 20.10.10 or higher.
+
+[source,terminal,subs="attributes"]
+----
+docker pull docker.elastic.co/elastic-agent/elastic-agent-wolfi:{version}
+----
+
 If you want to run Synthetics tests, run the `docker pull` command to fetch the *elastic-agent-complete* image:
 
 [source,terminal,subs="attributes"]
 ----
 docker pull docker.elastic.co/elastic-agent/elastic-agent-complete:{version}
+----
+
+To run Synthetics tests using the hardened link:https://wolfi.dev/[Wolfi] image, run:
+
+[source,terminal,subs="attributes"]
+----
+docker pull docker.elastic.co/elastic-agent/elastic-agent-complete-wolfi:{version}
 ----
 
 [discrete]

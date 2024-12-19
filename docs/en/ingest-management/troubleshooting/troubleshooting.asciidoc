@@ -973,6 +973,4 @@ If an agent was unenrolled from a Kubernetes cluster, there might be data remain
 
 Make sure to delete this state-folder before rolling out a new agent.
 
-Extra information:
-
-* https://github.com/elastic/elastic-agent/issues/3586
+For more information, refer to issue link:https://github.com/elastic/elastic-agent/issues/3586[#3586].

@@ -969,7 +969,7 @@ Extra resources for {agent} on Kubernetes troubleshooting and information:
 [[agent-kubernetes-invalid-api-key]]
 == Troubleshoot {agent} on Kubernetes seeing `invalid api key to authenticate with fleet` in logs
 
-If an agent was unenrolled from a Kubernetes cluster data might be left in `/var/lib/elastic-agent-managed/kube-system/state` on the node(s). Reenrolling an agent later on the same nodes might then show error `invalid api key to authenticate with fleet` error messages. 
+If an agent was unenrolled from a Kubernetes cluster, there might be data remaining in `/var/lib/elastic-agent-managed/kube-system/state` on the node(s). Reenrolling an agent later on the same nodes might then result in `invalid api key to authenticate with fleet` error messages. 
 
 Make sure to delete this state-folder before rolling out a new agent.
 

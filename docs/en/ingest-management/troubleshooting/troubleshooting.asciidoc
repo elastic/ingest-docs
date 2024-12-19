@@ -971,6 +971,6 @@ Extra resources for {agent} on Kubernetes troubleshooting and information:
 
 If an agent was unenrolled from a Kubernetes cluster, there might be data remaining in `/var/lib/elastic-agent-managed/kube-system/state` on the node(s). Reenrolling an agent later on the same nodes might then result in `invalid api key to authenticate with fleet` error messages. 
 
-Make sure to delete this state-folder before rolling out a new agent.
+To avoid these errors, make sure to delete this state-folder before enrolling a new agent.
 
 For more information, refer to issue link:https://github.com/elastic/elastic-agent/issues/3586[#3586].

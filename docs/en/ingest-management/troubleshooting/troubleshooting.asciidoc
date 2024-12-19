@@ -61,6 +61,7 @@ Find troubleshooting information for {fleet}, {fleet-server}, and {agent} in the
 * <<agent-oom-k8s>>
 * <<agent-sudo-error>>
 * <<agent-kubernetes-kustomize>>
+* <<agent-kubernetes-invalid-api-key>>
 
 
 [discrete]
@@ -963,3 +964,13 @@ Extra resources for {agent} on Kubernetes troubleshooting and information:
 * https://github.com/elastic/elastic-agent/tree/main/deploy/kubernetes/elastic-agent-kustomize/default[{agent} Kustomize Templates] documentation and resources.
 
 * Other examples and manifests to deploy https://github.com/elastic/elastic-agent/tree/main/deploy/kubernetes[{agent} on Kubernetes].
+
+[discrete]
+[[agent-kubernetes-invalid-api-key]]
+== Troubleshoot {agent} on Kubernetes seeing `invalid api key to authenticate with fleet` in logs
+
+If an agent was unenrolled from a Kubernetes cluster, there might be data remaining in `/var/lib/elastic-agent-managed/kube-system/state` on the node(s). Reenrolling an agent later on the same nodes might then result in `invalid api key to authenticate with fleet` error messages. 
+
+To avoid these errors, make sure to delete this state-folder before enrolling a new agent.
+
+For more information, refer to issue link:https://github.com/elastic/elastic-agent/issues/3586[#3586].

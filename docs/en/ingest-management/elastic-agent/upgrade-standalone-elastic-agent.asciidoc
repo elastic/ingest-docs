@@ -34,6 +34,8 @@ As an alterative, you can do one of the following:
 * <<fleet-agent-proxy-support,Configure a proxy server>> for standalone {agent} to access the {artifact-registry}.
 * <<host-artifact-registry,Host your own artifact registry>> for standalone {agent} to access binary downloads.
 
+As well, starting from version 8.9.0, during the upgrade process {agent} needs to download a PGP/GPG key. Refer to <<air-gapped-pgp-fleet>> for the steps to configure the key download location in an air-gapped environment.
+
 Refer to <<air-gapped,Air-gapped environments>> for more details.
 
 [[upgrade-standalone-verify-package]]

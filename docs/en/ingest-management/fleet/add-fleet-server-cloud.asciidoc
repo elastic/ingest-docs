@@ -1,5 +1,5 @@
 [[add-fleet-server-cloud]]
-= Deploy on {ecloud}
+= Deploy {fleet-server} on {ecloud}
 
 To use {fleet} for central management, a <<fleet-server,{fleet-server}>> must
 be running and accessible to your hosts.

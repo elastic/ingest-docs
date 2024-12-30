@@ -150,7 +150,7 @@ If the URL that {fleet-server} will use to access {es} is different from the {es
 . Go to *{fleet} → Agent Policies* and select *Create agent policy* to create a policy for the {fleet-server}:
 +
 ** Set a *name* for the policy, for example `Fleet Server Policy Kubernetes`.
-** Do *not* select the option *Collect system logs and metrics*. This option adds the System integration to the {agent} policy. Since {fleet-server} will run as a Kubernetes Pod without any visibility to the Kubernetes node, there won't be a system to monitor.
+** Do *not* select the option *Collect system logs and metrics*. This option adds the System integration to the {agent} policy. Because {fleet-server} will run as a Kubernetes Pod without any visibility to the Kubernetes node, there won't be a system to monitor.
 ** Select the **output** that the {fleet-server} needs to use to contact {es}. This should be the output that you verified in the previous step.
 ** Optionally, you can add an **inactive agent unenrollment timeout** to automatically unenroll and invalidate API keys after they become inactive. This is especially useful in Kubernetes environments, where {fleet-server} Pods are ephemeral, and new {agent}s appear in {fleet} UI after Pod recreations.
 
@@ -174,9 +174,9 @@ At this point you can configure the integration settings per <<fleet-server-scal
 ** This setting is not used by the {fleet-server} itself, so don't worry about it at this stage because you will be able to change it later on under *{fleet} → Settings*.
 * Select **generate service token** to create a token for the {fleet-server}.
 * From *Install {fleet-server} to a centralized host → Linux*, take note of the values of the following settings that will be needed for the {fleet-server} installation:
-** Service token(under `--fleet-server-service-token` parameter).
-** {fleet} policy ID (under `--fleet-server-policy` parameter).
-** {es} URL (under `--fleet-server-es` parameter).
+** Service token(specified by `--fleet-server-service-token` parameter).
+** {fleet} policy ID (specified by `--fleet-server-policy` parameter).
+** {es} URL (specified by `--fleet-server-es` parameter).
 
 . Keep the {kib} browser window open and continue with the <<add-fleet-server-kubernetes-install>>.
 +
@@ -194,8 +194,8 @@ To deploy {fleet-server} on Kubernetes and enroll it into {fleet} you need the f
 
 * *Policy ID* of the {fleet} policy configured with the {fleet-server} integration.
 * *Service token*, that you can generate following the <<add-fleet-server-kubernetes-preparations>> or manually using the {ref}/service-tokens-command.html[{es}-service-tokens command].
-* *{es} endpoint URL*, configured also in the {es} output associated to the policy.
-* *{es} CA certificate file*, configured also in the {es} output associated to the policy.
+* *{es} endpoint URL*, configured in both the {es} output associated to the policy and in the Fleet Server as an environment variable.
+* *{es} CA certificate file*, configured in both the {es} output associated to the policy and in the Fleet Server.
 * {fleet-server} *certificate and key* (for *Production* deployment mode only).
 
 If you followed the <<add-fleet-server-kubernetes-cert-prereq>> and <<add-fleet-server-kubernetes-preparations>> you should have everything ready to proceed with the {fleet-server} installation.

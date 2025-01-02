@@ -3,22 +3,6 @@
 
 preview::[]
 
-If you have a currently installed {agent}, you change it to run as an <<otel-agent,OTel Collector>>.
-
-To transform {agent} to an OTel Collector:
-
-. Some instruction.
-
-. Some other instruction. Run the `elastic-agent -transform-otel` command:
-+
-[source,shell]
-----
-elastic-agent -switch-me-to-otel-please
-----
-
-
-
-=======
 If you have a currently installed standalone {agent}, it can be configured to run as an <<otel-agent,OTel Collector>>. This allows you to run {agent} both as a service and in an OTel Collector mode.
 
 In order to configure an installed standalone {agent} to run as an OTel Collector, it's enough to include a valid <<otel-agent,OTel Collector>> configuration in the `elastic-agent.yml` file, as shown in the following example.

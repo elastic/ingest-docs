@@ -23,8 +23,7 @@ providers.kubernetes_leaderelection:
   #leader_renewdeadline: 10
 ----
 
-`enabled`:: (Optional) Defaults to false. To explicitly enable the LeaderElection provider,
-set `enabled: true`.
+`enabled`:: (Optional) Defaults to false. The LeaderElection provider is enabled automatically when the `kubernetes_leaderelection` is referenced anywhere in the {agemt} policy.
 `kube_config`:: (Optional) Use the given config file as configuration for the Kubernetes
 client. If `kube_config` is not set, `KUBECONFIG` environment variable will be
 checked and will fall back to InCluster if it's not present.

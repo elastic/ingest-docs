@@ -71,7 +71,7 @@ include::elastic-agent/configuration/env/container-envs.asciidoc[leveloffset=+3]
 
 include::elastic-agent/otel-agent.asciidoc[leveloffset=+2]
 
-//include::elastic-agent/otel-agent-transform.asciidoc[leveloffset=+2]
+include::elastic-agent/otel-agent-transform.asciidoc[leveloffset=+2]
 
 include::elastic-agent/elastic-agent-unprivileged-mode.asciidoc[leveloffset=+2]
 

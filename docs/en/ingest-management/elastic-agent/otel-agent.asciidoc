@@ -9,4 +9,4 @@ When you run {agent} in `otel` mode it supports the standard OTel Collector conf
 
 For a full overview and steps to configure {agent} in `otel` mode, including a guided onboarding, refer to the link:https://github.com/elastic/opentelemetry/tree/main[Elastic Distributions for OpenTelemetry] repository in GitHub. You can also check the <<elastic-agent-otel-command,`elastic-agent otel` command>> in the {fleet} and {agent} Command reference.
 
-// If you have a currently running {agent} you can <<otel-agent-transform,transform it to run as an OTel Collector>>.
+If you have a currently running {agent} you can <<otel-agent-transform,transform it to run as an OTel Collector>>.

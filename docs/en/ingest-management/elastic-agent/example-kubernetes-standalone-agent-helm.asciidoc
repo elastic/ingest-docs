@@ -33,7 +33,7 @@ To get started, you need:
 . Open your {ecloud} deployment, and from the navigation menu select **Manage this deployment**.
 . In the **Applications** section, copy the {es} endpoint and make a note of the endpoint value.
 . Open a terminal shell and change into a directory in your local clone of the `elastic-agent` repo.
-. llowCopy this command.
+. Copy this command.
 +
 [source,sh]
 ----

@@ -155,6 +155,10 @@ spec:
             value: /mnt/certs/fleet-server.crt
           - name: FLEET_SERVER_CERT_KEY
             value: /mnt/certs/fleet-server.key
+          - name: FLEET_URL
+            value: <url>
+          - name: FLEET_SERVER_PORT
+            value: '8220'
         ports:
         - containerPort: 8220
           protocol: TCP

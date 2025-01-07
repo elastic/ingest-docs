@@ -153,7 +153,7 @@ spec:
             value: /mnt/certs/es-ca.crt
           - name: FLEET_SERVER_CERT
             value: /mnt/certs/fleet-server.crt
-          - name: FLEET_SERVER_KEY
+          - name: FLEET_SERVER_CERT_KEY
             value: /mnt/certs/fleet-server.key
         ports:
         - containerPort: 8220

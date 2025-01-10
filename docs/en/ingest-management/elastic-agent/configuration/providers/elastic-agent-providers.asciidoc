@@ -91,7 +91,7 @@ configuration.
 
 [discrete]
 [[enable-providers-by-default]]
-=== Enabling providers By default
+=== Disabling Providers By Default
 
 All registered providers are disabled by default until they are referenced in a policy.
 

@@ -93,7 +93,7 @@ configuration.
 [[enable-providers-by-default]]
 === Enabling providers By default
 
-All registered providers are disabled by default.
+All registered providers are disabled by default until they are referenced in a policy.
 
 You can disable all providers even if they are referenced in a policy by setting `agent.providers.initial_default: false`.
 

@@ -95,7 +95,7 @@ configuration.
 
 All registered providers are disabled by default.
 
-Disable all providers by default and only enable explicitly configured providers by setting `agent.providers.initial_default: false`.
+You can disable all providers even if they are referenced in a policy by setting `agent.providers.initial_default: false`.
 
 [source,yaml]
 ----

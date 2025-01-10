@@ -90,7 +90,7 @@ configuration.
 * <<kubernetes-provider,Kubernetes Provider>>
 
 [discrete]
-[[enable-providers-by-default]]
+[[disable-providers-by-default]]
 === Disabling Providers By Default
 
 All registered providers are disabled by default until they are referenced in a policy.

@@ -235,6 +235,19 @@ curl -XPOST -H 'Authorization: Bearer ${TOKEN}' -H 'x-elastic-product-origin:fle
 ====
 
 [discrete]
+[[known-issue-206131]]
+.Integration output fails when using default output
+[%collapsible]
+====
+*Details* +
+Beginning in version 8.16.0 you can specify an output per integration policy. However, setting the integration output to the default creates an invalid output name.
+
+*Impact* +
+As a workaround, you can create a clone of the default output and then set it as the output for an integration policy. Refer to issue link:https://github.com/elastic/kibana/issues/206131[#206131] for details and status.
+
+====
+
+[discrete]
 [[new-features-8.16.0]]
 === New features
 

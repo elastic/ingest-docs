@@ -18,6 +18,8 @@ include::8-ls-input.asciidoc[]
 
 include::99-airgapped.asciidoc[]
 
+include::../ingest-guide/index.asciidoc[] 
+
 // === Next set of architectures
 // include::3-schemamod.asciidoc[]
 // include::6b-filebeat-es.asciidoc[]

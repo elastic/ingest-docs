@@ -97,12 +97,14 @@ All registered providers are disabled by default until they are referenced in a 
 
 You can disable all providers even if they are referenced in a policy by setting `agent.providers.initial_default: false`.
 
+The following configuration disables all providers from running except for the docker provider, if it becomes referenced in the policy:
+
 [source,yaml]
 ----
-agent.providers.initial_default: true
+agent.providers.initial_default: false
 providers:
   docker:
-    enabled: false
+    enabled: true
 ----
 
 include::local-provider.asciidoc[leveloffset=+1]

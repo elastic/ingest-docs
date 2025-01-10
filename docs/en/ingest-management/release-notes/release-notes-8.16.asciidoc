@@ -29,7 +29,7 @@ Also see:
 [[release-notes-8.16.3]]
 == {fleet} and {agent} 8.16.3
 
-Review important information about the {fleet} and {agent} 8.16.2 release.
+Review important information about the {fleet} and {agent} 8.16.3 release.
 
 [discrete]
 [[bug-fixes-8.16.3]]

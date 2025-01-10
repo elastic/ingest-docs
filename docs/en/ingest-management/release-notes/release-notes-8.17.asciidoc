@@ -14,12 +14,67 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.17.1>>
 * <<release-notes-8.17.0>>
 
 Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.17.1 relnotes
+
+[[release-notes-8.17.1]]
+== {fleet} and {agent} 8.17.1
+
+Review important information about the {fleet} and {agent} 8.17.1 release.
+
+[discrete]
+[[breaking-changes-8.17.1]]
+=== Breaking changes
+
+Breaking changes can prevent your application from optimal operation and
+performance. Before you upgrade, review the breaking changes, then mitigate the
+impact to your application.
+
+{agent}::
+* {agent} Docker images for {ecloud} have been reverted from having been based off of Ubuntu 24.04 to being based off of Ubuntu 20.04. This is to ensure compatibility with {ece}, support for new Wolfi-based images, and for GNU C Library (glibc) compatibility. {agent-pull}6393[#6393]
+
+//*Impact* +
+//<Describe how users should mitigate the change.> For more information, refer to {fleet-guide}/fleet-server.html[Fleet Server].
+//====
+
+[discrete]
+[[new-features-8.17.1]]
+=== New features
+
+The 8.17.1 release Added the following new and notable features.
+
+* Add the link:https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter[Otel loadbalancing exporter] to {agent}. {agent-pull}6315[#6315]
+
+[discrete]
+[[enhancements-8.17.1]]
+=== Enhancements
+
+{agent}::
+
+* Respond with an error message in case the user running the `enroll` command and the user who is the owner of the {agent} program files don't match. {agent-pull}6144[#6144] {agent-issue}4889[#4889]
+* Implement the `MarshalJSON` method on the `component.Component` struct, so that when the component model is logged, the output does not contain any secrets that might be part of the component model. {agent-pull}6329[#6329] {agent-issue}5675[#5675]
+
+[discrete]
+[[bug-fixes-8.17.1]]
+=== Bug fixes
+
+{fleet-server}::
+* Do not set the `unenrolled_at` attribute when the audit/unenroll API is called. {fleet-server-pull}4221[#4221] {agent-issue}6213[#6213]
+* Remove PGP endpoint auth requirement so that air-gapped {agents} can retreive a PGP key from {fleet-server}. {fleet-server-pull}4256[#4256] {fleet-server-issue}4255[#4255]
+
+{agent}::
+* During uninstall, call the audit or unenroll API before components are stopped, if {agent} is running a {fleet-server} instance. {agent-pull}6085[#6085] {agent-issue}5752[#5752]
+* Update OTel components to v0.1156.0. {agent-pull}6391[#6391]
+* Restore the `cloud-defend` binary which was accidentally removed in version 8.17.0. {agent-pull}6470[#6470] {agent-issue}6469[#6469]
+
+// end 8.17.1 relnotes
 
 // begin 8.17.0 relnotes
 

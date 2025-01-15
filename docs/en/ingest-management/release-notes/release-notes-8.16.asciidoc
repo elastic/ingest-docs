@@ -14,6 +14,7 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.16.2>>
 * <<release-notes-8.16.1>>
 * <<release-notes-8.16.0>>
 
@@ -22,10 +23,89 @@ Also see:
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
 
-// begin 8.16.0 relnotes
+// begin 8.16.2 relnotes
+
+[[release-notes-8.16.2]]
+== {fleet} and {agent} 8.16.2
+
+Review important information about the {fleet} and {agent} 8.16.2 release.
+
+[discrete]
+[[known-issues-8.16.2]]
+=== Known Issues
+
+[discrete]
+[[known-issue-6213-8-16-2]]
+.An {agent} with the Defend integration may report an Orphaned status and will not be able to be issued an upgrade action through {fleet}.
+[%collapsible]
+====
+*Details* +
+A known issue in the {agent} may prevent it from being targetted with an upgrade action for a future release.
+This may occur if the Defend integration is used and the agent is stopped on a running instance for too long.
+An agent may be stopped as part of an upgrade process.
+
+*Impact* +
+A bug fix is present in the 8.16.3 and 8.17.1 releases of {fleet} that will prevent this from occuring.
+
+If you have agents that are affected, the workaround is as follows:
+[source,shell]
+----
+# Get a Token to issue an update_by_query request:
+curl -XPOST --user elastic:${SUPERUSER_PASS} -H 'x-elastic-product-origin:fleet' -H'content-type:application/json' "https://${ELASTICSEARCH_HOST}/_security/service/elastic/fleet-server/credential/token/fix-unenrolled"
+
+# Issue an update_by_query request that targets effected agents:
+curl -XPOST -H 'Authorization: Bearer ${TOKEN}' -H 'x-elastic-product-origin:fleet' -H 'content-type:application/json' "https://${ELASTICSEARCH_HOST}/.fleet-agents/_update_by_query" -d '{"query": {"bool": {"must": [{ "exists": { "field": "unenrolled_at" } }],"must_not": [{ "term": { "active": "false" } }]}},"script": {"source": "ctx._source.unenrolled_at = null;","lang": "painless"}}'
+----
+====
+
+[discrete]
+[[enhancements-8.16.2]]
+=== Enhancements
+
+In this release we've introduced an image based on the hardened link:https://github.com/wolfi-dev/[Wolfi] image to provide additional security to our self-managed customers, and improve our supply chain security posture. Wolfi-based images require Docker version 20.10.10 or higher.
+
+{agent}::
+* Perform check for an external package manager only at startup. {agent-pull}6178[#6178] {agent-issue}5835[#5835] {agent-issue}5991[#5991]
+* Remove some unnecessary copies when generating component configuration. {agent-pull}6184[#6184] {agent-issue}5835[#5835] {agent-issue}5991[#5991]
+* Use xxHash instead of sha256 for hashing AST nodes when generating component configuration. {agent-pull}6192[#6192] {agent-issue}5835[#5835] {agent-issue}5991[#5991]
+* Cache conditional sections when applying variables to component configuration. {agent-pull}6229[#6229] {agent-issue}5835[#5835] {agent-issue}5991[#5991]
+
+// end 8.16.2 relnotes
+
+// begin 8.16.1 relnotes
 
 [[release-notes-8.16.1]]
 == {fleet} and {agent} 8.16.1
+
+Review important information about the {fleet} and {agent} 8.16.1 release.
+
+[discrete]
+[[known-issues-8.16.1]]
+=== Known Issues
+
+[discrete]
+[[known-issue-6213-8-16-1]]
+.An {agent} with the Defend integration may report an Orphaned status and will not be able to be issued an upgrade action through {fleet}.
+[%collapsible]
+====
+*Details* +
+A known issue in the {agent} may prevent it from being targetted with an upgrade action for a future release.
+This may occur if the Defend integration is used and the agent is stopped on a running instance for too long.
+An agent may be stopped as part of an upgrade process.
+
+*Impact* +
+A bug fix is present in the 8.16.3 and 8.17.1 releases of the {fleet} that will prevent this from occuring.
+
+If you have agents that are affected, the workaround is as follows:
+[source,shell]
+----
+# Get a Token to issue an update_by_query request:
+curl -XPOST --user elastic:${SUPERUSER_PASS} -H 'x-elastic-product-origin:fleet' -H'content-type:application/json' "https://${ELASTICSEARCH_HOST}/_security/service/elastic/fleet-server/credential/token/fix-unenrolled"
+
+# Issue an update_by_query request that targets effected agents:
+curl -XPOST -H 'Authorization: Bearer ${TOKEN}' -H 'x-elastic-product-origin:fleet' -H 'content-type:application/json' "https://${ELASTICSEARCH_HOST}/.fleet-agents/_update_by_query" -d '{"query": {"bool": {"must": [{ "exists": { "field": "unenrolled_at" } }],"must_not": [{ "term": { "active": "false" } }]}},"script": {"source": "ctx._source.unenrolled_at = null;","lang": "painless"}}'
+----
+====
 
 [discrete]
 [[bug-fixes-8.16.1]]
@@ -80,7 +160,7 @@ This error can happen if the {agents} being searched and listed in the UI are us
 
 *Impact* +
 
-As a workaround for the issue, you can upgrade your {stack} to verion 8.16.1. The issue has been resolved by {kib} link:https://github.com/elastic/kibana/pull/199325[#199325]. 
+As a workaround for the issue, you can upgrade your {stack} to verion 8.16.1. The issue has been resolved by {kib} link:https://github.com/elastic/kibana/pull/199325[#199325].
 
 ====
 
@@ -131,6 +211,43 @@ As a workaround, we recommend trying again to uninstall the agent.
 ====
 
 [discrete]
+[[known-issue-6213-8-16-0]]
+.An {agent} with the Defend integration may report an Orphaned status and will not be able to be issued an upgrade action through {fleet}.
+[%collapsible]
+====
+*Details* +
+A known issue in the {agent} may prevent it from being targetted with an upgrade action for a future release.
+This may occur if the Defend integration is used and the agent is stopped on a running instance for too long.
+An agent may be stopped as part of an upgrade process.
+
+*Impact* +
+A bug fix is present in the 8.16.3 and 8.17.1 releases of {fleet} that will prevent this from occuring.
+
+If you have agents that are affected, the workaround is as follows:
+[source,shell]
+----
+# Get a Token to issue an update_by_query request:
+curl -XPOST --user elastic:${SUPERUSER_PASS} -H 'x-elastic-product-origin:fleet' -H'content-type:application/json' "https://${ELASTICSEARCH_HOST}/_security/service/elastic/fleet-server/credential/token/fix-unenrolled"
+
+# Issue an update_by_query request that targets effected agents:
+curl -XPOST -H 'Authorization: Bearer ${TOKEN}' -H 'x-elastic-product-origin:fleet' -H 'content-type:application/json' "https://${ELASTICSEARCH_HOST}/.fleet-agents/_update_by_query" -d '{"query": {"bool": {"must": [{ "exists": { "field": "unenrolled_at" } }],"must_not": [{ "term": { "active": "false" } }]}},"script": {"source": "ctx._source.unenrolled_at = null;","lang": "painless"}}'
+----
+====
+
+[discrete]
+[[known-issue-206131]]
+.Integration output fails when using default output
+[%collapsible]
+====
+*Details* +
+Beginning in version 8.16.0 you can specify an output per integration policy. However, setting the integration output to the default creates an invalid output name.
+
+*Impact* +
+As a workaround, you can create a clone of the default output and then set it as the output for an integration policy. Refer to issue link:https://github.com/elastic/kibana/issues/206131[#206131] for details and status.
+
+====
+
+[discrete]
 [[new-features-8.16.0]]
 === New features
 
@@ -148,7 +265,7 @@ The 8.16.0 release Added the following new and notable features.
 
 {fleet-server}::
 * Add `/api/fleet/agents/:id/audit/unenroll` API that an {agent} or Endpoint process may use to report that an agent was uninstalled or unenrolled to {fleet}. {fleet-server-pull}3818[#3818] {agent-issue}484[#484]
-* Add a `secret_paths` attribute to the policy data sent to agents. This attribute is a list of keys that {fleet-server} has replaced with a reference to a secret value. {fleet-server-pull}3908[#3908] {fleet-server-issue}3657[#3657] 
+* Add a `secret_paths` attribute to the policy data sent to agents. This attribute is a list of keys that {fleet-server} has replaced with a reference to a secret value. {fleet-server-pull}3908[#3908] {fleet-server-issue}3657[#3657]
 
 {agent}::
 * Uninstalling a {fleet}-managed {agent} instance will now do a best-effort attempt to notify {fleet-server} of the agent removal so the agent status appears correctly in the {fleet} UI (related to {fleet-server-pull}3818[#3818] above). {agent-pull}5302[#5302] {agent-issue}484[#484]

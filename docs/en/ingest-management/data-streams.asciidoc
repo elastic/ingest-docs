@@ -103,6 +103,7 @@ For data streams, the index template configures the stream's backing indices as 
 These templates are loaded when the integration is installed, and are used to configure the integration's data streams.
 
 [discrete]
+[[data-streams-index-templates-edit]]
 == Edit the {es} index template
 
 WARNING: Custom index mappings may conflict with the mappings defined by the integration
@@ -186,6 +187,8 @@ If left uncreated, this pipeline has no effect on your data. However, if added t
 this pipeline can be used for custom data processing, adding fields, sanitizing data, and more.
 
 Starting in version 8.12, ingest pipelines can be configured to process events at various levels of customization.
+
+NOTE: If you create a custom index pipeline, Elastic is not responsible for ensuring that it indexes and behaves as expected. Creating a custom pipeline involves custom processing of the incoming data, which should be done with caution and tested carefully.
 
 `global@custom`::
 Apply processing to all events
@@ -329,7 +332,8 @@ How you apply an ILM policy depends on your use case. Choose a scenario for the 
 ++++
 
 NOTE: This tutorial uses a `logs@custom` and a `metrics@custom` component template which are available in versions 8.13 and later.
-For versions 8.4 and later, and earlier than 8.13, you instead need to use the `<integration prefix>@custom component template` and add the ILM policy to that template. This needs to be done on every newly added integration.
+For versions later than 8.4 and earlier than 8.13, you instead need to use the `<integration prefix>@custom component template` and add the ILM policy to that template.
+This needs to be done for every newly added integration.
 
 Mappings and settings for data streams can be customized through the creation of `*@custom` component templates, which are referenced by the index templates created by each integration.
 The easiest way to configure a custom index lifecycle policy per data stream is to edit this template.
@@ -364,8 +368,9 @@ The **Index Templates** view in {kib} shows you all of the index templates avail
 image::images/component-templates-list.png[List of component templates available for the index template]
 
 . Select `logs@custom` in the list to view the component template properties.
-. For a newly added integration the component template won't exist yet. Select **Create component template** to create it.
-If the component template already exists, you can click "Manage" to update it.
+. For a newly added integration, the component template won't exist yet.
+Select **Create component template** to create it.
+If the component template already exists, click **Manage** to update it.
 . On the **Logistics** page, keep all defaults and click **Next**.
 . On the **Index settings** page, in the **Index settings** field, specify the ILM policy that you created. For example:
 +
@@ -382,7 +387,7 @@ If the component template already exists, you can click "Manage" to update it.
 
 . Click **Next**.
 . For both the **Mappings** and **Aliases** pages, keep all defaults and click **Next**.
-. Finally, on the **Review** page, review the summary and request, and if everything looks good, select **Create component template**.
+. Finally, on the **Review** page, review the summary and request. If everything looks good, select **Create component template**.
 +
 [role="screenshot"]
 image::images/review-component-template01.png[Review details for the new component template]
@@ -417,7 +422,6 @@ For the metrics data streams, you can repeat steps 2 and 3, using a `metrics-*` 
 
 
 
-
 [[data-streams-scenario2]]
 == Scenario 2: Apply an ILM policy to specific data streams generated from Fleet integrations across all namespaces
 
@@ -429,8 +433,7 @@ Mappings and settings for data streams can be customized through the creation of
 which are referenced by the index templates created by the {es} apm-data plugin.
 The easiest way to configure a custom index lifecycle policy per data stream is to edit this template.
 
-This tutorial explains how to apply a custom index lifecycle policy to the `system-auth` data stream.
-
+This tutorial explains how to apply a custom index lifecycle policy to the `logs-system.auth` data stream.
 
 [discrete]
 [id="data-streams-scenario2-step1"]
@@ -458,7 +461,9 @@ The **Index Templates** view in {kib} shows you all of the index templates avail
 image::images/index-template-system-auth.png[List of component templates available for the logs-system.auth index template]
 
 . In the **Summary**, select `logs-system.auth@custom` from the list to view the component template properties.
-. For a newly added integration the component template won't exist yet. Select **Create component template** to create it.
+. For a newly added integration, the component template won't exist yet.
+Select **Create component template** to create it.
+If the component template already exists, click **Manage** to update it.
 .. On the **Logistics** page, keep all defaults and click **Next**.
 .. On the **Index settings** page, in the **Index settings** field, specify the ILM policy that you created. For example:
 +
@@ -475,7 +480,7 @@ image::images/index-template-system-auth.png[List of component templates availab
 
 .. Click **Next**.
 .. For both the **Mappings** and **Aliases** pages, keep all defaults and click **Next**.
-.. Finally, on the **Review** page, review the summary and request, and if everything looks good, select **Create component template**.
+.. Finally, on the **Review** page, review the summary and request. If everything looks good, select **Create component template**.
 +
 [role="screenshot"]
 image::images/review-component-template02.png[Review details for the new component template]
@@ -520,8 +525,12 @@ In this scenario, you have {agent}s collecting system metrics with the System in
 **Goal:** Customize the {ilm-init} policy for the `system.network` data stream in the `production` namespace.
 Specifically, apply the built-in `90-days-default` {ilm-init} policy so that data is deleted after 90 days.
 
-NOTE: If you cloned an index template to customize the data retention policy on an {es} version prior to 8.13, you must update the index template in the clone to use the `ecs@mappings` component template on {es} version 8.13 or later. See <<data-streams-pipeline-update-cloned-template-before-8.13,Update index template cloned before {es} 8.13>> for the step-by-step instructions.
+[NOTE] 
+====
+* This scenario involves cloning an index template. We strongly recommend repeating this procedure on every minor {stack} upgrade in order to avoid missing any possible changes to the structure of the managed index template(s) that are shipped with integrations.
 
+* If you cloned an index template to customize the data retention policy on an {es} version prior to 8.13, you must update the index template in the clone to use the `ecs@mappings` component template on {es} version 8.13 or later. See <<data-streams-pipeline-update-cloned-template-before-8.13,Update index template cloned before {es} 8.13>> for the step-by-step instructions.
+====
 
 [discrete]
 [[data-streams-ilm-one]]
@@ -587,7 +596,14 @@ Now that you've created a component template,
 you need to create an index template to apply the changes to the correct data stream.
 The easiest way to do this is to duplicate and modify the integration's existing index template.
 
-WARNING: When duplicating the index template, do not change or remove any managed properties. This may result in problems when upgrading.
+[WARNING] 
+====
+Please note the following:
+* When duplicating the index template, do not change or remove any managed properties. This may result in problems when upgrading. Cloning the index template of an integration package involves some risk as any changes made to the original index template when it is upgraded will not be propagated to the cloned version.
+* These steps assume that you want to have a namespace specific ILM policy, which requires index template cloning. Cloning the index template of an integration package involves some risk because any changes made to the original index template as part of package upgrades are not propagated to the cloned version. See <<assets-restrictions-cloning-index-template>> for details.
++
+If you want to change the ILM Policy, the number of shards, or other settings for the datastreams of one or more integrations, but **the changes do not need to be specific to a given namespace**, it's strongly recommended to use a `@custom` component template, as described in <<data-streams-scenario1,Scenario 1>> and <<data-streams-scenario2,Scenario 2>>, so as to avoid the problems mentioned above. See the <<data-streams-ilm,ILM>> section for details.
+====
 
 . Navigate to **{stack-manage-app}** > **Index Management** > **Index Templates**.
 . Find the index template you want to clone. The index template will have the `<type>` and `<dataset>` in its name,
@@ -906,22 +922,6 @@ With the new pipeline applied, this query should return at least one document.
 
 You can modify your pipeline API request as needed to apply custom processing at various levels.
 Refer to <<data-streams-pipelines>> to learn more.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 [[data-streams-advanced-features]]

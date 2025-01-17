@@ -316,16 +316,16 @@ How you apply an ILM policy depends on your use case. Choose a scenario for the 
 
 * **<<data-streams-scenario1,Scenario 1>>**: You want to apply an ILM policy to all logs or metrics data streams across all namespaces.
 
-* **<<data-streams-scenario2,Scenario 2>>**: You want to apply an ILM policy to one or more specific integrations across all namespaces.
+* **<<data-streams-scenario2,Scenario 2>>**: You want to apply an ILM policy to selected data streams in an integration.
 
-* **<<data-streams-scenario3,Scenario 3>>**: You want apply an ILM policy for a data stream for a specific namespace in an integration
+* **<<data-streams-scenario3,Scenario 3>>**: You want apply an ILM policy for data streams in a selected namespace in an integration.
 
 
 [[data-streams-scenario1]]
 == Scenario 1: Apply an ILM policy to all data streams generated from Fleet integrations across all namespaces
 
 ++++
-<titleabbrev>Scenario 1: All data streams; all namespaces</titleabbrev>
+<titleabbrev>Scenario 1: All data streams in all namespaces</titleabbrev>
 ++++
 
 NOTE: This tutorial uses a `logs@custom` and a `metrics@custom` component template which are available in versions 8.13 and later.
@@ -345,7 +345,8 @@ Setting a custom index lifecycle policy must be done separately for all logs and
 . To open **Lifecycle Policies**, find **Stack Management** in the main menu or use the {kibana-ref}/introduction.html#kibana-navigation-search[global search field].
 . Click **Create policy**.
 
-Name your new policy; For this tutorial, you can use `my-ilm-policy`.
+Name your new policy.
+For this tutorial, you can use `my-ilm-policy`.
 Customize the policy to your liking, and when you're done, click **Save policy**.
 
 [discrete]
@@ -362,7 +363,8 @@ The **Index Templates** view in {kib} shows you all of the index templates avail
 [role="screenshot"]
 image::images/component-templates-list.png[List of component templates available for the index template]
 
-. Select the `logs@custom` component template. For a newly added integration the component template won't exist yet, so you can select **Create component template** to create it.
+. Select `logs@custom` in the list to view the component template properties.
+. For a newly added integration the component template won't exist yet. Select **Create component template** to create it.
 If the component template already exists, you can click "Manage" to update it.
 . On the **Logistics** page, keep all defaults and click **Next**.
 . On the **Index settings** page, in the **Index settings** field, specify the ILM policy that you created. For example:
@@ -383,7 +385,7 @@ If the component template already exists, you can click "Manage" to update it.
 . Finally, on the **Review** page, review the summary and request, and if everything looks good, select **Create component template**.
 +
 [role="screenshot"]
-image::images/review-component-template.png[Review details for the new component template]
+image::images/review-component-template01.png[Review details for the new component template]
 
 [discrete]
 [id="data-streams-scenario1-step3"]
@@ -393,7 +395,7 @@ To confirm that the index template is using the `logs@custom` component template
 
 . Reopen the **Index Management** page and open the **Component Templates** tab.
 . Search for `logs@` and select the `logs@custom` component template.
-. The **Summary** shows the list of all data streams that use the component template.
+. The **Summary** shows the list of all data streams that use the component template, and the **Settings** view shows your newly configured ILM policy.
 
 New ILM policies only take effect when new indices are created, 
 so you either must wait for a rollover to occur (usually after 30 days or when the index size reaches 50 GB),
@@ -410,29 +412,24 @@ POST /logs-system.auth/_rollover/
 [id="data-streams-scenario1-step4"]
 == Step 4: Repeat these steps for the metrics data streams
 
-You've now applied a custom index lifecycle policy to all of the `logs-*` data streams associated with the `System` integration.
+You've now applied a custom index lifecycle policy to all of the `logs-*` data streams in the `System` integration.
 For the metrics data streams, you can repeat steps 2 and 3, using a `metrics-*` index template and the `metrics@custom` component template. 
 
 
 
 
 [[data-streams-scenario2]]
-== Scenario 2: Apply an ILM policy to one or more specific integrations across all namespaces
+== Scenario 2: Apply an ILM policy to specific data streams generated from Fleet integrations across all namespaces
 
 ++++
-<titleabbrev>Scenario 2: Specific integrations; all namespaces</titleabbrev>
+<titleabbrev>Scenario 2: Selected data streams in all namespaces</titleabbrev>
 ++++
-
-NOTE: This tutorial uses a `<integration prefix>@custom` component template which is available in versions 8.4 and later.
-
-**DRAFT CONTENT: ALL OF THE FOLLOWING IS COPIED VERBATIM FROM {observability-guide}/apm-ilm-how-to.html#apm-data-streams-custom-policy[Configure a custom index lifecycle policy]**
 
 Mappings and settings for data streams can be customized through the creation of `*@custom` component templates,
 which are referenced by the index templates created by the {es} apm-data plugin.
 The easiest way to configure a custom index lifecycle policy per data stream is to edit this template.
 
-This tutorial explains how to apply a custom index lifecycle policy to the `traces-apm` data stream.
-
+This tutorial explains how to apply a custom index lifecycle policy to the `system-auth` data stream.
 
 
 [discrete]
@@ -442,7 +439,8 @@ This tutorial explains how to apply a custom index lifecycle policy to the `trac
 . To open **Lifecycle Policies**, find **Stack Management** in the main menu or use the {kibana-ref}/introduction.html#kibana-navigation-search[global search field].
 . Click **Create policy**.
 
-Name your new policy; For this tutorial, I've chosen `custom-traces-apm-policy`.
+Name your new policy.
+For this tutorial, you can use `my-ilm-policy`.
 Customize the policy to your liking, and when you're done, click **Save policy**.
 
 [discrete]
@@ -454,12 +452,13 @@ The **Index Templates** view in {kib} shows you all of the index templates avail
 . To open **Index Management**, find **Stack Management** in the main menu or use the {kibana-ref}/introduction.html#kibana-navigation-search[global search field].
 . Select **Index Templates**.
 . Search for `system` to see all index templates associated with the System integration.
-. Select any `logs-*` index template to view the associated component templates. For example, you can select the `logs-system.application` index template.
+. Select the index template that matches the data stream for which you want to set up an ILM policy. For this example, you can select the `logs-system.auth` index template.
 +
 [role="screenshot"]
-image::images/component-templates-list.png[List of component templates available for the index template]
+image::images/index-template-system-auth.png[List of component templates available for the logs-system.auth index template]
 
-. Select the `logs@custom` component template. For a newly added integration the template won't exist yet, so you can select **Create component template** to create it.
+. In the **Summary**, select `logs-system.auth@custom` from the list to view the component template properties.
+. For a newly added integration the component template won't exist yet. Select **Create component template** to create it.
 .. On the **Logistics** page, keep all defaults and click **Next**.
 .. On the **Index settings** page, in the **Index settings** field, specify the ILM policy that you created. For example:
 +
@@ -479,81 +478,41 @@ image::images/component-templates-list.png[List of component templates available
 .. Finally, on the **Review** page, review the summary and request, and if everything looks good, select **Create component template**.
 +
 [role="screenshot"]
-image::images/review-component-template.png[Review details for the new component template]
-
-
+image::images/review-component-template02.png[Review details for the new component template]
 
 [discrete]
 [id="data-streams-scenario2-step3"]
-== Step 3: Apply the index lifecycle policy
+== Step 3: Roll over the data streams (optional)
 
-To apply your new index lifecycle policy to the `traces-apm-*` data stream,
-edit the `<data-stream-name>@custom` component template.
+To confirm that the index template is using the `logs@custom` component template with your custom ILM policy:
 
-. Click on the **Component Template** tab and search for `traces-apm`.
-. Select the `traces-apm@custom` template and click **Manage** → **Edit**.
-. Under **Index settings**, set the {ilm-init} policy name created in the previous step:
-+
-[source,json]
+. Reopen the **Index Management** page and open the **Component Templates** tab.
+. Search for `system` and select the `logs-system.auth@custom` component template.
+. The **Summary** shows the list of all data streams that use the component template, and the **Settings** view shows your newly configured ILM policy.
+
+New ILM policies only take effect when new indices are created, 
+so you either must wait for a rollover to occur (usually after 30 days or when the index size reaches 50 GB),
+or force a rollover of the data stream using the {ref}/indices-rollover-index.html[{es} rollover API:
+
+[source,bash]
 ----
-{
-  "lifecycle": {
-    "name": "custom-traces-apm-policy",
-    "prefer_ilm": true
-  }
-}
+POST /logs-system.auth/_rollover/
 ----
-. Continue to **Review** and ensure your request looks similar to the image below.
-If it does, click **Create component template**.
-+
-[role="screenshot"]
-image::images/create-component-template.png[Create component template]
 
 [discrete]
 [id="data-streams-scenario2-step4"]
-== Step 4: Roll over the data stream (optional)
+== Step 4: Repeat these steps for other data streams
 
-To confirm that the data stream is now using the new index template and {ilm-init} policy,
-you can either repeat Step 1, or navigate to **{dev-tools-app}** and run the following:
+You've now applied a custom index lifecycle policy to the `logs-system.auth` data stream in the `System` integration.
+Repeat these steps for any other data streams for which you'd like to configure a custom ILM policy.
 
-[source,bash]
-----
-GET /_data_stream/traces-apm-default <1>
-----
-<1> The name of the data stream we've been hacking on appended with your <namespace>
 
-The result should include the following:
-
-[source,json]
-----
-{
-  "data_streams" : [
-    {
-      ...
-      "template" : "traces-apm-default", <1>
-      "ilm_policy" : "custom-traces-apm-policy", <2>
-      ...
-    }
-  ]
-}
-----
-<1> The name of the custom index template created in step three
-<2> The name of the {ilm-init} policy applied to the new component template in step two
-
-New {ilm-init} policies only take effect when new indices are created,
-so you either must wait for a rollover to occur (usually after 30 days or when the index size reaches 50 GB),
-or force a rollover using the {ref}/indices-rollover-index.html[{es} rollover API]:
-
-[source,bash]
-----
-POST /traces-apm-default/_rollover/
-----
 
 [[data-streams-scenario3]]
 == Scenario 3: Apply an ILM policy with integrations using multiple namespaces
 
 ++++
-<titleabbrev>Scenario 3: Specific integrations; specific namespaces</titleabbrev>
+<titleabbrev>Scenario 3: Selected integrations and namespaces</titleabbrev>
 ++++
 
 In this scenario, you have {agent}s collecting system metrics with the System integration in two environments--one with the namespace `development`, and one with `production`. 

@@ -98,6 +98,9 @@ You may need to allow access to these ports. Refer to the following table for de
 | {fleet-server} → {es} | 9200
 |===
 
+Note: Connectivity to {kib} on port 5601 is optional and not required at all times. {agent} and {fleet-server} may need to connect to {kib} if deployed in a 
+container environment where an enrollment token can not be provided during deployment. 
+
 //[discrete]
 //[[add-fleet-server-on-prem-hosts]]
 //= Add {fleet-server} hosts

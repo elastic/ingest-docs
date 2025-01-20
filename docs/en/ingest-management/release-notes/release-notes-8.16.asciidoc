@@ -14,6 +14,7 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.16.3>>
 * <<release-notes-8.16.2>>
 * <<release-notes-8.16.1>>
 * <<release-notes-8.16.0>>
@@ -22,6 +23,22 @@ Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.16.3 relnotes
+
+[[release-notes-8.16.3]]
+== {fleet} and {agent} 8.16.3
+
+Review important information about the {fleet} and {agent} 8.16.3 release.
+
+[discrete]
+[[bug-fixes-8.16.3]]
+=== Bug fixes
+
+{fleet}::
+* Fixed an issue that prevented {agent} tags from being displayed when the agent list is filtered. ({kibana-pull}205163[#205163])
+
+// end 8.16.3 relnotes
 
 // begin 8.16.2 relnotes
 

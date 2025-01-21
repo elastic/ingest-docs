@@ -1,4 +1,3 @@
-[discrete]
 [[ingest-intro]]
 == Ingesting data into {es}
 

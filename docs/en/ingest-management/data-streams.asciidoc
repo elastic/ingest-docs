@@ -937,6 +937,7 @@ Refer to <<data-streams-pipelines>> to learn more.
 * link:{ref}/mapping-source-field.html#synthetic-source[Synthetic `_source`]
 
 These features can be enabled and disabled for {fleet}-managed data streams by using the index template API and a few key settings.
+Note that in versions 8.17.0 and later, Synthetic `_source` requires an Enterprise license.
 
 NOTE: If you are already making use of `@custom` component templates for ingest or retention customization (as shown for example in <<data-streams-ilm-tutorial,Tutorial: Customize data retention policies>>), exercise care to ensure you don't overwrite your customizations when making these requests.
 
@@ -1098,16 +1099,18 @@ For example, the following payload disables TSDS on `nginx.stubstatus`:
 [source,json]
 ----
 PUT _component_template/<NAME>@custom
-
 {
-  "template": {
-    "mappings": {
-      "_source": {
-        "mode": "synthetic"
+  "settings": {
+    "index": {
+      "mapping": {
+        "source": {
+          "mode": "synthetic"
+        }
       }
     }
   }
 }
+
 ----
 
 [discrete]
@@ -1117,11 +1120,12 @@ PUT _component_template/<NAME>@custom
 [source,json]
 ----
 PUT _component_template/<NAME>@custom
-
 {
-  "template": {
-    "mappings": {
-      "_source": {}
+  "settings": {
+    "index": {
+      "mapping": {
+        "source": {"mode": "stored"}
+      }
     }
   }
 }

@@ -28,7 +28,9 @@ The content type determines the best ingest option.
 language client]. 
 * To index **web page content**, use the Elastic link:https://www.elastic.co/web-crawler[web crawler].
 * To sync **data from third-party sources**, use link:{ref}/es-connectors.html[connectors]. 
-* To index **single files** for testing, use the {kib} link:{kibana-ref}/connect-to-elasticsearch.html#upload-data-kibana[file uploader].
+  A connector syncs content from an original data source to an {es} index. 
+  Using connectors you can create _searchable_, read-only replicas of your data sources.
+* To index **single files** for testing in a non-production environment, use the {kib} link:{kibana-ref}/connect-to-elasticsearch.html#upload-data-kibana[file uploader].
 
 If you would like to try things out before you add your own data, try using our {kibana-ref}/connect-to-elasticsearch.html#_add_sample_data[sample data].
 

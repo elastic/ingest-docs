@@ -63,11 +63,11 @@ To set a custom URL for {fleet-server} to access a PGP/GPG key and make it avail
 . Select a policy for the agents that you want to upgrade.
 . On the policy page, in the **Actions** menu for the {fleet-server} integration, select **Edit integration**.
 . In the {fleet-server} settings section expand **Change defaults** and **Advanced options**.
-. In the **Custom fleet-server configurations** field, add the setting `server.pgp.upstream_url` with the URL where the PGP/GPG key can be accessed. For example:
+. In the **Custom fleet-server configurations** field, add the setting `server.pgp.upstream_url` with the full URL where the PGP/GPG key can be accessed. For example:
 
 [source,yaml]
 ----
-server.pgp.upstream_url: <my-web-server-url>
+server.pgp.upstream_url: <http://my-web-server:8080/default.pgp>
 ----
 
 The setting `server.pgp.upstream_url` must point to a web server hosting the PGP/GPG key, which must be reachable by the host where {fleet-server} is installed.

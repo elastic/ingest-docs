@@ -75,7 +75,7 @@ The setting `server.pgp.upstream_url` must point to a web server hosting the PGP
 Note that:
 
  * `server.pgp.upstream_url` may be specified as an `http` endpoint (instead of `https`).
- * For an `https` endpoint, the CA must be trusted by {fleet-server}.
+ * For an `https` endpoint, the CA for {fleet-server} to connect to `server.pgp.upstream_url` must be trusted by {fleet-server} using the `--certificate-authorities` setting that is used globally for {agent}.
 
 [discrete]
 [[air-gapped-proxy-server]]

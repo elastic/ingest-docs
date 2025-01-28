@@ -55,7 +55,7 @@ The key is served through the {fleet-server} endpoint `GET /api/agents/upgrades/
 
 If there isn't a `default.pgp` key in the `FLEETSERVER_BINARY_DIR/elastic-agent-upgrade-keys/default.pgp` directory, {fleet-server} instead will attempt to retrieve a PGP/GPG key from the URL that you can specify with the `server.pgp.upstream_url` setting.
 
-You can prevent {fleet} to download the PGP/GPG key from `server.pgp.upstream_url` by manually downloading it from `https://artifacts.elastic.co/GPG-KEY-elastic-agent` and storing it at  `FLEETSERVER_BINARY_DIR/elastic-agent-upgrade-keys/default.pgp`.
+You can prevent {fleet} from downloading the PGP/GPG key from `server.pgp.upstream_url` by manually downloading it from `https://artifacts.elastic.co/GPG-KEY-elastic-agent` and storing it at  `FLEETSERVER_BINARY_DIR/elastic-agent-upgrade-keys/default.pgp`.
 
 To set a custom URL for {fleet-server} to access a PGP/GPG key and make it available to {agents}:
 

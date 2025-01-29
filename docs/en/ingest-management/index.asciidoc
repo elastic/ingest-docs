@@ -25,6 +25,8 @@ include::fleet/add-fleet-server-on-prem.asciidoc[leveloffset=+2]
 
 include::fleet/add-fleet-server-mixed.asciidoc[leveloffset=+2]
 
+include::fleet/add-fleet-server-kubernetes.asciidoc[leveloffset=+2]
+
 include::fleet/fleet-server-scaling.asciidoc[leveloffset=+2]
 
 include::fleet/fleet-server-secrets.asciidoc[leveloffset=+2]

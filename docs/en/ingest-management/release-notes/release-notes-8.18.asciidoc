@@ -1,0 +1,204 @@
+// Use these for links to issue and pulls.
+:kibana-issue: https://github.com/elastic/kibana/issues/
+:kibana-pull: https://github.com/elastic/kibana/pull/
+:beats-issue: https://github.com/elastic/beats/issues/
+:beats-pull: https://github.com/elastic/beats/pull/
+:agent-libs-pull: https://github.com/elastic/elastic-agent-libs/pull/
+:agent-issue: https://github.com/elastic/elastic-agent/issues/
+:agent-pull: https://github.com/elastic/elastic-agent/pull/
+:fleet-server-issue: https://github.com/elastic/fleet-server/issues/
+:fleet-server-pull: https://github.com/elastic/fleet-server/pull/
+
+[[release-notes]]
+= Release notes
+
+This section summarizes the changes in each release.
+
+* <<release-notes-8.18.0>>
+
+Also see:
+
+* {kibana-ref}/release-notes.html[{kib} release notes]
+* {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.18.0 relnotes
+
+[[release-notes-8.18.0]]
+== {fleet} and {agent} 8.18.0
+
+Review important information about the {fleet} and {agent} 8.18.0 release.
+
+[discrete]
+[[new-features-8.18.0]]
+=== New features
+
+The 8.18.0 release Added the following new and notable features.
+
+//{fleet}::
+
+{agent}::
+* Add ability to run the Elastic Distribution of OTel Collector at the same time as other inputs. {agent-pull}5767[#5767] {agent-issue}5796[#5796]
+* Add a sample configuration to be used when deploying the link:https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack[OpenTelemetry Kube Stack Helm Chart]. {agent-pull}5822[#5822]
+* Add the GeoIP OpenTelemetry processor to {agent}. {agent-pull}6134[#6134]
+* Add the metricbeat receiver to the OTel receivers included in {agent}. {agent-pull}6182[#6182] {agent-issue}6138[#6138]
+* Add the link:https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/routingconnector[OpenTelemetry routing connector] to the Elastic Distribution of OTel Collector. {agent-pull}6210[#6210]
+* Add support for the link:https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter[Otel loadbalancing exporter] to {agent}. {agent-pull}6315[#6315]
+
+
+[discrete]
+[[enhancements-8.18.0]]
+=== Enhancements
+
+//{fleet}::
+
+{fleet-server}::
+* Update {fleet-server} Go version to 1.23.5. {fleet-server-pull}4353[#4353]
+
+{agent}::
+* Re-enable the OTel subcommand on Windows. {agent-pull}6068[#6068] {agent-issue}4976[#4976] {agent-issue}5710[#5710] 
+* Updates the {agent} to only run composable providers if they are referenced in the agent policy. {agent-pull}6169[#6169] {agent-issue}3609[#3609] {agent-issue}4648[#4648]
+* Add a flag to skip {fleet} audit or unenroll when uninstalling {agent}. {agent-pull}6206[#6206] {agent-issue}5757[#5757]
+* Embed hints-based inputs in the {agent} Kubernetes container image. {agent-pull}6381[#6381] {agent-issue}5661[#5661] 
+
+[discrete]
+[[bug-fixes-8.18.0]]
+=== Bug fixes
+
+//{fleet}::
+
+//{fleet-server}::
+
+{agent}::
+* Prevent installation of {elastic-defend} in emulated environment, in which it's not supported. {agent-pull}6095[#6095] {agent-issue}6082[#6082] 
+* Re-enable notifying {fleet} when [agent] is uninstalled on Windows. {agent-pull}6257[#6257] {agent-issue}5952[#5952]
+* Log a warning on same version upgrade attempts and prevent the agent from reporting a failed upgrade state. {agent-pull}6273[#6273] {agent-issue}6186[#6186]
+* Add retries for requesting download verifiers when upgrading an agent. {agent-pull}6276[#6276] {agent-issue}5163[#5163]
+
+
+// end 8.18.0 relnotes
+
+// ---------------------
+//TEMPLATE
+//Use the following text as a template. Remember to replace the version info.
+
+// begin 8.7.x relnotes
+
+//[[release-notes-8.7.x]]
+//== {fleet} and {agent} 8.7.x
+
+//Review important information about the {fleet} and {agent} 8.7.x release.
+
+//[discrete]
+//[[security-updates-8.7.x]]
+//=== Security updates
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[breaking-changes-8.7.x]]
+//=== Breaking changes
+
+//Breaking changes can prevent your application from optimal operation and
+//performance. Before you upgrade, review the breaking changes, then mitigate the
+//impact to your application.
+
+//[discrete]
+//[[breaking-PR#]]
+//.Short description
+//[%collapsible]
+//====
+//*Details* +
+//<Describe new behavior.> For more information, refer to {kibana-pull}PR[#PR].
+
+//*Impact* +
+//<Describe how users should mitigate the change.> For more information, refer to {fleet-guide}/fleet-server.html[Fleet Server].
+//====
+
+//[discrete]
+//[[notable-changes-8.13.0]]
+//=== Notable changes
+
+//The following are notable, non-breaking updates to be aware of:
+
+//* Changes to features that are in Technical Preview.
+//* Changes to log formats.
+//* Changes to non-public APIs.
+//* Behaviour changes that repair critical bugs.
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[known-issues-8.7.x]]
+//=== Known issues
+
+//[[known-issue-issue#]]
+//.Short description
+//[%collapsible]
+//====
+
+//*Details*
+
+//<Describe known issue.>
+
+//*Impact* +
+
+//<Describe impact or workaround.>
+
+//====
+
+//[discrete]
+//[[deprecations-8.7.x]]
+//=== Deprecations
+
+//The following functionality is deprecated in 8.7.x, and will be removed in
+//8.7.x. Deprecated functionality does not have an immediate impact on your
+//application, but we strongly recommend you make the necessary updates after you
+//upgrade to 8.7.x.
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[new-features-8.7.x]]
+//=== New features
+
+//The 8.7.x release Added the following new and notable features.
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[enhancements-8.7.x]]
+//=== Enhancements
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[bug-fixes-8.7.x]]
+//=== Bug fixes
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+// end 8.7.x relnotes

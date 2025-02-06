@@ -24,6 +24,15 @@ Also see:
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
 
+// begin 8.16.4 relnotes
+
+[[release-notes-8.16.4]]
+== {fleet} and {agent} 8.16.4
+
+There are no bug fixes for {fleet} or {agent} in this release.
+
+// end 8.16.4 relnotes
+
 // begin 8.16.3 relnotes
 
 [[release-notes-8.16.3]]

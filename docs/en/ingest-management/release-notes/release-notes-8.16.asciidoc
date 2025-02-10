@@ -27,10 +27,26 @@ Also see:
 
 // begin 8.16.4 relnotes
 
+Review important information about the {fleet} and {agent} 8.16.4 release.
+
 [[release-notes-8.16.4]]
 == {fleet} and {agent} 8.16.4
 
-There are no bug fixes for {fleet} or {agent} in this release.
+[discrete]
+[[security-updates-8.16.4]]
+=== Security updates
+
+{agent}::
+* Upgrade NodeJS to LTS v18.20.6. {agent-pull}6641[#6641]
+
+[discrete]
+[[bug-fixes-8.16.4]]
+=== Bug fixes
+
+{agent}::
+* Emit vars even if provider data is empty from the start. {agent-pull}6598[#6598]
+* Redact secrets within complex nested paths. {agent-pull}6710[#6710]
+* Improve the CLI output message when `elastic-agent uninstall` runs after the agent has previously been unenrolled. {agent-pull}6735[#6735]
 
 // end 8.16.4 relnotes
 

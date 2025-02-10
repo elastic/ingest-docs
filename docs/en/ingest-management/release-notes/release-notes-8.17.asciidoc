@@ -37,6 +37,9 @@ Review important information about the {fleet} and {agent} 8.17.2 release.
 {fleet-server}::
 * Upgrade `golang.org/x/net` to v0.34.0 and `golang.org/x/crypto` to v0.32.0. {fleet-server-pull}44405[#4405]
 
+{agent}::
+* Update Go version to 1.22.11. {agent-pull}6686[#6686]
+
 [discrete]
 [[enhancements-8.17.2]]
 === Enhancements

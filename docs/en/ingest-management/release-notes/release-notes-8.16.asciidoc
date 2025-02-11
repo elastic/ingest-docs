@@ -16,8 +16,12 @@ This section summarizes the changes in each release.
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
+=======
+* <<release-notes-8.16.4>>
+>>>>>>> f5d21ba (Add Fleet & Agent 8.16.4 Release Notes (#1669))
 * <<release-notes-8.16.3>>
 >>>>>>> e9e015a (Add Fleet & Agent 8.16.3 Release Notes (#1614))
 * <<release-notes-8.16.2>>
@@ -29,6 +33,31 @@ Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.16.4 relnotes
+
+Review important information about the {fleet} and {agent} 8.16.4 release.
+
+[[release-notes-8.16.4]]
+== {fleet} and {agent} 8.16.4
+
+[discrete]
+[[security-updates-8.16.4]]
+=== Security updates
+
+{agent}::
+* Upgrade NodeJS to LTS v18.20.6. {agent-pull}6641[#6641]
+
+[discrete]
+[[bug-fixes-8.16.4]]
+=== Bug fixes
+
+{agent}::
+* Emit vars even if provider data is empty from the start. {agent-pull}6598[#6598]
+* Redact secrets within complex nested paths. {agent-pull}6710[#6710]
+* Improve the CLI output message when `elastic-agent uninstall` runs after the agent has previously been unenrolled. {agent-pull}6735[#6735]
+
+// end 8.16.4 relnotes
 
 // begin 8.16.3 relnotes
 

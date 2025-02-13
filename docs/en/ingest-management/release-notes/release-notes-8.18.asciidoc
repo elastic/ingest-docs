@@ -46,7 +46,7 @@ The 8.18.0 release Added the following new and notable features.
 * Add a new Kubernetes deployment of the Elastic Distribution of OTel Collector named "gateway", to simplify the daemonset collector configuration and unify managed/self-managed scenarios. {agent-pull}6444[#6444]
 * Add the `components` command for {agent} in OTel mode, to list the supported components the the Elastic Distribution of OTel Collector includes. {agent-pull}6539[#6539]
 * Add the `receivercreator` and `k8sobserver` components to the Elastic Distribution of OTel Collector to help cover autodiscovery scenarios in Kubernetes. {agent-pull}6561[#6561]
-* Add the `kafkaexporter` and `kafkareceiver` the Elastic Distribution of OTel Collector to help prepare support for a Kafka output. {agent-pull}6539[#6539] {agent-issue}6562[#6562]
+* Add the `kafkaexporter` and `kafkareceiver` the Elastic Distribution of OTel Collector to help prepare support for a Kafka output. {agent-pull}6593[#6593] {agent-issue}6562[#6562]
 * Add the nopreceiver to the Elastic Distribution of OTel Collector. {agent-pull}6603[#6603]
 * Change the default gRPC port to 0 when {agent} is run in a container. {agent-pull}6585[#6585]
 

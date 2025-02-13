@@ -43,6 +43,41 @@ Breaking changes can prevent your application from optimal operation and
 performance. Before you upgrade, review the breaking changes, then mitigate the
 impact to your application.
 
+{fleet}::
+
+[discrete]
+[[breaking-198434]]
+.Removed deprecated `epm` Fleet APIs.
+[%collapsible]
+====
+*Details* +
+* Removed `GET/POST/DELETE /epm/packages/:pkgkey` APIs in favor of the `GET/POST/DELETE /epm/packages/:pkgName/:pkgVersion`:
+
+* Removed `experimental` query parameter in `GET /epm/packages` and `GET /epm/categories`
+* Removed `response` in response in `* /epm/packages*` and `GET /epm/categories`
+* Removed `savedObject` in `/epm/packages` response in favor of `installationInfo`
+
+For more information, refer to ({kibana-pull}198434[#198434]).
+====
+
+[discrete]
+[[breaking-198313]]
+.Removed deprecated Fleet APIs for agents endpoints.
+[%collapsible]
+====
+*Details* +
+Removed the following API endpoints:
+
+* `POST /service-tokens` in favor of `POST /service_tokens`
+* `GET /agent-status` in favor `GET /agent_status`
+* `PUT /agents/:agentid/reassign` in favor of `POST /agents/:agentid/reassign`
+Removed deprecated parameters or responses:
+* Removed `total` from `GET /agent_status` response
+* Removed `list` from `GET /agents` response
+
+For more information, refer to ({kibana-pull}198313[#198313]).
+====
+
 {agent}::
 * Support for `cloud-defend` (Defend for Containers) has been removed in this release. The package has been removed from the {agent} packaging scripts and template Kubernetes files. {agent-pull}5481[#5481]
 * The default values for `username` and `password` have been removed for when {agent} is running in container mode. The {es} `api_key` can now be set in that mode using the `ELASTICSEARCH_API_KEY` environment variable. {agent-pull}5536[#5536]
@@ -55,6 +90,9 @@ impact to your application.
 === New features
 
 The 9.0.0-beta1 release Added the following new and notable features.
+
+{fleet}::
+* Add new setting allowing automatic deletion of unenrolled agents in {fleet} settings. ({kibana-pull}195544[#195544])
 
 {agent}::
 * Add the Azure Asset Inventory definition to Cloudbeat. {agent-pull}5323[#5323]
@@ -69,6 +107,12 @@ The 9.0.0-beta1 release Added the following new and notable features.
 [[enhancements-9.0.0-beta1]]
 === Enhancements
 
+{fleet}::
+* Improve filtering and visibility of `Uninstalled` and `Orphaned` agents in {fleet}, by differentiating them from `Offline` agents. ({kibana-pull}205815[#205815])
+* Introduce air-gapped configuration for bundled packages. ({kibana-pull}202435[#202435])
+* Update removed parameters of the {fleet} -> {ls} output configurations. ({kibana-pull}210115[#210115])
+* Update the maximum supported package version. ({kibana-pull}196675[#196675])
+
 {fleet-server}::
 * Replace the use of `context.TODO` and `context.Background` in logger function calls for most use cases. {fleet-server-pull}4168[#4168] {fleet-server-issue}3087[#3087]
 * Refactor the API constructor to use functional opts instead of a long list of pointers. {fleet-server-pull}4169[#4169] {fleet-server-issue}3823[#3823]
@@ -82,6 +126,9 @@ The 9.0.0-beta1 release Added the following new and notable features.
 [discrete]
 [[bug-fixes-9.0.0-beta1]]
 === Bug fixes
+
+{fleet}::
+* Fix a validation error that occurs on multi-text input fields. ({kibana-pull}205768[#205768])
 
 {fleet-server}::
 * Adding a context timeout to the bulker flush so it times out if it takes more time than the deadline. {fleet-server-pull}3986[#3986]

@@ -32,7 +32,36 @@ Review important information about the {fleet} and {agent} 8.17.2 release.
 [[security-updates-9.0.0-beta1]]
 === Security updates
 
+{agent}::
+* Update Go version to 1.22.8. {agent-pull}5731[#5731]
 
+[discrete]
+[[breaking-changes-9.0.0-beta1]]
+=== Breaking changes
+
+Breaking changes can prevent your application from optimal operation and
+performance. Before you upgrade, review the breaking changes, then mitigate the
+impact to your application.
+
+{agent}::
+* Support for `cloud-defend` (Defend for Containers) has been removed in this release. The package has been removed from the {agent} packaging scripts and template Kubernetes files. {agent-pull}5481[#5481]
+* The default values for `username` and `password` have been removed for when {agent} is running in container mode. The {es} `api_key` can now be set in that mode using the `ELASTICSEARCH_API_KEY` environment variable. {agent-pull}5536[#5536]
+* The default Ubuntu-based Docker images used for {agent} have been changed to UBI-minimal-based images, to reduce the overall footprint of the agent Docker images and to improve compliance with enterprise standards. {agent-pull}6427[#6427]
+* The deprecated `--path.install` flag declaration has been removed from the {agent} `paths` command and its use removed from the `container` and `enroll` commands. {agent-pull}6461[#6461] {agent-issue}2489[#2489]
+* Change the default {agent} installation and ugprades to include only the `agentbeat`, `endpoint-security` and `pf-host-agent` components. Additional components can be included using flags. {agent-pull}6542[#6542]
+
+
+
+[discrete]
+[[new-features-9.0.0-beta1]]
+=== New features
+
+The 9.0.0-beta1 release Added the following new and notable features.
+
+{agent}::
+* Add the Azure Asset Inventory definition to Cloudbeat. {agent-pull}5323[#5323]
+* Add a new Kubernetes deployment of the Elastic Distribution of OTel Collector named "gateway" to the Helm kube-stack deployment. {agent-pull}6444[#6444]
+* Add the filesource providert to composable inputs. The provider watches for changes of the files and updates the values of the variables when the content of the file changes. {agent-pull}6587[#6587] {agent-issue}6362[#6362]
 
 [discrete]
 [[enhancements-9.0.0-beta1]]
@@ -44,6 +73,10 @@ Review important information about the {fleet} and {agent} 8.17.2 release.
 * Remove the deprecated `policy_throttle` configuration setting in favour of the newer `policy-limit`. {fleet-server-pull}4288[#4288]
 * Add the ability for {agent} to enroll using a specific ID. {fleet-server-pull}4290[#4290] {fleet-server-issue}4226[#4226]
 
+{agent}::
+* Add the Filebeat receiver into {agent}. {agent-pull}5833[#5833]
+* Update OTel components to v0.116.0. {agent-pull}6384[#6384]
+
 [discrete]
 [[bug-fixes-9.0.0-beta1]]
 === Bug fixes
@@ -53,5 +86,136 @@ Review important information about the {fleet} and {agent} 8.17.2 release.
 * Remove a race condition that may occur when remote {es} outputs are used. {fleet-server-pull}4171[#4171]
 * Use the `chi/middleware.Throttle` package to track in-flight requests and return a 429 response when the limit is reached. {fleet-server-pull}4402[#4402] {fleet-server-issue}4400[#4400]
 
+{agent}::
+
+
+
 
 // end 9.0.0-beta1 relnotes
+
+
+// ---------------------
+//TEMPLATE
+//Use the following text as a template. Remember to replace the version info.
+
+// begin 8.7.x relnotes
+
+//[[release-notes-8.7.x]]
+//== {fleet} and {agent} 8.7.x
+
+//Review important information about the {fleet} and {agent} 8.7.x release.
+
+//[discrete]
+//[[security-updates-8.7.x]]
+//=== Security updates
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[breaking-changes-8.7.x]]
+//=== Breaking changes
+
+//Breaking changes can prevent your application from optimal operation and
+//performance. Before you upgrade, review the breaking changes, then mitigate the
+//impact to your application.
+
+//[discrete]
+//[[breaking-PR#]]
+//.Short description
+//[%collapsible]
+//====
+//*Details* +
+//<Describe new behavior.> For more information, refer to {kibana-pull}PR[#PR].
+
+//*Impact* +
+//<Describe how users should mitigate the change.> For more information, refer to {fleet-guide}/fleet-server.html[Fleet Server].
+//====
+
+//[discrete]
+//[[notable-changes-8.13.0]]
+//=== Notable changes
+
+//The following are notable, non-breaking updates to be aware of:
+
+//* Changes to features that are in Technical Preview.
+//* Changes to log formats.
+//* Changes to non-public APIs.
+//* Behaviour changes that repair critical bugs.
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[known-issues-8.7.x]]
+//=== Known issues
+
+//[[known-issue-issue#]]
+//.Short description
+//[%collapsible]
+//====
+
+//*Details*
+
+//<Describe known issue.>
+
+//*Impact* +
+
+//<Describe impact or workaround.>
+
+//====
+
+//[discrete]
+//[[deprecations-8.7.x]]
+//=== Deprecations
+
+//The following functionality is deprecated in 8.7.x, and will be removed in
+//8.7.x. Deprecated functionality does not have an immediate impact on your
+//application, but we strongly recommend you make the necessary updates after you
+//upgrade to 8.7.x.
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[new-features-8.7.x]]
+//=== New features
+
+//The 8.7.x release Added the following new and notable features.
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[enhancements-8.7.x]]
+//=== Enhancements
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+//[discrete]
+//[[bug-fixes-8.7.x]]
+//=== Bug fixes
+
+//{fleet}::
+//* add info
+
+//{agent}::
+//* add info
+
+// end 8.7.x relnotes

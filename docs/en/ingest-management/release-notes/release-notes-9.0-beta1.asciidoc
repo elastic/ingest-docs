@@ -26,7 +26,7 @@ Also see:
 [[release-notes-9.0.0-beta1]]
 == {fleet} and {agent} 9.0.0-beta1
 
-Review important information about the {fleet} and {agent} 8.17.2 release.
+Review important information about the {fleet} and {agent} 9.0.0-beta1 release.
 
 [discrete]
 [[security-updates-9.0.0-beta1]]
@@ -48,9 +48,7 @@ impact to your application.
 * The default values for `username` and `password` have been removed for when {agent} is running in container mode. The {es} `api_key` can now be set in that mode using the `ELASTICSEARCH_API_KEY` environment variable. {agent-pull}5536[#5536]
 * The default Ubuntu-based Docker images used for {agent} have been changed to UBI-minimal-based images, to reduce the overall footprint of the agent Docker images and to improve compliance with enterprise standards. {agent-pull}6427[#6427]
 * The deprecated `--path.install` flag declaration has been removed from the {agent} `paths` command and its use removed from the `container` and `enroll` commands. {agent-pull}6461[#6461] {agent-issue}2489[#2489]
-* Change the default {agent} installation and ugprades to include only the `agentbeat`, `endpoint-security` and `pf-host-agent` components. Additional components can be included using flags. {agent-pull}6542[#6542]
-
-
+* The default {agent} installation and ugprade have been changed to include only the `agentbeat`, `endpoint-security` and `pf-host-agent` components. Additional components can be included using flags. {agent-pull}6542[#6542]
 
 [discrete]
 [[new-features-9.0.0-beta1]]
@@ -62,6 +60,10 @@ The 9.0.0-beta1 release Added the following new and notable features.
 * Add the Azure Asset Inventory definition to Cloudbeat. {agent-pull}5323[#5323]
 * Add a new Kubernetes deployment of the Elastic Distribution of OTel Collector named "gateway" to the Helm kube-stack deployment. {agent-pull}6444[#6444]
 * Add the filesource providert to composable inputs. The provider watches for changes of the files and updates the values of the variables when the content of the file changes. {agent-pull}6587[#6587] {agent-issue}6362[#6362]
+* Add the jmxreceiver to the Elastic Distribution of OTel Collector. {agent-pull}6601[#6601]
+* Add support for context variables in outputs as well as a default provider prefix. {agent-pull}6602[#6602] {agent-issue}6376[#6376]
+* Add the Nginx receiver and Redis receiver OTel components. {agent-pull}6627[#6627]
+* Add new `--id` (`ELASTIC_AGENT_ID` environment variable for container) and `--replace-token` (`FLEET_REPLACE_TOKEN` environment variable for container) enrollment options. {agent-pull}6498[#6498]
 
 [discrete]
 [[enhancements-9.0.0-beta1]]
@@ -75,7 +77,7 @@ The 9.0.0-beta1 release Added the following new and notable features.
 
 {agent}::
 * Add the Filebeat receiver into {agent}. {agent-pull}5833[#5833]
-* Update OTel components to v0.116.0. {agent-pull}6384[#6384]
+* Update OTel components to v0.119.0. {agent-pull}6713[#6713]
 
 [discrete]
 [[bug-fixes-9.0.0-beta1]]
@@ -87,9 +89,8 @@ The 9.0.0-beta1 release Added the following new and notable features.
 * Use the `chi/middleware.Throttle` package to track in-flight requests and return a 429 response when the limit is reached. {fleet-server-pull}4402[#4402] {fleet-server-issue}4400[#4400]
 
 {agent}::
-
-
-
+* Fix logical race conditions in the `kubernetes_secrets` provider. {agent-pull}6623[#6623]
+* Resolve the proxy to inject into agent component configurations using the Go `http` package. {agent-pull}6675[#6675] {agent-issue}6209[#6209]
 
 // end 9.0.0-beta1 relnotes
 

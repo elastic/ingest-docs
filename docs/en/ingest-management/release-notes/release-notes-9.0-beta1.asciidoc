@@ -1,0 +1,57 @@
+// Use these for links to issue and pulls.
+:kibana-issue: https://github.com/elastic/kibana/issues/
+:kibana-pull: https://github.com/elastic/kibana/pull/
+:beats-issue: https://github.com/elastic/beats/issues/
+:beats-pull: https://github.com/elastic/beats/pull/
+:agent-libs-pull: https://github.com/elastic/elastic-agent-libs/pull/
+:agent-issue: https://github.com/elastic/elastic-agent/issues/
+:agent-pull: https://github.com/elastic/elastic-agent/pull/
+:fleet-server-issue: https://github.com/elastic/fleet-server/issues/
+:fleet-server-pull: https://github.com/elastic/fleet-server/pull/
+
+[[release-notes]]
+= Release notes
+
+This section summarizes the changes in each release.
+
+* <<release-notes-9.0.0-beta1>>
+
+Also see:
+
+* {kibana-ref}/release-notes.html[{kib} release notes]
+* {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 9.0.0-beta1 relnotes
+
+[[release-notes-9.0.0-beta1]]
+== {fleet} and {agent} 9.0.0-beta1
+
+Review important information about the {fleet} and {agent} 8.17.2 release.
+
+[discrete]
+[[security-updates-9.0.0-beta1]]
+=== Security updates
+
+
+
+[discrete]
+[[enhancements-9.0.0-beta1]]
+=== Enhancements
+
+{fleet-server}::
+* Replace the use of `context.TODO` and `context.Background` in logger function calls for most use cases. {fleet-server-pull}4168[#4168] {fleet-server-issue}3087[#3087]
+* Refactor the API constructor to use functional opts instead of a long list of pointers. {fleet-server-pull}4169[#4169] {fleet-server-issue}3823[#3823]
+* Remove the deprecated `policy_throttle` configuration setting in favour of the newer `policy-limit`. {fleet-server-pull}4288[#4288]
+* Add the ability for {agent} to enroll using a specific ID. {fleet-server-pull}4290[#4290] {fleet-server-issue}4226[#4226]
+
+[discrete]
+[[bug-fixes-9.0.0-beta1]]
+=== Bug fixes
+
+{fleet-server}::
+* Adding a context timeout to the bulker flush so it times out if it takes more time than the deadline. {fleet-server-pull}3986[#3986]
+* Remove a race condition that may occur when remote {es} outputs are used. {fleet-server-pull}4171[#4171]
+* Use the `chi/middleware.Throttle` package to track in-flight requests and return a 429 response when the limit is reached. {fleet-server-pull}4402[#4402] {fleet-server-issue}4400[#4400]
+
+
+// end 9.0.0-beta1 relnotes

@@ -33,7 +33,7 @@ Review important information about the {fleet} and {agent} 9.0.0-beta1 release.
 === Security updates
 
 {agent}::
-* Update Go version to 1.22.8. {agent-pull}5731[#5731]
+* Update Go version to 1.22.10. {agent-pull}6236[#6236]
 
 [discrete]
 [[breaking-changes-9.0.0-beta1]]

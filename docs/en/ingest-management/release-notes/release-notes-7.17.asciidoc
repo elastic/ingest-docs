@@ -14,6 +14,8 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-7.17.28>>
+
 * <<release-notes-7.17.27>>
 
 * <<release-notes-7.17.26>>
@@ -74,6 +76,23 @@ Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 7.17.28 relnotes
+
+[[release-notes-7.17.28]]
+== {fleet} and {agent} 7.17.28
+
+Review important information about the {fleet} and {agent} 7.17.28 release.
+
+[discrete]
+[[security-updates-7.17.28]]
+=== Security updates
+
+{fleet-server}::
+* Update {fleet-server} Go version to 1.23.5. {fleet-server-pull}4353[#4353]
+* Update `golang.org/x/net` to v0.34.0 and `golang.org/x/crypto` to v0.32.0. {fleet-server-pull}4405[#4405]
+
+// end 7.17.28 relnotes
 
 // begin 7.17.27 relnotes
 

@@ -29,8 +29,8 @@ The built-in `editor` role grants the following privileges, supporting full read
 `viewer`::
 The built-in `viewer` role grants the following privileges, supporting read-only access to {fleet} and Integrations:
 
-* {Fleet}:: `read`
-* Integrations:: `read`
+* {Fleet}: `read`
+* Integrations: `read`
 
 You can also create a new role that can be assigned to a user, in order to grant more specific levels of access to {fleet} and Integrations.
 

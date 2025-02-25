@@ -7,39 +7,57 @@ Assigning the {kib} feature privileges `Fleet` and `Integrations` grants access 
 
 `all`:: Grants full read-write access.
 `read`:: Grants read-only access.
+`none`:: No access is granted.
 
+Take advantage of these privilege settings by:
+
+* <<fleet-roles-and-privileges-built-in,Using an {es} built-in role>>
+* <<fleet-roles-and-privileges-create,Creating a new role>>
+
+[discrete]
+[[fleet-roles-and-privileges-built-in]]
+== Built-in roles
+
+{es} comes with built-in roles that include default privileges.
+
+`editor`::
 The built-in `editor` role grants the following privileges, supporting full read-write access to {fleet} and Integrations:
 
-* {Fleet}: `All`
-* Integrations: `All`
+* {Fleet}: `all`
+* Integrations: `all`
 
+`viewer`::
 The built-in `viewer` role grants the following privileges, supporting read-only access to {fleet} and Integrations:
 
-* {Fleet}:: `None`
-* Integrations:: `Read`
+* {Fleet}: `read`
+* Integrations: `read`
 
-You can also create a new role that can be assigned to a user to grant access to {fleet} and Integrations.
+You can also create a new role that can be assigned to a user, in order to grant more specific levels of access to {fleet} and Integrations.
 
 [discrete]
 [[fleet-roles-and-privileges-create]]
 == Create a role for {fleet}
 
-To create a new role with full access to use and manage {fleet} and Integrations:
+To create a new role with access to {fleet} and Integrations:
 
 . In {kib}, go to **Management -> Stack Management**.
 . In the **Security** section, select **Roles**.
 . Select **Create role**.
 . Specify a name for the role.
 . Leave the {es} settings at their defaults, or refer to {ref}/security-privileges.html[Security privileges] for descriptions of the available settings.
-. In the {kib} section, select **Add Kibana privilege**.
-. In the **Spaces** menu, select *** All Spaces**. Since many Integrations assets are shared across spaces, the users needs the {kib} privileges in all spaces.
+. In the {kib} section, select **Assign to space**.
+. In the **Spaces** menu, select *** All Spaces**. Since many Integrations assets are shared across spaces, the users need the {kib} privileges in all spaces.
 . Expand the **Management** section.
-. Set **Fleet** privileges to **All**.
-. Set **Integrations** privileges to **All**.
+. Choose the access level that you'd like the role to have with respect to {fleet} and integrations:
 
+.. To grant the role full access to use and manage {fleet} and integrations, set both the **Fleet** and **Integrations** privileges to `All`.
++
 [role="screenshot"]
-image::images/kibana-fleet-privileges.png[Kibana privileges flyout showing Fleet and Integrations set to All]
+image::images/kibana-fleet-privileges-all.png[Kibana privileges flyout showing Fleet and Integrations set to All]
 
-To create a read-only user for Integrations, follow the same steps as above but set the **Fleet** privileges to **None** and the **Integrations** privileges to **Read**.
+.. Similarly, to create a read-only user for {fleet} and Integrations, set both the **Fleet** and **Integrations** privileges to `Read`.
++
+[role="screenshot"]
+image::images/kibana-fleet-privileges-read.png[Kibana privileges flyout showing Fleet and Integrations set to All]
 
-Read-only access to {fleet} is not currently supported but is planned for development in a later release.
+Once you've created a new role you can assign it to any {es} user. You can edit the role at any time by returning to the **Roles** page in {kib}.

@@ -14,6 +14,7 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.16.5>>
 * <<release-notes-8.16.4>>
 * <<release-notes-8.16.3>>
 * <<release-notes-8.16.2>>
@@ -25,9 +26,14 @@ Also see:
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
 
-// begin 8.16.4 relnotes
+// begin 8.16.5 relnotes
 
-Review important information about the {fleet} and {agent} 8.16.4 release.
+[[release-notes-8.16.5]]
+== {fleet} and {agent} 8.16.5
+
+There are no bug fixes for {fleet} or {agent} in this release.
+
+// end 8.16.5 relnotes
 
 [[release-notes-8.16.4]]
 == {fleet} and {agent} 8.16.4

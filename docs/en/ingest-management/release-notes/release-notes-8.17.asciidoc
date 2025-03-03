@@ -14,6 +14,7 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.17.3>>
 * <<release-notes-8.17.2>>
 * <<release-notes-8.17.1>>
 * <<release-notes-8.17.0>>
@@ -22,6 +23,33 @@ Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+
+
+
+// begin 8.17.3 relnotes
+
+[[release-notes-8.17.3]]
+== {fleet} and {agent} 8.17.3
+
+Review important information about the {fleet} and {agent} 8.17.3 release.
+
+[discrete]
+[[enhancements-8.17.3]]
+=== Enhancements
+
+{agent}::
+* Add the configuration files for the Elastic Distribution of OTel Collector that will be provided during the {kib} OpenTelemetry Host and Kubernetes onboarding flow for MOTel. {agent-pull}6641[#6630]
+
+[discrete]
+[[bug-fixes-8.17.3]]
+=== Bug fixes
+
+{agent}::
+* Add missing checks for null values in AST collection nodes. {agent-pull}7009[#7009] {agent-issue}6999[#6999]
+* Set the gateway Kubernetes `spec.replicas` for the gateway OpenTelemetry Collector to prevent horizontal Pod autoscaler fails. {agent-pull}7011[#7011]
+
+// end 8.17.3 relnotes
 
 // begin 8.17.2 relnotes
 
@@ -97,8 +125,9 @@ As a workaround, you can upgrade your deployment to 8.17.1 in which this issue h
 [[new-features-8.17.1]]
 === New features
 
-The 8.17.1 release Added the following new and notable features.
+The 8.17.1 release added the following new and notable features.
 
+{agent}::
 * Add the link:https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter[Otel loadbalancing exporter] to {agent}. {agent-pull}6315[#6315]
 
 [discrete]

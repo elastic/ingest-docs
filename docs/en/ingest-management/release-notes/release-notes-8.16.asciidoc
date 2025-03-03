@@ -14,19 +14,11 @@
 
 This section summarizes the changes in each release.
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
-=======
+* <<release-notes-8.16.5>>
 * <<release-notes-8.16.4>>
->>>>>>> f5d21ba (Add Fleet & Agent 8.16.4 Release Notes (#1669))
 * <<release-notes-8.16.3>>
->>>>>>> e9e015a (Add Fleet & Agent 8.16.3 Release Notes (#1614))
 * <<release-notes-8.16.2>>
 * <<release-notes-8.16.1>>
->>>>>>> d7a2989 (Add Fleet & Agent 8.16.2 Release Notes (#1538))
 * <<release-notes-8.16.0>>
 
 Also see:
@@ -34,9 +26,14 @@ Also see:
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
 
-// begin 8.16.4 relnotes
+// begin 8.16.5 relnotes
 
-Review important information about the {fleet} and {agent} 8.16.4 release.
+[[release-notes-8.16.5]]
+== {fleet} and {agent} 8.16.5
+
+There are no bug fixes for {fleet} or {agent} in this release.
+
+// end 8.16.5 relnotes
 
 [[release-notes-8.16.4]]
 == {fleet} and {agent} 8.16.4
@@ -126,8 +123,6 @@ In this release we've introduced an image based on the hardened link:https://git
 
 // begin 8.16.1 relnotes
 
-<<<<<<< HEAD
-=======
 [[release-notes-8.16.1]]
 == {fleet} and {agent} 8.16.1
 
@@ -174,7 +169,6 @@ curl -XPOST -H 'Authorization: Bearer ${TOKEN}' -H 'x-elastic-product-origin:fle
 
 // begin 8.16.0 relnotes
 
->>>>>>> d7a2989 (Add Fleet & Agent 8.16.2 Release Notes (#1538))
 [[release-notes-8.16.0]]
 == {fleet} and {agent} 8.16.0
 

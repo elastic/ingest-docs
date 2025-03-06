@@ -34,7 +34,10 @@ Review important information about the {fleet} and {agent} 8.18.0 release.
 
 The 8.18.0 release Added the following new and notable features.
 
-//{fleet}::
+{fleet}::
+* Add next steps and actions to the agentless integrations flyout. ({kibana-pull}203824[#203824])
+* Add support for columns when exporting agents to CSV. ({kibana-pull}203103[#203103])
+* Add status tracking for agentless integrations. ({kibana-pull}199567[#199567])
 
 {agent}::
 * Add ability to run the Elastic Distribution of OTel Collector at the same time as other inputs. {agent-pull}5767[#5767] {agent-issue}5796[#5796]
@@ -54,7 +57,8 @@ The 8.18.0 release Added the following new and notable features.
 [[enhancements-8.18.0]]
 === Enhancements
 
-//{fleet}::
+{fleet}::
+* Enable sub-feature privileges for {fleet}. ({kibana-pull}203182[#203182])
 
 {fleet-server}::
 * Update {fleet-server} Go version to 1.23.5. {fleet-server-pull}4353[#4353]
@@ -72,7 +76,13 @@ The 8.18.0 release Added the following new and notable features.
 [[bug-fixes-8.18.0]]
 === Bug fixes
 
-//{fleet}::
+{fleet}::
+* Support `is_default` on integration deployment modes. ({kibana-pull}208284[#208284])
+* Fix a UI error caused when an agent becomes orphan. ({kibana-pull}207746[#207746])
+* Restrict non-local {es} output types for agentless integrations and policies. ({kibana-pull}207296[#207296])
+* Fix API code to prevent bulk actions from timing out. ({kibana-pull}205735[#205735])
+* Fix generation of dynamic mapping for objects with specific subfields. ({kibana-pull}204104[#204104])
+* Fix logic to ensure that agents are only considered stuck in updating when an upgrade fails. ({kibana-pull}202126[#202126])
 
 {agent}::
 * Prevent installation of {elastic-defend} in emulated environment, in which it's not supported. {agent-pull}6095[#6095] {agent-issue}6082[#6082] 
@@ -83,6 +93,7 @@ The 8.18.0 release Added the following new and notable features.
 * Restore `cloud-defend` as an expected binary after it was accidentally removed from containers in 8.17.0 and later versions. {agent-pull}6470[#6470] {agent-issue}6469[#6469]
 * Restore the `maintainer` label for container images rather than the default inherited from a base image. {agent-pull}6512[#6512]
 * Fix enrollment for containerised {agent} when the enrollment token changes or the agent is unenrolled. {agent-pull}6568[#6568] {agent-issue}3586[#3586]
+* Change how Windows process handles are obtained when assigning sub-processes to Job objects. {agent-pull}6825[#6825]
 
 // end 8.18.0 relnotes
 

@@ -14,6 +14,7 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.17.2>>
 * <<release-notes-8.17.1>>
 * <<release-notes-8.17.0>>
 
@@ -21,6 +22,37 @@ Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.17.2 relnotes
+
+[[release-notes-8.17.2]]
+== {fleet} and {agent} 8.17.2
+
+Review important information about the {fleet} and {agent} 8.17.2 release.
+
+[discrete]
+[[security-updates-8.17.2]]
+=== Security updates
+
+{fleet-server}::
+* Upgrade `golang.org/x/net` to v0.34.0 and `golang.org/x/crypto` to v0.32.0. {fleet-server-pull}4405[#4405]
+
+
+[discrete]
+[[enhancements-8.17.2]]
+=== Enhancements
+
+{agent}::
+* Upgrade NodeJS for Heartbeat to LTS v18.20.6. {agent-pull}6641[#6641]
+
+[discrete]
+[[bug-fixes-8.17.2]]
+=== Bug fixes
+
+{agent}::
+* Emit variables even if provider data is empty from the start. {agent-pull}6598[#6598]
+
+// end 8.17.2 relnotes
 
 // begin 8.17.1 relnotes
 
@@ -40,9 +72,26 @@ impact to your application.
 {agent}::
 * {agent} Docker images for {ecloud} have been reverted from having been based off of Ubuntu 24.04 to being based off of Ubuntu 20.04. This is to ensure compatibility with {ece}, support for new Wolfi-based images, and for GNU C Library (glibc) compatibility. {agent-pull}6393[#6393]
 
-//*Impact* +
-//<Describe how users should mitigate the change.> For more information, refer to {fleet-guide}/fleet-server.html[Fleet Server].
-//====
+[discrete]
+[[known-issues-8.17.1]]
+=== Known issues
+
+[[known-issue-1671]]
+.{kib} out of memory crashes on 1 GB {ecloud} {kib} instances using {elastic-sec} view
+[%collapsible]
+====
+
+*Details*
+
+{ecloud} deployments that use the smallest available {kib} instance size of 1 GB may crash due to out of memory errors when the Security UI is loaded. 
+
+*Impact* +
+
+The root cause is inefficient memory allocation, and this is exacerbated when the prebuilt security rules package is installed on the initial load of the {elastic-sec} UI.
+
+As a workaround, you can upgrade your deployment to 8.17.1 in which this issue has been resolved by https://github.com/elastic/kibana/pull/208869[#208869] and https://github.com/elastic/kibana/pull/208475[#208475].
+
+====
 
 [discrete]
 [[new-features-8.17.1]]

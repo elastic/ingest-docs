@@ -17,7 +17,7 @@ example:
 xpack.fleet.registryProxyUrl: your-nat-gateway.corp.net
 ----
 
-If your HTTP Proxy requires authentication, you can include the 
+If your HTTP proxy requires authentication, you can include the 
 credentials in the URI, such as `https://username:password@your-nat-gateway.corp.net`, 
 only when using HTTPS.
 

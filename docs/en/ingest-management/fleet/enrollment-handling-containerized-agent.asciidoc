@@ -1,0 +1,12 @@
+[[containers-agent-enrollment-handling]]
+= Enrollment handing for containerized {fleet}-managed agents
+++++
+<titleabbrev>Enrollment handing for containerized agents</titleabbrev>
+++++
+
+Beginning with version 8.18, for {fleet}-managed {agents} that run in a containerized environment (including Docker, Kubernetes, and others), enrollment handling is managed as follows:
+
+* **Enrollment Verification:** The agent checks stored enrollment conditions stored in the container environment and re-enrolls only when necessary.
+* **Unenrollment Handling:** If an {agent} is unenrolled through the {fleet} UI but still has a valid enrollment token provided via environment variables, the next container restart will cause it to re-enroll automatically.
+
+In versions lower than 8.18, an unenrolled agent remains unenrolled and does not re-enroll, even if a valid enrollment token is still available.

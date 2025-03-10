@@ -2,6 +2,8 @@
 = Unenroll {agent}s
 
 You can unenroll {agent}s to invalidate the API key used to connect to {es}.
+For {agents} installed in a containerized environment, see <<containers-agent-enrollment-handling>>
+for details about how enrollment handling is managed.
 
 . In {fleet}, select *Agents*.
 
@@ -21,3 +23,6 @@ will show this error instead: `invalid api key to authenticate with fleet`.
 TIP: If unenrollment hangs, select *Force unenroll* to invalidate all API
 keys related to the agent and change the status to `inactive` so that the agent
 no longer appears in {fleet}.
+
+NOTE: Enrollment handling for {agent} in a containerized environment has some special nuances.
+For details refer to <<containers-agent-enrollment-handling>>.

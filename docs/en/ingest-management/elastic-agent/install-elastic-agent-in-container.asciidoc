@@ -30,3 +30,5 @@ To learn how to run {agent}s in a containerized environment, see:
 
 * {eck-ref}/k8s-elastic-agent.html[Run {agent} on ECK] -- for {eck} users
 
+NOTE: Enrollment handling for {agent} in a containerized environment has some special nuances.
+For details refer to <<containers-agent-enrollment-handling>>.

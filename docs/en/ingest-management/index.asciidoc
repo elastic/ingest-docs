@@ -143,6 +143,8 @@ include::fleet/agent-health-status.asciidoc[leveloffset=+3]
 
 include::fleet/filter-agent-list-by-tags.asciidoc[leveloffset=+3]
 
+include::fleet/enrollment-handling-containerized-agent.asciidoc[leveloffset=+3]
+
 include::agent-policies.asciidoc[leveloffset=+2]
 
 include::create-agent-policies-no-UI.asciidoc[leveloffset=+3]

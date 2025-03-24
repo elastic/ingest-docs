@@ -50,7 +50,7 @@ The 8.17.4 release adds the following new and notable features.
 {agent}::
 * Improve `kubernetes_secrets` provider secret logging. {agent-pull}6841[#6841] {agent-issue}6187[#6187]
 * Include all metadata that is sent to {fleet} in the `agent-info.yaml` file in diagnostics by default. {agent-pull}7029[#7029] 
-* Add API key prefix to motel host configurations. {agent-pull}7063[#7063] 
+* Add API key prefix to managed OTLP endpoint host configurations in EDOT collector kube stack Helm chart. {agent-pull}7063[#7063] 
 
 [discrete]
 [[bug-fixes-8.17.4]]

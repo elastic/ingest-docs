@@ -50,7 +50,7 @@ Review important information about the {fleet} and {agent} 8.16.6 release.
 
 {agent}::
 * Add conditions to the `copy_fields` processors used with {agent} self-monitoring to prevent spamming the debug logs. {agent-pull}6730[#6730] {agent-issue}5299[#5299]
-* Make enroll command backoff more conservative. {agent-pull}6983[#6983] {agent-issue}6761[#6761]
+* Make enroll command backoff more conservative and add backoff when using `--delay-enroll`. {agent-pull}6983[#6983] {agent-issue}6761[#6761]
 * Add missing null checks to AST methods. {agent-pull}7009[#7009] {agent-issue}6999[#6999]
 * Fix an issue where `fixpermissions` on Windows incorrectly returned an error message due to improper handling of Windows API return values. {agent-pull}7059[#7059] {agent-issue}6917[#6917]
 * Support IPv6 hosts in enroll URL. {agent-pull}7036[#7036] 

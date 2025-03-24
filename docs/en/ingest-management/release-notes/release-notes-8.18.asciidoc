@@ -70,7 +70,7 @@ The 8.18.0 release Added the following new and notable features.
 * Embed hints-based inputs in the {agent} Kubernetes container image. {agent-pull}6381[#6381] {agent-issue}5661[#5661]
 * Add an error to the Windows Application Event Log if the `install`, `uninstall`, or `enroll` commands fail. {agent-pull}6410[#6410] {agent-issue}6338[#6338] 
 * Add a logger to print the status and code when an {agent} enrollment call to {fleet} fails. {agent-pull}6477[#6477] {agent-issue}6287[#6287]
-* Update OTel components to v0.117.0. {agent-pull}6499[#6499]
+* Update Go version to 1.24.0.  {agent-pull}7443[#7443]
 
 [discrete]
 [[bug-fixes-8.18.0]]

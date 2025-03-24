@@ -41,7 +41,7 @@ Review important information about the  8.17.4 release.
 The 8.17.4 release adds the following new and notable features.
 
 {agent}::
-* Add motel sample configurations. {agent-pull}6630[#6630] 
+* Add managed OTLP endpoint sample configurations. {agent-pull}6630[#6630] 
 
 [discrete]
 [[enhancements-8.17.4]]

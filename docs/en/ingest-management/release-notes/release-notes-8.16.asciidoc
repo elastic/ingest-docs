@@ -4,7 +4,7 @@
 :beats-issue: https://github.com/elastic/beats/issues/
 :beats-pull: https://github.com/elastic/beats/pull/
 :agent-libs-pull: https://github.com/elastic/elastic-agent-libs/pull/
-:agent-issue: https://github.com/elastic/elastic-agent/issues/
+:agent-issue: https://github.com/elastic/elastic-agent/issue/
 :agent-pull: https://github.com/elastic/elastic-agent/pull/
 :fleet-server-issue: https://github.com/elastic/fleet-server/issues/
 :fleet-server-pull: https://github.com/elastic/fleet-server/pull/
@@ -14,6 +14,7 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.16.6>>
 * <<release-notes-8.16.5>>
 * <<release-notes-8.16.4>>
 * <<release-notes-8.16.3>>
@@ -25,6 +26,39 @@ Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.16.6 relnotes
+
+[[release-notes-8.16.6]]
+== {fleet} and {agent} 8.16.6
+
+Review important information about the {fleet} and {agent} 8.16.6 release.
+
+[discrete]
+[[enhancements-8.16.6]]
+=== Enhancements
+
+{agent}::
+* Include all metadata that is sent to {fleet} in the `agent-info.yaml` file in diagnostics by default. {agent-pull}7029[#7029]
+
+[discrete]
+[[bug-fixes-8.16.6]]
+=== Bug fixes
+
+{agent}::
+* Add conditions To `copy_fields` processors to prevent spamming the debug logs. {agent-pull}6730[#6730] {agent-issue}5299[#5299]
+* Make enroll command backoff more conservative. {agent-pull}6983[#6983] {agent-issue}6761[#6761]
+* Add missing null checks to AST methods. {agent-pull}7009[#7009] {agent-issue}6999[#6999]
+* Fix an issue where `fixpermissions` on Windows incorrectly returned an error message due to improper handling of Windows API return values. {agent-pull}7059[#7059] {agent-issue}6917[#6917]
+* Support IPv6 hosts in enroll URL. {agent-pull}7036[#7036] 
+* Support IPv6 hosts in GRPC configuration. {agent-pull}7035[#7035] 
+* Rotate logger output file when writing to a symbolic link. {agent-pull}6938[#6938] 
+* Do not fail Windows permission updates on missing files or paths. {agent-pull}7305[#7305] {agent-issue}7301[#7301]
+* Make `otelcol` executable in the Docker image. {agent-pull}7345[#7345] 
+
+// end 8.16.6 relnotes
+
+
 
 // begin 8.16.5 relnotes
 
@@ -249,7 +283,7 @@ stack: frame={sp:0xc0000675d0, fp:0xc000067738} stack=[0xc000064000,0xc000068000
 (...)
 ----
 
-For other examples, refer to {agent} link:https://github.com/elastic/elastic-agent/issues/5952#issuecomment-2475044465[issue #5952].
+For other examples, refer to {agent} link:5952#issuecomment-2475044465[issue #5952].
 
 This problem occurs when {agent} notifies {fleet} to audit the uninstall process.
 

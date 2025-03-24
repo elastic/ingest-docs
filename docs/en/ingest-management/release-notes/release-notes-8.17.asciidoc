@@ -120,7 +120,7 @@ The 8.17.1 release Added the following new and notable features.
 
 {agent}::
 * During uninstall, call the audit or unenroll API before components are stopped, if {agent} is running a {fleet-server} instance. {agent-pull}6085[#6085] {agent-issue}5752[#5752]
-* Update OTel components to v0.116.0. {agent-pull}6391[#6391]
+* Update OTel components to v0.115.0. {agent-pull}6391[#6391]
 * Restore the `cloud-defend` binary which was accidentally removed in version 8.17.0. {agent-pull}6470[#6470] {agent-issue}6469[#6469]
 
 // end 8.17.1 relnotes

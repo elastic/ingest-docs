@@ -59,7 +59,7 @@ The 8.17.4 release adds the following new and notable features.
 {agent}::
 * Add conditions to the `copy_fields` processors used with {agent} self-monitoring to prevent spamming the debug logs. {agent-pull}6730[#6730] {agent-issue}5299[#5299]
 * Improve message when Fleet Server's audit API endpoint returns a 401 Unauthorized response. {agent-pull}6735[#6735] {agent-issue}6711[#6711]
-* Fix `secret_paths` redaction along complex paths. {agent-pull}6710[#6710] 
+* Fix `secret_paths` redaction along complex paths in diagnostics. {agent-pull}6710[#6710] 
 * Make enroll command backoff more conservative. {agent-pull}6983[#6983] {agent-issue}6761[#6761]
 * Fix an issue where `fixpermissions` on Windows incorrectly returned an error message due to improper handling of Windows API return values. {agent-pull}7059[#7059] {agent-issue}6917[#6917]
 * Support IPv6 hosts in enroll URL. {agent-pull}7036[#7036] 

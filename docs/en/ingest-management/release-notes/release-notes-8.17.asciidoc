@@ -57,7 +57,7 @@ The 8.17.4 release adds the following new and notable features.
 === Bug fixes
 
 {agent}::
-* Add conditions to `copy_fields` processors to prevent spamming the debug logs. {agent-pull}6730[#6730] {agent-issue}5299[#5299]
+* Add conditions to the `copy_fields` processors used with {agent} self-monitoring to prevent spamming the debug logs. {agent-pull}6730[#6730] {agent-issue}5299[#5299]
 * Improve message when audit or uninstall returns 401. {agent-pull}6735[#6735] {agent-issue}6711[#6711]
 * Fix `secret_paths` redaction along complex paths. {agent-pull}6710[#6710] 
 * Make enroll command backoff more conservative. {agent-pull}6983[#6983] {agent-issue}6761[#6761]

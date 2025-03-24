@@ -66,7 +66,7 @@ The 8.17.4 release adds the following new and notable features.
 * Support IPv6 hosts in GRPC configuration. {agent-pull}7035[#7035] 
 * Rotate logger output file when writing to a symbolic link. {agent-pull}6938[#6938] 
 * Do not fail Windows permission updates on missing files or paths. {agent-pull}7305[#7305] {agent-issue}7301[#7301]
-* Make `otelcol` executable in the Docker image. {agent-pull}7345[#7345] 
+* Make `otelcol` script executable in the Docker image. {agent-pull}7345[#7345] 
 * Fix {es} exporter configuration in `kube-stack` values. {agent-pull}7380[#7380] 
 
 // end 8.17.4 relnotes

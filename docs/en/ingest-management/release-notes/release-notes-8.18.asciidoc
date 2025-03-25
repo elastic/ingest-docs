@@ -40,7 +40,7 @@ The 8.18.0 release Added the following new and notable features.
 * Add status tracking for agentless integrations. ({kibana-pull}199567[#199567])
 
 {agent}::
-* Add ability to run the Elastic Distribution of OTel Collector at the same time as other inputs. {agent-pull}5767[#5767] {agent-issue}5796[#5796]
+* Add ability to run the Elastic Distribution of OTel Collector at the same time as other inputs. This feature is in technical preview. {agent-pull}5767[#5767] {agent-issue}5796[#5796]
 * Add a sample configuration to be used when deploying the link:https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack[OpenTelemetry Kube Stack Helm Chart]. {agent-pull}5822[#5822]
 * Add the GeoIP OpenTelemetry processor to {agent}. {agent-pull}6134[#6134]
 * Add the link:https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/routingconnector[OpenTelemetry routing connector] to the Elastic Distribution of OTel Collector. {agent-pull}6210[#6210]

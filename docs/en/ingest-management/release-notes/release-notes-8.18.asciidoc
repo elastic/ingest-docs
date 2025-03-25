@@ -98,7 +98,7 @@ The 8.18.0 release Added the following new and notable features.
 * Replace `list` with `items` from from `kibanaFetchToken` as `list` is deprecated in the API response and will be removed. {agent-pull}6437[#6437] {agent-issue}6023[#6023]
 * Restore `cloud-defend` as an expected binary after it was accidentally removed from containers in 8.17.0 and later versions. {agent-pull}6470[#6470] {agent-issue}6469[#6469]
 * Restore the `maintainer` label for container images rather than the default inherited from a base image. {agent-pull}6512[#6512]
-* Fix enrollment for containerised {agent} when the enrollment token changes or the agent is unenrolled. {agent-pull}6568[#6568] {agent-issue}3586[#3586]
+* Fix enrollment for containerized {agent} when the enrollment token changes or the agent is unenrolled. {agent-pull}6568[#6568] {agent-issue}3586[#3586]
 * Change how Windows process handles are obtained when assigning sub-processes to Job objects. {agent-pull}6825[#6825]
 
 // end 8.18.0 relnotes

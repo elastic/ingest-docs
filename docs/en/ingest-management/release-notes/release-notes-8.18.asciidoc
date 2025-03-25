@@ -61,7 +61,9 @@ The 8.18.0 release Added the following new and notable features.
 * Enable sub-feature privileges for {fleet}. ({kibana-pull}203182[#203182])
 
 {fleet-server}::
-* Update {fleet-server} Go version to 1.23.5. {fleet-server-pull}4353[#4353]
+* Validate user pbkdf2 settings for FIPS compliance. {fleet-server-pull}4542[#4542]
+* Update {fleet-server} Go version to 1.24.0. {fleet-server-pull}4543[#4543]
+
 
 {agent}::
 * Re-enable the OTel subcommand on Windows. {agent-pull}6068[#6068] {agent-issue}4976[#4976] {agent-issue}5710[#5710] 
@@ -70,7 +72,8 @@ The 8.18.0 release Added the following new and notable features.
 * Embed hints-based inputs in the {agent} Kubernetes container image. {agent-pull}6381[#6381] {agent-issue}5661[#5661]
 * Add an error to the Windows Application Event Log if the `install`, `uninstall`, or `enroll` commands fail. {agent-pull}6410[#6410] {agent-issue}6338[#6338] 
 * Add a logger to print the status and code when an {agent} enrollment call to {fleet} fails. {agent-pull}6477[#6477] {agent-issue}6287[#6287]
-* Update Go version to 1.24.0.  {agent-pull}7443[#7443]
+* Update {agent} Go version to 1.24.0. {agent-pull}6932[#6932]
+* Update OTel components to v0.120.x. {agent-pull}7443[#7443]
 
 [discrete]
 [[bug-fixes-8.18.0]]
@@ -83,6 +86,9 @@ The 8.18.0 release Added the following new and notable features.
 * Fix API code to prevent bulk actions from timing out. ({kibana-pull}205735[#205735])
 * Fix generation of dynamic mapping for objects with specific subfields. ({kibana-pull}204104[#204104])
 * Fix logic to ensure that agents are only considered stuck in updating when an upgrade fails. ({kibana-pull}202126[#202126])
+
+{fleet-server}::
+* Return a 429 error when the {fleet-server} connection limit is reached instead of silently closing connections. {fleet-server-pull}4402[#4402]
 
 {agent}::
 * Prevent installation of {elastic-defend} in emulated environment, in which it's not supported. {agent-pull}6095[#6095] {agent-issue}6082[#6082] 

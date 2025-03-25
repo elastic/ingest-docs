@@ -45,7 +45,7 @@ The 8.18.0 release Added the following new and notable features.
 * Add the GeoIP OpenTelemetry processor to {agent}. {agent-pull}6134[#6134]
 * Add the metricbeat receiver to the OTel receivers included in {agent}. {agent-pull}6182[#6182] {agent-issue}6138[#6138]
 * Add the link:https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/routingconnector[OpenTelemetry routing connector] to the Elastic Distribution of OTel Collector. {agent-pull}6210[#6210]
-* Add support for the link:https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter[Otel loadbalancing exporter] to {agent}. {agent-pull}6315[#6315]
+* Add support for the link:https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter[OTel loadbalancing exporter] to {agent}. {agent-pull}6315[#6315]
 * Add a new Kubernetes deployment of the Elastic Distribution of OTel Collector named "gateway", to simplify the daemonset collector configuration and unify managed/self-managed scenarios. {agent-pull}6444[#6444]
 * Add the `components` command for {agent} in OTel mode, to list the supported components the the Elastic Distribution of OTel Collector includes. {agent-pull}6539[#6539]
 * Add the `receivercreator` and `k8sobserver` components to the Elastic Distribution of OTel Collector to help cover autodiscovery scenarios in Kubernetes. {agent-pull}6561[#6561]

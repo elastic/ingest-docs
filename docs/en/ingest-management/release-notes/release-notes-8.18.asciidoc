@@ -36,7 +36,7 @@ The 8.18.0 release Added the following new and notable features.
 
 {fleet}::
 * Add next steps and actions to the agentless integrations flyout. ({kibana-pull}203824[#203824])
-* Add support for columns when exporting agents to CSV. ({kibana-pull}203103[#203103])
+* Add support for selecting columns when exporting agents to CSV. ({kibana-pull}203103[#203103])
 * Add status tracking for agentless integrations. ({kibana-pull}199567[#199567])
 
 {agent}::

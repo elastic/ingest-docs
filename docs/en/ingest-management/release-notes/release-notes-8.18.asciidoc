@@ -80,7 +80,7 @@ The 8.18.0 release Added the following new and notable features.
 
 {fleet}::
 * Support `is_default` on integration deployment modes. ({kibana-pull}208284[#208284])
-* Fix a UI error caused when an agent becomes orphan. ({kibana-pull}207746[#207746])
+* Fix a UI error caused when an agent becomes orphaned. ({kibana-pull}207746[#207746])
 * Restrict non-local {es} output types for agentless integrations and policies. ({kibana-pull}207296[#207296])
 * Fix API code to prevent bulk actions from timing out. ({kibana-pull}205735[#205735])
 * Fix generation of dynamic mapping for objects with specific subfields. ({kibana-pull}204104[#204104])

@@ -35,6 +35,33 @@ Also see:
 Review important information about the  8.17.4 release.
 
 [discrete]
+[[known-issues-8.17.4]]
+=== Known issues
+
+[[known-issue-1749-8-17-4]]
+.Inaccurate option to upgrade across major releases appears in {fleet} UI
+[%collapsible]
+====
+
+*Details*
+
+In late 8.x releases, there's a bug in the {fleet} UI that causes `9.0.0` to appear as an option for {agent} upgrades. This option results in an error when selected, as upgrades across major releases are not supported for {agent}. For example, an agent can't be upgraded to version 9.0 while {kib} and {fleet-server} are on version 8.x.
+
+The {agent} upgrade is not selectable:
+
+image::images/upgrade-agent-not-selectable.png[{agent} upgrade is not selectable]
+
+The {fleet-server} upgrade is selectable, with an inconsistent UI state and error on submit:
+
+image::images/upgrade-fleet-server-inconsistent-state.png[{fleet-server} inconsistent UI state]
+
+*Impact* +
+
+In the 9.x releases, the option that appears in the UI for an upgrade across a major release should be ignored.
+
+====
+
+[discrete]
 [[new-features-8.17.4]]
 === New features
 
@@ -77,6 +104,33 @@ The 8.17.4 release adds the following new and notable features.
 == {fleet} and {agent} 8.17.3
 
 Review important information about the {fleet} and {agent} 8.17.3 release.
+
+[discrete]
+[[known-issues-8.17.3]]
+=== Known issues
+
+[[known-issue-1749-8-17-3]]
+.Inaccurate option to upgrade across major releases appears in {fleet} UI
+[%collapsible]
+====
+
+*Details*
+
+In late 8.x releases, there's a bug in the {fleet} UI that causes `9.0.0` to appear as an option for {agent} upgrades. This option results in an error when selected, as upgrades across major releases are not supported for {agent}. For example, an agent can't be upgraded to version 9.0 while {kib} and {fleet-server} are on version 8.x.
+
+The {agent} upgrade is not selectable:
+
+image::images/upgrade-agent-not-selectable.png[{agent} upgrade is not selectable]
+
+The {fleet-server} upgrade is selectable, with an inconsistent UI state and error on submit:
+
+image::images/upgrade-fleet-server-inconsistent-state.png[{fleet-server} inconsistent UI state]
+
+*Impact* +
+
+In the 9.x releases, the option that appears in the UI for an upgrade across a major release should be ignored.
+
+====
 
 [discrete]
 [[enhancements-8.17.3]]

@@ -45,7 +45,7 @@ Review important information about the  8.17.5 release.
 === Bug fixes
 
 {fleet}::
-* Enable unenroll inactive agent tasks to unenroll some agents if the first set returned is equal to `UNENROLLMENT_BATCH_SIZE`. ({kibana-pull}216283[#216283])
+* Enable unenroll inactive agent tasks to unenroll some agents if the first set returned is equal to `UNENROLLMENT_BATCH_SIZE`. {kibana-pull}216283[#216283]
 
 {fleet-server}::
 * Fix host parsing in {es} output diagnostics. {fleet-server-pull}4765[#4765]

@@ -40,9 +40,6 @@ invoking the wrong binary.
 * <<elastic-agent-version-command,version>>
 //* <<elastic-agent-watch-command,watch>>
 
-++++
-<hr>
-++++
 
 [discrete]
 [[elastic-agent-diagnostics-command]]

@@ -7,9 +7,13 @@ Beginning in version 8.12.0, you can send {agent} data to a remote {es} cluster.
 
 A remote {es} cluster supports the same <<es-output-settings,output settings>> as your main {es} cluster.
 
-WARNING: A bug has been found that causes {elastic-defend} response actions to stop working when a remote {es} output is configured for an agent. This bug is currently being investigated and is expected to be resolved in an upcoming release.
+[NOTE] 
+====
+Note the following restrictions with the remote {es} output:
 
-NOTE: Using a remote {es} output with a target cluster that has {cloud}/ec-traffic-filtering-deployment-configuration.html[traffic filters] enabled is not currently supported.
+* Using a remote {es} output with a target cluster that has {cloud}/ec-traffic-filtering-deployment-configuration.html[traffic filters] enabled is not currently supported.
+* Using {elastic-defend} is currently not supported when a remote {es} output is configured for an agent.
+====
 
 To configure a remote {es} cluster for your {agent} data:
 

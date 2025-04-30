@@ -68,3 +68,5 @@ After the output is created, you can update an {agent} policy to use the new rem
 The remote {es} cluster is now configured.
 
 As a final step before using the remote {es} output, you need to make sure that for any integrations that have been <<add-integration-to-policy,added to your {agent} policy>>, the integration assets have been installed on the remote {es} cluster. Refer to <<install-uninstall-integration-assets,Install and uninstall {agent} integration assets>> for the steps.
+
+NOTE: When you use a remote {es} output, {fleet-server} performs a test to ensure connectivity to the remote cluster. The result of that connectivity test is used to report the ES Remote output as healthy or unhealthy on the **Fleet** > **Settings** > **Outputs** page, under the **Status** column. In some cases, the remote {es} output used for data from {agent} may be reachable only by those agents and not by {fleet-server}, so the unhealthy state and an associated `Unable to connect` error that appears on the UI can be ignored.

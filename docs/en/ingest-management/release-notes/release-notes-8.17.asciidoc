@@ -42,7 +42,7 @@ Review important information about the  8.17.6 release.
 === Enhancements
 
 {agent}::
-* Set collectors fullnameOverride For Elastic Distribution of OTel Collector kube-stack values. {agent-pull}7754[#7754] {agent-issue}7381[#7381]
+* Use `fullnameOverride` to set the fully qualified application names in the EDOT Kube-Stack Helm chart. {agent-pull}7754[#7754] {agent-issue}7381[#7381]
 
 // end 8.17.6 relnotes
 

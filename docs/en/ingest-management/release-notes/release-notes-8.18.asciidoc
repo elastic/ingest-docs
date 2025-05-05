@@ -14,12 +14,35 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.18.1>>
 * <<release-notes-8.18.0>>
 
 Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.18.1 relnotes
+
+[[release-notes-8.18.1]]
+== {fleet} and {agent} 8.18.1
+
+Review important information about the {fleet} and {agent} 8.18.1 release.
+
+[discrete]
+[[bug-fixes-8.18.1]]
+=== Bug fixes
+
+{fleet-server}::
+* Add `grpcnotrace` build tags and ensure DCE (dead code elimination) is enabled. Reduce binary size by 34%. {fleet-server-pull}4784[#4784]
+
+{agent}::
+
+
+
+
+// end 8.18.1 relnotes
+
 
 // begin 8.18.0 relnotes
 

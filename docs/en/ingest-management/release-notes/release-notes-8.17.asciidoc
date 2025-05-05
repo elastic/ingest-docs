@@ -14,6 +14,7 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.17.6>>
 * <<release-notes-8.17.5>>
 * <<release-notes-8.17.4>>
 * <<release-notes-8.17.3>>
@@ -25,6 +26,28 @@ Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+
+
+
+// begin 8.17.6 relnotes
+
+[[release-notes-8.17.6]]
+== {fleet} and {agent} 8.17.6
+
+Review important information about the  8.17.6 release.
+
+[discrete]
+[[enhancements-8.17.6]]
+=== Enhancements
+
+{agent}::
+* Use `fullnameOverride` to set the fully qualified application names in the EDOT Kube-Stack Helm chart. {agent-pull}7754[#7754] {agent-issue}7381[#7381]
+
+// end 8.17.6 relnotes
+
+
+
 
 // begin 8.17.5 relnotes
 

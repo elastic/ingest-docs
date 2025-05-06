@@ -28,11 +28,15 @@ cluster. For more information, refer to the
 You can use whatever process you typically use to generate PEM-formatted
 certificates. The examples shown here use the `certutil` tool provided by {es}.
 
-TIP: The `certutil` tool is not available on {ecloud}, but you can still use it
+[TIP] 
+==== 
+* The `certutil` tool is not available on {ecloud}, but you can still use it
 to generate certificates for {agent} to {ls} connections. Just
 https://www.elastic.co/downloads/elasticsearch[download an {es} package],
 extract it to a local directory, and run the `elasticsearch-certutil` command.
 There's no need to start {es}!
+* If you choose not to use link:https://www.elastic.co/guide/en/elasticsearch/reference/8.17/certutil.html[certutil], the certificates that you obtain must allow for both clientAuth and serverAuth if the extended key usage extension is present.
+====
 
 . Generate a certificate authority (CA). Skip this step if you want to use an
 existing CA.

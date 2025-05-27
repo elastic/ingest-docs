@@ -14,6 +14,10 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.17.6>>
+* <<release-notes-8.17.5>>
+* <<release-notes-8.17.4>>
+* <<release-notes-8.17.3>>
 * <<release-notes-8.17.2>>
 * <<release-notes-8.17.1>>
 * <<release-notes-8.17.0>>
@@ -22,6 +26,205 @@ Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.17.7 relnotes
+
+[[release-notes-8.17.7]]
+== {fleet} and {agent} 8.17.7
+
+Review important information about the 8.17.7 release.
+
+[discrete]
+[[security-updates-8.17.7]]
+=== Security updates
+
+* Upgrade Go version to v1.24.3 in {{agent}}. {agent-pull}8109[https://github.com/elastic/elastic-agent/pull/8109]
+
+
+[discrete]
+[[bug-fixes-8.17.7]]
+=== Bug fixes
+
+* Improve the upgrade process for {{agent}} installed using DEB or RPM packages by copying the run directory from the previous installation into the new version's folder. {agent-pull}7999[https://github.com/elastic/elastic-agent/pull/7999] {agent-issue}3832[https://github.com/elastic/elastic-agent/issues/3832]
+
+// end 8.17.7 relnotes
+
+// begin 8.17.6 relnotes
+
+[[release-notes-8.17.6]]
+== {fleet} and {agent} 8.17.6
+
+Review important information about the  8.17.6 release.
+
+[discrete]
+[[enhancements-8.17.6]]
+=== Enhancements
+
+{agent}::
+* Use `fullnameOverride` to set the fully qualified application names in the EDOT Kube-Stack Helm chart. {agent-pull}7754[#7754] {agent-issue}7381[#7381]
+
+// end 8.17.6 relnotes
+
+
+
+
+// begin 8.17.5 relnotes
+
+[[release-notes-8.17.5]]
+== {fleet} and {agent} 8.17.5
+
+Review important information about the  8.17.5 release.
+
+[discrete]
+[[enhancements-8.17.5]]
+=== Enhancements
+
+{agent}::
+* Ensure consistent input order In self-monitoring configuration. {agent-pull}7724[#7724]
+
+[discrete]
+[[bug-fixes-8.17.5]]
+=== Bug fixes
+
+{fleet}::
+* Enable unenroll inactive agent tasks to unenroll some agents if the first set returned is equal to `UNENROLLMENT_BATCH_SIZE`. {kibana-pull}216283[#216283]
+
+{fleet-server}::
+* Fix host parsing in {es} output diagnostics. {fleet-server-pull}4765[#4765]
+* Redact output log lines during bootstrap configuration. {fleet-server-pull}4775[#4775]
+* Fix concurrent access to remote bulker configuration. {fleet-server-pull}4776[#4776]
+
+{agent}::
+* Change how Windows process handles are obtained when assigning sub-processes to job objects. {agent-pull}6825[#6825]
+* Rework Windows user password generation to meet security policy constraints. {agent-pull}7507[#7507] {agent-issue}7506[#7506]
+* Wait for Windows service to be fully removed before re-installing during agent switch. {agent-pull}7589[#7589] {agent-issue}6970[#6970]
+* Fix panic during shutdown in `Fleetgateway`. {agent-pull}7629[#7629] {agent-issue}7309[#7309]
+
+// end 8.17.5 relnotes
+
+
+
+// begin 8.17.4 relnotes
+
+[[release-notes-8.17.4]]
+== {fleet} and {agent} 8.17.4
+
+Review important information about the  8.17.4 release.
+
+[discrete]
+[[known-issues-8.17.4]]
+=== Known issues
+
+[[known-issue-1749-8-17-4]]
+.Inaccurate option to upgrade across major releases appears in {fleet} UI
+[%collapsible]
+====
+
+*Details*
+
+In late 8.x releases, there's a bug in the {fleet} UI that causes `9.0.0` to appear as an option for {agent} upgrades. This option results in an error when selected, as upgrades across major releases are not supported for {agent}. For example, an agent can't be upgraded to version 9.0 while {kib} and {fleet-server} are on version 8.x.
+
+The {agent} upgrade is not selectable:
+
+image::images/upgrade-agent-not-selectable.png[{agent} upgrade is not selectable]
+
+The {fleet-server} upgrade is selectable, with an inconsistent UI state and error on submit:
+
+image::images/upgrade-fleet-server-inconsistent-state.png[{fleet-server} inconsistent UI state]
+
+*Impact* +
+
+In the 9.x releases, the option that appears in the UI for an upgrade across a major release should be ignored.
+
+====
+
+[discrete]
+[[new-features-8.17.4]]
+=== New features
+
+The 8.17.4 release adds the following new and notable features.
+
+{agent}::
+* Add managed OTLP endpoint sample configurations. {agent-pull}6630[#6630]
+
+[discrete]
+[[enhancements-8.17.4]]
+=== Enhancements
+
+{agent}::
+* Improve `kubernetes_secrets` provider secret logging. {agent-pull}6841[#6841] {agent-issue}6187[#6187]
+* Include all metadata that is sent to {fleet} in the `agent-info.yaml` file in diagnostics by default. {agent-pull}7029[#7029]
+* Add API key prefix to managed OTLP endpoint host configurations in EDOT collector kube stack Helm chart. {agent-pull}7063[#7063]
+
+[discrete]
+[[bug-fixes-8.17.4]]
+=== Bug fixes
+
+{agent}::
+* Add conditions to the `copy_fields` processors used with {agent} self-monitoring to prevent spamming the debug logs. {agent-pull}6730[#6730] {agent-issue}5299[#5299]
+* Improve message when Fleet Server's audit API endpoint returns a 401 Unauthorized response. {agent-pull}6735[#6735] {agent-issue}6711[#6711]
+* Fix `secret_paths` redaction along complex paths in diagnostics. {agent-pull}6710[#6710]
+* Make enroll command backoff more conservative and add backoff when using `--delay-enroll`. {agent-pull}6983[#6983] {agent-issue}6761[#6761]
+* Fix an issue where `fixpermissions` on Windows incorrectly returned an error message due to improper handling of Windows API return values. {agent-pull}7059[#7059] {agent-issue}6917[#6917]
+* Support IPv6 hosts in enroll URL. {agent-pull}7036[#7036]
+* Support IPv6 hosts in GRPC configuration. {agent-pull}7035[#7035]
+* Rotate logger output file when writing to a symbolic link. {agent-pull}6938[#6938]
+* Do not fail Windows permission updates on missing files or paths. {agent-pull}7305[#7305] {agent-issue}7301[#7301]
+* Make `otelcol` script executable in the Docker image. {agent-pull}7345[#7345]
+* Fix {es} exporter configuration in `kube-stack` values. {agent-pull}7380[#7380]
+
+// end 8.17.4 relnotes
+
+// begin 8.17.3 relnotes
+
+[[release-notes-8.17.3]]
+== {fleet} and {agent} 8.17.3
+
+Review important information about the {fleet} and {agent} 8.17.3 release.
+
+[discrete]
+[[known-issues-8.17.3]]
+=== Known issues
+
+[[known-issue-1749-8-17-3]]
+.Inaccurate option to upgrade across major releases appears in {fleet} UI
+[%collapsible]
+====
+
+*Details*
+
+In late 8.x releases, there's a bug in the {fleet} UI that causes `9.0.0` to appear as an option for {agent} upgrades. This option results in an error when selected, as upgrades across major releases are not supported for {agent}. For example, an agent can't be upgraded to version 9.0 while {kib} and {fleet-server} are on version 8.x.
+
+The {agent} upgrade is not selectable:
+
+image::images/upgrade-agent-not-selectable.png[{agent} upgrade is not selectable]
+
+The {fleet-server} upgrade is selectable, with an inconsistent UI state and error on submit:
+
+image::images/upgrade-fleet-server-inconsistent-state.png[{fleet-server} inconsistent UI state]
+
+*Impact* +
+
+In the 9.x releases, the option that appears in the UI for an upgrade across a major release should be ignored.
+
+====
+
+[discrete]
+[[enhancements-8.17.3]]
+=== Enhancements
+
+{agent}::
+* Add the configuration files for the Elastic Distribution of OTel Collector that will be provided during the {kib} OpenTelemetry Host and Kubernetes onboarding flow for MOTel. {agent-pull}6641[#6630]
+
+[discrete]
+[[bug-fixes-8.17.3]]
+=== Bug fixes
+
+{agent}::
+* Add missing checks for null values in AST collection nodes. {agent-pull}7009[#7009] {agent-issue}6999[#6999]
+* Set the gateway Kubernetes `spec.replicas` for the gateway OpenTelemetry Collector to prevent horizontal Pod autoscaler fails. {agent-pull}7011[#7011]
+
+// end 8.17.3 relnotes
 
 // begin 8.17.2 relnotes
 
@@ -83,7 +286,7 @@ impact to your application.
 
 *Details*
 
-{ecloud} deployments that use the smallest available {kib} instance size of 1 GB may crash due to out of memory errors when the Security UI is loaded. 
+{ecloud} deployments that use the smallest available {kib} instance size of 1 GB may crash due to out of memory errors when the Security UI is loaded.
 
 *Impact* +
 
@@ -97,8 +300,9 @@ As a workaround, you can upgrade your deployment to 8.17.1 in which this issue h
 [[new-features-8.17.1]]
 === New features
 
-The 8.17.1 release Added the following new and notable features.
+The 8.17.1 release added the following new and notable features.
 
+{agent}::
 * Add the link:https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter[Otel loadbalancing exporter] to {agent}. {agent-pull}6315[#6315]
 
 [discrete]

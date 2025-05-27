@@ -14,6 +14,7 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.18.1>>
 * <<release-notes-8.18.0>>
 
 Also see:
@@ -21,29 +22,27 @@ Also see:
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
 
-// begin 8.18.2 relnotes
+// begin 8.18.1 relnotes
 
-[[release-notes-8.18.2]]
-==  8.18.2
+[[release-notes-8.18.1]]
+== {fleet} and {agent} 8.18.1
 
-Review important information about the  8.18.2 release.
+Review important information about the {fleet} and {agent} 8.18.1 release.
 
 [discrete]
-[[security-updates-8.18.2]]
-=== Security updates
+[[bug-fixes-8.18.1]]
+=== Bug fixes
+
+{fleet-server}::
+* Add `grpcnotrace` build tags and ensure DCE (dead code elimination) is enabled. Reduce binary size by 34%. {fleet-server-pull}4784[#4784]
 
 {agent}::
-* Update Go version to v1.24.3 {elastic-agent-pull}https://github.com/elastic/elastic-agent/pull/8109[#https://github.com/elastic/elastic-agent/pull/8109]
 
 
-[discrete]
-[[enhancements-8.18.2]]
-=== Enhancements
 
-{fleet}::
-* Update Go version to v1.24.3 {fleet-server-pull}https://github.com/elastic/fleet-server/pull/4891[#https://github.com/elastic/fleet-server/pull/4891] 
 
-// end 8.18.2 relnotes
+// end 8.18.1 relnotes
+
 
 // begin 8.18.0 relnotes
 
@@ -51,6 +50,33 @@ Review important information about the  8.18.2 release.
 == {fleet} and {agent} 8.18.0
 
 Review important information about the {fleet} and {agent} 8.18.0 release.
+
+[discrete]
+[[known-issues-8.18.0]]
+=== Known issues
+
+[[known-issue-1749-8-18]]
+.Inaccurate option to upgrade across major releases appears in {fleet} UI
+[%collapsible]
+====
+
+*Details*
+
+In late 8.x releases, there's a bug in the {fleet} UI that causes `9.0.0` to appear as an option for {agent} upgrades. This option results in an error when selected, as upgrades across major releases are not supported for {agent}. For example, an agent can't be upgraded to version 9.0 while {kib} and {fleet-server} are on version 8.x.
+
+The {agent} upgrade is not selectable:
+
+image::images/upgrade-agent-not-selectable.png[{agent} upgrade is not selectable]
+
+The {fleet-server} upgrade is selectable, with an inconsistent UI state and error on submit:
+
+image::images/upgrade-fleet-server-inconsistent-state.png[{fleet-server} inconsistent UI state]
+
+*Impact* +
+
+In the 9.x releases, the option that appears in the UI for an upgrade across a major release should be ignored.
+
+====
 
 [discrete]
 [[new-features-8.18.0]]

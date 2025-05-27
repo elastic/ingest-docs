@@ -66,6 +66,12 @@ If you are using {agent} with link:{serverless-docs}[{serverless-full}], note th
 * The minimum supported version of {agent} supported for use with {serverless-full} is 8.11.0.
 ====
 
+[TIP]
+.Applying {agent} configurations dynamically
+====
+When you set up {agent}, you might not yet have all input configuration details available. To solve this problem, the input configuration accepts variables and conditions that get evaluated at runtime using information from the running environment, allowing you to apply configurations dynamically. To learn more, refer to <<dynamic-input-configuration>>.
+====
+
 [discrete]
 [[elastic-agent-installation-resource-requirements]]
 == Resource requirements

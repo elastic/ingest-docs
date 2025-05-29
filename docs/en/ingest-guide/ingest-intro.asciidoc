@@ -1,0 +1,59 @@
+[[ingest-intro]]
+== Ingesting data into {es}
+
+Bring your data!
+Whether you call it _adding_, _indexing_, or _ingesting_ data, you have to get
+the data into {es} before you can search it, visualize it, and use it for insights. 
+
+Our ingest tools are flexible, and support a wide range of scenarios.
+We can help you with everything from popular and straightforward use cases, all
+the way to advanced use cases that require additional processing in order to modify or
+reshape your data before it goes to {es}.
+
+You can ingest:
+
+* **General content** (data without timestamps), such as HTML pages, catalogs, and files 
+* **Timestamped (time series) data**, such as logs, metrics, and traces for Elastic Security, Observability, Search solutions, or for your own custom solutions 
+
+[discrete]
+[[ingest-general]]
+=== Ingesting general content
+
+Elastic offer tools designed to ingest specific types of general content. 
+The content type determines the best ingest option.
+
+* To index **documents** directly into {es}, use the {es} link:{ref}/docs.html[document APIs].
+* To send **application data** directly to {es}, use an link:https://www.elastic.co/guide/en/elasticsearch/client/index.html[{es}
+language client]. 
+* To index **web page content**, use the Elastic link:https://www.elastic.co/web-crawler[web crawler].
+* To sync **data from third-party sources**, use link:{ref}/es-connectors.html[connectors]. 
+  A connector syncs content from an original data source to an {es} index. 
+  Using connectors you can create _searchable_, read-only replicas of your data sources.
+* To index **single files** for testing in a non-production environment, use the {kib} link:{kibana-ref}/connect-to-elasticsearch.html#upload-data-kibana[file uploader].
+
+If you would like to try things out before you add your own data, try using our {kibana-ref}/connect-to-elasticsearch.html#_add_sample_data[sample data].
+
+[discrete]
+[[ingest-timestamped]]
+=== Ingesting time-stamped data
+
+[ingest-best-timestamped]
+.What's the best approach for ingesting time-stamped data? 
+**** 
+The best approach for ingesting data is the _simplest option_ that _meets your needs_ and _satisfies your use case_.
+
+In most cases, the _simplest option_ for ingesting timestamped data is using {agent} paired with an Elastic integration.
+
+* Install {fleet-guide}[Elastic Agent] on the computer(s) from which you want to collect data.
+* Add the {integrations-docs}[Elastic integration] for the data source to your deployment.
+
+Integrations are available for many popular platforms and services, and are a
+good place to start for ingesting data into Elastic solutions--Observability,
+Security, and Search--or your own search application.
+
+Check out the {integrations-docs}/all_integrations[Integration quick reference]
+to search for available integrations. 
+If you don't find an integration for your data source or if you need
+additional processing to extend the integration, we still have you covered.
+Check out <<ingest-addl-proc,additional processing>> for a sneak peek.
+****

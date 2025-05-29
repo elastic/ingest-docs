@@ -531,7 +531,7 @@ Setting this to `true` is not recommended.
 
 // To do: link to required privileges
 
-*Default:* `elastic`
+*Default:* none
 
 // end::elasticsearch-username[]
 
@@ -560,9 +560,22 @@ This user needs the privileges required to publish events to {es}.
 
 | (string) The basic authentication password used to connect to {kib} and retrieve a `service_token` for {fleet}.
 
-*Default:* `changeme`
+*Default:* none
 
 // end::elasticsearch-password[]
+
+// =============================================================================
+
+// tag::elasticsearch-api-key[]
+|
+[id="env-{type}-elasticsearch-api-key"]
+`ELASTICSEARCH_API_KEY`
+
+| (string) API key used for authenticating to Elasticsearch.
+
+*Default:* none
+
+// end::elasticsearch-api-key[]
 
 // =============================================================================
 

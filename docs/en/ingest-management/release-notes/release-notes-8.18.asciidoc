@@ -34,15 +34,10 @@ Review important information about the  8.18.2 release.
 === Security updates
 
 {agent}::
-* Update Go version to v1.24.3 {elastic-agent-pull}https://github.com/elastic/elastic-agent/pull/8109[#https://github.com/elastic/elastic-agent/pull/8109]
-
-
-[discrete]
-[[enhancements-8.18.2]]
-=== Enhancements
+* Update Go version to v1.24.3 {elastic-agent-pull}https://github.com/elastic/elastic-agent/pull/8109[#8109]
 
 {fleet}::
-* Update Go version to v1.24.3 {fleet-server-pull}https://github.com/elastic/fleet-server/pull/4891[#https://github.com/elastic/fleet-server/pull/4891]
+* Update Go version to v1.24.3 {fleet-server-pull}https://github.com/elastic/fleet-server/pull/4891[#4891]
 
 // end 8.18.2 relnotes
 
@@ -59,8 +54,6 @@ Review important information about the {fleet} and {agent} 8.18.1 release.
 
 {fleet-server}::
 * Add `grpcnotrace` build tags and ensure DCE (dead code elimination) is enabled. Reduce binary size by 34%. {fleet-server-pull}4784[#4784]
-
-{agent}::
 
 // end 8.18.1 relnotes
 

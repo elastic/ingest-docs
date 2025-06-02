@@ -194,25 +194,6 @@ Review important information about the {fleet} and {agent} 8.15.1 release.
 [[known-issues-8.15.1]]
 === Known issues
 
-[[known-issue-issue-40705]]
-.{beats} based integrations stop publishing data after a network error unless restarted.
-[%collapsible]
-====
-
-*Details*
-
-A bugfix merged for 8.15.1 can cause repeated `Get \"https://${ELASTICSEARCH_HOST}:443\": context canceled` errors
-after a transient network error (for example DNS failure) that prevent {agent} integrations based on {beats} from publishing data.
-{agent} must be restarted for publishing to continue.
-
-See {beats} issue link:https://github.com/elastic/beats/issues/40705[#40705] for details.
-
-*Impact* +
-
-Avoid upgrading to 8.15.1.
-
-====
-
 [[known-issue-issue-191730]]
 .Fleet configures additional properties in some nested objects in index templates of integrations.
 [%collapsible]

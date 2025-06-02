@@ -14,6 +14,7 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.18.2>>
 * <<release-notes-8.18.1>>
 * <<release-notes-8.18.0>>
 
@@ -21,6 +22,25 @@ Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.18.2 relnotes
+
+[[release-notes-8.18.2]]
+== {fleet} and {agent} 8.18.2
+
+Review important information about the  8.18.2 release.
+
+[discrete]
+[[security-updates-8.18.2]]
+=== Security updates
+
+{agent}::
+* Update Go version to v1.24.3 {agent-pull}8109[#8109]
+
+{fleet}::
+* Update Go version to v1.24.3 {fleet-server-pull}4891[#4891]
+
+// end 8.18.2 relnotes
 
 // begin 8.18.1 relnotes
 
@@ -58,13 +78,7 @@ The issue affects {agent} installed on Windows. There is no resolution or workar
 {fleet-server}::
 * Add `grpcnotrace` build tags and ensure DCE (dead code elimination) is enabled. Reduce binary size by 34%. {fleet-server-pull}4784[#4784]
 
-{agent}::
-
-
-
-
 // end 8.18.1 relnotes
-
 
 // begin 8.18.0 relnotes
 
@@ -155,11 +169,11 @@ The 8.18.0 release Added the following new and notable features.
 
 
 {agent}::
-* Re-enable the OTel subcommand on Windows. {agent-pull}6068[#6068] {agent-issue}4976[#4976] {agent-issue}5710[#5710] 
+* Re-enable the OTel subcommand on Windows. {agent-pull}6068[#6068] {agent-issue}4976[#4976] {agent-issue}5710[#5710]
 * Update the {agent} to only run composable providers if they are referenced in the agent policy. {agent-pull}6169[#6169] {agent-issue}3609[#3609] {agent-issue}4648[#4648]
 * Add a flag to skip {fleet} audit or unenroll when uninstalling {agent}. {agent-pull}6206[#6206] {agent-issue}5757[#5757]
 * Embed hints-based inputs in the {agent} Kubernetes container image. {agent-pull}6381[#6381] {agent-issue}5661[#5661]
-* Add an error to the Windows Application Event Log if the `install`, `uninstall`, or `enroll` commands fail. {agent-pull}6410[#6410] {agent-issue}6338[#6338] 
+* Add an error to the Windows Application Event Log if the `install`, `uninstall`, or `enroll` commands fail. {agent-pull}6410[#6410] {agent-issue}6338[#6338]
 * Add a logger to print the status and code when an {agent} enrollment call to {fleet} fails. {agent-pull}6477[#6477] {agent-issue}6287[#6287]
 * Update {agent} Go version to 1.24.0. {agent-pull}6932[#6932]
 * Update OTel components to v0.120.x. {agent-pull}7443[#7443]
@@ -180,7 +194,7 @@ The 8.18.0 release Added the following new and notable features.
 * Return a 429 error when the {fleet-server} connection limit is reached instead of silently closing connections. {fleet-server-pull}4402[#4402]
 
 {agent}::
-* Prevent installation of {elastic-defend} in emulated environment, in which it's not supported. {agent-pull}6095[#6095] {agent-issue}6082[#6082] 
+* Prevent installation of {elastic-defend} in emulated environment, in which it's not supported. {agent-pull}6095[#6095] {agent-issue}6082[#6082]
 * Re-enable notifying {fleet} when [agent] is uninstalled on Windows. {agent-pull}6257[#6257] {agent-issue}5952[#5952]
 * Log a warning on same version upgrade attempts and prevent the agent from reporting a failed upgrade state. {agent-pull}6273[#6273] {agent-issue}6186[#6186]
 * Add retries for requesting download verifiers when upgrading an agent. {agent-pull}6276[#6276] {agent-issue}5163[#5163]

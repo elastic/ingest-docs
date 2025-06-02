@@ -142,10 +142,10 @@ NOTE: SSL settings are disabled if either `enabled` is set to `false` or the
 
 | (list) List of allowed SSL/TLS versions. If the SSL/TLS server supports none
 of the specified versions, the connection will be dropped during or after the
-handshake. The list of allowed protocol versions include: `TLSv1.1`, `TLSv1.2`,
-and `TLSv1.3`.
+handshake. The list of allowed protocol versions include: `SSLv3`, `TLSv1`
+for TLS version 1.0, `TLSv1.0`, `TLSv1.1`, `TLSv1.2`, and `TLSv1.3`.
 
-*Default:* `[TLSv1.2, TLSv1.3]`
+*Default:* `[TLSv1.1, TLSv1.2, TLSv1.3]`
 
 // =============================================================================
 

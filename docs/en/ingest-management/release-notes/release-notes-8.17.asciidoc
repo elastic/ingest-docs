@@ -57,6 +57,28 @@ Review important information about the 8.17.7 release.
 Review important information about the  8.17.6 release.
 
 [discrete]
+[[known-issues-8.17.6]]
+=== Known issues
+
+[[known-issue-1800-8-17-6]]
+.On Windows, {agent} is unable to enroll into {fleet} following the {agent}'s upgrade.
+[%collapsible]
+====
+
+*Details* +
+There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll after the {agent} is upgraded. Attempting to enroll the {agent} fails with the following error:
+
+[source,console-result]
+----
+Error: the command is executed as root but the program files are not owned by the root user.
+----
+
+*Impact* +
+The issue affects {agent} installed on Windows. There is no resolution or workaround at this time, but a bug fix is expected in a later maintenance release.
+
+====
+
+[discrete]
 [[enhancements-8.17.6]]
 === Enhancements
 
@@ -65,15 +87,34 @@ Review important information about the  8.17.6 release.
 
 // end 8.17.6 relnotes
 
-
-
-
 // begin 8.17.5 relnotes
 
 [[release-notes-8.17.5]]
 == {fleet} and {agent} 8.17.5
 
 Review important information about the  8.17.5 release.
+
+[discrete]
+[[known-issues-8.17.5]]
+=== Known issues
+
+[[known-issue-1800-8-17-5]]
+.On Windows, {agent} is unable to enroll into {fleet} following the {agent}'s upgrade.
+[%collapsible]
+====
+
+*Details* +
+There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll after the {agent} is upgraded. Attempting to enroll the {agent} fails with the following error:
+
+[source,console-result]
+----
+Error: the command is executed as root but the program files are not owned by the root user.
+----
+
+*Impact* +
+The issue affects {agent} installed on Windows. There is no resolution or workaround at this time, but a bug fix is expected in a later maintenance release.
+
+====
 
 [discrete]
 [[enhancements-8.17.5]]
@@ -101,8 +142,6 @@ Review important information about the  8.17.5 release.
 * Fix panic during shutdown in `Fleetgateway`. {agent-pull}7629[#7629] {agent-issue}7309[#7309]
 
 // end 8.17.5 relnotes
-
-
 
 // begin 8.17.4 relnotes
 
@@ -135,6 +174,24 @@ image::images/upgrade-fleet-server-inconsistent-state.png[{fleet-server} inconsi
 *Impact* +
 
 In the 9.x releases, the option that appears in the UI for an upgrade across a major release should be ignored.
+
+====
+
+[[known-issue-1800-8-17-4]]
+.On Windows, {agent} is unable to enroll into {fleet} following the {agent}'s upgrade.
+[%collapsible]
+====
+
+*Details* +
+There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll after the {agent} is upgraded. Attempting to enroll the {agent} fails with the following error:
+
+[source,console-result]
+----
+Error: the command is executed as root but the program files are not owned by the root user.
+----
+
+*Impact* +
+The issue affects {agent} installed on Windows. There is no resolution or workaround at this time, but a bug fix is expected in a later maintenance release.
 
 ====
 
@@ -209,6 +266,24 @@ In the 9.x releases, the option that appears in the UI for an upgrade across a m
 
 ====
 
+[[known-issue-1800-8-17-3]]
+.On Windows, {agent} is unable to enroll into {fleet} following the {agent}'s upgrade.
+[%collapsible]
+====
+
+*Details* +
+There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll after the {agent} is upgraded. Attempting to enroll the {agent} fails with the following error:
+
+[source,console-result]
+----
+Error: the command is executed as root but the program files are not owned by the root user.
+----
+
+*Impact* +
+The issue affects {agent} installed on Windows. There is no resolution or workaround at this time, but a bug fix is expected in a later maintenance release.
+
+====
+
 [discrete]
 [[enhancements-8.17.3]]
 === Enhancements
@@ -240,6 +315,27 @@ Review important information about the {fleet} and {agent} 8.17.2 release.
 {fleet-server}::
 * Upgrade `golang.org/x/net` to v0.34.0 and `golang.org/x/crypto` to v0.32.0. {fleet-server-pull}4405[#4405]
 
+[discrete]
+[[known-issues-8.17.2]]
+=== Known issues
+
+[[known-issue-1800-8-17-2]]
+.On Windows, {agent} is unable to enroll into {fleet} following the {agent}'s upgrade.
+[%collapsible]
+====
+
+*Details* +
+There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll after the {agent} is upgraded. Attempting to enroll the {agent} fails with the following error:
+
+[source,console-result]
+----
+Error: the command is executed as root but the program files are not owned by the root user.
+----
+
+*Impact* +
+The issue affects {agent} installed on Windows. There is no resolution or workaround at this time, but a bug fix is expected in a later maintenance release.
+
+====
 
 [discrete]
 [[enhancements-8.17.2]]
@@ -296,6 +392,24 @@ As a workaround, you can upgrade your deployment to 8.17.1 in which this issue h
 
 ====
 
+[[known-issue-1800-8-17-1]]
+.On Windows, {agent} is unable to enroll into {fleet} following the {agent}'s upgrade.
+[%collapsible]
+====
+
+*Details* +
+There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll after the {agent} is upgraded. Attempting to enroll the {agent} fails with the following error:
+
+[source,console-result]
+----
+Error: the command is executed as root but the program files are not owned by the root user.
+----
+
+*Impact* +
+The issue affects {agent} installed on Windows. There is no resolution or workaround at this time, but a bug fix is expected in a later maintenance release.
+
+====
+
 [discrete]
 [[new-features-8.17.1]]
 === New features
@@ -320,7 +434,7 @@ The 8.17.1 release added the following new and notable features.
 
 {fleet-server}::
 * Do not set the `unenrolled_at` attribute when the audit/unenroll API is called. {fleet-server-pull}4221[#4221] {agent-issue}6213[#6213]
-* Remove PGP endpoint auth requirement so that air-gapped {agents} can retreive a PGP key from {fleet-server}. {fleet-server-pull}4256[#4256] {fleet-server-issue}4255[#4255]
+* Remove PGP endpoint auth requirement so that air-gapped {agents} can retrieve a PGP key from {fleet-server}. {fleet-server-pull}4256[#4256] {fleet-server-issue}4255[#4255]
 
 {agent}::
 * During uninstall, call the audit or unenroll API before components are stopped, if {agent} is running a {fleet-server} instance. {agent-pull}6085[#6085] {agent-issue}5752[#5752]
@@ -357,12 +471,12 @@ impact to your application.
 [%collapsible]
 ====
 *Details* +
-A known issue in the {agent} may prevent it from being targetted with an upgrade action for a future release.
+A known issue in the {agent} may prevent it from being targeted with an upgrade action for a future release.
 This may occur if the Defend integration is used and the agent is stopped on a running instance for too long.
 An agent may be stopped as part of an upgrade process.
 
 *Impact* +
-A bug fix is present in the 8.17.1 release of {fleet} that will prevent this from occuring.
+A bug fix is present in the 8.17.1 release of {fleet} that will prevent this from occurring.
 
 If you have agents that are affected, the workaround is as follows:
 [source,shell]

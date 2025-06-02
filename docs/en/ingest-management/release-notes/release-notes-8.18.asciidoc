@@ -26,7 +26,7 @@ Also see:
 // begin 8.18.2 relnotes
 
 [[release-notes-8.18.2]]
-==  8.18.2
+== {fleet} and {agent} 8.18.2
 
 Review important information about the  8.18.2 release.
 
@@ -35,10 +35,10 @@ Review important information about the  8.18.2 release.
 === Security updates
 
 {agent}::
-* Update Go version to v1.24.3 {elastic-agent-pull}https://github.com/elastic/elastic-agent/pull/8109[#8109]
+* Update Go version to v1.24.3 {agent-pull}8109[#8109]
 
 {fleet}::
-* Update Go version to v1.24.3 {fleet-server-pull}https://github.com/elastic/fleet-server/pull/4891[#4891]
+* Update Go version to v1.24.3 {fleet-server-pull}4891[#4891]
 
 // end 8.18.2 relnotes
 

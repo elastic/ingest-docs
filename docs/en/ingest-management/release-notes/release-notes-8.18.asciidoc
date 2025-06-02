@@ -30,6 +30,28 @@ Also see:
 Review important information about the {fleet} and {agent} 8.18.1 release.
 
 [discrete]
+[[known-issues-8.18.1]]
+=== Known issues
+
+[[known-issue-1800-8-18-1]]
+.On Windows, {agent} is unable to enroll into {fleet} following the {agent}'s upgrade.
+[%collapsible]
+====
+
+*Details* +
+There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll after the {agent} is upgraded. Attempting to enroll the {agent} fails with the following error:
+
+[source,console-result]
+----
+Error: the command is executed as root but the program files are not owned by the root user.
+----
+
+*Impact* +
+The issue affects {agent} installed on Windows. There is no resolution or workaround at this time, but a bug fix is expected in a later maintenance release.
+
+====
+
+[discrete]
 [[bug-fixes-8.18.1]]
 === Bug fixes
 
@@ -75,6 +97,24 @@ image::images/upgrade-fleet-server-inconsistent-state.png[{fleet-server} inconsi
 *Impact* +
 
 In the 9.x releases, the option that appears in the UI for an upgrade across a major release should be ignored.
+
+====
+
+[[known-issue-1800-8-18-0]]
+.On Windows, {agent} is unable to enroll into {fleet} following the {agent}'s upgrade.
+[%collapsible]
+====
+
+*Details* +
+There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll after the {agent} is upgraded. Attempting to enroll the {agent} fails with the following error:
+
+[source,console-result]
+----
+Error: the command is executed as root but the program files are not owned by the root user.
+----
+
+*Impact* +
+The issue affects {agent} installed on Windows. There is no resolution or workaround at this time, but a bug fix is expected in a later maintenance release.
 
 ====
 
@@ -219,7 +259,7 @@ The 8.18.0 release Added the following new and notable features.
 //[%collapsible]
 //====
 
-//*Details*
+//*Details* +
 
 //<Describe known issue.>
 

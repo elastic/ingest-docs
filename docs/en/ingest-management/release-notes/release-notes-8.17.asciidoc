@@ -14,6 +14,7 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.17.7>>
 * <<release-notes-8.17.6>>
 * <<release-notes-8.17.5>>
 * <<release-notes-8.17.4>>
@@ -40,6 +41,27 @@ Review important information about the 8.17.7 release.
 
 * Upgrade Go version to v1.24.3 in {{agent}}. {agent-pull}8109[https://github.com/elastic/elastic-agent/pull/8109]
 
+[discrete]
+[[known-issues-8.17.7]]
+=== Known issues
+
+[[known-issue-1800-8-17-7]]
+.On Windows, {agent} is unable to enroll into {fleet} following the {agent}'s upgrade.
+[%collapsible]
+====
+
+*Details* +
+There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll after the {agent} is upgraded. Attempting to enroll the {agent} fails with the following error:
+
+[source,console-result]
+----
+Error: the command is executed as root but the program files are not owned by the root user.
+----
+
+*Impact* +
+The issue affects {agent} installed on Windows. There is no resolution or workaround at this time, but a bug fix is expected in a later maintenance release.
+
+====
 
 [discrete]
 [[bug-fixes-8.17.7]]

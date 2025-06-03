@@ -40,6 +40,35 @@ Review important information about the  8.18.2 release.
 {fleet}::
 * Update Go version to v1.24.3 {fleet-server-pull}4891[#4891]
 
+[discrete]
+[[known-issues-8.18.2]]
+=== Known issues
+
+[[known-issue-1800-8-18-2]]
+.On Windows, {agent} is unable to enroll into {fleet} following the {agent}'s upgrade.
+[%collapsible]
+====
+
+*Details* +
+There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll after the {agent} is upgraded. Attempting to enroll the {agent} fails with the following error:
+
+[source,shell]
+----
+Error: the command is executed as root but the program files are not owned by the root user.
+----
+
+*Impact* +
+The issue affects {agent} installed on Windows. Until a bug fix is available in a later release, you can temporarily resolve the issue by changing the ownership of the {agent} directory:
+
+[source,shell]
+----
+icacls "C:\Program Files\Elastic\Agent" /setowner "NT AUTHORITY\SYSTEM" /t /l
+----
+
+After the output confirms all files were successfully processed, run the `enroll` command again.
+
+====
+
 // end 8.18.2 relnotes
 
 // begin 8.18.1 relnotes

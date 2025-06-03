@@ -1,6 +1,0 @@
-[[installation-layout]]
-= Installation layout
-
-{agent} files are installed in the following locations.
-
-include::{ingest-docs-root}/docs/en/ingest-management/tab-widgets/install-layout-widget.asciidoc[]

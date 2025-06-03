@@ -1,6 +1,0 @@
-[[fleet-agent-environment-variables]]
-= Set environment variables in an {agent} policy
-
-As an advanced use case, you may wish to configure environment variables in your {agent} policy. This is useful, for example, if there are configuration details about the system on which {agent} is running that you may not know in advance. As a solution, you may want to configure environment variables to be interpreted by {agent} at runtime, using information from the running environment.
-
-For {fleet}-managed {agents}, you can configure environment variables using the <<env-provider,Env Provider>>. Refer to <<dynamic-input-configuration,Variables and conditions in input configurations>> in the standalone {agent} documentation for more detail.

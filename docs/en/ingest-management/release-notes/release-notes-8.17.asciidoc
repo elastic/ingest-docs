@@ -53,13 +53,20 @@ Review important information about the 8.17.7 release.
 *Details* +
 There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll after the {agent} is upgraded. Attempting to enroll the {agent} fails with the following error:
 
-[source,console-result]
+[source,shell]
 ----
 Error: the command is executed as root but the program files are not owned by the root user.
 ----
 
 *Impact* +
-The issue affects {agent} installed on Windows. There is no resolution or workaround at this time, but a bug fix is expected in a later maintenance release.
+The issue affects {agent} installed on Windows. Until a bug fix is available in a later release, you can temporarily resolve the issue by changing the ownership of the {agent} directory:
+
+[source,shell]
+----
+icacls "C:\Program Files\Elastic\Agent" /setowner "NT AUTHORITY\SYSTEM" /t /l
+----
+
+After the output confirms all files were successfully processed, run the `enroll` command again.
 
 ====
 
@@ -90,13 +97,20 @@ Review important information about the  8.17.6 release.
 *Details* +
 There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll after the {agent} is upgraded. Attempting to enroll the {agent} fails with the following error:
 
-[source,console-result]
+[source,shell]
 ----
 Error: the command is executed as root but the program files are not owned by the root user.
 ----
 
 *Impact* +
-The issue affects {agent} installed on Windows. There is no resolution or workaround at this time, but a bug fix is expected in a later maintenance release.
+The issue affects {agent} installed on Windows. Until a bug fix is available in a later release, you can temporarily resolve the issue by changing the ownership of the {agent} directory:
+
+[source,shell]
+----
+icacls "C:\Program Files\Elastic\Agent" /setowner "NT AUTHORITY\SYSTEM" /t /l
+----
+
+After the output confirms all files were successfully processed, run the `enroll` command again.
 
 ====
 
@@ -128,13 +142,20 @@ Review important information about the  8.17.5 release.
 *Details* +
 There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll after the {agent} is upgraded. Attempting to enroll the {agent} fails with the following error:
 
-[source,console-result]
+[source,shell]
 ----
 Error: the command is executed as root but the program files are not owned by the root user.
 ----
 
 *Impact* +
-The issue affects {agent} installed on Windows. There is no resolution or workaround at this time, but a bug fix is expected in a later maintenance release.
+The issue affects {agent} installed on Windows. Until a bug fix is available in a later release, you can temporarily resolve the issue by changing the ownership of the {agent} directory:
+
+[source,shell]
+----
+icacls "C:\Program Files\Elastic\Agent" /setowner "NT AUTHORITY\SYSTEM" /t /l
+----
+
+After the output confirms all files were successfully processed, run the `enroll` command again.
 
 ====
 
@@ -207,13 +228,20 @@ In the 9.x releases, the option that appears in the UI for an upgrade across a m
 *Details* +
 There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll after the {agent} is upgraded. Attempting to enroll the {agent} fails with the following error:
 
-[source,console-result]
+[source,shell]
 ----
 Error: the command is executed as root but the program files are not owned by the root user.
 ----
 
 *Impact* +
-The issue affects {agent} installed on Windows. There is no resolution or workaround at this time, but a bug fix is expected in a later maintenance release.
+The issue affects {agent} installed on Windows. Until a bug fix is available in a later release, you can temporarily resolve the issue by changing the ownership of the {agent} directory:
+
+[source,shell]
+----
+icacls "C:\Program Files\Elastic\Agent" /setowner "NT AUTHORITY\SYSTEM" /t /l
+----
+
+After the output confirms all files were successfully processed, run the `enroll` command again.
 
 ====
 
@@ -296,13 +324,20 @@ In the 9.x releases, the option that appears in the UI for an upgrade across a m
 *Details* +
 There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll after the {agent} is upgraded. Attempting to enroll the {agent} fails with the following error:
 
-[source,console-result]
+[source,shell]
 ----
 Error: the command is executed as root but the program files are not owned by the root user.
 ----
 
 *Impact* +
-The issue affects {agent} installed on Windows. There is no resolution or workaround at this time, but a bug fix is expected in a later maintenance release.
+The issue affects {agent} installed on Windows. Until a bug fix is available in a later release, you can temporarily resolve the issue by changing the ownership of the {agent} directory:
+
+[source,shell]
+----
+icacls "C:\Program Files\Elastic\Agent" /setowner "NT AUTHORITY\SYSTEM" /t /l
+----
+
+After the output confirms all files were successfully processed, run the `enroll` command again.
 
 ====
 
@@ -349,13 +384,20 @@ Review important information about the {fleet} and {agent} 8.17.2 release.
 *Details* +
 There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll after the {agent} is upgraded. Attempting to enroll the {agent} fails with the following error:
 
-[source,console-result]
+[source,shell]
 ----
 Error: the command is executed as root but the program files are not owned by the root user.
 ----
 
 *Impact* +
-The issue affects {agent} installed on Windows. There is no resolution or workaround at this time, but a bug fix is expected in a later maintenance release.
+The issue affects {agent} installed on Windows. Until a bug fix is available in a later release, you can temporarily resolve the issue by changing the ownership of the {agent} directory:
+
+[source,shell]
+----
+icacls "C:\Program Files\Elastic\Agent" /setowner "NT AUTHORITY\SYSTEM" /t /l
+----
+
+After the output confirms all files were successfully processed, run the `enroll` command again.
 
 ====
 
@@ -422,13 +464,20 @@ As a workaround, you can upgrade your deployment to 8.17.1 in which this issue h
 *Details* +
 There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll after the {agent} is upgraded. Attempting to enroll the {agent} fails with the following error:
 
-[source,console-result]
+[source,shell]
 ----
 Error: the command is executed as root but the program files are not owned by the root user.
 ----
 
 *Impact* +
-The issue affects {agent} installed on Windows. There is no resolution or workaround at this time, but a bug fix is expected in a later maintenance release.
+The issue affects {agent} installed on Windows. Until a bug fix is available in a later release, you can temporarily resolve the issue by changing the ownership of the {agent} directory:
+
+[source,shell]
+----
+icacls "C:\Program Files\Elastic\Agent" /setowner "NT AUTHORITY\SYSTEM" /t /l
+----
+
+After the output confirms all files were successfully processed, run the `enroll` command again.
 
 ====
 

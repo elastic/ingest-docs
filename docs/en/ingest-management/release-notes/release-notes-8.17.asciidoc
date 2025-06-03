@@ -46,12 +46,12 @@ Review important information about the 8.17.7 release.
 === Known issues
 
 [[known-issue-1800-8-17-7]]
-.On Windows, {agent} is unable to enroll into {fleet} following the {agent}'s upgrade.
+.On Windows, {agent} is unable to re-enroll into {fleet}
 [%collapsible]
 ====
 
 *Details* +
-There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll after the {agent} is upgraded. Attempting to enroll the {agent} fails with the following error:
+There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll. Attempting to enroll the {agent} fails with the following error:
 
 [source,shell]
 ----
@@ -90,12 +90,12 @@ Review important information about the  8.17.6 release.
 === Known issues
 
 [[known-issue-1800-8-17-6]]
-.On Windows, {agent} is unable to enroll into {fleet} following the {agent}'s upgrade.
+.On Windows, {agent} is unable to re-enroll into {fleet}
 [%collapsible]
 ====
 
 *Details* +
-There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll after the {agent} is upgraded. Attempting to enroll the {agent} fails with the following error:
+There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll. Attempting to enroll the {agent} fails with the following error:
 
 [source,shell]
 ----
@@ -135,12 +135,12 @@ Review important information about the  8.17.5 release.
 === Known issues
 
 [[known-issue-1800-8-17-5]]
-.On Windows, {agent} is unable to enroll into {fleet} following the {agent}'s upgrade.
+.On Windows, {agent} is unable to re-enroll into {fleet}
 [%collapsible]
 ====
 
 *Details* +
-There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll after the {agent} is upgraded. Attempting to enroll the {agent} fails with the following error:
+There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll. Attempting to enroll the {agent} fails with the following error:
 
 [source,shell]
 ----
@@ -221,12 +221,12 @@ In the 9.x releases, the option that appears in the UI for an upgrade across a m
 ====
 
 [[known-issue-1800-8-17-4]]
-.On Windows, {agent} is unable to enroll into {fleet} following the {agent}'s upgrade.
+.On Windows, {agent} is unable to re-enroll into {fleet}
 [%collapsible]
 ====
 
 *Details* +
-There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll after the {agent} is upgraded. Attempting to enroll the {agent} fails with the following error:
+There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll. Attempting to enroll the {agent} fails with the following error:
 
 [source,shell]
 ----
@@ -317,12 +317,12 @@ In the 9.x releases, the option that appears in the UI for an upgrade across a m
 ====
 
 [[known-issue-1800-8-17-3]]
-.On Windows, {agent} is unable to enroll into {fleet} following the {agent}'s upgrade.
+.On Windows, {agent} is unable to re-enroll into {fleet}
 [%collapsible]
 ====
 
 *Details* +
-There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll after the {agent} is upgraded. Attempting to enroll the {agent} fails with the following error:
+There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll. Attempting to enroll the {agent} fails with the following error:
 
 [source,shell]
 ----
@@ -377,12 +377,12 @@ Review important information about the {fleet} and {agent} 8.17.2 release.
 === Known issues
 
 [[known-issue-1800-8-17-2]]
-.On Windows, {agent} is unable to enroll into {fleet} following the {agent}'s upgrade.
+.On Windows, {agent} is unable to re-enroll into {fleet}
 [%collapsible]
 ====
 
 *Details* +
-There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll after the {agent} is upgraded. Attempting to enroll the {agent} fails with the following error:
+There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll. Attempting to enroll the {agent} fails with the following error:
 
 [source,shell]
 ----
@@ -457,12 +457,12 @@ As a workaround, you can upgrade your deployment to 8.17.1 in which this issue h
 ====
 
 [[known-issue-1800-8-17-1]]
-.On Windows, {agent} is unable to enroll into {fleet} following the {agent}'s upgrade.
+.On Windows, {agent} is unable to re-enroll into {fleet}
 [%collapsible]
 ====
 
 *Details* +
-There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll after the {agent} is upgraded. Attempting to enroll the {agent} fails with the following error:
+There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll. Attempting to enroll the {agent} fails with the following error:
 
 [source,shell]
 ----

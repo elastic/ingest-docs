@@ -45,12 +45,12 @@ Review important information about the  8.18.2 release.
 === Known issues
 
 [[known-issue-1800-8-18-2]]
-.On Windows, {agent} is unable to enroll into {fleet} following the {agent}'s upgrade.
+.On Windows, {agent} is unable to re-enroll into {fleet}
 [%collapsible]
 ====
 
 *Details* +
-There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll after the {agent} is upgraded. Attempting to enroll the {agent} fails with the following error:
+There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll. Attempting to enroll the {agent} fails with the following error:
 
 [source,shell]
 ----
@@ -83,12 +83,12 @@ Review important information about the {fleet} and {agent} 8.18.1 release.
 === Known issues
 
 [[known-issue-1800-8-18-1]]
-.On Windows, {agent} is unable to enroll into {fleet} following the {agent}'s upgrade.
+.On Windows, {agent} is unable to re-enroll into {fleet}
 [%collapsible]
 ====
 
 *Details* +
-There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll after the {agent} is upgraded. Attempting to enroll the {agent} fails with the following error:
+There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll. Attempting to enroll the {agent} fails with the following error:
 
 [source,shell]
 ----
@@ -151,12 +151,12 @@ In the 9.x releases, the option that appears in the UI for an upgrade across a m
 ====
 
 [[known-issue-1800-8-18-0]]
-.On Windows, {agent} is unable to enroll into {fleet} following the {agent}'s upgrade.
+.On Windows, {agent} is unable to re-enroll into {fleet}
 [%collapsible]
 ====
 
 *Details* +
-There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll after the {agent} is upgraded. Attempting to enroll the {agent} fails with the following error:
+There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll. Attempting to enroll the {agent} fails with the following error:
 
 [source,shell]
 ----

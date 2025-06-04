@@ -40,6 +40,35 @@ Review important information about the  8.18.2 release.
 {fleet}::
 * Update Go version to v1.24.3 {fleet-server-pull}4891[#4891]
 
+[discrete]
+[[known-issues-8.18.2]]
+=== Known issues
+
+[[known-issue-1800-8-18-2]]
+.On Windows, {agent} is unable to re-enroll into {fleet}
+[%collapsible]
+====
+
+*Details* +
+There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll. Attempting to enroll the {agent} fails with the following error:
+
+[source,shell]
+----
+Error: the command is executed as root but the program files are not owned by the root user.
+----
+
+*Impact* +
+The issue affects {agent} installed on Windows. Until a bug fix is available in a later release, you can temporarily resolve the issue by changing the ownership of the {agent} directory:
+
+[source,shell]
+----
+icacls "C:\Program Files\Elastic\Agent" /setowner "NT AUTHORITY\SYSTEM" /t /l
+----
+
+After the output confirms all files were successfully processed, run the `enroll` command again.
+
+====
+
 // end 8.18.2 relnotes
 
 // begin 8.18.1 relnotes
@@ -48,6 +77,35 @@ Review important information about the  8.18.2 release.
 == {fleet} and {agent} 8.18.1
 
 Review important information about the {fleet} and {agent} 8.18.1 release.
+
+[discrete]
+[[known-issues-8.18.1]]
+=== Known issues
+
+[[known-issue-1800-8-18-1]]
+.On Windows, {agent} is unable to re-enroll into {fleet}
+[%collapsible]
+====
+
+*Details* +
+There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll. Attempting to enroll the {agent} fails with the following error:
+
+[source,shell]
+----
+Error: the command is executed as root but the program files are not owned by the root user.
+----
+
+*Impact* +
+The issue affects {agent} installed on Windows. Until a bug fix is available in a later release, you can temporarily resolve the issue by changing the ownership of the {agent} directory:
+
+[source,shell]
+----
+icacls "C:\Program Files\Elastic\Agent" /setowner "NT AUTHORITY\SYSTEM" /t /l
+----
+
+After the output confirms all files were successfully processed, run the `enroll` command again.
+
+====
 
 [discrete]
 [[bug-fixes-8.18.1]]
@@ -92,6 +150,31 @@ In the 9.x releases, the option that appears in the UI for an upgrade across a m
 
 ====
 
+[[known-issue-1800-8-18-0]]
+.On Windows, {agent} is unable to re-enroll into {fleet}
+[%collapsible]
+====
+
+*Details* +
+There is a known issue where an {agent} installed on Windows and previously enrolled into {fleet} is unable to re-enroll. Attempting to enroll the {agent} fails with the following error:
+
+[source,shell]
+----
+Error: the command is executed as root but the program files are not owned by the root user.
+----
+
+*Impact* +
+The issue affects {agent} installed on Windows. Until a bug fix is available in a later release, you can temporarily resolve the issue by changing the ownership of the {agent} directory:
+
+[source,shell]
+----
+icacls "C:\Program Files\Elastic\Agent" /setowner "NT AUTHORITY\SYSTEM" /t /l
+----
+
+After the output confirms all files were successfully processed, run the `enroll` command again.
+
+====
+
 [discrete]
 [[new-features-8.18.0]]
 === New features
@@ -126,7 +209,6 @@ The 8.18.0 release Added the following new and notable features.
 {fleet-server}::
 * Validate user pbkdf2 settings for FIPS compliance. {fleet-server-pull}4542[#4542]
 * Update {fleet-server} Go version to 1.24.0. {fleet-server-pull}4543[#4543]
-
 
 {agent}::
 * Re-enable the OTel subcommand on Windows. {agent-pull}6068[#6068] {agent-issue}4976[#4976] {agent-issue}5710[#5710]
@@ -233,7 +315,7 @@ The 8.18.0 release Added the following new and notable features.
 //[%collapsible]
 //====
 
-//*Details*
+//*Details* +
 
 //<Describe known issue.>
 

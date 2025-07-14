@@ -14,6 +14,7 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.18.4>>
 * <<release-notes-8.18.3>>
 * <<release-notes-8.18.2>>
 * <<release-notes-8.18.1>>
@@ -23,6 +24,35 @@ Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.18.4 relnotes
+[[release-notes-8.18.4]]
+== {fleet} and {agent} 8.18.4
+
+Review important information about the  8.18.4 release.
+
+[discrete]
+[[new-features-8.18.4]]
+=== New features
+
+The 8.18.4 release adds the following new and notable features.
+
+[discrete]
+[[bug-fixes-8.18.4]]
+=== Bug fixes
+
+Elastic Agent::
+
+* Remove incorrect logging that unprivileged installations are in beta. {agent-pull}8715[#8715] {agent-issue}8689[#8689]
+* Ensure standalone Elastic Agent uses log level from configuration instead of persisted state. {agent-pull}8784[#8784] {agent-issue}8137[#8137]
+* Resolve deadlocks in runtime checkin communication. {agent-pull}8881[#8881] {agent-issue}7944[#7944]
+* Remove init.d support from RPM packages. {agent-pull}8896[#8896] {agent-issue}8840[#8840]
+
+Fleet::
+
+* Include the base error for JSON decode error responses. {fleet-server-pull}5069[#5069]
+
+// end 8.18.4 relnotes
 
 // begin 8.18.3 relnotes
 

@@ -32,12 +32,6 @@ Also see:
 Review important information about the  8.18.4 release.
 
 [discrete]
-[[new-features-8.18.4]]
-=== New features
-
-The 8.18.4 release adds the following new and notable features.
-
-[discrete]
 [[bug-fixes-8.18.4]]
 === Bug fixes
 

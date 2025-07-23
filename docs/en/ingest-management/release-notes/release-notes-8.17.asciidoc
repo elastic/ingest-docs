@@ -52,7 +52,7 @@ Fleet::
 
 * Include the base error for JSON decode error responses. {fleet-server-pull}5069[#5069]
 
-// begin 8.17.9 relnotes
+// end 8.17.9 relnotes
 
 // begin 8.17.8 relnotes
 

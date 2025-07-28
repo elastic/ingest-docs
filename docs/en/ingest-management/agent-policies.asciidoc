@@ -100,7 +100,7 @@ The following table illustrates the {fleet} user actions available to different 
 |{y}
 |{n}
 
-|<<agent-policy-automatic-agent-upgrade,Configure an automatic {{agent}} upgrade>>
+|<<agent-policy-automatic-agent-upgrade,Configure an automatic {agent} upgrade>>
 |{y}
 |{n}
 

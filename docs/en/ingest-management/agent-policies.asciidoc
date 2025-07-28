@@ -100,6 +100,10 @@ The following table illustrates the {fleet} user actions available to different 
 |{y}
 |{n}
 
+|<<agent-policy-automatic-agent-upgrade,Configure an automatic {{agent}} upgrade>>
+|{y}
+|{n}
+
 |<<change-policy-output,Change the output of a policy>>
 |{y}
 |{n}
@@ -366,6 +370,14 @@ You can set a rate limit for the action handler for diagnostics requests coming 
 **Diagnostics file upload**
 
 This setting configures retries for the file upload client handling diagnostics requests coming from {fleet}. The setting affects only {fleet}-managed {agents}. By default, a maximum of `10` retries are allowed with an initial duration of `1s` and a backoff duration of `1m`. The client may retry failed requests with exponential backoff.
+
+[discrete]
+[[agent-policy-automatic-agent-upgrade]]
+== Configure an automatic {agent} upgrade
+
+For a high-scale deployment of {fleet}, you can configure an automatic, gradual rollout of a new minor or patch version to a percentage of the {agents} in your policy. For more information, refer to <<auto-upgrade-agents,Auto-upgrade agents enrolled in a policy>>.
+
+NOTE: This feature is only available for certain subscription levels. For more information, refer to {subscriptions}[{stack} subscriptions].
 
 [discrete]
 [[change-policy-output]]

@@ -4,7 +4,7 @@
 
 preview::[]
 
-{agent}, {fleet}, {filebeat}, {metricbeat}, and APM Server binaries are built and can be configured to use FIPS 140-2 compliant cryptography.
+{agent}, {fleet}, {filebeat}, {metricbeat}, and APM Server binaries are built and are configured to use FIPS 140-2 compliant cryptography.
 Generally speaking FIPS 140-2 requirements can be summarized as:
 
 - linking against a FIPS certified cryptographic library
@@ -111,6 +111,7 @@ When you use {agent} and {fleet-server}, these limitations apply:
 
   - link:https://www.elastic.co/docs/reference/integrations/azure/events[Azure Logs Integration (v2 preview)]
   - link:https://www.elastic.co/docs/reference/integrations/azure/eventhub[Azure Event Hub Input]
+  - link:https://www.elastic.co/docs/reference/integrations/sql[SQL Input] 
   - link:https://www.elastic.co/docs/reference/integrations/postgresql[PostgreSQL Integration]
   - link:https://www.elastic.co/docs/reference/integrations/mongodb[MongoDB Integration]
   - link:https://www.elastic.co/docs/reference/integrations/mysql[MySQL Integration]

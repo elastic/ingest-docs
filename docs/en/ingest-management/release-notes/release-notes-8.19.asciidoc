@@ -42,9 +42,7 @@ Review important information about the {fleet} and {agent} 8.19.0 release.
 [[known-issues-8.19.0]]
 === Known issues
 
-{agent}::
-
-[[known-issue-issue#]]
+[[known-issue-2285-8.19.0]]
 .{agents} remain in an "Upgrade scheduled" state
 [%collapsible]
 ====

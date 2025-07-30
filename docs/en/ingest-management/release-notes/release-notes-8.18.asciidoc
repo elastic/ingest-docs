@@ -43,7 +43,7 @@ Review important information about the 8.18.4 release.
 
 *Details* +
 
-There is a known issue where after a scheduled {agent} upgrade is cancelled, {agent} remains in an `Upgrade scheduled` state, and attempting to restart the upgrade on the UI returns an error: `The selected agent is not upgradeable: agent is already being upgraded.`.
+There is a known issue where {agent} remains in an `Upgrade scheduled` state when a scheduled {agent} upgrade is cancelled. Attempting to restart the upgrade on the UI returns an error: `The selected agent is not upgradeable: agent is already being upgraded.`.
 
 *Impact* +
 
@@ -55,7 +55,7 @@ curl --request POST \
   --url https://<KIBANA_HOST>/api/fleet/agents/<AGENT_ID>/upgrade \
   --user "<SUPERUSER_NAME>:<SUPERUSER_PASSWORD>" \
   --header 'Content-Type: application/json' \
-  --header 'kbn-xsrf: as' \
+  --header 'kbn-xsrf: true' \
   --data '{"version": "<VERSION>","force": true}'
 ----
 
@@ -67,7 +67,7 @@ curl --request POST \
   --url https://<KIBANA_HOST>/api/fleet/agents/bulk_upgrade \
   --user "<SUPERUSER_NAME>:<SUPERUSER_PASSWORD>" \
   --header 'Content-Type: application/json' \
-  --header 'kbn-xsrf: as' \
+  --header 'kbn-xsrf: true' \
   --data '{"version": "<VERSION>","force": true,"agents":["<AGENT_IDS>"]}'
 ----
 
@@ -108,7 +108,7 @@ Review important information about the {fleet} and {agent} 8.18.3 release.
 
 *Details* +
 
-There is a known issue where after a scheduled {agent} upgrade is cancelled, {agent} remains in an `Upgrade scheduled` state, and attempting to restart the upgrade on the UI returns an error: `The selected agent is not upgradeable: agent is already being upgraded.`.
+There is a known issue where {agent} remains in an `Upgrade scheduled` state when a scheduled {agent} upgrade is cancelled. Attempting to restart the upgrade on the UI returns an error: `The selected agent is not upgradeable: agent is already being upgraded.`.
 
 *Impact* +
 
@@ -120,7 +120,7 @@ curl --request POST \
   --url https://<KIBANA_HOST>/api/fleet/agents/<AGENT_ID>/upgrade \
   --user "<SUPERUSER_NAME>:<SUPERUSER_PASSWORD>" \
   --header 'Content-Type: application/json' \
-  --header 'kbn-xsrf: as' \
+  --header 'kbn-xsrf: true' \
   --data '{"version": "<VERSION>","force": true}'
 ----
 
@@ -132,7 +132,7 @@ curl --request POST \
   --url https://<KIBANA_HOST>/api/fleet/agents/bulk_upgrade \
   --user "<SUPERUSER_NAME>:<SUPERUSER_PASSWORD>" \
   --header 'Content-Type: application/json' \
-  --header 'kbn-xsrf: as' \
+  --header 'kbn-xsrf: true' \
   --data '{"version": "<VERSION>","force": true,"agents":["<AGENT_IDS>"]}'
 ----
 
@@ -218,7 +218,7 @@ After the output confirms all files were successfully processed, run the `enroll
 
 *Details* +
 
-There is a known issue where after a scheduled {agent} upgrade is cancelled, {agent} remains in an `Upgrade scheduled` state, and attempting to restart the upgrade on the UI returns an error: `The selected agent is not upgradeable: agent is already being upgraded.`.
+There is a known issue where {agent} remains in an `Upgrade scheduled` state when a scheduled {agent} upgrade is cancelled. Attempting to restart the upgrade on the UI returns an error: `The selected agent is not upgradeable: agent is already being upgraded.`.
 
 *Impact* +
 
@@ -230,7 +230,7 @@ curl --request POST \
   --url https://<KIBANA_HOST>/api/fleet/agents/<AGENT_ID>/upgrade \
   --user "<SUPERUSER_NAME>:<SUPERUSER_PASSWORD>" \
   --header 'Content-Type: application/json' \
-  --header 'kbn-xsrf: as' \
+  --header 'kbn-xsrf: true' \
   --data '{"version": "<VERSION>","force": true}'
 ----
 
@@ -242,7 +242,7 @@ curl --request POST \
   --url https://<KIBANA_HOST>/api/fleet/agents/bulk_upgrade \
   --user "<SUPERUSER_NAME>:<SUPERUSER_PASSWORD>" \
   --header 'Content-Type: application/json' \
-  --header 'kbn-xsrf: as' \
+  --header 'kbn-xsrf: true' \
   --data '{"version": "<VERSION>","force": true,"agents":["<AGENT_IDS>"]}'
 ----
 
@@ -293,7 +293,7 @@ After the output confirms all files were successfully processed, run the `enroll
 
 *Details* +
 
-There is a known issue where after a scheduled {agent} upgrade is cancelled, {agent} remains in an `Upgrade scheduled` state, and attempting to restart the upgrade on the UI returns an error: `The selected agent is not upgradeable: agent is already being upgraded.`.
+There is a known issue where {agent} remains in an `Upgrade scheduled` state when a scheduled {agent} upgrade is cancelled. Attempting to restart the upgrade on the UI returns an error: `The selected agent is not upgradeable: agent is already being upgraded.`.
 
 *Impact* +
 
@@ -305,7 +305,7 @@ curl --request POST \
   --url https://<KIBANA_HOST>/api/fleet/agents/<AGENT_ID>/upgrade \
   --user "<SUPERUSER_NAME>:<SUPERUSER_PASSWORD>" \
   --header 'Content-Type: application/json' \
-  --header 'kbn-xsrf: as' \
+  --header 'kbn-xsrf: true' \
   --data '{"version": "<VERSION>","force": true}'
 ----
 
@@ -317,7 +317,7 @@ curl --request POST \
   --url https://<KIBANA_HOST>/api/fleet/agents/bulk_upgrade \
   --user "<SUPERUSER_NAME>:<SUPERUSER_PASSWORD>" \
   --header 'Content-Type: application/json' \
-  --header 'kbn-xsrf: as' \
+  --header 'kbn-xsrf: true' \
   --data '{"version": "<VERSION>","force": true,"agents":["<AGENT_IDS>"]}'
 ----
 
@@ -398,7 +398,7 @@ After the output confirms all files were successfully processed, run the `enroll
 
 *Details* +
 
-There is a known issue where after a scheduled {agent} upgrade is cancelled, {agent} remains in an `Upgrade scheduled` state, and attempting to restart the upgrade on the UI returns an error: `The selected agent is not upgradeable: agent is already being upgraded.`.
+There is a known issue where {agent} remains in an `Upgrade scheduled` state when a scheduled {agent} upgrade is cancelled. Attempting to restart the upgrade on the UI returns an error: `The selected agent is not upgradeable: agent is already being upgraded.`.
 
 *Impact* +
 
@@ -410,7 +410,7 @@ curl --request POST \
   --url https://<KIBANA_HOST>/api/fleet/agents/<AGENT_ID>/upgrade \
   --user "<SUPERUSER_NAME>:<SUPERUSER_PASSWORD>" \
   --header 'Content-Type: application/json' \
-  --header 'kbn-xsrf: as' \
+  --header 'kbn-xsrf: true' \
   --data '{"version": "<VERSION>","force": true}'
 ----
 
@@ -422,7 +422,7 @@ curl --request POST \
   --url https://<KIBANA_HOST>/api/fleet/agents/bulk_upgrade \
   --user "<SUPERUSER_NAME>:<SUPERUSER_PASSWORD>" \
   --header 'Content-Type: application/json' \
-  --header 'kbn-xsrf: as' \
+  --header 'kbn-xsrf: true' \
   --data '{"version": "<VERSION>","force": true,"agents":["<AGENT_IDS>"]}'
 ----
 

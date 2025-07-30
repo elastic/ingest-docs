@@ -33,6 +33,47 @@ Also see:
 Review important information about the 8.18.4 release.
 
 [discrete]
+[[known-issues-8.18.4]]
+=== Known issues
+
+[[known-issue-2285-8.18.4]]
+.{agents} remain in an "Upgrade scheduled" state
+[%collapsible]
+====
+
+*Details* +
+
+There is a known issue where {agent} remains in an `Upgrade scheduled` state when a scheduled {agent} upgrade is cancelled. Attempting to restart the upgrade on the UI returns an error: `The selected agent is not upgradeable: agent is already being upgraded.`.
+
+*Impact* +
+
+Until this issue is fixed in a later patch version, you can call the https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-fleet-agents-agentid-upgrade[Upgrade an agent] endpoint of the Kibana Fleet API with the `force` parameter set to `true` to force-upgrade the {agent}:
+
+[source,shell]
+----
+curl --request POST \
+  --url https://<KIBANA_HOST>/api/fleet/agents/<AGENT_ID>/upgrade \
+  --user "<SUPERUSER_NAME>:<SUPERUSER_PASSWORD>" \
+  --header 'Content-Type: application/json' \
+  --header 'kbn-xsrf: true' \
+  --data '{"version": "<VERSION>","force": true}'
+----
+
+To force-upgrade multiple {agents}, call the https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-fleet-agents-bulk-upgrade[Bulk upgrade agents] endpoint of the Kibana Fleet API with the `force` parameter set to `true`:
+
+[source,shell]
+----
+curl --request POST \
+  --url https://<KIBANA_HOST>/api/fleet/agents/bulk_upgrade \
+  --user "<SUPERUSER_NAME>:<SUPERUSER_PASSWORD>" \
+  --header 'Content-Type: application/json' \
+  --header 'kbn-xsrf: true' \
+  --data '{"version": "<VERSION>","force": true,"agents":["<AGENT_IDS>"]}'
+----
+
+====
+
+[discrete]
 [[bug-fixes-8.18.4]]
 === Bug fixes
 
@@ -55,6 +96,47 @@ Fleet::
 == {fleet} and {agent} 8.18.3
 
 Review important information about the {fleet} and {agent} 8.18.3 release.
+
+[discrete]
+[[known-issues-8.18.3]]
+=== Known issues
+
+[[known-issue-2285-8.18.3]]
+.{agents} remain in an "Upgrade scheduled" state
+[%collapsible]
+====
+
+*Details* +
+
+There is a known issue where {agent} remains in an `Upgrade scheduled` state when a scheduled {agent} upgrade is cancelled. Attempting to restart the upgrade on the UI returns an error: `The selected agent is not upgradeable: agent is already being upgraded.`.
+
+*Impact* +
+
+Until this issue is fixed in a later patch version, you can call the https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-fleet-agents-agentid-upgrade[Upgrade an agent] endpoint of the Kibana Fleet API with the `force` parameter set to `true` to force-upgrade the {agent}:
+
+[source,shell]
+----
+curl --request POST \
+  --url https://<KIBANA_HOST>/api/fleet/agents/<AGENT_ID>/upgrade \
+  --user "<SUPERUSER_NAME>:<SUPERUSER_PASSWORD>" \
+  --header 'Content-Type: application/json' \
+  --header 'kbn-xsrf: true' \
+  --data '{"version": "<VERSION>","force": true}'
+----
+
+To force-upgrade multiple {agents}, call the https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-fleet-agents-bulk-upgrade[Bulk upgrade agents] endpoint of the Kibana Fleet API with the `force` parameter set to `true`:
+
+[source,shell]
+----
+curl --request POST \
+  --url https://<KIBANA_HOST>/api/fleet/agents/bulk_upgrade \
+  --user "<SUPERUSER_NAME>:<SUPERUSER_PASSWORD>" \
+  --header 'Content-Type: application/json' \
+  --header 'kbn-xsrf: true' \
+  --data '{"version": "<VERSION>","force": true,"agents":["<AGENT_IDS>"]}'
+----
+
+====
 
 [discrete]
 [[new-features-8.18.3]]
@@ -129,6 +211,43 @@ After the output confirms all files were successfully processed, run the `enroll
 
 ====
 
+[[known-issue-2285-8.18.2]]
+.{agents} remain in an "Upgrade scheduled" state
+[%collapsible]
+====
+
+*Details* +
+
+There is a known issue where {agent} remains in an `Upgrade scheduled` state when a scheduled {agent} upgrade is cancelled. Attempting to restart the upgrade on the UI returns an error: `The selected agent is not upgradeable: agent is already being upgraded.`.
+
+*Impact* +
+
+Until this issue is fixed in a later patch version, you can call the https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-fleet-agents-agentid-upgrade[Upgrade an agent] endpoint of the Kibana Fleet API with the `force` parameter set to `true` to force-upgrade the {agent}:
+
+[source,shell]
+----
+curl --request POST \
+  --url https://<KIBANA_HOST>/api/fleet/agents/<AGENT_ID>/upgrade \
+  --user "<SUPERUSER_NAME>:<SUPERUSER_PASSWORD>" \
+  --header 'Content-Type: application/json' \
+  --header 'kbn-xsrf: true' \
+  --data '{"version": "<VERSION>","force": true}'
+----
+
+To force-upgrade multiple {agents}, call the https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-fleet-agents-bulk-upgrade[Bulk upgrade agents] endpoint of the Kibana Fleet API with the `force` parameter set to `true`:
+
+[source,shell]
+----
+curl --request POST \
+  --url https://<KIBANA_HOST>/api/fleet/agents/bulk_upgrade \
+  --user "<SUPERUSER_NAME>:<SUPERUSER_PASSWORD>" \
+  --header 'Content-Type: application/json' \
+  --header 'kbn-xsrf: true' \
+  --data '{"version": "<VERSION>","force": true,"agents":["<AGENT_IDS>"]}'
+----
+
+====
+
 // end 8.18.2 relnotes
 
 // begin 8.18.1 relnotes
@@ -164,6 +283,43 @@ icacls "C:\Program Files\Elastic\Agent" /setowner "NT AUTHORITY\SYSTEM" /t /l
 ----
 
 After the output confirms all files were successfully processed, run the `enroll` command again.
+
+====
+
+[[known-issue-2285-8.18.1]]
+.{agents} remain in an "Upgrade scheduled" state
+[%collapsible]
+====
+
+*Details* +
+
+There is a known issue where {agent} remains in an `Upgrade scheduled` state when a scheduled {agent} upgrade is cancelled. Attempting to restart the upgrade on the UI returns an error: `The selected agent is not upgradeable: agent is already being upgraded.`.
+
+*Impact* +
+
+Until this issue is fixed in a later patch version, you can call the https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-fleet-agents-agentid-upgrade[Upgrade an agent] endpoint of the Kibana Fleet API with the `force` parameter set to `true` to force-upgrade the {agent}:
+
+[source,shell]
+----
+curl --request POST \
+  --url https://<KIBANA_HOST>/api/fleet/agents/<AGENT_ID>/upgrade \
+  --user "<SUPERUSER_NAME>:<SUPERUSER_PASSWORD>" \
+  --header 'Content-Type: application/json' \
+  --header 'kbn-xsrf: true' \
+  --data '{"version": "<VERSION>","force": true}'
+----
+
+To force-upgrade multiple {agents}, call the https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-fleet-agents-bulk-upgrade[Bulk upgrade agents] endpoint of the Kibana Fleet API with the `force` parameter set to `true`:
+
+[source,shell]
+----
+curl --request POST \
+  --url https://<KIBANA_HOST>/api/fleet/agents/bulk_upgrade \
+  --user "<SUPERUSER_NAME>:<SUPERUSER_PASSWORD>" \
+  --header 'Content-Type: application/json' \
+  --header 'kbn-xsrf: true' \
+  --data '{"version": "<VERSION>","force": true,"agents":["<AGENT_IDS>"]}'
+----
 
 ====
 
@@ -232,6 +388,43 @@ icacls "C:\Program Files\Elastic\Agent" /setowner "NT AUTHORITY\SYSTEM" /t /l
 ----
 
 After the output confirms all files were successfully processed, run the `enroll` command again.
+
+====
+
+[[known-issue-2285-8.18.0]]
+.{agents} remain in an "Upgrade scheduled" state
+[%collapsible]
+====
+
+*Details* +
+
+There is a known issue where {agent} remains in an `Upgrade scheduled` state when a scheduled {agent} upgrade is cancelled. Attempting to restart the upgrade on the UI returns an error: `The selected agent is not upgradeable: agent is already being upgraded.`.
+
+*Impact* +
+
+Until this issue is fixed in a later patch version, you can call the https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-fleet-agents-agentid-upgrade[Upgrade an agent] endpoint of the Kibana Fleet API with the `force` parameter set to `true` to force-upgrade the {agent}:
+
+[source,shell]
+----
+curl --request POST \
+  --url https://<KIBANA_HOST>/api/fleet/agents/<AGENT_ID>/upgrade \
+  --user "<SUPERUSER_NAME>:<SUPERUSER_PASSWORD>" \
+  --header 'Content-Type: application/json' \
+  --header 'kbn-xsrf: true' \
+  --data '{"version": "<VERSION>","force": true}'
+----
+
+To force-upgrade multiple {agents}, call the https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-fleet-agents-bulk-upgrade[Bulk upgrade agents] endpoint of the Kibana Fleet API with the `force` parameter set to `true`:
+
+[source,shell]
+----
+curl --request POST \
+  --url https://<KIBANA_HOST>/api/fleet/agents/bulk_upgrade \
+  --user "<SUPERUSER_NAME>:<SUPERUSER_PASSWORD>" \
+  --header 'Content-Type: application/json' \
+  --header 'kbn-xsrf: true' \
+  --data '{"version": "<VERSION>","force": true,"agents":["<AGENT_IDS>"]}'
+----
 
 ====
 

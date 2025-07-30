@@ -39,6 +39,49 @@ Review important information about the {fleet} and {agent} 8.19.0 release.
 * Upgrade golang.org/x/net to v0.34.0 and golang.org/x/crypto to v0.32.0. {fleet-server-pull}4405[#4405]
 
 [discrete]
+[[known-issues-8.19.0]]
+=== Known issues
+
+{agent}::
+
+[[known-issue-issue#]]
+.{agents} remain in an "Upgrade scheduled" state
+[%collapsible]
+====
+
+*Details* +
+
+There is a known issue where after a scheduled {agent} upgrade is cancelled, {agent} remains in an `Upgrade scheduled` state, and attempting to restart the upgrade on the UI returns an error: `The selected agent is not upgradeable: agent is already being upgraded.`.
+
+*Impact* +
+
+Until this issue is fixed in a later patch version, you can call the https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-fleet-agents-agentid-upgrade[Upgrade an agent] endpoint of the Kibana Fleet API with the `force` parameter set to `true` to force-upgrade the {agent}:
+
+[source,shell]
+----
+curl --request POST \
+  --url https://<KIBANA_HOST>/api/fleet/agents/<AGENT_ID>/upgrade \
+  --user "<SUPERUSER_NAME>:<SUPERUSER_PASSWORD>" \
+  --header 'Content-Type: application/json' \
+  --header 'kbn-xsrf: as' \
+  --data '{"version": "<VERSION>","force": true}'
+----
+
+To force-upgrade multiple {agents}, call the https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-fleet-agents-bulk-upgrade[Bulk upgrade agents] endpoint of the Kibana Fleet API with the `force` parameter set to `true`:
+
+[source,shell]
+----
+curl --request POST \
+  --url https://<KIBANA_HOST>/api/fleet/agents/bulk_upgrade \
+  --user "<SUPERUSER_NAME>:<SUPERUSER_PASSWORD>" \
+  --header 'Content-Type: application/json' \
+  --header 'kbn-xsrf: as' \
+  --data '{"version": "<VERSION>","force": true,"agents":["<AGENT_IDS>"]}'
+----
+
+====
+
+[discrete]
 [[new-features-8.19.0]]
 === New features
 

@@ -53,7 +53,7 @@ There is a known issue where it is not possible to set the log level on individu
 
 *Impact* +
 
-No workaround is available at the moment, but a fix is expected to be available in a future patch release.
+No workaround is available at the moment, but a fix is expected to be available in a future patch release. Note that the agent logging level can still be set on a per-policy basis in the agent policy's *Settings* tab.
 
 ====
 

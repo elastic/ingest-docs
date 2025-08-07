@@ -42,6 +42,21 @@ Review important information about the {fleet} and {agent} 8.19.0 release.
 [[known-issues-8.19.0]]
 === Known issues
 
+[[known-issue-2444-8.19.0]]
+.Setting the log level on individual {agents} is not possible
+[%collapsible]
+====
+
+*Details* +
+
+There is a known issue where it is not possible to set the log level on individual {agents} as the *Agent logging level* setting is not available on the {agent}'s details page.
+
+*Impact* +
+
+No workaround is available at the moment, but a fix is expected to be available in a future patch release.
+
+====
+
 [[known-issue-2398-8.19.0]]
 .{agent} does not process Windows security events
 [%collapsible]

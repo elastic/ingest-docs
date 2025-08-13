@@ -26,9 +26,9 @@ Also see:
 // begin 8.19.2 relnotes
 
 [[release-notes-8.19.2]]
-==  8.19.2
+== {fleet} and {agent} 8.19.2
 
-Review important information about the  8.19.2 release.
+Review important information about the 8.19.2 release.
 
 [discrete]
 [[bug-fixes-8.19.2]]
@@ -43,9 +43,9 @@ Fleet Server::
 // begin 8.19.1 relnotes
 
 [[release-notes-8.19.1]]
-==  8.19.1
+== {fleet} and {agent} 8.19.1
 
-Review important information about the  8.19.1 release.
+Review important information about the 8.19.1 release.
 
 [discrete]
 [[new-features-8.19.1]]
@@ -70,7 +70,7 @@ Elastic Agent::
 * Update Elastic APM connector to v0.4.0. {agent-pull}8819[#8819]
 * Update API key auth extension to v0.2.0. {agent-pull}8819[#8819]
 * Update Elastic infra metrics processor to v0.16.0. {agent-pull}8819[#8819]
-* Rename OTel collector config file in diagnostics from otel-final.yaml to otel-merged.yaml. {agent-pull}9052[#9052]
+* Rename OTel collector config file in diagnostics from `otel-final.yaml` to `otel-merged.yaml`. {agent-pull}9052[#9052]
 
 [discrete]
 [[bug-fixes-8.19.1]]
@@ -79,9 +79,9 @@ Elastic Agent::
 Elastic Agent::
 
 * Remove incorrect logging that unprivileged installations are in beta. {agent-pull}8715[#8715] {agent-issue}8689[#8689]
-* Ensure standalone elastic agent uses log level from configuration instead of persisted state. {agent-pull}8784[#8784] {agent-issue}8137[#8137]
+* Ensure standalone Elastic Agent uses log level from configuration instead of persisted state. {agent-pull}8784[#8784] {agent-issue}8137[#8137]
 * Resolve deadlocks in runtime checkin communication. {agent-pull}8881[#8881] {agent-issue}7944[#7944]
-* Removed init.d support from RPM packages. {agent-pull}8896[#8896] {agent-issue}8840[#8840]
+* Remove init.d support from RPM packages. {agent-pull}8896[#8896] {agent-issue}8840[#8840]
 
 // end 8.19.1 relnotes
 

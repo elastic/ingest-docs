@@ -14,12 +14,76 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.19.2>>
+* <<release-notes-8.19.1>>
 * <<release-notes-8.19.0>>
 
 Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.19.2 relnotes
+
+[[release-notes-8.19.2]]
+== {fleet} and {agent} 8.19.2
+
+Review important information about the 8.19.2 release.
+
+[discrete]
+[[bug-fixes-8.19.2]]
+=== Bug fixes
+
+Fleet Server::
+
+* Fix upgrade details `download_rate` as string handling. {fleet-server-pull}5062[#5062] {fleet-server-pull}5232[#5232] {fleet-server-pull}5238[#5238] {fleet-server-pull}5176[#5176] {fleet-server-issue}5164[#5164]
+
+// end 8.19.2 relnotes
+
+// begin 8.19.1 relnotes
+
+[[release-notes-8.19.1]]
+== {fleet} and {agent} 8.19.1
+
+Review important information about the 8.19.1 release.
+
+[discrete]
+[[new-features-8.19.1]]
+=== New features
+
+The 8.19.1 release adds the following new and notable features.
+
+Elastic Agent::
+
+* Add K8s leader elector OTel extension. {agent-pull}9065[#9065]
+
+[discrete]
+[[enhancements-8.19.1]]
+=== Enhancements
+
+Elastic Agent::
+
+* Include the forwardconnector as an EDOT Collector component. {agent-pull}8753[#8753]
+* Update OTel components to v0.129.0. {agent-pull}8819[#8819]
+* Update APM config extension to v0.4.0. {agent-pull}8819[#8819]
+* Update Elastic trace processor to v0.7.0. {agent-pull}8819[#8819]
+* Update Elastic APM connector to v0.4.0. {agent-pull}8819[#8819]
+* Update API key auth extension to v0.2.0. {agent-pull}8819[#8819]
+* Update Elastic infra metrics processor to v0.16.0. {agent-pull}8819[#8819]
+* Rename OTel collector config file in diagnostics from `otel-final.yaml` to `otel-merged.yaml`. {agent-pull}9052[#9052]
+
+[discrete]
+[[bug-fixes-8.19.1]]
+=== Bug fixes
+
+Elastic Agent::
+
+* Remove incorrect logging that unprivileged installations are in beta. {agent-pull}8715[#8715] {agent-issue}8689[#8689]
+* Ensure standalone Elastic Agent uses log level from configuration instead of persisted state. {agent-pull}8784[#8784] {agent-issue}8137[#8137]
+* Resolve deadlocks in runtime checkin communication. {agent-pull}8881[#8881] {agent-issue}7944[#7944]
+* Remove init.d support from RPM packages. {agent-pull}8896[#8896] {agent-issue}8840[#8840]
+
+// end 8.19.1 relnotes
 
 // begin 8.19.0 relnotes
 

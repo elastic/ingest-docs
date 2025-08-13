@@ -36,7 +36,7 @@ Review important information about the 8.19.2 release.
 
 Fleet Server::
 
-* Fix upgrade details download_rate as string handling. {fleet-server-pull}5062[#5062] {fleet-server-pull}5232[#5232] {fleet-server-pull}5238[#5238] {fleet-server-pull}5176[#5176] {fleet-server-issue}5164[#5164]
+* Fix upgrade details `download_rate` as string handling. {fleet-server-pull}5062[#5062] {fleet-server-pull}5232[#5232] {fleet-server-pull}5238[#5238] {fleet-server-pull}5176[#5176] {fleet-server-issue}5164[#5164]
 
 // end 8.19.2 relnotes
 

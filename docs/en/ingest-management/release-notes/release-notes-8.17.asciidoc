@@ -34,9 +34,9 @@ Also see:
 // begin 8.17.10 relnotes
 
 [[release-notes-8.17.10]]
-==  8.17.10
+== {fleet} and {agent} 8.17.10
 
-Review important information about the  8.17.10 release.
+Review important information about the 8.17.10 release.
 
 [discrete]
 [[bug-fixes-8.17.10]]
@@ -44,7 +44,7 @@ Review important information about the  8.17.10 release.
 
 Fleet Server::
 
-* Fix upgrade details download_rate as string handling. {fleet-server-pull}5219[#5219] {fleet-server-pull}5225[#5225] {fleet-server-pull}5176[#5176] {fleet-server-issue}5164[#5164]
+* Fix upgrade details `download_rate` as string handling. {fleet-server-pull}5219[#5219] {fleet-server-pull}5225[#5225] {fleet-server-pull}5176[#5176] {fleet-server-issue}5164[#5164]
 
 // end 8.17.10 relnotes
 

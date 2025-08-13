@@ -14,6 +14,7 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.17.10>>
 * <<release-notes-8.17.9>>
 * <<release-notes-8.17.8>>
 * <<release-notes-8.17.7>>
@@ -29,6 +30,23 @@ Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.17.10 relnotes
+
+[[release-notes-8.17.10]]
+==  8.17.10
+
+Review important information about the  8.17.10 release.
+
+[discrete]
+[[bug-fixes-8.17.10]]
+=== Bug fixes
+
+Fleet Server::
+
+* Fix upgrade details download_rate as string handling. {fleet-server-pull}5219[#5219] {fleet-server-pull}5225[#5225] {fleet-server-pull}5176[#5176] {fleet-server-issue}5164[#5164]
+
+// end 8.17.10 relnotes
 
 // begin 8.17.9 relnotes
 

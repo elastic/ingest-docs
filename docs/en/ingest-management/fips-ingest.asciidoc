@@ -107,13 +107,26 @@ When you use {agent} and {fleet-server}, these limitations apply:
   This includes all receivers, such as Filebeat Receiver, Metricbeat Receiver, and link:https://www.elastic.co/docs/reference/integrations/prometheus[Prometheus Receiver].
 * Some Elastic Integrations are not FIPS compatible, as they depend on functionality that is not yet supported for FIPS configuration. 
   In general, when using {agent} and {fleet-server}, the same restrictions listed previously for {metricbeat} and {filebeat} modules, inputs, and processors apply.
-* These Elastic Integrations have components that are **not** FIPS compatible, and **cannot** be used in FIPS environments, even if combined with other ingest tools that offer FIPS mode. 
 
-  - link:https://www.elastic.co/docs/reference/integrations/azure/events[Azure Logs Integration (v2 preview)]
-  - link:https://www.elastic.co/docs/reference/integrations/azure/eventhub[Azure Event Hub Input]
-  - link:https://www.elastic.co/docs/reference/integrations/sql[SQL Input] 
-  - link:https://www.elastic.co/docs/reference/integrations/postgresql[PostgreSQL Integration]
-  - link:https://www.elastic.co/docs/reference/integrations/mongodb[MongoDB Integration]
-  - link:https://www.elastic.co/docs/reference/integrations/mysql[MySQL Integration]
-  - link:https://www.elastic.co/docs/reference/integrations/microsoft_sqlserver[Microsoft SQL Server Integration]
-  - link:https://www.elastic.co/docs/reference/integrations/oracle[Oracle Integration]
+[discrete]
+[[ingest-limitations-integrations]]
+=== Elastic Integrations that are not FIPS compatible
+
+These Elastic Integrations have components that are **not** FIPS compatible, and **cannot** be used in FIPS environments, even if combined with other ingest tools that offer FIPS mode. 
+
+- link:https://www.elastic.co/docs/reference/integrations/azure/events[Azure Logs Integration (v2 preview)]
+- link:https://www.elastic.co/docs/reference/integrations/azure/eventhub[Azure Event Hub Input]
+- link:https://www.elastic.co/docs/reference/integrations/azure_ai_foundry[Azure AI Foundry Integration]
+- link:https://www.elastic.co/docs/reference/integrations/azure_app_service[Azure App Service Integration]
+- link:https://www.elastic.co/docs/reference/integrations/azure_application_insights[Azure Application Insights Integration]
+- link:https://www.elastic.co/docs/reference/integrations/azure_billing[Azure Billing Metrics Integration]
+- link:https://www.elastic.co/docs/reference/integrations/azure_functions[Azure Functions]
+- link:https://www.elastic.co/docs/reference/integrations/azure_logs[Custom Azure Logs]
+- link:https://www.elastic.co/docs/reference/integrations/azure_metrics[Azure Resource Metrics Integration]
+- link:https://www.elastic.co/docs/reference/integrations/azure_openai[Azure OpenAI Integration]
+- link:https://www.elastic.co/docs/reference/integrations/sql[SQL Input] 
+- link:https://www.elastic.co/docs/reference/integrations/postgresql[PostgreSQL Integration]
+- link:https://www.elastic.co/docs/reference/integrations/mongodb[MongoDB Integration]
+- link:https://www.elastic.co/docs/reference/integrations/mysql[MySQL Integration]
+- link:https://www.elastic.co/docs/reference/integrations/microsoft_sqlserver[Microsoft SQL Server Integration]
+- link:https://www.elastic.co/docs/reference/integrations/oracle[Oracle Integration]

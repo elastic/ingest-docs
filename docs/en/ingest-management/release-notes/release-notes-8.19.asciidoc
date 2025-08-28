@@ -14,6 +14,7 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.19.3>>
 * <<release-notes-8.19.2>>
 * <<release-notes-8.19.1>>
 * <<release-notes-8.19.0>>
@@ -22,6 +23,60 @@ Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.19.3 relnotes
+
+[[release-notes-8.19.3]]
+== {fleet} and {agent} 8.19.3
+
+Review important information about the 8.19.3 release.
+
+[discrete]
+[[security-updates-8.19.3]]
+=== Security updates
+
+Elastic Agent::
+
+* Upgrade to Go version 1.24.6. {agent-pull}9287[#9287]
+
+[discrete]
+[[new-features-8.19.3]]
+=== New features
+
+The 8.19.3 release adds the following new and notable features.
+
+Elastic Agent::
+
+* Adjust the timeout for Elastic Defend check command. {agent-pull}9560[#9560] {agent-pull}9608[#9608] {agent-pull}9609[#9609] {agent-pull}9546[#9546] {agent-pull}9213[#9213]
+
+[discrete]
+[[enhancements-8.19.3]]
+=== Enhancements
+
+Elastic Agent::
+
+* Update OTel components to v0.130.0. {agent-pull}9560[#9560] {agent-pull}9608[#9608] {agent-pull}9609[#9609] {agent-pull}9546[#9546] {agent-pull}9343[#9343]
+
+[discrete]
+[[bug-fixes-8.19.3]]
+=== Bug fixes
+
+Elastic Agent::
+
+* On Windows, retry saving the Agent information file to disk. {agent-pull}9224[#9224] {agent-issue}5862[#5862]
+* Correct hints annotations parsing to resolve only `${Kubernetes.*}` placeholders instead of resolving all `${...}` patterns. {agent-pull}9307[#9307]
+* Treat exit code 28 from endpoint binary as non-fatal. {agent-pull}9320[#9320]
+* Fixed jitter backoff strategy reset. {agent-pull}9342[#9342] {agent-issue}8864[#8864]
+* Fix Docker container failing to start with no matching vars: `${Env.elasticsearch_api_key:}` and similar errors by restoring support for `:` to set default values. {agent-pull}9451[#9451] {agent-issue}9328[#9328]
+* Fix deb upgrade by stopping elastic-agent service before stopping endpoint. {agent-pull}9462[#9462]
+
+Fleet Server::
+
+* Fix 503 handling in enrollment. {fleet-server-pull}5232[#5232] {fleet-server-issue}5197[#5197]
+* Remove extra ES search when preparing agent policy. {fleet-server-pull}5283[#5283]
+* Reset trace links on bulk items when returning to pool. {fleet-server-pull}5317[#5317]
+
+// end 8.19.3 relnotes
 
 // begin 8.19.2 relnotes
 

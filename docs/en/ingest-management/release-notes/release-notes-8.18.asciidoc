@@ -14,6 +14,8 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.18.6>>
+* <<release-notes-8.18.5>>
 * <<release-notes-8.18.4>>
 * <<release-notes-8.18.3>>
 * <<release-notes-8.18.2>>
@@ -24,6 +26,68 @@ Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.18.6 relnotes
+
+[[release-notes-8.18.6]]
+== {fleet} and {agent} 8.18.6
+
+Review important information about the 8.18.6 release.
+
+[discrete]
+[[security-updates-8.18.6]]
+=== Security updates
+
+Elastic Agent::
+
+* Upgrade Go version to 1.24.6. {agent-pull}9287[#9287]
+
+[discrete]
+[[new-features-8.18.6]]
+=== New features
+
+The 8.18.6 release adds the following new and notable features.
+
+Elastic Agent::
+
+* Adjust the timeout for Elastic Defend check command. {agent-pull}9213[#9213]
+
+[discrete]
+[[bug-fixes-8.18.6]]
+=== Bug fixes
+
+Elastic Agent::
+
+* On Windows, retry saving the agent information file to disk. {agent-pull}9224[#9224] {agent-issue}5862[#5862]
+* Correct hints annotations parsing to resolve only `${Kubernetes.*}` placeholders instead of resolving all `${...}` patterns. {agent-pull}9307[#9307]
+* Treat exit code 28 from endpoint binary as non-fatal. {agent-pull}9320[#9320]
+* Fixed jitter backoff strategy reset. {agent-pull}9342[#9342] {agent-issue}8864[#8864]
+* Fix deb upgrade by stopping `elastic-agent` service before upgrading. {agent-pull}9462[#9462]
+
+Fleet Server::
+
+* Fix 503 handling in enrollment. {fleet-server-pull}5232[#5232] {fleet-server-issue}5197[#5197]
+* Remove extra ES search when preparing Agent policy. {fleet-server-pull}5283[#5283]
+* Reset trace links on bulk items when returning to pool. {fleet-server-pull}5317[#5317]
+
+// end 8.18.6 relnotes
+
+// begin 8.18.5 relnotes
+
+[[release-notes-8.18.5]]
+== {fleet} and {agent} 8.18.5
+
+Review important information about the 8.18.5 release.
+
+[discrete]
+[[bug-fixes-8.18.5]]
+=== Bug fixes
+
+Fleet Server::
+
+* Fix upgrade details `download_rate` as string handling. {fleet-server-pull}5218[#5218] {fleet-server-pull}5224[#5224] {fleet-server-pull}5176[#5176] {fleet-server-issue}5164[#5164]
+
+// end 8.18.5 relnotes
 
 // begin 8.18.4 relnotes
 

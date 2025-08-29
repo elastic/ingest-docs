@@ -37,7 +37,7 @@ Review important information about the 8.19.3 release.
 
 Elastic Agent::
 
-* Upgrade to Go version 1.24.6. {agent-pull}9287[#9287]
+* Upgrade Go version to 1.24.6. {agent-pull}9287[#9287]
 
 [discrete]
 [[new-features-8.19.3]]
@@ -47,7 +47,7 @@ The 8.19.3 release adds the following new and notable features.
 
 Elastic Agent::
 
-* Adjust the timeout for Elastic Defend check command. {agent-pull}9560[#9560] {agent-pull}9608[#9608] {agent-pull}9609[#9609] {agent-pull}9546[#9546] {agent-pull}9213[#9213]
+* Adjust the timeout for Elastic Defend check command. {agent-pull}9213[#9213]
 
 [discrete]
 [[enhancements-8.19.3]]
@@ -55,7 +55,7 @@ Elastic Agent::
 
 Elastic Agent::
 
-* Update OTel components to v0.130.0. {agent-pull}9560[#9560] {agent-pull}9608[#9608] {agent-pull}9609[#9609] {agent-pull}9546[#9546] {agent-pull}9343[#9343]
+* Update OTel components to v0.130.0. {agent-pull}9343[#9343]
 
 [discrete]
 [[bug-fixes-8.19.3]]
@@ -67,8 +67,8 @@ Elastic Agent::
 * Correct hints annotations parsing to resolve only `${Kubernetes.*}` placeholders instead of resolving all `${...}` patterns. {agent-pull}9307[#9307]
 * Treat exit code 28 from endpoint binary as non-fatal. {agent-pull}9320[#9320]
 * Fixed jitter backoff strategy reset. {agent-pull}9342[#9342] {agent-issue}8864[#8864]
-* Fix Docker container failing to start with no matching vars: `${Env.elasticsearch_api_key:}` and similar errors by restoring support for `:` to set default values. {agent-pull}9451[#9451] {agent-issue}9328[#9328]
-* Fix deb upgrade by stopping elastic-agent service before stopping endpoint. {agent-pull}9462[#9462]
+* Fix Docker container failing to start with `no matching vars: ${Env.elasticsearch_api_key:}` and similar errors by restoring support for `:` to set default values. {agent-pull}9451[#9451] {agent-issue}9328[#9328]
+* Fix deb upgrade by stopping `elastic-agent` service before stopping endpoint. {agent-pull}9462[#9462]
 
 Fleet Server::
 

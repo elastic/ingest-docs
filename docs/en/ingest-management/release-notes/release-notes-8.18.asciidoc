@@ -40,7 +40,7 @@ Review important information about the 8.18.6 release.
 
 Elastic Agent::
 
-* Upgrade to Go version 1.24.6. {agent-pull}9287[#9287]
+* Upgrade Go version to 1.24.6. {agent-pull}9287[#9287]
 
 [discrete]
 [[new-features-8.18.6]]
@@ -62,7 +62,7 @@ Elastic Agent::
 * Correct hints annotations parsing to resolve only `${Kubernetes.*}` placeholders instead of resolving all `${...}` patterns. {agent-pull}9307[#9307]
 * Treat exit code 28 from endpoint binary as non-fatal. {agent-pull}9320[#9320]
 * Fixed jitter backoff strategy reset. {agent-pull}9342[#9342] {agent-issue}8864[#8864]
-* Fix deb upgrade by stopping elastic-agent service before upgrading. {agent-pull}9462[#9462]
+* Fix deb upgrade by stopping `elastic-agent` service before upgrading. {agent-pull}9462[#9462]
 
 Fleet Server::
 
@@ -85,7 +85,7 @@ Review important information about the 8.18.5 release.
 
 Fleet Server::
 
-* Fix upgrade details download_rate as string handling. {fleet-server-pull}5218[#5218] {fleet-server-pull}5224[#5224] {fleet-server-pull}5176[#5176] {fleet-server-issue}5164[#5164]
+* Fix upgrade details `download_rate` as string handling. {fleet-server-pull}5218[#5218] {fleet-server-pull}5224[#5224] {fleet-server-pull}5176[#5176] {fleet-server-issue}5164[#5164]
 
 // end 8.18.5 relnotes
 

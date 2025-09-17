@@ -55,14 +55,9 @@ Elastic Agent::
 
 
 Fleet Server::
-* Restore connection limiter. link:https://github.com/elastic/fleet-server/pull/5372[#5372] 
-
-  Restore connection level limiter to prevent OOM incidents.
-  This limiter is used in addition to the request-level throttle so that once
-  our in-flight requests reaches max_connections a 429 is returned, but if the
-  total connections the server uses is over max_connections*1.1 the server drops
-  the connection before the TLS handshake.
-
+* Restore connection limiter. link:https://github.com/elastic/fleet-server/pull/5372[#5372]
++
+Restore connection level limiter to prevent OOM incidents. This limiter is used in addition to the request-level throttle so that once our in-flight requests reaches max_connections a 429 is returned, but if the total connections the server uses is over max_connections*1.1 the server dropsthe connection before the TLS handshake.
 * Build fleet-server as fully static binary to restore OS matrix compatibility. link:https://github.com/elastic/fleet-server/pull/5392[#5392] link:https://github.com/elastic/fleet-server/issues/5262[#5262]
  
 // end 8.19.4 relnotes

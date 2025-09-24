@@ -35,7 +35,7 @@ Also see:
 === New features and enhancements
 
 Elastic Agent::
-* Bump kube-stack Helm Chart to 0.9.1 and enable the cluster collector. link:https://github.com/elastic/elastic-agent/pull/9535[#9535] 
+* Bump kube-stack Helm Chart to 0.9.1 and enable the cluster collector. link:https://github.com/elastic/elastic-agent/pull/9535[#9535]
 * Enhanced loggers for easier debugging of upgrade related issues. link:https://github.com/elastic/elastic-agent/pull/9689[#9689] link:https://github.com/elastic/elastic-agent/issues/9536[#9536]
 
 
@@ -44,13 +44,13 @@ Elastic Agent::
 === Bug fixes
 
 Elastic Agent::
-* Redact secrets from pre-config, computed-config, components-expected, and components-actual files in diagnostics archive. link:https://github.com/elastic/elastic-agent/pull/9560[#9560] 
-* Retry service start command upon failure with 30-second delay. link:https://github.com/elastic/elastic-agent/pull/9313[#9313] 
+* Redact secrets from pre-config, computed-config, components-expected, and components-actual files in diagnostics archive. link:https://github.com/elastic/elastic-agent/pull/9560[#9560]
+* Retry service start command upon failure with 30-second delay. link:https://github.com/elastic/elastic-agent/pull/9313[#9313]
 * Fix reporting of scheduled upgrade details across restarts and cancels. link:https://github.com/elastic/elastic-agent/pull/9562[#9562] link:https://github.com/elastic/elastic-agent/issues/8778[#8778]
 * Enable root user to re-enroll unprivileged agent for mac and linux. link:https://github.com/elastic/elastic-agent/pull/9603[#9603] link:https://github.com/elastic/elastic-agent/issues/8544[#8544]
 * Fix missing liveness healthcheck during container enrollment. link:https://github.com/elastic/elastic-agent/pull/9612[#9612] link:https://github.com/elastic/elastic-agent/issues/9611[#9611]
 * Enable admin user to re-enroll unprivileged agent for windows. link:https://github.com/elastic/elastic-agent/pull/9623[#9623] link:https://github.com/elastic/elastic-agent/issues/8544[#8544]
-* Treat exit code 284 from Endpoint binary as non-fatal. link:https://github.com/elastic/elastic-agent/pull/9687[#9687] 
+* Treat exit code 284 from Endpoint binary as non-fatal. link:https://github.com/elastic/elastic-agent/pull/9687[#9687]
 * Ensure failed upgrade actions are removed from queue and details are set. link:https://github.com/elastic/elastic-agent/pull/9634[#9634] link:https://github.com/elastic/elastic-agent/issues/9629[#9629]
 
 
@@ -59,7 +59,7 @@ Fleet Server::
 +
 Restore connection level limiter to prevent OOM incidents. This limiter is used in addition to the request-level throttle so that once our in-flight requests reaches max_connections a 429 is returned, but if the total connections the server uses is over max_connections*1.1 the server dropsthe connection before the TLS handshake.
 * Build fleet-server as fully static binary to restore OS matrix compatibility. link:https://github.com/elastic/fleet-server/pull/5392[#5392] link:https://github.com/elastic/fleet-server/issues/5262[#5262]
- 
+
 // end 8.19.4 relnotes
 
 // begin 8.19.3 relnotes
@@ -68,6 +68,43 @@ Restore connection level limiter to prevent OOM incidents. This limiter is used 
 == {fleet} and {agent} 8.19.3
 
 Review important information about the 8.19.3 release.
+
+[discrete]
+[[known-issues-8.19.3]]
+=== Known issues
+
+[[known-issue-5515-8.19.3]]
+.fleet-agents template is missing mappings
+[%collapsible]
+====
+
+*Details* +
+
+On May 2, 2025 a known issue was discovered that the `.fleet-agents` index template was missing a mapping for the `local_metadata.complete` attribute. This may cause agent checkins to be rejected and the agents to appear as offline.
+
+In this {fleet}'s logs this will appear as:
+[source,shell]
+----
+elastic fail 400: document_parsing_exception: [1:209] object mapping for [local_metadata] tried to parse field [local_metadata] as object, but found a concrete value
+Eat bulk checkin error; Keep on truckin'
+----
+And in the {agent} logs it will appear as:
+[source,shell]
+----
+"log.level":"error","@timestamp":"2025-04-22:12:35:25.295Z","message":"Eat bulk checkin error; Keep on truckin'","component":{"binary":"fleet-server","dataset":"elastic_agent.fleet_server","id":"fleet-server-es-containerhost","type":"fleet-server"},"log":{"source":"fleet-server-es-containerhost"},"service.type":"fleet-server","error.message":"elastic fail 400: document_parsing_exception: [1:209] object mapping for [local_metadata] tried to parse field [local_metadata] as object, but found a concrete value","ecs.version":"1.6.0","service.name":"fleet-server","ecs.version":"1.6.0"
+----
+This attribute was added to the template in versions: 8.17.11 8.18.3, and 8.19.3.
+
+Further investigation revealed that the `.fleet-agents` index template was not correctly applied due to an unchanged `_meta.managed_index_mappings_version` number.
+This change also affects other attributes as well, such as `upgrade_attempts`, `namespaces`, `unprivileged`, and `unhealthy_reason`.
+If there is an error related to any of these attributes, there will be a similar error message in the logs.
+
+*Impact* +
+
+Updating to a version with a fixed `_meta.managed_index_mappings_version` will correctly apply the new index template.
+The fixed versions are 8.18.8, 8.19.4, 9.0.8, 9.1.4.
+
+====
 
 [discrete]
 [[security-updates-8.19.3]]
@@ -124,6 +161,43 @@ Fleet Server::
 Review important information about the 8.19.2 release.
 
 [discrete]
+[[known-issues-8.19.2]]
+=== Known issues
+
+[[known-issue-5515-8.19.2]]
+.fleet-agents template is missing mappings
+[%collapsible]
+====
+
+*Details* +
+
+On May 2, 2025 a known issue was discovered that the `.fleet-agents` index template was missing a mapping for the `local_metadata.complete` attribute. This may cause agent checkins to be rejected and the agents to appear as offline.
+
+In this {fleet}'s logs this will appear as:
+[source,shell]
+----
+elastic fail 400: document_parsing_exception: [1:209] object mapping for [local_metadata] tried to parse field [local_metadata] as object, but found a concrete value
+Eat bulk checkin error; Keep on truckin'
+----
+And in the {agent} logs it will appear as:
+[source,shell]
+----
+"log.level":"error","@timestamp":"2025-04-22:12:35:25.295Z","message":"Eat bulk checkin error; Keep on truckin'","component":{"binary":"fleet-server","dataset":"elastic_agent.fleet_server","id":"fleet-server-es-containerhost","type":"fleet-server"},"log":{"source":"fleet-server-es-containerhost"},"service.type":"fleet-server","error.message":"elastic fail 400: document_parsing_exception: [1:209] object mapping for [local_metadata] tried to parse field [local_metadata] as object, but found a concrete value","ecs.version":"1.6.0","service.name":"fleet-server","ecs.version":"1.6.0"
+----
+This attribute was added to the template in versions: 8.17.11 8.18.3, and 8.19.3.
+
+Further investigation revealed that the `.fleet-agents` index template was not correctly applied due to an unchanged `_meta.managed_index_mappings_version` number.
+This change also affects other attributes as well, such as `upgrade_attempts`, `namespaces`, `unprivileged`, and `unhealthy_reason`.
+If there is an error related to any of these attributes, there will be a similar error message in the logs.
+
+*Impact* +
+
+Updating to a version with a fixed `_meta.managed_index_mappings_version` will correctly apply the new index template.
+The fixed versions are 8.18.8, 8.19.4, 9.0.8, 9.1.4.
+
+====
+
+[discrete]
 [[bug-fixes-8.19.2]]
 === Bug fixes
 
@@ -139,6 +213,43 @@ Fleet Server::
 == {fleet} and {agent} 8.19.1
 
 Review important information about the 8.19.1 release.
+
+[discrete]
+[[known-issues-8.19.1]]
+=== Known issues
+
+[[known-issue-5515-8.19.1]]
+.fleet-agents template is missing mappings
+[%collapsible]
+====
+
+*Details* +
+
+On May 2, 2025 a known issue was discovered that the `.fleet-agents` index template was missing a mapping for the `local_metadata.complete` attribute. This may cause agent checkins to be rejected and the agents to appear as offline.
+
+In this {fleet}'s logs this will appear as:
+[source,shell]
+----
+elastic fail 400: document_parsing_exception: [1:209] object mapping for [local_metadata] tried to parse field [local_metadata] as object, but found a concrete value
+Eat bulk checkin error; Keep on truckin'
+----
+And in the {agent} logs it will appear as:
+[source,shell]
+----
+"log.level":"error","@timestamp":"2025-04-22:12:35:25.295Z","message":"Eat bulk checkin error; Keep on truckin'","component":{"binary":"fleet-server","dataset":"elastic_agent.fleet_server","id":"fleet-server-es-containerhost","type":"fleet-server"},"log":{"source":"fleet-server-es-containerhost"},"service.type":"fleet-server","error.message":"elastic fail 400: document_parsing_exception: [1:209] object mapping for [local_metadata] tried to parse field [local_metadata] as object, but found a concrete value","ecs.version":"1.6.0","service.name":"fleet-server","ecs.version":"1.6.0"
+----
+This attribute was added to the template in versions: 8.17.11 8.18.3, and 8.19.3.
+
+Further investigation revealed that the `.fleet-agents` index template was not correctly applied due to an unchanged `_meta.managed_index_mappings_version` number.
+This change also affects other attributes as well, such as `upgrade_attempts`, `namespaces`, `unprivileged`, and `unhealthy_reason`.
+If there is an error related to any of these attributes, there will be a similar error message in the logs.
+
+*Impact* +
+
+Updating to a version with a fixed `_meta.managed_index_mappings_version` will correctly apply the new index template.
+The fixed versions are 8.18.8, 8.19.4, 9.0.8, 9.1.4.
+
+====
 
 [discrete]
 [[new-features-8.19.1]]
@@ -263,6 +374,39 @@ curl --request POST \
   --header 'kbn-xsrf: true' \
   --data '{"version": "<VERSION>","force": true,"agents":["<AGENT_IDS>"]}'
 ----
+
+====
+
+[[known-issue-5515-8.19.0]]
+.fleet-agents template is missing mappings
+[%collapsible]
+====
+
+*Details* +
+
+On May 2, 2025 a known issue was discovered that the `.fleet-agents` index template was missing a mapping for the `local_metadata.complete` attribute. This may cause agent checkins to be rejected and the agents to appear as offline.
+
+In this {fleet}'s logs this will appear as:
+[source,shell]
+----
+elastic fail 400: document_parsing_exception: [1:209] object mapping for [local_metadata] tried to parse field [local_metadata] as object, but found a concrete value
+Eat bulk checkin error; Keep on truckin'
+----
+And in the {agent} logs it will appear as:
+[source,shell]
+----
+"log.level":"error","@timestamp":"2025-04-22:12:35:25.295Z","message":"Eat bulk checkin error; Keep on truckin'","component":{"binary":"fleet-server","dataset":"elastic_agent.fleet_server","id":"fleet-server-es-containerhost","type":"fleet-server"},"log":{"source":"fleet-server-es-containerhost"},"service.type":"fleet-server","error.message":"elastic fail 400: document_parsing_exception: [1:209] object mapping for [local_metadata] tried to parse field [local_metadata] as object, but found a concrete value","ecs.version":"1.6.0","service.name":"fleet-server","ecs.version":"1.6.0"
+----
+This attribute was added to the template in versions: 8.17.11 8.18.3, and 8.19.3.
+
+Further investigation revealed that the `.fleet-agents` index template was not correctly applied due to an unchanged `_meta.managed_index_mappings_version` number.
+This change also affects other attributes as well, such as `upgrade_attempts`, `namespaces`, `unprivileged`, and `unhealthy_reason`.
+If there is an error related to any of these attributes, there will be a similar error message in the logs.
+
+*Impact* +
+
+Updating to a version with a fixed `_meta.managed_index_mappings_version` will correctly apply the new index template.
+The fixed versions are 8.18.8, 8.19.4, 9.0.8, 9.1.4.
 
 ====
 

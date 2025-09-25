@@ -39,6 +39,17 @@ Also see:
 Review important information about the 8.17.10 release.
 
 [discrete]
+[[known-issues-8.17.10]]
+=== Known issues
+
+[[known-issue-5515-8.17.10]]
+.fleet-agents template is missing mappings
+[%collapsible]
+====
+include::release-notes-8.17.asciidoc[tag=known-issue-5515-8.17]
+====
+
+[discrete]
 [[bug-fixes-8.17.10]]
 === Bug fixes
 
@@ -54,6 +65,17 @@ Fleet Server::
 == {fleet} and {agent} 8.17.9
 
 Review important information about the {fleet} and {agent} 8.17.9 release.
+
+[discrete]
+[[known-issues-8.17.9]]
+=== Known issues
+
+[[known-issue-5515-8.17.9]]
+.fleet-agents template is missing mappings
+[%collapsible]
+====
+include::release-notes-8.17.asciidoc[tag=known-issue-5515-8.17]
+====
 
 [discrete]
 [[bug-fixes-8.17.9]]
@@ -78,6 +100,17 @@ Fleet::
 == {fleet} and {agent} 8.17.8
 
 Review important information about the {fleet} and {agent} 8.17.8 release.
+
+[discrete]
+[[known-issues-8.17.8]]
+=== Known issues
+
+[[known-issue-5515-8.17.8]]
+.fleet-agents template is missing mappings
+[%collapsible]
+====
+include::release-notes-8.17.asciidoc[tag=known-issue-5515-8.17]
+====
 
 [discrete]
 [[new-features-8.17.8]]
@@ -144,6 +177,13 @@ After the output confirms all files were successfully processed, run the `enroll
 
 ====
 
+[[known-issue-5515-8.17.7]]
+.fleet-agents template is missing mappings
+[%collapsible]
+====
+include::release-notes-8.17.asciidoc[tag=known-issue-5515-8.17]
+====
+
 [discrete]
 [[bug-fixes-8.17.7]]
 === Bug fixes
@@ -186,6 +226,13 @@ icacls "C:\Program Files\Elastic\Agent" /setowner "NT AUTHORITY\SYSTEM" /t /l
 
 After the output confirms all files were successfully processed, run the `enroll` command again.
 
+====
+
+[[known-issue-5515-8.17.6]]
+.fleet-agents template is missing mappings
+[%collapsible]
+====
+include::release-notes-8.17.asciidoc[tag=known-issue-5515-8.17]
 ====
 
 [discrete]
@@ -232,6 +279,14 @@ icacls "C:\Program Files\Elastic\Agent" /setowner "NT AUTHORITY\SYSTEM" /t /l
 After the output confirms all files were successfully processed, run the `enroll` command again.
 
 ====
+
+[[known-issue-5515-8.17.5]]
+.fleet-agents template is missing mappings
+[%collapsible]
+====
+include::release-notes-8.17.asciidoc[tag=known-issue-5515-8.17]
+====
+
 
 [discrete]
 [[enhancements-8.17.5]]
@@ -318,6 +373,14 @@ icacls "C:\Program Files\Elastic\Agent" /setowner "NT AUTHORITY\SYSTEM" /t /l
 After the output confirms all files were successfully processed, run the `enroll` command again.
 
 ====
+
+[[known-issue-5515-8.17.4]]
+.fleet-agents template is missing mappings
+[%collapsible]
+====
+include::release-notes-8.17.asciidoc[tag=known-issue-5515-8.17]
+====
+
 
 [discrete]
 [[new-features-8.17.4]]
@@ -415,6 +478,13 @@ After the output confirms all files were successfully processed, run the `enroll
 
 ====
 
+[[known-issue-5515-8.17.3]]
+.fleet-agents template is missing mappings
+[%collapsible]
+====
+include::release-notes-8.17.asciidoc[tag=known-issue-5515-8.17]
+====
+
 [discrete]
 [[enhancements-8.17.3]]
 === Enhancements
@@ -474,6 +544,14 @@ icacls "C:\Program Files\Elastic\Agent" /setowner "NT AUTHORITY\SYSTEM" /t /l
 After the output confirms all files were successfully processed, run the `enroll` command again.
 
 ====
+
+[[known-issue-5515-8.17.2]]
+.fleet-agents template is missing mappings
+[%collapsible]
+====
+include::release-notes-8.17.asciidoc[tag=known-issue-5515-8.17]
+====
+
 
 [discrete]
 [[enhancements-8.17.2]]
@@ -555,6 +633,14 @@ After the output confirms all files were successfully processed, run the `enroll
 
 ====
 
+[[known-issue-5515-8.17.1]]
+.fleet-agents template is missing mappings
+[%collapsible]
+====
+include::release-notes-8.17.asciidoc[tag=known-issue-5515-8.17]
+====
+
+
 [discrete]
 [[new-features-8.17.1]]
 === New features
@@ -632,6 +718,39 @@ curl -XPOST --user elastic:${SUPERUSER_PASS} -H 'x-elastic-product-origin:fleet'
 # Issue an update_by_query request that targets effected agents:
 curl -XPOST -H 'Authorization: Bearer ${TOKEN}' -H 'x-elastic-product-origin:fleet' -H 'content-type:application/json' "https://${ELASTICSEARCH_HOST}/.fleet-agents/_update_by_query" -d '{"query": {"bool": {"must": [{ "exists": { "field": "unenrolled_at" } }],"must_not": [{ "term": { "active": "false" } }]}},"script": {"source": "ctx._source.unenrolled_at = null;","lang": "painless"}}'
 ----
+====
+
+[[known-issue-5515-8.17.0]]
+.fleet-agents template is missing mappings
+[%collapsible]
+====
+// tag::known-issue-5515-8.17[]
+*Details* +
+
+On May 2, 2025 a known issue was discovered that the `.fleet-agents` index template was missing a mapping for the `local_metadata.complete` attribute. This may cause agent checkins to be rejected and the agents to appear as offline.
+
+In this {fleet}'s logs this will appear as:
+[source,shell]
+----
+elastic fail 400: document_parsing_exception: [1:209] object mapping for [local_metadata] tried to parse field [local_metadata] as object, but found a concrete value
+Eat bulk checkin error; Keep on truckin'
+----
+And in the {agent} logs it will appear as:
+[source,shell]
+----
+"log.level":"error","@timestamp":"2025-04-22:12:35:25.295Z","message":"Eat bulk checkin error; Keep on truckin'","component":{"binary":"fleet-server","dataset":"elastic_agent.fleet_server","id":"fleet-server-es-containerhost","type":"fleet-server"},"log":{"source":"fleet-server-es-containerhost"},"service.type":"fleet-server","error.message":"elastic fail 400: document_parsing_exception: [1:209] object mapping for [local_metadata] tried to parse field [local_metadata] as object, but found a concrete value","ecs.version":"1.6.0","service.name":"fleet-server","ecs.version":"1.6.0"
+----
+This attribute was added to the template in versions: 8.17.11 8.18.3, and 8.19.3.
+
+Further investigation revealed that the `.fleet-agents` index template was not correctly applied due to an unchanged `_meta.managed_index_mappings_version` number.
+This change also affects other attributes as well, such as `upgrade_attempts`, `namespaces`, `unprivileged`, and `unhealthy_reason`.
+If there is an error related to any of these attributes, there will be a similar error message in the logs.
+
+*Impact* +
+
+Updating to a version with a fixed `_meta.managed_index_mappings_version` will correctly apply the new index template.
+The fixed versions are 8.18.8, 8.19.4, 9.0.8, 9.1.4.
+// end::known-issue-5515-8.17[]
 ====
 
 [discrete]

@@ -14,6 +14,7 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.19.6>>
 * <<release-notes-8.19.5>>
 * <<release-notes-8.19.4>>
 * <<release-notes-8.19.3>>
@@ -25,6 +26,37 @@ Also see:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.19.6 relnotes
+
+[[release-notes-8.19.6]]
+== {fleet} and {agent} 8.19.6
+
+[discrete]
+[[features-enhancements-8.19.6]]
+=== New features and enhancements
+
+Elastic Agent::
+
+* Add logs_metrics_traces.yml sample in EDOT for Windows. https://github.com/elastic/elastic-agent/pull/10514[#10514]
+* Include OTel Collector internal telemetry in Agent monitoring. https://github.com/elastic/elastic-agent/pull/9928[#9928] 
+* Update OTel Collector components to v0.137.0. https://github.com/elastic/elastic-agent/pull/10391[#10391] 
+
+Fleet Server::
+
+* Update Go to v1.25.3. https://github.com/elastic/fleet-server/pull/5699[#5699]
+
+[discrete]
+[[bug-fixes-8.19.6]]
+=== Bug fixes
+
+Elastic Agent::
+
+* Improve logging to catch early errors on startup. https://github.com/elastic/elastic-agent/pull/10158[#10158] https://github.com/elastic/elastic-agent/issues/9099[#9099]
+* Fix an incorrectly formatted log message when a provider fails. https://github.com/elastic/elastic-agent/pull/10217[#10217] 
+* Inspect: Handle components with slashes in their name. https://github.com/elastic/elastic-agent/pull/10442[#10442] 
+
+// end 8.19.6 relnotes
 
 // begin 8.19.5 relnotes
 

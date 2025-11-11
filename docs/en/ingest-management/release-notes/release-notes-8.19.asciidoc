@@ -46,8 +46,8 @@ Elastic Agent::
 
 Fleet Server::
 
-* Fix issue prevent checkin local_metadata from being updated. https://github.com/elastic/fleet-server/pull/5824[#5824] 
-* Fix issue where malformed components field prevents agent authentication. https://github.com/elastic/fleet-server/pull/5858[#5858] 
+* Fix issue that prevented `checkin local_metadata` from being updated. https://github.com/elastic/fleet-server/pull/5824[#5824] 
+* Fix issue where a malformed `components` field prevented agent authentication. https://github.com/elastic/fleet-server/pull/5858[#5858] 
 
 // end 8.19.7 relnotes
 

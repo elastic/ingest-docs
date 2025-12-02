@@ -14,6 +14,7 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.19.8>>
 * <<release-notes-8.19.7>>
 * <<release-notes-8.19.6>>
 * <<release-notes-8.19.5>>
@@ -23,10 +24,35 @@ This section summarizes the changes in each release.
 * <<release-notes-8.19.1>>
 * <<release-notes-8.19.0>>
 
-Also see:
+Also check:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.19.8 relnotes
+
+[[release-notes-8.19.8]]
+== {fleet} and {agent} 8.19.8
+
+[discrete]
+[[security-updates-8.19.8]]
+=== Security updates
+
+Elastic Agent::
+
+* Redact secrets in slices. https://github.com/elastic/elastic-agent/pull/11271[#11271] 
+
+[discrete]
+[[bug-fixes-8.19.8]]
+=== Bug fixes
+
+Elastic Agent::
+
+* Fix filesource provider to work with kubernetes secret mounts. https://github.com/elastic/elastic-agent/pull/11050[#11050]
+* Ensure the monitoring input for the OTel collector can only run inside the collector. https://github.com/elastic/elastic-agent/pull/11204[#11204]
+* Fix a fatal startup error in Beats Receivers caused by truncation of long UTF-8 hostnames. https://github.com/elastic/elastic-agent/pull/11285[#11285]
+
+// end 8.19.8 relnotes
 
 // begin 8.19.7 relnotes
 

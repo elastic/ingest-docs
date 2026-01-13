@@ -14,6 +14,8 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.19.10>>
+* <<release-notes-8.19.9>>
 * <<release-notes-8.19.8>>
 * <<release-notes-8.19.7>>
 * <<release-notes-8.19.6>>
@@ -28,6 +30,56 @@ Also check:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.19.10 relnotes
+
+[[release-notes-8.19.10]]
+== {fleet} and {agent} 8.19.10
+
+[discrete]
+[[features-enhancements-8.19.10]]
+=== New features and enhancements
+
+Elastic Agent::
+
+* Update OTel Collector components to v0.141.0. https://github.com/elastic/elastic-agent/pull/11671[#11671] 
+
+[discrete]
+[[bug-fixes-8.19.10]]
+=== Bug fixes
+
+Elastic Agent::
+
+* Fix signature verification using the upgrade command with the --source-uri flag for fleet-managed agents. https://github.com/elastic/elastic-agent/pull/11826[#11826] https://github.com/elastic/elastic-agent/issues/11152[#11152]
+* Fix FLEET_TOKEN_POLICY_NAME environment variable for the container command to handle cases where there are more than 20 agent policies available. https://github.com/elastic/elastic-agent/pull/12073[#12073] https://github.com/elastic/elastic-agent/issues/12069[#12069]
+
+// end 8.19.10 relnotes
+
+// begin 8.19.9 relnotes
+
+[[release-notes-8.19.9]]
+== {fleet} and {agent} 8.19.9
+
+[discrete]
+[[features-enhancements-8.19.9]]
+=== New features and enhancements
+
+Elastic Agent::
+
+* Allow setting component runtime per input type. https://github.com/elastic/elastic-agent/pull/11186[#11186]
+
+[discrete]
+[[bug-fixes-8.19.9]]
+=== Bug fixes
+
+Elastic Agent::
+
+* Ensure the self-monitoring configuration accounts for the runtime components actually run in. https://github.com/elastic/elastic-agent/pull/11300[#11300]
+* Allow host to be a string for OTel configuration translation. https://github.com/elastic/elastic-agent/pull/11394[#11394] https://github.com/elastic/elastic-agent/issues/11352[#11352]
+* Add environment.yaml file to diagnostics. https://github.com/elastic/elastic-agent/pull/11484[#11484] https://github.com/elastic/elastic-agent/issues/10966[#10966]
+* Merge multiple agent keys when loading config. https://github.com/elastic/elastic-agent/pull/11619[#11619] https://github.com/elastic/elastic-agent/issues/3717[#3717]
+
+// end 8.19.9 relnotes
 
 // begin 8.19.8 relnotes
 
@@ -60,7 +112,7 @@ Elastic Agent::
 == {fleet} and {agent} 8.19.7
 
 [discrete]
-[[bug-fixes-8.19.9]]
+[[bug-fixes-8.19.7]]
 === Bug fixes
 
 Elastic Agent::

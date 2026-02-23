@@ -117,7 +117,8 @@ The configuration needed on {ecloud} is different from
 self-managed {es} clusters. If you copied the configuration shown in {fleet},
 adjust it as needed.
 
-### {es-serverless} example
+[discrete]
+=== {es-serverless} example
 
 [source,text]
 ----
@@ -143,8 +144,8 @@ output {
 <1> The Elasticsearch endpoint URL for your {es-serverless} project is available in **Application endpoints, cluster and component IDs**. Select **Manage** next to your project to access this information.
 <2> In {fleet}, you can generate this API key when you add a {ls} output.
 
-
-### {ech} example
+[discrete]
+=== {ech} example
 
 [source,text]
 ----
@@ -170,6 +171,7 @@ output {
 <1> Use the `cloud_id` shown on your deployment page in {ecloud}.
 <2> In {fleet}, you can generate this API key when you add a {ls} output.
 
+[discrete]
 === Self-managed {es} cluster example
 
 [source,text]

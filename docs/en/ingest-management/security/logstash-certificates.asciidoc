@@ -112,12 +112,40 @@ add the following configuration. Replace the path to your file.
   path.config: "/etc/path/to/elastic-agent-pipeline.conf"
 ----
 
-In the `elastic-agent-pipeline.conf` file, add the pipeline configuration. Note
-that the configuration needed for {ess} on {ecloud} is different from
+In the `elastic-agent-pipeline.conf` file, add the pipeline configuration. 
+The configuration needed on {ecloud} is different from
 self-managed {es} clusters. If you copied the configuration shown in {fleet},
 adjust it as needed.
 
-{ess} example:
+[discrete]
+=== {es-serverless} example
+
+[source,text]
+----
+input {
+  elastic_agent {
+    port => 5044
+    ssl_enabled => true
+    ssl_certificate_authorities => ["/path/to/ca.crt"]
+    ssl_certificate => "/path/to/logstash.crt"
+    ssl_key => "/path/to/logstash.pkcs8.key"
+    ssl_client_authentication => "required"
+  }
+}
+
+output {
+  elasticsearch {
+    hosts => "ELASTICSEARCH_ENDPOINT_URL" <1>
+    api_key => "xxxx:xxxx" <2>
+    data_stream => true
+  }
+}
+----
+<1> The {es} endpoint URL for your {es-serverless} project is available in **Application endpoints, cluster and component IDs**. Select **Manage** next to your project to access this information.
+<2> In {fleet}, you can generate this API key when you add a {ls} output.
+
+[discrete]
+=== {ech} example
 
 [source,text]
 ----
@@ -137,16 +165,14 @@ output {
     cloud_id => "xxxx:xxxxxxxxxxxxxxxxxxxxxxxxxxxxx=" <1>
     api_key => "xxxx:xxxx" <2>
     data_stream => true
-    ssl => true <3>
   }
 }
 ----
 <1> Use the `cloud_id` shown on your deployment page in {ecloud}.
 <2> In {fleet}, you can generate this API key when you add a {ls} output.
-<3> {ess} uses standard publicly trusted certificates, so there's no need
-specify other SSL settings here.
 
-Self-managed {es} cluster example:
+[discrete]
+=== Self-managed {es} cluster example
 
 [source,text]
 ----

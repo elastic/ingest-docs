@@ -48,7 +48,7 @@ Elastic Agent::
 
 Fleet Server::
 
-* Update Go version to v1.25.7. https://github.com/elastic/fleet-server/pull/6322[#6322] 
+* Update Go to v1.25.7. https://github.com/elastic/fleet-server/pull/6322[#6322] 
 
 
 [discrete]
@@ -57,8 +57,8 @@ Fleet Server::
 
 Elastic Agent::
 
-* Adds a missing dependency for Synthetics on wolfi docker image. https://github.com/elastic/elastic-agent/pull/12453[#12453]
-* Ensure otel collector health check requests reuse the TCP connection. https://github.com/elastic/elastic-agent/pull/12517[#12517]
+* Adds a missing dependency for Synthetics on Wolfi Docker image. https://github.com/elastic/elastic-agent/pull/12453[#12453]
+* Ensure OTel Collector health check requests reuse the TCP connection. https://github.com/elastic/elastic-agent/pull/12517[#12517]
 
 // end 8.19.12 relnotes
 

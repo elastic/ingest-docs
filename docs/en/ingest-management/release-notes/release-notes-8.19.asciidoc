@@ -14,6 +14,7 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.19.12>>
 * <<release-notes-8.19.11>>
 * <<release-notes-8.19.10>>
 * <<release-notes-8.19.9>>
@@ -31,6 +32,35 @@ Also check:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.19.12 relnotes
+
+[[release-notes-8.19.12]]
+== {fleet} and {agent} 8.19.12
+
+[discrete]
+[[features-enhancements-8.19.12]]
+=== New features and enhancements
+
+Elastic Agent::
+
+* Update OTel Collector components to v0.144.0/v1.50.0. https://github.com/elastic/elastic-agent/pull/12735[#12735]
+
+Fleet Server::
+
+* Update Go to v1.25.7. https://github.com/elastic/fleet-server/pull/6322[#6322] 
+
+
+[discrete]
+[[bug-fixes-8.19.12]]
+=== Bug fixes
+
+Elastic Agent::
+
+* Adds a missing dependency for Synthetics on Wolfi Docker image. https://github.com/elastic/elastic-agent/pull/12453[#12453]
+* Ensure OTel Collector health check requests reuse the TCP connection. https://github.com/elastic/elastic-agent/pull/12517[#12517]
+
+// end 8.19.12 relnotes
 
 // begin 8.19.11 relnotes
 

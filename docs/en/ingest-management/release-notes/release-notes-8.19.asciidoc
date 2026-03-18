@@ -14,6 +14,7 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.19.13>>
 * <<release-notes-8.19.12>>
 * <<release-notes-8.19.11>>
 * <<release-notes-8.19.10>>
@@ -32,6 +33,43 @@ Also check:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.19.13 relnotes
+
+[[release-notes-8.19.13]]
+== {fleet} and {agent} 8.19.13
+
+[discrete]
+[[new-features-8.19.13]]
+=== New features
+
+Elastic Agent::
+
+* Add support for encrypted config for standalone agents. https://github.com/elastic/elastic-agent/pull/12521[#12521] https://github.com/elastic/elastic-agent/issues/7283[#7283]
+
+[discrete]
+[[enhancements-8.19.13]]
+=== Enhancements
+
+Elastic Agent::
+
+* Enrolling fleet-server uses internal port. https://github.com/elastic/elastic-agent/pull/12917[#12917]
+
+[discrete]
+[[bug-fixes-8.19.13]]
+=== Bug fixes
+
+Elastic Agent::
+
+* Prevent permission fix from failing when file is protected. https://github.com/elastic/elastic-agent/pull/12909[#12909] https://github.com/elastic/elastic-agent/issues/13059[#13059]
+* Redact URL credentials in diagnostic outputs. https://github.com/elastic/elastic-agent/pull/13022[#13022] https://github.com/elastic/elastic-agent/issues/13017[#13017]
+
+Fleet Server::
+
+* Fix checkin endpoint compression support. https://github.com/elastic/fleet-server/pull/6491[#6491]
+* Fix inaccuracies with openapi spec. https://github.com/elastic/fleet-server/pull/6532[#6532] 
+
+// end 8.19.13 relnotes
 
 // begin 8.19.12 relnotes
 

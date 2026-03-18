@@ -45,14 +45,7 @@ Also check:
 
 Elastic Agent::
 
-* Add support for encrypted config for standalone agents. https://github.com/elastic/elastic-agent/pull/12852[#12852] https://github.com/elastic/elastic-agent/pull/13075[#13075] https://github.com/elastic/elastic-agent/pull/12909[#12909] https://github.com/elastic/elastic-agent/pull/13128[#13128] https://github.com/elastic/elastic-agent/pull/13129[#13129] https://github.com/elastic/elastic-agent/pull/13134[#13134] https://github.com/elastic/elastic-agent/pull/13127[#13127] https://github.com/elastic/elastic-agent/issues/7283[#7283]
-+
-Add a new agent.features.encrypted_config.enabled config attribute
-that enables the use of encrypted config when the agent is operating
-in stand-alone mode. Agents managed through fleet will ignore this
-flag and always use encrypted config. If this flag is present, the
-agent will encrypt config, and replace the elastic-agent.yml file
-contents with only the feature flag.
+* Add support for encrypted config for standalone agents. https://github.com/elastic/elastic-agent/pull/12521[#12521] https://github.com/elastic/elastic-agent/issues/7283[#7283]
 
 [discrete]
 [[enhancements-8.19.13]]
@@ -68,13 +61,13 @@ Elastic Agent::
 
 Elastic Agent::
 
-* Prevent permission fix from failing when file is protected. https://github.com/elastic/elastic-agent/pull/12852[#12852] https://github.com/elastic/elastic-agent/pull/13075[#13075] https://github.com/elastic/elastic-agent/pull/12909[#12909] https://github.com/elastic/elastic-agent/pull/13128[#13128] https://github.com/elastic/elastic-agent/pull/13129[#13129] https://github.com/elastic/elastic-agent/pull/13134[#13134] https://github.com/elastic/elastic-agent/pull/13127[#13127] https://github.com/elastic/elastic-agent/issues/12823[#12823] https://github.com/elastic/elastic-agent/issues/13059[#13059]
-* Redact URL credentials in diagnostic outputs. https://github.com/elastic/elastic-agent/pull/12852[#12852] https://github.com/elastic/elastic-agent/pull/13075[#13075] https://github.com/elastic/elastic-agent/pull/12909[#12909] https://github.com/elastic/elastic-agent/pull/13128[#13128] https://github.com/elastic/elastic-agent/pull/13129[#13129] https://github.com/elastic/elastic-agent/pull/13134[#13134] https://github.com/elastic/elastic-agent/pull/13127[#13127] https://github.com/elastic/elastic-agent/issues/12823[#12823] https://github.com/elastic/elastic-agent/issues/13059[#13059]
+* Prevent permission fix from failing when file is protected. https://github.com/elastic/elastic-agent/pull/12909[#12909] https://github.com/elastic/elastic-agent/issues/13059[#13059]
+* Redact URL credentials in diagnostic outputs. https://github.com/elastic/elastic-agent/pull/13022[#13022] https://github.com/elastic/elastic-agent/issues/13017[#13017]
 
 Fleet Server::
 
 * Fix checkin endpoint compression support. https://github.com/elastic/fleet-server/pull/6491[#6491]
-* Fix inaccuracies with openapi spec. https://github.com/elastic/fleet-server/pull/6572[#6572] https://github.com/elastic/fleet-server/pull/6565[#6565] https://github.com/elastic/fleet-server/pull/6577[#6577] https://github.com/elastic/fleet-server/pull/6580[#6580]
+* Fix inaccuracies with openapi spec. https://github.com/elastic/fleet-server/pull/6532[#6532] 
 
 // end 8.19.13 relnotes
 

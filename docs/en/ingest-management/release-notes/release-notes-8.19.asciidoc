@@ -14,6 +14,7 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.19.15>>
 * <<release-notes-8.19.14>>
 * <<release-notes-8.19.13>>
 * <<release-notes-8.19.12>>
@@ -34,6 +35,36 @@ Also check:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.19.15 relnotes
+
+[[release-notes-8.19.15]]
+== {fleet} and {agent} 8.19.15
+
+[discrete]
+[[security-updates-8.19.15]]
+=== Security updates
+
+* Strip `Unit.Config` from components diagnostic files to prevent secret leakage. https://github.com/elastic/elastic-agent/pull/13338[#13338]
+
+[discrete]
+[[enhancements-8.19.15]]
+=== Enhancements
+
+* Update Go to v1.26.2. https://github.com/elastic/fleet-server/pull/6800[#6800]
+* Update OTel components to v0.149.0. https://github.com/elastic/elastic-agent/pull/13601[#13601]
+
+[discrete]
+[[bug-fixes-8.19.15]]
+=== Bug fixes
+
+* Retry Elasticsearch requests on TLS handshake errors so multi-host outputs can fail over. https://github.com/elastic/fleet-server/pull/6767[#6767]
+* Fix typos in default rate limit YAML keys that prevented PGP retrieval and policy limits from loading. https://github.com/elastic/fleet-server/pull/6835[#6835] 
+* Persist logging level across agent restarts after policy changes. https://github.com/elastic/elastic-agent/pull/13289[#13289]
+* Fix graceful shutdown of Beats processes on Windows when Elastic Agent runs as a service. https://github.com/elastic/elastic-agent/pull/13581[#13581]
+* Fix OpenTelemetry collector configuration to correctly merge user-defined extensions with automatically generated ones. https://github.com/elastic/elastic-agent/pull/13639[#13639]
+
+// end 8.19.15 relnotes
 
 // begin 8.19.14 relnotes
 

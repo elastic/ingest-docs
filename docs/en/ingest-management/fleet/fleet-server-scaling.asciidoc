@@ -97,7 +97,7 @@ Burst of check-ins allowed before falling back to the rate defined by
 
 `checkin_limit.max_body_byte_size`:::
 Maximum size in bytes of the checkin API request body. Defaults to `1048576` bytes (1 MiB). Deployments running many Synthetics monitors might need to increase this value to avoid check-in failures that cause agents to appear offline or unhealthy in the {fleet} UI despite monitors executing successfully. For example:
-
++
 [source,yaml]
 ----
 server:

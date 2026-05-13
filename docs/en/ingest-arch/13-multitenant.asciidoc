@@ -16,8 +16,8 @@ These logs need to be sent to different {es} clusters and to S3 for backup and a
 In such use cases, agents send the data to {ls} as a routing mechanism to different destinations. 
 Note that the System and Windows integrations must be installed on all {es} clusters to which the data is routed.
 
-Sample config::
-+ 
+==== Sample config: Sending data to both {ech} and {es-serverless}
+
 [source,ruby]
 input {
   elastic_agent {
@@ -34,19 +34,20 @@ filter {
 output {
   if [@metadata][tenant] == "tenant01" {
     elasticsearch {
-      cloud_id => "<cloud id>"
+      hosts => "ELASTICSEARCH_ENDPOINT_URL"  <1>
       api_key => "<api key>"
     }
   } else if [@metadata][tenant] == "tenant02" {
     elasticsearch {
-      cloud_id => "<cloud id>"
+      cloud_id => "<cloud id>" <2>
       api_key => "<api key>"
     }
   }
 }
 
+<1> Use the `hosts` option with the Elasticsearch endpoint URL to send data to Elasticsearch Serverless
+<2> Use `cloud_id` to send data to Elastic Cloud Hosted
 
-[discrete]
 [[multi-resources]]
 ==== Resources
 

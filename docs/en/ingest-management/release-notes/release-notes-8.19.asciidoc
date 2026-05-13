@@ -14,6 +14,11 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.19.15>>
+* <<release-notes-8.19.14>>
+* <<release-notes-8.19.13>>
+* <<release-notes-8.19.12>>
+* <<release-notes-8.19.11>>
 * <<release-notes-8.19.10>>
 * <<release-notes-8.19.9>>
 * <<release-notes-8.19.8>>
@@ -30,6 +35,163 @@ Also check:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.19.15 relnotes
+
+[[release-notes-8.19.15]]
+== {fleet} and {agent} 8.19.15
+
+[discrete]
+[[security-updates-8.19.15]]
+=== Security updates
+
+* Strip `Unit.Config` from components diagnostic files to prevent secret leakage. https://github.com/elastic/elastic-agent/pull/13338[#13338]
+
+[discrete]
+[[enhancements-8.19.15]]
+=== Enhancements
+
+* Update Go to v1.26.2. https://github.com/elastic/fleet-server/pull/6800[#6800]
+* Update OTel components to v0.149.0. https://github.com/elastic/elastic-agent/pull/13601[#13601]
+
+[discrete]
+[[bug-fixes-8.19.15]]
+=== Bug fixes
+
+* Retry Elasticsearch requests on TLS handshake errors so multi-host outputs can fail over. https://github.com/elastic/fleet-server/pull/6767[#6767]
+* Fix typos in default rate limit YAML keys that prevented PGP retrieval and policy limits from loading. https://github.com/elastic/fleet-server/pull/6835[#6835] 
+* Persist logging level across agent restarts after policy changes. https://github.com/elastic/elastic-agent/pull/13289[#13289]
+* Fix graceful shutdown of Beats processes on Windows when Elastic Agent runs as a service. https://github.com/elastic/elastic-agent/pull/13581[#13581]
+* Fix OpenTelemetry collector configuration to correctly merge user-defined extensions with automatically generated ones. https://github.com/elastic/elastic-agent/pull/13639[#13639]
+
+// end 8.19.15 relnotes
+
+// begin 8.19.14 relnotes
+
+[[release-notes-8.19.14]]
+== {fleet} and {agent} 8.19.14
+
+[discrete]
+[[new-features-8.19.14]]
+=== New features
+
+Elastic Agent::
+
+* Add Cloud Defend Integration support to the helm chart. https://github.com/elastic/elastic-agent/pull/13074[#13074]
+
+[discrete]
+[[enhancements-8.19.14]]
+=== Enhancements
+
+Elastic Agent::
+
+* Update Go to v1.25.8. https://github.com/elastic/elastic-agent/pull/10156[#10156]
+* Update OTel components to v0.145.0. https://github.com/elastic/elastic-agent/pull/13104[#13104]
+* Update OTel to v1.54.0/v0.148.0. https://github.com/elastic/elastic-agent/pull/13317[#13317]
+
+[discrete]
+[[bug-fixes-8.19.14]]
+=== Bug fixes
+
+Elastic Agent::
+
+* Update Kubernetes example manifests and add `HOSTFS_PROC_PATH` environment variable due to `procfs` fix in `cloud-defend` as well as mount points required for `cloud-defend`. https://github.com/elastic/elastic-agent/pull/12989[#12989]
+* Fix an issue where some components could be missing from the status output. https://github.com/elastic/elastic-agent/pull/13119[#13119] 
+* Prevent zombie processes when component fails to shutdown. https://github.com/elastic/elastic-agent/pull/13188[#13188] https://github.com/elastic/elastic-agent/issues/13272[#13272]
+* Fix container enrollment so it does not re-enroll when the Fleet URL is the same. https://github.com/elastic/elastic-agent/pull/13187[#13187]
+
+// end 8.19.14 relnotes
+
+// begin 8.19.13 relnotes
+
+[[release-notes-8.19.13]]
+== {fleet} and {agent} 8.19.13
+
+[discrete]
+[[new-features-8.19.13]]
+=== New features
+
+Elastic Agent::
+
+* Add support for encrypted config for standalone agents. https://github.com/elastic/elastic-agent/pull/12521[#12521] https://github.com/elastic/elastic-agent/issues/7283[#7283]
+
+[discrete]
+[[enhancements-8.19.13]]
+=== Enhancements
+
+Elastic Agent::
+
+* Enrolling fleet-server uses internal port. https://github.com/elastic/elastic-agent/pull/12917[#12917]
+
+[discrete]
+[[bug-fixes-8.19.13]]
+=== Bug fixes
+
+Elastic Agent::
+
+* Prevent permission fix from failing when file is protected. https://github.com/elastic/elastic-agent/pull/12909[#12909] https://github.com/elastic/elastic-agent/issues/13059[#13059]
+* Redact URL credentials in diagnostic outputs. https://github.com/elastic/elastic-agent/pull/13022[#13022] https://github.com/elastic/elastic-agent/issues/13017[#13017]
+
+Fleet Server::
+
+* Fix checkin endpoint compression support. https://github.com/elastic/fleet-server/pull/6491[#6491]
+* Fix inaccuracies with openapi spec. https://github.com/elastic/fleet-server/pull/6532[#6532] 
+
+// end 8.19.13 relnotes
+
+// begin 8.19.12 relnotes
+
+[[release-notes-8.19.12]]
+== {fleet} and {agent} 8.19.12
+
+[discrete]
+[[features-enhancements-8.19.12]]
+=== New features and enhancements
+
+Elastic Agent::
+
+* Update OTel Collector components to v0.144.0/v1.50.0. https://github.com/elastic/elastic-agent/pull/12735[#12735]
+
+Fleet Server::
+
+* Update Go to v1.25.7. https://github.com/elastic/fleet-server/pull/6322[#6322] 
+
+
+[discrete]
+[[bug-fixes-8.19.12]]
+=== Bug fixes
+
+Elastic Agent::
+
+* Adds a missing dependency for Synthetics on Wolfi Docker image. https://github.com/elastic/elastic-agent/pull/12453[#12453]
+* Ensure OTel Collector health check requests reuse the TCP connection. https://github.com/elastic/elastic-agent/pull/12517[#12517]
+
+// end 8.19.12 relnotes
+
+// begin 8.19.11 relnotes
+
+[[release-notes-8.19.11]]
+== {fleet} and {agent} 8.19.11
+
+[discrete]
+[[security-updates-8.19.11]]
+=== Security updates
+
+Fleet Server::
+
+* Enforce maximum limits on UploadBegin and UploadComplete request body sizes. https://github.com/elastic/fleet-server/pull/6159[#6159]
+
+[discrete]
+[[bug-fixes-8.19.11]]
+=== Bug fixes
+
+Elastic Agent::
+
+* OSQuery - Add list capabilities to directories for interactive users. https://github.com/elastic/elastic-agent/pull/12189[#12189] 
+* Emit the correct error message when the app lock cannot be acquired. https://github.com/elastic/elastic-agent/pull/12225[#12225]
+* Fix elasticsearch retry behavior in OTEL runtime for reliable delivery. https://github.com/elastic/elastic-agent/pull/12455[#12455]
+
+// end 8.19.11 relnotes
 
 // begin 8.19.10 relnotes
 

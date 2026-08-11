@@ -14,6 +14,7 @@
 
 This section summarizes the changes in each release.
 
+* <<release-notes-8.19.20>>
 * <<release-notes-8.19.19>>
 * <<release-notes-8.19.18>>
 * <<release-notes-8.19.17>>
@@ -39,6 +40,39 @@ Also check:
 
 * {kibana-ref}/release-notes.html[{kib} release notes]
 * {beats-ref}/release-notes.html[{beats} release notes]
+
+// begin 8.19.20 relnotes
+
+[[release-notes-8.19.20]]
+== {fleet} and {agent} 8.19.20
+
+[discrete]
+[[security-updates-8.19.20]]
+=== Security updates
+
+* Redact sensitive values in JSON diagnostic files. https://github.com/elastic/elastic-agent/pull/15904[#15904]
+* Treat output names as parameters in Elasticsearch update scripts. https://github.com/elastic/fleet-server/pull/7543[#7543] https://github.com/elastic/fleet-server/issues/7536[#7536]
+
+[discrete]
+[[enhancements-8.19.20]]
+=== Enhancements
+
+* Add environment variables to collector diagnostics. https://github.com/elastic/elastic-agent/pull/15661[#15661]
+* Update OTel Collector components to v0.156.0. https://github.com/elastic/elastic-agent/pull/15812[#15812]
+* Bump `elastic-agent-libs` to v0.46.0 for FIPS 140-3 peer cert key-type enforcement. https://github.com/elastic/fleet-server/pull/7456[#7456] https://github.com/elastic/fleet-server/issues/7536[#7536]
+
+[discrete]
+[[bug-fixes-8.19.20]]
+=== Bug fixes
+
+* Stop upgrade rollback from being triggered by slow service component restarts. https://github.com/elastic/elastic-agent/pull/15865[#15865] 
+* Fix getting current user failing on Windows when no profile directory is present. https://github.com/elastic/elastic-agent/pull/16007[#16007] 
+* Bake Synthetics browser binaries into the `elastic-agent-complete` image. https://github.com/elastic/elastic-agent/pull/16017[#16017] https://github.com/elastic/elastic-agent/issues/15993[#15993]
+* Fix agent enrollment failures caused by 409 version conflicts during `.fleet-agents` primary shard relocation. https://github.com/elastic/fleet-server/pull/7446[#7446] 
+* Retain output API key secrets when agent document updates fail. https://github.com/elastic/fleet-server/pull/7547[#7547] https://github.com/elastic/fleet-server/issues/7536[#7536]
+* Fix spurious `resolveSeqNo` errors on check-in when the `.fleet-actions` index does not exist. https://github.com/elastic/fleet-server/pull/7548[#7548]
+
+// end 8.19.20 relnotes
 
 // begin 8.19.19 relnotes
 

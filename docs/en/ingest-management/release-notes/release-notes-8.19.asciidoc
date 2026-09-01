@@ -47,6 +47,12 @@ Also check:
 [[release-notes-8.19.21]]
 == {fleet} and {agent} 8.19.21
 
+[IMPORTANT]
+====
+The 8.19.21 release contains fixes for potential security vulnerabilities.
+For details, go to the https://discuss.elastic.co/c/announcements/security-announcements/31[security announcements].
+====
+
 [discrete]
 [[security-updates-8.19.21]]
 === Security updates

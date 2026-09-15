@@ -74,7 +74,7 @@ This is an independent Elastic Agent release (IAR). Independent Elastic Agent re
 * Harden how {elastic-defend} restores file ownership and permissions during malware quarantine on Linux and macOS.
 * Fix a crash in {elastic-defend} on Windows when processing files or processes whose paths contain CJK (Chinese, Japanese, Korean) characters.
 * {elastic-defend} exception list and trusted app rules matching on `host.name` now correctly handle mixed-case values. Previously, an exception with `host.name: "MyServer"` would silently fail to match because {elastic-defend} normalizes `host.name` to lowercase per ECS, while Kibana's default comparison is case-sensitive.
-* Add workaround to macOS {elastic-defend} for Golden Gate bug breaking network connections from apps using Network.framework. https://developer.apple.com/forums/thread/837709[Apple Developer Forums]
+* Add workaround to macOS {elastic-defend} for Golden Gate bug breaking network connections from apps using Network.framework.
 
 // end 8.19.21+build202609151720 relnotes
 

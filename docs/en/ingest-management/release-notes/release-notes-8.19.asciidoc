@@ -78,7 +78,6 @@ Also check:
 * Fix the artifact downloader not using the Fleet Server URI for the PGP fallback. https://github.com/elastic/elastic-agent/pull/17256[#17256] https://github.com/elastic/elastic-agent/issues/16700[#16700]
 * Retry the enrollment write on transient Elasticsearch errors to reduce offline agents that never enrolled. https://github.com/elastic/fleet-server/pull/7961[#7961] https://github.com/elastic/fleet-server/issues/7741[#7741]
 * Avoid out-of-memory kills when many agents request artifacts right after Fleet Server starts. https://github.com/elastic/fleet-server/pull/8098[#8098] 
-* Refresh the PGP key when `server.pgp.upstream_url` is changed. https://github.com/elastic/fleet-server/pull/8122[#8122] https://github.com/elastic/fleet-server/issues/7836[#7836]
 
 // end 8.19.24 relnotes
 
